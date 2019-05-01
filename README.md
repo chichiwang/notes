@@ -27,3 +27,15 @@ Operations with `pip`:
 * Upgrade: `python -m pip install -U flask`
   * `-U` switch used for upgrading to the latest version
 * Upgrade pip itself: `python -m pip install -U pip`
+
+### Requirements Files
+* `requirements.txt`
+  * Standard ([pip](https://pypi.org/project/pip/))
+  * Not deterministic (with transitive dependencies)
+* `Pipfile`
+  * Dependency Manager: [pipenv](https://github.com/pypa/pipenv)
+  * Custom format
+  * Determininstic
+* `pyproject.toml`
+  * Dependency Manager: [poetry](https://github.com/sdispater/poetry)
+  * Standard (PEP-518)
