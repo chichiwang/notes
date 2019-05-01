@@ -1,0 +1,5 @@
+# system files / cache files
+*.swp
+
+# package directories
+.env/
