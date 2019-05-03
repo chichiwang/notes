@@ -28,6 +28,22 @@ Operations with `pip`:
   * `-U` switch used for upgrading to the latest version
 * Upgrade pip itself: `python -m pip install -U pip`
 
+### Pipenv
+[Pipenv](https://github.com/pypa/pipenv) is a tool which generates and manages virtual environments for python on your machine.
+
+Some features of pipenv:
+
+* Generates a virtualenv for a project
+* Manages all of your projects virtualenvs
+* Generates a Pipfile
+  * Encodes dependencies and project python version
+* Generates a Pipfile.lock
+  * Deterministic depenency tree locked
+  * Commit to the project
+* Run a virtual environment shell
+* Print a project's dependency graph
+* Use `pipenv -h` for options
+
 ### Requirements Files
 * `requirements.txt`
   * Standard ([pip](https://pypi.org/project/pip/))
