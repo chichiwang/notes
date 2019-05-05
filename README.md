@@ -12,6 +12,8 @@
 * [Boolean and None](#boolean-and-none)
 * [If Statements](#if-statements)
   * [Ternary If Statements](#ternary-if-statements)
+* [Lists](#lists)
+  * [List Slicing](#list-slicing)
 
 ## Python 2 vs Python 3
 **TLDR**: Just use Python 3.
@@ -173,4 +175,56 @@ Python does not use the `?` operator like other languages for ternary statements
 a = 1
 b = 2
 print("bigger" if a > b else "smaller") # "smaller"
+```
+
+## Lists
+To define a list in python, use the square brackets:
+```python
+student_names = [] # empty list
+student_names = ["Mark", "Katarina", "Jessica"] # populated list
+```
+
+Lists are 0-indexed and can be accessed by index:
+```python
+student_names[0] == "Mark"
+student_names[2] == "Jessica"
+```
+
+Accessing elements from the end of the list is done with negative indicies. To access the last element in a list use an index of `-1`:
+```python
+student_names[-1] == "Jessica"
+student_names[-3] == "Mark"
+```
+
+To add elements to the end of a list, use the `append` method:
+```python
+student_names.append("Homer")
+student_names == ["Mark", "Katarina", "Jessica", "Homer"]
+```
+
+To check for the existence of an element in a list use the `in` operator:
+```python
+"Mark" in student_names == True
+```
+
+To check the length of a list use the python function `len()`:
+```python
+len(student_list) == 4
+```
+
+Lists in python are similar to arrays in other languages, but with added benefits: having multiple types in a single list is allowed. As a best practice it may be a good idea to restrict a list to single type - it could help avoid potential bugs.
+
+To remove an element from a list, use the `del` keyword:
+```python
+del student_names[2]
+student_names == ["Mark, "Katarina", "Homer"]
+```
+
+### List Slicing
+Slicing lists will not mutate the list. The operation is done with the `:` in the index of a list:
+```python
+student_names = ["Mark", "Katarina", "Homer"]
+student_names[1:] == ["Katarina", "Homer"]
+student_names[:-1] == ["Mark", "Katarina"]
+student_names[1:-1] == ["Katarina"]
 ```
