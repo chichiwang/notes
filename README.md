@@ -16,6 +16,7 @@
   * [List Slicing](#list-slicing)
 * [Loops](#loops)
   * [Range](#range)
+* [Break and Continue](#break-and-continue)
 
 ## Python 2 vs Python 3
 **TLDR**: Just use Python 3.
@@ -260,4 +261,24 @@ list(range(5, 10)) == [5, 6, 7, 8, 9]
 `range()` also supports three arguments, with the last value determines the increments:
 ```python
 list(range(2, 10, 2)) == [2, 4, 6, 8]
+```
+
+## Break and Continue
+`break` will cause your `for` loop to stop executing and exit without reaching the end of the list or range function:
+```python
+student_names = ["James", "Katarina", "Jessica", "Mark", "Bort", "Frank Grimes", "Max Power"]
+
+for name in student_names:
+  if name == "Mark":
+    print("Found him! {0}".format(name))
+    break
+  print("Currently testing {0}".format(name))
+```
+
+`continue` tells the for loop to exit the current iteration and continue to the next:
+```python
+for name in student_names:
+  if name == "Bort":
+    continue
+  print("Currently testing {0}".format(name))
 ```
