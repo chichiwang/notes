@@ -32,3 +32,28 @@ def add_numbers(a: int, b: int) -> int:
     * Does not prevent code from running if incorrect types are used
   * Important to write a lot of unit tests for Python scripts
 
+### Integers and Floats
+Integers are numbers. Floats are decimal numbers.
+
+Defining an integrer:
+```python
+answer = 42
+```
+
+Defining a float:
+```python
+pi = 3.13159
+```
+
+Python 3 also introduces complex numbers as a type.
+
+Python will not throw a type error when doing operations between number types:
+```python
+answer + pi # 45.14159
+```
+
+Casting a value to a type:
+```python
+int(pi) == 3
+float(answer) == 42.0
+```
