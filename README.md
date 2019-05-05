@@ -16,3 +16,19 @@ Python 3 adoption did not go smoothly. Today (May 2019) you will still see Pytho
 |                                                  | Minor differences from Python 2 |
 
 Not a lot of differences in terms of syntax.
+
+## Types
+
+* Dynamically typed
+* Types are inferred by the compiler
+* Type hinting
+  * New feature added in Python 3.5
+  * Allows you to annotate types
+```python
+def add_numbers(a: int, b: int) -> int:
+  return a + b
+```
+  * Only used to inform editors and IDEs
+    * Does not prevent code from running if incorrect types are used
+  * Important to write a lot of unit tests for Python scripts
+
