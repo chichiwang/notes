@@ -17,6 +17,7 @@
 * [Loops](#loops)
   * [Range](#range)
 * [Break and Continue](#break-and-continue)
+* [While Loops](#while-loops)
 
 ## Python 2 vs Python 3
 **TLDR**: Just use Python 3.
@@ -264,7 +265,7 @@ list(range(2, 10, 2)) == [2, 4, 6, 8]
 ```
 
 ## Break and Continue
-`break` will cause your `for` loop to stop executing and exit without reaching the end of the list or range function:
+`break` will cause your loop to stop executing and exit without reaching the end of the list or range function:
 ```python
 student_names = ["James", "Katarina", "Jessica", "Mark", "Bort", "Frank Grimes", "Max Power"]
 
@@ -275,10 +276,21 @@ for name in student_names:
   print("Currently testing {0}".format(name))
 ```
 
-`continue` tells the for loop to exit the current iteration and continue to the next:
+`continue` tells a loop to exit the current iteration and continue to the next:
 ```python
 for name in student_names:
   if name == "Bort":
     continue
   print("Currently testing {0}".format(name))
 ```
+
+## While Loops
+`while` loops can also make use of `break` and `continue`. `while` loop syntax:
+```python
+x = 0
+while x < 10:
+  print("Count is {0}".format(x))
+  x += 1
+```
+
+`while` loops check the condition before even entering the loop.
