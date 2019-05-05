@@ -1,6 +1,16 @@
 # Python: Getting Started
 [Course](https://app.pluralsight.com/library/courses/python-getting-started/table-of-contents)
 
+## Table of Contents
+
+* [Python 2 vs Python 3](#python-2-vs-python-3)
+* [Types](#types)
+* [Integers and Floats](#integers-and-floats)
+* [Strings](#strings)
+  * [String Format Functions](#string-format-functions)
+  * [Format String Literals](#format-string-literals)
+* [Boolean and None](#boolean-and-none)
+
 ## Python 2 vs Python 3
 **TLDR**: Just use Python 3.
 
