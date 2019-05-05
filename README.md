@@ -14,6 +14,8 @@
   * [Ternary If Statements](#ternary-if-statements)
 * [Lists](#lists)
   * [List Slicing](#list-slicing)
+* [Loops](#loops)
+  * [Range](#range)
 
 ## Python 2 vs Python 3
 **TLDR**: Just use Python 3.
@@ -227,4 +229,35 @@ student_names = ["Mark", "Katarina", "Homer"]
 student_names[1:] == ["Katarina", "Homer"]
 student_names[:-1] == ["Mark", "Katarina"]
 student_names[1:-1] == ["Katarina"]
+```
+
+## Loops
+Syntax for a `for` loop:
+```python
+for name in student_names:
+  print("Student name is {0}".format(name))
+```
+
+### Range
+You can also use the `range` function in python:
+```python
+x = 0
+for index in range(10):
+  x += 10
+  print("The value of x is {0}".format(x))
+```
+
+`range()` takes a value and creates a list whose elements begin at `0` and end at `value - 1`:
+```python
+list(range(10)) == [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+`range()` also supports two arguments, a starting value and a value to end before:
+```python
+list(range(5, 10)) == [5, 6, 7, 8, 9]
+```
+
+`range()` also supports three arguments, with the last value determines the increments:
+```python
+list(range(2, 10, 2)) == [2, 4, 6, 8]
 ```
