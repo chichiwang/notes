@@ -10,6 +10,8 @@
   * [String Format Functions](#string-format-functions)
   * [Format String Literals](#format-string-literals)
 * [Boolean and None](#boolean-and-none)
+* [If Statements](#if-statements)
+  * [Ternary If Statements](#ternary-if-statements)
 
 ## Python 2 vs Python 3
 **TLDR**: Just use Python 3.
@@ -125,4 +127,50 @@ aliens_found = None
 `None`'s type is called `NoneType`:
 ```python
 type(None) # <class 'NoneType'>
+```
+
+## If Statements
+Normal `if` statement in python:
+```python
+number = 5
+if number == 5:
+  print("Number is 5")
+else:
+  print("Number is NOT 5")
+```
+
+`if` and `else` statements both end with a colon `:`. This is a requirement in python.
+
+We use the `==` to check for equality. We can also use the operator `is` to see if two objects are pointing to the same value in memory.
+
+Python can also evaluate a value for truthiness and falsiness:
+* Any number other than `0` has a truthy value
+* Any non-empty string has a truthy value
+* Any non-empty list has a truthy value
+* `None` has a falsey value
+
+`!=` is the conditional operator to check for lack of equality. `not` is the negation operator and `is not` can be used to check the negative case of the `is` operator:
+```python
+if not python_course:
+  print("This statement will NOT evaluate")
+```
+
+`and` and `or` operators in python can be used to check multiple conditions:
+```python
+number = 3
+python_course = True
+
+if number == 3 and python_course:
+  print("This will evaluate")
+
+if number == 17 or python_course:
+  print("This will also evaluate")
+```
+
+### Ternary If Statements
+Python does not use the `?` operator like other languages for ternary statements:
+```python
+a = 1
+b = 2
+print("bigger" if a > b else "smaller") # "smaller"
 ```
