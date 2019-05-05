@@ -5,22 +5,22 @@
 
 * [Python 2 vs Python 3](#python-2-vs-python-3)
 * [Types](#types)
-* [Integers and Floats](#integers-and-floats)
-* [Strings](#strings)
-  * [String Format Functions](#string-format-functions)
-  * [Format String Literals](#format-string-literals)
-* [Boolean and None](#boolean-and-none)
-* [If Statements](#if-statements)
-  * [Ternary If Statements](#ternary-if-statements)
-* [Lists](#lists)
-  * [List Slicing](#list-slicing)
-* [Loops](#loops)
-  * [Range](#range)
-* [Break and Continue](#break-and-continue)
-* [While Loops](#while-loops)
-* [Dictionaries](#dictionaries)
-* [Exceptions](#exceptions)
-* [Other Data Types](#other-data-types)
+  * [Integers and Floats](#integers-and-floats)
+  * [Strings](#strings)
+    * [String Format Functions](#string-format-functions)
+    * [Format String Literals](#format-string-literals)
+  * [Boolean and None](#boolean-and-none)
+  * [If Statements](#if-statements)
+    * [Ternary If Statements](#ternary-if-statements)
+  * [Lists](#lists)
+    * [List Slicing](#list-slicing)
+  * [Loops](#loops)
+    * [Range](#range)
+  * [Break and Continue](#break-and-continue)
+  * [While Loops](#while-loops)
+  * [Dictionaries](#dictionaries)
+  * [Exceptions](#exceptions)
+  * [Other Data Types](#other-data-types)
 
 ## Python 2 vs Python 3
 **TLDR**: Just use Python 3.
@@ -98,7 +98,7 @@ Useful string methods in python:
 "some,csv,values".split(",") == ["some", "csv", "values"]
 ```
 
-### String Format Functions
+#### String Format Functions
 [String format](https://docs.python.org/3.4/library/string.html#string.Formatter.format) functions are used to interpolate values into strings:
 ```python
 name = "World"
@@ -106,13 +106,13 @@ machine = "HAL"
 "Nice to meet you {0}. I am {1}".format(name, machine)
 ```
 
-### Format String Literals
+#### Format String Literals
 Python 3.6 introduces string interpolation, known as [format string literals](https://docs.python.org/3/reference/lexical_analysis.html#f-strings):
 ```python
 f"Nice to meet you {name}. I am {machine}"
 ```
 
-## Boolean and None
+### Boolean and None
 Variables can be declared as boolean by assigning them as `True` or `False`:
 ```python
 python_course = True
@@ -138,7 +138,7 @@ aliens_found = None
 type(None) # <class 'NoneType'>
 ```
 
-## If Statements
+### If Statements
 Normal `if` statement in python:
 ```python
 number = 5
@@ -176,7 +176,7 @@ if number == 17 or python_course:
   print("This will also evaluate")
 ```
 
-### Ternary If Statements
+#### Ternary If Statements
 Python does not use the `?` operator like other languages for ternary statements:
 ```python
 a = 1
@@ -184,7 +184,7 @@ b = 2
 print("bigger" if a > b else "smaller") # "smaller"
 ```
 
-## Lists
+### Lists
 To define a list in python, use the square brackets:
 ```python
 student_names = [] # empty list
@@ -227,7 +227,7 @@ del student_names[2]
 student_names == ["Mark, "Katarina", "Homer"]
 ```
 
-### List Slicing
+#### List Slicing
 Slicing lists will not mutate the list. The operation is done with the `:` in the index of a list:
 ```python
 student_names = ["Mark", "Katarina", "Homer"]
@@ -236,14 +236,14 @@ student_names[:-1] == ["Mark", "Katarina"]
 student_names[1:-1] == ["Katarina"]
 ```
 
-## Loops
+### Loops
 Syntax for a `for` loop:
 ```python
 for name in student_names:
   print("Student name is {0}".format(name))
 ```
 
-### Range
+#### Range
 You can also use the `range` function in python:
 ```python
 x = 0
@@ -267,7 +267,7 @@ list(range(5, 10)) == [5, 6, 7, 8, 9]
 list(range(2, 10, 2)) == [2, 4, 6, 8]
 ```
 
-## Break and Continue
+### Break and Continue
 `break` will cause your loop to stop executing and exit without reaching the end of the list or range function:
 ```python
 student_names = ["James", "Katarina", "Jessica", "Mark", "Bort", "Frank Grimes", "Max Power"]
@@ -287,7 +287,7 @@ for name in student_names:
   print("Currently testing {0}".format(name))
 ```
 
-## While Loops
+### While Loops
 `while` loops can also make use of `break` and `continue`. `while` loop syntax:
 ```python
 x = 0
@@ -347,7 +347,7 @@ del student["name"]
 student == { "id": 15163, "feedback": None }
 ```
 
-## Exceptions
+### Exceptions
 Exceptions are events that occur during your program's excution that cause your program to stop executing. It generally means that some error has occurred and your program does not know how to deal with it.
 
 There are ways to handle exceptions:
@@ -392,7 +392,7 @@ This does not give you access to the full stack trace, for that you would need t
 
 You can also raise your own exception, create any exception you want, and use a `finally` handler after any exception that may occur.
 
-## Other Data Types
+### Other Data Types
 Overview of other data types in python:
 * `complex`
   * Complex numbers
