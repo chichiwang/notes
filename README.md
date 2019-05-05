@@ -90,3 +90,29 @@ Python 3.6 introduces string interpolation, known as [format string literals](ht
 ```python
 f"Nice to meet you {name}. I am {machine}"
 ```
+
+## Boolean and None
+Variables can be declared as boolean by assigning them as `True` or `False`:
+```python
+python_course = True
+java_course = False
+```
+
+Booleans can be converted to integer or string:
+```python
+int(python_course) == 1
+int(java_course) == 0
+str(python_course) == "True"
+```
+
+`None` is similar to `null` in other languages:
+```python
+aliens_found = None
+```
+
+`None` is useful as a placeholder value, for variables that are defined in advance but not yet assigned a value. `None` evaluates to `False` in conditional statements.
+
+`None`'s type is called `NoneType`:
+```python
+type(None) # <class 'NoneType'>
+```
