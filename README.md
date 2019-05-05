@@ -20,6 +20,7 @@
 * [While Loops](#while-loops)
 * [Dictionaries](#dictionaries)
 * [Exceptions](#exceptions)
+* [Other Data Types](#other-data-types)
 
 ## Python 2 vs Python 3
 **TLDR**: Just use Python 3.
@@ -390,3 +391,22 @@ except KeyError as error:
 This does not give you access to the full stack trace, for that you would need to use the python `traceback` module. This will be covered in a later section.
 
 You can also raise your own exception, create any exception you want, and use a `finally` handler after any exception that may occur.
+
+## Other Data Types
+Overview of other data types in python:
+* `complex`
+  * Complex numbers
+* `long`
+  * Only in Python 2
+  * Replaced by `integer` in Python 3
+* `byes`
+  * Sequence of integers in the range of 0..255
+  * Sequence of strings or other objects
+* `bytearray`
+  * Similar to `bytes`
+* `tuple`
+  * Similar to lists
+  * Are immutable
+* `set` and `frozenset`
+  * Similar to lists, but only have unique objects
+  * Can be used to eliminate duplicate elements in a list: `set([3, 2, 3, 1, 5]) == (1, 2, 3, 5)`
