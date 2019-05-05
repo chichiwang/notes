@@ -57,3 +57,36 @@ Casting a value to a type:
 int(pi) == 3
 float(answer) == 42.0
 ```
+
+### Strings
+Python 3 defaults strings to Unicode text. Python 2 defaults to ASCII.
+
+Strings can be defined with single quotes `'`, double quotes `"`, or three times quotes (single or double) `'''` `"""`:
+```python
+'Hello World' == "Hello World" == """Hello World"""
+```
+
+Three times quotes are often used as function or class documentation. While `#` are used for comments in Python there are no operators for multi-line comments. Three times quotes are used for multi-line strings: it is acceptable to use them as multi-line comments that are not assigned to any variables. Your editor may even recognize it as a comment.
+
+Useful string methods in python:
+```python
+"hello".capitalize() == "Hello"
+"hello".replace("e", "a") == "hallo"
+"hello".isalpha() == True
+"123".isdigit() == True # Useful when converting to int
+"some,csv,values".split(",") == ["some", "csv", "values"]
+```
+
+### String Format Functions
+[String format](https://docs.python.org/3.4/library/string.html#string.Formatter.format) functions are used to interpolate values into strings:
+```python
+name = "World"
+machine = "HAL"
+"Nice to meet you {0}. I am {1}".format(name, machine)
+```
+
+### Format String Literals
+Python 3.6 introduces string interpolation, known as [format string literals](https://docs.python.org/3/reference/lexical_analysis.html#f-strings):
+```python
+f"Nice to meet you {name}. I am {machine}"
+```
