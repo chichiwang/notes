@@ -18,6 +18,7 @@
   * [Range](#range)
 * [Break and Continue](#break-and-continue)
 * [While Loops](#while-loops)
+* [Dictionaries](#dictionaries)
 
 ## Python 2 vs Python 3
 **TLDR**: Just use Python 3.
@@ -294,3 +295,52 @@ while x < 10:
 ```
 
 `while` loops check the condition before even entering the loop.
+
+## Dictionaries
+Allows the storage of key/value pairs. Very similar to JSON (hash?).
+
+Syntax for defining a dictionary:
+```python
+student = {
+  "id": 15163,
+  "name": "Mark",
+  "feedback": None
+}
+```
+
+Dictionaries are very valuable when you need to store structured data. You can group several dictionaries together in a list:
+```python
+all_students = [
+  { "id": 15163, "name": "Mark" }
+  { "id": 63112, "name": "Katarina" }
+  { "id": 30021, "name": "Jessica" }
+]
+```
+
+Syntax for reading a dictionary value:
+```python
+student["name"] == "Mark"
+```
+
+Python will raise an exception for non-existent keys:
+```python
+student["last_name"] == KeyError
+```
+
+You can set default values for keys to avoid key errors:
+```python
+student.get("last_name", "Unknown") == "Unknown"
+student["last_name"] == "Unknown"
+```
+
+Retrieve a list of keys or values of a dictionary:
+```python
+student.keys() == ["id", "name", "feedback"]
+student.values() == [15163, "Mark", None]
+```
+
+Removing a key is the same as removing an element in a list, using the `del` operator:
+```python
+del student["name"]
+student == { "id": 15163, "feedback": None }
+```
