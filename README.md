@@ -19,6 +19,7 @@
 * [Break and Continue](#break-and-continue)
 * [While Loops](#while-loops)
 * [Dictionaries](#dictionaries)
+* [Exceptions](#exceptions)
 
 ## Python 2 vs Python 3
 **TLDR**: Just use Python 3.
@@ -344,3 +345,48 @@ Removing a key is the same as removing an element in a list, using the `del` ope
 del student["name"]
 student == { "id": 15163, "feedback": None }
 ```
+
+## Exceptions
+Exceptions are events that occur during your program's excution that cause your program to stop executing. It generally means that some error has occurred and your program does not know how to deal with it.
+
+There are ways to handle exceptions:
+```python
+student = {
+  "id": 15163,
+  "name": "Mark",
+  "feedback": None
+}
+
+try:
+  last_name = student["last_name"]
+except KeyError:
+  print("Error finding last_name")
+
+print("The program was not halted by the exeception")
+```
+
+Catch multiple exceptions using multiple `except` blocks:
+```python
+try:
+  last_name = student["last_name"]
+  numbered_last_name = 3 + last_name
+except KeyError:
+  print("Error finding last_name")
+except TypeError:
+  print("Illegal add operation")
+```
+
+Catch all exceptions with `except Exception:`. This will handle any exception that comes its way. Generally you do not want to catch general exceptions, you want to catch specific exceptions as a matter of best practice.
+
+You can access the error object this way:
+```python
+try:
+  last_name = student["last_name"]
+except KeyError as error:
+  print("Error finding last_name")
+  print(error)
+```
+
+This does not give you access to the full stack trace, for that you would need to use the python `traceback` module. This will be covered in a later section.
+
+You can also raise your own exception, create any exception you want, and use a `finally` handler after any exception that may occur.
