@@ -4,7 +4,7 @@
 ## Table of Contents
 
 * [Python 2 vs Python 3](#python-2-vs-python-3)
-* [Types](#types)
+* [Types, Statements, Loops, Exceptions](#types-statements-loops-exceptions)
   * [Integers and Floats](#integers-and-floats)
   * [Strings](#strings)
     * [String Format Functions](#string-format-functions)
@@ -21,6 +21,8 @@
   * [Dictionaries](#dictionaries)
   * [Exceptions](#exceptions)
   * [Other Data Types](#other-data-types)
+* [Functions, Files, Yield, Lambda](#functions-files-yield-lambda)
+  * [Function Arguments](#function-arguments)
 
 ## Python 2 vs Python 3
 **TLDR**: Just use Python 3.
@@ -38,7 +40,7 @@ Python 3 adoption did not go smoothly. Today (May 2019) you will still see Pytho
 
 Not a lot of differences in terms of syntax.
 
-## Types
+## Types, Statements, Loops, Exceptions
 
 * Dynamically typed
 * Types are inferred by the compiler
@@ -410,3 +412,75 @@ Overview of other data types in python:
 * `set` and `frozenset`
   * Similar to lists, but only have unique objects
   * Can be used to eliminate duplicate elements in a list: `set([3, 2, 3, 1, 5]) == (1, 2, 3, 5)`
+
+## Functions, Files, Yield, Lambda
+`def` keyword is used to define a function:
+```python
+students = []
+
+def add_student(name):
+  students.append(name)
+```
+
+`return` can be used to return values from a function:
+```python
+def get_students_titlecase():
+  students_titlecase = []
+  for student in students:
+    students_titlecase.append(student.title())
+  return students_titlecase
+
+
+student_list = get_students_titlecase()
+```
+
+If a return value is not specified, `None` is returned.
+
+**It is convention to follow function definitions with 2 newlines.**
+
+### Function Arguments
+Arguments are scoped to the function. Arguments are required by default and the Python parser will throw an exception if the arguments specified by the function definition are not provided in the function call.
+
+In order to make an argument optional you must provide a default value:
+```python
+students = []
+
+def add_student(name, student_id=332):
+  students.append({ "id": student_id, "name": name })
+
+
+add_student("Mark") # Will not throw an exception
+```
+
+Named arguments in calling a function specifies the name of the arguments and may lead to legibility for developers:
+```python
+add_student(name="Mark", student_id=15)
+```
+
+A function can be defined to accept a variable number of arguments using `*`:
+```python
+def var_args(name, *args):
+  print(name, args)
+
+
+var_args("Chi-chi", "Is Learning Python", None, "Hello, World", True)
+# Chi-chi ('Is Learning Python', None, 'Hello, World', True)
+```
+In this setup the arguments are stored in a list and must be iterated over to parse through the contents.
+
+Keyword arguments can be used to define a variable number of named arguments using `**`:
+```python
+def var_kwargs(name, **kwargs):
+  print(name, kwargs)
+
+
+var_kwargs("Mark", id=15, description="Python Student", feedback=None, pluralsight_subscriber=True)
+""" Mark {
+  'id': 15,
+  'description': 'Python Student',
+  'feedback': None,
+  'pluralsight_subscriber': True
+}
+"""
+```
+Keyword arguments store the named arguments as a dictionary and can be accessed as such.
