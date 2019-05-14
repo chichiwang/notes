@@ -23,6 +23,7 @@
   * [Other Data Types](#other-data-types)
 * [Functions, Files, Yield, Lambda](#functions-files-yield-lambda)
   * [Function Arguments](#function-arguments)
+  * [Input Function](#input-function)
 
 ## Python 2 vs Python 3
 **TLDR**: Just use Python 3.
@@ -484,3 +485,21 @@ var_kwargs("Mark", id=15, description="Python Student", feedback=None, pluralsig
 """
 ```
 Keyword arguments store the named arguments as a dictionary and can be accessed as such.
+
+### Input Function
+Python has a built-in [input function](https://docs.python.org/3/library/functions.html#input) to allow users to input values on the command line:
+```python
+def print_args(**kwargs):
+  print(kwargs)
+
+
+name = input("Name: ")
+id = input("ID: ")
+
+print_args(name=name, id=id)
+"""
+Name: Mark
+ID: 15
+{'name': 'Mark', 'id': '15'}
+"""
+```
