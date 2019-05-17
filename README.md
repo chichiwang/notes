@@ -26,6 +26,7 @@
   * [Input Function](#input-function)
   * [Nested Functions](#nested-functions)
   * [Basic File Operations](#basic-file-operations)
+  * [Generator Functions: Yield](#generator-functions-yield)
 
 ## Python 2 vs Python 3
 **TLDR**: Just use Python 3.
@@ -558,3 +559,45 @@ def read_file(filename):
 ```
 
 It is always a good idea to wrap any file operations in a try-except block.
+
+### Generator Functions: Yield
+Resource: [Generators - Python Wiki](https://wiki.python.org/moin/Generators)
+
+Example of building an iterator (generator pattern):
+```python
+class first_n(object):
+  def __init__(self, n):
+    self.n = n
+    self.num, self.nums = 0, []
+
+  def __iter__(self):
+    return self
+
+  # Python 3 compatibility
+  def __next__(self):
+    return self.next()
+
+  def next(self):
+    if self.num < self.n:
+      cur, self.num = self.num, self.num + 1
+      return cur
+    else:
+      raise StopIteration()
+
+sum_of_first_n = sum(first_n(1000))
+```
+
+Negatives of the above pattern:
+* There is a lot of boilerplate
+* The logic has to be expressed in a convoluted way
+
+Python provides generator functions as a shortcut to building iterators:
+```python
+def first_n(n):
+  num = 0
+  while num < n:
+    yield num
+    num += 1
+
+sum_of_first_n = sum(first_n(1000))
+```
