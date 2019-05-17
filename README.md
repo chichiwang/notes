@@ -25,6 +25,7 @@
   * [Function Arguments](#function-arguments)
   * [Input Function](#input-function)
   * [Nested Functions](#nested-functions)
+  * [Basic File Operations](#basic-file-operations)
 
 ## Python 2 vs Python 3
 **TLDR**: Just use Python 3.
@@ -520,3 +521,40 @@ def get_students():
 ```
 
 Function closures exist in Python. Nested inner functions have access to variables defined in their outer functions.
+
+### Basic File Operations
+Python's built in `open` function can be used to access files and perform operations:
+```python
+def save_file(filename, text):
+  try:
+    f = open(f"{filename}.txt", "a") # "a" is an access mode argument
+    f.write(text + "\n")
+    f.close()
+  except Exception:
+    print("Could not save file")
+```
+
+Access modes in Python:
+| flag | mode                                          |
+| ---- | --------------------------------------------- |
+| "w"  | write: overwrites the entire file             |
+| "r"  | read: read a text file                        |
+| "a"  | append: append text to a new or existing file |
+| "rb" | read binary: read a binary file               |
+| "wb" | write binary: write to a binary file          |
+
+[Other IO operations in Python](https://docs.python.org/3.7/library/io.html#class-hierarchy).
+
+Reading a file in Python:
+```pyton
+def read_file(filename):
+  try:
+    f = open(filename, "r")
+    text = f.read()
+    f.close()
+    return text
+  except Exception:
+    print("Could not read file")
+```
+
+It is always a good idea to wrap any file operations in a try-except block.
