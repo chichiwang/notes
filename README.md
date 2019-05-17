@@ -24,6 +24,7 @@
 * [Functions, Files, Yield, Lambda](#functions-files-yield-lambda)
   * [Function Arguments](#function-arguments)
   * [Input Function](#input-function)
+  * [Nested Functions](#nested-functions)
 
 ## Python 2 vs Python 3
 **TLDR**: Just use Python 3.
@@ -503,3 +504,19 @@ ID: 15
 {'name': 'Mark', 'id': '15'}
 """
 ```
+
+### Nested Functions
+You can nest functions inside of other functions to avoid polluting scope:
+```python
+def get_students():
+  students = ["mark", "james"]
+  def get_students_titlecase():
+    students_titlecase = []
+    for student in students:
+      students_titlecase.append(student.title())
+    return students_titlecase
+  students_titlecase_names = get_students_titlecase()
+  print(students_titlecase_names)
+```
+
+Function closures exist in Python. Nested inner functions have access to variables defined in their outer functions.
