@@ -27,6 +27,7 @@
   * [Nested Functions](#nested-functions)
   * [Basic File Operations](#basic-file-operations)
   * [Generator Functions: Yield](#generator-functions-yield)
+  * [Lambda Functions](#lambda-functions)
 
 ## Python 2 vs Python 3
 **TLDR**: Just use Python 3.
@@ -601,3 +602,18 @@ def first_n(n):
 
 sum_of_first_n = sum(first_n(1000))
 ```
+
+### Lambda Functions
+Lambda function notation is supported in Python:
+```python
+# Standard python function notation:
+def double(x):
+  return x * 2
+
+# Lambda function notation:
+double = lambda x: x * 2
+```
+
+Lambda functions are simple 1-liners in Python.
+
+Lambda functions are useful in higher-order functions: functions that take another function as an argument.
