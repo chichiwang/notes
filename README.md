@@ -30,6 +30,7 @@
   * [Lambda Functions](#lambda-functions)
 * [Object Oriented Programming](#object-oriented-programming)
   * [Classes](#classes)
+  * [Inheritance and Polymorphism](#inheritance-and-polymorphism)
 
 ## Python 2 vs Python 3
 **TLDR**: Just use Python 3.
@@ -625,6 +626,8 @@ Python is an object-oriented language. While you are not required to use classes
 
 There is a debate about whether Python is truly an object-oriented language because it does not provide encapsulation (class methods are not private and hidden from the consumer).
 
+There are no private methods. Most programmers prefix a method with `_` or `__` to indicate a method should not be accessed directly.
+
 ### Classes
 A logical group of functions and data.
 
@@ -650,13 +653,13 @@ class Student:
     self.id = id
 
   def __str__(self):
-    retrun f"#{self.id}: {self.name}"
+    retrun f"<{self.school_name}> #{self.id}: {self.name}"
 
 mark = Student("Mark", 115)
-print(mark) # #115: Mark
+print(mark) # <Springfield Elementary> #115: Mark
 ```
 
-Notes about the above:
+Notes:
 * `__init__` is the constructor for classes
 * All class methods receive `self` as their first argument
   * This is a reference to the class instance
@@ -667,3 +670,27 @@ Notes about the above:
   * These are shared across all instances of the class
   * Must be accessed via `self` inside of methods (ex: `self.school_name`)
   * Can be directly accessed off of the class itself: `Student.school_name`
+
+### Inheritance and Polymorphism
+Defining a child class:
+```python
+class HighSchoolStudent(Student):
+
+  school_name = "Springfield High"
+
+  def __str__(self):
+    return f"[self.school_name] #{self.id}: {self.name}"
+
+  def primary_school(self):
+    return super().school_name
+
+james = HighSchoolStudent("James", 312)
+print(james) # [Springfield High] #312: James
+print(james.primary_school()) # Springfield Elementary
+```
+
+Notes:
+* Pass the parent class into the class definition to create a child class
+* Override parent methods by defining the same method on the child class
+* `super()` can be used inside a class method to access the parent class
+  * Methods and attributes on the parent class are accessed from the return value: `super().school_name`
