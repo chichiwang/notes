@@ -28,6 +28,8 @@
   * [Basic File Operations](#basic-file-operations)
   * [Generator Functions: Yield](#generator-functions-yield)
   * [Lambda Functions](#lambda-functions)
+* [Object Oriented Programming](#object-oriented-programming)
+  * [Classes](#classes)
 
 ## Python 2 vs Python 3
 **TLDR**: Just use Python 3.
@@ -617,3 +619,51 @@ double = lambda x: x * 2
 Lambda functions are simple 1-liners in Python.
 
 Lambda functions are useful in higher-order functions: functions that take another function as an argument.
+
+## Object Oriented Programming
+Python is an object-oriented language. While you are not required to use classes, Python provides them.
+
+There is a debate about whether Python is truly an object-oriented language because it does not provide encapsulation (class methods are not private and hidden from the consumer).
+
+### Classes
+A logical group of functions and data.
+
+Defining a class:
+```python
+class Student:
+  pass  # in Python pass is a no-op
+```
+
+Creating a new instance of a class `Student`:
+```python
+student = Student()
+```
+
+Defining a class with instance and class attributes and methods:
+```python
+class Student:
+
+  school_name = "Springfield Elementary"
+
+  def __init__(self, name, id):
+    self.name = name
+    self.id = id
+
+  def __str__(self):
+    retrun f"#{self.id}: {self.name}"
+
+mark = Student("Mark", 115)
+print(mark) # #115: Mark
+```
+
+Notes about the above:
+* `__init__` is the constructor for classes
+* All class methods receive `self` as their first argument
+  * This is a reference to the class instance
+* `__str__` is the built-in to-string method for a class
+* Assign values to `self` to create instance attributes
+* Class attributes are created by assigning variables inside the class body, but outside of methods
+  * Also known as static variables
+  * These are shared across all instances of the class
+  * Must be accessed via `self` inside of methods (ex: `self.school_name`)
+  * Can be directly accessed off of the class itself: `Student.school_name`
