@@ -31,6 +31,8 @@
 * [Object Oriented Programming](#object-oriented-programming)
   * [Classes](#classes)
   * [Inheritance and Polymorphism](#inheritance-and-polymorphism)
+  * [Modules](#modules)
+* [Comment Block Convention](#comment-block-convention)
 
 ## Python 2 vs Python 3
 **TLDR**: Just use Python 3.
@@ -694,3 +696,47 @@ Notes:
 * Override parent methods by defining the same method on the child class
 * `super()` can be used inside a class method to access the parent class
   * Methods and attributes on the parent class are accessed from the return value: `super().school_name`
+
+### Modules
+To import from another file simply import the filename:
+```python
+import hs_student
+
+james = hs_student.HighSchoolStudent("James")
+```
+
+
+To import just one class from a module:
+```python
+from hs_student import HighSchoolStudent
+
+james = HighSchoolStudent("James")
+```
+
+To import all named entities from a module:
+```
+from hs_student import *
+
+james = HighSchoolStudent("James")
+```
+
+You can import from your own modules as well as standard and third-party libraries.
+
+## Comment Block Convention
+Annotating code:
+```python
+students = []
+
+def add_student(name, id):
+  """
+  Adds a student dictionary to the students list
+  :param name: string - student name
+  :param id: integer - student id number
+  """
+
+  students.append({ name: name, id: id, school: "Springfield Elementary" })
+
+
+```
+
+It is convention to annotate your functions and classes using multi-line string blocks. Provide a space between the comment and the function implementation.
