@@ -37,6 +37,7 @@
 * [Flask](#flask)
 * [Tips And Tricks](#tips-and-tricks)
   * [Virtual Environments](#virtual-environments)
+  * [Debugging Python Code](#debugging-python-code)
 
 ## Python 2 vs Python 3
 **TLDR**: Just use Python 3.
@@ -788,3 +789,6 @@ Most of these tools complement each other. For instance, `pipenv` integrates `pi
 **Recommendation for beginners**
 
 This is my personal recommendation for beginners: start by learning `virtualenv` and `pip`, tools which work with both Python 2 and 3 and in a variety of situations, and pick up the other tools once you start needing them.
+
+### Debugging Python Code
+Python 3.7 introduces a new `breakpoint()` function through the standard library [pdb](https://docs.python.org/3/library/pdb.html). For more details check the [quick tour post on Hackernoon](https://hackernoon.com/python-3-7s-new-builtin-breakpoint-a-quick-tour-4f1aebc444c).
