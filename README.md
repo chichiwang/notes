@@ -33,6 +33,7 @@
   * [Inheritance and Polymorphism](#inheritance-and-polymorphism)
   * [Modules](#modules)
 * [Comment Block Convention](#comment-block-convention)
+* [Installing Python Packages](#installing-python-packages)
 
 ## Python 2 vs Python 3
 **TLDR**: Just use Python 3.
@@ -740,3 +741,6 @@ def add_student(name, id):
 ```
 
 It is convention to annotate your functions and classes using multi-line string blocks. Provide a space between the comment and the function implementation.
+
+## Installng Python Packages
+Install Python packages with [pip](https://pypi.org/project/pip/). They are then available for any Python program run with the version and instance of Python that pip installed the dependency to.
