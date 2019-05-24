@@ -39,6 +39,7 @@
   * [Virtual Environments](#virtual-environments)
   * [Debugging Python Code](#debugging-python-code)
   * [Creating Executable Files](#creating-executable-files)
+  * [Creating A Setup Wizard](#creating-a-setup-wizard)
 
 ## Python 2 vs Python 3
 **TLDR**: Just use Python 3.
@@ -812,3 +813,8 @@ $ pyinstaller --onefile main.py
 The `--onefile` flag tells pyinstaller to bundle everything into a single executable. When you run pyinstaller with this flag, the `/dist` directory will only contain a single file: `main.exe`.
 
 This executable file will be very large. This is because the Python interpreter along with required Python packages have to be bundled in with this executable.
+
+### Creating A Setup Wizard
+Distributing just an `.exe` file can be a bit strange. Often you will want to provide an installer which will install the program into the `Program Files` directory and add it to the start up menu as well. You may also want to include additional files and assets along with your program (help file, README, images, etc).
+
+[Inno Setup](http://www.jrsoftware.org/isinfo.php) is a Windows program that will help you create a setup wizard for any program.
