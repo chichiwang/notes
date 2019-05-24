@@ -38,6 +38,7 @@
 * [Tips And Tricks](#tips-and-tricks)
   * [Virtual Environments](#virtual-environments)
   * [Debugging Python Code](#debugging-python-code)
+  * [Creating Executable Files](#creating-executable-files)
 
 ## Python 2 vs Python 3
 **TLDR**: Just use Python 3.
@@ -792,3 +793,22 @@ This is my personal recommendation for beginners: start by learning `virtualenv`
 
 ### Debugging Python Code
 Python 3.7 introduces a new `breakpoint()` function through the standard library [pdb](https://docs.python.org/3/library/pdb.html). For more details check the [quick tour post on Hackernoon](https://hackernoon.com/python-3-7s-new-builtin-breakpoint-a-quick-tour-4f1aebc444c).
+
+### Creating Executable Files
+Executables of your Python applications can be created using [pyinstaller](https://www.pyinstaller.org/).
+
+To create an exe file, simply enter into the command line while in your project directory:
+```bash
+$ pyinstaller main.py
+```
+Replace `main.py` with your own entrypoint file.
+
+Pyinstaller will create a `/build` and `/dist` directory, as well as a `main.spec` file, in your project directory. Inside of the `/dist/main` directory you will find a `main.exe` file.
+
+Building your project this way generates a number of `.pyd` and `.dll` files in your `/dist` directory that are necessary to run your new executable. In order to bundle everything into a single `.exe` file run the following in your command line:
+```bash
+$ pyinstaller --onefile main.py
+```
+The `--onefile` flag tells pyinstaller to bundle everything into a single executable. When you run pyinstaller with this flag, the `/dist` directory will only contain a single file: `main.exe`.
+
+This executable file will be very large. This is because the Python interpreter along with required Python packages have to be bundled in with this executable.
