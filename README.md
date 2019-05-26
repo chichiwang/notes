@@ -6,6 +6,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
 * [Getting Started](#getting-started)
   * [The Read-Eval-Print-Loop](#the-read-eval-print-loop)
   * [Significant Whitespace](#significant-whitespace)
+  * [Python Culture and The Zen of Python](#python-culture-and-the-zen-of-python)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -115,3 +116,12 @@ Conventions:
   * General rule: be consistent with the indentation levels on consecutive lines
   * Consecutive lines at the same indentation level are considered to be part of the same block
   * Only deviate from this rule to improve readability
+
+### Python Culture and The Zen of Python
+The development of the Python language is managed through a series of documents called _Python Enhancement Proposals_ or PEPs. One of the PEPs, called PEP 8, explains how you should format your code.
+
+It is PEP 8 that informs you should use 4 spaces for indentation in your Python code.
+
+PEP 20 is called The Zen of Python. It refers to 20 aphorisms describing the guiding principals of Python, only 19 of which have been written down.
+
+The Zen of Python can always be accessed through the REPL by typing `import this`.
