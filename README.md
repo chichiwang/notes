@@ -3,6 +3,8 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
 
 ## Table of Contents
 * [Overview](#overview)
+* [Getting Started](#getting-started)
+  * [The Read-Eval-Print-Loop](#the-read-eval-print-loop)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -39,3 +41,51 @@ Python comes with a broad standard library. An aspect of the Python philosophy i
 For many people Python represents a philosophy of writing code. Principles of clarity and readability are part of what it means to write correct or "pythonic" code.
 
 The [Zen of Python](https://www.python.org/dev/peps/pep-0020/) are a set of principles and guidelines to keep in mind when coding.
+
+## Getting Started
+
+### The Read-Eval-Print-Loop
+To start the REPL enter into the command line:
+```bash
+$ python3
+```
+
+or for a specific version of Python:
+```bash
+$ python3.7
+```
+
+You will see the command prompt:
+```bash
+>>> 
+```
+
+There is a special variable in the REPL: The underscore refers to the last output:
+```bash
+>>> 2 + 2
+4
+>>> _
+4
+>>> _ * 10
+40
+```
+This special variable only works in the REPL, it does not behave this way in a normal Python program.
+
+Some statements do not have a return value:
+```bash
+>>> x = 5
+>>>
+```
+
+Some statements have side-effects and no return value:
+```bash
+>>> print('Hello, Python!')
+Hello, Python!
+>>>
+```
+The output here is not a returned value, but a side-effect of the command.
+
+To exit the REPL:
+* On Windows press `CTRL + z` followed by `ENTER`
+* On Mac or Linux press `CTRL + d`
+* On any system you can just run the function `exit()` to exit the REPL
