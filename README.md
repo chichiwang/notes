@@ -5,6 +5,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
 * [Overview](#overview)
 * [Getting Started](#getting-started)
   * [The Read-Eval-Print-Loop](#the-read-eval-print-loop)
+  * [Significant Whitespace](#significant-whitespace)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -89,3 +90,28 @@ To exit the REPL:
 * On Windows press `CTRL + z` followed by `ENTER`
 * On Mac or Linux press `CTRL + d`
 * On any system you can just run the function `exit()` to exit the REPL
+
+### Significant Whitespace
+In Python leading whitespace is syntactically significant. Python uses indentation levels to demarcate code blocks. By convention contemporary Python code is indented by four spaces for each level:
+```python
+for i in range(5):
+    x = i * 10
+    print(x)
+
+```
+Terminating a code block is done by printing a newline.
+
+Advantages of significant whitespace:
+* Makes code more readable
+* No clutter from braces or debates about where the braces should go
+* Human and computer can't get out of sync
+
+Conventions:
+* Spaces are preferable to tabs
+* Four spaces has become standard in the Python community
+* **NEVER** mix spaces and tabs
+  * Python interpreter will complain
+* You are allowed to use different levels of indentation if you wish
+  * General rule: be consistent with the indentation levels on consecutive lines
+  * Consecutive lines at the same indentation level are considered to be part of the same block
+  * Only deviate from this rule to improve readability
