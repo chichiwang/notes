@@ -8,6 +8,8 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Significant Whitespace](#significant-whitespace)
   * [Python Culture and The Zen of Python](#python-culture-and-the-zen-of-python)
   * [Standard Library](#standard-library)
+  * [Scalar Types and Values](#scalar-types-and-values)
+    * [Integers](#integers)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -175,3 +177,25 @@ To do integer-only division, use the integer division operator `//`:
 ```
 
 Python, unlike many other languages, can compute with arbitrarily large integers, only limited by the memory in your computer.
+
+### Scalar Types and Values
+Python comes with a number of built-in data types. This includes primitive scalar types like _integers_ as well as collection types like _dictionaries_.
+
+Scalar types available:
+* `int`: arbitrary (unlimited) precision signed integer
+* `float`: 64-bit floating point numbers
+* `None`: the null object
+* `bool`: boolean logic values
+
+#### Integers
+Integers can be created a variety of ways:
+```python
+10             # 10 - literal
+0b10           # 2 - binary with the 0b prefix
+0o10           #  8 - octal with the 0o prefix
+0x10           # 16 - hexadecimal with the 0x prefix
+int(3.5)       # 3 - convert from other numberical types with the int function
+int(-3.5)      # -3 - rounding is always towards 0
+int("42")      # 42 - strings can also be converted to int
+int("100", 2)  # 4 - can provide a second argument to give the number base
+```
