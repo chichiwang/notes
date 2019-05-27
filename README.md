@@ -7,6 +7,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [The Read-Eval-Print-Loop](#the-read-eval-print-loop)
   * [Significant Whitespace](#significant-whitespace)
   * [Python Culture and The Zen of Python](#python-culture-and-the-zen-of-python)
+  * [Standard Library](#standard-library)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -125,3 +126,52 @@ It is PEP 8 that informs you should use 4 spaces for indentation in your Python 
 PEP 20 is called The Zen of Python. It refers to 20 aphorisms describing the guiding principals of Python, only 19 of which have been written down.
 
 The Zen of Python can always be accessed through the REPL by typing `import this`.
+
+### Standard Library
+Python comes with an extensive standard library, an aspect of the language often referred to as _Batteries Included_.
+
+You access the standard library modules by importing them:
+```python
+import math
+
+math.sqrt(81)
+```
+
+To discover all attributes made available by a module in the REPL use the function `help()`. Make sure to import the module first:
+```bash
+>>> import math
+>>> help(math)
+```
+
+You can also use `help` for help with a specific function within a module:
+```bash
+>>> import math
+>>> help(math.factorial)
+```
+
+You can reduce the namespace needs by importing a single function from a module using the `from` operator:
+```python
+from math import factorial
+
+factorial(5)
+```
+
+You can rename imported functions from a module using the `as` operator:
+```python
+from math import factorial as fac
+
+fac(5)
+```
+This can be useful for purposes of readability or to avoid a namespace clash. It is recommended that `as` is used infrequently and judiciously.
+
+Python's `/` operator is the floating point division operator:
+```python
+10 / 5 # 2.0
+```
+
+To do integer-only division, use the integer division operator `//`:
+```python
+10 // 5 # 2
+```
+
+Python, unlike many other languages, can compute with arbitrarily large integers, only limited by the memory in your computer.
