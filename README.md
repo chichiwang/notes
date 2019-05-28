@@ -10,6 +10,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Standard Library](#standard-library)
   * [Scalar Types and Values](#scalar-types-and-values)
     * [Integers](#integers)
+    * [Floats](#floats)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -194,8 +195,25 @@ Integers can be created a variety of ways:
 0b10           # 2 - binary with the 0b prefix
 0o10           #  8 - octal with the 0o prefix
 0x10           # 16 - hexadecimal with the 0x prefix
-int(3.5)       # 3 - convert from other numberical types with the int function
+int(3.5)       # 3 - convert from other numberical types with the int constructor
 int(-3.5)      # -3 - rounding is always towards 0
 int("42")      # 42 - strings can also be converted to int
 int("100", 2)  # 4 - can provide a second argument to give the number base
 ```
+
+#### Floats
+Floating point numbers are supported by the `float` type. Python supports IEEE-754 double precision (64-bit) floating point numbers. It has 53 bits of binary precision and 15 to 16 bits of decimal precision.
+
+Any number containing a decimal point `.` or the letter `e` is interpreted as a floating point number by python:
+```python
+3.125          # 3.125 - literal
+3e8            # 300000000.0 - scientific notation
+1.616e-35      # 1.616e-15 - scientific notation
+float(7)       # 7.0 - convert from other numerical types with the float constructor
+float("1.618") # 1.618 0 strings can be converted to float
+float("nan")   # nan - special floating point value: not-a-number
+float("inf")   # inf - special floating point value: positive infinity
+float("-inf")  # -inf - special floating point value: negative infinity
+3.0 + 1        # 4.0 - any operation involving both int and float results in a float
+```
+Python automatically switches the display representation to the most readable form (scientific vs literal).
