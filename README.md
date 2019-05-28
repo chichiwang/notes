@@ -15,6 +15,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
     * [Booleans](#booleans)
   * [Relational Operators](#relational-operators)
   * [Conditional Statements](#conditional-statements)
+  * [While Loops](#while-loops)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -310,4 +311,33 @@ elif h < 20:
     print("Less than 20")
 else:
     print("Between 20 and 50")
+```
+
+### While Loops
+Syntax:
+```python
+while expr:
+    print("Loop while expr is True")
+```
+
+Explicit is better than implicit, according to the Zen of Python so:
+```python
+c = 5
+
+# Prefer this condition:
+while c != 0:
+    c -= 1
+
+# Over this condition:
+while c:
+    c -= 1
+```
+
+The `break` keyword terminates the innermost loop, transferring execution to the first statement after the loop:
+```python
+while True:
+    if expr:
+        break
+
+print("Loop broken")
 ```
