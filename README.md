@@ -15,6 +15,8 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
     * [Booleans](#booleans)
   * [Relational Operators](#relational-operators)
   * [Conditional Statements](#conditional-statements)
+* [Strings and Collections](#strings-and-collections)
+  * [Strings](#strings)
 * [While Loops](#while-loops)
 
 ## Overview
@@ -311,6 +313,119 @@ elif h < 20:
     print("Less than 20")
 else:
     print("Between 20 and 50")
+```
+
+## Strings and Collections
+
+### Strings
+**String Literals**
+
+Strings are of type `str`: immutable sequences of Unicode codepoints. String literals are created with (consistent) quotes, single or double:
+```python
+"This is a string"
+'This is also a string'
+```
+
+The reason Python supports both double and single quotes is to allow strings to encapsulate quotes without escape characters:
+```python
+'He told me "This is how Python nests quotes in string literals."'
+"That's the most sense he's made all day."
+```
+
+Adjacent literal strings are concatenated by the Python interpreter into a single string:
+```bash
+>>> "first" "second"
+'firstsecond'
+>>> 
+```
+This can be useful for nicely formatting code.
+
+**Multiline Strings**
+
+To create strings with newlines you can use multiline strings or escape sequences:
+```bash
+>>> "This is
+... a multiline
+... string"""
+'This is\a multiline\nstring'
+>>> m = "This string\nspans multiple\nlines."
+'This string\nspans multiple\nlines.'
+>>> print(m)
+This string
+spans multiple
+lines.
+>>> 
+```
+
+**Escape Sequences**
+
+Python has a feature called _universal newlines_ which translates `\n` to the platform's native newline sequence (`\r\n` on Windows, `\n` on Linux).
+
+You can also escape quotes within a string literal:
+```bash
+>>> "This is a \" in a string."
+"This is a \" in a string."
+>>> 'I\'ll just escape the single quotes there.'
+'I\'ll just escape the single quotes there.'
+>>> "If you escape both \" and \' in a string, Python will strip the unnecessary backslash out."
+"If you escape both \" and ' in a string, Python will strip the unnecessary backslash out."
+```
+
+You will also need to escape backslashes:
+```python
+escaped_backslash = 'This is what is required to encode a \\ into a string'
+print(escaped_backslash) # This is what is required to encode a \ into a string
+```
+
+More information on escape sequences in string literals can be found in the [Python documentation](https://docs.python.org/2.0/ref/strings.html).
+
+**Raw Strings**
+
+Python provides a method of creating raw strings for things like RegEx where you will need to constantly escape characters:
+```python
+path = r'C:\USERS\chichiwang\Documents'
+```
+
+Raw strings preserve the backslashes used in the string.
+
+**String Constructor**
+You can use the `str` constructor to create strings:
+```bash
+>>> str(496)
+'496'
+>>> str(6.02e23)
+'6.02e+23'
+```
+
+**Sequence Types**
+
+Strings are considered [sequence types](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range). This means they support common sequence operations such as accessing indivual characters using `[]`:
+```bash
+>>> s = "Hello World"
+>>> s[1]
+'e'
+>>> 
+```
+
+There is no separate _character_ type, only a `str` type. A single character string is still a `str`.
+
+**Built-in Methods**
+
+`str` types have a number of [built-in methods](https://docs.python.org/3/library/stdtypes.html#string-methods). Type `help(str)` into the REPL to learn more.
+
+**Unicode**
+
+Strings are fully unicode capable so you can utilize them in a literal string, or use escape sequences to enter to character codes:
+```bash
+>>> 'Vi er s5 glad for å høre og lære om Python!'
+'Vi er s5 glad for å høre og lære om Python!'
+>>> 'Vi er s\u0035 glad for \u00e5 h\u00f8re og l\u00e6re om Python!'
+'Vi er s5 glad for å høre og lære om Python!'
+>>> '\xe5'
+'å'
+>>> '\345'
+'å'
+>>> 
 ```
 
 ## While Loops
