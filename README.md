@@ -12,6 +12,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
     * [Integers](#integers)
     * [Floats](#floats)
     * [None](#none)
+    * [Booleans](#booleans)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -225,4 +226,43 @@ Python automatically switches the display representation to the most readable fo
 ```python
 a = None  # None can be bound to variable names
 a is None # true - can test if a value is None using the is-operator
+```
+
+#### Booleans
+Booleans are of type `bool`, representing logical states. They are used in control-flow structures and can either be of value `True` or `False`. There is a constructor function `bool` used to cast values to booleans.
+
+```python
+# Integers
+bool(0)            # False
+bool(42)           # True
+bool(-1)           # True
+
+# Floating point numbers
+bool(0.0)          # False
+bool(0.207)        # True
+bool(-1.117)       # True
+
+# Binary numbers
+bool(0b0)          # False
+bool(0b001)        # True
+
+# Complex numbers
+bool(0j)           # False
+bool(0+0j)         # False
+bool(0+1j)         # True
+```
+
+When converting from collections or lists, only empty collections are considered falsey:
+```python
+# Lists
+bool([])           # False
+bool([0])          # True
+
+# Strings
+bool("")           # False
+bool("False")      # True
+
+# Dictionaries
+bool({})           # False
+bool({ "f": "oo" } # True
 ```
