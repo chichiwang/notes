@@ -11,6 +11,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Scalar Types and Values](#scalar-types-and-values)
     * [Integers](#integers)
     * [Floats](#floats)
+    * [None](#none)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -217,3 +218,11 @@ float("-inf")  # -inf - special floating point value: negative infinity
 3.0 + 1        # 4.0 - any operation involving both int and float results in a float
 ```
 Python automatically switches the display representation to the most readable form (scientific vs literal).
+
+#### None
+`None` is the sole value of `NoneType`. It is used to represent the absence of a value. The Python REPL never prints `None` results.
+
+```python
+a = None  # None can be bound to variable names
+a is None # true - can test if a value is None using the is-operator
+```
