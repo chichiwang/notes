@@ -66,7 +66,7 @@ Not a lot of differences in terms of syntax.
   * Allows you to annotate types
 ```python
 def add_numbers(a: int, b: int) -> int:
-  return a + b
+    return a + b
 ```
   * Only used to inform editors and IDEs
     * Does not prevent code from running if incorrect types are used
@@ -162,9 +162,9 @@ Normal `if` statement in python:
 ```python
 number = 5
 if number == 5:
-  print("Number is 5")
+    print("Number is 5")
 else:
-  print("Number is NOT 5")
+    print("Number is NOT 5")
 ```
 
 `if` and `else` statements both end with a colon `:`. This is a requirement in python.
@@ -180,7 +180,7 @@ Python can also evaluate a value for truthiness and falsiness:
 `!=` is the conditional operator to check for lack of equality. `not` is the negation operator and `is not` can be used to check the negative case of the `is` operator:
 ```python
 if not python_course:
-  print("This statement will NOT evaluate")
+    print("This statement will NOT evaluate")
 ```
 
 `and` and `or` operators in python can be used to check multiple conditions:
@@ -189,10 +189,10 @@ number = 3
 python_course = True
 
 if number == 3 and python_course:
-  print("This will evaluate")
+    print("This will evaluate")
 
 if number == 17 or python_course:
-  print("This will also evaluate")
+    print("This will also evaluate")
 ```
 
 #### Ternary If Statements
@@ -259,7 +259,7 @@ student_names[1:-1] == ["Katarina"]
 Syntax for a `for` loop:
 ```python
 for name in student_names:
-  print("Student name is {0}".format(name))
+    print("Student name is {0}".format(name))
 ```
 
 #### Range
@@ -267,8 +267,8 @@ You can also use the `range` function in python:
 ```python
 x = 0
 for index in range(10):
-  x += 10
-  print("The value of x is {0}".format(x))
+    x += 10
+    print("The value of x is {0}".format(x))
 ```
 
 `range()` takes a value and creates a list whose elements begin at `0` and end at `value - 1`:
@@ -292,18 +292,18 @@ list(range(2, 10, 2)) == [2, 4, 6, 8]
 student_names = ["James", "Katarina", "Jessica", "Mark", "Bort", "Frank Grimes", "Max Power"]
 
 for name in student_names:
-  if name == "Mark":
-    print("Found him! {0}".format(name))
-    break
-  print("Currently testing {0}".format(name))
+    if name == "Mark":
+        print("Found him! {0}".format(name))
+        break
+    print("Currently testing {0}".format(name))
 ```
 
 `continue` tells a loop to exit the current iteration and continue to the next:
 ```python
 for name in student_names:
-  if name == "Bort":
-    continue
-  print("Currently testing {0}".format(name))
+    if name == "Bort":
+        continue
+    print("Currently testing {0}".format(name))
 ```
 
 ### While Loops
@@ -311,8 +311,8 @@ for name in student_names:
 ```python
 x = 0
 while x < 10:
-  print("Count is {0}".format(x))
-  x += 1
+    print("Count is {0}".format(x))
+    x += 1
 ```
 
 `while` loops check the condition before even entering the loop.
@@ -323,18 +323,18 @@ Allows the storage of key/value pairs. Very similar to JSON (hash?).
 Syntax for defining a dictionary:
 ```python
 student = {
-  "id": 15163,
-  "name": "Mark",
-  "feedback": None
+    "id": 15163,
+    "name": "Mark",
+    "feedback": None
 }
 ```
 
 Dictionaries are very valuable when you need to store structured data. You can group several dictionaries together in a list:
 ```python
 all_students = [
-  { "id": 15163, "name": "Mark" }
-  { "id": 63112, "name": "Katarina" }
-  { "id": 30021, "name": "Jessica" }
+    { "id": 15163, "name": "Mark" }
+    { "id": 63112, "name": "Katarina" }
+    { "id": 30021, "name": "Jessica" }
 ]
 ```
 
@@ -372,15 +372,15 @@ Exceptions are events that occur during your program's excution that cause your 
 There are ways to handle exceptions:
 ```python
 student = {
-  "id": 15163,
-  "name": "Mark",
-  "feedback": None
+    "id": 15163,
+    "name": "Mark",
+    "feedback": None
 }
 
 try:
-  last_name = student["last_name"]
+    last_name = student["last_name"]
 except KeyError:
-  print("Error finding last_name")
+    print("Error finding last_name")
 
 print("The program was not halted by the exeception")
 ```
@@ -388,12 +388,12 @@ print("The program was not halted by the exeception")
 Catch multiple exceptions using multiple `except` blocks:
 ```python
 try:
-  last_name = student["last_name"]
-  numbered_last_name = 3 + last_name
+    last_name = student["last_name"]
+    numbered_last_name = 3 + last_name
 except KeyError:
-  print("Error finding last_name")
+    print("Error finding last_name")
 except TypeError:
-  print("Illegal add operation")
+    print("Illegal add operation")
 ```
 
 Catch all exceptions with `except Exception:`. This will handle any exception that comes its way. Generally you do not want to catch general exceptions, you want to catch specific exceptions as a matter of best practice.
@@ -401,10 +401,10 @@ Catch all exceptions with `except Exception:`. This will handle any exception th
 You can access the error object this way:
 ```python
 try:
-  last_name = student["last_name"]
+    last_name = student["last_name"]
 except KeyError as error:
-  print("Error finding last_name")
-  print(error)
+    print("Error finding last_name")
+    print(error)
 ```
 
 This does not give you access to the full stack trace, for that you would need to use the python `traceback` module. This will be covered in a later section.
@@ -436,16 +436,16 @@ Overview of other data types in python:
 students = []
 
 def add_student(name):
-  students.append(name)
+    students.append(name)
 ```
 
 `return` can be used to return values from a function:
 ```python
 def get_students_titlecase():
-  students_titlecase = []
-  for student in students:
-    students_titlecase.append(student.title())
-  return students_titlecase
+    students_titlecase = []
+    for student in students:
+        students_titlecase.append(student.title())
+    return students_titlecase
 
 
 student_list = get_students_titlecase()
@@ -463,7 +463,7 @@ In order to make an argument optional you must provide a default value:
 students = []
 
 def add_student(name, student_id=332):
-  students.append({ "id": student_id, "name": name })
+    students.append({ "id": student_id, "name": name })
 
 
 add_student("Mark") # Will not throw an exception
@@ -477,7 +477,7 @@ add_student(name="Mark", student_id=15)
 A function can be defined to accept a variable number of arguments using `*`:
 ```python
 def var_args(name, *args):
-  print(name, args)
+    print(name, args)
 
 
 var_args("Chi-chi", "Is Learning Python", None, "Hello, World", True)
@@ -488,15 +488,16 @@ In this setup the arguments are stored in a list and must be iterated over to pa
 Keyword arguments can be used to define a variable number of named arguments using `**`:
 ```python
 def var_kwargs(name, **kwargs):
-  print(name, kwargs)
+    print(name, kwargs)
 
 
 var_kwargs("Mark", id=15, description="Python Student", feedback=None, pluralsight_subscriber=True)
-""" Mark {
-  'id': 15,
-  'description': 'Python Student',
-  'feedback': None,
-  'pluralsight_subscriber': True
+"""
+Mark {
+    'id': 15,
+    'description': 'Python Student',
+    'feedback': None,
+    'pluralsight_subscriber': True
 }
 """
 ```
@@ -506,7 +507,7 @@ Keyword arguments store the named arguments as a dictionary and can be accessed 
 Python has a built-in [input function](https://docs.python.org/3/library/functions.html#input) to allow users to input values on the command line:
 ```python
 def print_args(**kwargs):
-  print(kwargs)
+    print(kwargs)
 
 
 name = input("Name: ")
@@ -524,14 +525,14 @@ ID: 15
 You can nest functions inside of other functions to avoid polluting scope:
 ```python
 def get_students():
-  students = ["mark", "james"]
-  def get_students_titlecase():
-    students_titlecase = []
-    for student in students:
-      students_titlecase.append(student.title())
-    return students_titlecase
-  students_titlecase_names = get_students_titlecase()
-  print(students_titlecase_names)
+    students = ["mark", "james"]
+    def get_students_titlecase():
+        students_titlecase = []
+        for student in students:
+            students_titlecase.append(student.title())
+        return students_titlecase
+    students_titlecase_names = get_students_titlecase()
+    print(students_titlecase_names)
 ```
 
 Function closures exist in Python. Nested inner functions have access to variables defined in their outer functions.
@@ -540,12 +541,12 @@ Function closures exist in Python. Nested inner functions have access to variabl
 Python's built in `open` function can be used to access files and perform operations:
 ```python
 def save_file(filename, text):
-  try:
-    f = open(f"{filename}.txt", "a") # "a" is an access mode argument
-    f.write(text + "\n")
-    f.close()
-  except Exception:
-    print("Could not save file")
+    try:
+        f = open(f"{filename}.txt", "a") # "a" is an access mode argument
+        f.write(text + "\n")
+        f.close()
+    except Exception:
+        print("Could not save file")
 ```
 
 Access modes in Python:
@@ -562,13 +563,13 @@ Access modes in Python:
 Reading a file in Python:
 ```pyton
 def read_file(filename):
-  try:
-    f = open(filename, "r")
-    text = f.read()
-    f.close()
-    return text
-  except Exception:
-    print("Could not read file")
+    try:
+        f = open(filename, "r")
+        text = f.read()
+        f.close()
+        return text
+    except Exception:
+        print("Could not read file")
 ```
 
 It is always a good idea to wrap any file operations in a try-except block.
@@ -579,23 +580,23 @@ Resource: [Generators - Python Wiki](https://wiki.python.org/moin/Generators)
 Example of building an iterator (generator pattern):
 ```python
 class first_n(object):
-  def __init__(self, n):
-    self.n = n
-    self.num, self.nums = 0, []
+    def __init__(self, n):
+        self.n = n
+        self.num, self.nums = 0, []
 
-  def __iter__(self):
-    return self
+    def __iter__(self):
+        return self
 
-  # Python 3 compatibility
-  def __next__(self):
-    return self.next()
+    # Python 3 compatibility
+    def __next__(self):
+        return self.next()
 
-  def next(self):
-    if self.num < self.n:
-      cur, self.num = self.num, self.num + 1
-      return cur
-    else:
-      raise StopIteration()
+    def next(self):
+        if self.num < self.n:
+            cur, self.num = self.num, self.num + 1
+            return cur
+        else:
+            raise StopIteration()
 
 sum_of_first_n = sum(first_n(1000))
 ```
@@ -607,10 +608,10 @@ Negatives of the above pattern:
 Python provides generator functions as a shortcut to building iterators:
 ```python
 def first_n(n):
-  num = 0
-  while num < n:
-    yield num
-    num += 1
+    num = 0
+    while num < n:
+        yield num
+        num += 1
 
 sum_of_first_n = sum(first_n(1000))
 ```
@@ -620,7 +621,7 @@ Lambda function notation is supported in Python:
 ```python
 # Standard python function notation:
 def double(x):
-  return x * 2
+    return x * 2
 
 # Lambda function notation:
 double = lambda x: x * 2
@@ -643,7 +644,7 @@ A logical group of functions and data.
 Defining a class:
 ```python
 class Student:
-  pass  # in Python pass is a no-op
+    pass  # in Python pass is a no-op
 ```
 
 Creating a new instance of a class `Student`:
@@ -655,14 +656,14 @@ Defining a class with instance and class attributes and methods:
 ```python
 class Student:
 
-  school_name = "Springfield Elementary"
+    school_name = "Springfield Elementary"
 
-  def __init__(self, name, id):
-    self.name = name
-    self.id = id
+    def __init__(self, name, id):
+        self.name = name
+        self.id = id
 
-  def __str__(self):
-    retrun f"<{self.school_name}> #{self.id}: {self.name}"
+    def __str__(self):
+        retrun f"<{self.school_name}> #{self.id}: {self.name}"
 
 mark = Student("Mark", 115)
 print(mark) # <Springfield Elementary> #115: Mark
@@ -685,13 +686,13 @@ Defining a child class:
 ```python
 class HighSchoolStudent(Student):
 
-  school_name = "Springfield High"
+    school_name = "Springfield High"
 
-  def __str__(self):
-    return f"[self.school_name] #{self.id}: {self.name}"
+    def __str__(self):
+        return f"[self.school_name] #{self.id}: {self.name}"
 
-  def primary_school(self):
-    return super().school_name
+    def primary_school(self):
+        return super().school_name
 
 james = HighSchoolStudent("James", 312)
 print(james) # [Springfield High] #312: James
@@ -735,13 +736,13 @@ Annotating code:
 students = []
 
 def add_student(name, id):
-  """
-  Adds a student dictionary to the students list
-  :param name: string - student name
-  :param id: integer - student id number
-  """
+    """
+    Adds a student dictionary to the students list
+    :param name: string - student name
+    :param id: integer - student id number
+    """
 
-  students.append({ name: name, id: id, school: "Springfield Elementary" })
+    students.append({ name: name, id: id, school: "Springfield Elementary" })
 
 ```
 
