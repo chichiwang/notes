@@ -13,6 +13,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
     * [Floats](#floats)
     * [None](#none)
     * [Booleans](#booleans)
+  * [Relational Operators](#relational-operators)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -265,4 +266,19 @@ bool("False")      # True
 # Dictionaries
 bool({})           # False
 bool({ "f": "oo" } # True
+```
+
+### Relational Operators
+Relational operators are used for comparing objects:
+* `==` value equality / equivalence
+* `!=` value inequality / inequivalence
+* `<` less-than
+* `>` greather-than
+* `<=` less-than or equal to
+* `>=` greater than or equal to
+
+Relational operators can be chained:
+```python
+g = 20
+10 < g < 30 # True
 ```
