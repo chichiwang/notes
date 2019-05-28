@@ -14,6 +14,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
     * [None](#none)
     * [Booleans](#booleans)
   * [Relational Operators](#relational-operators)
+  * [Conditional Statements](#conditional-statements)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -281,4 +282,32 @@ Relational operators can be chained:
 ```python
 g = 20
 10 < g < 30 # True
+```
+
+### Conditional Statements
+```python
+if expr:
+    print("expr is True")
+
+```
+`expr` is converted to `bool` as if by the `bool()` constructor. Newline is used to terminate the conditional statement.
+
+The `else` keyword is used to catch all other conditions:
+```python
+h = 42
+if h > 50:
+    print("Greater than 50")
+else:
+    print("Less than or equal to 50")
+
+```
+
+The `elif` keyword is used to provide additional conditionals to prevent unnecessary nesting of conditions:
+```python
+if h > 50:
+    print("Greater than 50")
+elif h < 20:
+    print("Less than 20")
+else:
+    print("Between 20 and 50")
 ```
