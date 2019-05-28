@@ -15,7 +15,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
     * [Booleans](#booleans)
   * [Relational Operators](#relational-operators)
   * [Conditional Statements](#conditional-statements)
-  * [While Loops](#while-loops)
+* [While Loops](#while-loops)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -313,7 +313,7 @@ else:
     print("Between 20 and 50")
 ```
 
-### While Loops
+## While Loops
 Syntax:
 ```python
 while expr:
