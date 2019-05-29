@@ -21,6 +21,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Lists](#lists)
   * [Dictionaries](#dictionaries)
 * [While Loops](#while-loops)
+* [For Loops](#for-loops)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -508,4 +509,31 @@ while True:
         break
 
 print("Loop broken")
+```
+
+## For Loops
+Syntax:
+```
+for item in iterable:
+  ...body...
+```
+
+Example:
+```python
+cities = ["London", "New York", "Paris", "Oslo", "Helsinki"]
+
+for city in cities:
+    print(city)
+```
+
+When you iterate over a dictionary, you receive the keys which can be used to access the values:
+```python
+colors = {
+  "crimson": 0xdc143c,
+  "coral": 0xff7f50,
+  "teal": 0x008080,
+}
+
+for color in colors:
+    print(color, colors[color])
 ```
