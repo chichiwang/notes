@@ -17,6 +17,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Conditional Statements](#conditional-statements)
 * [Strings and Collections](#strings-and-collections)
   * [Strings](#strings)
+  * [Bytes](#bytes)
 * [While Loops](#while-loops)
 
 ## Overview
@@ -427,6 +428,18 @@ Strings are fully unicode capable so you can utilize them in a literal string, o
 'å'
 >>> 
 ```
+
+### Bytes
+[Bytes](https://docs.python.org/3/library/stdtypes.html#bytes) are immutable sequences of bytes. They are used for all binary data and fixed-witdth single-character encodings, such as ASCII.
+
+Bytes can be declared literally using quotes and a prefix `b`:
+```python
+b'data'
+b"data"
+```
+Only ASCII characters are permitted in bytes literals. Any binary values over 127 must be entered into bytes literals using the appropriate escape sequence.
+
+Bytes are useful to operate with when in multi-lingual environemnts. Bytes strings can be decoded and encoded using many of Python's standard encoding and decoding functions.
 
 ## While Loops
 Syntax:
