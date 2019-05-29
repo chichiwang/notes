@@ -19,6 +19,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Strings](#strings)
   * [Bytes](#bytes)
   * [Lists](#lists)
+  * [Dictionaries](#dictionaries)
 * [While Loops](#while-loops)
 
 ## Overview
@@ -459,6 +460,26 @@ The `list()` constructor can be used to create lists from other collections, suc
 >>> list("foobar")
 ['f', 'o', 'o', 'b', 'a', 'r']
 ```
+
+### Dictionaries
+Dictionaries are mutable mappings of keys to values (also known as an associative array). They are of type `dict`.
+
+Dictionary literals are constructed with curly braces and key-value pair definitions:
+```python
+hello_world = {
+    "message": "Hello",
+    "subject": "World",
+    "punctuation": "!",
+}
+```
+
+Read/write to the values can be done through the use of square brackets `[]`:
+```python
+print(hello_world[message]) # Hello
+hello_world["punctuation"] = "."
+```
+
+The entries of a dictionary cannot be relied upon to be in any particular order.
 
 ## While Loops
 Syntax:
