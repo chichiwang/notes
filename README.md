@@ -18,6 +18,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
 * [Strings and Collections](#strings-and-collections)
   * [Strings](#strings)
   * [Bytes](#bytes)
+  * [Lists](#lists)
 * [While Loops](#while-loops)
 
 ## Overview
@@ -440,6 +441,24 @@ b"data"
 Only ASCII characters are permitted in bytes literals. Any binary values over 127 must be entered into bytes literals using the appropriate escape sequence.
 
 Bytes are useful to operate with when in multi-lingual environemnts. Bytes strings can be decoded and encoded using many of Python's standard encoding and decoding functions.
+
+### Lists
+Lists are mutable sequences of objects. List literals are denoted by square brackets `[]`:
+```python
+['a', 'b', 'c', 'd']
+[1, 2, 3, 4]
+
+fruit = ['apple', 'orange', 'pear']
+
+fruit[1] # orange - access elements of a list
+fruit[1] = 'watermelon' # replace an element in a list
+```
+
+The `list()` constructor can be used to create lists from other collections, such as strings:
+```bash
+>>> list("foobar")
+['f', 'o', 'o', 'b', 'a', 'r']
+```
 
 ## While Loops
 Syntax:
