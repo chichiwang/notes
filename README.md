@@ -544,3 +544,7 @@ for color in colors:
 
 ## Modularity
 Python programs are organized into modules. Modules can be imported into other modules, but you must take care not to introduce circular dependencies.
+
+For the purposes of this section I will be following some exercises in the [Pluralsight Course](https://app.pluralsight.com/library/courses/python-fundamentals/table-of-contents).
+
+Modules I create for this will live in the [/exercises](./exercises) directory and can be executed using `python3.7`.
