@@ -20,8 +20,9 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Bytes](#bytes)
   * [Lists](#lists)
   * [Dictionaries](#dictionaries)
-* [While Loops](#while-loops)
-* [For Loops](#for-loops)
+* [Loops](#loops)
+  * [While Loops](#while-loops)
+  * [For Loops](#for-loops)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -482,7 +483,9 @@ hello_world["punctuation"] = "."
 
 The entries of a dictionary cannot be relied upon to be in any particular order.
 
-## While Loops
+## Loops
+
+### While Loops
 Syntax:
 ```python
 while expr:
@@ -511,7 +514,7 @@ while True:
 print("Loop broken")
 ```
 
-## For Loops
+### For Loops
 Syntax:
 ```
 for item in iterable:
