@@ -23,6 +23,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
 * [Loops](#loops)
   * [While Loops](#while-loops)
   * [For Loops](#for-loops)
+* [Modularity](#modularity)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -540,3 +541,6 @@ colors = {
 for color in colors:
     print(color, colors[color])
 ```
+
+## Modularity
+Python programs are organized into modules. Modules can be imported into other modules, but you must take care not to introduce circular dependencies.
