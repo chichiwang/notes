@@ -23,6 +23,8 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
 * [Loops](#loops)
   * [While Loops](#while-loops)
   * [For Loops](#for-loops)
+* [Namespaces, Scope, and The LEGB Rule](#namespaces-scope-and-the-legb-rule)
+  * [Namespaces](#namespaces)
 * [Modularity](#modularity)
 
 ## Overview
@@ -541,6 +543,25 @@ colors = {
 for color in colors:
     print(color, colors[color])
 ```
+
+## Namespaces, Scope, and The LEGB Rule
+From [an article](https://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) by Sebastian Raschka.
+
+### Namespaces
+Namespaces are containers for mapping names to objects. Everything in Python is an object.
+
+Namespaces can be pictured as a Python dictionary structure:
+```
+a_namespace = { 'variable_a': object_1, 'variable_b': object_2, ... }
+```
+
+There are multiple independent namespaces and names can be reused for different namespaces:
+```
+a_namespace = { 'variable_a': object_1, 'variable_b': object_2, ... }
+b_namespace = { 'variable_a': object_3, 'variable_b': object_4, ... }
+```
+
+Variables are scoped to the innermost function, class, or module in which they are assigned.
 
 ## Modularity
 Python programs are organized into modules. Modules can be imported into other modules, but you must take care not to introduce circular dependencies.
