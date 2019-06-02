@@ -26,6 +26,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
 * [Namespaces, Scope, and The LEGB Rule](#namespaces-scope-and-the-legb-rule)
   * [Namespaces](#namespaces)
   * [Scope](#scope)
+  * [The LEGB Rule](#the-legb-rule)
 * [Modularity](#modularity)
 
 ## Overview
@@ -606,6 +607,43 @@ loc in global: False
 glob in global: True
 """
 ```
+
+### The LEGB Rule
+The LEGB Rule stands for:
+
+**Local -> Enclosed -> Global -> Built-In**
+
+This denotes the order in which Python searches namespaces for a variable:
+* *Local* can be inside a function or class method
+* *Enclosed* is the the direct parent enclosing scope
+* *Global* is the uppermost level of the executing script itself
+* *Built-Ins* are special variable names that Python reserves
+
+Namespaces can be further nested inside of modules or new classes:
+```python
+import numpy
+import math
+import scipy
+
+print(math.pi, 'from the math module')
+print(numpy.pi, 'from the numpy package')
+print(scipy.pi, 'from the scipy package')
+
+"""
+Output:
+3.141592653589793 from the math module
+3.141592653589793 from the numpy package
+3.141592653589793 from the scipy package
+"""
+```
+
+**Note**
+Be careful when importing from a module via the syntax `from a_module import *` since this loads variable names into the global namespace for the module, potentially overwriting variable names.
+
+**Examples**
+Examples of scope access rules can be found in the [exercises directory](./exercises/00\ -\ Scope).
+
+It is possible to modify a global value from inside a local scope by using the `global` keyword as seen in [exercises/00 - Scope/example_02.py](./exercises/00\ -\ Scope/example_02.py).
 
 ## Modularity
 Python programs are organized into modules. Modules can be imported into other modules, but you must take care not to introduce circular dependencies.
