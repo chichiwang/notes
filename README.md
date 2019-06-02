@@ -25,6 +25,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [For Loops](#for-loops)
 * [Namespaces, Scope, and The LEGB Rule](#namespaces-scope-and-the-legb-rule)
   * [Namespaces](#namespaces)
+  * [Scope](#scope)
 * [Modularity](#modularity)
 
 ## Overview
@@ -562,6 +563,49 @@ b_namespace = { 'variable_a': object_3, 'variable_b': object_4, ... }
 ```
 
 Variables are scoped to the innermost function, class, or module in which they are assigned.
+
+### Scope
+Scope defines the hierarchy level in which `namespaces` are searched for name-to-object mappings.
+
+Example:
+```python
+i = 1
+
+def foo():
+  i = 5
+  print(i, 'in foo()')
+
+print(i, 'in global')
+
+foo()
+
+"""
+Output:
+1 in global
+5 in foo()
+"""
+```
+
+**Tip**
+To print out a dictionary mapping of the global and local variables use the functions `global()` and `local()`:
+```python
+glob = 1
+
+def foo():
+  loc = 5
+  print('loc in foo():', 'loc' in locals())
+
+foo()
+print('loc in global:', 'loc' in globals())
+print('glob in global:', 'glob' in globals())
+
+"""
+Output:
+loc in foo(): True
+loc in global: False
+glob in global: True
+"""
+```
 
 ## Modularity
 Python programs are organized into modules. Modules can be imported into other modules, but you must take care not to introduce circular dependencies.
