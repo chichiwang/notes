@@ -1,6 +1,6 @@
 # package directories
 .env/
 
-# Text editor files
+# Editor files
 *.swp
 *.swo
