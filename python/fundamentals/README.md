@@ -84,12 +84,12 @@ $ python3.7
 ```
 
 You will see the command prompt:
-```bash
+```python
 >>> 
 ```
 
 There is a special variable in the REPL: The underscore refers to the last output:
-```bash
+```python
 >>> 2 + 2
 4
 >>> _
@@ -100,13 +100,13 @@ There is a special variable in the REPL: The underscore refers to the last outpu
 This special variable only works in the REPL, it does not behave this way in a normal Python program.
 
 Some statements do not have a return value:
-```bash
+```python
 >>> x = 5
 >>>
 ```
 
 Some statements have side-effects and no return value:
-```bash
+```python
 >>> print('Hello, Python!')
 Hello, Python!
 >>>
@@ -163,13 +163,13 @@ math.sqrt(81)
 ```
 
 To discover all attributes made available by a module in the REPL use the function `help()`. Make sure to import the module first:
-```bash
+```python
 >>> import math
 >>> help(math)
 ```
 
 You can also use `help` for help with a specific function within a module:
-```bash
+```python
 >>> import math
 >>> help(math.factorial)
 ```
@@ -348,7 +348,7 @@ The reason Python supports both double and single quotes is to allow strings to 
 ```
 
 Adjacent literal strings are concatenated by the Python interpreter into a single string:
-```bash
+```python
 >>> "first" "second"
 'firstsecond'
 >>> 
@@ -358,7 +358,7 @@ This can be useful for nicely formatting code.
 **Multiline Strings**
 
 To create strings with newlines you can use multiline strings or escape sequences:
-```bash
+```python
 >>> "This is
 ... a multiline
 ... string"""
@@ -377,7 +377,7 @@ lines.
 Python has a feature called _universal newlines_ which translates `\n` to the platform's native newline sequence (`\r\n` on Windows, `\n` on Linux).
 
 You can also escape quotes within a string literal:
-```bash
+```python
 >>> "This is a \" in a string."
 "This is a \" in a string."
 >>> 'I\'ll just escape the single quotes there.'
@@ -405,20 +405,20 @@ Raw strings preserve the backslashes used in the string.
 
 **String Constructor**
 You can use the `str` constructor to create strings:
-```bash
+```python
 >>> str(496)
-'496'
+496
 >>> str(6.02e23)
-'6.02e+23'
+6.02e+23
 ```
 
 **Sequence Types**
 
 Strings are considered [sequence types](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range). This means they support common sequence operations such as accessing indivual characters using `[]`:
-```bash
+```python
 >>> s = "Hello World"
 >>> s[1]
-'e'
+e
 >>> 
 ```
 
@@ -431,15 +431,15 @@ There is no separate _character_ type, only a `str` type. A single character str
 **Unicode**
 
 Strings are fully unicode capable so you can utilize them in a literal string, or use escape sequences to enter to character codes:
-```bash
+```python
 >>> 'Vi er s5 glad for å høre og lære om Python!'
-'Vi er s5 glad for å høre og lære om Python!'
+Vi er s5 glad for å høre og lære om Python!
 >>> 'Vi er s\u0035 glad for \u00e5 h\u00f8re og l\u00e6re om Python!'
-'Vi er s5 glad for å høre og lære om Python!'
+Vi er s5 glad for å høre og lære om Python!
 >>> '\xe5'
-'å'
+å
 >>> '\345'
-'å'
+å
 >>> 
 ```
 
@@ -468,7 +468,7 @@ fruit[1] = 'watermelon' # replace an element in a list
 ```
 
 The `list()` constructor can be used to create lists from other collections, such as strings:
-```bash
+```python
 >>> list("foobar")
 ['f', 'o', 'o', 'b', 'a', 'r']
 ```
@@ -646,9 +646,9 @@ Output:
 Be careful when importing from a module via the syntax `from a_module import *` since this loads variable names into the global namespace for the module, potentially overwriting variable names.
 
 **Examples**
-Examples of scope access rules can be found in the [exercises directory](./exercises/00\ -\ Scope).
+Examples of scope access rules can be found in the [exercises directory](./exercises/00%20-%20Scope).
 
-It is possible to modify a global value from inside a local scope by using the `global` keyword as seen in [exercises/00 - Scope/example_02.py](./exercises/00\ -\ Scope/example_02.py).
+It is possible to modify a global value from inside a local scope by using the `global` keyword as seen in [exercises/00 - Scope/example_02.py](./exercises/00%20-%20Scope/example_02.py).
 
 ## Modularity
 Python programs are organized into modules. Modules can be imported into other modules, but you must take care not to introduce circular dependencies.
@@ -662,7 +662,7 @@ The Python runtime system defines special variables and attributes whose names a
 
 One such variables is `__name__`: evaluates to `__main__` or the actual module name depending on how the enclosing module is being used.
 
-If the module is imported, `__name__` evaluates to the module name (file name), but if the module is passed directly to the Python command (`python3.7 my_module.py`) it evaluates to `__main__`. This can be [used in conditionals](./exercises/03\ -\ conditionalized\ module/words.py) to run the module as a script as well as use it as a module both.
+If the module is imported, `__name__` evaluates to the module name (file name), but if the module is passed directly to the Python command (`python3.7 my_module.py`) it evaluates to `__main__`. This can be [used in conditionals](./exercises/03%20-%20conditionalized%20module/words.py#L22-L23) to run the module as a script as well as use it as a module both.
 
 ### Modules, Scripts, and Programs
 
@@ -674,10 +674,10 @@ It is recommended to makes `scripts` importable for convenient execution from th
 
 Even `modules`, only meant to be imported in production settings, benefit from having executable test code.
 
-It is a good practice to have all modules created with defined executable functions with a [post-script](./exercises/03\ -\ conditionalized\ module/words.py) to facilitate execution.
+It is a good practice to have all modules created with defined executable functions with a [post-script](./exercises/03%20-%20conditionalized%20module/words.py#L22-L23) to facilitate execution.
 
 ### Main Functions
-Main functions called from postscripts can define default execution behavior for a module when run as a script. The example in [exercise 4](./exercises/04\ -\ main\ function/words.py) shows one such approach to the pattern. While `main()` is a common function name for the main execution, the function can have any name that encapsulates the default script-execution logic.
+Main functions called from postscripts can define default execution behavior for a module when run as a script. The example in [exercise 4](./exercises/04%20-%20main%20function/words.py) shows one such approach to the pattern. While `main()` is a common function name for the main execution, the function can have any name that encapsulates the default script-execution logic.
 
 ### Docstrings
 [PEP 257](https://www.python.org/dev/peps/pep-0257/) outlines conventions for using docstrings. This is not widely accepted at this time.
@@ -691,6 +691,6 @@ In unix-like systems, a special comment (called a shebang) is often used on the 
 
 For Python the shebang is useful to identify whether the code within a file is Python 2 or Python 3.
 
-More details, and an example can be found in [exercise 07](./exercises/07\ -\ shebang/words.py).
+More details, and an example can be found in [exercise 07](./exercises/07%20-%20shebang/words.py#L1-L11).
 
 **Note:** The Python shebang works on Windows for v3.3 and above. This is because Windows now runs Python files using the [Python Launcher](https://docs.python.org/3/using/windows.html#launcher).
