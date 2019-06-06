@@ -268,6 +268,7 @@ const trace = x => {
 Test - law of identity:
 ```javascript
 const u = Identity(2);
+
 // Identity law
 u.map(trace);             // 2
 u.map(x => x).map(trace); // 2
@@ -277,9 +278,11 @@ Test - law of composition:
 ```javascript
 const f = n => n + 1;
 const g = n => n * 2;
+
 // Composition law
 const r1 = u.map(x => f(g(x)));
 const r2 = u.map(g).map(f);
+
 r1.map(trace); // 5
 r2.map(trace); // 5
 ```
@@ -313,6 +316,7 @@ Class inheritance:
 
 **Mixins**
 > “Favor object composition over class inheritance”
+
 The Gang of Four, *“Design Patterns: Elements of Reusable Object Oriented Software”*
 
 Mixins are a form of object composition, where component features get mixed into a composite object so that properties of each mixin become properties of the composite object.
@@ -578,6 +582,7 @@ The same holds true for Kleisli composition. You just have to read it backwards.
 ```
 
 > “Once you understand monads, you immediately become incapable of explaining them to anyone else”
+
 Lady Monadgreen’s curse ~ Gilad Bracha (used famously by Douglas Crockford)
 
 ## Resources
