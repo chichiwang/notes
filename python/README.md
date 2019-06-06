@@ -2,11 +2,11 @@
 Explorations into the Python Programming Language.
 
 ## Table of Contents
-* Courses
+* **Courses**
   * [Getting Started](./getting_started)
-    * Level: **Beginner**
+    * **Level**: *Beginner*
   * [Python Fundamentals](./fundamentals)
-    * Level: **Intermediate**
-* Investigations
+    * **Level**: *Intermediate*
+* **Investigations**
   * [Virtualenv](./virtualenv)
-    * Level: **Beginner**
+    * **Level**: *Beginner*
