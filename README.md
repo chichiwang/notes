@@ -31,6 +31,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Special Attributes](#special-attributes)
   * [Modules, Scripts, and Programs](#modules-scripts-and-programs)
   * [Main Functions](#main-functions)
+  * [Docstrings](#docstrings)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -676,3 +677,10 @@ It is a good practice to have all modules created with defined executable functi
 
 ### Main Functions
 Main functions called from postscripts can define default execution behavior for a module when run as a script. The example in [exercise 4](./exercises/04\ -\ main\ function/words.py) shows one such approach to the pattern. While `main()` is a common function name for the main execution, the function can have any name that encapsulates the default script-execution logic.
+
+### Docstrings
+[PEP 257](https://www.python.org/dev/peps/pep-0257/) outlines conventions for using docstrings. This is not widely accepted at this time.
+
+The [Google Python Style Guide](https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings) also presents recommendations for docstrings, recommending listing arguments in a conventionalized manner. This makes the docstrings ammenable to machine parsing while still being readable as comments to humans.
+
+Module level docstrings and function level docstrings will appear when you request `help()` on the module or module methods respectively.
