@@ -12,4 +12,4 @@
 * **Programming Paradigms**
   * [Functional Programming (in JavaScript)](./paradigms/functional-programming)
 * **Programming Languages**
-  * [Python](./python)
+  * [Python](./languages/python)
