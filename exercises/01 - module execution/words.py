@@ -1,3 +1,6 @@
+"""
+When you import this module, the statements in the module global scope execute immediately. There are no methods defined for importing modules to call.
+"""
 from urllib.request import urlopen
 
 with urlopen('http://sixty-north.com/c/t.txt') as story:

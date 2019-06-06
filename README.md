@@ -28,6 +28,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Scope](#scope)
   * [The LEGB Rule](#the-legb-rule)
 * [Modularity](#modularity)
+  * [Special Attributes](#special-attributes)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -651,3 +652,10 @@ Python programs are organized into modules. Modules can be imported into other m
 For the purposes of this section I will be following some exercises in the [Pluralsight Course](https://app.pluralsight.com/library/courses/python-fundamentals/table-of-contents).
 
 Modules I create for this will live in the [/exercises](./exercises) directory and can be executed using `python3.7`.
+
+### Special Attributes
+The Python runtime system defines special variables and attributes whose names are delimited by double underscores.
+
+One such variables is `__name__`: evaluates to `__main__` or the actual module name depending on how the enclosing module is being used.
+
+If the module is imported, `__name__` evaluates to the module name (file name), but if the module is passed directly to the Python command (`python3.7 my_module.py`) it evaluates to `__main__`. This can be [used in conditionals](./exercises/03\ -\ conditionalized\ module/words.py) to run the module as a script as well as use it as a module both.
