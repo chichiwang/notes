@@ -30,6 +30,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
 * [Modularity](#modularity)
   * [Special Attributes](#special-attributes)
   * [Modules, Scripts, and Programs](#modules-scripts-and-programs)
+  * [Main Functions](#main-functions)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -672,3 +673,6 @@ It is recommended to makes `scripts` importable for convenient execution from th
 Even `modules`, only meant to be imported in production settings, benefit from having executable test code.
 
 It is a good practice to have all modules created with defined executable functions with a [post-script](./exercises/03\ -\ conditionalized\ module/words.py) to facilitate execution.
+
+### Main Functions
+Main functions called from postscripts can define default execution behavior for a module when run as a script. The example in [exercise 4](./exercises/04\ -\ main\ function/words.py) shows one such approach to the pattern. While `main()` is a common function name for the main execution, the function can have any name that encapsulates the default script-execution logic.
