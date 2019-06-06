@@ -1,2 +1,5 @@
 # Editor files
 *.swp
+
+# package directories
+.env/
