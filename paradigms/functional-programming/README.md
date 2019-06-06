@@ -1,5 +1,5 @@
 # Functional Programming
-Notes on high level functional programming concepts in the context of JavaScript, taken from the book [Composing Software](#https://leanpub.com/composingsoftware) by [Eric Elliott](https://leanpub.com/u/_ericelliott).
+Notes on high level functional programming concepts in the context of JavaScript, taken from the book [Composing Software](https://leanpub.com/composingsoftware) by [Eric Elliott](https://leanpub.com/u/_ericelliott).
 
 Notes ported over from Google Docs, built between November 7, 2018 and April 20, 2019.
 
@@ -236,6 +236,7 @@ An array is a good example of a functor, but many other kinds of objects can be 
 Functors are a mapping between categories and therefore must respect identity and composition.
 
 **Foundation of category theory**:
+
 * A category is a collection of objects and arrows between objects (where “object” can mean literally anything).
 * Arrows are known as morphisms. Morphisms can be thought of and represented in code as functions.
 * For any group of connected objects, `a -> b -> c`, there must be a composition which goes directly from `a -> c`.
@@ -249,6 +250,7 @@ Composition is associative. Basically that means that when you’re composing mu
 * A **monad** is an endofunctor
 
 **Example of a Functor**
+
 ```javascript
 const Identity = value => ({
   map: fn => Identity(fn(value))
@@ -288,6 +290,7 @@ r2.map(trace); // 5
 ```
 
 **Why Functors?**
+
 Functors are great higher-order abstractions that allow you to create a variety of generic functions that will work for any data type.
 
 ## Functional Mixins
@@ -302,6 +305,7 @@ Functional mixins:
   * No base class requirement
 
 **Motivation**
+
 The atomic units of composition are 1 of 2 things: functions or data structures. Application structure is defined by the composition of these atomic units.
 
 Class inheritance:
@@ -315,6 +319,7 @@ Class inheritance:
 * *“…the problem with object-oriented languages is they’ve got all this implicit environment that they carry around with them. You wanted a banana but what you got was a gorilla holding the banana and the entire jungle.”* ~ Joe Armstrong
 
 **Mixins**
+
 > “Favor object composition over class inheritance”
 
 The Gang of Four, *“Design Patterns: Elements of Reusable Object Oriented Software”*
@@ -324,9 +329,11 @@ Mixins are a form of object composition, where component features get mixed into
 You start with an empty object and mix in features to extend it. JavaScript supports dynamic object extension and objects without classes making mixins trivially easy in this language.
 
 **Functional Inheritance**
+
 Functional inheritance is the process of inheriting features by applying an augmenting function to an object instance. Because child functions are heavily coupled to parent functions, you opt into most of the common problems of object inheritance.
 
 **Functional Mixins**
+
 Functional mixins are composable functions which mix new properties or behaviors with properties from a given object. Functional mixins don’t depend on or require a base factory or constructor: Simply pass any arbitrary object into a mixin, and it will be extended.
 
 “You should always use the simplest possible abstraction to solve the problem you’re working on. Start with a pure function. If you need an object with persistent state, try a factory function. If you need to build more complex objects, try functional mixins.”
@@ -338,6 +345,7 @@ Good use-cases for functional mixins:
   * JS array type implements Semigroup, Functor, Foldable
 
 **Caveats**
+
 Avoid pitfalls of functional mixins:
 * Use the simplest practical implementation. Start on the left and move to the right only as needed: pure functions > factories > functional mixins > classes.
 * Avoid the creation of **is-a** relationships between objects, mixins, or data types.
@@ -346,9 +354,11 @@ Avoid pitfalls of functional mixins:
 * There may be side-effects when you access a property using `Object.assign()` or object spread syntax (`{...}`). You’ll also skip any non-enumerable properties. ES2017 added `Object.getOwnPropertyDescriptors()` to get around this problem.
 
 **Stamps**
+
 At larger, enterprise level applications, rather than functional mixins you may want to look at [stamps](https://github.com/stampit-org/stamp-specification). The Stamp Specification is a standard for sharing and reusing composable factory functions, with built-in mechanisms to deal with property descriptors, prototype delegation, and so on.
 
 **Class Inheritance**
+
 Class inheritance is rarely (if ever) the best approach in JavaScript. Third party libraries may use them and in these cases it can be practical to use classes provided the library:
 * Does not require you to extend your own classes
 * Does not require you to use the `new` keyword
@@ -358,11 +368,13 @@ In some browsers, classes may provide JavaScript engine optimizations that are n
 Library maintainers may want to look into performance optimizations provided by classes in JavaScript. Most of the time, however, you should optimize for clean, flexible code instead of worrying about performance.
 
 **Implicit Dependencies**
+
 It is valid to require a lifted data type for a functional mixin to act on, but if that’s the case, the API contract should be made explicitly clear in the function signature and API documentation.
 
 If you’re using TypeScript or Flow, it’s probably better to declare an explicit interface for your object requirements.
 
 **Tips for functional mixins and functional programming**
+
 * “Functional” in the context of functional mixins does not always have the same purity connotations as “functional programming”
 * If you need to return the object instance, always return this instead of a reference to the instance object in the closure -- in functional code, chances are those are not references to the same objects.
 * Always assume that the object instance will be copied by assignment.
@@ -375,6 +387,7 @@ A factory function is any function, which is not a class or constructor, that re
 Functional composition is a way to build new objects up from scratch. Factory functions are a way to wrap a friendly API around the implementation details of building these objects up from scratch.
 
 > “Sometimes, the elegant implementation is just a function. Not a method. Not a class. Not a framework. Just a function.”
+
 ~ John Carmack
 
 ## Composition With Classes
@@ -396,11 +409,13 @@ If you don’t need to micro-optimize memory or performance, the `[[Prototype]]`
 * It uses a nominal type check, rather than structural
 
 **The .constructor property**
+
 The `.constructor` property can be very useful in JavaScript and it is a good idea to include it on object instances. It is unsafe to use it for type checking for the same reasons `instanceof` is unsafe for type checking.
 
 JavaScript currently does not support the `.of()` specification which places an `.of()` method on factories and constructors, which would make constructors easier to work with. Today you have to manually provide support in your factory functions.
 
 **Factories VS Classes**
+
 Factories allow for increased flexibility:
 * Decouple instantiation details from calling code
 * Allow you to return arbitrary objects
@@ -441,14 +456,18 @@ Monads are simple. The lingo is difficult.
 A monad is a way of composing functions that require context (ex: computation, branching, I/O) in addition to the return value. Monads type lift, flatten and map so that the types line up for lifting functions `a => M(b)`, making them composable. It’s a mapping from some type `a` to some type `b` along with some computational context hidden in the implementation details of lift, flatten, and map.
 
 **Functions map**: `a => b`
+
 **Functors map with context**: `Functor(a) => Functor(b)`
+
 **Monads flatten and map with context**: `Monad(Monad(a)) => Monad(b)`
 
 ### Terms
 **Map**
+
 Apply a function to an `a` and return a `b`. Given some input, return some output.
 
 **Context**
+
 Computational detail of the monad’s composition. The Functor/Monad API and its workings supply the context which allows you to compose the monad with the rest of the application.
 
 The point of functors and monads is the abstract the context away so we don’t have to worry about it while we’re composing things.
@@ -457,11 +476,13 @@ The point of functors and monads is the abstract the context away so we don’t 
 Mapping inside the context means you apply a function from `a => b` to the value inside the context, and return a new value `b` wrapped inside the same kind of context.
 
 **Type Lift**
+
 Lift a type into a context, wrapping the value inside of an API that you can use to compute from that value, trigger contextual computations, etc. `a => F(a)`
 
 Monads are a kind of functor.
 
 **Flatten**
+
 Unwrap a value from its context `F(a) => a`
 
 ### Example
@@ -515,6 +536,7 @@ Three laws all monads should satisfy:
 * **Associativity**: `m.chain(f).chain(g) ==== m.chain(x => f(x).chain(g))`
 
 **Identity Laws**
+
 A monad is a functor. A functor is a morphism between categories, `A -> B`. The morphism is represented by an arrow.
 
 In addition to the arrow we explicitly see between objects, each object in a category also has an arrow back to itself. In other words, for every object `X` in a category, there exists an arrow `X -> X`. That arrow is known as the identity arrow, and it's usually drawn as a little circular arrow pointing from an object and looping back to the same object.
@@ -522,6 +544,7 @@ In addition to the arrow we explicitly see between objects, each object in a cat
 ![Identity Arrow Diagram](./images/identity-arrow.png)
 
 **Associativity**
+
 Associativity just means that it doesn’t matter where we put the parentheses when we compose. For example, if you’re adding, `a + (b + c)` is the same as `(a + b) + c`. The same holds true for function composition: `(f ° g) ° h = f ° (g ° h)`.
 
 The same holds true for Kleisli composition. You just have to read it backwards. When you see the composition operator (`chain`), think `after`:
