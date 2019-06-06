@@ -29,6 +29,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [The LEGB Rule](#the-legb-rule)
 * [Modularity](#modularity)
   * [Special Attributes](#special-attributes)
+  * [Modules, Scripts, and Programs](#modules-scripts-and-programs)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -659,3 +660,15 @@ The Python runtime system defines special variables and attributes whose names a
 One such variables is `__name__`: evaluates to `__main__` or the actual module name depending on how the enclosing module is being used.
 
 If the module is imported, `__name__` evaluates to the module name (file name), but if the module is passed directly to the Python command (`python3.7 my_module.py`) it evaluates to `__main__`. This can be [used in conditionals](./exercises/03\ -\ conditionalized\ module/words.py) to run the module as a script as well as use it as a module both.
+
+### Modules, Scripts, and Programs
+
+* `module`: Convenient import namespace with an API
+* `script`: Convenient execution from the command line (module-global expressions and statements)
+* `program`: Perhaps composed of many modules
+
+It is recommended to makes `scripts` importable for convenient execution from the Python REPL.
+
+Even `modules`, only meant to be imported in production settings, benefit from having executable test code.
+
+It is a good practice to have all modules created with defined executable functions with a [post-script](./exercises/03\ -\ conditionalized\ module/words.py) to facilitate execution.
