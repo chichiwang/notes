@@ -1,5 +1,6 @@
-# Editor files
-*.swp
-
 # package directories
 .env/
+
+# Text editor files
+*.swp
+*.swo
