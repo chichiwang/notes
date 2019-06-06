@@ -32,6 +32,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Modules, Scripts, and Programs](#modules-scripts-and-programs)
   * [Main Functions](#main-functions)
   * [Docstrings](#docstrings)
+  * [Shebang](#shebang)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -684,3 +685,12 @@ Main functions called from postscripts can define default execution behavior for
 The [Google Python Style Guide](https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings) also presents recommendations for docstrings, recommending listing arguments in a conventionalized manner. This makes the docstrings ammenable to machine parsing while still being readable as comments to humans.
 
 Module level docstrings and function level docstrings will appear when you request `help()` on the module or module methods respectively.
+
+### Shebang
+In unix-like systems, a special comment (called a shebang) is often used on the first line of a program or script. The shebang starts with `#!` and allows the program loader to identify which interpreter should be used to run the program.
+
+For Python the shebang is useful to identify whether the code within a file is Python 2 or Python 3.
+
+More details, and an example can be found in [exercise 07](./exercises/07\ -\ shebang/words.py).
+
+**Note:** The Python shebang works on Windows for v3.3 and above. This is because Windows now runs Python files using the [Python Launcher](https://docs.python.org/3/using/windows.html#launcher).
