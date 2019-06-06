@@ -550,6 +550,7 @@ def save_file(filename, text):
 ```
 
 Access modes in Python:
+
 | flag | mode                                          |
 | ---- | --------------------------------------------- |
 | "w"  | write: overwrites the entire file             |
@@ -561,7 +562,7 @@ Access modes in Python:
 [Other IO operations in Python](https://docs.python.org/3.7/library/io.html#class-hierarchy).
 
 Reading a file in Python:
-```pyton
+```python
 def read_file(filename):
     try:
         f = open(filename, "r")
@@ -722,7 +723,7 @@ james = HighSchoolStudent("James")
 ```
 
 To import all named entities from a module:
-```
+```python
 from hs_student import *
 
 james = HighSchoolStudent("James")
