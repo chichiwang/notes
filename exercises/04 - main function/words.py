@@ -23,14 +23,17 @@ def fetch_words(url):
                 story_words.append(word)
     return story_words
 
+
 def print_items(items):
     for item in items:
         print(item)
+
 
 def main(requested_url):
     url = requested_url or default_url
     words = fetch_words(url)
     print_items(words)
+
 
 if __name__ == '__main__':
     main(len(sys.argv) > 1 and sys.argv[1])
