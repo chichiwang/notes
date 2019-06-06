@@ -694,3 +694,7 @@ For Python the shebang is useful to identify whether the code within a file is P
 More details, and an example can be found in [exercise 07](./exercises/07%20-%20shebang/words.py#L1-L11).
 
 **Note:** The Python shebang works on Windows for v3.3 and above. This is because Windows now runs Python files using the [Python Launcher](https://docs.python.org/3/using/windows.html#launcher).
+
+---
+
+**WIP** Coure not yet completed
