@@ -3,9 +3,9 @@
 - [ ] Add JavaScript Resources Section
 
 ## Table of Contents
-* [**Computing Concepts**](./computing-concepts)
-  * [Containers](./computing-concepts/containers)
-  * [Non-Relational Databases](./computing-concepts/nonrelational-databases)
+* [**Computing Concepts**](./concepts)
+  * [Containers](./concepts/containers)
+  * [Non-Relational Databases](./concepts/nosql)
 * [**Programming Paradigms**](./paradigms)
   * [Declarative Programming](./paradigms/declarative)
       * [Functional Programming](./paradigms/declarative/functional)

@@ -2,4 +2,4 @@
 
 ## Table of Contents
 * [Containers](./containers)
-* [Non-Relational Databases](./nonrelational-databases)
+* [Non-Relational Databases](./nosql)
