@@ -1,4 +1,8 @@
 # Python Fundamentals
+**Author**: [Chi-chi Wang](https://github.com/chichiwang)
+
+Date: June 2019
+
 Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundamentals/table-of-contents)
 
 ## Table of Contents

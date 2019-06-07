@@ -1,4 +1,8 @@
 # Python: Getting Started
+**Author**: [Chi-chi Wang](https://github.com/chichiwang)
+
+Date: May 2019 - June 2019
+
 [Course](https://app.pluralsight.com/library/courses/python-getting-started/table-of-contents)
 
 ## Table of Contents

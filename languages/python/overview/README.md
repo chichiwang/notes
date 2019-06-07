@@ -1,4 +1,6 @@
 # Python Overview
+**Author**: [Chi-chi Wang](https://github.com/chichiwang)
+
 A high level investigation into the Python Programming Language. This is meant to be a profile of the language itself more than an investigation of the syntax and operations.
 
 Notes ported over from Google Docs, built between August 7, 2018 and September 30, 2018.

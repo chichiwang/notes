@@ -1,4 +1,6 @@
 # Notes: Composing Software
+**Author**: [Chi-chi Wang](https://github.com/chichiwang)
+
 Notes on high level functional programming concepts in the context of JavaScript, taken from the book [Composing Software](https://leanpub.com/composingsoftware) by [Eric Elliott](https://leanpub.com/u/_ericelliott).
 
 Notes ported over from Google Docs, built between November 7, 2018 and April 20, 2019.

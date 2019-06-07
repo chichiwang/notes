@@ -1,4 +1,6 @@
 # Research: Non-Relational Databases
+**Author**: [Chi-chi Wang](https://github.com/chichiwang)
+
 A high level investigation into non-relational databases.
 
 Notes ported over from Google Docs, built between May 20, 2018 and June 2, 2018.

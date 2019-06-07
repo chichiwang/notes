@@ -1,4 +1,8 @@
 # Python VirtualEnv Experiment
+**Author**: [Chi-chi Wang](https://github.com/chichiwang)
+
+Date: May 2019
+
 Simple sample project using Python to play around with virutal environments.
 
 ## General Operations

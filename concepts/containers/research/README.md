@@ -1,4 +1,6 @@
 # Research: Containers
+**Author**: [Chi-chi Wang](https://github.com/chichiwang)
+
 A high level investigation into Containers.
 
 Notes ported over from Google Docs, built between July 2, 2018 and July 14, 2018.

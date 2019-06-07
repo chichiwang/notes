@@ -1,4 +1,6 @@
 # Haskell Overview
+**Author**: [Chi-chi Wang](https://github.com/chichiwang)
+
 A high level investigation into the Haskell Programming Language. This is meant to be a profile of the language itself more than an investigation of the syntax and operations.
 
 Notes ported over from Google Docs, built between October 15, 2018 and November 5, 2018.
