@@ -13,17 +13,17 @@ Over time the structure of this repository will evolve to accommodate attempts t
 For example: The [README.md](./paradigms/declarative/README.md) for [Declarative Programming](./paradigms/declarative) may remain sparse, only providing a link to [Functional Programming](./paradigms/declarative/functional) which contains [course notes for a functional programming book](./paradigms/declarative/functional/composing-software). This is because `functional programming` is recognized to be one approach to programming under the `declarative` style of programming, which notes may expand on later.
 
 ## Table of Contents
-* [**Computing Concepts**](./concepts)
-  * [Containers](./concepts/containers)
-  * [Non-Relational Databases](./concepts/nosql)
-* [**Programming Paradigms**](./paradigms)
-  * [Declarative Programming](./paradigms/declarative)
-      * [Functional Programming](./paradigms/declarative/functional)
+* [**Computing Concepts**](./computing)
+  * [Containers](./computing/containers)
+  * [Non-Relational Databases](./computing/nosql)
 * [**Programming Languages**](./languages)
   * [Elm](./languages/elm)
   * [Haskell](./languages/haskell)
   * [Lisp](./languages/lisp)
   * [Python](./languages/python)
+* [**Programming Paradigms**](./paradigms)
+  * [Declarative Programming](./paradigms/declarative)
+      * [Functional Programming](./paradigms/declarative/functional)
 
 ## TODO
 - [ ] Add JavaScript Resources Section
