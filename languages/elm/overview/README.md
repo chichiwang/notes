@@ -29,10 +29,10 @@ Notes ported over from Google Docs, built between November 5, 2018 and November 
 
 ## Features
 * First-class functions
-* Supports partial application
+* Supports [partial application](https://en.wikipedia.org/wiki/Partial_application)
 * Immutable values
 * Stateless functions
-* Static typing (with type inference)
+* Static typing (with [type inference](https://en.wikipedia.org/wiki/Type_inference))
 * Renders HTML through a virtual DOM
 * Interoperates with other code by using “JavaScript as a service”
 * Utilizes a module system
@@ -43,8 +43,7 @@ Notes ported over from Google Docs, built between November 5, 2018 and November 
 * Debug mode with built in time travel
 
 ## Drawbacks/Limitations
-* Has no support for [higher-kinded types](https://en.wikipedia.org/wiki/Kind_(type_theory))
-  * Unlike Haskell or Purescript
+* Has no support for [higher-kinded types](https://en.wikipedia.org/wiki/Kind_(type_theory)) unlike Haskell or Purescript
 * Client-side only
 * Small community/ecosystem
 * Hasn’t hit version 1.0
