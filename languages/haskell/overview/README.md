@@ -15,13 +15,13 @@ Notes ported over from Google Docs, built between October 15, 2018 and November 
 * Standardized, general purpose, purely functional programming language
 * Non-strict semantics
   * Arguments to a function are not evaluated unless they are actually used in the evaluation of the function body
-* Strong static typing
-* Type system with type inference and lazy evaluation
-* One of the youngest children of ML and Lisp
-* Particularly useful for programs that manipulate data structures (such as compilers and interpreters), and for concurrent/parallel programming
+* Strong [static typing](https://en.wikipedia.org/wiki/Type_system#Static_type_checking)
+* Type system with [type inference](https://en.wikipedia.org/wiki/Type_inference) and [lazy evaluation](https://en.wikipedia.org/wiki/Lazy_evaluation)
+* One of the youngest children of [ML](https://en.wikipedia.org/wiki/ML_(programming_language)) and [Lisp](https://en.wikipedia.org/wiki/Lisp_(programming_language))
+* Particularly useful for programs that manipulate data structures (such as compilers and interpreters), and for [concurrent/parallel programming](https://en.wikipedia.org/wiki/Concurrent_computing)
 
 ## History
-* **1987**: At the conference on Functional Languages and Computer Architecture (FPCA) in Portland, Oregon a consensus was reached that a committee should be formed to define an open standard for lazy functional languages
+* **1987**: At the conference on [Functional Languages and Computer Architecture](https://dblp.org/db/conf/fpca/fpca1987) (FPCA) in Portland, Oregon a consensus was reached that a committee should be formed to define an open standard for lazy functional languages
 * **1990**: Haskell 1.0 was defined
 * **1997**: Haskell 98 was specified as a minimal, stable, portable version of the language with a standard library
   * For teaching, and as a base for future extensions
