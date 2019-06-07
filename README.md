@@ -19,11 +19,9 @@ For example: The [README.md](./paradigms/declarative/README.md) for [Declarative
 * [**Programming Languages**](./languages)
   * [Elm](./languages/elm)
   * [Haskell](./languages/haskell)
+  * [JavaScript](./languages/javascript)
   * [Lisp](./languages/lisp)
   * [Python](./languages/python)
 * [**Programming Paradigms**](./paradigms)
   * [Declarative Programming](./paradigms/declarative)
       * [Functional Programming](./paradigms/declarative/functional)
-
-## TODO
-- [ ] Add JavaScript Resources Section
