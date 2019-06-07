@@ -6,8 +6,9 @@
 * [**Computing Concepts**](./computing-concepts)
   * [Containers](./computing-concepts/containers)
   * [Non-Relational Databases](./computing-concepts/nonrelational-databases)
-* **Programming Paradigms**
-  * [Functional Programming (in JavaScript)](./paradigms/functional-programming)
+* [**Programming Paradigms**](./paradigms)
+  * [Declarative Programming](./paradigms/declarative)
+      * [Functional Programming](./paradigms/declarative/functional)
 * [**Programming Languages**](./languages)
   * [Elm](./languages/elm)
   * [Haskell](./languages/haskell)
