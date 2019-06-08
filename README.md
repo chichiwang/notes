@@ -25,3 +25,8 @@ For example: The [README.md](./paradigms/declarative/README.md) for [Declarative
 * [**Programming Paradigms**](./paradigms)
   * [Declarative Programming](./paradigms/declarative)
       * [Functional Programming](./paradigms/declarative/functional)
+
+## In Progress
+Notes currently in progress:
+* [Python Fundamentals](./languages/python/fundamentals)
+* [Programming Paradigms Overview](./paradigms/overview)
