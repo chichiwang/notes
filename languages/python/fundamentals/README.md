@@ -39,6 +39,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Shebang](#shebang)
 * [Objects](#objects)
   * [Arguments](#arguments)
+    * [Default Arguments](#default-arguments)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -754,6 +755,82 @@ The `return` operator also passes by object reference.
 >>> e = f(c)
 >>> c is e
 True
+```
+
+#### Default Arguments
+```python
+def fn(a, b=default_value):
+  # ...
+```
+
+When defining a function with default arguments, the arguments with defaults must come after arguments without defaults, otherwise a syntax error is thrown.
+
+Keyword arguments can be used for explicitness:
+```python
+def banner(message, border='-'):
+  line = border * len(message)
+  print(line)
+  print(message)
+  print(line)
+
+
+banner("Norwegian Blue")
+"""
+--------------
+Norwegian Blue
+--------------
+"""
+
+banner("Norwegian Blue", bordre="*")
+"""
+**************
+Norwegian Blue
+**************
+"""
+```
+
+Keyword arguments must come after positional arguments at the call sites. If we provide keywords for all arguments, we can supply them in any order:
+```python
+banner(border='.', message='Hello From Earth')
+"""
+................
+Hello From Earth
+................
+"""
+```
+
+Default argument assignments are only evaluated once, when the function definition is evaluated:
+```python
+>>> import time
+>>> def show_default(arg=time.ctime()):
+...     print(arg)
+...
+>>> show_default()
+Fri Jun  7 22:21:09 2019
+>>> show_default()
+Fri Jun  7 22:21:09 2019
+```
+The time doesn't change because the default value assignment only occurs at evaluation time of the function definition.
+
+Default arguments can be modified like any other mutable value:
+```python
+>>> def add_spam(menu=[]):
+...     menu.append("spam")
+...     return menu
+...
+>>> add_spam()
+['spam']
+>>> add_spam()
+['spam', 'spam']
+```
+
+To work around this, always use immutable values as default arguments:
+```
+def add_spam(menu=None):
+  if menu is None:
+    menu = []
+  menu.append("spam")
+  return menu
 ```
 
 ---
