@@ -38,6 +38,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Docstrings](#docstrings)
   * [Shebang](#shebang)
 * [Objects](#objects)
+  * [Arguments](#arguments)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -734,6 +735,26 @@ True
 The assignment operator `=` only ever binds to names, it never binds objects by value. In Python variables are really named references to objects. References behave like labels that allow us to retrieve objects.
 
 The `==` operator tests for value equality. The `is` operator tests for identity.
+
+### Arguments
+Arguments are passed by reference. When that reference is to a mutable object, and that object is modified within the function, the source object is modified.
+
+If a function is meant to modify a copy of a passed-in object, it is the responsibility of the function to do the copying.
+
+It is possible to rebind function arguments to new object references.
+
+Function arguments are `pass by object reference`. The value of the reference is copied, not the value of the object.
+
+The `return` operator also passes by object reference.
+```python
+>>> def f(d):
+...   return d
+...
+>>> c = [6, 10, 16]
+>>> e = f(c)
+>>> c is e
+True
+```
 
 ---
 
