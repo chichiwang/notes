@@ -40,6 +40,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
 * [Objects](#objects)
   * [Arguments](#arguments)
     * [Default Arguments](#default-arguments)
+  * [Type System](#type-system)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -832,6 +833,33 @@ def add_spam(menu=None):
   menu.append("spam")
   return menu
 ```
+
+### Type System
+Python has a **dynamic** and **strong** type system.
+
+In a **dynamic type system** objects types are only resolved at runtime:
+```python
+>>> def add(a, b):
+...     return a + b
+...
+>>> add(5, 7)
+12
+>>> add(3.1, 2.4)
+5.5
+>>> add("news", "paper")
+'newspaper'
+```
+
+In a **strong type system** there is no implicit type conversion:
+```python
+>>> add("The answer is", 42)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 2, in add
+TypeError: can only concatenate str (not "int") to str
+```
+
+The system generally will not perform implicit conversions between object types or otherwise attempt to coerce one type to another. The exception being the conversion to `bool` in `if` statements and `while` loop predicates.
 
 ---
 
