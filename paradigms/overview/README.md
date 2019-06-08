@@ -28,8 +28,15 @@ Many programming paradigms are as well known for the techniques that they *disco
 * 8 boxes contain 2 paradigms with different names but the same set of concepts
 * An arrow between two boxes represents the concept(s) that have to be added to go from one paradigm to the next
 * Concepts are the basic, primitive elements used to construct the paradigms
+* When a language is mentioned under a paradigm it means that the designers intended part of the language to support the paradigm without interference from other paradigms
+  * It does not mean that there is a perfect fit between the language and the paradigm
+* The taxonomy diagram shows two important properties of paradigms
+  * Whether they have observable nondeterminism
+  * How strongly they support state
 
 Often two paradigms that seem quite different differ by just one concept (for example: functional programming vs. object-oriented programming).
+
+A paradigm almost always has to be turing complete to be practical.
 
 **Note**: This taxonomy contains a lot of information and warrants careful examination.
 
@@ -38,4 +45,4 @@ WIP - Incomplete notes
 
 ## Resources
 * [Wikipedia](https://en.wikipedia.org/wiki/Programming_paradigm)
-* [Programming Paradigms for Dummies: What Every Programmer Should Know](https://www.info.ucl.ac.be/~pvr/VanRoyChapter.pdf)- Peter Van Roy
+* [Programming Paradigms for Dummies: What Every Programmer Should Know](https://www.info.ucl.ac.be/~pvr/VanRoyChapter.pdf)- Peter Van Roy, 2009
