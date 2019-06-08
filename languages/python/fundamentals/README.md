@@ -152,7 +152,7 @@ Conventions:
   * Only deviate from this rule to improve readability
 
 ### Python Culture and The Zen of Python
-The development of the Python language is managed through a series of documents called _Python Enhancement Proposals_ or PEPs. One of the PEPs, called PEP 8, explains how you should format your code.
+The development of the Python language is managed through a series of documents called [_Python Enhancement Proposals_](https://www.python.org/dev/peps/) or PEPs. One of the PEPs, called PEP 8, explains how you should format your code.
 
 It is PEP 8 that informs you should use 4 spaces for indentation in your Python code.
 
@@ -161,7 +161,7 @@ PEP 20 is called The Zen of Python. It refers to 20 aphorisms describing the gui
 The Zen of Python can always be accessed through the REPL by typing `import this`.
 
 ### Standard Library
-Python comes with an extensive standard library, an aspect of the language often referred to as _Batteries Included_.
+Python comes with an [extensive standard library](https://docs.python.org/3/library/), an aspect of the language often referred to as _Batteries Included_.
 
 You access the standard library modules by importing them:
 ```python
