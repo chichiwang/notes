@@ -13,6 +13,11 @@ Over time the structure of this repository will evolve to accommodate attempts t
 For example: The [README.md](./paradigms/declarative/README.md) for [Declarative Programming](./paradigms/declarative) may remain sparse, only providing a link to [Functional Programming](./paradigms/declarative/functional) which contains [course notes for a functional programming book](./paradigms/declarative/functional/composing-software). This is because `functional programming` is recognized to be one approach to programming under the `declarative` style of programming, which notes may expand on later.
 
 ## Table of Contents
+* [Notes Available](#notes-available)
+* [In Progress](#in-progress)
+* [Topics of Interest](#topics-of-interest)
+
+## Notes Available
 * [**Computing Concepts**](./computing)
   * [Containers](./computing/containers)
   * [Non-Relational Databases](./computing/nosql)
@@ -30,3 +35,7 @@ For example: The [README.md](./paradigms/declarative/README.md) for [Declarative
 Notes currently in progress:
 * [Python Fundamentals](./languages/python/fundamentals)
 * [Programming Paradigms Overview](./paradigms/overview)
+
+## Topics of Interest
+* [Decision Fatigue](https://en.wikipedia.org/wiki/Decision_fatigue)
+  * Both on a technical and a process/operational level.
