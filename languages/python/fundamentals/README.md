@@ -37,6 +37,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Main Functions](#main-functions)
   * [Docstrings](#docstrings)
   * [Shebang](#shebang)
+* [Objects](#objects)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -698,6 +699,41 @@ For Python the shebang is useful to identify whether the code within a file is P
 More details, and an example can be found in [exercise 07](./exercises/07%20-%20shebang/words.py#L1-L11).
 
 **Note:** The Python shebang works on Windows for v3.3 and above. This is because Windows now runs Python files using the [Python Launcher](https://docs.python.org/3/using/windows.html#launcher).
+
+## Objects
+Python assigns variables by pointing them to underlying objects in memory.
+```python
+# Creates an object in memory containing the value 100 and points var x to it
+x = 100
+
+# Value is not mutated, cannot be mutated
+# New object with new value created in memory
+# x variable reassigned to point to that instead
+x = 500
+
+
+# Assigning a var to another var just points one
+# variable to the same object reference as the other
+y = x
+```
+
+**Note**: Garbage collector will only clean up objects not reachable by live references.
+
+The built in `id()` function returns an integer identifier, which is unique and constant for the lifetime of an object. The built in `is` will compare the object references of two variables:
+```python
+>>> a = 5
+>>> id(a)
+140155613686816
+>>> b = a
+>>> id(b)
+140155613686816
+>>> a is b
+True
+```
+
+The assignment operator `=` only ever binds to names, it never binds objects by value. In Python variables are really named references to objects. References behave like labels that allow us to retrieve objects.
+
+The `==` operator tests for value equality. The `is` operator tests for identity.
 
 ---
 
