@@ -1,4 +1,4 @@
-# Programming Paradigms Overview
+# Programming Paradigms Overview (WIP)
 **Author**: [Chi-chi Wang](https://github.com/chichiwang)
 
 Date: June 2019

@@ -1,4 +1,4 @@
-# Python Fundamentals
+# Python Fundamentals (WIP)
 **Author**: [Chi-chi Wang](https://github.com/chichiwang)
 
 Date: June 2019
@@ -863,4 +863,4 @@ The system generally will not perform implicit conversions between object types 
 
 ---
 
-**WIP** Coure not yet completed
+**WIP** Course not yet completed
