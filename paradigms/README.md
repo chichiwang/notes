@@ -1,7 +1,5 @@
 # Notes: Programming Paradigms
 
 ## Table of Contents
+* [Overview](./overview) - WIP
 * [Declarative Programming](./declarative)
-
-## TODO
-- [ ] Create `Overview` for [programming paradigms](https://en.wikipedia.org/wiki/Programming_paradigm)
