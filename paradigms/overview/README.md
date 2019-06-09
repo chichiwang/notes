@@ -11,6 +11,7 @@ Date: June 2019
 * [Creative Extension Principle](#creative-extension-principle)
 * [Designing a Language](#designing-a-language)
   * [Two-Paradigm Languages](#two-paradigm-languages)
+  * [Layering Paradigms](#layering-paradigms)
 * [Resources](#resources)
 
 ## Definition
@@ -123,6 +124,16 @@ The first paradigm is chosen for the primary problem targetted by the language d
   * Paradigm 1: a relational programming engine for *logical* queries of a database
   * Paradigm 2: transactional interface for *concurrent* updates of the database
   * Paradigm 3: host language complements the first two paradigms by supporting *object-oriented* programming for organization of large programs
+
+### Layering Paradigms
+
+![Table of Layered Paradigms](./images/layering-paradigms.png)
+
+The above table shows how 4 languages([*Erlang*](https://www.erlang.org/), [*E*](https://en.wikipedia.org/wiki/E_(programming_language)), *Distributed [Oz](https://en.wikipedia.org/wiki/Oz_(programming_language))*, *Didcactic [Oz](https://en.wikipedia.org/wiki/Oz_(programming_language))*) layered the same paradigms in their design.
+
+Peter Van Roy believes that language design will move forward through levels of abstraction as lower levels of language design are proven to solve certain problems. He posits that compiler courses in the 1970s were built around a study of parsing algorithms. Today, Van Roy contends, parsing is well understood for most practical purposes and compiler design has moved on - courses now focus on higher level topics such as dataflow analysis, type systems, and language concepts.
+
+This sort of evolution, Van Roy believes, will also occur with language design.
 
 ---
 WIP - Incomplete notes
