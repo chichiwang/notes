@@ -9,6 +9,8 @@ Date: June 2019
 * [Observable Nondeterminism](#ovservable-nondeterminism)
 * [Named State](#named-state)
 * [Creative Extension Principle](#creative-extension-principle)
+* [Designing a Language](#designing-a-language)
+  * [Two-Paradigm Languages](#two-paradigm-languages)
 * [Resources](#resources)
 
 ## Definition
@@ -93,6 +95,34 @@ Three example scenarios of how new concepts can be discovered and added to form 
   * The above complexity can be avoided by the introduction of a single concept: *exceptions*
 
 Whenever a scenario is encountered where pervasive (nonlocal) modifications must be made to a program in order to handle a single problem: it is a sign that a new concept is waiting to be discovered. By adding that concept to the language, pervasive modifications would no longer be needed to tackle that particular problem.
+
+## Designing a Language
+No single paradigm is the best approach to all problems. Each problem has a paradigm that provides the most elegant solution to it.
+
+We will investigate 2 cases:
+1. Languages that support 2 paradigms
+2. Layered languages
+
+### Two-Paradigm Languages
+Many languages support two paradigms: one for programming in the small and the other for programming in the large.
+
+The first paradigm is chosen for the primary problem targetted by the language design. The second paradigm is chosen to support abstraction and modularity, allowing programs to scale.
+
+**Examples**
+* [*Prolog*](https://en.wikipedia.org/wiki/Prolog)
+  * Paradigm 1: *logic* programming engine based on unification and depth-first search
+  * Paradigm 2: *imperative*
+    * Assert and retract operations allowing the program to add/remove program clauses
+* Modeling Languages (e.g. [*Comet*](https://en.wikipedia.org/wiki/Comet_(programming_language)), [*Numerica*](https://books.google.ca/books?id=CCK6CCHnaygC&pg=PA1&lpg=PA1&dq=numerica+programming&source=bl&ots=gqlnOO9PAR&sig=ACfU3U3yN4-0FXFp5A_-OuUwgNY7-BoKEQ&hl=en&sa=X&ved=2ahUKEwjJrrvj29ziAhWP_J4KHRqcAYsQ6AEwD3oECAkQAQ#v=onepage&q=numerica%20programming&f=false))
+  * Paradigm 1: *solver* - constraint programming, local search, etc.
+  * Paradigm 2: *object-oriented*
+* Solving Libraries (e.g. *Geocode*)
+  * Paradigm 1: *solver* library based on advanced search algorithms
+  * Paradigm 2: added by the host language, e.g. C++ and Java support object-orientation
+* Language Embedding (e.g. [*SQL*](https://en.wikipedia.org/wiki/SQL))
+  * Paradigm 1: a relational programming engine for *logical* queries of a database
+  * Paradigm 2: transactional interface for *concurrent* updates of the database
+  * Paradigm 3: host language complements the first two paradigms by supporting *object-oriented* programming for organization of large programs
 
 ---
 WIP - Incomplete notes
