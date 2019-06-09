@@ -12,6 +12,8 @@ Date: June 2019
 * [Designing a Language](#designing-a-language)
   * [Two-Paradigm Languages](#two-paradigm-languages)
   * [Layering Paradigms](#layering-paradigms)
+* [Programming Concepts](#programming-concepts)
+  * [Record](#record)
 * [Resources](#resources)
 
 ## Definition
@@ -134,6 +136,16 @@ The above table shows how 4 languages([*Erlang*](https://www.erlang.org/), [*E*]
 Peter Van Roy believes that language design will move forward through levels of abstraction as lower levels of language design are proven to solve certain problems. He posits that compiler courses in the 1970s were built around a study of parsing algorithms. Today, Van Roy contends, parsing is well understood for most practical purposes and compiler design has moved on - courses now focus on higher level topics such as dataflow analysis, type systems, and language concepts.
 
 This sort of evolution, Van Roy believes, will also occur with language design.
+
+## Programming Concepts
+Programming paradigms are built out of programming concepts. In this section we examine four concepts and why they are important for programming.
+
+### Record
+A *record* is a data structure which define a group of references to data items with indexed *access* to each item.
+
+The *record* is the foundation of [symbolic programmig](https://en.wikipedia.org/wiki/Symbolic_programming). A symbolic programming language is able to calculate with records: create, decompose, and examine records.
+
+Most important data structures (arrays, lists, strings, trees, hash tables) can be derived from *records*. When combined with *closures*, *records* can be used for [component-based programming](https://en.wikipedia.org/wiki/Component-based_software_engineering).
 
 ---
 WIP - Incomplete notes
