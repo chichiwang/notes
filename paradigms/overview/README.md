@@ -7,6 +7,7 @@ Date: June 2019
 * [Definition](#definition)
 * [Taxonomy Of Programming Paradigms](#taxonomy-of-programming-paradigms)
 * [Observable Nondeterminism](#ovservable-nondeterminism)
+* [Named State](#named-state)
 * [Resources](#resources)
 
 ## Definition
@@ -53,6 +54,25 @@ The *nondeterminism* is **observable** if users can see different results from e
 Paradigms that have the power to express *observable nondeterminism* can be used to model real world situations and program independent activities.
 
 *Observable nondeterminism* should only be supported if expressive power is needed, such as in concurrent programming.
+
+## Named State
+Another key property of a paradigm is how strongly it supports *state*. *State* is the ability to store a sequence of values in time.
+
+We distinguish 3 axes of expressiveness in state:
+* Unnamed / Named
+* Deterministic / Nondeterminstic
+* Sequential / Concurrent
+
+This gives 8 possible combinations:
+
+![Combinations of Expressiveness in State](./images/support-for-state.jpeg)
+
+The horizontal axis in the diagram for the [Taxonomy Of Programming Paradigms](#taxonomy-of-programming-paradigms) corresponds with the bold line in the above diagram, moving from less expressive state (functional) to more expressive state.
+
+Notes:
+* *Nondeterminism* is important for real-world interaction
+  * e.g. client/server
+* *Named state* is important for modularity
 
 ---
 WIP - Incomplete notes
