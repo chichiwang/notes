@@ -8,6 +8,7 @@ Date: June 2019
 * [Taxonomy Of Programming Paradigms](#taxonomy-of-programming-paradigms)
 * [Observable Nondeterminism](#ovservable-nondeterminism)
 * [Named State](#named-state)
+* [Creative Extension Principle](#creative-extension-principle)
 * [Resources](#resources)
 
 ## Definition
@@ -73,6 +74,25 @@ Notes:
 * *Nondeterminism* is important for real-world interaction
   * e.g. client/server
 * *Named state* is important for modularity
+
+## Creative Extension Principle
+Concepts are organized into paradigms according to the *creative extension principle*. The principle was first defined by [Felleisen](https://en.wikipedia.org/wiki/Matthias_Felleisen). It serves as a guide for finding order in the vast set of possible paradigms.
+
+In a given paradigm programs can become complicated for reasons that have no direct relationship to the specific problem being solved. This is a sign that there is a new concept waiting to be discovered.
+
+Three example scenarios of how new concepts can be discovered and added to form a new paradigm:
+* If several independent activities need to be modeled
+  * It would require the implementation of several execution stacks, a scheduler, and a mechanism for preempting execution from one activity to another
+  * The above complexity can be avoided by the introduction of a single concept to the language: *concurrency*
+* If updatable memory (entities that remember and update their past) needs to be modeled
+  * Implementations would need to add two arguments to all function calls relative to these entities: input and output values of that memory
+    * This is messy: this memory would need to travel throughout large portions of the program
+  * The above complexity can be avoided by the introduction of a single concept to the language: *named state*
+* If error detection and correction needs to be modeled, such that any function can detect an error at any time and transfer control to an error correction routine
+  * Implementations would need to add error codes to all function outputs and conditionals to test all function return values for returned error codes
+  * The above complexity can be avoided by the introduction of a single concept: *exceptions*
+
+Whenever a scenario is encountered where pervasive (nonlocal) modifications must be made to a program in order to handle a single problem: it is a sign that a new concept is waiting to be discovered. By adding that concept to the language, pervasive modifications would no longer be needed to tackle that particular problem.
 
 ---
 WIP - Incomplete notes
