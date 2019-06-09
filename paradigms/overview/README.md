@@ -6,6 +6,7 @@ Date: June 2019
 ## Table of Contents
 * [Definition](#definition)
 * [Taxonomy Of Programming Paradigms](#taxonomy-of-programming-paradigms)
+* [Observable Nondeterminism](#ovservable-nondeterminism)
 * [Resources](#resources)
 
 ## Definition
@@ -40,9 +41,24 @@ A paradigm almost always has to be turing complete to be practical.
 
 **Note**: This taxonomy contains a lot of information and warrants careful examination.
 
+## Observable Nondeterminism
+> The first key property of a paradigm is whether or not it can express observable nondeterminism.
+
+[**Nondeterminism**](https://en.wikipedia.org/wiki/Nondeterministic_programming) is when the execution of a program is not completely determined by its specification. At some point during the execution the specification allows the program to choose what to do next. During execution this choice is made by a part of the runtime system: the *scheduler*.
+
+A common example of *nondeterminism* is a race condition: uncontrolled contention for a shared resource, such as simultaneously accessing and updating the same memory location in an unspecified order (data race).
+
+The *nondeterminism* is **observable** if users can see different results from executions that start at the same internal configurations. That is an observed nondeterminism is when nondeterminism (ex: a data race without data locking) is allowed to occur in the execution of a program.
+
+Paradigms that have the power to express *observable nondeterminism* can be used to model real world situations and program independent activities.
+
+*Observable nondeterminism* should only be supported if expressive power is needed, such as in concurrent programming.
+
 ---
 WIP - Incomplete notes
 
 ## Resources
 * [Wikipedia](https://en.wikipedia.org/wiki/Programming_paradigm)
 * [Programming Paradigms for Dummies: What Every Programmer Should Know](https://www.info.ucl.ac.be/~pvr/VanRoyChapter.pdf)- Peter Van Roy, 2009
+* [Nondeterministic Programming](https://en.wikipedia.org/wiki/Nondeterministic_programming)
+* [Internal nondeterminism vs external (observable) nondeterminism](https://slikts.github.io/concurrency-glossary/?id=internal-nondeterminism-vs-external-observable-nondeterminism)
