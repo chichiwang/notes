@@ -14,6 +14,7 @@ Date: June 2019
   * [Layering Paradigms](#layering-paradigms)
 * [Programming Concepts](#programming-concepts)
   * [Record](#record)
+  * [Lexically Scoped Closure](#lexically-scoped-closure)
 * [Resources](#resources)
 
 ## Definition
@@ -146,6 +147,36 @@ A *record* is a data structure which define a group of references to data items 
 The *record* is the foundation of [symbolic programmig](https://en.wikipedia.org/wiki/Symbolic_programming). A symbolic programming language is able to calculate with records: create, decompose, and examine records.
 
 Most important data structures (arrays, lists, strings, trees, hash tables) can be derived from *records*. When combined with *closures*, *records* can be used for [component-based programming](https://en.wikipedia.org/wiki/Component-based_software_engineering).
+
+### Lexically Scoped Closure
+The *lexically scoped closure* is an enormously powerful concept that is at the heart of programming. Functional programming (programming with *clousures*) is a central paradigm.
+
+From an implementation perspective: a *closure* combines a procedure with the external references available at the point of its definition.
+
+From a programmer's perspective: a *closure* is a "packet of work" allowing for deferred execution of a set of instructions.
+
+Almost all programming languages (exceptions include Pascal and C) follow these *closure* rules:
+* functions are closures
+* procedures are closures
+* objects are closures
+* classes are closures
+* software components are closures
+
+Many concepts associated with specific paradigms are built on *closures*:
+* Instantiation and genericity
+  * Normally associated with *object-oriented* programming
+  * Can be implemented with functions that return other functions: the first function is the *class*, the returned function is the *object*
+* Separation of concerns
+  * Normally associated with *aspect-oriented* programming
+  * Can be implemented with functions that take other functions as arguments
+* Component-based programming
+  * A style of programming organizes programs into components, where each component may depend on other components
+  * A *component* is a building block that specifies part of the program
+  * An instance of a *component* is called a *module*, which is a record containing closures
+  * A new *module* is created by a function that takes dependent *modules* as inputs
+    * The component is the function
+
+In some languages the use of *closures* is hidden inside the language implementation and is not directly available to the programmer.
 
 ---
 WIP - Incomplete notes
