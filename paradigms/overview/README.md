@@ -22,6 +22,7 @@ Date: June 2019
   * [Named State](#named-state)
     * [Named State And Modularity](#named-state-and-modularity)
 * [Data Abstraction](#data-abstraction)
+  * [Objects And Abstract Data Types](#objects-and-abstract-data-types)
 * [Resources](#resources)
 
 ## Definition
@@ -270,6 +271,22 @@ Advantages of this organization:
     * Each programmer just needs to know the interfaces used by their abstraction
 
 *Object-oriented programming*, as it's usually understood, is based on data abstraction with polymorphism and inheritance.
+
+### Objects And Abstract Data Types
+There are four main ways to organize data structures, organized along two axes: The first axis is *state*: does the abstraction use named state or not? The second axis is *bundling*: does the abstraction fuse data and operations into a single entity (known as an *object* or *procedural data abstraction* (PDA)), or does the abstraction keep them separate (known as an *abstract data type* (ADT))?
+
+There are four possible combinations of these approaches:
+
+![Organizing Data Abstration](./images/organizing-data-abstraction.jpeg)
+
+Two of these approaches are especially popular in modern languages:
+* Languages where integers are represented as values (`1`, `2`, `3`, ...) and operations represented by operators (`+`, `-`, `*`, ...)
+  * The values are passed as arguments to operators which return new values
+  * This is an example of an abstract data type without named state
+* Languages with objects which merge data (attributes) and operations (methods) into a single entity
+  * This is an example of an object with named state
+
+Abstract data types with named state and declarative objects can also be useful, but are less used in current langauges.
 
 ---
 WIP - Incomplete notes
