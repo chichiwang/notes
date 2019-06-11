@@ -1,6 +1,8 @@
 # Programming Paradigms Overview (WIP)
 **Author**: [Chi-chi Wang](https://github.com/chichiwang)
 
+The structure of these notes mostly follow the book [Programming Paradigms for Dummies: What Every Programmer Should Know](https://www.info.ucl.ac.be/~pvr/VanRoyChapter.pdf) by Peter Van Roy.
+
 Date: June 2019
 
 ## Table of Contents
