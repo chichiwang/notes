@@ -15,6 +15,7 @@ Date: June 2019
 * [Programming Concepts](#programming-concepts)
   * [Record](#record)
   * [Lexically Scoped Closure](#lexically-scoped-closure)
+  * [Independence (Concurrency)](#independence-concurrency)
 * [Resources](#resources)
 
 ## Definition
@@ -177,6 +178,55 @@ Many concepts associated with specific paradigms are built on *closures*:
     * The component is the function
 
 In some languages the use of *closures* is hidden inside the language implementation and is not directly available to the programmer.
+
+### Independence (Concurrency)
+The concept of *independence* is the construction of a program from indepdent parts. To implement *independence* a new programming concept, *concurrency*, is needed.
+
+When two parts of a program do not interact at all they are considered *concurrent*. When the order of execution of two program parts are given they are considered *sequential*.
+
+*Concurrent* parts can be extended to have well-defined interaction, which is called *communication*.
+
+**Concurrency and Parallelism**
+
+*Concurrency* should not be confused with *parallelism*: *concurrency* is a language concept, *parallelism* is a hardware concept. Two parts are *parallel* they they execute simultaneously on multiple processors.
+
+These are orthogonal concepts:
+* It is possible to run *concurrent* programs on a single processor
+  * Using preemptive scheduling and time slices
+* It is possible to run *sequential* programs on multiple processors
+  * By *parallelizing* the calculations
+
+**Computing has three levels of concurrency**
+* **Distributed System**
+  * A set of computers connected through a network
+  * A *concurrent* activity is called a computer
+* **Operating Systems**
+  * The software that manages the computer
+  * A *concurrent* activity is called a process
+  * Process-level concurrency is also called *competitive concurrency*
+    * The OS arbitrates resource requests between processes to allocate resources fairly
+* **Activities Inside A Process**
+  * Instructions carried out from a process
+  * A *concurrent* activity is called a thread
+  * Threads execute independently but share memory space
+  * Thread-level concurrency is also called *cooperative concurrency*
+    * Threads in a process share resources and collaborate to achieve the result of the process
+
+**Two popular paradigms for concurrency**
+* **Shared State Concurrency**
+  * One approach is threads access shared data items using control structures called *monitors* to manage *concurrent* access
+    * This paradigm is the most popular, used in all mainstream languages (e.g. Java, C#)
+  * Another apporach is that threads automatically update shared data items
+    * This approach is used by databases and software transactional memory
+* **Message-Passing Concurrency**
+  * Concurrent agents each running in different threads that send each other messages
+    * The languages [CSP](https://en.wikipedia.org/wiki/Communicating_sequential_processes) and [Erlang](https://www.erlang.org/) use message-passing
+      * CSP processes send *synchronous* messages (the sending process waits until the receiving process has taken the message)
+      * Erlang processes send *asynchronous* messages (the sending process doesn't wait)
+
+*Monitors*, despite their popularity, are the most difficult concurrency primitive to program with. *Transactions* and *message-passing* are easier (though still difficult). All three approaches suffer from expressiveness: they can express nondeterministic programs, which is why it is difficult to reason about their correctness.
+
+*Concurrent* programming would be made simpler if the *nondeterminism* were controlled in some way so it was not visible to the programmer.
 
 ---
 WIP - Incomplete notes
