@@ -21,6 +21,7 @@ Date: June 2019
     * [Concurrency And Parallelism](#concurrency-and-parallelism)
   * [Named State](#named-state)
     * [Named State And Modularity](#named-state-and-modularity)
+* [Data Abstraction](#data-abstraction)
 * [Resources](#resources)
 
 ## Definition
@@ -252,6 +253,23 @@ So that unknown state is never encountered, *named state* should never be invisi
 In order to make changes to a module without changing the API, often *named state* will need to be leveraged. The use of *named state* allows a program to become modular. The disadvantage of this is that a program can become incorrect.
 
 One solution to this problem is to concentrate the use of *named state* in one part of the program and to avoid *named state* in the rest.
+
+## Data Abstraction
+A *data abstraction* is a way to organize the use of data structures according to precise rules which guarantees the data structures are used correctly. A data abstraction has an inside, an outside, and an interface between the two. Data structures are kept on the inside, hidden from the outside, and all data operations must pass through the interface.
+
+Advantages of this organization:
+* There is a guarantee that the data abstraction will always work correctly
+  * The interface defines authorized operations on the data structures and no other operations are possible
+* Programs are easier to understand
+  * A user of the data abstraction does not need to understand the implementation
+  * Program can be partitioned into many abstractions, each implemented independently, greatly reducing the program's complexity
+    * This can be improved further by adding the property of *compositionality*: allow data abstractions to be defined inside of other data abstractions
+* It becomes possible to develop very large programs
+  * Implementation can be divided among a team of programmers
+    * Each abstraction can have one programmer responsible for implementation and maintenence
+    * Each programmer just needs to know the interfaces used by their abstraction
+
+*Object-oriented programming*, as it's usually understood, is based on data abstraction with polymorphism and inheritance.
 
 ---
 WIP - Incomplete notes
