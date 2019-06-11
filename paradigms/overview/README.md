@@ -150,7 +150,7 @@ Programming paradigms are built out of programming concepts. In this section we 
 ### Record
 A *record* is a data structure which define a group of references to data items with indexed *access* to each item.
 
-The *record* is the foundation of [symbolic programmig](https://en.wikipedia.org/wiki/Symbolic_programming). A symbolic programming language is able to calculate with records: create, decompose, and examine records.
+The *record* is the foundation of [symbolic programming](https://en.wikipedia.org/wiki/Symbolic_programming). A symbolic programming language is able to calculate with records: create, decompose, and examine records.
 
 Most important data structures (arrays, lists, strings, trees, hash tables) can be derived from *records*. When combined with *closures*, *records* can be used for [component-based programming](https://en.wikipedia.org/wiki/Component-based_software_engineering).
 
