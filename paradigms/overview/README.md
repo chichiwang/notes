@@ -16,6 +16,9 @@ Date: June 2019
   * [Record](#record)
   * [Lexically Scoped Closure](#lexically-scoped-closure)
   * [Independence (Concurrency)](#independence-concurrency)
+    * [Concurrency And Parallelism](#concurrency-and-parallelism)
+  * [Named State](#named-state)
+    * [Named State And Modularity](#named-state-and-modularity)
 * [Resources](#resources)
 
 ## Definition
@@ -186,16 +189,6 @@ When two parts of a program do not interact at all they are considered *concurre
 
 *Concurrent* parts can be extended to have well-defined interaction, which is called *communication*.
 
-**Concurrency and Parallelism**
-
-*Concurrency* should not be confused with *parallelism*: *concurrency* is a language concept, *parallelism* is a hardware concept. Two parts are *parallel* they they execute simultaneously on multiple processors.
-
-These are orthogonal concepts:
-* It is possible to run *concurrent* programs on a single processor
-  * Using preemptive scheduling and time slices
-* It is possible to run *sequential* programs on multiple processors
-  * By *parallelizing* the calculations
-
 **Computing has three levels of concurrency**
 * **Distributed System**
   * A set of computers connected through a network
@@ -227,6 +220,36 @@ These are orthogonal concepts:
 *Monitors*, despite their popularity, are the most difficult concurrency primitive to program with. *Transactions* and *message-passing* are easier (though still difficult). All three approaches suffer from expressiveness: they can express nondeterministic programs, which is why it is difficult to reason about their correctness.
 
 *Concurrent* programming would be made simpler if the *nondeterminism* were controlled in some way so it was not visible to the programmer.
+
+#### Concurrency And Parallelism
+
+*Concurrency* should not be confused with *parallelism*: *concurrency* is a language concept, *parallelism* is a hardware concept. Two parts are *parallel* they they execute simultaneously on multiple processors.
+
+These are orthogonal concepts:
+* It is possible to run *concurrent* programs on a single processor
+  * Using preemptive scheduling and time slices
+* It is possible to run *sequential* programs on multiple processors
+  * By *parallelizing* the calculations
+
+### Named State
+*State* introduces an abstract concept of time in programs.
+
+In *functional* programs, there is no concept of time. Functions are mathematical functions: when called with the same arguments they always give the same results. Functions do not change.
+
+To model an entity with a unique identity (its name) whose behavior changes during the execution of a program we add an abstract notion of time: a *sequence of values in time* that has a *single name*. This sequence is called a *named state*. *Unnamed state* is possible (monads and DCGs) but it does not have the modularity properties of *named state*.
+
+Having *named state* is both a blessing and a curse. It allows a component to adapt to its environment, it can grow and learn. However, a component with *named state* can develop erratic behavior if the content of the named state is unknown or incorrect.
+
+A component without *named state* once proven correct always remains correct.
+
+So that unknown state is never encountered, *named state* should never be invisible: there should always be some way to access it from outside.
+
+#### Named State And Modularity
+*Named state* is important for a system's modularity. We say a system (function, procedure, component, etc) is *modular* if updates can be applied to part of the system without changing the rest of the system.
+
+In order to make changes to a module without changing the API, often *named state* will need to be leveraged. The use of *named state* allows a program to become modular. The disadvantage of this is that a program can become incorrect.
+
+One solution to this problem is to concentrate the use of *named state* in one part of the program and to avoid *named state* in the rest.
 
 ---
 WIP - Incomplete notes
