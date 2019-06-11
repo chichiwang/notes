@@ -24,6 +24,8 @@ Date: June 2019
 * [Data Abstraction](#data-abstraction)
   * [Objects And Abstract Data Types](#objects-and-abstract-data-types)
   * [Polymorphism And The Responsability Principle](#polymorphism-and-the-responsability-principle)
+  * [Inheritance](#inheritance)
+    * [The Substitution Principle](#the-substitution-principle)
 * [Resources](#resources)
 
 ## Definition
@@ -299,6 +301,24 @@ If a program works with one data abstraction as argument, it can work with anoth
 All [four approaches to data abstraction](#objects-and-abstract-data-types) support polymorphism, but it is particularly simple for objects. This is one reason for the success of *object-oriented* programming. 
 
 Each entity in a *polymorphic* system is responsible for implementation details of its API.
+
+### Inheritance
+Yet another important principle of *object-oriented* programming is *inheritance*. Many abstractions have a lot in common, even in their implementations. It is a good idea to define abstrations to emphasize their common relationship and without repeating the code that they share.
+
+Repeated code is a source of errors. If one copy is changed, all copies need to be changed. This creates surface area for errors.
+
+*Inheritance* enables defining abstractions incrementally. Definition `A` can inherit from another definition `B`.
+
+*Inheritance* can be a useful tool but should be used with care. The possibility of extending a definition `B` with inheritance can be seen as another interface to `B`. This interface needs to be maintained throughout the lifetime of `B` - this becomes an extra source of bugs.
+
+**It is recommended that inheritance is used as little as possible.** It is recommended to use *composition* instead. *Composition* means that an attribute of an object refers to another object. These objects are said to be composed together. In this approach it is not necessary to extend a *class* with *inheritance*.
+
+*Inheriteance* vs *Composition*
+
+![Inheritance Versus Composition](./images/inheritance-vs-composition.png)
+
+#### The Substitution Principle
+The right way to use *inheritance* is to follow the *substitution principle*: any procedure that works with objects O<sub>B</sub> of class B must also work with objects O<sub>A</sub> of class A. *Inheritance* should not break anything. Class A should be a conservative extension of class B.
 
 ---
 WIP - Incomplete notes
