@@ -23,6 +23,7 @@ Date: June 2019
     * [Named State And Modularity](#named-state-and-modularity)
 * [Data Abstraction](#data-abstraction)
   * [Objects And Abstract Data Types](#objects-and-abstract-data-types)
+  * [Polymorphism And The Responsability Principle](#polymorphism-and-the-responsability-principle)
 * [Resources](#resources)
 
 ## Definition
@@ -287,6 +288,17 @@ Two of these approaches are especially popular in modern languages:
   * This is an example of an object with named state
 
 Abstract data types with named state and declarative objects can also be useful, but are less used in current langauges.
+
+### Polymorphism And The Responsability Principle
+The second-most important principle of *object-oriented* programming, after data abstraction, is *polymorphism*. In reality: an entity is *polymorphic* if it can take on different forms. In programming: an entity is *polymorphic* if it can take arguments of different types.
+
+This ability is very important for organizing large programs so that the responsibilities of the program's design are concentrated in well-defined places instead of being spread out over the whole program.
+
+If a program works with one data abstraction as argument, it can work with another *if* the other has the same interface.
+
+All [four approaches to data abstraction](#objects-and-abstract-data-types) support polymorphism, but it is particularly simple for objects. This is one reason for the success of *object-oriented* programming. 
+
+Each entity in a *polymorphic* system is responsible for implementation details of its API.
 
 ---
 WIP - Incomplete notes
