@@ -28,6 +28,7 @@ Date: June 2019
     * [The Substitution Principle](#the-substitution-principle)
 * [Deterministic Cocurrent Programming](#deterministic-concurrent-programming)
   * [Avoiding Nondeterminism In A Concurrent Language](#avoiding-nondeterminism-in-a-concurrent-language)
+  * [Declarative Concurrency](#declarative-concurrency)
 * [Resources](#resources)
 
 ## Definition
@@ -365,6 +366,17 @@ There are useful programming paradigms that are concurrent with no observable no
   * Usage of discrete time greatly simplifies programming for reactive systems
     * Output events from one subcomponent are instantaneously available as input events in other subcomponents
   * **Languages Using This Paradigm**: [Esterel](https://en.wikipedia.org/wiki/Esterel), [Lustre](https://en.wikipedia.org/wiki/Lustre_(programming_language)), [SIGNAL](https://en.wikipedia.org/wiki/SIGNAL_(programming_language))
+
+### Declarative Concurrency
+*Declarative concurrency* is the simplest form of deterministic concurrency. It has the main advantage of functional programming, [confluence](https://en.wikipedia.org/wiki/Confluence_(abstract_rewriting)), in a concurrent model: all evauluation orders give the same result (it has no race conditions).
+
+*Declarative concurrency* adds two concepts to the functional paradigm: *threads* and *dataflow variables*.
+
+A *thread* defines a sequence of instructions, independent from other threads.
+
+A *dataflow variable*:
+* Is a single-assignment variable used for synchronization
+* Can pause the current thread and await a value assignment
 
 ---
 WIP - Incomplete notes
