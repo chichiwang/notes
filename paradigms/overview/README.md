@@ -29,6 +29,7 @@ Date: June 2019
 * [Deterministic Cocurrent Programming](#deterministic-concurrent-programming)
   * [Avoiding Nondeterminism In A Concurrent Language](#avoiding-nondeterminism-in-a-concurrent-language)
   * [Declarative Concurrency](#declarative-concurrency)
+    * [Lazy Declarative Concurrency](#lazy-declarative-concurrency)
 * [Resources](#resources)
 
 ## Definition
@@ -377,6 +378,20 @@ A *thread* defines a sequence of instructions, independent from other threads.
 A *dataflow variable*:
 * Is a single-assignment variable used for synchronization
 * Can pause the current thread and await a value assignment
+
+#### Lazy Declarative Concurrency
+*Lazy execution* can be added to declarative concurrency while keeping the good properties of *confluence* and *determinism*.
+
+Properties:
+* The consumer of a result determines whether or not to perform a calculation, not the producer of the results
+* In a loop the termination condition is the consumer
+* Does the least amount of calculation needed to get the result
+* Adds *lazy evaluation* and *concurrency* to functional programming while remaining delcarative
+* Is the most general declarative paradigm based on functional programming known so far
+
+To make *declarative concurrency* lazy the concept of *by-need synchronization* is necssary. This is implemented by a single operation:
+* `WaitNeeded` - The current thread waits until another thread does something
+  * Sounds like how the `yield` operator works in a [generator](https://en.wikipedia.org/wiki/Generator_(computer_programming))
 
 ---
 WIP - Incomplete notes
