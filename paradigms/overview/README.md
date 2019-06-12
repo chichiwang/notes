@@ -27,6 +27,7 @@ Date: June 2019
   * [Inheritance](#inheritance)
     * [The Substitution Principle](#the-substitution-principle)
 * [Deterministic Cocurrent Programming](#deterministic-concurrent-programming)
+  * [Avoiding Nondeterminism In A Concurrent Language](#avoiding-nondeterminism-in-a-concurrent-language)
 * [Resources](#resources)
 
 ## Definition
@@ -327,6 +328,43 @@ A particularly difficult problem in concurrent programming is *nondeterminism*. 
 The choice of which activity to execute first is often made by a part of a system called the *scheduler*.
 
 Nondeterminism is very difficult to manage if it is observed by the programmer. *Observable nondeterminism* is also called a *race condition*. Debugging and reasoning about programs with race conditions is a real pain in the butthole.
+
+### Avoiding Nondeterminism In A Concurrent Language
+The easiest way to eliminate race conditions is to design a language that doesn't have nondeterminism. However, concurrency is a powerful concept and the existence of concurrency brings with it nondeterminism.
+
+By making a clear distinction between nondeterminism occurring *inside* the system and *observable* nondeterminism, it is possible to enjoy the benefits of concurrency while avoiding the pain of race conditions:
+* Limit observable nondeterminism to the parts of the program that need it. The other parts of the program should have no observable nondeterminism.
+* Design the language so it is possible to write concurrent programs without observable nondeterminism.
+
+There are useful programming paradigms that are concurrent with no observable nondeterminism:
+* **Declarative Concurrency**
+  * Also known as **monotonic dataflow**
+  * Deterministic inputs are received and used to calculate deterministic outputs
+  * Multiple input streams must be deterministic
+    * Program must know what input elements to read to calculate each output
+  * This paradigm can be made lazy without compromising its advantages
+  * **Languages Using This Paradigm**: [Oz](https://en.wikipedia.org/wiki/Oz_(programming_language)), [Alice](https://en.wikipedia.org/wiki/Alice_(programming_language))
+* **Functional Reactive Programming**
+  * Also known as **continuous synchronous programming**
+  * Programs are functional, but the function argument can be changed and the change is propogated to the output
+  * This paradigm can accept nondeterministic input and does not introduce any nondeterminism of its own
+  * Semantically, the arguments are continuous functions of a totally ordered variable
+    * These variables can correspond to useful magnitudes such as *time* or *size*
+  * Typically values are only recomputed when they change and are needed
+  * When changes are propogated correctly the functional program introduces no nondeterminism
+  * **Languages Using This Paradigm**: [Yampa](https://hackage.haskell.org/package/Yampa-0.13/docs/FRP-Yampa.html) (embedded in [Haskell](https://en.wikipedia.org/wiki/Haskell_(programming_language))), [FrTime](https://docs.racket-lang.org/frtime/) (embedded in [Racket](https://racket-lang.org/), previously a Scheme implementation)
+* **Discrete Synchronous Programming**
+  * In this paradigm a program awaits input, does internal calculations, and emits output events
+    * This is called a *reactive system*
+  * This sytem must be deterministic: the same sequence of inputs produces the same sequence of outputs
+  * This paradigm accepts nondeterministic input and does not add any nondeterminism of its own
+  * The difference between this and *Functional Reactive Programming* is that inputs are *discrete*, not continuous
+    * Time advances in steps from one input event to the next
+    * Output events are emitted at the same logical time instants as the input events
+      * All calculations that determine the next output event are considered part of the same time instant
+  * Usage of discrete time greatly simplifies programming for reactive systems
+    * Output events from one subcomponent are instantaneously available as input events in other subcomponents
+  * **Languages Using This Paradigm**: [Esterel](https://en.wikipedia.org/wiki/Esterel), [Lustre](https://en.wikipedia.org/wiki/Lustre_(programming_language)), [SIGNAL](https://en.wikipedia.org/wiki/SIGNAL_(programming_language))
 
 ---
 WIP - Incomplete notes
