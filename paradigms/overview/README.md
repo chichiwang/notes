@@ -30,6 +30,7 @@ Date: June 2019
   * [Avoiding Nondeterminism In A Concurrent Language](#avoiding-nondeterminism-in-a-concurrent-language)
   * [Declarative Concurrency](#declarative-concurrency)
     * [Lazy Declarative Concurrency](#lazy-declarative-concurrency)
+* [Constraint Programming](#constraint-programming)
 * [Resources](#resources)
 
 ## Definition
@@ -348,12 +349,12 @@ There are useful programming paradigms that are concurrent with no observable no
   * **Languages Using This Paradigm**: [Oz](https://en.wikipedia.org/wiki/Oz_(programming_language)), [Alice](https://en.wikipedia.org/wiki/Alice_(programming_language))
 * **Functional Reactive Programming**
   * Also known as **continuous synchronous programming**
-  * Programs are functional, but the function argument can be changed and the change is propogated to the output
+  * Programs are functional, but the function argument can be changed and the change is propagated to the output
   * This paradigm can accept nondeterministic input and does not introduce any nondeterminism of its own
   * Semantically, the arguments are continuous functions of a totally ordered variable
     * These variables can correspond to useful magnitudes such as *time* or *size*
   * Typically values are only recomputed when they change and are needed
-  * When changes are propogated correctly the functional program introduces no nondeterminism
+  * When changes are propagated correctly the functional program introduces no nondeterminism
   * **Languages Using This Paradigm**: [Yampa](https://hackage.haskell.org/package/Yampa-0.13/docs/FRP-Yampa.html) (embedded in [Haskell](https://en.wikipedia.org/wiki/Haskell_(programming_language))), [FrTime](https://docs.racket-lang.org/frtime/) (embedded in [Racket](https://racket-lang.org/), previously a Scheme implementation)
 * **Discrete Synchronous Programming**
   * In this paradigm a program awaits input, does internal calculations, and emits output events
@@ -393,8 +394,42 @@ To make *declarative concurrency* lazy the concept of *by-need synchronization* 
 * `WaitNeeded` - The current thread waits until another thread does something
   * Sounds like how the `yield` operator works in a [generator](https://en.wikipedia.org/wiki/Generator_(computer_programming))
 
----
-WIP - Incomplete notes
+## Constraint Programming
+In *constraint programming* problems are expressed as a [constraint satisfaction problem](https://en.wikipedia.org/wiki/Constraint_satisfaction_problem)(CSPs).
+
+Defintion of a CSP: given a set of variables ranging over well-defined domains and a set of constraints (logical relations) on those variables, find an assignment of values to those variables that satisfies all the constraints.
+
+Put another way: The programmer specifies the result and the system searches for it. For this reason *constraint progamming* is the most declarative of all practical programming paradigms.
+
+*Constraint programming* utilizes search to leverage *blind chance* to find a solution. The system can find a solution that is completely unexpected to the programmer.
+
+Properties:
+* *Constraint programming* is at a much higher level of abstraction than many other paradigms
+  * It can impose a *global condition* on a problem: a condition that is true for the solution
+  * It can actually *find* a solution in a reasonable time using sophisticated algorithms for the implemented constraints and the search algorithm
+    * Path-finding constraints can use shortest path algorithms, multiplication constraints can use prime factorization algorithms, etc.
+* Has been used in [computer-aided composition](https://en.wikipedia.org/wiki/Computer_music#Computer-aided_algorithmic_composition)
+* Instead of writing a set of instructions, the programmer models the problem
+  * For small constraint problems: a naive model works fine
+  * For big constraint problems: the model heuristics must be designed with care
+* The art of *constraint programming* consists in designing a model that makes big problems tractable
+* The power and flexibility of a system depends on the expressiveness of its [variable domains](https://en.wikipedia.org/wiki/Constraint_programming#Domains), the expressiveness and pruning power of its [propagators](https://en.wikipedia.org/wiki/Local_consistency), and how smart its CSP solver is
+  * Early constraint systems were based on simple domains like *finite trees* and *integers*
+  * Modern constraint systems have added more complex domains like *real numbers* and [*directed graphs*](https://en.wikipedia.org/wiki/Directed_graph)
+* Closely related to *declarative concurrency*
+  * Semantically both are applications of [Saraswat's concurrent constraint programming framework](https://mitpress.mit.edu/books/concurrent-constraint-programming)
+  * Both are *concurrent* and *deterministic*
+* Differs from *declarative concurrency* in the following ways
+  * Trades *dataflow variables* with *general constraints*
+  * Has a more flexible control flow: each constraint executes in its own thread
+* Has applications in areas such as:
+  * [Combinatorics](https://en.wikipedia.org/wiki/Combinatorics)
+  * [Scheduling](https://en.wikipedia.org/wiki/Scheduling_(computing))
+  * [Optimization](https://simple.wikipedia.org/wiki/Optimization_(computer_science))
+  * [Goal-Oriented Programming](https://en.wikipedia.org/wiki/Very_high-level_programming_language)
+  * The possible applications depend on the variable domains and constraints that are implemented in the [solver](https://en.wikipedia.org/wiki/Solver)
+
+In principle solving a CSP is easy: enumerate over all possible values for all variables and test whether each enumeration is a solution. This brute-force approach is impractical. Sophisticated solvers use smarter techniques such as [local search](https://en.wikipedia.org/wiki/Local_search_(optimization)) or the *propagate-distribute algorithm* (which leverarages [binary search trees](https://en.wikipedia.org/wiki/Search_tree#Binary_Search_Tree)).
 
 ## Resources
 * [Wikipedia](https://en.wikipedia.org/wiki/Programming_paradigm)
