@@ -1,6 +1,6 @@
 # Notes: Programming Paradigms
 
 ## Table of Contents
-* [Overview](./overview) - WIP
+* [Overview](./overview)
   * **Level**: *Advanced*
 * [Declarative Programming](./declarative)

@@ -34,7 +34,6 @@ For example: The [README.md](./paradigms/declarative/README.md) for [Declarative
 ## In Progress
 Notes currently in progress:
 * [Python Fundamentals](./languages/python/fundamentals)
-* [Programming Paradigms Overview](./paradigms/overview)
 
 ## Topics of Interest
 * [Decision Fatigue](https://en.wikipedia.org/wiki/Decision_fatigue)
