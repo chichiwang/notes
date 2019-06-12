@@ -26,6 +26,7 @@ Date: June 2019
   * [Polymorphism And The Responsability Principle](#polymorphism-and-the-responsability-principle)
   * [Inheritance](#inheritance)
     * [The Substitution Principle](#the-substitution-principle)
+* [Deterministic Cocurrent Programming](#deterministic-concurrent-programming)
 * [Resources](#resources)
 
 ## Definition
@@ -319,6 +320,13 @@ Repeated code is a source of errors. If one copy is changed, all copies need to 
 
 #### The Substitution Principle
 The right way to use *inheritance* is to follow the *substitution principle*: any procedure that works with objects O<sub>B</sub> of class B must also work with objects O<sub>A</sub> of class A. *Inheritance* should not break anything. Class A should be a conservative extension of class B.
+
+## Deterministic Concurrent Programming
+A particularly difficult problem in concurrent programming is *nondeterminism*. A programming execution is considered *nondeterministic* if at some point there is a choice of what to do next. *Nondeterminism* is a natural result of concurrency. Since two concurrent activities are independent the program's specifications cannot say which executes first.
+
+The choice of which activity to execute first is often made by a part of a system called the *scheduler*.
+
+Nondeterminism is very difficult to manage if it is observed by the programmer. *Observable nondeterminism* is also called a *race condition*. Debugging and reasoning about programs with race conditions is a real pain in the butthole.
 
 ---
 WIP - Incomplete notes
