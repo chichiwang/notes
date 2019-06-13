@@ -41,6 +41,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Arguments](#arguments)
     * [Default Arguments](#default-arguments)
   * [Type System](#type-system)
+  * [Variable Scoping](#variable-scoping)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -860,6 +861,28 @@ TypeError: can only concatenate str (not "int") to str
 ```
 
 The system generally will not perform implicit conversions between object types or otherwise attempt to coerce one type to another. The exception being the conversion to `bool` in `if` statements and `while` loop predicates.
+
+### Variable Scoping
+*Scopes* are contexts in which name references can be looked up.
+
+Name scopes include:
+* `Local`: Inside the current function
+* `Enclosing`: Any and all enclosing functions
+* `Global`: Top-level of the module
+* `Built-in`: Provided by the *builtins* module
+
+Blocks (of indentation) do not introduce new scopes.
+
+When you want to access a globally-scoped variabled from inside a function scope, use the `global` keyword as demonstrated in [exercise 8](./exercises/08\ -\scope/scope.py). To see this in action navigate to the [exercise directory](.exercises/08\ -\ scope) and run in the REPL:
+```python
+>>> import scope
+>>> scope.show_count()
+Count =  0
+>>> scope.set_count(42)
+>>> scope.show_count()
+Count =  42
+>>>
+```
 
 ---
 
