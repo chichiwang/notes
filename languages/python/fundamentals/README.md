@@ -45,6 +45,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Everything Is An Object](#everything-is-an-object)
 * [Collections](#collections)
   * [Tuple](#tuple)
+  * [Str](#str)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -957,6 +958,36 @@ tuple("abc") # This also works with strings
 
 5 in (3, 5, 7, 257, 65537)
 5 not in (3, 5, 7, 257, 65537) # Test membership with `in` or `not in` operators
+```
+
+### Str
+*Strings* are homogenous immutable sequences of Unicode codepoints (characters).
+
+Operations:
+```python
+len("hello") # Determine the length of a string
+
+"New" + "found" + "land" # The `+` operator can be used for string concatenation
+# Use the `+` and `+=` operators sparingly as they rebind the reference to new objects
+
+# For larger strings, the `join()` method should be used
+colors = ";".join(["#45ff23", "#2321fa"]) # `join()` is called on the separator
+# For pure concatenation, use `join()` on an empty string
+"".join(["mult", "ipl", "e str", "ings"])
+# The symmertrical operation of `join()` is `split()`
+colors.split(";")
+
+# `partition()` divides a string into three parts around the argument:
+"unforgetable".partition("forget") # ('un', 'forget', 'able')
+# This is useful for destructuring assignments:
+departure, _, arrival = "London:Edinburgh".partition(":") # It is convention to use `_` for dummy values
+
+# `format()` is used for string interpolation
+"{0}, {1}!".format("Hello", "World")
+# If the field names are used only once and in order, the index can be omitted:
+"{}, {}!".format("Hello", "World")
+# Named fields can be used instead of indexes
+"Current Position: {latitude} {longitude}".format(latitude="60N", longitude="5E")
 ```
 
 ---
