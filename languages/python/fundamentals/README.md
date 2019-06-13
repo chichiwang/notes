@@ -44,6 +44,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Variable Scoping](#variable-scoping)
   * [Everything Is An Object](#everything-is-an-object)
 * [Collections](#collections)
+  * [Tuple](#tuple)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -904,14 +905,59 @@ This reveals the inner workings of any object.
 
 ## Collections
 This section will cover various built-in Python collection types:
-* tuple
-* str
+* [tuple](#tuple)
+* [str](#str)
 * range
 * list
 * dict
 * set
 
 `byte` will not be covered as most of what is covered in `str` also applies to `byte`.
+
+### Tuple
+*Tuples* are heterogenous immutable sequences: sequences of arbitrary objects. Once created the objects within them cannot be replaced or removed, and new elements cannot be added.
+
+Tuples can be created with a literal syntax using parentheses:
+```python
+t = ("Norway", 4.953, 3)
+```
+
+Operations:
+```python
+t[0] # 0-indexed element access
+len(t) # 3
+
+for item in t:
+  print(item)
+
+t + (5) # Concatenation using the `+` operator
+t * 2   # Repetition using the `*` operator
+
+a = ((220, 284), (1184, 1219)) # It is possible to have nested tuples
+a[0][1] # Index access of multi-dimensional tuple
+
+h = (391,) # To create a single-element tuple, use a trailing comma
+e = () # To create an empty tuple, use empty parentheses
+
+p = 1, 1, 1, 4, 6, 19 # Parens may be omitted in creating tuples
+
+def minmax(items):
+    return min(items), max(items) # It can be useful to return multiple values using tuples
+
+lower, upper = minmax([5, 2, 1, 8, 12, 10]) # Tuple unpacking can be a useful way to destructure assignment
+
+(a, (b, (c, d))) = (4, (3, (2, 1))) # Tuple unpacking works with arbitrarily nested tuples (not possible with other data structures)
+
+a = "jelly"
+b = "bean"
+a, b = b, a # Idiomatic Python swap
+
+tuple([1, 2, 3]) # Tuple constructor can be used to create a tuple from other iterable series of objects
+tuple("abc") # This also works with strings
+
+5 in (3, 5, 7, 257, 65537)
+5 not in (3, 5, 7, 257, 65537) # Test membership with `in` or `not in` operators
+```
 
 ---
 
