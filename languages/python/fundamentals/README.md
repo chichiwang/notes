@@ -43,6 +43,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Type System](#type-system)
   * [Variable Scoping](#variable-scoping)
   * [Everything Is An Object](#everything-is-an-object)
+* [Collections](#collections)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -900,6 +901,17 @@ You can instrospect an object using the `dir()` function:
 ```
 
 This reveals the inner workings of any object.
+
+## Collections
+This section will cover various built-in Python collection types:
+* tuple
+* str
+* range
+* list
+* dict
+* set
+
+`byte` will not be covered as most of what is covered in `str` also applies to `byte`.
 
 ---
 
