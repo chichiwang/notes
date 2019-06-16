@@ -47,6 +47,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Tuple](#tuple)
   * [Str](#str)
   * [Range](#range)
+  * [List](#list)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1028,6 +1029,96 @@ Tips:
   * `enumerate()` yields (*index*, *value*) tuples
 * Because of the strong iteration primitives built into Python, ranges are not widely used in modern Python code.
 
+### List
+A *list* is a heterogenous mutable sequence. We've covered lists a bit in a [previous section](#lists).
+
+Operations:
+```python
+lst = ["indexing", "within", "lists", "in", "python"]
+
+lst[-2]  # 'in' - index from the end using negative indicies
+lst[1:3] # ['within', 'lists'] - slice lists by using a colon in the index access brackets
+lst[2:]  # Slice the list from the third element to the end of the list
+lst[:3]  # Slice the list up to the third element
+lst[:]   # Slice the entire list - import idiom for shallow-copying the list
+
+# Copies
+lst2 = lst.copy() # A more readable method for shallow-copying a list
+lst3 = list(lst)  # Shallow-copy a list using the list constructor (preferred)
+
+# Repetitions
+# Useful for initializing a list of a known size in advance with elements set to a constant
+# Repetition is shallow (creates copy of the reference, not the value)
+a = [1, 2]
+a * 3          # [1, 2, 1, 2, 1, 2]
+b = [None] * 5 # [None, None, None, None, None]
+
+# index()
+# Returns the index of an element by value equivalence
+c = [100, 101, 102, 103]
+c.index(101) # 1
+c.index(300) # Raises a ValueError
+
+d = [100, 101, 102, 102, 103]
+d.index(102) # 2 - returns the first equivalent value index
+
+# count()
+# Returns the number of matching elements in the list
+d.count(102) # 2 - number of occurrences of 102 in d
+
+101 in [100, 101, 102]     # True - `in` operator tests element membership
+101 not in [100, 101, 102] # False - `not in` tests for non-membership
+
+# Element Removal
+e = [100, 101, 102]
+del e[1]      # Removes value at index 1 from e
+e.remove(100) # Removes an element by value from e
+f = [100, 100, 101, 102]
+f.remove(100) # Only removes the first instance of the value, f = [100, 101, 102]
+f.remove(300) # Raises a ValueError
+
+# Element Insertion
+g = [100, 101]
+g.insert(1, 102) # g = [100, 102, 101] - inserts an element at the specified index
+
+# Concatenation
+h = [0, 1]
+h + [2, 3]       # [0, 1, 2, 3] - Returns a new list concatenating the two
+h += [2, 3]      # Mutates value of h, appending the new elements
+h.extend([4, 5]) # Mutates value of h, appending the new elements
+h                # [0, 1, 2, 3, 4, 5]
+
+# Reverse
+h.reverse() # Mutates h, reversing the order of its elements
+h           # [5, 4, 3, 2, 1, 0]
+
+# Sort
+h.sort() # Sorts the elements of list in ascending order
+h        # [0, 1, 2, 3, 4, 5]
+
+# Sort with `reverse` parameter
+h.sort(reverse=True) # Sorts h in descending order
+h                    # [5, 4, 3, 2, 1, 0]
+
+# Sort with `key` parameter
+# Sort can accept a `key` parameter of any function that returns a sort key from any element
+i = ['0', '012', '01', '0123']
+i.sort(key=len) # Sorts i according to the length function
+i               # ['0', '01', '012', '0123']
+
+# Reversed
+# Reverses lists without mutating them
+# Returns an iterator
+j = [0, 1, 2]
+reversed(j) # Returns `list_reverseiterator object`
+list(reversed(j)) # [2, 1, 0]
+
+# Sorted
+# Sorts lists without mutating them
+# Returns a new list
+k = [0, 2, 3, 1]
+sorted(k) # [0, 1, 2, 3]
+```
 ---
 
 **WIP** Course not yet completed
