@@ -46,6 +46,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
 * [Collections](#collections)
   * [Tuple](#tuple)
   * [Str](#str)
+  * [Range](#range)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -990,6 +991,42 @@ departure, _, arrival = "London:Edinburgh".partition(":") # It is convention to 
 # Named fields can be used instead of indexes
 "Current Position: {latitude} {longitude}".format(latitude="60N", longitude="5E")
 ```
+
+### Range
+A *range* is an arithmetic sequence of integers.
+
+A range is constructed with the `range()` constructor - there is no literal form:
+```python
+# Construct a range from 0 to 5
+range(5) # range(0, 5)
+
+# Construct a range from 5 to 10
+range(5, 10) # range(5, 10)
+
+# Step argument can be provided to specify the interval between successive numbers
+range(0, 10, 2) # range(0, 10, 2)
+```
+
+The end of a range is one before the stop value provided:
+```python
+list(range(5)) # [0, 1, 2, 3, 4]
+list(range(0, 10, 2)) # [0, 2, 4, 6, 8]
+```
+
+The number of arguments provided to the `range()` constructor specify their use:
+
+|   constructor   |     arguments     |       result       |
+| --------------- | ----------------- | ------------------ |
+| range(5)        | stop              | 0, 1, 2, 3, 4      |
+| range(5, 10)    | start, stop       | 5, 6, 7, 8, 9      |
+| range(10, 20, 2 | start, stop, step | 10, 12, 14, 16, 18 |
+
+Tips:
+* Avoid using `range()` for iterating over lists
+  * Prefer to use iteration over objects themselves
+* Prefer `enumerate()` over `range()` for counters
+  * `enumerate()` yields (*index*, *value*) tuples
+* Because of the strong iteration primitives built into Python, ranges are not widely used in modern Python code.
 
 ---
 
