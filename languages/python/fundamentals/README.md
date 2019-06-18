@@ -49,6 +49,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Range](#range)
   * [List](#list)
   * [Dict](#dict)
+  * [Set](#set)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1195,6 +1196,82 @@ g[1] = 1.00 # Dictionaries themselves are mutable
 # Built into the standard library
 from pprint import pprint as pp
 pp(g)
+```
+
+### Set
+A *set* is an unordered collection of unique, immutable objects. A set, itself, is mutable: elements can be added/removed from the set.
+
+Construction:
+```python
+# Literal syntax
+my_set = { 1, 2, 3, 5, 8, 13 }
+
+# Constructor
+# Accepts any iterable series of values including lists 
+# Duplicates are discarded
+empty_set = set() # Returns an empty set when not provided arguments
+set_from_list = set([0, 1, 1, 2, 3, 5, 8, 13])
+set_from_list # {0, 1, 2, 3, 5, 8, 13}
+```
+
+Operations:
+```python
+# Iterate over a set
+# Order is arbitrary
+for x in set_from_list:
+    print(x)
+
+# Testing membership
+1 in set_from_list      # True
+10 not in set_from_list # True
+
+# Add an element to a set
+set_from_list.add(10)
+set_from_list.add(1) # Adding an element that already exists has no effect and produces no errors
+
+# Add multiple elements to a set from any iterable series
+set_from_list.update([2, 4, 6, 8, 10])
+
+# Removing an element from a set
+set_from_list.remove(4)  # Removes an element from the set
+set_from_list.remove(13) # Throws KeyError when trying to remove an element not in the set
+
+# Discarding an element from a set
+set_from_list.discard(6)
+set_from_list.discard(13) # Does not throw if item is not in the set
+
+# Copy a set (shallow)
+clone_set = set_from_list.copy()
+boba_set = set(clone_set) # set() constructor can be used to copy
+
+# Setup for set operations
+blue_eyes = {'Olivia', 'Harry', 'Lily', 'Jack', 'Amelia'}
+blond_hair = {'Harry', 'Jack', 'Amelia', 'Mia', 'Josh'}
+o_blood = {'Mia', 'Joshua', 'Lily', 'Olivia'}
+a_blood = {'Harry'}
+b_blood = {'Amelia', 'Jack'}
+
+# Union
+blue_eyes.union(blond_hair) # Retrieve the list of members of either blue_eyes or blond_hair (returns all)
+
+# Intersection
+blue_eyes.intersection(blond_hair) # Only return the members of both blue_eyes and blond_hair
+
+# Difference
+blue_eyes.difference(blond_hair) # Only return the members of blue_eyes who are not members of blond_hair
+blond_hair.difference(blue_eyes) # Only return the members of blond_hair who are not members of blue_eyes
+
+# Symmetric difference
+blue_eyes.symmetric_difference(blond_hair) # Return members exclusive to each set
+
+# Testing subsets
+a_blood.issubset(blue_eyes) # True - tests if a_blood is a subset of blue_eyes
+
+# Testing supersets
+blond_hair.issuperset(b_blood) # True - tests if blond_hair is a superset of b_blood
+
+# Testing disjoints
+a_blood.isdisjoing(o_blood) # True - tests that a_blood and o_blood has no intersections
 ```
 
 ---
