@@ -50,6 +50,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [List](#list)
   * [Dict](#dict)
   * [Set](#set)
+  * [Collection Protocols](#collection-protocols)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1273,6 +1274,31 @@ blond_hair.issuperset(b_blood) # True - tests if blond_hair is a superset of b_b
 # Testing disjoints
 a_blood.isdisjoing(o_blood) # True - tests that a_blood and o_blood has no intersections
 ```
+
+### Collection Protocols
+A *protocol* is a set of operations or methods that a type must support if it is to implement that protocol.
+
+Table of protocols supported by collection types:
+
+|     Protocol     |          Implementing Collections         |
+| ---------------- | ----------------------------------------- |
+| Container        | str, list, range, tuple, bytes, set, dict |
+| Sized            | str, list, range, tuple, bytes, set, dict |
+| Iterable         | str, list, range, tuple, bytes, set, dict |
+| Sequence         | str, list, range, tuple, bytes            |
+| Mutable Sequence | list                                      |
+| Mutable Set      | set                                       |
+| Mutable Mapping  | dict                                      |
+
+* The `container` protocol requires membership testing using `in` and `not in` operators
+* The `sized` protocol requires that the number of elements can be determined using the `len()` function
+* Types that implement the `iterable` protocol provide a means of yielding their elements one by one as they are requested
+  * They can be used with `for` loops
+* The `sequence` protocol requires:
+  * Its items can be retrieved using square brackets and an integer index
+  * Its items can be searched for using the `.index()` method
+  * Its items can be counted with the `.count()` method
+  * A reversed copy of the sequence can be produced with the `.reversed()` method
 
 ---
 
