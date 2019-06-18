@@ -48,6 +48,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Str](#str)
   * [Range](#range)
   * [List](#list)
+  * [Dict](#dict)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1066,6 +1067,7 @@ d.index(102) # 2 - returns the first equivalent value index
 # Returns the number of matching elements in the list
 d.count(102) # 2 - number of occurrences of 102 in d
 
+# Testing membership
 101 in [100, 101, 102]     # True - `in` operator tests element membership
 101 not in [100, 101, 102] # False - `not in` tests for non-membership
 
@@ -1119,6 +1121,82 @@ list(reversed(j)) # [2, 1, 0]
 k = [0, 2, 3, 1]
 sorted(k) # [0, 1, 2, 3]
 ```
+
+### Dict
+A *dictionary* is an unordered mapping from unique, immutable keys to mutable values. We've covered dictionaries a bit in a [previous section](#dictionaries).
+
+Dictionary keys **must be immutable** so strings, numbers, and tuples are valid keys but lists are not. The values may be mutable.
+
+The order of keys in a dictionary is not to be relied upon - order is random and may differ between different runs of the same program.
+
+Construction:
+```python
+# Literal syntax
+my_dict = {
+    'key_1': 'value_1',
+    2:  2,
+    (3): 3.0,
+}
+
+# Constructor
+# Can be constructed from:
+#     * An iterable series of key-value 2-tuples
+#     * Keyword arguments - requires keys are valid Python identifiers
+#     * A mapping, such as another dict
+# Value assignments are shallow copies
+names_and_ages = [('Alice', 32), ('Bob', 48), ('Charlie', 28)]
+d = dict(names_and_ages)
+phonetic = dict(a='alpha', b='bravo', c='charlie')
+```
+
+Operations:
+```python
+# Copies
+e = d.copy() # Shallow-copy method of a dict
+f = dict(e)  # Passing another dict into the dict() constructor creates a shallow copy
+
+# Update - destructive shallow merge
+g = { 1: 1, 2: 2, 3: 3 }
+h = { 'four': 4, 'five': 5, 'six': 6 }
+g.update(h)
+g  # { 1: 1, 2: 2, 3: 3, 'four': 4, 'five': 5, 'six': 6 }
+
+# Updates override original keys if corresponding keys exist in the target dict
+g.update({ 'four': 4.0 })
+g  # { 1: 1, 2: 2, 3: 3, 'four': 4.0, 'five': 5, 'six': 6 }
+
+# Iterating over keys
+# The order is arbitrary
+for key in g:
+    print(f'{ key } => { g[key] }')
+
+# Iterating over values
+for value in g.values():
+    print(value)
+
+# Keys
+g.keys() # Returns iterable list of keys
+
+# Iterate over key/value pairs
+for key, value in colors.items():
+  print(f'{ key } => { value }')
+
+# Testing membership
+'four' in g      # True - returns membership of keys
+'seven' not in g # True - returns non-membership of keys
+
+# Deleting key/value pair
+del g[1] # Removes key 1 from g
+
+# Adding key/value pair
+g[1] = 1.00 # Dictionaries themselves are mutable
+
+# Pretty printing
+# Built into the standard library
+from pprint import pprint as pp
+pp(g)
+```
+
 ---
 
 **WIP** Course not yet completed
