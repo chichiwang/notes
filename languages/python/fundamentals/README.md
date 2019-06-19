@@ -54,6 +54,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
 * [Exceptions](#exceptions)
   * [Programmer Errors](#programmer-errors)
   * [Re-raising Exceptions](#re-raising-excpetions)
+  * [Exceptions As API](#exceptions-as-api)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1352,6 +1353,11 @@ def convert(s):
 ```
 
 When `raise` is invoked without a parameter it will re-raise the exception that is currently being handled.
+
+### Exceptions As API
+Exceptions are part of the API. Callers need to know what exceptions to expect and when.
+
+For an example of how to supply a DocString with errors as well as handling and throwing errors, see [exercise 10](./exercises/10%20-%20exceptions%20as%20api/roots.py).
 
 ---
 
