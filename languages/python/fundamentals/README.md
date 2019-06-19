@@ -53,6 +53,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Collection Protocols](#collection-protocols)
 * [Exceptions](#exceptions)
   * [Programmer Errors](#programmer-errors)
+  * [Re-raising Exceptions](#re-raising-excpetions)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1334,6 +1335,23 @@ Exception types for programmer errors:
 * `NameError`
 
 These are not meant to be handled by exception blocks, but rather in the course of development.
+
+### Re-raising Exceptions
+It is a best practice to re-raise an error code rather than to pass numerical error codes around:
+```python
+import sys
+
+def convert(s):
+    try:
+      return int(s)
+    except (ValueError, TypeError) as e:
+      print("Conversion error: {}"\
+            .format(str(e)),
+            file=sys.stderr)
+      raise
+```
+
+When `raise` is invoked without a parameter it will re-raise the exception that is currently being handled.
 
 ---
 
