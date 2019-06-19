@@ -51,6 +51,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Dict](#dict)
   * [Set](#set)
   * [Collection Protocols](#collection-protocols)
+* [Exceptions](#exceptions)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1299,6 +1300,15 @@ Table of protocols supported by collection types:
   * Its items can be searched for using the `.index()` method
   * Its items can be counted with the `.count()` method
   * A reversed copy of the sequence can be produced with the `.reversed()` method
+
+## Exceptions
+Raise an exception to interrupt the flow of a program. Handle an exception to resume control. Unhandled exceptions will terminate the program.
+
+Exception objects contain information about the exceptional event.
+
+Exceptions bubble up through the call stack.
+
+Sample syntax for exception handling using the `except` keyword found in [exercise 09](./exercises/09\ -\ exception\ handling/exceptional.py).
 
 ---
 
