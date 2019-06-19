@@ -57,6 +57,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Exceptions As API](#exceptions-as-api)
   * [Exception Protocols](#exception-protocols)
   * [EAFP vs LBYL](#eafp-vs-lbyl)
+  * [Finally](#finally)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1331,6 +1332,8 @@ def convert(s):
 
 Assign the error to a variable using the `as` operator, then print it out to `sys.stderr`.
 
+As a matter of philosophy errors should never pass silently unless explicitly silenced. Silent errors are of no use.
+
 ### Programmer Errors
 Exception types for programmer errors:
 * `IndentationError`
@@ -1346,12 +1349,12 @@ import sys
 
 def convert(s):
     try:
-      return int(s)
+        return int(s)
     except (ValueError, TypeError) as e:
-      print("Conversion error: {}"\
-            .format(str(e)),
-            file=sys.stderr)
-      raise
+        print("Conversion error: {}"\
+              .format(str(e)),
+              file=sys.stderr)
+        raise
 ```
 
 When `raise` is invoked without a parameter it will re-raise the exception that is currently being handled.
@@ -1404,6 +1407,25 @@ The EAFP approach is preferred. With the LBYL approach you need to write preempt
 * Exceptions require explicit handling
   * They interrupt the program flow and cannot be ignored
 * Error codes are silent by default
+
+### Finally
+The `finally` block allows clean up operations to occur regardless of exceptions:
+```python
+import os
+import sys
+
+def make_at(path, dir_name):
+    original_path = os.getcwd()
+    try:
+        os.chdir(path)
+        os.mkdir(dir_name)
+    except OSError as e:
+        print(e, file=sys.stderr)
+        raise
+    finally:
+        os.chdir(original_path)
+```
+If `os.mkdir()` fails, the Python process won't be restored to its original value. This would cause the `make_at()` function to leave an unintentional side-effect. The `finally` block ensures that the function restores the original current working directory regardless of success or failure.
 
 ---
 
