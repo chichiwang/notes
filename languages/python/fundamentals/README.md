@@ -55,6 +55,8 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Programmer Errors](#programmer-errors)
   * [Re-raising Exceptions](#re-raising-excpetions)
   * [Exceptions As API](#exceptions-as-api)
+  * [Exception Protocols](#exception-protocols)
+  * [EAFP vs LBYL](#eafp-vs-lbyl)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1358,6 +1360,50 @@ When `raise` is invoked without a parameter it will re-raise the exception that 
 Exceptions are part of the API. Callers need to know what exceptions to expect and when.
 
 For an example of how to supply a DocString with errors as well as handling and throwing errors, see [exercise 10](./exercises/10%20-%20exceptions%20as%20api/roots.py).
+
+### Exception Protocols
+Exceptions are part of families of related functions referred to as *protocols*. Use common or existing exception types when possible.
+
+A few common exception types:
+* `IndexError` is raised when integer index is out of range
+```python
+z = [1, 4, 2]
+z[4] # Raises an IndexError: list index out of range
+```
+* `ValueError` is raised when an object is of the right type but contains an inappropriate value
+```python
+int("jim") # Raises a ValueError: invalid literal for int() with base 10: 'jim'
+```
+* `KeyError` is raised when a look-up in a mapping fails
+```python
+codes = dict(gb=44, us=1, no=47, fr=33, es=34)
+codes['de'] # Raises a KeyError: 'de'
+```
+
+**Note**: Avoid protecting against `TypeErrors`. This is against the grain of dynamic typing in Python and limits the reuse potential of code.
+
+It's usually not worth checking types - incompatible types will typically result in a `TypeError` anyway. Checking types can unnecessarily limit your functions.
+
+### EAFP vs LBYL
+Another tenet of Python philosophy and culture: it's easier to ask for forgiveness than permission.
+
+There are two approaches to dealing with a program operation that might fail:
+1. Check that all preconditions of a failure-prone operation are met in advance of attempting the operation.
+2. Blindly hope for the best, but be prepared to deal with the consequences.
+
+These two philosophies are known as:
+1. Look Before You leap (`LBYL`)
+2. It's Easier To Ask Forgiveness Than Permission (`EAFP`)
+  * Coined by Rear Admiral Grace Hopper
+
+The EAFP approach is preferred. With the LBYL approach you need to write preemptive tests for all possible conditions. The EAFP approach is to wrap failure-prone operations with exception handlers to deal with the cases where it does fail.
+
+**Exceptions vs Error Codes**
+* Error codes require interspersed, *local handling*
+* Exceptions allow centralized, *non-local handling*
+* Exceptions require explicit handling
+  * They interrupt the program flow and cannot be ignored
+* Error codes are silent by default
 
 ---
 
