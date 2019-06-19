@@ -52,6 +52,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Set](#set)
   * [Collection Protocols](#collection-protocols)
 * [Exceptions](#exceptions)
+  * [Programmer Errors](#programmer-errors)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1308,7 +1309,31 @@ Exception objects contain information about the exceptional event.
 
 Exceptions bubble up through the call stack.
 
-Sample syntax for exception handling using the `except` keyword found in [exercise 09](./exercises/09\ -\ exception\ handling/exceptional.py).
+Sample syntax for exception handling using the `except` keyword found in [exercise 09](./exercises/09%20-%20exception%20handling/exceptional.py).
+
+To print an error back to the system standard error output stream:
+```python
+import sys
+
+def convert(s):
+    try:
+      return int(s)
+    except (ValueError, TypeError) as e:
+      print("Conversion error: {}"\
+            .format(str(e)),
+            file=sys.stderr)
+      return -1
+```
+
+Assign the error to a variable using the `as` operator, then print it out to `sys.stderr`.
+
+### Programmer Errors
+Exception types for programmer errors:
+* `IndentationError`
+* `SyntaxError`
+* `NameError`
+
+These are not meant to be handled by exception blocks, but rather in the course of development.
 
 ---
 
