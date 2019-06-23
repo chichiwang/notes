@@ -1602,14 +1602,21 @@ Each call to a generator function returns a distinct instance of a generator obj
 
 When a generator object is called, the code defined in the generator function runs up to and including the next yield operation.
 
+Generators are *lazy*: the next result is computed just-in-time, when it is requested. This property of generators means that they can be used to model infinite sequences (since values are only produced by the caller and no data structure needs to be built to contain the elements of the sequence). They are ideal for operating on sequences such as:
+* Sensor readings
+* Mathematical sequences (like primes, or factorials)
+* The contents of mult-terabyte files
+
 #### Stateful Generator Functions
 Generators resume execution from the last `yield` statement when called. This allows for the maintenance of state in local variables, complex control flow, and lazy evaluation.
 
-[Exercise 11.1](./exercises/11%20-%20stateful%20generator%20functions/gen.py) demonstrates how generator objects can be used in iterables while maintaining internal state over multile calls.
+[Exercise 11: gen.py](./exercises/11%20-%20stateful%20generator%20functions/gen.py) demonstrates how generator objects can be used in iterables while maintaining internal state over multile calls.
 
-[Exercise 11.2](./exercises/11%20-%20stateful%20generator%20functions/gen2.py) demonstrates statefulness by maintaining an internal set in the generator function.
+[Exercise 11: gen2.py](./exercises/11%20-%20stateful%20generator%20functions/gen2.py) demonstrates statefulness by maintaining an internal set in the generator function.
 
-[Exercise 11.3](./exercises/11%20-%20stateful%20generator%20functions/gen3.py) demonstrates composing two generator objects together into a pipe.
+[Exercise 11: gen3.py](./exercises/11%20-%20stateful%20generator%20functions/gen3.py) demonstrates composing two generator objects together into a pipe.
+
+[Exercise 11: lucas.py](./exercises/11%20-%20stateful%20generator%20functions/lucas.py) demonstrates iterating over an infinite series using a generator.
 
 ---
 
