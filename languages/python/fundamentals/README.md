@@ -59,6 +59,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [EAFP vs LBYL](#eafp-vs-lbyl)
   * [Finally](#finally)
 * [Iterables](#iterables)
+  * [Filtering Predicates](#filtering-predicates)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1482,6 +1483,30 @@ Duplicate keys will override previous duplicates in the mapping:
 ```
 
 While there is no technical limit to the complexity of the expression used in comprehensions, for the sake of readability it is best to limit the complexity in a comprehension. Extract out to a sensibly named function for more complex operations.
+
+### Filtering Predicates
+```python
+>>> words = ['hi', 'hello', 'foxtrot', 'hotel']
+>>> { x[0]: x for x in words }
+{'h': 'hotel', 'f': 'foxtrot'}
+>>> 
+>>> 
+>>> 
+>>> from math import sqrt
+>>> def is_prime(x):
+...     if x < 2:
+...             return False
+...     for i in range(2, int(sqrt(x)) + 1):
+...             if x % i == 0:
+...                     return False
+...     return True
+... 
+>>> [x for x in range(101) if is_prime(x)]
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+>>>
+```
+
+Comprehensions can be conditionalized with an optional *filtering clause* at the end of the comprehension in the format of `[ expr(item) for item in iterable if predicate(item) ]`.
 
 ---
 
