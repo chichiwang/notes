@@ -65,6 +65,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
     * [Dictionary Comprehensions](#dictionary-comprehensions)
     * [Filtering Predicates](#filtering-predicates)
   * [Iteration Protocols](#iteration-protocols)
+  * [Generators](#generators)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1571,6 +1572,34 @@ Traceback (most recent call last):
 Calling `next()` on an iterator at the end of the iterable raises a *StopIteration* exception.
 
 Higher-level iteration concepts such as `for` loops and comprehensions are built directly upon this lower-level iteration protocol.
+
+### Generators
+*Generators* are *iterators* that specify *iterable* sequences. They are lazily evaluated, with the next value in the sequence being computed on demand. This property allows them to model infinite sequences, such as data streams, with no definite end.
+
+Generators are composable into pipelines for natural stream processing.
+
+Generator functions are defined as functions which use the `yield` keyword at least once in its definition:
+```python
+def gen123():
+    yield 1
+    yield 2
+    yield 3
+```
+
+Generator functions return *generator objects*, iterators. We can operate on generator objects with the built-in `next()` function. They can also be used in any standard python operations that accept iterators, such as `for` loops and comprehensions.
+```python
+>>> for val in gen123():
+...     print(val)
+... 
+1
+2
+3
+>>>
+```
+
+Each call to a generator function returns a distinct instance of a generator object. Each generator can be advanced independently.
+
+When a generator object is called, the code defined in the generator function runs up to and including the next yield operation.
 
 ---
 
