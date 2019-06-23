@@ -59,7 +59,11 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [EAFP vs LBYL](#eafp-vs-lbyl)
   * [Finally](#finally)
 * [Iterables](#iterables)
-  * [Filtering Predicates](#filtering-predicates)
+  * [Comprehensions](#comprehensions)
+    * [List Comprehensions](#list-comprehensions)
+    * [Set Comprehensions](#set-comprehensions)
+    * [Dictionary Comprehensions](#dictionary-comprehensions)
+    * [Filtering Predicates](#filtering-predicates)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1430,9 +1434,13 @@ def make_at(path, dir_name):
 If `os.mkdir()` fails, the Python process won't be restored to its original value. This would cause the `make_at()` function to leave an unintentional side-effect. The `finally` block ensures that the function restores the original current working directory regardless of success or failure.
 
 ## Iterables
+
+### Comprehensions
 *Comprehensions* are a concise syntax for describing [lists](#list), [sets](#set), or [dictionaries](#dict) in a declarative or functional style.
 
-**List Comprehensions**
+Comprehensions should ideally be purely functional: they should produce no side effects.
+
+#### List Comprehensions
 ```python
 >>> words = "A list constructed out of a string".split(' ')
 >>> words
@@ -1444,7 +1452,7 @@ If `os.mkdir()` fails, the Python process won't be restored to its original valu
 
 The general form of list comprehensions is `[ expr(item) for item in iterable ]`.
 
-**Set Comprehensions**
+#### Set Comprehensions
 ```python
 >>> from math import factorial
 >>> { len(str(factorial(x))) for x in range(20) }
@@ -1454,7 +1462,7 @@ The general form of list comprehensions is `[ expr(item) for item in iterable ]`
 
 The general form of set comprehensions is `{ expr(item) for item in iterable }`.
 
-**Dictionary Comprehensions**
+#### Dictionary Comprehensions
 ```python
 >>> from pprint import pprint as pp
 >>> country_to_capital = { 'United Kingdom': 'London',
@@ -1484,7 +1492,7 @@ Duplicate keys will override previous duplicates in the mapping:
 
 While there is no technical limit to the complexity of the expression used in comprehensions, for the sake of readability it is best to limit the complexity in a comprehension. Extract out to a sensibly named function for more complex operations.
 
-### Filtering Predicates
+#### Filtering Predicates
 ```python
 >>> words = ['hi', 'hello', 'foxtrot', 'hotel']
 >>> { x[0]: x for x in words }
