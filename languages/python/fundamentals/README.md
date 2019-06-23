@@ -66,6 +66,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
     * [Filtering Predicates](#filtering-predicates)
   * [Iteration Protocols](#iteration-protocols)
   * [Generators](#generators)
+    * [Stateful Generator Functions](#stateful-generator-functions)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1600,6 +1601,15 @@ Generator functions return *generator objects*, iterators. We can operate on gen
 Each call to a generator function returns a distinct instance of a generator object. Each generator can be advanced independently.
 
 When a generator object is called, the code defined in the generator function runs up to and including the next yield operation.
+
+#### Stateful Generator Functions
+Generators resume execution from the last `yield` statement when called. This allows for the maintenance of state in local variables, complex control flow, and lazy evaluation.
+
+[Exercise 11.1](./exercises/11%20-%20stateful%20generator%20functions/gen.py) demonstrates how generator objects can be used in iterables while maintaining internal state over multile calls.
+
+[Exercise 11.2](./exercises/11%20-%20stateful%20generator%20functions/gen2.py) demonstrates statefulness by maintaining an internal set in the generator function.
+
+[Exercise 11.3](./exercises/11%20-%20stateful%20generator%20functions/gen3.py) demonstrates composing two generator objects together into a pipe.
 
 ---
 
