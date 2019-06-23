@@ -63,6 +63,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
     * [List Comprehensions](#list-comprehensions)
     * [Set Comprehensions](#set-comprehensions)
     * [Dictionary Comprehensions](#dictionary-comprehensions)
+    * [Generator Comprehensions](#generator-comprehensions)
     * [Filtering Predicates](#filtering-predicates)
   * [Iteration Protocols](#iteration-protocols)
   * [Generators](#generators)
@@ -1494,6 +1495,29 @@ Duplicate keys will override previous duplicates in the mapping:
 ```
 
 While there is no technical limit to the complexity of the expression used in comprehensions, for the sake of readability it is best to limit the complexity in a comprehension. Extract out to a sensibly named function for more complex operations.
+
+#### Generator Comprehensions
+Generator comprehensions have a similar syntax to [list comprehensions](#list-comprehensions), but they result in the creation of a generator object which produces the specified sequence lazily.
+
+```python
+>>> million_squares = (x*x for x in range(1, 1000001))
+>>> million_squares
+<generator object <genexpr> at 0x7f4984d415e8>
+>>> len(list(million_squares))
+1000000
+>>> list(million_squares) # The generator has already run through, exhausting its items
+[]
+>>>
+```
+
+The general form of generator comprehensions is `( expr(item) for item in iterable )`.
+
+The parentheses used for the generator comprehension can be combined with the parentheses used for a function call increasing readability:
+```python
+>>> sum(x*x for x in range(1, 1000001))
+333333833333500000
+>>>
+```
 
 #### Filtering Predicates
 ```python
