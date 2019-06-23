@@ -59,13 +59,13 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [EAFP vs LBYL](#eafp-vs-lbyl)
   * [Finally](#finally)
 * [Iterables](#iterables)
+  * [Iteration Protocols](#iteration-protocols)
   * [Comprehensions](#comprehensions)
     * [List Comprehensions](#list-comprehensions)
     * [Set Comprehensions](#set-comprehensions)
     * [Dictionary Comprehensions](#dictionary-comprehensions)
     * [Generator Comprehensions](#generator-comprehensions)
     * [Filtering Predicates](#filtering-predicates)
-  * [Iteration Protocols](#iteration-protocols)
   * [Generators](#generators)
     * [Stateful Generator Functions](#stateful-generator-functions)
 
@@ -1438,6 +1438,62 @@ def make_at(path, dir_name):
 If `os.mkdir()` fails, the Python process won't be restored to its original value. This would cause the `make_at()` function to leave an unintentional side-effect. The `finally` block ensures that the function restores the original current working directory regardless of success or failure.
 
 ## Iterables
+Iterables are a central feature of Python. There are a number of built-in functions for performing common iterator operations (such as `enumerate()` and `sum()`). In addition to the built-in functions, the [itertools](https://docs.python.org/3/library/itertools.html) module contains functions for processing iterable streams of data.
+
+### Iteration Protocols
+There are two important concepts on which a great deal of Python language behavior is constructed: *iterable objects* and *iterator objects*.
+
+**Iterable Protocol**
+
+Iterable objects can be passed to the built-in `iter()` function to get an iterator: `iterator = iter(iterable)`
+
+**Iterator Protocol**
+
+Iterator objects can be passed to the built-in `next()` function to fetch the next item: `item = next(iterator)`
+
+**Demo**
+```python
+>>> iterable = ['Spring', 'Summer', 'Autumn', 'Winter']
+>>> iterator = iter(iterable)
+>>>
+>>> next(iterator)
+'Spring'
+>>> next(iterator)
+'Summer'
+>>> next(iterator)
+'Autumn'
+>>> next(iterator)
+'Winter'
+>>> next(iterator)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  StopIteration
+  Error in sys.excepthook:
+  Traceback (most recent call last):
+    File "/usr/lib/python3/dist-packages/apport_python_hook.py", line 63, in apport_excepthook
+        from apport.fileutils import likely_packaged, get_recent_crashes
+    File "/usr/lib/python3/dist-packages/apport/__init__.py", line 5, in <module>
+        from apport.report import Report
+    File "/usr/lib/python3/dist-packages/apport/report.py", line 30, in <module>
+        import apport.fileutils
+    File "/usr/lib/python3/dist-packages/apport/fileutils.py", line 23, in <module>
+        from apport.packaging_impl import impl as packaging
+    File "/usr/lib/python3/dist-packages/apport/packaging_impl.py", line 24, in <module>
+        import apt
+    File "/usr/lib/python3/dist-packages/apt/__init__.py", line 23, in <module>
+        import apt_pkg
+  ModuleNotFoundError: No module named 'apt_pkg'
+
+  Original exception was:
+  Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+  StopIteration
+>>>
+```
+
+Calling `next()` on an iterator at the end of the iterable raises a *StopIteration* exception.
+
+Higher-level iteration concepts such as `for` loops and comprehensions are built directly upon this lower-level iteration protocol.
 
 ### Comprehensions
 *Comprehensions* are a concise syntax for describing [lists](#list), [sets](#set), or [dictionaries](#dict) in a declarative or functional style.
@@ -1542,61 +1598,6 @@ The parentheses used for the generator comprehension can be combined with the pa
 ```
 
 Comprehensions can be conditionalized with an optional *filtering clause* at the end of the comprehension in the format of `[ expr(item) for item in iterable if predicate(item) ]`.
-
-### Iteration Protocols
-There are two important concepts on which a great deal of Python language behavior is constructed: *iterable objects* and *iterator objects*.
-
-**Iterable Protocol**
-
-Iterable objects can be passed to the built-in `iter()` function to get an iterator: `iterator = iter(iterable)`
-
-**Iterator Protocol**
-
-Iterator objects can be passed to the built-in `next()` function to fetch the next item: `item = next(iterator)`
-
-**Demo**
-```python
->>> iterable = ['Spring', 'Summer', 'Autumn', 'Winter']
->>> iterator = iter(iterable)
->>>
->>> next(iterator)
-'Spring'
->>> next(iterator)
-'Summer'
->>> next(iterator)
-'Autumn'
->>> next(iterator)
-'Winter'
->>> next(iterator)
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  StopIteration
-  Error in sys.excepthook:
-  Traceback (most recent call last):
-    File "/usr/lib/python3/dist-packages/apport_python_hook.py", line 63, in apport_excepthook
-        from apport.fileutils import likely_packaged, get_recent_crashes
-    File "/usr/lib/python3/dist-packages/apport/__init__.py", line 5, in <module>
-        from apport.report import Report
-    File "/usr/lib/python3/dist-packages/apport/report.py", line 30, in <module>
-        import apport.fileutils
-    File "/usr/lib/python3/dist-packages/apport/fileutils.py", line 23, in <module>
-        from apport.packaging_impl import impl as packaging
-    File "/usr/lib/python3/dist-packages/apport/packaging_impl.py", line 24, in <module>
-        import apt
-    File "/usr/lib/python3/dist-packages/apt/__init__.py", line 23, in <module>
-        import apt_pkg
-  ModuleNotFoundError: No module named 'apt_pkg'
-
-  Original exception was:
-  Traceback (most recent call last):
-    File "<stdin>", line 1, in <module>
-  StopIteration
->>>
-```
-
-Calling `next()` on an iterator at the end of the iterable raises a *StopIteration* exception.
-
-Higher-level iteration concepts such as `for` loops and comprehensions are built directly upon this lower-level iteration protocol.
 
 ### Generators
 *Generators* are *iterators* that specify *iterable* sequences. They are lazily evaluated, with the next value in the sequence being computed on demand. This property allows them to model infinite sequences, such as data streams, with no definite end.
