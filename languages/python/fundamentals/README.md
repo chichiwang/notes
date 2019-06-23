@@ -920,10 +920,10 @@ This reveals the inner workings of any object.
 This section will cover various built-in Python collection types:
 * [tuple](#tuple)
 * [str](#str)
-* range
-* list
-* dict
-* set
+* [range](#range)
+* [list](#list)
+* [dict](#dict)
+* [set](#set)
 
 `byte` will not be covered as most of what is covered in `str` also applies to `byte`.
 
