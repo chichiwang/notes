@@ -58,6 +58,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Exception Protocols](#exception-protocols)
   * [EAFP vs LBYL](#eafp-vs-lbyl)
   * [Finally](#finally)
+* [Iterables](#iterables)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1426,6 +1427,61 @@ def make_at(path, dir_name):
         os.chdir(original_path)
 ```
 If `os.mkdir()` fails, the Python process won't be restored to its original value. This would cause the `make_at()` function to leave an unintentional side-effect. The `finally` block ensures that the function restores the original current working directory regardless of success or failure.
+
+## Iterables
+*Comprehensions* are a concise syntax for describing [lists](#list), [sets](#set), or [dictionaries](#dict) in a declarative or functional style.
+
+**List Comprehensions**
+```python
+>>> words = "A list constructed out of a string".split(' ')
+>>> words
+['A', 'list', 'constructed', 'out', 'of', 'a', 'string']
+>>> [len(word) for word in words] # List comprehension
+[1, 4, 11, 3, 2, 1, 6]
+>>>
+```
+
+The general form of list comprehensions is `[ expr(item) for item in iterable ]`.
+
+**Set Comprehensions**
+```python
+>>> from math import factorial
+>>> { len(str(factorial(x))) for x in range(20) }
+{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 18}
+>>>
+```
+
+The general form of set comprehensions is `{ expr(item) for item in iterable }`.
+
+**Dictionary Comprehensions**
+```python
+>>> from pprint import pprint as pp
+>>> country_to_capital = { 'United Kingdom': 'London',
+...                        'Brazil': 'Brazília',
+...                        'Morocco': 'Rabat',
+...                        'Sweden': 'Stockholm' }
+>>> capital_to_country = { capital: country for country, capital in country_to_capital.items() }
+>>> pp(capital_to_country)
+{'Brazília': 'Brazil',
+ 'London': 'United Kingdom',
+ 'Rabat': 'Morocco',
+ 'Stockholm': 'Sweden'}
+>>>
+```
+
+The general form of dictionary comprehensions is `{ key_expr:value_expr for item in iterable }`.
+
+Dictionary comprehensions do not usually operate directly on dictionary sources, but they can. Iterating on dictionaries will usually only yield the keys, so if you want both the keys and values, use the `.items()` method as seen in the example above.
+
+Duplicate keys will override previous duplicates in the mapping:
+```python
+>>> words = ['hi', 'hello', 'foxtrot', 'hotel']
+>>> { x[0]: x for x in words }
+{'h': 'hotel', 'f': 'foxtrot'}
+>>>
+```
+
+While there is no technical limit to the complexity of the expression used in comprehensions, for the sake of readability it is best to limit the complexity in a comprehension. Extract out to a sensibly named function for more complex operations.
 
 ---
 
