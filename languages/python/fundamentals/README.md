@@ -68,6 +68,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
     * [Filtering Predicates](#filtering-predicates)
   * [Generators](#generators)
     * [Stateful Generator Functions](#stateful-generator-functions)
+* [Classes](#classes)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1642,6 +1643,142 @@ Generators resume execution from the last `yield` statement when called. This al
 [Exercise 11: gen3.py](./exercises/11%20-%20stateful%20generator%20functions/gen3.py) demonstrates composing two generator objects together into a pipe.
 
 [Exercise 11: lucas.py](./exercises/11%20-%20stateful%20generator%20functions/lucas.py) demonstrates iterating over an infinite series using a generator.
+
+## Classes
+*Classes* in Python can be used to create custom types. An object's class controls its initialization. Classes are a tool that can make complex problems more tractable, or they can make simple solutions overly complex.
+
+Classes are defined using the `class` keyword. By convention Python uses PascalCase for class names. Class instances are created by executing the class:
+```python
+class Flight:
+    pass
+
+f = Flight()
+```
+
+*Methods* are functions defined within a class. *Instance methods* are functions which can be called on an object. The first argument passed to all instance methods is `self`.
+```python
+class Flight:
+
+    def number(self):
+        return "SN060"
+
+f = Flight()
+f.number()
+```
+
+An instance method invocation is simply syntactic sugar over invoking the class method and passing in the instance:
+```python
+f.number()
+
+# The above call is equivalent to the following:
+Flight.number(f)
+```
+
+The initializer for a class is `__init__()`. Like all instance methods, the first argument to `__init__()` must be `self`:
+```python
+class Flight:
+
+    def __init__(self, number):
+        self._number = number
+
+    def number(self):
+      return self._number
+```
+
+It is convention that implementation detail objects in a class should be stored in a variable that starts with a `_`.
+
+An *initializer* is not a *constructor*. `self` is similiar to `this` in C++ or Java.
+
+**In Python everything is public**. It is through the use of conventions and discipline that developers avoid using methods and objects intended to be private through the use of underscores in the variable names.
+
+*Class invariants* are truths about an object that endure for its lifetime. It is good practice for a class initializer to establish these class invariants.
+
+This is done through validation of initializer arguments:
+```python
+class Flight:
+
+    def __init__(self, number):
+        if not number[:2].isalpha():
+            raise ValueError("No airline code in {}".format(number))
+        if not number[:2].isupper():
+            raise ValueError("Invalid airline code {}".format(number))
+        if not (number[2:].isdigit() and int(number[2:]) <= 9999):
+            raise ValueError("Invalid airline code {}".format(number))
+
+        self._number = number
+
+    def number(self):
+        return self._number
+
+    def airline(self):
+        return self._number[:2]
+```
+
+Now the class invariant of `number` is enforced:
+```python
+>>> f = Flight("MN035")
+>>> f.number()
+'MN035'
+>>> f = Flight("foobar")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 6, in __init__
+ValueError: Invalid airline code foobar
+Error in sys.excepthook:
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/apport_python_hook.py", line 63, in apport_excepthook
+    from apport.fileutils import likely_packaged, get_recent_crashes
+  File "/usr/lib/python3/dist-packages/apport/__init__.py", line 5, in <module>
+    from apport.report import Report
+  File "/usr/lib/python3/dist-packages/apport/report.py", line 30, in <module>
+    import apport.fileutils
+  File "/usr/lib/python3/dist-packages/apport/fileutils.py", line 23, in <module>
+    from apport.packaging_impl import impl as packaging
+  File "/usr/lib/python3/dist-packages/apport/packaging_impl.py", line 24, in <module>
+    import apt
+  File "/usr/lib/python3/dist-packages/apt/__init__.py", line 23, in <module>
+    import apt_pkg
+ModuleNotFoundError: No module named 'apt_pkg'
+
+Original exception was:
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 6, in __init__
+ValueError: Invalid airline code foobar
+>>>
+```
+
+Inheritance in Python is achieved by passing the base class to the child class definition:
+```python
+class Aircraft:
+
+    def num_seats(self):
+        rows, row_seats = self.seating_plan()
+        return len(rows) * len(row_seats)
+
+
+class AirbusA319(Aircraft):
+
+    def __init__(self, registration):
+        self._registration = registration
+
+    def registration(self):
+        return self._registration
+
+    def model(self):
+        return "Airbus A319"
+
+    def seating_plan(self):
+        return range(1, 23), "ABCDEF"
+```
+
+The child will inherit methods from the parent class:
+```python
+>>> a = AirbusA319("G-EZBT")
+>>> a.num_seats()
+132
+>>>
+```
 
 ---
 
