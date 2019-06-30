@@ -1834,6 +1834,18 @@ h.close()
 
 When finished, always remember to call the `.close()` method on the file.
 
+It is a good practice to wrap file operatations with `try`/`finally` blocks to ensure a file is always closed, even in exceptional cases:
+```python
+def read_series(filename):
+    try:
+        f = open(filename, mode="rt", encoding="utf-8")
+        return [ int(line.strip()) for line in f ]
+    finally:
+        f.close()
+```
+
+`.close()` is required to actually write the data.
+
 Documentation on [file objects](https://docs.python.org/3/glossary.html#term-file-object) can be found in the Python documentation.
 
 ### Files As Iterators
