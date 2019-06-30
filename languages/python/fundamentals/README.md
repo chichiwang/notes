@@ -74,6 +74,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Files As Iterators](#files-as-iterators)
   * [Context Managers](#context-managers)
   * [File Like Objects](#file-like-objects)
+* [Unit Tests](#unit-tests)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1884,6 +1885,31 @@ The `with` statement can be used with any type of object that implements the con
 
 ### File Like Objects
 There is a notion in Python of *file-like objects*. This is not a formal as a specific protocol, but thanks to the polymorphism afforded by duck-typing it works well in practice.
+
+## Unit Tests
+The Python Standard Library includes the [unittest](https://docs.python.org/3/library/unittest.html) module. Despite its name, this module a flexible framework for automating tests of all sorts: unit tests, integration tests, acceptance tests.
+
+The `unittest` module is built around a handful of key concepts:
+* A `TestCase` groups together related test functions
+  * Basic unit of test organization in `unittest`
+* `fixtures` run code before and/or after each test function
+  * Ensures the test environment is in an expected state before each test is run
+  * Clean up any resources that may have been used in a test method
+* `assertions` are specific tests for conditions and behaviors
+  * Can make simple boolean checks (e.g. `x.is_valid()`)
+  * Can perform object equality tests (e.g. `x == y`)
+  * Can verify the proper exceptions are thrown (e.g. `raise ValueError()`)
+  * If an `assertion` fails, the test function fails
+
+Fixtures that are available in the `TestCase` class:
+* `setUp`: run before each test method
+* `tearDown`: run after each test method
+
+The `setUp` and `tearDown` method names aren't in line with what [PEP 8](https://www.python.org/dev/peps/pep-0008/) prescribes. The `unittest` module predates the parts of PEP 8 that specify the convention of function names.
+
+To run your unit tests call `unittest.main()`: this searched for all `TestCase` subclasses in a module and execute all of their test methods.
+
+To see a working function with accompanying unit test, see [exercise 12](./exercises/12%20-%20unit%20tests/text_analyzer.py). To run it navigate into [exercises/12 - unit tests](./exercises/12%20-%20unit%20tests) and run `python3.7 text_analyzer.py`.
 
 ---
 
