@@ -70,6 +70,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
     * [Stateful Generator Functions](#stateful-generator-functions)
 * [Classes](#classes)
 * [Files And Resource Management](#files-and-resource-management)
+  * [Reading And Writing Text Files](#reading-and-writing-text-files)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1785,6 +1786,54 @@ The child will inherit methods from the parent class:
 To open a file use the built-in [open()](https://docs.python.org/3/library/functions.html#open) function. It is a good idea to always specify an encoding - do not rely on the default encoding.
 
 Python distinguishes beteween files opened in binary and text modes. Files opened in *binary* mode return and manipulate their content as `bytes` objects without any decoding. Binary mode files reflect the raw data in the file. A file opened in *text* mode treats its contents as if it contains text strings of the `str` type. By default *text* mode provides support for Python's [universal newlines](https://docs.python.org/2.3/whatsnew/node7.html).
+
+### Reading And Writing Text Files
+**Reading A File**
+```python
+f = open("wasteland.txt", mode="rt", encoding="utf-8")
+f.read(32)    # Reads the next (first) 32 characters of the file
+f.read()      # Reads all remaining text in a file
+f.read()      # After the end of file, further calls to read returns an empty string ''
+f.seek(0)     # Moves the filepointer back to the passed-in offset from the start of the file
+f.readline()  # Returns up to and including the next newline character, or end-of-file
+f.seek(0)
+f.readlines() # Returns a list of strings of all lines in the file, read
+f.close()     # Remember to close the file after reading
+```
+
+**Writing A File**
+```python
+g = open("wasteland.txt", mode="wt", encoding="utf-8")
+g.write("What are the roots that clutch, ")
+g.write("what branches grow\n")
+g.write("Out of this stony rubbish?")
+g.close()
+```
+
+In the open mode argument: `w` stands for *write* and `t` stands for *text mode*.
+
+Full list of [file open modes](https://docs.python.org/3/library/functions.html#open) are available in the Python documentation.
+
+It is the caller's responsibility to specify newlines where needed - there is no write-line method.
+
+**Appending A File**
+```python
+h = open("wasteland.txt", mode="at", encoding="utf-8")
+
+# Write an iterable series of lines to a file
+h.writelines(
+    ["Son of man,\n",
+     "You cannot say, or guess, ",
+     "for you know only,\n",
+     "A head of broken images, ",
+     "where the sun beats\n"])
+)
+h.close()
+```
+
+When finished, always remember to call the `.close()` method on the file.
+
+Documentation on [file objects](https://docs.python.org/3/glossary.html#term-file-object) can be found in the Python documentation.
 
 ---
 
