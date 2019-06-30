@@ -73,6 +73,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Reading And Writing Text Files](#reading-and-writing-text-files)
   * [Files As Iterators](#files-as-iterators)
   * [Context Managers](#context-managers)
+  * [File Like Objects](#file-like-objects)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1878,6 +1879,9 @@ def read_series(filename):
 ```
 
 The `with` operator ensures that `.close()` is called on the file object, either at the end of the operation or after an exception is raised.
+
+### File Like Objects
+There is a notion in Python of *file-like objects*. This is not a formal as a specific protocol, but thanks to the polymorphism afforded by duck-typing it works well in practice.
 
 ---
 
