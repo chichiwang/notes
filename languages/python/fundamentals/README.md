@@ -75,6 +75,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Context Managers](#context-managers)
   * [File Like Objects](#file-like-objects)
 * [Unit Tests](#unit-tests)
+* [Python Debugger](#python-debugger)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1910,6 +1911,27 @@ The `setUp` and `tearDown` method names aren't in line with what [PEP 8](https:/
 To run your unit tests call `unittest.main()`: this searched for all `TestCase` subclasses in a module and execute all of their test methods.
 
 To see a working function with accompanying unit test, see [exercise 12](./exercises/12%20-%20unit%20tests/text_analyzer.py). To run it navigate into [exercises/12 - unit tests](./exercises/12%20-%20unit%20tests) and run `python3.7 text_analyzer.py`.
+
+## Python Debugger
+Python's standard library includes a powerful debugger called [PDB](https://docs.python.org/3/library/pdb.html).
+
+Usage:
+```python
+import pdb
+
+pdb.set_trace()
+```
+
+The `.set_trace()` method places you into the debugger on the command line. To see available operations in the debugger type in `help`. For help with a specific command call `help` on that command (e.g. `help continue`).
+
+To run PDB as a script, passing a module to that script:
+```python
+>>> python3.7 -m pdb palindrome.py
+```
+
+The `-m` flag tells Python to execute the module `pdb` as a script, the remaining arguments are passed to the script. In this mode PDB will execute the module passed in, pausing before the first line. The `next` command can be used to step through the module.
+
+`continue` can be used to allow the program to run. `CTRL+C` can be used to halt execution again and the PDB prompt will once again become available. `where` can be used to determine where in the code PDB is currently paused at. `list` can be used to show the source code at this line. The `print` command can be used to inspect variables in their current state of execution.
 
 ---
 
