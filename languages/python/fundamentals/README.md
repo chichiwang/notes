@@ -72,6 +72,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
 * [Files And Resource Management](#files-and-resource-management)
   * [Reading And Writing Text Files](#reading-and-writing-text-files)
   * [Files As Iterators](#files-as-iterators)
+  * [Context Managers](#context-managers)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1865,6 +1866,18 @@ if __name__ == "__main__":
 ```
 
 The above module reads the filename from the command line argument and prints out each line of the specified file to the command line.
+
+### Context Managers
+The need for resource cleanup is common enough that Python implements a control-flow structure called *with-blocks* to support it. With-blocks can be used with any object that supports the [context manager protocol](https://www.python.org/dev/peps/pep-0343/), which includes file objects.
+
+Using the `with` operator we can simplify the try-finally convention:
+```python
+def read_series(filename):
+    with open(filename, mode="rt", encoding="utf-8") as f:
+        return [ int(line.strip()) for line in f ]
+```
+
+The `with` operator ensures that `.close()` is called on the file object, either at the end of the operation or after an exception is raised.
 
 ---
 
