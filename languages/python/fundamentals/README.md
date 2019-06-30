@@ -69,6 +69,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [Generators](#generators)
     * [Stateful Generator Functions](#stateful-generator-functions)
 * [Classes](#classes)
+* [Files And Resource Management](#files-and-resource-management)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1779,6 +1780,11 @@ The child will inherit methods from the parent class:
 132
 >>>
 ```
+
+## Files And Resource Management
+To open a file use the built-in [open()](https://docs.python.org/3/library/functions.html#open) function. It is a good idea to always specify an encoding - do not rely on the default encoding.
+
+Python distinguishes beteween files opened in binary and text modes. Files opened in *binary* mode return and manipulate their content as `bytes` objects without any decoding. Binary mode files reflect the raw data in the file. A file opened in *text* mode treats its contents as if it contains text strings of the `str` type. By default *text* mode provides support for Python's [universal newlines](https://docs.python.org/2.3/whatsnew/node7.html).
 
 ---
 
