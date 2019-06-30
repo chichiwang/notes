@@ -71,6 +71,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
 * [Classes](#classes)
 * [Files And Resource Management](#files-and-resource-management)
   * [Reading And Writing Text Files](#reading-and-writing-text-files)
+  * [Files As Iterators](#files-as-iterators)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1834,6 +1835,24 @@ h.close()
 When finished, always remember to call the `.close()` method on the file.
 
 Documentation on [file objects](https://docs.python.org/3/glossary.html#term-file-object) can be found in the Python documentation.
+
+### Files As Iterators
+*File objects* support the [iterator protocol](https://docs.python.org/3/c-api/iter.html). They can be used in for-loops and any other place an iterator can be used.
+
+```python
+import sys
+
+def main(filename):
+    f = open(filename, mode="rt", encoding="utf-8")
+    for line in f:
+        sys.stdout.write(line)
+    f.close()
+
+if __name__ == "__main__":
+  main(sys.argv[1])
+```
+
+The above module reads the filename from the command line argument and prints out each line of the specified file to the command line.
 
 ---
 
