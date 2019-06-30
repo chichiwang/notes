@@ -1880,6 +1880,8 @@ def read_series(filename):
 
 The `with` operator ensures that `.close()` is called on the file object, either at the end of the operation or after an exception is raised.
 
+The `with` statement can be used with any type of object that implements the context manager protocol. A list of standard library context manager helpers can be found in the documentation for [contextlib](https://docs.python.org/3/library/contextlib.html).
+
 ### File Like Objects
 There is a notion in Python of *file-like objects*. This is not a formal as a specific protocol, but thanks to the polymorphism afforded by duck-typing it works well in practice.
 
