@@ -78,6 +78,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
 * [Python Debugger](#python-debugger)
 * [Virtual Environemnts](#virtual-environments)
 * [Distributing Programs](#distributing-programs)
+* [Installing Third-Party Modules](#installing-third-party-modules)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1977,6 +1978,13 @@ To find out more about `distutils`, pass `--help` to `setup.py`:
 ```bash
 $ python setup.py --help
 ```
+
+## Installing Third-Party Modules
+Install third parties from the [Python Package Index](https://pypi.org/)(PyPI) using [Pip](https://pypi.org/project/pip/). Pip is included and installed with Python since version 3.4.
+
+Pip can search for and install packages from PyPI (also know as the *CheeseShop*).
+
+For specialist uses such as numerical or scientific computing which rely on the NumPy or SciPy packages, [Anaconda](https://www.anaconda.com/distribution/) may be a good alternative to Pip.
 
 ---
 
