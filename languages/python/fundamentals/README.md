@@ -76,6 +76,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
   * [File Like Objects](#file-like-objects)
 * [Unit Tests](#unit-tests)
 * [Python Debugger](#python-debugger)
+* [Virtual Environemnts](#virtual-environments)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1932,6 +1933,9 @@ To run PDB as a script, passing a module to that script:
 The `-m` flag tells Python to execute the module `pdb` as a script, the remaining arguments are passed to the script. In this mode PDB will execute the module passed in, pausing before the first line. The `next` command can be used to step through the module.
 
 `continue` can be used to allow the program to run. `CTRL+C` can be used to halt execution again and the PDB prompt will once again become available. `where` can be used to determine where in the code PDB is currently paused at. `list` can be used to show the source code at this line. The `print` command can be used to inspect variables in their current state of execution.
+
+## Virtual Environments
+Introductory notes on Python virtual environments in [VirtualEnv notes](../virtualenv). More detailed information can be found in the [*Python: Getting Started* notes](https://github.com/chichiwang/notes/tree/master/languages/python/getting_started#virtual-environments).
 
 ---
 
