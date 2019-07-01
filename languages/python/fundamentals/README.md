@@ -1,4 +1,4 @@
-# Python Fundamentals (WIP)
+# Python Fundamentals
 **Author**: [Chi-chi Wang](https://github.com/chichiwang)
 
 Date: June 2019
@@ -1985,7 +1985,3 @@ Install third parties from the [Python Package Index](https://pypi.org/)(PyPI) u
 Pip can search for and install packages from PyPI (also know as the *CheeseShop*).
 
 For specialist uses such as numerical or scientific computing which rely on the NumPy or SciPy packages, [Anaconda](https://www.anaconda.com/distribution/) may be a good alternative to Pip.
-
----
-
-**WIP** Course not yet completed

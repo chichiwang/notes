@@ -10,5 +10,5 @@ Explorations into the Python Programming Language.
 * **Courses**
   * [Getting Started](./getting_started)
     * **Level**: *Beginner*
-  * [Python Fundamentals](./fundamentals) - WIP
+  * [Python Fundamentals](./fundamentals)
     * **Level**: *Intermediate*
