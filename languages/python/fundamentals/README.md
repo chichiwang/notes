@@ -77,6 +77,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/python-fundame
 * [Unit Tests](#unit-tests)
 * [Python Debugger](#python-debugger)
 * [Virtual Environemnts](#virtual-environments)
+* [Distributing Programs](#distributing-programs)
 
 ## Overview
 Python is a programming language developed by Guido van Rossum in the late 1980's in the Netherlands. It is open-source with a very active community. Today it is maintained by the Python Software Foundation.
@@ -1936,6 +1937,46 @@ The `-m` flag tells Python to execute the module `pdb` as a script, the remainin
 
 ## Virtual Environments
 Introductory notes on Python virtual environments in [VirtualEnv notes](../virtualenv). More detailed information can be found in the [*Python: Getting Started* notes](https://github.com/chichiwang/notes/tree/master/languages/python/getting_started#virtual-environments).
+
+## Distributing Programs
+The [distutils](https://docs.python.org/3/library/distutils.html) package provides support for building and installing additional modules into a Python installation. It allows you to write a simple Python script which knows how to install your Python modules into any Python installation.
+
+By convention this setup file is called `setup.py` and it exists at the top of your project structure. This script can be executed to perform the installation.
+
+Sample `setup.py`:
+```python
+from distutils.core import setup
+
+setup(
+    name = "palindrome",
+    version = "1.0",
+    py_modules = ["palindrome"],
+
+    # metadata
+    author = "Austin Bingham",
+    author_email = "austin@sixty-north.com",
+    description = "A module for finding palindromic integers.",
+    license = "Public domain",
+    keywords = "example",
+)
+```
+
+`distutils` setup can also bundle your Python script up into packages, that are easy to distribute to others, in a number of distribution formats.
+
+This is done with the `sdist` (source distribution) command:
+```bash
+$ python setup.py sdist --format zip
+```
+
+To see all of the formats supported by `sdist` you can use:
+```bash
+$ python setup.py sdist --help-formats
+```
+
+To find out more about `distutils`, pass `--help` to `setup.py`:
+```bash
+$ python setup.py --help
+```
 
 ---
 
