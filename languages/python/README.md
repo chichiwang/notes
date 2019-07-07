@@ -12,3 +12,4 @@ Explorations into the Python Programming Language.
     * **Level**: *Beginner*
   * [Python Fundamentals](./fundamentals)
     * **Level**: *Intermediate*
+* [**Recommended Resources**](./resources)
