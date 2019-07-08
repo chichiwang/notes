@@ -33,7 +33,7 @@ For example: The [README.md](./paradigms/declarative/README.md) for [Declarative
 
 ## In Progress
 Notes currently in progress:
-* **TODO**: Start new lesson and notes
+* [Unit Testing With Python](./languages/python/unit_testing)
 
 ## Topics of Interest
 * [Decision Fatigue](https://en.wikipedia.org/wiki/Decision_fatigue)

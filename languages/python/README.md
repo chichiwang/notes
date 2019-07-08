@@ -12,4 +12,6 @@ Explorations into the Python Programming Language.
     * **Level**: *Beginner*
   * [Python Fundamentals](./fundamentals)
     * **Level**: *Intermediate*
+  * [Unit Testing With Python](./unit_testing) - WIP
+    * **Level**: *Intermediate*
 * [**Recommended Resources**](./resources)
