@@ -21,6 +21,7 @@ For example: The [README.md](./paradigms/declarative/README.md) for [Declarative
 * [**Computing Concepts**](./computing)
   * [Containers](./computing/containers)
   * [Non-Relational Databases](./computing/nosql)
+  * [Structure and Interpretation of Computer Progams](./computing/sicp)
 * [**Programming Languages**](./languages)
   * [Elm](./languages/elm)
   * [Haskell](./languages/haskell)
@@ -34,6 +35,7 @@ For example: The [README.md](./paradigms/declarative/README.md) for [Declarative
 ## In Progress
 Notes currently in progress:
 * [Unit Testing With Python](./languages/python/unit_testing)
+* [Structure and Interpretation of Computer Programs](./computing/sicp)
 
 ## Topics of Interest
 * [Decision Fatigue](https://en.wikipedia.org/wiki/Decision_fatigue)
