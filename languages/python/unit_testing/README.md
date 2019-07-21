@@ -5,6 +5,8 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/unit-testing-p
 
 ## Table of Contents
 * [Vocabulary](#vocabulary)
+* [First Test Case](#first-test-case)
+* [Test Runner](#test-runner)
 
 ## Vocabulary
 A **unit test** checks the behavior of a *system*, *elements of code*, and *behavior of code*. An **element of code** refers to a *method*, a *function*, a *module*, or a *class*.
@@ -16,3 +18,8 @@ By the strict definition of a *unit test*, a test is **not** a unit test if it u
 Other tests that utilize external resources may be referred to as *integration tests*, *functional tests*, or *acceptance tests*.
 
 A **test case** tests a specific behavior of a system. Each *test case* should be able to be run independently of others as many times as necessary, and clearly report a *pass* or *fail* result. It should not contain side effects that other test cases will rely on. The name of a test case should be explanatory to readers of the test, providing clarity to what is being tested.
+
+## First Test Case
+A simple [example of a unit test with one test case](./exercises/00%20-%20simple%20test%20case/test_phonebook_00.py) in the [exercises directory](./exercises).
+
+To run the example test case, navigate into the [test directory](./exercises/00%20-%20simple%20test%20case) and run the following command: `python3.7 -m unittest`.
