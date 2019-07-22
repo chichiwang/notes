@@ -1,6 +1,9 @@
 # package directories
 .env/
 
+# Python cache
+__pycache__
+
 # Editor files
 *.swp
 *.swo
