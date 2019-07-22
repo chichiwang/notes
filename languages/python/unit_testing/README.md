@@ -23,3 +23,21 @@ A **test case** tests a specific behavior of a system. Each *test case* should b
 A simple [example of a unit test with one test case](./exercises/00%20-%20simple%20test%20case/test_phonebook_00.py) in the [exercises directory](./exercises).
 
 To run the example test case, navigate into the [test directory](./exercises/00%20-%20simple%20test%20case) and run the following command: `python3.7 -m unittest`.
+
+**NOTE**: Within a `unittest` class, a test case method name must begin with `test_` to be picked up by the test runner.
+
+## Test Runner
+A **test runner** is a program that executes test cases and reports the results. In the [unittest module](https://docs.python.org/3/library/unittest.html) the command line test runner is built-in: `python3.7 -m unittest`. It will discover and run all of the unit tests in that directory and below.
+
+A test case should be designed independently of how it is going to be run: the developer should not have to care which test runner is going to be used while designing the test case.
+
+A new test case has been added to [exercise 01](./exercises/01%20-%20assertEqual) demonstrating the use of [unittest.assertEqual](https://docs.python.org/3/library/unittest.html#unittest.TestCase.assertEqual):
+
+```python
+def test_lookup_entry_by_name(self):
+    phonebook = Phonebook()
+    phonebook.add("Bob", "12345")
+    self.assertEqual("12345", phonebook.lookup("Bob"))
+```
+
+The first argument to `assertEqual` is the *expected result* and the second argument is the *actual result*.
