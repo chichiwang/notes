@@ -10,6 +10,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/unit-testing-p
 * [Test Suite](#test-suite)
 * [Skipping A Test Case](#skipping-a-test-case)
 * [setUp and tearDown](#setup-and-teardown)
+* [Anatomy of a Test Case](#anatomy-of-a-test-case)
 
 ## Vocabulary
 A **unit test** checks the behavior of a *system*, *elements of code*, and *behavior of code*. An **element of code** refers to a *method*, a *function*, a *module*, or a *class*.
@@ -96,3 +97,17 @@ OK (skipped=1)
 [setUp](https://docs.python.org/3/library/unittest.html#unittest.TestCase.setUp) and [tearDown](https://docs.python.org/3/library/unittest.html#unittest.TestCase.tearDown) are methods called immediately before and after a test method is called, respectively.
 
 These methods are used to set up and clean up *test fixtures*. A *test fixture* is a piece of code that can construct and configure the system of the test to get it ready to be tested, and to clean up afterwards. It allows for the separation of concerns so that the test cases can concentrate on specifying and checking a particular behavior, and not be cluttered with general setup details.
+
+## Anatomy of a Test Case
+A *test case* generally has a *name*, and then four parts: *arrange*, *act*, *assert*, and *cleanup*.
+
+The *name* of your test case is very important: it acts as a headline summarizing the behavior your test case is looking for. It is the first thing you see when a test case fails - the test case name should give you a good indication of which functionality is not working.
+
+The parts of a test case are as follows:
+**Arrange**: Set up the object to be tested, as well as collaborators. This section of the test can be split up between the test fixture and the test case itself.
+
+**Act**: Excercise functionality of the object. This should usually only be one line of code, because a unit test is only checking one behavior.
+
+**Assert**: Make claims about the object and its collaborators. Often there is only one assertion needed, because you are only checking one behavior.
+
+**Cleanup**: Release resources, restore to the original state. Usually happens in the `tearDown` part of the test fixture.
