@@ -41,3 +41,24 @@ def test_lookup_entry_by_name(self):
 ```
 
 The first argument to `assertEqual` is the *expected result* and the second argument is the *actual result*.
+
+Another new test case added, `test_missing_entry_raises_KeyError` demonstrates the use of [unittest.assertRaises](https://docs.python.org/3/library/unittest.html#unittest.TestCase.assertRaises).
+
+You can run a test case with the CLI in verbose mode by changing into the test directory and running `python3.7 -m unittest -v`. The `-v` flag tells Python's unit test runner to run in verbose mode.
+
+This mode will list out all of the test cases being run:
+```bash
+test_create_phonebook (test_phonebook_01.PhonebookTest_01) ... ok
+test_lookup_entry_by_name (test_phonebook_01.PhonebookTest_01) ... ok
+test_missing_entry_raises_KeyError (test_phonebook_01.PhonebookTest_01) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK
+```
+
+To run a single test case, you can pass in the `-q` flag to the CLI with the fully qualified name of the test case:
+```bash
+> python3.7 -m unittest -q test_phonebook_01.PhonebookTest_01.test_lookup_entry_by_name
+```
