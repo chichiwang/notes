@@ -8,6 +8,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/unit-testing-p
 * [First Test Case](#first-test-case)
 * [Test Runner](#test-runner)
 * [Test Suite](#test-suite)
+* [Skipping A Test Case](#skipping-a-test-case)
 
 ## Vocabulary
 A **unit test** checks the behavior of a *system*, *elements of code*, and *behavior of code*. An **element of code** refers to a *method*, a *function*, a *module*, or a *class*.
@@ -66,3 +67,26 @@ To run a single test case, you can pass in the `-q` flag to the CLI with the ful
 
 ## Test Suite
 A *test suite* is a number of test cases that are being executed together by a test runner. A test suite can be chosen from a number of test classes, which themselves contain test cases.
+
+## Skipping A Test Case
+To skip a test case, decorate the test case with `@unittest.skip()`:
+```python
+@unittest.skip("Output message")
+def test_test_case_to_skip(self):
+    pass
+```
+
+An example of a skipped test case can be found in [exercise 02](./exercises/02%20-%20skip%20test%20case) under the test file [test_phonebook_02.py](./exercises/02%20-%20skip%20test%20case/test_phonebook_02.py). 
+
+Running this test in verbose mode via CLI, `python3.7 -m unittest -v`, will display the skipped test in the output:
+```bash
+test_create_phonebook (test_phonebook_02.PhonebookTest_02) ... ok
+test_empty_phonebook_is_consistent (test_phonebook_02.PhonebookTest_02) ... skipped 'WIP'
+test_lookup_entry_by_name (test_phonebook_02.PhonebookTest_02) ... ok
+test_missing_entry_raises_KeyError (test_phonebook_02.PhonebookTest_02) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK (skipped=1)
+```
