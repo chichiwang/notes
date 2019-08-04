@@ -7,6 +7,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/unit-testing-p
 * [Vocabulary](#vocabulary)
 * [First Test Case](#first-test-case)
 * [Test Runner](#test-runner)
+* [Test Suite](#test-suite)
 
 ## Vocabulary
 A **unit test** checks the behavior of a *system*, *elements of code*, and *behavior of code*. An **element of code** refers to a *method*, a *function*, a *module*, or a *class*.
@@ -62,3 +63,6 @@ To run a single test case, you can pass in the `-q` flag to the CLI with the ful
 ```bash
 > python3.7 -m unittest -q test_phonebook_01.PhonebookTest_01.test_lookup_entry_by_name
 ```
+
+## Test Suite
+A *test suite* is a number of test cases that are being executed together by a test runner. A test suite can be chosen from a number of test classes, which themselves contain test cases.
