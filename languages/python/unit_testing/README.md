@@ -9,6 +9,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/unit-testing-p
 * [Test Runner](#test-runner)
 * [Test Suite](#test-suite)
 * [Skipping A Test Case](#skipping-a-test-case)
+* [setUp and tearDown](#setup-and-teardown)
 
 ## Vocabulary
 A **unit test** checks the behavior of a *system*, *elements of code*, and *behavior of code*. An **element of code** refers to a *method*, a *function*, a *module*, or a *class*.
@@ -90,3 +91,8 @@ Ran 4 tests in 0.001s
 
 OK (skipped=1)
 ```
+
+## setUp and tearDown
+[setUp](https://docs.python.org/3/library/unittest.html#unittest.TestCase.setUp) and [tearDown](https://docs.python.org/3/library/unittest.html#unittest.TestCase.tearDown) are methods called immediately before and after a test method is called, respectively.
+
+These methods are used to set up and clean up *test fixtures*. A *test fixture* is a piece of code that can construct and configure the system of the test to get it ready to be tested, and to clean up afterwards. It allows for the separation of concerns so that the test cases can concentrate on specifying and checking a particular behavior, and not be cluttered with general setup details.
