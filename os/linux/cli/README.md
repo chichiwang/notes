@@ -10,6 +10,7 @@ A brief overview of the Linux command line. These notes follow along with the [P
 * [Navigating the File System](#navigating-the-file-system)
   * [Working with Files and Directories](#working-with-files-and-directories)
   * [Standard Streams](#standard-streams)
+  * [Archives](#archives)
 
 ## Overview
 The past and future of system administration are heavily skewed towards the command line, over graphical interfaces. The reasons for this are: efficiency and infrastructure automation.
@@ -80,3 +81,22 @@ You have three standard streams available to you on the command line:
 You can use the numeric codes for these standard streams to designate where you would like to read the input to a file from:
 * `echo "Hello" 1> file.txt` would write "Hello" from Standard Output to the file `file.txt`
 * `wget invalid.address 2> errors.txt` would write the error returned by `wget` to the file `errors.txt`
+
+### Archives
+The most common tool for archiving and compression on linux is `tar`. `tar` used to stand for "tape archive". While tape archives have largely disappeared, `tar` is still in widespread use.
+
+A common compression algorithm used in unix/linux environments is `gzip`. You will often see archive files with the extensions `.tar.gz`.
+
+To unpack such a file, you would run `tar xzf archive.tar.gz`. The argument `x` tells `tar` we want to *extract* the archive. The `z` argument is used to decompress zipped archives. The `f` argument stands for *file* denoting that the filename will be passed in as the next argument.
+
+To archive a directory you would run `tar czf newarchive.tar.gz dirname/`. The argument `c` tells `tar` we want to *compress* a file/directory.
+
+You can also compress a directory without `gzip` and then `gzip` after the fact:
+```
+> tar cf newarchive.tar dirname/
+> gzip newarchive.tar
+> ls
+newarchive.tar.gz
+```
+
+A `.zip` archive can be created using the `zip` command: `zip filename.zip dirname/`. The `unzip` command can be used to unzip `.zip` files.
