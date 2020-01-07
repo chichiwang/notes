@@ -9,6 +9,7 @@ A brief overview of the Linux command line. These notes follow along with the [P
   * [Using Linux Help Resources](#using-linux-help-resources)
 * [Navigating the File System](#navigating-the-file-system)
   * [Working with Files and Directories](#working-with-files-and-directories)
+  * [Standard Streams](#standard-streams)
 
 ## Overview
 The past and future of system administration are heavily skewed towards the command line, over graphical interfaces. The reasons for this are: efficiency and infrastructure automation.
@@ -66,3 +67,16 @@ The `>` command is used to write the output of a command to a file. A single `>`
 `head` will print the first 10 lines of a file, while `tail` will print the last 10 lines.
 
 The easiest way to find files is using `locate`. You can pipe the output of the results to other commands in order to make them easier to parse through.
+
+### Standard Streams
+You have three standard streams available to you on the command line:
+
+| Name            | Designation | Numeric Code |
+| --------------- | ----------- | ------------ |
+| Standard Input  | stdin       | 0            |
+| Standard Output | stdout      | 1            |
+| Standard Error  | stderr      | 2            |
+
+You can use the numeric codes for these standard streams to designate where you would like to read the input to a file from:
+* `echo "Hello" 1> file.txt` would write "Hello" from Standard Output to the file `file.txt`
+* `wget invalid.address 2> errors.txt` would write the error returned by `wget` to the file `errors.txt`
