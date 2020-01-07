@@ -11,6 +11,7 @@ A brief overview of the Linux command line. These notes follow along with the [P
   * [Working with Files and Directories](#working-with-files-and-directories)
   * [Standard Streams](#standard-streams)
   * [Archives](#archives)
+  * [Kernel Modules and Peripherals](#kernal-modules-and-peripherals)
 
 ## Overview
 The past and future of system administration are heavily skewed towards the command line, over graphical interfaces. The reasons for this are: efficiency and infrastructure automation.
@@ -57,6 +58,8 @@ file10 file11
 
 Using the `?` will match only 1 more character on top of the name "file".
 
+You can use backticks to interpolate command outputs into arguments for other commands: `` ls -al /lib/modules/`uname -r` `` will list out the conents of the kernel modules directory for your current running version of the kernel.
+
 ```
 > rmdir newdir/
 ```
@@ -100,3 +103,19 @@ newarchive.tar.gz
 ```
 
 A `.zip` archive can be created using the `zip` command: `zip filename.zip dirname/`. The `unzip` command can be used to unzip `.zip` files.
+
+### Kernel Modules and Peripherals
+When troubleshooting problems with your peripherals there are two main steps:
+1. Ensure that the system recognizes the device.
+2. Ensure that the proper kernel modules is loaded that will allow linux to comminicate with the device and expose it to users.
+
+`lsusb` will list all connected/recognized usb devices.
+`lspci` will display all devices connected via pci slots.
+`lshw` will list the whole hardware range in one output.
+`lsmod` will display all of the modules currently loaded.
+
+The software files that make up kernel files are usually kept in `/lib/modules`. The module you want to use will depend on the version of the linux kernel that you are running.
+
+Running `uname -r` will list out the version of the kernel that you are running currently.
+
+`modprobe` followed by a module name will load a kernel module if it is not already currently loaded.
