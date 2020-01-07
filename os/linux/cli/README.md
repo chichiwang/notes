@@ -5,6 +5,7 @@ A brief overview of the Linux command line. These notes follow along with the [P
 
 ## Table of Contents
 * [Overview](#overview)
+  * [The Terminal and Shell](#the-terminal-and-shell)
   * [Using Linux Help Resources](#using-linux-help-resources)
 
 ## Overview
@@ -12,7 +13,18 @@ The past and future of system administration are heavily skewed towards the comm
 
 Efficiency: the speed at which you can accomplish rote, repetitive tasks favor the command line.
 
-Infrastructure Automation: managing infrastructure is best done through automation and that is best executed through scripting, often through terminal sessions. Remote scripting loves command lines
+Infrastructure Automation: managing infrastructure is best done through automation and that is best executed through scripting, often through terminal sessions. Remote scripting loves command lines.
+
+### The Terminal and Shell
+Whenever you open a *terminal* window from a Linux desktop a new *shell* session is created for you using a hidden settings file in your home directory: `.bashrc`.
+
+`.bashrc` only applies settings to *non-login shell* sessions. These are shell sessions where you opened up the terminal from the system and there was no requirement for you to log into the session.
+
+A *login shell*, by contrast, is a shell session you remotely logged into. Those sessions are generally configured other files (including `.profile`) in your home directory.
+
+There are additional profile files in the `/etc` directory, where system files are configured.
+
+To see the default shell set for each user, check the `/etc/passwd` file. There is a single line for each system and user.
 
 ### Using Linux Help Resources
 Most programs in Linux come with their own manual files. These can be accessed via the command `man`.
