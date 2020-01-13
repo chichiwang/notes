@@ -38,7 +38,6 @@ For example: The [README.md](./paradigms/declarative/README.md) for [Declarative
 Notes currently in progress:
 * [Unit Testing With Python](./languages/python/unit_testing)
 * [Structure and Interpretation of Computer Programs](./computing/sicp)
-* [Getting Started with the Linux Command Line](./os/linux/cli)
 
 ## Topics of Interest
 * [Decision Fatigue](https://en.wikipedia.org/wiki/Decision_fatigue)
