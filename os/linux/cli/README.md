@@ -14,6 +14,7 @@ A brief overview of the Linux command line. These notes follow along with the [P
   * [Kernel Modules and Peripherals](#kernal-modules-and-peripherals)
 * [Network Connectivity](#network-connectivity)
   * [IPv4 vs IPv6](#ipv4-vs-ipv6)
+  * [Domain Name System Configuration](#domain-name-system-configuration)
 
 ## Overview
 The past and future of system administration are heavily skewed towards the command line, over graphical interfaces. The reasons for this are: efficiency and infrastructure automation.
@@ -140,3 +141,22 @@ Running `uname -r` will list out the version of the kernel that you are running 
 IPv4 address are made up of four 8-bit numbers. This allows for a possible 2^32 (~4 billion) combinations. The number of devices connected to the internet has already grown beyond 4 billion.
 
 IPv6 addresses are 128-bit numbers made up of 8 groups of 4 hexadecimal numbers. This allows for exponentially more possible addresses than IPv4.
+
+### Domain Name System Configuration
+The domain name system (DNS) was created to map numeric addresses to human readable names.
+
+There are databases accessible to every network that contain an up-to-date index of names. The services that maintain these databases are called *DNS servers*.
+
+You can tell if your computer has access to a DNS server by trying to request a page from a DNS name (such as [google.com](http://www.google.com)).
+
+The `host` command can be used to translate DNS to IP and IP back to DNS (ex: `host www.google.com`).
+
+You can also use `ping` to check the health of your network connection. `ping` is a command that will send a short message to a server with a request that the message is echoed back. This lets us know the address is live.
+
+`ping 8.8.8.8` (the IP of one of Google's servers) will work just as well as pinging a DNS address (`ping www.google.com`).
+
+If pinging an IP address works, but pinging a DNS address does not, this means there is something wrong with your connection to the DNS server, or there is something wrong with the DNS server itself.
+
+On some Linux distributions you manage your DNS settings from the `/etc/resolve.conf` file.
+
+You can create/manage your own DNS indicies by editing the `/etc/hosts` file. This configuration is used alongside any DNS servers that you use.
