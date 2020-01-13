@@ -18,6 +18,7 @@ A brief overview of the Linux command line. These notes follow along with the [P
   * [Remote Connections and SSH](#remote-connections-and-ssh)
 * [Linux Scripting](#linux-scripting)
   * [Scripting Basics](#scripting-basics)
+  * [Loops and Flow Controls](#loops-and-flow-controls)
 
 ## Overview
 The past and future of system administration are heavily skewed towards the command line, over graphical interfaces. The reasons for this are: efficiency and infrastructure automation.
@@ -201,3 +202,91 @@ The first line of every script must be `#!/bin/bash` to tell Linux that it is an
 `read` will read user input and assign it to a variable (ie: `read var1`).
 
 You can end the program with `exit 0` to tell the script to terminate and return the exit code 0 (indicating success). This is not always necessary.
+
+### Loops and Flow Controls
+**For loops**
+
+```bash
+#!/bin/bash
+for i in {0..10..2}
+  do
+    echo "i is now $i"
+  done
+```
+
+The above script assigns `i` to a number between 0 and 10 in increments of 2.
+
+```bash
+#!/bin/bash
+for filename in file1.txt file2.txt file3.txt
+  do
+    echo "new line!" >> $filename
+  done
+```
+
+The above script will append the same string to the end of each file listed.
+
+**If statements**
+
+```bash
+#!/bin/bash
+echo "What's your favorite color?"
+read text1
+echo "What's your best friend's favorite color?"
+read text 2
+
+if test $text1 != $text2; then
+  echo "I guess opposites attract."
+else
+  echo "You two do think alike!"
+fi
+```
+
+The above script will take in two text inputs and conditionalize the output string based on their equality.
+
+**While lops**
+
+```bash
+#!/bin/bash
+declare -i counter
+counter = 10
+
+while [ $counter -gt 2 ]; do
+  echo "The counter is " $counter
+  counter=counter-1
+done
+
+exit 0
+```
+
+The above script will run the loop, echoing the `counter` until the counter is no longer greather than 2.
+
+**Case statement**
+
+```bash
+#!/bin/bash
+echo "What's the weather tomorrow going to be like?"
+read weather
+
+case $weather in
+  sunny | warm ) echo "Nice! I love it when it's " $weather
+  ;;
+  cloudy | cool ) echo "Not bad..." $weather " is OK, too."
+  ;;
+  rainy | cold ) echo "Yuk!" $weather " weather is depressing."
+  ;;
+  * ) echo "Sorry, I'm not familiar with that weather system."
+  ;;
+esac
+
+exit 0
+```
+
+The above script will read a user input, then conditionalize the output based on the input string. The `*` is your catch-all block.
+
+**Built-ins vs External commands**
+A `built-in` is a program that is built into the bash scripting environment. Using built-ins from your script will often create less system overhead and use up less sub-processes.
+
+Running `man builtins` will give you a lot of information you need about using bash built-ins.
+
+Sometimes you will need external commands in your bash scripting. You can look up how to do that (it's not covered in this course).
