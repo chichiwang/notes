@@ -15,6 +15,7 @@ A brief overview of the Linux command line. These notes follow along with the [P
 * [Network Connectivity](#network-connectivity)
   * [IPv4 vs IPv6](#ipv4-vs-ipv6)
   * [Domain Name System Configuration](#domain-name-system-configuration)
+  * [Remote Connections and SSH](#remote-connections-and-ssh)
 
 ## Overview
 The past and future of system administration are heavily skewed towards the command line, over graphical interfaces. The reasons for this are: efficiency and infrastructure automation.
@@ -160,3 +161,24 @@ If pinging an IP address works, but pinging a DNS address does not, this means t
 On some Linux distributions you manage your DNS settings from the `/etc/resolve.conf` file.
 
 You can create/manage your own DNS indicies by editing the `/etc/hosts` file. This configuration is used alongside any DNS servers that you use.
+
+### Remote Connections and SSH
+The [OpenSSH package](https://www.openssh.com/) operates using the [Secure Shell Protocol](https://www.ssh.com/ssh/protocol).
+
+This package was designed to solve two big problems:
+1. Allowing system administrators to access remote and virtual servers so they can get their work done.
+2. Securing the data that flows back and forth as a result of that access against snooping.
+
+Why not access the servers physically? Servers tend to not have displays or keyboards attached. They are often mounte with many other servers on racks. Virtual machines, which make up an overwhelming majority of running servers, don't even have physical ports to connect keyboards or displays. Also, many server workloads are running offsite, far away from those who administer them.
+
+SSH secures your connection through *session encryption*. All of the data packets sent between the two machines will be scrambled.
+
+OpenSSH is so popular it is even available natively on Windows 10. SSH has been a staple of Linux for decades.
+
+To get an OpenSSH session going you will need to install packages on both machines. The server will run the `openssh-server` package while the client will run the `openssh-client` (or `openssh-clients` on CentOS) package.
+
+The configuartions for both server and client are found in the `/etc/ssh` directory. `sshd_config` is the configuration used to manage your system's ssh host behavior. `ssh_config` will handle how your system will login as a client on remote hosts.
+
+By default SSH servers listen on port 22.
+
+Another useful tool is `scp`. `scp` stands for *secure copy*. It operates on top of your SSH infrastructure to securely copy files between machines.
