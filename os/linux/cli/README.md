@@ -12,6 +12,8 @@ A brief overview of the Linux command line. These notes follow along with the [P
   * [Standard Streams](#standard-streams)
   * [Archives](#archives)
   * [Kernel Modules and Peripherals](#kernal-modules-and-peripherals)
+* [Network Connectivity](#network-connectivity)
+  * [IPv4 vs IPv6](#ipv4-vs-ipv6)
 
 ## Overview
 The past and future of system administration are heavily skewed towards the command line, over graphical interfaces. The reasons for this are: efficiency and infrastructure automation.
@@ -119,3 +121,22 @@ The software files that make up kernel files are usually kept in `/lib/modules`.
 Running `uname -r` will list out the version of the kernel that you are running currently.
 
 `modprobe` followed by a module name will load a kernel module if it is not already currently loaded.
+
+## Network Connectivity
+`ip route show` can be used to show all of your network connections.
+
+`dhclient` can be used to show if there is a DHCP (dynamic host configuration protocol) server on the network that can assign your machine an ip address. This will not show anything if you already have an active connection.
+
+`ip addr` can be used to show you your own ip address. The loopback address listed is a virtual loopback interface that allows connectivity to local resources (usually 127.0.0.1).
+
+`netstat -i` will display all of your network interfaces as well as usage statistics. `netstat -l` will display all of the open and listening ports.
+
+**Older commands**
+`route` will display similar output as `ip route show`.
+
+`ipconfig` will display pretty much the same information as `ip addr`.
+
+### IPv4 vs IPv6
+IPv4 address are made up of four 8-bit numbers. This allows for a possible 2^32 (~4 billion) combinations. The number of devices connected to the internet has already grown beyond 4 billion.
+
+IPv6 addresses are 128-bit numbers made up of 8 groups of 4 hexadecimal numbers. This allows for exponentially more possible addresses than IPv4.
