@@ -11,7 +11,7 @@ A brief overview of the Linux command line. These notes follow along with the [P
   * [Working with Files and Directories](#working-with-files-and-directories)
   * [Standard Streams](#standard-streams)
   * [Archives](#archives)
-  * [Kernel Modules and Peripherals](#kernal-modules-and-peripherals)
+  * [Kernel Modules and Peripherals](#kernel-modules-and-peripherals)
 * [Network Connectivity](#network-connectivity)
   * [IPv4 vs IPv6](#ipv4-vs-ipv6)
   * [Domain Name System Configuration](#domain-name-system-configuration)
@@ -19,6 +19,7 @@ A brief overview of the Linux command line. These notes follow along with the [P
 * [Linux Scripting](#linux-scripting)
   * [Scripting Basics](#scripting-basics)
   * [Loops and Flow Controls](#loops-and-flow-controls)
+  * [Built-Ins vs External Commands](#built-ins-vs-external-commands)
 
 ## Overview
 The past and future of system administration are heavily skewed towards the command line, over graphical interfaces. The reasons for this are: efficiency and infrastructure automation.
@@ -244,7 +245,7 @@ fi
 
 The above script will take in two text inputs and conditionalize the output string based on their equality.
 
-**While lops**
+**While loops**
 
 ```bash
 #!/bin/bash
@@ -284,7 +285,8 @@ exit 0
 
 The above script will read a user input, then conditionalize the output based on the input string. The `*` is your catch-all block.
 
-**Built-ins vs External commands**
+### Built-Ins vs External Commands
+
 A `built-in` is a program that is built into the bash scripting environment. Using built-ins from your script will often create less system overhead and use up less sub-processes.
 
 Running `man builtins` will give you a lot of information you need about using bash built-ins.
