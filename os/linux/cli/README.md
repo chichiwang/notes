@@ -16,6 +16,8 @@ A brief overview of the Linux command line. These notes follow along with the [P
   * [IPv4 vs IPv6](#ipv4-vs-ipv6)
   * [Domain Name System Configuration](#domain-name-system-configuration)
   * [Remote Connections and SSH](#remote-connections-and-ssh)
+* [Linux Scripting](#linux-scripting)
+  * [Scripting Basics](#scripting-basics)
 
 ## Overview
 The past and future of system administration are heavily skewed towards the command line, over graphical interfaces. The reasons for this are: efficiency and infrastructure automation.
@@ -182,3 +184,20 @@ The configuartions for both server and client are found in the `/etc/ssh` direct
 By default SSH servers listen on port 22.
 
 Another useful tool is `scp`. `scp` stands for *secure copy*. It operates on top of your SSH infrastructure to securely copy files between machines.
+
+## Linux Scripting
+On Linux script live somewhere between programming code and command line execution. Bash scripts are command-line friendly: you can use just about any of the terminal commands you are familiar with, in exactly the same ways. They also have some of the conveniences associated with programming: user inputs, dynamic variables, and loops.
+
+### Scripting Basics
+
+Giving script files a `.sh` extension is a useful convention for keeping track of script files, but is not actually necessary.
+
+The first line of every script must be `#!/bin/bash` to tell Linux that it is an executable script and that it uses the `/bin/bash` shell interpreter.
+
+`declare -i var1` declares `var1` as an integer. Without the `-i` flag, `declare` assumes the variables will contain text strings.
+
+`echo` will output a string to the STDOUT stream.
+
+`read` will read user input and assign it to a variable (ie: `read var1`).
+
+You can end the program with `exit 0` to tell the script to terminate and return the exit code 0 (indicating success). This is not always necessary.
