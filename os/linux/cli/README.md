@@ -4,3 +4,5 @@
 * **Courses**
   * [Getting Started](./getting-started)
     * **Level**: Beginner
+  * [Fundamentals](./fundamentals) - WIP
+    * **Level**: Beginner
