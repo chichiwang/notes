@@ -7,6 +7,7 @@ An overview of the fundamentals of the Linux command line. These notes follow al
 * [Working On The Command Line](#working-on-the-command-line)
   * [Physical Consoles](#physical-consoles)
   * [Accessing Virutal Consoles](#accessing-virtual-consoles)
+  * [Pseudo Consoles](#pseudo-consoles)
 * [Additional Resources](#additional-resources)
 
 ## Working On The Command Line
@@ -34,6 +35,23 @@ Once inside the terminal you can use the command `tty` to display the current te
 Often the graphical terminal (graphical environment) is tty1, so you can access it from a command line console by pressing `CTRL+ALT+F1`.
 
 To change terminals from within a console you can use the command `chvt` followed by the tty number. For example, if you are on tty 2 and you want to switch to the tty 3, you would enter the command `chvt 3`.
+
+Virtual (physical) consoles are represented by device files that are permanently resident on the machine.
+
+### Pseudo Consoles
+These consoles are the most common type of connection - often representing remote connections to a server. Pseudo consoles are created dynamically as a connection is made.
+
+Pseudo terminals are named by the following convention: `/dev/psts/x` where `x` is a number.
+
+More information about a console connection can be found by inspecting the `SSH_` variables. Using autocomplete on `$SSH_` will display the environment variables set up for a SSH connection.
+
+Often these terminals represent remote connections (via SSH or Telnet) as well as connections from the GUI (via XTerminal or Gnome Terminal).
+
+**SSH vs Telnet**
+
+`SSH` is encrypted, listens on port 22, and is 3rd party software (PuTTY).
+
+`Telnet` is unencrypted, listens on port 23, and is first party packaged software.
 
 ## Additional Resources
 * [Linux Virtual Console And Terminal Explained](https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html)
