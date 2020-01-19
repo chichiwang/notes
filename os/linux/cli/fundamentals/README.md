@@ -8,6 +8,7 @@ An overview of the fundamentals of the Linux command line. These notes follow al
   * [Physical Consoles](#physical-consoles)
   * [Accessing Virutal Consoles](#accessing-virtual-consoles)
   * [Pseudo Consoles](#pseudo-consoles)
+  * [Shells](#shells)
 * [Additional Resources](#additional-resources)
 
 ## Working On The Command Line
@@ -53,5 +54,15 @@ Often these terminals represent remote connections (via SSH or Telnet) as well a
 
 `Telnet` is unencrypted, listens on port 23, and is first party packaged software.
 
+### Shells
+A *shell* is a program that takes commands from the keyboard and gives them to the operating system to perform. In the past it was the only interface available on a Unix-like system.
+
+The default shell in a Linux environment is often Bash (Bourne Again Shell, written by Steve Bourne). Bash is not the only shell. You can use `chsh -l` to list all available shells. Alternatively you can list out the contents of `/etc/shells`.
+
+Your default shell is configured in the user account database config file `/etc/passwd`.
+
+The shell that you choose is often about memory usage and the memory footprint of a shell when it is running.
+
 ## Additional Resources
 * [Linux Virtual Console And Terminal Explained](https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html)
+* [What is "the Shell"?](http://linuxcommand.org/lc3_lts0010.php)
