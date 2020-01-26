@@ -9,6 +9,7 @@ An overview of the fundamentals of the Linux command line. These notes follow al
   * [Accessing Virutal Consoles](#accessing-virtual-consoles)
   * [Pseudo Consoles](#pseudo-consoles)
   * [Shells](#shells)
+  * [Bash History](#bash-history)
 * [Additional Resources](#additional-resources)
 
 ## Working On The Command Line
@@ -62,6 +63,41 @@ The default shell in a Linux environment is often Bash (Bourne Again Shell, writ
 Your default shell is configured in the user account database config file `/etc/passwd`.
 
 The shell that you choose is often about memory usage and the memory footprint of a shell when it is running.
+
+### Bash History
+Bash history maintains command history for each user in `~/.bash_history`. Since this is stored in a file, it persists even through server reboots.
+
+To call a previously used command, you can use the `!` operator. `!v` will run the last command in our bash history that started with the character `v`.
+
+`!$` represents the last argument used in bash history. This is a useful shortcut when you are operating on a specific file or directory. For example: `mkdir test` followed by `cd !$` will change directory into the newly created `test/` directory.
+
+`!?` will execute the last command to contain a particular string: `!?etc` will run the last command with `etc` in it.
+
+`CTRL+r` will reverse search through your inputs.
+
+`cat ~/.bash_history` will display all of the commands saved in the bash history file. The command `history` can be used to display all of the commands saved in memory, even since the last save to the bash history file. The system will generally save to the bash history upon log out of the session, but you can force a save to history with the command `history -a`.
+
+You can also use a line number from the history file to rerun a command:
+```bash
+> history
+1 cd ~
+2 mkdir test
+3 cd test
+4 cd /etc
+5 ls -a
+6 cd /usr
+7 ls -a
+> !4
+cd /etc
+>
+```
+Running `!4` in this instance re-ran the command `cd /etc`.
+
+**History variables**
+
+History variables can be used to control history behavior. Setting the variable `HISTCONTROL` to `erasedups` to erase duplicate commands from the bash history.
+
+The in-memory history can be cleared with the command `history -c`. `history -r` can be used to restore the history from the last point of save to the `.bash_history` file. `history -w` can be used to write the current in-memory history to the `.bash_history` file, overwriting it.
 
 ## Additional Resources
 * [Linux Virtual Console And Terminal Explained](https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html)
