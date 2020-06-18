@@ -5,6 +5,7 @@ A high level investigation into the Java Programming Language. This is meant to 
 
 ## Table of Contents
 * [Profile](#profile)
+* [History](#history)
 * [Resources](#resources)
 
 ## Profile
@@ -17,6 +18,15 @@ A high level investigation into the Java Programming Language. This is meant to 
 * Compiled to byte code and run on any Java Virtual Machine (JVM)
 * Syntax is similar to *C* and *C++*
   * Has fewer low-level facilities than either of them
+
+## History
+* Created by James Gosling at Sun Microsystems
+* Language development started in 1991
+* Publicly released version 1.0 in 1996
+* Major web browsers incorporated the ability to run Java Applets within web pages
+* Remains a de facto standard controlled through the [Java Community Process](https://www.jcp.org/en/home/index)
+  * A formalized mechanism that allows interested parties to develop standard technical specifications for Java technology
+* Sun Microsystems released much of the JVM as free and open-source software on November 13, 2006 under the GPL
 
 ## Resources
 * [Wikipedia](https://en.wikipedia.org/wiki/Java_(programming_language))
