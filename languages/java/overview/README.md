@@ -6,6 +6,7 @@ A high level investigation into the Java Programming Language. This is meant to 
 ## Table of Contents
 * [Profile](#profile)
 * [History](#history)
+* [Principles](#principles)
 * [Resources](#resources)
 
 ## Profile
@@ -27,6 +28,14 @@ A high level investigation into the Java Programming Language. This is meant to 
 * Remains a de facto standard controlled through the [Java Community Process](https://www.jcp.org/en/home/index)
   * A formalized mechanism that allows interested parties to develop standard technical specifications for Java technology
 * Sun Microsystems released much of the JVM as free and open-source software on November 13, 2006 under the GPL
+
+## Principles
+There were five primary goals in the creation of the Java language:
+* It must be simple, object-oriented, and familiar
+* It must be robust and secure
+* It must be architecture-neutral and portable
+* It must execute with high performance
+* It must be interpreted, threaded, and dynamic
 
 ## Resources
 * [Wikipedia](https://en.wikipedia.org/wiki/Java_(programming_language))
