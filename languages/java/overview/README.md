@@ -1,4 +1,4 @@
-# Java Overview - WIP
+# Java Overview
 **Author**: [Chi-chi Wang](https://github.com/chichiwang)
 
 A high level investigation into the Java Programming Language. This is meant to be a profile of the language itself more than an investigation of the syntax and operations.
@@ -9,6 +9,7 @@ A high level investigation into the Java Programming Language. This is meant to 
 * [Principles](#principles)
 * [Execution System](#execution-system)
 * [Syntax](#syntax)
+* [Class Libraries](#class-libraries)
 * [Resources](#resources)
 
 ## Profile
@@ -31,6 +32,7 @@ A high level investigation into the Java Programming Language. This is meant to 
 * JavaDoc is an executable that converts properly formatted comments into documentation
   * Supported by some IDEs
 * String literals are automatically converted to string objects by the compiler
+* Generics were introduced to the Java language as part of J2SE 5.0 in 2004
 
 ## History
 * Created by James Gosling at Sun Microsystems
@@ -81,6 +83,9 @@ Java syntax is heavily influenced by C++. Where C++ combines the syntax for stru
 * The method `main()` is not a keyword in Java
   * `main()` is the method that the Java launcher calls to pass control to the main program
   * `main()` method must accept an array of string objects
+
+## Class Libraries
+The *Java Class Library* is the standard library for Java, controlled by Oracle in cooperation with others through the JCP. Documentation on all of the available classes and methods can be found on the [Oracle documentation page](https://docs.oracle.com/javase/8/docs/api/allclasses-frame.html).
 
 ## Resources
 * [Wikipedia](https://en.wikipedia.org/wiki/Java_(programming_language))
