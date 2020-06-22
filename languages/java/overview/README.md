@@ -8,6 +8,7 @@ A high level investigation into the Java Programming Language. This is meant to 
 * [History](#history)
 * [Principles](#principles)
 * [Execution System](#execution-system)
+* [Syntax](#syntax)
 * [Resources](#resources)
 
 ## Profile
@@ -21,6 +22,15 @@ A high level investigation into the Java Programming Language. This is meant to 
 * Syntax is similar to *C* and *C++*
   * Has fewer low-level facilities than either of them
 * Automatic memory management
+* Does not support operator overloading
+* Does not support multiple-inheritance for classes
+* Supports multiple-inheritance for interfaces
+* All code is written inside of classes
+* Every data item is an object
+  * The only exceptions are primitive data types (integers, floating point numbers, boolean values, characters)
+* JavaDoc is an executable that converts properly formatted comments into documentation
+  * Supported by some IDEs
+* String literals are automatically converted to string objects by the compiler
 
 ## History
 * Created by James Gosling at Sun Microsystems
@@ -47,6 +57,30 @@ End users commonly use a *Java Runtime Environment*(JRE) installed on their mach
 Standard libraries provide a generic way to access host-specific features (graphics, threading, networking, etc).
 
 Java programs have a reputation for being slower and utilizing more memory than C++ programs. Just-in-time compliation was introduced in 1997/1998 and significantly improved performance.
+
+## Syntax
+Java syntax is heavily influenced by C++. Where C++ combines the syntax for structured, generic, and object-oriented programming, Java was built almost exclusively as an object-oriented language.
+
+* Source files must be named after the public class they contain
+* Source files use the file extension `.java`
+* Compiled bytecode uses the extension `.class`
+* A source file may only contain one public class
+  * May contain private classes
+  * May contain public inner classes
+* A class not declared public may be stored in any `.java` file
+* The keyword `public` can be used to denote public classes and public methods
+  * May be called from code in other classes
+  * May be used by classes outside the class hierarchy
+* The keyword `static` in front of a method indicates a static method
+  * Associated with a class itself, and not to instances of the class
+  * Only static methods can be invoked without a reference to an object
+  * Cannot access any class members that are not also static
+* Methods not designated `static` are instance methods and may only be accessed via instances of a class
+* The keyword `void` indicates the main method does not return any value to the caller
+* If a Java program needs to exit with an error code, it must call `System.exit()` explicitly
+* The method `main()` is not a keyword in Java
+  * `main()` is the method that the Java launcher calls to pass control to the main program
+  * `main()` method must accept an array of string objects
 
 ## Resources
 * [Wikipedia](https://en.wikipedia.org/wiki/Java_(programming_language))
