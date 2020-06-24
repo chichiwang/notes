@@ -11,6 +11,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/modern-java-bi
 * [Target Environments](#target-environments)
   * [Desktop](#desktop)
   * [Enterprise](#enterprise)
+  * [Microframeworks](#microframeworks)
 
 ## The Java Platform
 The Java Platform is comprised of:
@@ -103,3 +104,19 @@ There are multiple application servers available that implement the Java EE spec
 The Java EE 8 release will be the last release of the Java EE specification by Oracle. The specification is being donated by Oracle to the Eclipse Foundation where it will be open-sourced. Java EE will be rebranded to Jakarta EE. It is expected that Jakarta EE will continue the legacy of the scalable, maintainable platform that Java EE has become.
 
 A competitor to Java EE called the Spring Framework has gained huge popularity as well.
+
+### Microframeworks
+Java microframeworks were developed to help build Java applications as microservices hosted on cloud architecture. These applications are typically smaller than their enterprise counterparts.
+
+Microframeworks include:
+* Spring Boot
+  * Comprised of the Spring Boot application and other Spring libraries that provide solutions to challenges that are encountered in the cloud
+  * Netflix offers many libraries to deal with the challenges of cloud architecture
+  * Takes a convention over configuration approach
+* MicroProfile
+  * Selects a subset of Java EE specifications that are relevant for building cloud applications and adds some missing components
+  * A developer can still leverage previous Java EE knowledge to build microservices
+* Vert.x
+  * Open source project by Red Hat
+* Play Framework
+  * Open source microframework sponsored by Lightbend
