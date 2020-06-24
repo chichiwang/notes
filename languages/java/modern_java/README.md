@@ -12,18 +12,19 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/modern-java-bi
   * [Desktop](#desktop)
   * [Enterprise](#enterprise)
   * [Microframeworks](#microframeworks)
+  * [Android](#android)
 
 ## The Java Platform
 The Java Platform is comprised of:
 * A programming language
   * Used by an application's source code
-  * Compiles to application byte code
+  * Compiles to application bytecode
     * Using the Java compiler
-    * Third party libraries are also published as byte code
+    * Third party libraries are also published as bytecode
       * Can be used by applications
 * Runtime environment
-  * The Java Virtual Machine (JVM) is the runtime evnrionment for byte code
-    * Translates byte code into machine code to execute machine instructions
+  * The Java Virtual Machine (JVM) is the runtime evnrionment for bytecode
+    * Translates bytecode into machine code to execute machine instructions
 * Standard Library
   * Composed of Java Standard Edition (SE) APIs
 
@@ -120,3 +121,14 @@ Microframeworks include:
   * Open source project by Red Hat
 * Play Framework
   * Open source microframework sponsored by Lightbend
+
+### Android
+Java has always been the primary development language of applications running on Android. However, Java is not the same as Android Java.
+
+Android Java leverages the Java programming language. Google is lacking support for other versions of Java, so applications on Android are written in Java 7 or a subset of features of Java 8.
+
+Android Java applications are still compiled to Java bytecode. The bytecode, however, does not run on the device. Another tool tranlates the Java bytecode into DEX (Dalvik Executable Format). DEX is the code that runs on the device.
+
+DEX leverages Android APIs and JAVA SE APIs. The Android version of Java SE APIs are not compatible with the Java SE APIs of the official Java platform.
+
+Because of this Android applications do not run on the JVM but run on a Dalvik Virtual Machine (DVM).
