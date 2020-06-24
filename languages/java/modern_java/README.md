@@ -10,6 +10,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/modern-java-bi
 * [The Philosophy of Java](#the-philosophy-of-java)
 * [Target Environments](#target-environments)
   * [Desktop](#desktop)
+  * [Enterprise](#enterprise)
 
 ## The Java Platform
 The Java Platform is comprised of:
@@ -73,3 +74,32 @@ It is possible to mix AWT and Swing components in a single application if so des
 A third GUI toolkit available to Java is called JavaFX. JavaFX provides a declarative, XML-based format for UIs called FXML. This allows for the design and creation of the GUI to be decoupled from the JavaFX application APIs and the underlying implementation. Because of this, external drag-and-drop applications can be used to create Java GUIs and the resulting FXML can be loaded by JavaFX to achieve a fully functional user interace. JavaFX offers more advanced components than AWT or Swing. All the UI components are rendered by Java itself (as opposed to using native OS components). JavaFX components support animations and effects (not supported by AWT or Swing). These components are skinnable with CSS. JavaFX also allows for the creation of 3D graphics.
 
 Up until Java 10, JavaFX shipped with the standard JDK. As of Java 11, JavaFX is shipped separately from the JDK and run in its own project called OpenJFX.
+
+### Enterprise
+Enterprise Java is best known by Java EE (Enterprise Edition) as opposed to SE (Standard Edition). Java EE was designed to make enterprise development more productive. To achieve this it provides APIs for common tasks/utilities used in enterprise development such as: data persistence, web applications, security, messaging, JSON/XML handling.
+
+Java EE application servers are containers that run on top of the JVM that can host Java EE applications. Application servers implement specifications such as:
+* Java Persistence Architecture
+  * Deals with storing/retrieving data from relational DBs and translating them into objects
+* Enterprise Java Beans
+  * Used to create tranactional business logic
+* Java Server Faces
+  * Used to create web front-ends
+
+With Java SE, your applications run directly on top of the JVM. In Java EE the application server is what runs on top of the JVM. Applications are then deployed into the application server - these applications are packaged as a WAR (Web Archive), or an EAR (enterprise archive). Multiple applications can be deployed to an application server.
+
+Benefits of this setup:
+* Application server offers fully functional sets of compatible Java EE libraries
+* Application servers can also be clusters
+  * Takes care of scaling out applications
+* Offers a productive, scalable development model for enterprise applications
+
+There are multiple application servers available that implement the Java EE specifications. Among them are:
+* Wildfly (Red Hat)
+* WebSphere (IBM)
+* WebLogic (Oracle)
+* Tomcat (Apache)
+
+The Java EE 8 release will be the last release of the Java EE specification by Oracle. The specification is being donated by Oracle to the Eclipse Foundation where it will be open-sourced. Java EE will be rebranded to Jakarta EE. It is expected that Jakarta EE will continue the legacy of the scalable, maintainable platform that Java EE has become.
+
+A competitor to Java EE called the Spring Framework has gained huge popularity as well.
