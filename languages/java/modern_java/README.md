@@ -16,6 +16,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/modern-java-bi
 * [Spring Framework](#spring-framework)
 * [Common Libraries](#common-libraries)
   * [Utility Libraries](#utility-libraries)
+  * [Distributed System Libraries](#distributed-system-libraries)
 
 ## The Java Platform
 The Java Platform is comprised of:
@@ -165,3 +166,21 @@ In addition to this, Spring also integrates other technologies and makes them av
 * Apache Log4J
   * A library for structured application logging
     * Allows you to introduce logging statements and send those statements to many different packages depending on the configuration
+
+### Distributed System Libraries
+* Netty
+  * Low level library
+  * Makes it easy to build clients and servers for various protocols
+    * HTTP, HTTP2, Web Sockets, etc
+  * Provides productive abstractions over the underlying TCP and UDP mechanisms
+  * One of the best performing networking libraries in the Java space
+* Akka
+  * Actor model for concurrency
+  * Can be used within a single JVM or distributed throughout a cluster for distribution
+* RxJava
+  * Implementation of the reactive programming paradigm
+  * Asyc, event-model based
+* Apache Camel
+  * Library to wire up existing systems into new workflows
+    * Enterprise application integration
+  * Provides support for many transports and connectors to enterprise systems
