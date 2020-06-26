@@ -13,6 +13,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/modern-java-bi
   * [Enterprise](#enterprise)
   * [Microframeworks](#microframeworks)
   * [Android](#android)
+* [Spring Framework](#spring-framework)
 
 ## The Java Platform
 The Java Platform is comprised of:
@@ -132,3 +133,16 @@ Android Java applications are still compiled to Java bytecode. The bytecode, how
 DEX leverages Android APIs and JAVA SE APIs. The Android version of Java SE APIs are not compatible with the Java SE APIs of the official Java platform.
 
 Because of this Android applications do not run on the JVM but run on a Dalvik Virtual Machine (DVM).
+
+## Spring Framework
+The Spring Framework was developed as an alternative to J2EE (Enterprise Java) with Enterprise Java Beans (EJB) in 2002. J2EE was a large, cumbersome stack and EJB was difficult to work with form a developer perspective.
+
+One of the main innovations of Spring is dependency injection. At its core, Spring is a dependency injection container that wires the classes of an application based on instructions provided. These instructions can be provided as annotations to the code, as explicit configuration code, or as XML configuration.
+
+In a standard Java application, a class will instantiate other classes it depends on at the point that it itself is instantiated. This creates tight coupling. This also makes it difficult to test the class in isolation since running tests will always load the dependency classes, preventing the ability to replace them with stubs or mocks for testing.
+
+With Spring, all classes are still instantiated. The difference is that instead a developer would instruct the Spring Framework of the dependencies of a class, and Spring would instantiate them instead. The instances of classes created by Spring are called Spring Beans. The Spring Dependency Injection Container then injects dependency instances into the dependent class. This approach decouples dependents from their dependencies. This leads to more flexible composition because the dependency chains are dictated by configuration code. It is also possible for Spring to inject some interceptor code between the classes that handle cross-cutting concerns (security, transactionality, etc).
+
+This strategy ensures that developers declares dependencies, and Spring brings them together at runtime in the Spring Dependency Injection Container.
+
+In addition to this, Spring also integrates other technologies and makes them available through dependency injection with a bit of configuration (utilities). These utilities include things such as data access technologies, Java EE technologies, Spring WebFlux (web stack), branch components, integration framework.
