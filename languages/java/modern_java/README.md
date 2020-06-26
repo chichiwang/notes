@@ -14,6 +14,8 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/modern-java-bi
   * [Microframeworks](#microframeworks)
   * [Android](#android)
 * [Spring Framework](#spring-framework)
+* [Common Libraries](#common-libraries)
+  * [Utility Libraries](#utility-libraries)
 
 ## The Java Platform
 The Java Platform is comprised of:
@@ -146,3 +148,20 @@ With Spring, all classes are still instantiated. The difference is that instead 
 This strategy ensures that developers declares dependencies, and Spring brings them together at runtime in the Spring Dependency Injection Container.
 
 In addition to this, Spring also integrates other technologies and makes them available through dependency injection with a bit of configuration (utilities). These utilities include things such as data access technologies, Java EE technologies, Spring WebFlux (web stack), branch components, integration framework.
+
+## Common Libraries
+### Utility Libraries
+* Google Guava
+  * A collection of useful utilities that extend Java functionality in useful ways
+  * Includes additional collection types
+  * Includes caching implementations
+  * Includes IO helper classes
+* Apache Commons
+  * A collection of libraries hosted at the Apache Foundation that extend core Java functionality
+  * Contains more utilities than provided by Google Guava
+  * Includes collections helpers
+  * Includes CSV helpers
+  * Includes IO helpers
+* Apache Log4J
+  * A library for structured application logging
+    * Allows you to introduce logging statements and send those statements to many different packages depending on the configuration
