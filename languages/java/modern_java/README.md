@@ -18,6 +18,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/modern-java-bi
   * [Utility Libraries](#utility-libraries)
   * [Distributed System Libraries](#distributed-system-libraries)
   * [Data Access Libraries](#data-access-libraries)
+  * [Data Processing Libraries And Applications](#data-processing-libraries-and-applications)
 
 ## The Java Platform
 The Java Platform is comprised of:
@@ -206,3 +207,27 @@ Embed SQL's query language as a domain-specific language into Java.
 There are two distinctive approaches to Database access in Java:
 1. Enterprise Java embraces the ORM approach by standardizing the Hibernate and EclipseLink APIs into Java Persistence Architecture (JPA).
 2. There is no standard for the SQL DSL approach.
+
+### Data Processing Libraries And Applications
+* Apache Hadoop
+  * Open source implementation of Google's MapReduce concept
+  * Well suited to processing petabytes of data on large clusters running many instances of Hadoop
+  * Not really a library, but a distributed system implemented in Java for processing big data
+  * Implement a Hadoop job using the Hadoop library and submit it to a running Hadoop cluster
+* Apache Spark
+  * Goals are similiar to Hadoop
+    * Newer and even more scalable implementation
+  * Possible to process large amounts of streaming data
+* DL4J
+  * Deep Learning for Java
+  * Implement deep neural networks in Java
+    * Face detection, object detection, etc.
+* Cassandra
+  * NOSQL Database written in Java
+* Neo4J
+  * Graph DB written in Java
+* ElasticSearch
+  * Used to create efficient search indexes for big data sets
+* HDFS
+  * Hadoop Distributed File System
+  * Sits beneath the Hadoop data processing layer
