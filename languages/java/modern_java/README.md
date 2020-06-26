@@ -17,6 +17,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/modern-java-bi
 * [Common Libraries](#common-libraries)
   * [Utility Libraries](#utility-libraries)
   * [Distributed System Libraries](#distributed-system-libraries)
+  * [Data Access Libraries](#data-access-libraries)
 
 ## The Java Platform
 The Java Platform is comprised of:
@@ -184,3 +185,24 @@ In addition to this, Spring also integrates other technologies and makes them av
   * Library to wire up existing systems into new workflows
     * Enterprise application integration
   * Provides support for many transports and connectors to enterprise systems
+
+### Data Access Libraries
+**Java Database Connectivity (JDBC)**
+Part of the Java Standard Library
+* JDBC drivers are available for all the popular relational databases
+* Provides an abstraction layer for data access so your code can move between different DBMSs
+* Is still too low level to be productive with
+
+**Object Relational Mappers (ORMs)**
+Rather than writing queries, everything is done through plain Java objects.
+* Hibernate
+* EclipseLink
+
+**SQL Domain-Specific Languages (DSLs)**
+Embed SQL's query language as a domain-specific language into Java.
+* jOOQ
+* QueryDSL
+
+There are two distinctive approaches to Database access in Java:
+1. Enterprise Java embraces the ORM approach by standardizing the Hibernate and EclipseLink APIs into Java Persistence Architecture (JPA).
+2. There is no standard for the SQL DSL approach.
