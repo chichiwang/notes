@@ -22,6 +22,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/modern-java-bi
 * [Java Development Lifecycle](#java-development-lifecycle)
 * [Development Tools](#development-tools)
   * [IDEs](#ides)
+  * [Unit Testing](#unit-testing)
 
 ## The Java Platform
 The Java Platform is comprised of:
@@ -266,3 +267,10 @@ The most popular IDEs are:
 * IntelliJ
   * Commercial IDE created by JetBrains
   * Community Edition version is free to use
+
+### Unit Testing
+Java was one of the first languages where the practice of unit testing became widespread and supported by tools.
+
+JUnit was the first unit testing framework and to this day is still the leading unit testing framework in Java.
+
+Mockito is one of the most popular mocking libraries in Java.
