@@ -19,6 +19,9 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/modern-java-bi
   * [Distributed System Libraries](#distributed-system-libraries)
   * [Data Access Libraries](#data-access-libraries)
   * [Data Processing Libraries And Applications](#data-processing-libraries-and-applications)
+* [Java Development Lifecycle](#java-development-lifecycle)
+* [Development Tools](#development-tools)
+  * [IDEs](#ides)
 
 ## The Java Platform
 The Java Platform is comprised of:
@@ -231,3 +234,35 @@ There are two distinctive approaches to Database access in Java:
 * HDFS
   * Hadoop Distributed File System
   * Sits beneath the Hadoop data processing layer
+
+## Java Development Lifecycle
+1. Code
+2. Build
+3. Test
+4. Static Analysis
+
+## Development Tools
+### IDEs
+Integrated Development Environments (IDEs) offer advanced features that help a developer code more productively.
+
+Features that help productivity include:
+* Code completion
+* Inline documentation
+* Smart navigation between different elements in the code
+* Debug functionalities
+  * Set breakpoints
+  * Run the code
+  * Inspect values, variables, contexts
+* Format code
+* Integrate with source control
+
+Most Java developers use IDEs to aid their development process. Not using an IDE for developing Java applications is generally a bad idea, unless creating small and simple applications.
+
+The most popular IDEs are:
+* Eclipse
+  * Open source
+  * Hosted at the Eclipse Foundation
+  * One of the most widely used Java IDEs
+* IntelliJ
+  * Commercial IDE created by JetBrains
+  * Community Edition version is free to use
