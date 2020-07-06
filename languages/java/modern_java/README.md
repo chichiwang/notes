@@ -23,6 +23,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/modern-java-bi
 * [Development Tools](#development-tools)
   * [IDEs](#ides)
   * [Unit Testing](#unit-testing)
+  * [Build Tools](#build-tools)
 
 ## The Java Platform
 The Java Platform is comprised of:
@@ -274,3 +275,18 @@ Java was one of the first languages where the practice of unit testing became wi
 JUnit was the first unit testing framework and to this day is still the leading unit testing framework in Java.
 
 Mockito is one of the most popular mocking libraries in Java.
+
+### Build Tools
+A major goal of Java build tools is to ensure repeatable builds. This means that different users in different environments, given the same code base, can produce the same build of an application.
+
+Build tools also help to manage your application code base. As applications grow, they may be split up into sub-modules or sub-components. Build tools can assist in this.
+
+Build tools will also help with the management of external dependencies in service of the goal of ensuring repeatable builds. They may also be used to automate the running of tests.
+
+Maven is the most widely used build tool in Java. With Maven you describe your builds in an XML file called `pom.xml` in a declarative manner. Maven prioritizes convention over configuration: it will assume a standard directory layout for Java codebases.
+
+Maven leverages a repository called [Maven Central](https://search.maven.org/) to fetch dependencies. Maven Central is the standard repository for all Java libraries to be published to.
+
+The second most important Java build tool is [Gradle](https://gradle.org/). In Gradle, rather than specifying builds in XML, builds are instead specified using the Groovy scripting language. One improvement Gradle has over Maven is that Gradle supports incremental builds: it will only build a piece of code if the previously compiled version is outdated. Gradle also leverages dependencies from Maven Central.
+
+Gradle is the default build system for Android applications.
