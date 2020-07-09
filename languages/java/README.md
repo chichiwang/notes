@@ -6,5 +6,5 @@ Explorations into the Java Programming Language.
   * [Overview](./overview)
     * **Level**: *Beginner*
 * **Courses**
-  * [Modern Java: The Big Picture](./modern_java) - WIP
+  * [Modern Java: The Big Picture](./modern_java)
     * **Level**: *Beginner*
