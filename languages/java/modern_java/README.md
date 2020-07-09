@@ -28,6 +28,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/modern-java-bi
 * [Alternative JVM Languages](#alternative-jvm-languages)
   * [Groovy](#groovy)
   * [Scala](#scala)
+  * [Kotlin](#kotlin)
 
 ## The Java Platform
 The Java Platform is comprised of:
@@ -356,3 +357,16 @@ The concurrency library Akka, and the big data processing library Spark are both
 * Powerful language, but complex
 * Compiler can get quite slow on larger codebases due to the extensive feature set of the language
 * Runs on the JVM but requires adding of Scala runtime libraries
+
+### Kotlin
+Developed after Scala by JetBrains (the company behind the IntelliJ IDE).
+
+* Designed as a 'better Java'
+* Does not have the burden of backwards compatibility that Java has
+* Fully interoperable with Java code
+  * To a greater degree than Scala
+* Offers null safety
+* Offers data classes
+* Endorsed by Google as a language for Android development in 2017
+* Compiles to Java byte code as well as to JavaScript
+  * Can share code between the browser and the backend
