@@ -25,6 +25,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/modern-java-bi
   * [Unit Testing](#unit-testing)
   * [Build Tools](#build-tools)
   * [Static Analysis](#static-analysis)
+* [Alternative JVM Languages](#alternative-jvm-languages)
 
 ## The Java Platform
 The Java Platform is comprised of:
@@ -309,3 +310,16 @@ A few important static analysis tools for Java:
   * Tracks code coverage for unit tests
   * Detection for duplicate code
   * Provides a dashboard to show trends over time
+
+## Alternative JVM Languages
+Languages have been developed to compile to Java byte code, which can then be run on the JVM.
+
+There are reasons why a developer would prefer a different language to compile the byte code:
+* Productivity
+  * Java is optimized for readability, some teams may prefer terse languages
+* Familiarity
+  * There are other language implementations, such as Ruby and Python (JRuby, JPython), which can compile to Java byte code
+* Paradigms
+  * Other languages are better designed to tackle paradigms other than OOP
+
+Many ideas of alternative JVM languages have changes in the Java programming language over the years.
