@@ -26,6 +26,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/modern-java-bi
   * [Build Tools](#build-tools)
   * [Static Analysis](#static-analysis)
 * [Alternative JVM Languages](#alternative-jvm-languages)
+  * [Groovy](#groovy)
 
 ## The Java Platform
 The Java Platform is comprised of:
@@ -323,3 +324,20 @@ There are reasons why a developer would prefer a different language to compile t
   * Other languages are better designed to tackle paradigms other than OOP
 
 Many ideas of alternative JVM languages have changes in the Java programming language over the years.
+
+### Groovy
+A popular, widely used alternative JVM language.
+
+* Dynamic scripting language
+  * Interpreted at runtime
+  * Optionally can be compiled to byte code using a Groovy compiler
+    * Improved performance - interpreting Groovy code can be quite slow
+* Opt-in type system
+  * Language is much more dynamic
+  * Makes Groovy less statically safe
+  * Developers can optionally add type annotations to Groovy code
+* Syntactically more concise than Java
+  * Still stylistically similar to Java
+* Can be added to Java codebases
+  * Groovy works very well with existing Java classes
+  * Groovy was designed to integated seamlessly with Java code
