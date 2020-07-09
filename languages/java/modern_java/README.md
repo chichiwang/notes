@@ -27,6 +27,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/modern-java-bi
   * [Static Analysis](#static-analysis)
 * [Alternative JVM Languages](#alternative-jvm-languages)
   * [Groovy](#groovy)
+  * [Scala](#scala)
 
 ## The Java Platform
 The Java Platform is comprised of:
@@ -341,3 +342,17 @@ A popular, widely used alternative JVM language.
 * Can be added to Java codebases
   * Groovy works very well with existing Java classes
   * Groovy was designed to integated seamlessly with Java code
+
+### Scala
+Scala combines object-oriented programming with functional programming. The focus of the language is more on functions and less on objects.
+
+The concurrency library Akka, and the big data processing library Spark are both written in Scala.
+
+* Compiled language
+  * Scala compiler generates Java byte code
+* Extensive type system
+  * Scala is statically typed
+  * Type system supports the advanced object-oriented features as well as the functional features of Scala
+* Powerful language, but complex
+* Compiler can get quite slow on larger codebases due to the extensive feature set of the language
+* Runs on the JVM but requires adding of Scala runtime libraries
