@@ -24,6 +24,7 @@ Course: [PluralSight](https://app.pluralsight.com/library/courses/modern-java-bi
   * [IDEs](#ides)
   * [Unit Testing](#unit-testing)
   * [Build Tools](#build-tools)
+  * [Static Analysis](#static-analysis)
 
 ## The Java Platform
 The Java Platform is comprised of:
@@ -290,3 +291,21 @@ Maven leverages a repository called [Maven Central](https://search.maven.org/) t
 The second most important Java build tool is [Gradle](https://gradle.org/). In Gradle, rather than specifying builds in XML, builds are instead specified using the Groovy scripting language. One improvement Gradle has over Maven is that Gradle supports incremental builds: it will only build a piece of code if the previously compiled version is outdated. Gradle also leverages dependencies from Maven Central.
 
 Gradle is the default build system for Android applications.
+
+### Static Analysis
+A few important static analysis tools for Java:
+* Checkstyle
+  * Enforces stylistic choices for a Java codebase
+* Spotbugs
+  * Scans byte code with a set of predefined rules to identify bugs in the code
+  * May help identify anti-patterns that will not lead to compilation errors but may lead to problems at runtime
+* PMD
+  * Similar to Spotbugs, but scans at the source code level
+  * Finds different classes of bugs than Spotbugs
+* SonarQube
+  * Continuous inspection tool
+  * Works in tandem with the continuous integration server
+  * Tracks all the findings from all of the static analysis tools for each build
+  * Tracks code coverage for unit tests
+  * Detection for duplicate code
+  * Provides a dashboard to show trends over time
