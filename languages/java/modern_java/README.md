@@ -82,7 +82,7 @@ Java can be used to build applications that:
 * Run on a single machine
 * Are interactive
 * Have a graphical user interface
-    
+
 Java ships with a GUI toolkit called AWT (Abstract Windowing Toolkit). AWT provides access to native OS controls. AWT provides simple graphics primitives. AWT is difficult to develop UI on, however, since it uses native graphical elements so layouts and styles can be difficult to develop to look correct across all devices.
 
 A newer GUI toolkit provided by Java is called Swing. Swing provides a pure Java GUI. Swing does not use native OS objects like AWT does, instead allowing the developer to choose from many cross-platform look and feels. Regardless of the choice, it will look the same across all platforms that the application runs on. Swing also introduces layout managers which allow developers to define placement of components in relative terms, rather than absolute terms, for flexible and scalable UI. UI development in Swing conform to the MVC pattern.
