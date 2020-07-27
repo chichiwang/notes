@@ -2,6 +2,7 @@
 
 ## Table of Contents
 * [Containers](./containers)
+* [Crash Course: Computer Science](./crash_course) (WIP)
 * [Non-Relational Databases](./nosql)
 * [Structure and Interpretation of Computer Progams](./computing/sicp) (WIP)
 
