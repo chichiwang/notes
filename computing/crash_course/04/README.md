@@ -22,7 +22,7 @@ The above number means that the value contains 3 `1's`, 6 `10's`, and 2 `100's` 
 
 Because there are only 10 possible digits to choose from for each column, once you exceed the highest value for a digit (9) you carry the remaining values over to the next column over, right-to-left.
 
-This system of representing numbers is called [positional notation](../glossary/README.md#positional-notation). The number system we are most familiar with is a base-10 system, otherwise known as a decimal numeber system.
+This system of representing numbers is called [positional notation](../glossary/README.md#positional-notation). The number system we are most familiar with is a base-10 system, otherwise known as a decimal number system.
 
 Binary notation works the same way, it is just base-2 because there are only 2 possible digits in binary (0, 1). Each position must be 2x higher than the column to its right.
 
@@ -32,7 +32,7 @@ The binary number `101` can be broken down thusly:
 | --- | --- | --- |
 | 1   | 0   | 1   |
 
-This number means you have 1 `4`, 0 `2's`, and 1 `1`. That would be the vaue `5` in base-10 notation:
+This number means you have 1 `4`, 0 `2's`, and 1 `1`. That would be the value `5` in base-10 notation:
 
 1 x 4 = 4<br/>
 0 x 2 = 0<br/>
@@ -42,7 +42,7 @@ This number means you have 1 `4`, 0 `2's`, and 1 `1`. That would be the vaue `5`
 
 To represent larger values, binary requires more digits than decimal. The binary number `10110111` equates to the decimal number `183`.
 
-A single binary digit is called a [bit](../glossary/README.md#bit). The binary number `10110111` is an 8-bit number. The lowest value of an 8-bit number is `00000000` or 0 in decimal. The highest value of an 8-bit number is `11111111` or 255 in decimal. That is 256 possible values, or 2<sup>8</sup>.
+A single binary digit is called a [bit](../glossary/README.md#bit). The binary number `10110111` is an 8-bit number. The lowest value of an 8-bit number is `00000000` or 0 in decimal. The highest value of an 8-bit number is `11111111` or 255 in decimal. That results in 256 possible values, or 2<sup>8</sup>.
 
 8-bits is such a common size in computing that it is called a [byte](../glossary/README.md#byte). The words **kilobyte**, **megabyte**, **gigabyte**, and so forth denote different scales of data. One kilobyte (KB) is 1,000 bytes (8,000 bits). Mega is a million bytes (MB), and giga is a billion bytes (GB). A terabyte is a trillion bytes, or 8 trillion bits (TB).
 
