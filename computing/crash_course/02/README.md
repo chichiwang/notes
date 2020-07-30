@@ -28,3 +28,6 @@ In 1946 at Bell Laboratories American physicists John Bardeen and Walter Brattai
 Today computers use transistors that are smaller than 50 nanometers in size (for reference: a sheet of paper is roughly 100,000 nanometers thick). They are incredibly fast, capable of switching states milliosn of times per second, and they can run for decades.
 
 A lot of this transistor and semiconductor development happened in the Santa Clara Valley, between San Francisco and San Jose California. Since the most common material used to create semiconductors is silicon, this region became known as Silicon Valley. William Shockley moved to Silicon Valley to found Shockley Semiconductor. His employees later founded Fairchild Semiconductors. The employees of Fairchild Semiconductors later founded Intel: the world's largest computer chip maker today.
+
+| [Previous: Early Computing](../01/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Boolean Logic and Logic Gates](../03/README.md) |
+| :------------------------------------------: | :-------------------------------------------------: | :----------------------------------------------------: |

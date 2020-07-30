@@ -72,3 +72,6 @@ Things totally broke with the rise of computing in Asia: languages like Chinese 
 Eventually the Unicode format was developed in 1992 to do away with all of the international schemes, replacing them with one universal encoding scheme. The most common version of unicode uses 16 bits with space for over a million codes, enough for every single character from every language ever used, as well as symbols, special characters, emojis, etc.
 
 In the same way that ASCII defines a scheme for encoding letters as binary numbers, other file formats like `mp3` and `gif` use binary numbers to encode sounds or colors of a pixel in our photos, movies, and music. Under the hood it all comes down to long sequences of bits.
+
+| [Previous: Boolean Logic and Logic Gates](../03/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| :--------------------------------------------------------: | :-------------------------------------------------: | :--: |

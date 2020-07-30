@@ -33,3 +33,6 @@ In 1890, Herman Hollerith developed the [tabulating machine](https://en.wikipedi
 Businesses saw the potential of these machines to assist in other tasks, such as accounting, insurance appraisals, and inventory management. To meet the demand Hollerith founded the Tabulating Machine Company which later merged with other machine makers in 1924 to become the International Business Machines Corporation (IBM).
 
 By the mid-1900s the explosion in world population and the rise in globalized trade demanded faster and more effective tools for processing data - setting the stage for digital computers.
+
+| [Table of Contents](../README.md#table-of-contents) | [Next: Electronic Computing](../02/README.md) |
+| :-------------------------------------------------: | :-------------------------------------------: |

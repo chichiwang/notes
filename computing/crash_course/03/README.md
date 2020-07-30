@@ -92,3 +92,6 @@ The XOR gate is constructed from an OR gate, a NAND gate (an AND gate transforme
 The symbol representation of an XOR gate in a circuit diagram is the following:
 <br/><br/>
 ![XOR gate symbol](./xor-gate-symbol.gif)
+
+| [Previous: Electronic Computing](../02/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Representing Numbers and Letters with Binary](../04/README.md) |
+| :-----------------------------------------------: | :-------------------------------------------------: | :-------------------------------------------------------------------: |
