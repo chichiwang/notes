@@ -16,6 +16,9 @@ Date: July 2020 - Ongoing
   * [AND](./03/README.md#and)
   * [OR](./03/README.md#or)
   * [XOR](./03/README.md#xor)
+* 04: [Representing Numbers and Letters with Binary](./04/README.md)
+  * [Numbers](./04/README.md#numbers)
+  * [Letters](./04/README.md#letters)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 
