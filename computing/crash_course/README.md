@@ -19,9 +19,17 @@ Date: July 2020 - Ongoing
 * 04: [Representing Numbers and Letters with Binary](./04/README.md)
   * [Numbers](./04/README.md#numbers)
   * [Letters](./04/README.md#letters)
+* 05: [The ALU: How Computers Calculate](./05/README.md)
+  * [Half Adder](./05/README.md#half-adder)
+  * [Full Adder](./05/README.md#full-adder)
+  * [8-Bit Adder](./05/README.md#8-bit-adder)
+  * [ALU Operations](./05/README.md#alu-operations)
+  * [Logic Unit](./05/README.md#logic-unit)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 
 
 ## Additional Resources
 * [Electronics Tutorials: Digital Logic Gates](https://www.electronics-tutorials.ws/logic/logic_1.html)
+* [Circuit Digest: Half Adder Circuit and its Construction](https://circuitdigest.com/tutorial/half-adder-circuit-and-its-construction)
+* [Circuit Digest: Full Adder Circuit and its Construction](https://circuitdigest.com/tutorial/full-adder-circuit-theory-truth-table-construction)

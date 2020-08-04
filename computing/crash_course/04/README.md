@@ -73,5 +73,5 @@ Eventually the Unicode format was developed in 1992 to do away with all of the i
 
 In the same way that ASCII defines a scheme for encoding letters as binary numbers, other file formats like `mp3` and `gif` use binary numbers to encode sounds or colors of a pixel in our photos, movies, and music. Under the hood it all comes down to long sequences of bits.
 
-| [Previous: Boolean Logic and Logic Gates](../03/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
-| :--------------------------------------------------------: | :-------------------------------------------------: | :--: |
+| [Previous: Boolean Logic and Logic Gates](../03/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: The ALU: How Computers Calculate](../05/README.md) |
+| :--------------------------------------------------------: | :-------------------------------------------------: | :-------------------------------------------------------: |
