@@ -25,11 +25,24 @@ Date: July 2020 - Ongoing
   * [8-Bit Adder](./05/README.md#8-bit-adder)
   * [ALU Operations](./05/README.md#alu-operations)
   * [Logic Unit](./05/README.md#logic-unit)
+* 06: [Registers and RAM](./06/README.md)
+  * [AND-OR Latch](./06/README.md#and-or-latch)
+  * [Gated Latch](./06/README.md#gated-latch)
+  * [Registers](./06/README.md#registers)
+  * [RAM](./06/README.md#ram)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 
 
 ## Additional Resources
+
+### References
 * [Electronics Tutorials: Digital Logic Gates](https://www.electronics-tutorials.ws/logic/logic_1.html)
 * [Circuit Digest: Half Adder Circuit and its Construction](https://circuitdigest.com/tutorial/half-adder-circuit-and-its-construction)
 * [Circuit Digest: Full Adder Circuit and its Construction](https://circuitdigest.com/tutorial/full-adder-circuit-theory-truth-table-construction)
+* [Diligent Blog: What is Sequential Logic?](https://blog.digilentinc.com/what-is-sequential-logic/)
+
+### Tools and Software
+* [BOOLR](http://boolr.me/): A free, digital logic simulator
+* [Falstad Circuit Simulator](http://www.falstad.com/circuit/): Online circuit simulator
+* [List of Electronics Circuit Generators](https://en.wikipedia.org/wiki/List_of_free_electronics_circuit_simulators): A list of tools on Wikipedia

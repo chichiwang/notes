@@ -113,5 +113,5 @@ Fancier ALUs in modern devices have dedicated circuits for multiplication. The c
 ## Logic Unit
 Within an ALU, there also lives a logic unit. Unlike the Arithmtic Unit which performs mathematical operations, the Logic Unit performs logical operations such as AND, OR, and NOT. It also performs simple numerical tests such as checking if a number is negative, or if an _N_-bit number is 0 (achieved with a series of OR gates).
 
-| [Previous: Representing Numbers and Letters with Binary](../04/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
-| :-----------------------------------------------------------------------: | :-------------------------------------------------: | :--: |
+| [Previous: Representing Numbers and Letters with Binary](../04/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Registers and RAM](../06/README.md) |
+| :-----------------------------------------------------------------------: | :-------------------------------------------------: | :----------------------------------------: |
