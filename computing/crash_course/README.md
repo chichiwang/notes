@@ -30,6 +30,11 @@ Date: July 2020 - Ongoing
   * [Gated Latch](./06/README.md#gated-latch)
   * [Registers](./06/README.md#registers)
   * [RAM](./06/README.md#ram)
+* 07: [The Central Processing Unit](./07/README.md)
+  * [Memory](./07/README.md#memory)
+  * [Instruction Cycle](./07/README.md#instruction-cycle)
+  * [Control Unit](./07/README.md#control-unit)
+  * [Clock](./07/README.md#clock)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 

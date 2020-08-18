@@ -143,5 +143,5 @@ This component can be thought of as a uniform bank of addressable memory. It con
 
 The RAM described above is Static Random-Access Memory ([SRAM](#static-random-access-memory)) which uses latches. There are other types of RAM such as [DRAM](../glossary/README.md#dynamic-random-access-memory), [Flash RAM](https://en.wikipedia.org/wiki/Flash_memory), and [NVRAM](https://en.wikipedia.org/wiki/Non-volatile_random-access_memory). Fundamentally all of these technologies store bits of information in massively nested matricies of memory cells.
 
-| [Previous: The ALU: How Computers Calculate](../05/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
-| :-----------------------------------------------------------: | :-------------------------------------------------: | :--: |
+| [Previous: The ALU: How Computers Calculate](../05/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: The Central Processing Unit](../07/README.md) |
+| :-----------------------------------------------------------: | :-------------------------------------------------: | :--------------------------------------------------: |

@@ -11,8 +11,17 @@ A unit of digital information that most commonly consists of 8 [bits](#bit). Thi
 ## [Carry-Look-Ahead Adder](https://en.wikipedia.org/wiki/Adder_(electronics)#Carry-lookahead_adder)
 To reduce computation time, engineers devised faster ways to add two binary numbers. The carry-look-ahead adder (CLA) works by creating two signals (_P_ and _G_) for each bit position, based on whether a carry is propagated through from a less significant bit position (at least one input is a 1), generated in that bit position (both inputs are 1), or killed in that bit position (both inputs are 0).
 
+## [Central Processing Unit](https://en.wikipedia.org/wiki/Central_processing_unit)
+The central processing unit (CPU), also known as a central processor, main processor, or just processor, is the electronic circuitry within a computer that executes instructions that make up a computer program. The CPU performs basic arithmetic, logic, controlling, and input/output (I/O) operations specified by the instructions in the program.
+
+## [Clock Generator](https://en.wikipedia.org/wiki/Clock_generator)
+A clock generator is an electronic oscillator (circuit) that produces a clock signal for use in synchronizing a circuit's operation. The signal can range from a simple symmetrical square wave to more complex arrangements. The basic parts that all clock generators share are a resonant circuit and an amplifier.
+
 ## [Combinational Logic](https://en.wikipedia.org/wiki/Combinational_logic)
 A type of [logic circuit](#logic-gate) whose output is a pure function of the present input only.
+
+## [Control Unit](https://en.wikipedia.org/wiki/Control_unit)
+The control unit (CU) is a component of a computer's central processing unit (CPU) that directs the operation of the processor. It tells the computer's memory, arithmetic and logic unit and input and output devices how to respond to the instructions that have been sent to the processor.
 
 ## [Diode](https://en.wikipedia.org/wiki/Diode)
 An electronic component that permits the one-way flow of current. A diode is a kind of [vacuum tube](#vacuum-tube).
@@ -41,6 +50,9 @@ A characteristic of a product or system, whose interaces are completely understo
 ## [Logic Gate](https://en.wikipedia.org/wiki/Logic_gate)
 A physical electronic/electromechanical device implementing a boolean function. It performs a logical operation on one or more binary inputs to produce a single binary output.
 
+## [Microarchitecture](https://en.wikipedia.org/wiki/Microarchitecture)
+In computer engineering, microarchitecture, also called computer organization, is the way a given instruction set architecture (ISA) is implemented in a particular [processor](#central-processing-unit).
+
 ## [Memory Address](https://en.wikipedia.org/wiki/Memory_address)
 A reference to a specific memory location used at various levels of software and hardware. Memory addresses are fixed-length sequences of digits conventionally displayed and manipulated as unsigned integers.
 
@@ -49,6 +61,9 @@ A multiplexer (or mux/data selector) is a device that selects between several an
 
 ## [Non-Volatile Memory](https://en.wikipedia.org/wiki/Non-volatile_memory)
 A type of computer memory that can retrieve stored data even after having been power cycled.
+
+## [Operation Code](https://en.wikipedia.org/wiki/Opcode)
+An operation code (also known as opcode, instruction machine code, instruction code, instruction syllable, instruction parcel, or opstring) is the portion of a machine language instruction that specifies the operation to be performed. Besides the opcode itself, most instructions specify the data they will process in the form of operands.
 
 ## [Positional Notation](https://en.wikipedia.org/wiki/Positional_notation)
 A way of representing the values of a positional system (a numeral system in which the contribution of a digit to the value of a number is the product of the value of the digit by a factor determined by the position of the digit).
