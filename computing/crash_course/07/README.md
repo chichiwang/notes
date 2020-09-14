@@ -47,4 +47,4 @@ Many modern processors can increase or decrease their clock speed based on deman
 <br/><br/>
 ![CPU diagram](./cpu.JPG)
 
-| [Previous: Registers and RAM](../06/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: Registers and RAM](../06/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Instructions and Programs](../08/README.md) |

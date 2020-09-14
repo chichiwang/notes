@@ -35,6 +35,7 @@ Date: July 2020 - Ongoing
   * [Instruction Cycle](./07/README.md#instruction-cycle)
   * [Control Unit](./07/README.md#control-unit)
   * [Clock](./07/README.md#clock)
+* 08: [Intructions and Programs](./08/README.md)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 
