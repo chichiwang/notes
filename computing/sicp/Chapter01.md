@@ -3,4 +3,4 @@ Notes from [Structure and Interpretation of Computer Programs](./README.md) Chap
 
 **Author**: [Chi-chi Wang](https://github.com/chichiwang)
 
-Date: July 2019 - Ongoing
+Date: September 2020 - Ongoing
