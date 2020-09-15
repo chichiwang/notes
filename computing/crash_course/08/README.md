@@ -15,4 +15,4 @@ In any [instruction set architecture](https://en.wikipedia.org/wiki/Instruction_
 
 *Operand specifiers* can be registers, memory locations, or *immediate values* depending on the architecture and the opcode. An immediate [value](https://en.wikipedia.org/wiki/Value_(computer_science)) is a value stored as part of the instruction which employs it. It is stored as a literal value for the instructions which expect such values.
 
-| [Previous: The Central Processing Unit](../07/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: The Central Processing Unit](../07/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Advanced CPU Designs](../09/README.md) |
