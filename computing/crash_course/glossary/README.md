@@ -51,7 +51,7 @@ A characteristic of a product or system, whose interaces are completely understo
 A physical electronic/electromechanical device implementing a boolean function. It performs a logical operation on one or more binary inputs to produce a single binary output.
 
 ## [Microarchitecture](https://en.wikipedia.org/wiki/Microarchitecture)
-In computer engineering, _microarchitecture_, also called _computer organization_, is the way a given instruction set architecture (ISA) is implemented in a particular [processor](#central-processing-unit).
+In computer engineering, _microarchitecture_, also called _computer organization_, is the way a given [instruction set architecture (ISA)](https://en.wikipedia.org/wiki/Instruction_set_architecture) is implemented in a particular [processor](#central-processing-unit).
 
 ## [Memory Address](https://en.wikipedia.org/wiki/Memory_address)
 A reference to a specific memory location used at various levels of software and hardware. Memory addresses are fixed-length sequences of digits conventionally displayed and manipulated as unsigned integers.
