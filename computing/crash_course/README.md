@@ -37,6 +37,9 @@ Date: July 2020 - Ongoing
   * [Clock](./07/README.md#clock)
 * 08: [Intructions and Programs](./08/README.md)
 * 09: [Advanced CPU Designs](./09/README.md)
+  * [CPU Cache](./09/README.md#cpu-cache)
+  * [Instruction Pipelining](./09/README.md#instruction-pipelining)
+  * [Beyond CPU Optimizations](./09/README.md#beyond-cpu-optimizations)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 
