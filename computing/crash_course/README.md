@@ -40,6 +40,7 @@ Date: July 2020 - Ongoing
   * [CPU Cache](./09/README.md#cpu-cache)
   * [Instruction Pipelining](./09/README.md#instruction-pipelining)
   * [Beyond CPU Optimizations](./09/README.md#beyond-cpu-optimizations)
+* 10: [Early Programming](./10/README.md)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 

@@ -53,4 +53,4 @@ When multiple cores are not enough, a computer can be built with multiple, indep
 
 When adding a handful more cores isn't enough, a [supercomputer](../glossary/README.md#supercomputer) may be required. Supercomputers utilize a mind-boggling number of CPUs. The [Sunway Taihulight](https://en.wikipedia.org/wiki/Sunway_TaihuLight), for example, contains 40,960 CPUs each of which contains 256 cores. Each core runs at 1.45ghz. This computer can process over 93 quadrillion floating point math operations per second ([FLOPS](../glossary/README.md#flops)).
  
-| [Previous: Instructions and Programs](../08/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: Instructions and Programs](../08/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Early Programming](../10/README.md) |
