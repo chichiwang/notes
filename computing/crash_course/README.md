@@ -41,6 +41,7 @@ Date: July 2020 - Ongoing
   * [Instruction Pipelining](./09/README.md#instruction-pipelining)
   * [Beyond CPU Optimizations](./09/README.md#beyond-cpu-optimizations)
 * 10: [Early Programming](./10/README.md)
+* 11: [The First Programming Languages](./11/README.md)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 

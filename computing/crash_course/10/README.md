@@ -39,4 +39,4 @@ Programming early computers (whether by plugboards, switches, or punch paper) wa
 
 A simpler way to tell computers what to do was needed.
 
-| [Previous: Advanced CPU Designs](../09/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: Advanced CPU Designs](../09/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: The First Programming Languages](../11/README.md) |
