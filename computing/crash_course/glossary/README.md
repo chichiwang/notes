@@ -1,4 +1,7 @@
 # Glossary
+## [Assembler](https://en.wikipedia.org/wiki/Assembly_language#Assembler)
+An _assembler_ program creates object code by translating combinations of _mnemonics_ and syntax for operations and addressing modes into their numerical equivalents.
+
 ## [Binary](https://en.wikipedia.org/wiki/Binary)
 Means "of two states". From the latin "consisting of two". [Binary numbers](https://en.wikipedia.org/wiki/Binary_number) are numbers represented by two digits. [Binary code](https://en.wikipedia.org/wiki/Binary_code) consists of instructions consisting of two symbols.
 
@@ -29,6 +32,9 @@ A _clock generator_ is an electronic oscillator (circuit) that produces a [clock
 ## [Combinational Logic](https://en.wikipedia.org/wiki/Combinational_logic)
 A type of [logic circuit](#logic-gate) whose output is a pure function of the present input only.
 
+## [Compiler](https://en.wikipedia.org/wiki/Compiler)
+A _compiler_ is a computer proram that translates computer code written in one programming language (the _source language_) into another language (the _target language_). The name "compiler" is primarily used for programs that translate source code from a high-level program language to a lower level language to create an executable program.
+
 ## [Control Unit](https://en.wikipedia.org/wiki/Control_unit)
 The _control unit_ (_CU_) is a component of a computer's central processing unit (CPU) that directs the operation of the processor. It tells the computer's memory, arithmetic and logic unit and input and output devices how to respond to the instructions that have been sent to the processor.
 
@@ -54,7 +60,7 @@ Arithmetic using formulaic representation of real numbers as an approximaton to 
 _Floating point operations per second_ (_FLOPS_, _flops_, or _flop/s_) is a measure of computer performance, useful in fields of scientific computations that require [floating point](#floating-point) calculations. For such cases it is a more accurate measure than measuring instructions per second.
 
 ## [Full Adder](https://en.wikipedia.org/wiki/Adder_(electronics)#Full_adder)
-A _full adder_ is a circuit that adds binary numbers and accounts for values carried in as well as out. A one-bit full adder adds three one-bit numbers (A, B, and C<sub>in</sub>). A and B are the operands, and C<sub>in</sub> is a bit carried from the previous stage.
+A _full adder_ is a circuit that adds binary numbers and accounts for values carried in as well as out. A one-bit full adder adds three one-bit numbers (A, B, and C<sub>in</sub>). A and B are the [operands](#operand), and C<sub>in</sub> is a bit carried from the previous stage.
 
 ## [Half Adder](https://en.wikipedia.org/wiki/Adder_(electronics)#Half_adder)
 The _half adder_ is a circuit that adds two single binary digits A and B. It has two outputs, sum (S) and carry (C). The carry signal represents an overflow into the next digit of a multi-digit addition.
@@ -74,6 +80,9 @@ The time delay between the cause and effect of some physical change in a system 
 ## [Logic Gate](https://en.wikipedia.org/wiki/Logic_gate)
 A physical electronic/electromechanical device implementing a boolean function. It performs a logical operation on one or more binary inputs to produce a single binary output.
 
+## [Machine Code](https://en.wikipedia.org/wiki/Machine_code)
+In computer programming, _machine code_, consisting of machine language instructions, is a low-level programming language used to directly control a computer's [central processing unit](#central-processing-unit). Each instruction causes the CPU to perform a specific task such as a _load_, a _store_, a _jump_, or an [arithmetic logic unit (ALU)](../05/README.md) operation on one or more units of of data in the CPU's [registers](#register) or memory.
+
 ## [Microarchitecture](https://en.wikipedia.org/wiki/Microarchitecture)
 In computer engineering, _microarchitecture_, also called _computer organization_, is the way a given [instruction set architecture (ISA)](https://en.wikipedia.org/wiki/Instruction_set_architecture) is implemented in a particular [processor](#central-processing-unit).
 
@@ -89,14 +98,20 @@ A _multiplexer_ (or _mux_/_data selector_) is a device that selects between seve
 ## [Non-Volatile Memory](https://en.wikipedia.org/wiki/Non-volatile_memory)
 A type of computer memory that can retrieve stored data even after having been power cycled.
 
+## [Operand](https://en.wikipedia.org/wiki/Operand)
+In mathematics, an _operand_ is the object of a mathematical operation, i.e., it is the object or quantity that is being operated on.
+
 ## [Operation Code](https://en.wikipedia.org/wiki/Opcode)
-An _operation code_ (also known as _opcode_, _instruction machine code_, _instruction code_, _instruction syllable_, _instruction parcel_, or _opstring_) is the portion of a machine language instruction that specifies the operation to be performed. Besides the opcode itself, most instructions specify the data they will process in the form of operands.
+An _operation code_ (also known as _opcode_, _instruction machine code_, _instruction code_, _instruction syllable_, _instruction parcel_, or _opstring_) is the portion of a machine language instruction that specifies the operation to be performed. Besides the opcode itself, most instructions specify the data they will process in the form of [operands](#operand).
 
 ## [Out-Of-Order Execution](https://en.wikipedia.org/wiki/Out-of-order_execution)
 _Out-of-order execution_ (or _dynamic execution_) is a paradigm used in most high-performance [CPUs](#central-processing-unit) to make use of [instruction cycles](#clock-signal) that would otherwise be wasted. In this paradigm, a processor executes instructions in an order governed by the availability of input data and execution units, rather than by their original order in a program. In doing so, the processor can avoid being idle while waiting for the preceding instruction to complete and can, in the meantime, process the next instructions that are able to run immediately and independently.
 
 ## [Positional Notation](https://en.wikipedia.org/wiki/Positional_notation)
 A way of representing the values of a positional system (a numeral system in which the contribution of a digit to the value of a number is the product of the value of the digit by a factor determined by the position of the digit).
+
+## [Pseudocode](https://en.wikipedia.org/wiki/Pseudocode)
+_Pseudocode_ is a plain language description of the steps in an algorithm or another system. Pseudocode often uses structural conventions of a normal programming language, but is intended for human reading rather than machine reading. It typically omits details that are essential for machine understanding of the algorithm, such as variable declarations and language-specific code.
 
 ## [Random-Access Memory](https://en.wikipedia.org/wiki/Random-access_memory)
 _Random-access memory_ (_RAM_) is a form of computer memory that can be read and changed in any order, typically used to store working data and machine code. Most RAM is [volatile](#volatile-memory).
