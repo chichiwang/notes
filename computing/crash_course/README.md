@@ -42,6 +42,7 @@ Date: July 2020 - Ongoing
   * [Beyond CPU Optimizations](./09/README.md#beyond-cpu-optimizations)
 * 10: [Early Programming](./10/README.md)
 * 11: [The First Programming Languages](./11/README.md)
+* 12: [Statements and Functions](./12/README.md)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 
