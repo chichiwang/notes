@@ -43,6 +43,8 @@ Date: July 2020 - Ongoing
 * 10: [Early Programming](./10/README.md)
 * 11: [The First Programming Languages](./11/README.md)
 * 12: [Statements and Functions](./12/README.md)
+  * [Statements](./12/README.md#statements)
+  * [Functions](./12/README.md#functions)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 

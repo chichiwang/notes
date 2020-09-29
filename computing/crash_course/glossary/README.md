@@ -35,6 +35,15 @@ A type of [logic circuit](#logic-gate) whose output is a pure function of the pr
 ## [Compiler](https://en.wikipedia.org/wiki/Compiler)
 A _compiler_ is a computer proram that translates computer code written in one programming language (the _source language_) into another language (the _target language_). The name "compiler" is primarily used for programs that translate source code from a high-level program language to a lower level language to create an executable program.
 
+## [Conditional](https://en.wikipedia.org/wiki/Conditional_(computer_programming))
+In computer science, _conditional statements_, _conditional expressions_, and _conditional constructs_ are features of a programming language, which performs different computations or actions depending on whether a programmer-specified boolean _condition_ evaluates to `true` or `false`. Apart from the case of [branch prediction](#branch-predictor), this is always achieved by selectively altering the [control flow](#control-flow) based on some condition.
+
+## [Conditional Loop](https://en.wikipedia.org/wiki/Conditional_loop)
+A _conditional loop_, or _repetitive control structure_, is a way for computer programs to repeat one or more various steps depending on [conditions](#conditional) set either by the programmer initially or real-time by the actual program.
+
+## [Control Flow](https://en.wikipedia.org/wiki/Control_flow)
+In computer science _control flow_ (or _flow of control_) is the order in which individual [statements](#statement), instructions, or function calls of an imperative program are executed or evaluated. The emphasis on explicit _control flow_ distinguishes an _imperative programming language_ from a _declarative programming language_.
+
 ## [Control Unit](https://en.wikipedia.org/wiki/Control_unit)
 The _control unit_ (_CU_) is a component of a computer's central processing unit (CPU) that directs the operation of the processor. It tells the computer's memory, arithmetic and logic unit and input and output devices how to respond to the instructions that have been sent to the processor.
 
@@ -76,6 +85,9 @@ A characteristic of a product or system, whose interaces are completely understo
 
 ## [Latency](https://en.wikipedia.org/wiki/Latency_(engineering))
 The time delay between the cause and effect of some physical change in a system being observed.
+
+## [Library](https://en.wikipedia.org/wiki/Library_(computing))
+A _library_ is a collection of non-volatile resources used by computer programs, often for software development. These may include configuration data, documentation, help data, message templates, pre-written code and [subroutines](#subroutine), classes, values or type specifications. A _library_ is a collection of implementations of behavior, written in terms of a language, that has a well-defined interface by which the behavior is invoked.
 
 ## [Logic Gate](https://en.wikipedia.org/wiki/Logic_gate)
 A physical electronic/electromechanical device implementing a boolean function. It performs a logical operation on one or more binary inputs to produce a single binary output.
@@ -132,14 +144,23 @@ A type of [logic circuit](#logic-gate) whose output depends not only on the pres
 ## [Speculative Execution](https://en.wikipedia.org/wiki/Speculative_execution)
 An optimization technique where a computer system performs some task that may not be needed. Work is done before it is known whether it is actually needed, so as to prevent a delay that would have to be incurred by doing the work after it is known that it is needed. If it turns out the work was not needed after all, most changes made by the work are reverted and the results are ignored.
 
+## [Statement](https://en.wikipedia.org/wiki/Statement_(computer_science))
+In _computer programming_ a _statement_ is a syntactic unit of an imperative programming language that expresses some action to be carried out. A program written in cuch a language is formed by a sequence of one or more _statements_. A statement may have internal components (e.g., expressions).
+
 ## [Static Random-Access Memory](https://en.wikipedia.org/wiki/Static_random-access_memory)
 _Static Random-Access Memory_ (_SRAM_) is a type of [RAM](#random-access-memory) that uses latching circuitry ([flip-flop](#flip-flop)) to store each bit. SRAM is [volatile memory](#volatile-memory): data is lost whenever power is removed.
+
+## [Subroutine](https://en.wikipedia.org/wiki/Subroutine)
+A _subroutine_ is a sequence of program instructions that performs a specific task, packaged as a unit. This unit can then be used in programs wherever that particular task should be performed. _Subroutines_ can be defined within programs, or separately in _libraries_ that can be used by many programs. In different programming languages, a _subroutine_ may be called a _routine_, _subprogram_, _function_, _method_, or _procedure_. Technically, these terms all have different definitions. The generic, umbrella term _callable unit_ is sometimes used.
 
 ## [Supercomputer](https://en.wikipedia.org/wiki/Supercomputer)
 A _supercomputer_ is a computer with a high level of performance as compared to a general-purpose computer. Supercomputers play an important role in the field of computational science, and are used for a wide range of computationally intensive tasks in various fields, including quantum mechanics, weather forecasting, climate research, oil and gas exploration, molecular modeling, and physical simulations.
 
 ## [Superscalar](https://simple.wikipedia.org/wiki/Superscalar)
 A _superscalar [CPU](#central-processing-unt)_ design makes a form of parallel computing calle instruction-level parallelism inside a single CPU, which allows more work to be done at the same clock rate. This means the CPU executes more than one instruction during a clock cycle by running multiple instructions at the same time (called _instruction dispatching_) on duplicate functional units.
+
+## [Syntax](https://en.wikipedia.org/wiki/Syntax_(programming_languages))
+The _syntax_ of a computer language is the set of rules that defines th combinations of symbols that are considered to be correctly structured [statements](#statement) and expressions in that language. This applies to both _programming languages_ where the document represents source code, and to _markup languages_, where the document represents data.
 
 ## [Transistor](https://en.wikipedia.org/wiki/Transistor)
 Similar to a [relay](#relay) or [vacuum tube](#vacuum-tube) a _transistor_ is a switch that can be opened or closed via the application of a current to a control wire. Typically a transistor consists of two electrodes separated by a gate electrode (a semiconductor). By changing the electrical charge of the gate, the conductivity of the semiconductor could be manipulated.
