@@ -32,4 +32,4 @@ Modularizing programs into functions not only allows a single programmer to writ
 
 Modern programming languages come with bundles of pre-written functions called [libraries](../glossary/README.md#library). These are written by expert coders, made efficient and rigorously tested, and then provided to everytone who use the language. There are libraries for nearly everything including networking, graphics, and sound.
 
-| [Previous: The First Programming Languages](../11/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: The First Programming Languages](../11/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Intro to Algorithms](../13/README.md) |

@@ -45,6 +45,7 @@ Date: July 2020 - Ongoing
 * 12: [Statements and Functions](./12/README.md)
   * [Statements](./12/README.md#statements)
   * [Functions](./12/README.md#functions)
+* 13: [Intro to Algorithms](./13/README.md)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 
