@@ -1,6 +1,12 @@
 # Glossary
+## [Algorithm](https://en.wikipedia.org/wiki/Algorithm)
+In mathematics and computer science, an _algorithm_ is a finite sequence of well-defined, computer-implementable instructions, typically to solve a class of problems or to perform a computation. Algorithms are always unambiguous and are used as specifications for performing calculations, data processing, automated reasoning, or other tasks.
+
 ## [Assembler](https://en.wikipedia.org/wiki/Assembly_language#Assembler)
 An _assembler_ program creates object code by translating combinations of _mnemonics_ and syntax for operations and addressing modes into their numerical equivalents.
+
+## [Big O Notation](https://en.wikipedia.org/wiki/Big_O_notation)
+A mathematical notation that describes the limiting behavior of a function when the argument tends towards a certain value or infinity. Big O is a member of a family of notations invented by [Paul Bachmann](https://en.wikipedia.org/wiki/Paul_Gustav_Heinrich_Bachmann), [Edmund Landau](https://en.wikipedia.org/wiki/Edmund_Landau), and others, collectively called _Bachmann-Landau notation_ or _asymptotic notation_. In computer science, big O notation is used to classify algorithms according to how their run time or space requirements grow as the input size grows.
 
 ## [Binary](https://en.wikipedia.org/wiki/Binary)
 Means "of two states". From the latin "consisting of two". [Binary numbers](https://en.wikipedia.org/wiki/Binary_number) are numbers represented by two digits. [Binary code](https://en.wikipedia.org/wiki/Binary_code) consists of instructions consisting of two symbols.
@@ -34,6 +40,9 @@ A type of [logic circuit](#logic-gate) whose output is a pure function of the pr
 
 ## [Compiler](https://en.wikipedia.org/wiki/Compiler)
 A _compiler_ is a computer proram that translates computer code written in one programming language (the _source language_) into another language (the _target language_). The name "compiler" is primarily used for programs that translate source code from a high-level program language to a lower level language to create an executable program.
+
+## [Computational Complexity](https://en.wikipedia.org/wiki/Computational_complexity)
+The _computational complexity_ or simply _complexity_ of an [algorithm](#algorithm) is the amount of resources required to run it. Particular focus is given to time and memory requirements.
 
 ## [Conditional](https://en.wikipedia.org/wiki/Conditional_(computer_programming))
 In computer science, _conditional statements_, _conditional expressions_, and _conditional constructs_ are features of a programming language, which performs different computations or actions depending on whether a programmer-specified boolean _condition_ evaluates to `true` or `false`. Apart from the case of [branch prediction](#branch-predictor), this is always achieved by selectively altering the [control flow](#control-flow) based on some condition.
@@ -70,6 +79,16 @@ _Floating point operations per second_ (_FLOPS_, _flops_, or _flop/s_) is a meas
 
 ## [Full Adder](https://en.wikipedia.org/wiki/Adder_(electronics)#Full_adder)
 A _full adder_ is a circuit that adds binary numbers and accounts for values carried in as well as out. A one-bit full adder adds three one-bit numbers (A, B, and C<sub>in</sub>). A and B are the [operands](#operand), and C<sub>in</sub> is a bit carried from the previous stage.
+
+## [Graph](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics))
+In mathematics, and more specifically in _graph theory_, a _graph_ is a structure amounting to a set of objects in which some pairs of the objects are in some sense "related". The objects correspond to mathematical abstrcations called _vertices_ (also called _nodes_ or _points_) and each of the related pairs of vertices is called an _edge_ (also called _link_ or _line_). Typically, a graph is represented in diagrammatic form as a set of dots or circles for the vertices, joined by lines or curves for the edges. Graphes are one of the objects of study in discrete mathematics.
+
+![A graph with six vertices and seven edges](./graph.svg)
+<br />
+A graph with six vertices and seven edges.
+
+## [Graph Traversal](https://en.wikipedia.org/wiki/Graph_traversal)
+_Graph traversal_, also known as _graph search_, refers to the process of visiting (checking and/or updating) each vertex in a graph. Such traversals are classified by the order in which the vertices are visited. _Tree traversal_ is a special case of graph traversal.
 
 ## [Half Adder](https://en.wikipedia.org/wiki/Adder_(electronics)#Half_adder)
 The _half adder_ is a circuit that adds two single binary digits A and B. It has two outputs, sum (S) and carry (C). The carry signal represents an overflow into the next digit of a multi-digit addition.
