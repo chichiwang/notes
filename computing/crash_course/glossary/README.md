@@ -2,6 +2,9 @@
 ## [Algorithm](https://en.wikipedia.org/wiki/Algorithm)
 In mathematics and computer science, an _algorithm_ is a finite sequence of well-defined, computer-implementable instructions, typically to solve a class of problems or to perform a computation. Algorithms are always unambiguous and are used as specifications for performing calculations, data processing, automated reasoning, or other tasks.
 
+## [Array](https://en.wikipedia.org/wiki/Array_data_structure)
+An _array data structure_, or simply an _array_, is a [data structure](#data-structure) consisting of a collection of elements (values of variables), each identified by at least one _array index_ or _key_. An array is stored in such that the position of each element can be computed from its index tuple by a mathematical formula. The simplest type of data structure is a linear array, also called one-dimensional array.
+
 ## [Assembler](https://en.wikipedia.org/wiki/Assembly_language#Assembler)
 An _assembler_ program creates object code by translating combinations of _mnemonics_ and syntax for operations and addressing modes into their numerical equivalents.
 
@@ -41,6 +44,9 @@ A type of [logic circuit](#logic-gate) whose output is a pure function of the pr
 ## [Compiler](https://en.wikipedia.org/wiki/Compiler)
 A _compiler_ is a computer proram that translates computer code written in one programming language (the _source language_) into another language (the _target language_). The name "compiler" is primarily used for programs that translate source code from a high-level program language to a lower level language to create an executable program.
 
+## [Composite Data Type](https://en.wikipedia.org/wiki/Composite_data_type)
+A _composite data type_ or _compound data type_ is any data type which can be constructed in a program using the programming language's primitive data types and other composite types. It is sometimes called a _structure_ or _aggregate data type_, although the latter term may also refer to arrays, lists, etc. The act of constructing a composite type is known as _composition_. Composite data types are often contrasted with scalar variables.
+
 ## [Computational Complexity](https://en.wikipedia.org/wiki/Computational_complexity)
 The _computational complexity_ or simply _complexity_ of an [algorithm](#algorithm) is the amount of resources required to run it. Particular focus is given to time and memory requirements.
 
@@ -58,6 +64,9 @@ The _control unit_ (_CU_) is a component of a computer's central processing unit
 
 ## [CPU Cache](https://en.wikipedia.org/wiki/CPU_cache)
 A hardware cache used by the [CPU](#central-processing-unit) of a computer to reduce the average cost (time or energy) to access data from the main memory. This cache is a smaller, faster memory, located closer to a processor core, which stores copies of the data from frequently used memory locations. Most CPUs have different independent caches, including instruction and data cahces, where the data cache is usually organized as a hierarchy of more cache levels (L1, L2, L3, L4, etc.).
+
+## [Data Structure](https://en.wikipedia.org/wiki/Data_structure)
+A _data structure_ is a data organization, management, and storage format that enables efficient access and modificaton. More precisely, a data structure is a collection of data values, the relationships among them, and the functions or operations that can be applied to the data.
 
 ## [Diode](https://en.wikipedia.org/wiki/Diode)
 An electronic component that permits the one-way flow of current. A diode is a kind of [vacuum tube](#vacuum-tube).
@@ -108,6 +117,15 @@ The time delay between the cause and effect of some physical change in a system 
 ## [Library](https://en.wikipedia.org/wiki/Library_(computing))
 A _library_ is a collection of non-volatile resources used by computer programs, often for software development. These may include configuration data, documentation, help data, message templates, pre-written code and [subroutines](#subroutine), classes, values or type specifications. A _library_ is a collection of implementations of behavior, written in terms of a language, that has a well-defined interface by which the behavior is invoked.
 
+## [Linked List](https://en.wikipedia.org/wiki/Linked_list)
+A linear collection of data elements whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of nodes which together represent a sequence. In its most basic form, each node contains: data, and a reference (in other words, a _link_) to the next node in the sequence. This structure allows for efficient insertion or removal of elements from any position in the sequence during iteration. More complex variants add additional links, allowing more efficient insertion or removal of nodes at arbitrary positions. A drawback of linked lists is that access time is linear (and difficult to pipeline). Faster access, such as random access, is not feasible. Arrays have better _cache locality_ compared to linked lists.
+
+![Singly-linked list](./singly-linked-list.svg)
+<br />
+A linked list whose nodes contain two fields: an integer value and a link to the next node. The last node is linked to a terminator used to signify the end of the list.
+
+Linked lists are amongst the simplest and most common data structures. They can be used to implement several other common abstract data types, including lists, [stacks](#stack), [queues](#queue), associative arrays, and S-expressions, though it is not uncommon to implement those data structures directly without using a linked list as the basis.
+
 ## [Logic Gate](https://en.wikipedia.org/wiki/Logic_gate)
 A physical electronic/electromechanical device implementing a boolean function. It performs a logical operation on one or more binary inputs to produce a single binary output.
 
@@ -126,8 +144,14 @@ A _multi-core processor_ is a [computer processor](#central-processing-unit) int
 ## [Multiplexer](https://en.wikipedia.org/wiki/Multiplexer)
 A _multiplexer_ (or _mux_/_data selector_) is a device that selects between several analog or digital input signals and forwards it to a single output line.
 
+## [Node](https://en.wikipedia.org/wiki/Node_(computer_science))
+A _node_ is a basic unit of a data structure, such as a [linked list](#linked-list) or _[tree](#tree)_ data structure. Nodes contain data and also may link to other nodes. Links between nodes are often implemented by [pointers](#pointer).
+
 ## [Non-Volatile Memory](https://en.wikipedia.org/wiki/Non-volatile_memory)
 A type of computer memory that can retrieve stored data even after having been power cycled.
+
+## [Null Character](https://en.wikipedia.org/wiki/Null_character)
+The _null character_ (also _null terminator_) is a control character with a value of zero. It is present in many character sets. It is available in nearly all mainstream programming languages. It is often abbreviated as _NUL_ (or _NULL_ though in some contexts that term is used for the _null pointer_, a different object). In 8-bit codes, it is known as a _null byte_.
 
 ## [Operand](https://en.wikipedia.org/wiki/Operand)
 In mathematics, an _operand_ is the object of a mathematical operation, i.e., it is the object or quantity that is being operated on.
@@ -138,11 +162,17 @@ An _operation code_ (also known as _opcode_, _instruction machine code_, _instru
 ## [Out-Of-Order Execution](https://en.wikipedia.org/wiki/Out-of-order_execution)
 _Out-of-order execution_ (or _dynamic execution_) is a paradigm used in most high-performance [CPUs](#central-processing-unit) to make use of [instruction cycles](#clock-signal) that would otherwise be wasted. In this paradigm, a processor executes instructions in an order governed by the availability of input data and execution units, rather than by their original order in a program. In doing so, the processor can avoid being idle while waiting for the preceding instruction to complete and can, in the meantime, process the next instructions that are able to run immediately and independently.
 
+## [Pointer](https://en.wikipedia.org/wiki/Pointer_(computer_programming))
+An object in many programming languages that stores a memory address. This can be that of another value located in computer memory, or in some cases, that of memory-mapped computer hardware. A pointer _references_ a location in memory, and obtaining the value stored at that location is known as _dereferencing_ the pointer. As an analogy, a page number in a book's index could be considered a pointer to the corresponding page; dereferencing such a pointer would be done by flipping to the page with the given page number and reading the text found on the page. The actual format and content of a pointer variable is dependent on the underlying computer architecture.
+
 ## [Positional Notation](https://en.wikipedia.org/wiki/Positional_notation)
 A way of representing the values of a positional system (a numeral system in which the contribution of a digit to the value of a number is the product of the value of the digit by a factor determined by the position of the digit).
 
 ## [Pseudocode](https://en.wikipedia.org/wiki/Pseudocode)
 _Pseudocode_ is a plain language description of the steps in an algorithm or another system. Pseudocode often uses structural conventions of a normal programming language, but is intended for human reading rather than machine reading. It typically omits details that are essential for machine understanding of the algorithm, such as variable declarations and language-specific code.
+
+## [Queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type))
+A collection of entities that are maintained in a sequence that can be modified by the addition of entities at one end of the sequence and the removal of entities from the other end of the sequence. By convention, the end of the sequence at which elements are added is called the back, tail, or rear of the queue, and the end at which elements are removed is called the head or front of the queue, analgously to the words used when people line up to wait for goods or services.
 
 ## [Random-Access Memory](https://en.wikipedia.org/wiki/Random-access_memory)
 _Random-access memory_ (_RAM_) is a form of computer memory that can be read and changed in any order, typically used to store working data and machine code. Most RAM is [volatile](#volatile-memory).
@@ -163,11 +193,21 @@ A type of [logic circuit](#logic-gate) whose output depends not only on the pres
 ## [Speculative Execution](https://en.wikipedia.org/wiki/Speculative_execution)
 An optimization technique where a computer system performs some task that may not be needed. Work is done before it is known whether it is actually needed, so as to prevent a delay that would have to be incurred by doing the work after it is known that it is needed. If it turns out the work was not needed after all, most changes made by the work are reverted and the results are ignored.
 
+## [Stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))
+An abstract data type that serves as a collection of elements, with two main principal operations:
+* push, which adds an element to the collection, and
+* pop, which removes the most recently added element that was not yet removed.
+
+The order in which elements come off a stack gives rise to its alternative name, _LIFO_ (_last in, first out_). Additionally, a _peek_ operation may give access to the top without modifying the stack. The name "stack" for this type of structure comes from the analogy to a set of physical items stacked on top of each other. The structure makes it easy to take an item off the top of the stack, while getting to an item deeper in the stack may require taking off multiple other items first.
+
 ## [Statement](https://en.wikipedia.org/wiki/Statement_(computer_science))
 In _computer programming_ a _statement_ is a syntactic unit of an imperative programming language that expresses some action to be carried out. A program written in cuch a language is formed by a sequence of one or more _statements_. A statement may have internal components (e.g., expressions).
 
 ## [Static Random-Access Memory](https://en.wikipedia.org/wiki/Static_random-access_memory)
 _Static Random-Access Memory_ (_SRAM_) is a type of [RAM](#random-access-memory) that uses latching circuitry ([flip-flop](#flip-flop)) to store each bit. SRAM is [volatile memory](#volatile-memory): data is lost whenever power is removed.
+
+## [String](https://en.wikipedia.org/wiki/String_(computer_science))
+Traditionally a sequence of characters, either as a literal constant or as some kind of variable. The latter may allow its elements to be mutated and the length changed, or it may be fixed (after creation). A _string_ is generally considered a data type and is often implemented as an [array](#array) data structure of [bytes](#byte) (or words) that stores a sequence of elements, typically characters, using some character encoding. _String_ may also denote more general arrays or other sequence (or list) data types and structures.
 
 ## [Subroutine](https://en.wikipedia.org/wiki/Subroutine)
 A _subroutine_ is a sequence of program instructions that performs a specific task, packaged as a unit. This unit can then be used in programs wherever that particular task should be performed. _Subroutines_ can be defined within programs, or separately in _libraries_ that can be used by many programs. In different programming languages, a _subroutine_ may be called a _routine_, _subprogram_, _function_, _method_, or _procedure_. Technically, these terms all have different definitions. The generic, umbrella term _callable unit_ is sometimes used.
@@ -183,6 +223,13 @@ The _syntax_ of a computer language is the set of rules that defines th combinat
 
 ## [Transistor](https://en.wikipedia.org/wiki/Transistor)
 Similar to a [relay](#relay) or [vacuum tube](#vacuum-tube) a _transistor_ is a switch that can be opened or closed via the application of a current to a control wire. Typically a transistor consists of two electrodes separated by a gate electrode (a semiconductor). By changing the electrical charge of the gate, the conductivity of the semiconductor could be manipulated.
+
+## [Tree](https://en.wikipedia.org/wiki/Tree_(data_structure))
+A _tree_ is a widely used abstract data type that simulates a hierarchical _tree structure_, with a root value and subtrees of children with a parent node, represented as a set of linked [nodes](#node).
+
+![Tree](./tree.svg)
+<br/>
+A generic, and so non-binary, unsorted, some labels duplicated, arbitrary diagram of a tree.
 
 ## [Vacuum Tube](https://en.wikipedia.org/wiki/Vacuum_tube)
 A device that controls electric current flow in a high vacuum between electrodes to which an electric potential difference has been applied.
