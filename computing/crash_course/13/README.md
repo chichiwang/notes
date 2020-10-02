@@ -15,4 +15,4 @@ Much like search algorithms, there are numerous graph traversal algorithms. Thes
 
 Algorithms are in use everywhere - the modern world would not be possible without them. A central part of being a computer scientist is leveraging existing algorithms and writing new ones when needed.
 
-| [Previous: Statments and Functions](../12/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: Statments and Functions](../12/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Data Structures](../14/README.md) |
