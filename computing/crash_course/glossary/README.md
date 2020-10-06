@@ -5,6 +5,9 @@ In mathematics and computer science, an _algorithm_ is a finite sequence of well
 ## [Array](https://en.wikipedia.org/wiki/Array_data_structure)
 An _array data structure_, or simply an _array_, is a [data structure](#data-structure) consisting of a collection of elements (values of variables), each identified by at least one _array index_ or _key_. An array is stored in such that the position of each element can be computed from its index tuple by a mathematical formula. The simplest type of data structure is a linear array, also called one-dimensional array.
 
+## [Artificial Intelligence](https://en.wikipedia.org/wiki/Artificial_intelligence)
+_Artificial intelligence_ (_AI_), sometimes called _machine intelligence_, is intelligence demonstrated by machines, unlike the _natural intelligence_ displayed by humans and animals. Leading AI textbooks define the field of study of "intelligent agents": any device that perceives its environment and takes actions that maximize its chance of successfully achieving its goals. Colloquially, the term "artificial intelligence" is often used to describe machines (or computers) that mimic "cognitive" functions that humans associate with the human mind, such as "learning" and "problem solving".
+
 ## [Assembler](https://en.wikipedia.org/wiki/Assembly_language#Assembler)
 An _assembler_ program creates object code by translating combinations of _mnemonics_ and syntax for operations and addressing modes into their numerical equivalents.
 
@@ -110,6 +113,9 @@ An _integer overflow_ occurs when an arithmetic operation attempts to create a n
 
 ## [Interoperability](https://en.wikipedia.org/wiki/Interoperability)
 A characteristic of a product or system, whose interaces are completely understood, to work with other products or systems, at present or in the future, in either implementation or access, without any restrictions. The term was initially defined for information technology or systems engineering services to allow for information exchange.
+
+## [Lambda Calculus](https://en.wikipedia.org/wiki/Lambda_calculus)
+_Lambda calculus_ (also written as _λ-calculus_) is a formal system in mathematical logic for expressing computation based on function abstraction and application using variable binding and substitution. It is a universal model of computation that can be used to simulate any Turing machine. It was introduced by the mathematician Alonzo Church in the 1930s as part of his research into the foundations of mathematics.
 
 ## [Latency](https://en.wikipedia.org/wiki/Latency_(engineering))
 The time delay between the cause and effect of some physical change in a system being observed.
@@ -230,6 +236,14 @@ A _tree_ is a widely used abstract data type that simulates a hierarchical _tree
 ![Tree](./tree.svg)
 <br/>
 A generic, and so non-binary, unsorted, some labels duplicated, arbitrary diagram of a tree.
+
+## [Turing Completeness](https://en.wikipedia.org/wiki/Turing_completeness)
+In _computability theory_, a system of data-manipulation rules (such as a computer's instruction set, a programming language, or a cellular automaton) is said to be _Turing-complete_ or _computationally universal_ if it can be used to simulate any [Turing machine](#turing-machine). This means that this system is able to recognize or decide other data-manipulation rule sets. Turing completeness is used as a way to express the power of such a data-manipulation rule set. Virtually all programming languages today are Turing-complete. The concept is named after English mathematician and computer scientist [Alan Turing](https://en.wikipedia.org/wiki/Alan_Turing).
+
+## [Turing Machine](https://en.wikipedia.org/wiki/Turing_machine)
+A _Turing machine_ is a mathematical model of computation that defines an abstract machine, which manipulates symbols on a strip of tape according to a table of rules. Despite the model's simplicity, given any computer algorithm, a Turing machine capable of simulating that algorithm's logic can be constructed.
+
+The machine operates on an infinite memory tape divided into discrete "cells". The machine positions its "head" over a cell and "reads" or "scans" the symbol there. Then, as per the symbol and the machine's own present state in a "finite table" of user-specified instructions, the machine writes a symbol (e.g., a digit or letter fom a finite alphabet) in the cell (some models allow symbol erasure or no writing) then either moves the tape one cell left or right (some models allow no motion, some models move the head) then (as determined by the observed symbol and the machines' own state in the table) either proceeds to a subsequent instruction or halts the computation.
 
 ## [Vacuum Tube](https://en.wikipedia.org/wiki/Vacuum_tube)
 A device that controls electric current flow in a high vacuum between electrodes to which an electric potential difference has been applied.
