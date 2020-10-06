@@ -72,4 +72,4 @@ An important property of trees is that there is a one-way path from roots to lea
 
 ![Graph diagram](../glossary/graph.svg)
 
-| [Previous: Intro to Algorithms](../13/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: Intro to Algorithms](../13/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Alan Turing](../15/README.md) |
