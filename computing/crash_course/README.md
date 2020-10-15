@@ -56,6 +56,7 @@ Date: July 2020 - Ongoing
   * [Trees](./14/README.md#trees)
   * [Graphs](./14/README.md#graphs)
 * 15: [Alan Turing](./15/README.md)
+* 16: [Software Engineering](./16/README.md)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 
