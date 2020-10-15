@@ -2,6 +2,9 @@
 ## [Algorithm](https://en.wikipedia.org/wiki/Algorithm)
 In mathematics and computer science, an _algorithm_ is a finite sequence of well-defined, computer-implementable instructions, typically to solve a class of problems or to perform a computation. Algorithms are always unambiguous and are used as specifications for performing calculations, data processing, automated reasoning, or other tasks.
 
+## [API](https://en.wikipedia.org/wiki/API)
+An _application programming interface_ (_API_) is a computing interface which defines interactions between multiple software intermediaries. It defines the kinds of calls or requests that can be made, how to make them, the data formats that should be used, the conventions to follow, etc. It can also provide extension mechanisms so that users can extend existing functionality in various ways and to varying degrees. An API can be entirely custom, specific to a component, or it can be designed based on an industry-standard to ensure interoperability. Through information hiding, APIs enable modular programming, which allows users to use the interface independently of the implementation.
+
 ## [Array](https://en.wikipedia.org/wiki/Array_data_structure)
 An _array data structure_, or simply an _array_, is a [data structure](#data-structure) consisting of a collection of elements (values of variables), each identified by at least one _array index_ or _key_. An array is stored in such that the position of each element can be computed from its index tuple by a mathematical formula. The simplest type of data structure is a linear array, also called one-dimensional array.
 
@@ -35,6 +38,9 @@ To reduce computation time, engineers devised faster ways to add two binary numb
 ## [Central Processing Unit](https://en.wikipedia.org/wiki/Central_processing_unit)
 The _central processing unit_ (_CPU_), also known as a _central processor_, _main processor_, or just _processor_, is the electronic circuitry within a computer that executes instructions that make up a computer program. The CPU performs basic arithmetic, logic, controlling, and input/output (I/O) operations specified by the instructions in the program.
 
+## [Class Hierarchy](https://en.wikipedia.org/wiki/Class_hierarchy)
+A _class hierarchy_ or _inheritance tree_ in computer science is a classification of object types, denoting objects as the instantiations of classes (class is like a blueprint, the object is what is built from that blueprint) inter-relating the various classes by relationships such as "inherits", "extends", "is an abstraction of", "an interface definition". In object-oriented programing, a class is a template that the defines the state and behavior common to objects of a certain kind. A class can be defined in terms of other classes.
+
 ## [Clock Signal](https://en.wikipedia.org/wiki/Clock_signal)
 A _clock signal_ (or _logic beat_) oscillates between a high and a low state and is used like a metronome to coordinate actions of digital circuits. A single pulse of this signal is called a _clock cycle_.
 
@@ -43,6 +49,16 @@ A _clock generator_ is an electronic oscillator (circuit) that produces a [clock
 
 ## [Combinational Logic](https://en.wikipedia.org/wiki/Combinational_logic)
 A type of [logic circuit](#logic-gate) whose output is a pure function of the present input only.
+
+## [Code Reuse](https://en.wikipedia.org/wiki/Code_reuse)
+_Code reuse_, also called _software reuse_ is the use of existing software, or software knowledge, to build new software, following the [reusability principles](https://en.wikipedia.org/wiki/Reusability).
+
+## [Comment](https://en.wikipedia.org/wiki/Comment_(computer_programming))
+In computer programming, a _comment_ is a programmer-readable explanation or annotation in the source code of a computer program. They are added with the purpose of making the source code easier for humans to understand, and are generally ignored by [compilers](#compiler) and interpreters. The syntax of comments in various programming languages varies considerably.
+
+Comments are sometimes also processed in various ways to generate documentation external to the source code itself by documentaton generators, or used for integration with source code management systems and other kinds of external programming tools.
+
+The flexibility provided by comments allows for a wide degree of variability, but formal conventions for their use are commonly part of programming style guides.
 
 ## [Compiler](https://en.wikipedia.org/wiki/Compiler)
 A _compiler_ is a computer proram that translates computer code written in one programming language (the _source language_) into another language (the _target language_). The name "compiler" is primarily used for programs that translate source code from a high-level program language to a lower level language to create an executable program.
@@ -70,6 +86,11 @@ A hardware cache used by the [CPU](#central-processing-unit) of a computer to re
 
 ## [Data Structure](https://en.wikipedia.org/wiki/Data_structure)
 A _data structure_ is a data organization, management, and storage format that enables efficient access and modificaton. More precisely, a data structure is a collection of data values, the relationships among them, and the functions or operations that can be applied to the data.
+
+## [Debugging](https://en.wikipedia.org/wiki/Debugging)
+In computer programming and software development, _debugging_ is the process of finding and resolving bugs (defects or problems that prevent correct operation) within computer programs, software, or systems.
+
+Debugging tactics can involve interactive debugging, [control flow](#control-flow) analysis, unit testing, integration testing, log file analysis, monitoring at the application or system level, memory dumps, and profiling. Many programming languages and software development tools also offer programs to aid in debugging, known as _debuggers_.
 
 ## [Diode](https://en.wikipedia.org/wiki/Diode)
 An electronic component that permits the one-way flow of current. A diode is a kind of [vacuum tube](#vacuum-tube).
@@ -110,6 +131,9 @@ A technique for implementing instruction-level parallelism within a single proce
 
 ## [Integer Overflow](https://en.wikipedia.org/wiki/Integer_overflow)
 An _integer overflow_ occurs when an arithmetic operation attempts to create a numeric value that is outside of the range that can be represented with a given number of digits - either higher than the maximum or lower than the minimum representable value. An overflow condition may give results leading to unintended behavior. If the possibility of an overflow has not been anticipated, it can compromise a program's reliability and security.
+
+## [Integrated Development Environment](https://en.wikipedia.org/wiki/Integrated_development_environment)
+An _integrated development environment_ (_IDE_) is a software application that provides comprehensive facilities to computer programmers for software development. An IDE normally consists of at least a source code editor, build automation tools and a debugger. Some IDEs, Such as [NetBeans](https://en.wikipedia.org/wiki/NetBeans) and [Eclipse](https://en.wikipedia.org/wiki/Eclipse_(software)), contain the necessary [compiler](#compiler), interpreter, or both; others such as [SharpDevelop](https://en.wikipedia.org/wiki/SharpDevelop) and [Lazarus](https://en.wikipedia.org/wiki/Lazarus_(IDE)) do not.
 
 ## [Interoperability](https://en.wikipedia.org/wiki/Interoperability)
 A characteristic of a product or system, whose interaces are completely understood, to work with other products or systems, at present or in the future, in either implementation or access, without any restrictions. The term was initially defined for information technology or systems engineering services to allow for information exchange.
@@ -159,6 +183,9 @@ A type of computer memory that can retrieve stored data even after having been p
 ## [Null Character](https://en.wikipedia.org/wiki/Null_character)
 The _null character_ (also _null terminator_) is a control character with a value of zero. It is present in many character sets. It is available in nearly all mainstream programming languages. It is often abbreviated as _NUL_ (or _NULL_ though in some contexts that term is used for the _null pointer_, a different object). In 8-bit codes, it is known as a _null byte_.
 
+## [Object-Oriented Programming](https://en.wikipedia.org/wiki/Object-oriented_programming)
+A programming paradigm based on the concept of "objects", which can contain data and code: data in the form of _fields_ (often known as _attributes_ or _properties_), and code, in the form of procedures (often known as _methods_).
+
 ## [Operand](https://en.wikipedia.org/wiki/Operand)
 In mathematics, an _operand_ is the object of a mathematical operation, i.e., it is the object or quantity that is being operated on.
 
@@ -177,8 +204,16 @@ A way of representing the values of a positional system (a numeral system in whi
 ## [Pseudocode](https://en.wikipedia.org/wiki/Pseudocode)
 _Pseudocode_ is a plain language description of the steps in an algorithm or another system. Pseudocode often uses structural conventions of a normal programming language, but is intended for human reading rather than machine reading. It typically omits details that are essential for machine understanding of the algorithm, such as variable declarations and language-specific code.
 
+## [Quality Assurance](https://en.wikipedia.org/wiki/Quality_assurance)
+_Quality assurance_ (_QA_) is a way of preventing mistakes and defects in manufactured products and avoiding problems when delivering products or services to customers; which [ISO 9000](https://en.wikipedia.org/wiki/ISO_9000) defines as "part of quality management focused on providing confidence that quality requirements will be fulfilled". This defect prevention in quality assurance differs subtly from defect detetion and rejction in quality control and has been referred to as a _shift left_ since it focuses on quality earlier in the process (i.e., to the left of a linear process diagram reading left to right).
+
 ## [Queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type))
 A collection of entities that are maintained in a sequence that can be modified by the addition of entities at one end of the sequence and the removal of entities from the other end of the sequence. By convention, the end of the sequence at which elements are added is called the back, tail, or rear of the queue, and the end at which elements are removed is called the head or front of the queue, analgously to the words used when people line up to wait for goods or services.
+
+## [README](https://en.wikipedia.org/wiki/README)
+A _README_ file contains information about other files in a directory or archive of computer software. A form of [documentation](#software-documentation), it is usally a simple plain text file called `Read Me`, `READ.ME`, `README.txt`, `README.md` (for a text file using [markdown](https://en.wikipedia.org/wiki/Markdown) markup), `README.1ST` - or simply `README`.
+
+The file's name is generally written in uppercase letters. On Unix-like systems in particular this makes it easily noticed - both because lowercase filenames are more usual, and because traditionally the `ls` sommand sorts and displays files in ASCII-code order, so that uppercase filenames appear first.
 
 ## [Random-Access Memory](https://en.wikipedia.org/wiki/Random-access_memory)
 _Random-access memory_ (_RAM_) is a form of computer memory that can be read and changed in any order, typically used to store working data and machine code. Most RAM is [volatile](#volatile-memory).
@@ -195,6 +230,15 @@ A _ripple-carry adder_ is a circuit that utilizes multiple [full adders](#full-a
 
 ## [Sequential Logic](https://en.wikipedia.org/wiki/Sequential_logic)
 A type of [logic circuit](#logic-gate) whose output depends not only on the present value of its input signals but on the sequence of past inputs (the input history).
+
+## [Software Documentation](https://en.wikipedia.org/wiki/Software_documentation)
+Written text or illustration that accompanies computer software or is embedded in the source code. The documentation either explains how the software operates or how to use it, and may mean different things to people in different roles.
+
+## [Software Engineering](https://en.wikipedia.org/wiki/Software_engineering)
+_Software engineering_ is the systemic application of engineering approaches to the development of software. Software engineering is a computing discipline.
+
+## [Source-Code Repository](https://en.wikipedia.org/wiki/Comparison_of_source-code-hosting_facilities)
+A _source-code repository_ is a file archive and web hosting facility for source code of software, documentation, web pages, and other works, accessible either publicly or privately. They are often used by open-source software projects and other multi-developer projects to maintain revision and version history, or [version control](#version-control). Many repositories provide a bug tracking system, and offer release managment, mailing lists, and wiki-based project documentation. Software authors generally retain their copyright when softare is posted to a code hosting facility.
 
 ## [Speculative Execution](https://en.wikipedia.org/wiki/Speculative_execution)
 An optimization technique where a computer system performs some task that may not be needed. Work is done before it is known whether it is actually needed, so as to prevent a delay that would have to be incurred by doing the work after it is known that it is needed. If it turns out the work was not needed after all, most changes made by the work are reverted and the results are ignored.
@@ -247,6 +291,15 @@ The machine operates on an infinite memory tape divided into discrete "cells". T
 
 ## [Vacuum Tube](https://en.wikipedia.org/wiki/Vacuum_tube)
 A device that controls electric current flow in a high vacuum between electrodes to which an electric potential difference has been applied.
+
+## [Version Control](https://en.wikipedia.org/wiki/Version_control)
+In software engineering, _version control_ (also known as _revision control_, _source control_, or _source code management_) is a class of systems responsible for managing changes to computer programs, documents, large web sites, or other collections of information. Version control is a component of software configuration management.
+
+Changes are usually identified by a number or letter code, termed the "revision number", "revision level", or simply "revision". For example, an initial set of files is "revision 1". When the first change is made, the resulting set is "revision 2", and so on. Each revision is associated with a timestamp and the person making the change. Revisions can be compared, restored, and with some types of files, merged.
+
+The need for a logical way to organize and control revisions has existed for almost as long as writing has existed, but revision control became much more important, and complicated, when the era of computing began. The numbering of book editions and of specification revisions are examples that date back to the print-only era. Today, the most capable (as well as complex) revision control systems are those used in software development, where a team of people may concurrently make changes to the same files.
+
+_Version control systems_ (_VCS_) are most commonly run as stand-alone applications, but revision control is also embedded in various types of software such as word processors and spreadsheets, collaborative web docs and various content management systems, e.g., Wikipedia's page history. Revision control allows for the ability to revet a document to a previous revision, which is critical for allowing editors to track each other's edits, correct mistakes, and defend against vandalism and spamming in wikis.
 
 ## [Volatile Memory](https://en.wikipedia.org/wiki/Volatile_memory)
 Computer memory that requires power to maintain the stored information. It retains its contents while powered on but when the power is interrupted the stored data is quickly lost. In addition to being faster than forms of mass storage, volatility can protect sensitive information (as it becomes unavailable on power-down).
