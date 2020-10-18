@@ -25,4 +25,4 @@ The big picture version of debugging is [Quality Assurance](../glossary/README.m
 
 You may have heard of [beta software](https://en.wikipedia.org/wiki/Software_release_life_cycle#Beta) - this is a version of software that's mostly complete but not 100% fully tested. Companies will sometimes release beta versions to the public to help identify issues. The stage before beta is known as the [alpha](https://en.wikipedia.org/wiki/Software_release_life_cycle#Alpha) version - a version of the software that is rough and buggy, usually only tested internally.
 
-| [Previous: Alan Turing](../15/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: Alan Turing](../15/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Integrated Circuits & Moore's Law](../17/README.md) |
