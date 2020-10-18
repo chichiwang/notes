@@ -32,6 +32,9 @@ A _bus_ is a communication system that transfers data between components inside 
 ## [Byte](https://en.wikipedia.org/wiki/Byte)
 A unit of digital information that most commonly consists of 8 [bits](#bit). This is the smallest addressable unit of memory in many computer architectures (due to hardware), and is historically the number of bits used to encode a single character of text in a computer.
 
+## [Capacitor](https://en.wikipedia.org/wiki/Capacitor)
+A _capacitor_ is a device that stores electrical energy in an electric field. It is a passive electronic component with two terminals.
+
 ## [Carry-Look-Ahead Adder](https://en.wikipedia.org/wiki/Adder_(electronics)#Carry-lookahead_adder)
 To reduce computation time, engineers devised faster ways to add two binary numbers. The carry-look-ahead adder (CLA) works by creating two signals (_P_ and _G_) for each bit position, based on whether a carry is propagated through from a less significant bit position (at least one input is a 1), generated in that bit position (both inputs are 1), or killed in that bit position (both inputs are 0).
 
@@ -98,8 +101,11 @@ An electronic component that permits the one-way flow of current. A diode is a k
 ## [Dirty Bit](https://en.wikipedia.org/wiki/Dirty_bit)
 A [bit](#bit) that is associated with a block of computer memory and indicates whether or not the corresponding block of memory has been modified. The dirty bit is set when the processor writes to (modifies) this memory. The bit indicates that its associated block of memory has been modified and has not been saved to storage yet. When a block of memory is to be replaced, its corresponding dirty bit is checked to see if the block needs to be written back to secondary memory before being replaced or if it can simply be removed. Dirty bits are used by the [CPU cache](#cpu-cache) and in the page replacement algorithms of an operating system.
 
+## [Discrete Component](https://www.pcmag.com/encyclopedia/term/discrete-component)
+An elementary electronic device constructed as a single unit. Before the advent of [integrated circuits](#integrated-circuit) (chips), all [transistors](#transistor), [resistors](#resistor), [capacitors](#capacitor), and [diodes](#diode) were discrete. Discrete components are widely used in amplifiers and other electronic products that use large amounts of current. On a circuit board, they are intermingled with the chips, and there is hardly any electronic product that does not have at least one or two discrete resistors or capacitors.
+
 ## [Dynamic Random-Access Memory](https://en.wikipedia.org/wiki/Dynamic_random-access_memory)
-_DRAM_ is a type of [random access](#random-access-memory) semiconductor memory that stores each bit of data in a memory cell consisting of a tiny capacitor and transitor.
+_DRAM_ is a type of [random access](#random-access-memory) semiconductor memory that stores each bit of data in a memory cell consisting of a tiny [capacitor](#capacitor) and transitor.
 
 ## [Flip-Flop](https://en.wikipedia.org/wiki/Flip-flop_(electronics))
 A _flip-flop_, or _latch_, is a circuit that has two stable states that can be used to store state information. The circuit can be made to change state by signals applied to one more more control inputs and will have one or two outputs.
@@ -131,6 +137,9 @@ A technique for implementing instruction-level parallelism within a single proce
 
 ## [Integer Overflow](https://en.wikipedia.org/wiki/Integer_overflow)
 An _integer overflow_ occurs when an arithmetic operation attempts to create a numeric value that is outside of the range that can be represented with a given number of digits - either higher than the maximum or lower than the minimum representable value. An overflow condition may give results leading to unintended behavior. If the possibility of an overflow has not been anticipated, it can compromise a program's reliability and security.
+
+## [Integrated Circuit](https://en.wikipedia.org/wiki/Integrated_circuit)
+An _integrated circuit_ or _monolithic integrated circuit_ (also referred to as an _IC_, a _chip_, or a _microchip_) is a set of electronic circuits on one small flat piece (or "chip") of semiconductor material that is normally silicon. The integration of large numbers of tiny MOS transistors into a small chip results in circuits that are orders of magnitude smaller, faster, and less expensive than those constructed of discrete electronic components. The IC's mass production capability, reliability, and building-block approach to integrated circuit design has ensured the rapid adoption of standardized ICs in place of designs using discrete transistors. ICs are now used in virtually all electronic equipment and have revolutionized the world of electronics. Computers, mobile phones, and other digital home appliances are now intextricable parts of the structure of modern societies, made possible by the small size and low cost of ICs.
 
 ## [Integrated Development Environment](https://en.wikipedia.org/wiki/Integrated_development_environment)
 An _integrated development environment_ (_IDE_) is a software application that provides comprehensive facilities to computer programmers for software development. An IDE normally consists of at least a source code editor, build automation tools and a debugger. Some IDEs, Such as [NetBeans](https://en.wikipedia.org/wiki/NetBeans) and [Eclipse](https://en.wikipedia.org/wiki/Eclipse_(software)), contain the necessary [compiler](#compiler), interpreter, or both; others such as [SharpDevelop](https://en.wikipedia.org/wiki/SharpDevelop) and [Lazarus](https://en.wikipedia.org/wiki/Lazarus_(IDE)) do not.
@@ -165,11 +174,17 @@ In computer programming, _machine code_, consisting of machine language instruct
 ## [Microarchitecture](https://en.wikipedia.org/wiki/Microarchitecture)
 In computer engineering, _microarchitecture_, also called _computer organization_, is the way a given [instruction set architecture (ISA)](https://en.wikipedia.org/wiki/Instruction_set_architecture) is implemented in a particular [processor](#central-processing-unit).
 
+## [Microprocessor](https://en.wikipedia.org/wiki/Microprocessor)
+A _microprocessor_ is a [computer processor](#central-processing-unit) that incorporates the functions of a central processing unit on a single (or more) [integrated circuit](#integrated-circuit) (IC) of MOSFET construction. The microprocessor is a multipurpose, clock-driven, register-based, digital integrated circuit that accepts binary data as input, processes it according to instructions stored in its memory, and provides results (also in binary form) as output. Microprocessors contain both combinational logic and sequential digital logic. Microprocessors operate on numbers and symbols represented in the binary number system.
+
 ## [Memory Address](https://en.wikipedia.org/wiki/Memory_address)
 A reference to a specific memory location used at various levels of software and hardware. Memory addresses are fixed-length sequences of digits conventionally displayed and manipulated as unsigned integers.
 
+## [Moore's Law](https://en.wikipedia.org/wiki/Moore%27s_law)
+_Moore's Law_ is the observation that the number of transistors in a dense [integrated circuit](#integrated-circuit) (IC) doubles about every two years. Moore's Law is an observation and projection of a historical trend. Rather than a law of physics, it is an empirical relationship linked to gains from experience in production.
+
 ## [Multi-Core Processor](https://en.wikipedia.org/wiki/Multi-core_processor)
-A _multi-core processor_ is a [computer processor](#central-processing-unit) integrated circuit with two or more separate processing units, called _cores_, each of which reads and executes program instructions, as if the computer had several processors.
+A _multi-core processor_ is a [computer processor](#central-processing-unit) [integrated circuit](#integrated-circuit) with two or more separate processing units, called _cores_, each of which reads and executes program instructions, as if the computer had several processors.
 
 ## [Multiplexer](https://en.wikipedia.org/wiki/Multiplexer)
 A _multiplexer_ (or _mux_/_data selector_) is a device that selects between several analog or digital input signals and forwards it to a single output line.
@@ -198,6 +213,9 @@ _Out-of-order execution_ (or _dynamic execution_) is a paradigm used in most hig
 ## [Pointer](https://en.wikipedia.org/wiki/Pointer_(computer_programming))
 An object in many programming languages that stores a memory address. This can be that of another value located in computer memory, or in some cases, that of memory-mapped computer hardware. A pointer _references_ a location in memory, and obtaining the value stored at that location is known as _dereferencing_ the pointer. As an analogy, a page number in a book's index could be considered a pointer to the corresponding page; dereferencing such a pointer would be done by flipping to the page with the given page number and reading the text found on the page. The actual format and content of a pointer variable is dependent on the underlying computer architecture.
 
+## [Printed Circuit Board](https://en.wikipedia.org/wiki/Printed_circuit_board)
+A _printed circuit board_ (_PCB_) mechanically supports and electrically connects electrical or electronic components using conductive tracks, pads, and other features etched from one or more sheet layers of copper laminated onto and/or between sheet layers of a non-conductive substrate. Components are generally soldered onto the PCB electrically connect and mechanically fasten them to it.
+
 ## [Positional Notation](https://en.wikipedia.org/wiki/Positional_notation)
 A way of representing the values of a positional system (a numeral system in which the contribution of a digit to the value of a number is the product of the value of the digit by a factor determined by the position of the digit).
 
@@ -224,6 +242,9 @@ A _processor register_ (or _CPU register_) is a quickly accessible location avai
 ## [Relay](https://en.wikipedia.org/wiki/Relay)
 Electronically controlled, mechanical switches. In a relay a control wire connected to a coil of wire which is used to create an electromagnetic field when current flows through. This field attracts a metal arm inside the relay, completing a circuit.
 ![Diagram of a relay](./relay.jpg)
+
+## [Resistor](https://en.wikipedia.org/wiki/Resistor)
+A _resistor_ is a passive two-terminal electrical component that implements electrical resistance as a circuit element. In electronic circuits, resistors are used to reduce current flow, adjust signal levels, to divide voltages, bias active elements, and terminate transmission lines, among other uses. High-power resistors that can dissipate many watts of electrical power as heat, may be used as part of motor controls, in power distribution systems, or as test loads for generators. Fixed resistors have resistances that only change slightly with temperature, time or operating voltage. Variable resistors can be used to adjust circuit elements (such as a volume control or light dimmer), or as sensing devices for heat, force, or chemical activity.
 
 ## [Ripple-Carry Adder](https://en.wikipedia.org/wiki/Adder_(electronics)#Ripple-carry_adder)
 A _ripple-carry adder_ is a circuit that utilizes multiple [full adders](#full-adder) to add _N_-bit numbers. Each full adder inputs a C<sub>in</sub>, which is the C<sub>out</sub> of the previous adder. This kind of adder is called a ripper-carry adder (RCA) because each carry bit "ripples" to the next full adder. The first (and only the first) full adder may be replaced with a [half adder](#half-adder) under the assumption that C<sub>in</sub> = 0.
@@ -274,6 +295,9 @@ The _syntax_ of a computer language is the set of rules that defines th combinat
 ## [Transistor](https://en.wikipedia.org/wiki/Transistor)
 Similar to a [relay](#relay) or [vacuum tube](#vacuum-tube) a _transistor_ is a switch that can be opened or closed via the application of a current to a control wire. Typically a transistor consists of two electrodes separated by a gate electrode (a semiconductor). By changing the electrical charge of the gate, the conductivity of the semiconductor could be manipulated.
 
+## [Transistor Computer](https://en.wikipedia.org/wiki/Transistor_computer)
+A _transistor computer_, now often called a _second generation computer_, is a computer which uses [discrete](#discrete-component) [transistors](#transistor) instead of [vacuum tubes](#vacuum-tube). The first generation of electronic computers used vacuum tubes, which generated large amounts of heat, were bulky and unreliable. A second generation of computers, through the late 1950s and 1960s features circuit boards filled with individual transistors and magnetic core memory. These machines remained the mainstream design into the late 1960s, when [integrated circuits](#integrated-circuit) started appearing and led to the third generation computer.
+
 ## [Tree](https://en.wikipedia.org/wiki/Tree_(data_structure))
 A _tree_ is a widely used abstract data type that simulates a hierarchical _tree structure_, with a root value and subtrees of children with a parent node, represented as a set of linked [nodes](#node).
 
@@ -303,3 +327,6 @@ _Version control systems_ (_VCS_) are most commonly run as stand-alone applicati
 
 ## [Volatile Memory](https://en.wikipedia.org/wiki/Volatile_memory)
 Computer memory that requires power to maintain the stored information. It retains its contents while powered on but when the power is interrupted the stored data is quickly lost. In addition to being faster than forms of mass storage, volatility can protect sensitive information (as it becomes unavailable on power-down).
+
+## [Wafer](https://en.wikipedia.org/wiki/Wafer_(electronics))
+In electronics, a _wafer_ (also called a _slice_ or _substrate_) is a thin slice of semicondutor, such as crytalline silicon (c-Si), used for the fabrication of [integrated circuits](#integrated-circuit) and, in photovoltaics, to manufacture solar cells. The wafer serves as the substrate for microelectronic devices built in and upon the wafer. It undergoes many microfabrication processes, such as doping, ion implantation, etching, thin-film deposition of various materials, and photolithographic patterning. Finally, the individual microcircuits are separated by wafer dicing and packaged as an integrated circuit.
