@@ -14,6 +14,9 @@ _Artificial intelligence_ (_AI_), sometimes called _machine intelligence_, is in
 ## [Assembler](https://en.wikipedia.org/wiki/Assembly_language#Assembler)
 An _assembler_ program creates object code by translating combinations of _mnemonics_ and syntax for operations and addressing modes into their numerical equivalents.
 
+## [Batch Processing](https://en.wikipedia.org/wiki/Batch_processing)
+Computerized _batch processing_ is the running of "jobs that can run without end user interaction, or can be scheduled to run as resources permit."
+
 ## [Big O Notation](https://en.wikipedia.org/wiki/Big_O_notation)
 A mathematical notation that describes the limiting behavior of a function when the argument tends towards a certain value or infinity. Big O is a member of a family of notations invented by [Paul Bachmann](https://en.wikipedia.org/wiki/Paul_Gustav_Heinrich_Bachmann), [Edmund Landau](https://en.wikipedia.org/wiki/Edmund_Landau), and others, collectively called _Bachmann-Landau notation_ or _asymptotic notation_. In computer science, big O notation is used to classify algorithms according to how their run time or space requirements grow as the input size grows.
 
@@ -50,11 +53,11 @@ A _clock signal_ (or _logic beat_) oscillates between a high and a low state and
 ## [Clock Generator](https://en.wikipedia.org/wiki/Clock_generator)
 A _clock generator_ is an electronic oscillator (circuit) that produces a [clock signal](#clock-signal) for use in synchronizing a circuit's operation. The signal can range from a simple symmetrical square wave to more complex arrangements. The basic parts that all clock generators share are a resonant circuit and an amplifier.
 
-## [Combinational Logic](https://en.wikipedia.org/wiki/Combinational_logic)
-A type of [logic circuit](#logic-gate) whose output is a pure function of the present input only.
-
 ## [Code Reuse](https://en.wikipedia.org/wiki/Code_reuse)
 _Code reuse_, also called _software reuse_ is the use of existing software, or software knowledge, to build new software, following the [reusability principles](https://en.wikipedia.org/wiki/Reusability).
+
+## [Combinational Logic](https://en.wikipedia.org/wiki/Combinational_logic)
+A type of [logic circuit](#logic-gate) whose output is a pure function of the present input only.
 
 ## [Comment](https://en.wikipedia.org/wiki/Comment_(computer_programming))
 In computer programming, a _comment_ is a programmer-readable explanation or annotation in the source code of a computer program. They are added with the purpose of making the source code easier for humans to understand, and are generally ignored by [compilers](#compiler) and interpreters. The syntax of comments in various programming languages varies considerably.
@@ -71,6 +74,13 @@ A _composite data type_ or _compound data type_ is any data type which can be co
 
 ## [Computational Complexity](https://en.wikipedia.org/wiki/Computational_complexity)
 The _computational complexity_ or simply _complexity_ of an [algorithm](#algorithm) is the amount of resources required to run it. Particular focus is given to time and memory requirements.
+
+## [Computer Terminal](https://en.wikipedia.org/wiki/Computer_terminal)
+A _computer terminal_ is an electronic or electromechanical hardware device that can be used for entering data into, and transcribing data from, a computer or a computing system. The teletype was an example of an early day hardcopy terminal, and predated the use of a computer screen by decades.
+
+Early terminals were inexpensive devices but very slow compared to punched cards or paper tape for input, but as the technology improved and video displays were introduced, terminals pushed these older forms of interaction from the industry. A related development was [timesharing](#time-sharing) systems, which evolved in parallel and made up for any inefficiencies of the user's typing ability with the ability to support multiple users on the same machine, each at their own terminal/terminals.
+
+The function of a terminal is typically confined to transcription and input of data; a device with significant local programmable data processing capability may be called a "smart terminal" or fat client. A terminal that depends on the host computer for its processing power is called a "dumb terminal" or a thin client. A personal computer can run terminal emulator software that replicates the function of a terminal, sometimes allowing concurrent use of local programs and access to a distant terminal host system.
 
 ## [Conditional](https://en.wikipedia.org/wiki/Conditional_(computer_programming))
 In computer science, _conditional statements_, _conditional expressions_, and _conditional constructs_ are features of a programming language, which performs different computations or actions depending on whether a programmer-specified boolean _condition_ evaluates to `true` or `false`. Apart from the case of [branch prediction](#branch-predictor), this is always achieved by selectively altering the [control flow](#control-flow) based on some condition.
@@ -94,6 +104,13 @@ A _data structure_ is a data organization, management, and storage format that e
 In computer programming and software development, _debugging_ is the process of finding and resolving bugs (defects or problems that prevent correct operation) within computer programs, software, or systems.
 
 Debugging tactics can involve interactive debugging, [control flow](#control-flow) analysis, unit testing, integration testing, log file analysis, monitoring at the application or system level, memory dumps, and profiling. Many programming languages and software development tools also offer programs to aid in debugging, known as _debuggers_.
+
+## [Device Driver](https://en.wikipedia.org/wiki/Device_driver)
+In computing, a _device driver_ is a computer program that operates or controls a particular type of device that is attached to a computer. A driver provides a software interface to hardware devices, enabling operating systems and other computer programs to access hardware functions without needing to know precise details about the hardware being used.
+
+A driver communicates with the device through the computer [bus](#bus) or communications subsystem to which the hardware connects. When a calling program invokes a routine in the driver, the driver issues commands to the device. Once the device sends data back to the driver, the driver may invoke routines in the original calling program.
+
+Drivers are hardware dependent and operating-system-specific. They usually provide interrupt handling required for any necessary asynchronous time-dependent hardware behavior.
 
 ## [Diode](https://en.wikipedia.org/wiki/Diode)
 An electronic component that permits the one-way flow of current. A diode is a kind of [vacuum tube](#vacuum-tube).
@@ -147,6 +164,9 @@ An _integrated development environment_ (_IDE_) is a software application that p
 ## [Interoperability](https://en.wikipedia.org/wiki/Interoperability)
 A characteristic of a product or system, whose interaces are completely understood, to work with other products or systems, at present or in the future, in either implementation or access, without any restrictions. The term was initially defined for information technology or systems engineering services to allow for information exchange.
 
+## [Kernel](https://en.wikipedia.org/wiki/Kernel_(operating_system))
+The _kernel_ is a computer program at the core of a computer's [operating system](#operating-system) with complete control over everything in the system. It is an integral part of any operating system. It is the "portion of the operating system code that is always resident in memory". It facilitates interactions between hardware and software components. On most systems, it is one of the first programs loaded on startup (after the bootloader). It handles the rest of startup as well as input/output (I/O) requests from software, translating them into data-processing instructions for the central processing unit. It handles memory and peripherals like keyboards, monitors, printers, and speakers.
+
 ## [Lambda Calculus](https://en.wikipedia.org/wiki/Lambda_calculus)
 _Lambda calculus_ (also written as _λ-calculus_) is a formal system in mathematical logic for expressing computation based on function abstraction and application using variable binding and substitution. It is a universal model of computation that can be used to simulate any Turing machine. It was introduced by the mathematician Alonzo Church in the 1930s as part of his research into the foundations of mathematics.
 
@@ -180,6 +200,9 @@ A _microprocessor_ is a [computer processor](#central-processing-unit) that inco
 ## [Memory Address](https://en.wikipedia.org/wiki/Memory_address)
 A reference to a specific memory location used at various levels of software and hardware. Memory addresses are fixed-length sequences of digits conventionally displayed and manipulated as unsigned integers.
 
+## [Memory Protection](https://en.wikipedia.org/wiki/Memory_protection)
+_Memory protection_ is a way to control memory access rights on a computer, and is a part of most modern instruction set architectures and [operating systems](#operating-system). The main purpose of memory protection is to prevent a process from accessing memory that has not been allocated to it. This prevents a bug or malware within a process from affecting other processes, or the operating system itself. Protection may encompass all accesses to a specified area of memory, write accesses, or attempts to execute the contents of the area. An attempt to access unauthorized memory results in a hardware fault, e.g., a segmentation fault, storage violation exception, generally causing abnormal termination of the offending process. Memory protection for computer security includes additional techniques such as address space layout randomization and executable space protection.
+
 ## [Moore's Law](https://en.wikipedia.org/wiki/Moore%27s_law)
 _Moore's Law_ is the observation that the number of transistors in a dense [integrated circuit](#integrated-circuit) (IC) doubles about every two years. Moore's Law is an observation and projection of a historical trend. Rather than a law of physics, it is an empirical relationship linked to gains from experience in production.
 
@@ -188,6 +211,9 @@ A _multi-core processor_ is a [computer processor](#central-processing-unit) [in
 
 ## [Multiplexer](https://en.wikipedia.org/wiki/Multiplexer)
 A _multiplexer_ (or _mux_/_data selector_) is a device that selects between several analog or digital input signals and forwards it to a single output line.
+
+## [Multitasking](https://en.wikipedia.org/wiki/Computer_multitasking)
+_Multitasking_ is the concurrent execution of multiple tasks (also known as processes) over a certain period of time. New tasks can interrupt already started ones before they finish, instead of waiting for them to end. As a result, a computer executes segments of multiple tasks in an interleaved manner, while the tasks share common processing resources such as [central processing units](#central-processing-unit) (CPUs) and main memory. Multitasking automatically interrputs the running program, saving its state (partial results, memory contents and computer register contents) and loading the saved state of another program and transferring control to it. This "context switch" may be initiated at fixed time intervals (pre-emptive multitasking), or the running program may be coded to signal to the supervisory software when it can be interrupted (cooperative multitasking).
 
 ## [Node](https://en.wikipedia.org/wiki/Node_(computer_science))
 A _node_ is a basic unit of a data structure, such as a [linked list](#linked-list) or _[tree](#tree)_ data structure. Nodes contain data and also may link to other nodes. Links between nodes are often implemented by [pointers](#pointer).
@@ -204,11 +230,17 @@ A programming paradigm based on the concept of "objects", which can contain data
 ## [Operand](https://en.wikipedia.org/wiki/Operand)
 In mathematics, an _operand_ is the object of a mathematical operation, i.e., it is the object or quantity that is being operated on.
 
+## [Operating System](https://en.wikipedia.org/wiki/Operating_system)
+An _operating system_ (_OS_) is system software that manages computer hardware, software resources, and provides common services for computer programs.
+
 ## [Operation Code](https://en.wikipedia.org/wiki/Opcode)
 An _operation code_ (also known as _opcode_, _instruction machine code_, _instruction code_, _instruction syllable_, _instruction parcel_, or _opstring_) is the portion of a machine language instruction that specifies the operation to be performed. Besides the opcode itself, most instructions specify the data they will process in the form of [operands](#operand).
 
 ## [Out-Of-Order Execution](https://en.wikipedia.org/wiki/Out-of-order_execution)
 _Out-of-order execution_ (or _dynamic execution_) is a paradigm used in most high-performance [CPUs](#central-processing-unit) to make use of [instruction cycles](#clock-signal) that would otherwise be wasted. In this paradigm, a processor executes instructions in an order governed by the availability of input data and execution units, rather than by their original order in a program. In doing so, the processor can avoid being idle while waiting for the preceding instruction to complete and can, in the meantime, process the next instructions that are able to run immediately and independently.
+
+## [Personal Computer](https://en.wikipedia.org/wiki/Personal_computer)
+A _personal computer_ (_PC_) is a multi-purpose computer whose size, capabilities, and price make it feasible for individual use. Personal computers are intended to be operated directly by an end user, rather than by a computer expert or technician. Unlike large, costly minicomputers and mainframes, time-sharing by many people at the same time is not used with personal computers.
 
 ## [Pointer](https://en.wikipedia.org/wiki/Pointer_(computer_programming))
 An object in many programming languages that stores a memory address. This can be that of another value located in computer memory, or in some cases, that of memory-mapped computer hardware. A pointer _references_ a location in memory, and obtaining the value stored at that location is known as _dereferencing_ the pointer. As an analogy, a page number in a book's index could be considered a pointer to the corresponding page; dereferencing such a pointer would be done by flipping to the page with the given page number and reading the text found on the page. The actual format and content of a pointer variable is dependent on the underlying computer architecture.
@@ -248,6 +280,11 @@ A _resistor_ is a passive two-terminal electrical component that implements elec
 
 ## [Ripple-Carry Adder](https://en.wikipedia.org/wiki/Adder_(electronics)#Ripple-carry_adder)
 A _ripple-carry adder_ is a circuit that utilizes multiple [full adders](#full-adder) to add _N_-bit numbers. Each full adder inputs a C<sub>in</sub>, which is the C<sub>out</sub> of the previous adder. This kind of adder is called a ripper-carry adder (RCA) because each carry bit "ripples" to the next full adder. The first (and only the first) full adder may be replaced with a [half adder](#half-adder) under the assumption that C<sub>in</sub> = 0.
+
+## [Scheduling](https://en.wikipedia.org/wiki/Scheduling_(computing))
+_Scheduling_ is the method by which work is assigned to resources that complete the work. The work may be virtual computation elements such as threads, processes or data flows, which are in turn scheduled onto hardware resources such as processors, network links or expansion cards.
+
+A scheduler is what carries out the scheduling activity. Schedulers are often implemented so they keep all computer resources busy (as in load balancing), allow multiple users to share system resources effectively, or to achieve a target quality of service. Scheduling is fundamental to computation itself, and an intrinsic part of the execution model of a computer system; the concept of scheduling makes it possible to have computer multitasking with a single [central processing unit](#central-processing-unit).
 
 ## [Sequential Logic](https://en.wikipedia.org/wiki/Sequential_logic)
 A type of [logic circuit](#logic-gate) whose output depends not only on the present value of its input signals but on the sequence of past inputs (the input history).
@@ -292,6 +329,11 @@ A _superscalar [CPU](#central-processing-unt)_ design makes a form of parallel c
 ## [Syntax](https://en.wikipedia.org/wiki/Syntax_(programming_languages))
 The _syntax_ of a computer language is the set of rules that defines th combinations of symbols that are considered to be correctly structured [statements](#statement) and expressions in that language. This applies to both _programming languages_ where the document represents source code, and to _markup languages_, where the document represents data.
 
+## [Time-Sharing](https://en.wikipedia.org/wiki/Time-sharing)
+In computing, time-sharing is the sharing of a computing resource among many users at the same time by means of multiprogramming and multi-tasking.
+
+Its emergence as the prominent model of computing in the 1970s represented a major technological shift in the history of computing. By allowing many users to interact concurrently with a single computer, time-sharing dramatically lowered the cost of providing computing capability, made it possible for individuals and organizations to use a computer without owning one, and promoted the interactive use of computers and the development of new interactive applications.
+
 ## [Transistor](https://en.wikipedia.org/wiki/Transistor)
 Similar to a [relay](#relay) or [vacuum tube](#vacuum-tube) a _transistor_ is a switch that can be opened or closed via the application of a current to a control wire. Typically a transistor consists of two electrodes separated by a gate electrode (a semiconductor). By changing the electrical charge of the gate, the conductivity of the semiconductor could be manipulated.
 
@@ -313,6 +355,13 @@ A _Turing machine_ is a mathematical model of computation that defines an abstra
 
 The machine operates on an infinite memory tape divided into discrete "cells". The machine positions its "head" over a cell and "reads" or "scans" the symbol there. Then, as per the symbol and the machine's own present state in a "finite table" of user-specified instructions, the machine writes a symbol (e.g., a digit or letter fom a finite alphabet) in the cell (some models allow symbol erasure or no writing) then either moves the tape one cell left or right (some models allow no motion, some models move the head) then (as determined by the observed symbol and the machines' own state in the table) either proceeds to a subsequent instruction or halts the computation.
 
+## [Unix](https://en.wikipedia.org/wiki/Unix)
+_Unix_ is a family of multitasking, multiuser computer operating systems that derive from the original AT&T Unix, development starting in the 1970s at the Bell Labs research center by Ken Thompson, Dennis Ritchie, and others.
+
+Unix systems are characterized by a modular design that is sometimes called the "Unix philosophy". According to this philosophy, the operating system should provide a set of simple tools, each of which performs a limited, well-defined function. A unified filesystem (the Unix filesystem) and an inter-process communication mechanism known as "pipes" serve as the main means of communication, and a shell scripting and command language (the Unix shell) is used to combine the tools to perform complex workflows.
+
+Unix distinguishes itself from its predecessors as the first portable operating system: almost the entire operating system is written in the C programming language, which allows Unix to operate on numerous platforms.
+
 ## [Vacuum Tube](https://en.wikipedia.org/wiki/Vacuum_tube)
 A device that controls electric current flow in a high vacuum between electrodes to which an electric potential difference has been applied.
 
@@ -324,6 +373,13 @@ Changes are usually identified by a number or letter code, termed the "revision 
 The need for a logical way to organize and control revisions has existed for almost as long as writing has existed, but revision control became much more important, and complicated, when the era of computing began. The numbering of book editions and of specification revisions are examples that date back to the print-only era. Today, the most capable (as well as complex) revision control systems are those used in software development, where a team of people may concurrently make changes to the same files.
 
 _Version control systems_ (_VCS_) are most commonly run as stand-alone applications, but revision control is also embedded in various types of software such as word processors and spreadsheets, collaborative web docs and various content management systems, e.g., Wikipedia's page history. Revision control allows for the ability to revet a document to a previous revision, which is critical for allowing editors to track each other's edits, correct mistakes, and defend against vandalism and spamming in wikis.
+
+## [Virtual Memory](https://en.wikipedia.org/wiki/Virtual_memory)
+_Virtual memory_ (also _virtual storage_) is a memory management technique that provides an "idealized abstraction of the storage resources that are actually available on a given machine" which "create the illusion of a very large (main) memory."
+
+The computer's [operating system](#operating-system), using a combination of hardware and software, maps memory addresses used by a program, called _virtual addresses_, into _physical addresses_ in computer memory. Main storage, as seen by a process or task, appears as a contiguous address space or collection of contiguous segments. The operating system manages virtual address spaces and the assignment of real memory to virtual memory. Address translation hardware in the [CPU](#central-processing-unit), often referred to as a memory management unit (MMU), automatically translates virtual addresses to physical addresses. Software within the operating system may extend these capabilities to provide a virtual address space that can exceed the capacity of real memory and thus reference more memory than is physically present in the computer.
+
+The primary benefits of virtual memory include freeing applications from having to manage a shared memory space, increased security due to memory isolation, and being able to conceptually use more memory than might be physically available, using the technique of _paging_.
 
 ## [Volatile Memory](https://en.wikipedia.org/wiki/Volatile_memory)
 Computer memory that requires power to maintain the stored information. It retains its contents while powered on but when the power is interrupted the stored data is quickly lost. In addition to being faster than forms of mass storage, volatility can protect sensitive information (as it becomes unavailable on power-down).
