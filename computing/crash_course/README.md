@@ -58,6 +58,7 @@ Date: July 2020 - Ongoing
 * 15: [Alan Turing](./15/README.md)
 * 16: [Software Engineering](./16/README.md)
 * 17: [Integrated Circuits & Moore's Law](./17/README.md)
+* 18: [Operating Systems](./18/README.md)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 

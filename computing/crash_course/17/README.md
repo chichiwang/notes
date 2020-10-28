@@ -92,4 +92,4 @@ Experts have been predicting the end of Moore's Law for decades, and we may fina
 
 Nonetheless scientists and engineers are hard at work figuring out ways around these problems. Transistors as small as 1 nanometer have been demonstrated in research labs. It is unknown if these will ever become commercially available.
 
-| [Previous: Software Engineering](../16/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: Software Engineering](../16/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Operating Systems](../18/README.md) |
