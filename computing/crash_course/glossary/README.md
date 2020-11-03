@@ -78,7 +78,7 @@ The _computational complexity_ or simply _complexity_ of an [algorithm](#algorit
 ## [Computer Terminal](https://en.wikipedia.org/wiki/Computer_terminal)
 A _computer terminal_ is an electronic or electromechanical hardware device that can be used for entering data into, and transcribing data from, a computer or a computing system. The teletype was an example of an early day hardcopy terminal, and predated the use of a computer screen by decades.
 
-Early terminals were inexpensive devices but very slow compared to punched cards or paper tape for input, but as the technology improved and video displays were introduced, terminals pushed these older forms of interaction from the industry. A related development was [timesharing](#time-sharing) systems, which evolved in parallel and made up for any inefficiencies of the user's typing ability with the ability to support multiple users on the same machine, each at their own terminal/terminals.
+Early terminals were inexpensive devices but very slow compared to [punched cards](#punched-card) or paper tape for input, but as the technology improved and video displays were introduced, terminals pushed these older forms of interaction from the industry. A related development was [timesharing](#time-sharing) systems, which evolved in parallel and made up for any inefficiencies of the user's typing ability with the ability to support multiple users on the same machine, each at their own terminal/terminals.
 
 The function of a terminal is typically confined to transcription and input of data; a device with significant local programmable data processing capability may be called a "smart terminal" or fat client. A terminal that depends on the host computer for its processing power is called a "dumb terminal" or a thin client. A personal computer can run terminal emulator software that replicates the function of a terminal, sometimes allowing concurrent use of local programs and access to a distant terminal host system.
 
@@ -105,6 +105,13 @@ In computer programming and software development, _debugging_ is the process of 
 
 Debugging tactics can involve interactive debugging, [control flow](#control-flow) analysis, unit testing, integration testing, log file analysis, monitoring at the application or system level, memory dumps, and profiling. Many programming languages and software development tools also offer programs to aid in debugging, known as _debuggers_.
 
+## [Delay Line Memory](https://en.wikipedia.org/wiki/Delay_line_memory)
+Delay line memory is a form of computer memory, now obsolete, that was used on some of the earliest digital computers. Like many modern forms of electronic computer memory, delay line memory was a refreshable memory, but as opposed to modern random-access memory, delay line memory was [sequential-access](#sequential-access-memory).
+
+Analog delay line technology had been used since the 1920s to delay the propagation of analog signals. When a delay line is used as a memory device, an amplifier and a pulse shaper are connected between the output of the delay line and the input. These devices recirculate the signals from the output back into the input, creating a loop that maintains the signal as long as power is applied. The shaper ensures the pulses remain well-formed, removing any degradation due to losses in the medium.
+
+The memory capacity is determined by dividing the time taken to transmit one bit into the time it takes for data to circulate through the delay line. Early delay-line memory systems had capacities of a few thousand bits, with recirculation times measured in microseconds. To read or write a particular bit stored in such a memory, it is necessary to wait for that bit to circulate through the delay line into the electronics. The delay to read or write any particular bit is no longer than the recirculation time.
+
 ## [Device Driver](https://en.wikipedia.org/wiki/Device_driver)
 In computing, a _device driver_ is a computer program that operates or controls a particular type of device that is attached to a computer. A driver provides a software interface to hardware devices, enabling operating systems and other computer programs to access hardware functions without needing to know precise details about the hardware being used.
 
@@ -121,6 +128,13 @@ A [bit](#bit) that is associated with a block of computer memory and indicates w
 ## [Discrete Component](https://www.pcmag.com/encyclopedia/term/discrete-component)
 An elementary electronic device constructed as a single unit. Before the advent of [integrated circuits](#integrated-circuit) (chips), all [transistors](#transistor), [resistors](#resistor), [capacitors](#capacitor), and [diodes](#diode) were discrete. Discrete components are widely used in amplifiers and other electronic products that use large amounts of current. On a circuit board, they are intermingled with the chips, and there is hardly any electronic product that does not have at least one or two discrete resistors or capacitors.
 
+## [Drum Memory](https://en.wikipedia.org/wiki/Drum_memory)
+_Drum memory_ was a magnetic data storage device invented by [Gustav Tauschek](https://en.wikipedia.org/wiki/Gustav_Tauschek) in 1932 in Austria. Drums were widely used in the 1950s and into the 1960s as computer memory.
+
+For many early computers, drum memory formed the main working memory of the computer. It was so common that these computers were often referred to as drum machines. Some drum memories were also used as secondary storage.
+
+Drums were displaced as primary computer memory by magnetic core memory, which offered a better balance of size, speed, cost, reliability and potential for further improvements. Drums in turn were replaced by [hard disk drives](#hard-disk-drive) for secondary storage, which were both less expensive and offered denser storage. The manufacture of drums ceased in the 1970s.
+
 ## [Dynamic Random-Access Memory](https://en.wikipedia.org/wiki/Dynamic_random-access_memory)
 _DRAM_ is a type of [random access](#random-access-memory) semiconductor memory that stores each bit of data in a memory cell consisting of a tiny [capacitor](#capacitor) and transitor.
 
@@ -129,6 +143,9 @@ A _flip-flop_, or _latch_, is a circuit that has two stable states that can be u
 
 ## [Floating Point](https://en.wikipedia.org/wiki/Floating-point_arithmetic)
 Arithmetic using formulaic representation of real numbers as an approximaton to support a trade-off between range and precision. The term _floating point_ refers to the fact that a number's radix point (decimal point) can "float" anywhere relative to the significant digits of the number.
+
+## [Floppy Disk](https://en.wikipedia.org/wiki/Floppy_disk)
+A _floppy disk_ or _floppy diskette_ (sometimes casually referred to as a _floppy_ or _diskette_) is a type of disk storage composed of a thin and flexible disk of a magnetic storage medium in a square or nearly square plastic enclosure lined with a fabric that removes dust particles from the spinning disk. Floppy disks are read from and written to by a floppy disk drive (FDD).
 
 ## [FLOPS](https://en.wikipedia.org/wiki/FLOPS)
 _Floating point operations per second_ (_FLOPS_, _flops_, or _flop/s_) is a measure of computer performance, useful in fields of scientific computations that require [floating point](#floating-point) calculations. For such cases it is a more accurate measure than measuring instructions per second.
@@ -148,6 +165,9 @@ _Graph traversal_, also known as _graph search_, refers to the process of visiti
 
 ## [Half Adder](https://en.wikipedia.org/wiki/Adder_(electronics)#Half_adder)
 The _half adder_ is a circuit that adds two single binary digits A and B. It has two outputs, sum (S) and carry (C). The carry signal represents an overflow into the next digit of a multi-digit addition.
+
+## [Hard Disk Drive](https://en.wikipedia.org/wiki/Hard_disk_drive)
+A _hard disk drive_ (_HDD_), _hard disk_, _hard drive_, or _fixed disk_ is an electro-mechanical data storage device that stores and retrieves digital data using magnetic storage and one or more rigid rapidly rotating platters coated with magnetic material. The platters are paired with magnetic heads, usually arranged on a moving actuator arm, which read and write data to the platter surfaces. Data is accessed in a random-access manner, meaning that individual blocks of data can be stored and retrieved in any order. HDDs are a type of non-volatile storage, retaining stored data even when powered off.
 
 ## [Instruction Pipelining](https://en.wikipedia.org/wiki/Instruction_pipelining)
 A technique for implementing instruction-level parallelism within a single processor. Pipelining attempts to keep every part of the processor busy with some instruction by dividing incoming instructions into a series of sequential steps performed by different processor units with different parts of instructions processed in parallel.
@@ -191,6 +211,18 @@ A physical electronic/electromechanical device implementing a boolean function. 
 ## [Machine Code](https://en.wikipedia.org/wiki/Machine_code)
 In computer programming, _machine code_, consisting of machine language instructions, is a low-level programming language used to directly control a computer's [central processing unit](#central-processing-unit). Each instruction causes the CPU to perform a specific task such as a _load_, a _store_, a _jump_, or an [arithmetic logic unit (ALU)](../05/README.md) operation on one or more units of of data in the CPU's [registers](#register) or memory.
 
+## [Magnetic Core Memory](https://en.wikipedia.org/wiki/Magnetic-core_memory)
+_Magnetic-core memory_ was the predominant form of random-access computer memory for 20 years between about 1955 and 1975. Such memory is often just called _core memory_, or, informally, _core_.
+
+Core memory uses toroids (rings) of a hard magnetic material (usually a semi-hard ferrite) as transformer cores, where each wire threaded through the core serves as a transformer winding. Three or four wires pass through each core.
+
+Each core stores one bit of information. A core can be magnetized in either the clockwise or counter-clockwise direction. The value of the bit stored in a core is zero or one according to the direction of that core's magnetization. Electric current pulses in some of the wires through a core allow the direction of the magnetization in that core to be set in either direction, thus storing a one or a zero. Another wire through each core, the sense wire, is used to detect whether the core changed state.
+
+The process of reading the core causes the core to be reset to a zero, thus erasing it. This is called destructive readout. When not being read or written, the cores maintain the last value they had, even if the power is turned off. Therefore they are a type of [non-volatile memory](#non-volatile-memory).
+
+## [Magnetic Tape](https://en.wikipedia.org/wiki/Magnetic_tape)
+_Magnetic tape_ is a medium for magnetic recording, made of a thin, magnetizable coating on a long, narrow strip of plastic film. It was developed in Germany in 1928, based on magnetic wire recording. Devices that record and playback audio and video using magnetic tape are tape recorders and video tape recorders respectively. A device that stores computer data on magnetic tape is known as a tape drive.
+
 ## [Microarchitecture](https://en.wikipedia.org/wiki/Microarchitecture)
 In computer engineering, _microarchitecture_, also called _computer organization_, is the way a given [instruction set architecture (ISA)](https://en.wikipedia.org/wiki/Instruction_set_architecture) is implemented in a particular [processor](#central-processing-unit).
 
@@ -199,6 +231,20 @@ A _microprocessor_ is a [computer processor](#central-processing-unit) that inco
 
 ## [Memory Address](https://en.wikipedia.org/wiki/Memory_address)
 A reference to a specific memory location used at various levels of software and hardware. Memory addresses are fixed-length sequences of digits conventionally displayed and manipulated as unsigned integers.
+
+## [Memory Hierarchy](https://en.wikipedia.org/wiki/Memory_hierarchy)
+In computer architecture, the _memory hierarchy_ separates computer storage into a hierarchy based on response time. Since response time, complexity, and capacity are related, the levels may also be distinguished by their performance and controlling technologies. Memory hierarchy affects performance in computer architectural design, algorithm predictions, and lower level programming constructs involving locality of reference.
+
+Designing for high performance requires considering the restrictions of the memory hierarchy, i.e. the size and capabilities of each component. Each of the various components can be viewed as part of a hierarchy of memories (m<sub>1</sub>,m<sub>2</sub>,...,m<sub>n</sub>) in which each member m<sub>i</sub> is typically smaller and faster than the next highest member m<sub>i+1</sub> of the hierarchy. To limit waiting by higher levels, a lower level will respond by filling a buffer and then signaling for activating the transfer.
+
+There are four major storage levels.
+
+1. Internal - [Processor registers](#register) and cache.
+2. Main - the system [RAM](#random-access-memory) and controller cards.
+3. On-line mass storage -  Secondary storage.
+4. Off-line bulk storage - Tertiary and Off-line storage.
+
+This is a general memory hierarchy structuring. Many other structures are useful. For example, a paging algorithm may be considered as a level for virtual memory when designing a computer architecture, and one can include a level of nearline storage between online and offline storage.
 
 ## [Memory Protection](https://en.wikipedia.org/wiki/Memory_protection)
 _Memory protection_ is a way to control memory access rights on a computer, and is a part of most modern instruction set architectures and [operating systems](#operating-system). The main purpose of memory protection is to prevent a process from accessing memory that has not been allocated to it. This prevents a bug or malware within a process from affecting other processes, or the operating system itself. Protection may encompass all accesses to a specified area of memory, write accesses, or attempts to execute the contents of the area. An attempt to access unauthorized memory results in a hardware fault, e.g., a segmentation fault, storage violation exception, generally causing abnormal termination of the offending process. Memory protection for computer security includes additional techniques such as address space layout randomization and executable space protection.
@@ -254,6 +300,18 @@ A way of representing the values of a positional system (a numeral system in whi
 ## [Pseudocode](https://en.wikipedia.org/wiki/Pseudocode)
 _Pseudocode_ is a plain language description of the steps in an algorithm or another system. Pseudocode often uses structural conventions of a normal programming language, but is intended for human reading rather than machine reading. It typically omits details that are essential for machine understanding of the algorithm, such as variable declarations and language-specific code.
 
+## [Punched Card](https://en.wikipedia.org/wiki/Punched_card)
+A punched card (also punch card or punched-card) is a piece of stiff paper that can be used to contain digital data represented by the presence or absence of holes in predefined positions. Digital data can be used for data processing applications or used to directly control automated machinery.
+
+Punched cards were widely used through much of the 20th century in the data processing industry, where specialized and increasingly complex unit record machines, organized into semiautomatic data processing systems, used punched cards for data input, output, and storage. The IBM 12-row/80-column punched card format came to dominate the industry. Many early digital computers used punched cards as the primary medium for input of both computer programs and data.
+
+While punched cards are now obsolete as a storage medium, as of 2012, some voting machines still use punched cards to record votes.
+
+## [Punched Tape](https://en.wikipedia.org/wiki/Punched_tape)
+Punched tape or perforated paper tape is a form of data storage that consists of a long strip of paper in which holes are punched. It developed from and was subsequently used alongside [punched cards](#punched-card), differing in that the tape is continuous.
+
+It was used throughout the 19th and for much of the 20th centuries for programmable looms, teleprinter communication, for input to computers of the 1950s and 1960s, and later as a storage medium for minicomputers and CNC machine tools.
+
 ## [Quality Assurance](https://en.wikipedia.org/wiki/Quality_assurance)
 _Quality assurance_ (_QA_) is a way of preventing mistakes and defects in manufactured products and avoiding problems when delivering products or services to customers; which [ISO 9000](https://en.wikipedia.org/wiki/ISO_9000) defines as "part of quality management focused on providing confidence that quality requirements will be fulfilled". This defect prevention in quality assurance differs subtly from defect detetion and rejction in quality control and has been referred to as a _shift left_ since it focuses on quality earlier in the process (i.e., to the left of a linear process diagram reading left to right).
 
@@ -286,6 +344,13 @@ _Scheduling_ is the method by which work is assigned to resources that complete 
 
 A scheduler is what carries out the scheduling activity. Schedulers are often implemented so they keep all computer resources busy (as in load balancing), allow multiple users to share system resources effectively, or to achieve a target quality of service. Scheduling is fundamental to computation itself, and an intrinsic part of the execution model of a computer system; the concept of scheduling makes it possible to have computer multitasking with a single [central processing unit](#central-processing-unit).
 
+## [Sequential Access Memory](https://en.wikipedia.org/wiki/Sequential_access_memory)
+In computing, sequential access memory (SAM) is a class of data storage devices that read stored data in a sequence. This is in contrast to [random access memory](#random-access-memory) (RAM) where data can be accessed in any order. Sequential access devices are usually a form of magnetic storage or optical storage.
+
+While sequential access memory is read in sequence, arbitrary locations can still be accessed by "seeking" to the requested location. This operation, however, is often relatively inefficient (see seek time, rotational latency).
+
+Magnetic sequential access memory is typically used for secondary storage in general-purpose computers due to their higher density at lower cost compared to RAM, as well as resistance to wear and non-volatility. Magnetic tape is a type of sequential access memory still in use; historically, drum memory has also been used.
+
 ## [Sequential Logic](https://en.wikipedia.org/wiki/Sequential_logic)
 A type of [logic circuit](#logic-gate) whose output depends not only on the present value of its input signals but on the sequence of past inputs (the input history).
 
@@ -294,6 +359,11 @@ Written text or illustration that accompanies computer software or is embedded i
 
 ## [Software Engineering](https://en.wikipedia.org/wiki/Software_engineering)
 _Software engineering_ is the systemic application of engineering approaches to the development of software. Software engineering is a computing discipline.
+
+## [Solid State Electronics](https://en.wikipedia.org/wiki/Solid-state_electronics)
+_Solid-state electronics_ means semiconductor electronics: electronic equipment using semiconductor devices such as [transistors](#transistor), [diodes](#diode) and [integrated circuits](#integrated-circuit) (ICs). The term is also used for devices in which semiconductor electronics which have no moving parts replace devices with moving parts, such as the solid-state relay in which transistor switches are used in place of a moving-arm electromechanical [relay](#relay), or the solid-state drive (SSD) a type of semiconductor memory used in computers to replace [hard disk drives](#hard-disk-drive), which store data on a rotating disk.
+
+The term "solid state" became popular in the beginning of the semiconductor era in the 1960s to distinguish this new technology based on the transistor, in which the electronic action of devices occurred in a solid state, from previous electronic equipment that used [vacuum tubes](#vacuum-tube), in which the electronic action occurred in a gaseous state. A semiconductor device works by controlling an electric current consisting of electrons or holes moving within a solid crystalline piece of semiconducting material such as silicon, while the thermionic vacuum tubes it replaced worked by controlling current conducted by a gas of particles, electrons or ions, moving in a vacuum within a sealed tube.
 
 ## [Source-Code Repository](https://en.wikipedia.org/wiki/Comparison_of_source-code-hosting_facilities)
 A _source-code repository_ is a file archive and web hosting facility for source code of software, documentation, web pages, and other works, accessible either publicly or privately. They are often used by open-source software projects and other multi-developer projects to maintain revision and version history, or [version control](#version-control). Many repositories provide a bug tracking system, and offer release managment, mailing lists, and wiki-based project documentation. Software authors generally retain their copyright when softare is posted to a code hosting facility.
@@ -316,6 +386,11 @@ _Static Random-Access Memory_ (_SRAM_) is a type of [RAM](#random-access-memory)
 
 ## [String](https://en.wikipedia.org/wiki/String_(computer_science))
 Traditionally a sequence of characters, either as a literal constant or as some kind of variable. The latter may allow its elements to be mutated and the length changed, or it may be fixed (after creation). A _string_ is generally considered a data type and is often implemented as an [array](#array) data structure of [bytes](#byte) (or words) that stores a sequence of elements, typically characters, using some character encoding. _String_ may also denote more general arrays or other sequence (or list) data types and structures.
+
+## [Stored Program Computer](https://en.wikipedia.org/wiki/Stored-program_computer)
+A stored-program computer is a computer that stores program instructions in electronically or optically accessible memory. This contrasts with systems that stored the program instructions with plugboards or similar mechanisms.
+
+The definition is often extended with the requirement that the treatment of programs and data in memory be interchangeable or uniform.
 
 ## [Subroutine](https://en.wikipedia.org/wiki/Subroutine)
 A _subroutine_ is a sequence of program instructions that performs a specific task, packaged as a unit. This unit can then be used in programs wherever that particular task should be performed. _Subroutines_ can be defined within programs, or separately in _libraries_ that can be used by many programs. In different programming languages, a _subroutine_ may be called a _routine_, _subprogram_, _function_, _method_, or _procedure_. Technically, these terms all have different definitions. The generic, umbrella term _callable unit_ is sometimes used.
