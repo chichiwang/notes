@@ -42,4 +42,4 @@ Newer versions of Windows have better protections and usually don't crash that o
 
 Today computers run modern operating systems like [Mac OS X](https://en.wikipedia.org/wiki/MacOS), [Windows 10](https://en.wikipedia.org/wiki/Windows_10), [Linux](https://en.wikipedia.org/wiki/Linux), [iOS](https://en.wikipedia.org/wiki/IOS), and [Android](https://en.wikipedia.org/wiki/Android_(operating_system)). Even though computers today are most often used by just a single person their OSes all have multitasking and virtual and protected memory - so they can run many programs at once. This wouldn't be possible without those decades of research and development on operating systems, and of course the proper memory to store those programs.
 
-| [Previous: Integrated Circuits & Moore's Law](../17/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: Integrated Circuits & Moore's Law](../17/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Memory & Storage](../19/README.md) |
