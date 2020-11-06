@@ -11,6 +11,13 @@ An _array data structure_, or simply an _array_, is a [data structure](#data-str
 ## [Artificial Intelligence](https://en.wikipedia.org/wiki/Artificial_intelligence)
 _Artificial intelligence_ (_AI_), sometimes called _machine intelligence_, is intelligence demonstrated by machines, unlike the _natural intelligence_ displayed by humans and animals. Leading AI textbooks define the field of study of "intelligent agents": any device that perceives its environment and takes actions that maximize its chance of successfully achieving its goals. Colloquially, the term "artificial intelligence" is often used to describe machines (or computers) that mimic "cognitive" functions that humans associate with the human mind, such as "learning" and "problem solving".
 
+## [ASCII](https://en.wikipedia.org/wiki/ASCII)
+_ASCII_ ,abbreviated from _American Standard Code for Information Interchange_, is a character encoding standard for electronic communication. ASCII codes represent text in computers, telecommunications equipment, and other devices. Most modern character-encoding schemes are based on ASCII, although they support many additional characters.
+
+The _Internet Assigned Numbers Authority_ (_IANA_) prefers the name _US-ASCII_ for this character encoding.
+
+ASCII is one of the [IEEE milestones](https://en.wikipedia.org/wiki/Timeline_of_electrical_and_electronic_engineering#List_of_IEEE_milestones).
+
 ## [Assembler](https://en.wikipedia.org/wiki/Assembly_language#Assembler)
 An _assembler_ program creates object code by translating combinations of _mnemonics_ and syntax for operations and addressing modes into their numerical equivalents.
 
@@ -105,6 +112,11 @@ In computer programming and software development, _debugging_ is the process of 
 
 Debugging tactics can involve interactive debugging, [control flow](#control-flow) analysis, unit testing, integration testing, log file analysis, monitoring at the application or system level, memory dumps, and profiling. Many programming languages and software development tools also offer programs to aid in debugging, known as _debuggers_.
 
+## [Defragmentation](https://en.wikipedia.org/wiki/Defragmentation)
+In the maintenance of [file systems](#file-system), _defragmentation_ is a process that reduces the degree of [fragmentation](#file-system-fragmentation). It does this by physically organizing the contents of the mass storage device used to store [files](#file) into the smallest number of contiguous regions (fragments, extents). It also attempts to create larger regions of free space using compaction to impede the return of fragmentation. Some defragmentation utilities try to keep smaller files within a single directory together, as they are often accessed in sequence.
+
+Defragmentation is advantageous and relevant to [file systems](#file-system) on electromechanical disk drives ([hard disk drives](#hard-disk-drive), [floppy disk](#floppy-disk) drives and optical disk media). The movement of the hard drive's read/write heads over different areas of the disk when accessing fragmented files is slower, compared to accessing the entire contents of a non-fragmented file sequentially without moving the read/write heads to seek other fragments.
+
 ## [Delay Line Memory](https://en.wikipedia.org/wiki/Delay_line_memory)
 Delay line memory is a form of computer memory, now obsolete, that was used on some of the earliest digital computers. Like many modern forms of electronic computer memory, delay line memory was a refreshable memory, but as opposed to modern random-access memory, delay line memory was [sequential-access](#sequential-access-memory).
 
@@ -137,6 +149,35 @@ Drums were displaced as primary computer memory by magnetic core memory, which o
 
 ## [Dynamic Random-Access Memory](https://en.wikipedia.org/wiki/Dynamic_random-access_memory)
 _DRAM_ is a type of [random access](#random-access-memory) semiconductor memory that stores each bit of data in a memory cell consisting of a tiny [capacitor](#capacitor) and transitor.
+
+## [File](https://en.wikipedia.org/wiki/Computer_file)
+A _computer file_ is a computer resource for recording data discretely in a computer storage device. Just as words can be written to paper, so can information be written to a computer file. Files can be edited and transferred through the internet on that particular computer system.
+
+There are different types of computer files, designed for different purposes. A file may be designed to store a picture, a written message, a video, a computer program, or a wide variety of other kinds of data. Some types of files can store several types of information at once.
+
+By using computer programs, a person can open, read, change, save, and close a computer file. Computer files may be reopened, modified, and copied an arbitrary number of times.
+
+Typically, files are organised in a [file system](#file-system), which keeps track of where the files are located on [disk](#hard-disk-drive) and enables user access.
+
+## [File Extension](https://en.wikipedia.org/wiki/Filename_extension)
+A _filename extension_ or _file type_ is an identifier specified as a suffix to the name of a [computer file](#file). The extension indicates a characteristic of the file contents or its intended use. A filename extension is typically delimited from the filename with a full stop (period), but in some systems it is separated with spaces.
+
+Some [file systems](#file-system) implement filename extensions as a feature of the file system itself and may limit the length and format of the extension, while others treat filename extensions as part of the filename without special distinction.
+
+## [File Format](https://en.wikipedia.org/wiki/File_format)
+A _file format_ is a standard way that information is encoded for storage in a [computer file](#file). It specifies how [bits](#bit) are used to encode information in a digital storage medium. File formats may be either proprietary or free and may be either unpublished or open.
+
+Some file formats are designed for very particular types of data: _PNG_ files, for example, store bitmapped images using lossless data compression. Other file formats, however, are designed for storage of several different types of data: the _Ogg_ format can act as a container for different types of multimedia including any combination of audio and video, with or without text (such as subtitles), and metadata. A text file can contain any stream of characters, including possible control characters, and is encoded in one of various character encoding schemes. Some file formats, such as _HTML_, scalable vector graphics, and the source code of computer software are text files with defined syntaxes that allow them to be used for specific purposes.
+
+## [File System](https://en.wikipedia.org/wiki/File_system)
+In computing, a _file system_ or _filesystem_ (often abbreviated to _fs_) controls how data is stored and retrieved. Without a file system, data placed in a storage medium would be one large body of data with no way to tell where one piece of data stops and the next begins. By separating the data into pieces and giving each piece a name, the data is easily isolated and identified. Taking its name from the way paper-based data management system is named, each group of data is called a ["file."](#file) The structure and logic rules used to manage the groups of data and their names is called a "file system."
+
+There are many different kinds of file systems. Each one has different structure and logic, properties of speed, flexibility, security, size and more. Some file systems have been designed to be used for specific applications.
+
+## [File System Fragmentation](https://en.wikipedia.org/wiki/File_system_fragmentation)
+In computing, _file system fragmentation_, sometimes called _file system aging_, is the tendency of a [file system](#file-system) to lay out the contents of [files](#file) non-continuously to allow in-place modification of their contents. It is a special case of data fragmentation. File system fragmentation increases [disk](#hard-disk-drive) head movement or seek time (where it applies), which are known to hinder throughput. In addition, file systems cannot sustain unlimited fragmentation. The correction to existing fragmentation is to reorganize files and free space back into contiguous areas, a process called [defragmentation](#defragmentation).
+
+In modern computers, with [SSD "disks"](#solid-state-electronics) that do not rotate and are not really discs in the conventional sense, file system fragmentation is not as much of a performance problem (that should be "fixed"), as there is no movement of heads or discs. In fact, overly defragmenting such drives can slowly shorten their lifespan.
 
 ## [Flip-Flop](https://en.wikipedia.org/wiki/Flip-flop_(electronics))
 A _flip-flop_, or _latch_, is a circuit that has two stable states that can be used to store state information. The circuit can be made to change state by signals applied to one more more control inputs and will have one or two outputs.
@@ -248,6 +289,15 @@ This is a general memory hierarchy structuring. Many other structures are useful
 
 ## [Memory Protection](https://en.wikipedia.org/wiki/Memory_protection)
 _Memory protection_ is a way to control memory access rights on a computer, and is a part of most modern instruction set architectures and [operating systems](#operating-system). The main purpose of memory protection is to prevent a process from accessing memory that has not been allocated to it. This prevents a bug or malware within a process from affecting other processes, or the operating system itself. Protection may encompass all accesses to a specified area of memory, write accesses, or attempts to execute the contents of the area. An attempt to access unauthorized memory results in a hardware fault, e.g., a segmentation fault, storage violation exception, generally causing abnormal termination of the offending process. Memory protection for computer security includes additional techniques such as address space layout randomization and executable space protection.
+
+## [Metadata](https://en.wikipedia.org/wiki/Metadata)
+_Metadata_ is "data that provides information about other data". In other words, it is "data about data". Many distinct types of metadata exist, including _descriptive metadata_, _structural metadata_, _administrative metadata_, _reference metadata_ and _statistical metadata_.
+
+* Descriptive metadata is descriptive information about a resource. It is used for discovery and identification. It includes elements such as title, abstract, author, and keywords.
+* Structural metadata is metadata about containers of data and indicates how compound objects are put together, for example, how pages are ordered to form chapters. It describes the types, versions, relationships and other characteristics of digital materials.
+* Administrative metadata is information to help manage a resource, like resource type, permissions, and when and how it was created.
+* Reference metadata is information about the contents and quality of statistical data.
+* Statistical metadata, also called process data, may describe processes that collect, process, or produce statistical data.
 
 ## [Moore's Law](https://en.wikipedia.org/wiki/Moore%27s_law)
 _Moore's Law_ is the observation that the number of transistors in a dense [integrated circuit](#integrated-circuit) (IC) doubles about every two years. Moore's Law is an observation and projection of a historical trend. Rather than a law of physics, it is an empirical relationship linked to gains from experience in production.
