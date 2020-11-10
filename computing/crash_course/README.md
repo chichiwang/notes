@@ -71,6 +71,9 @@ Date: July 2020 - Ongoing
     * [Fragmentation](./20/README.md#fragmentation)
     * [Hierarchical File System](./20/README.md#hierarchical-file-system)
 * 21: [Compression](./21/README.md)
+  * [Run-Length Encoding](./21/README.md#run-length-encoding)
+  * [Huffman Coding](./21/README.md#huffman-coding)
+  * [Lossy Compression](./21/README.md#lossy-compression)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 

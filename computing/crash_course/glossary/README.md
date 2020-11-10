@@ -104,6 +104,13 @@ The _control unit_ (_CU_) is a component of a computer's central processing unit
 ## [CPU Cache](https://en.wikipedia.org/wiki/CPU_cache)
 A hardware cache used by the [CPU](#central-processing-unit) of a computer to reduce the average cost (time or energy) to access data from the main memory. This cache is a smaller, faster memory, located closer to a processor core, which stores copies of the data from frequently used memory locations. Most CPUs have different independent caches, including instruction and data cahces, where the data cache is usually organized as a hierarchy of more cache levels (L1, L2, L3, L4, etc.).
 
+## [Data Compression](https://en.wikipedia.org/wiki/Data_compression)
+In signal processing, _data compression_, _source coding_, or _bit-rate reduction_ is the process of encoding information using fewer [bits](#bit) than the original representation. Any particular compression is either [lossy](#lossy-compression) or [lossless](#lossless-compression). Lossless compression reduces bits by identifying and eliminating statistical redundancy. No information is lost in lossless compression. Lossy compression reduces bits by removing unnecessary or less important information. Typically, a device that performs data compression is referred to as an encoder, and one that performs the reversal of the process (decompression) as a decoder.
+
+The process of reducing the size of a [data file](#file) is often referred to as data compression. In the context of data transmission, it is called source coding; encoding done at the source of the data before it is stored or transmitted. Source coding should not be confused with channel coding, for error detection and correction or line coding, the means for mapping data onto a signal.
+
+Compression is useful because it reduces resources required to store and transmit data. Computational resources are consumed in the compression and decompression processes. Data compression is subject to a spacetime complexity trade-off. For instance, a compression scheme for video may require expensive hardware for the video to be decompressed fast enough to be viewed as it is being decompressed, and the option to decompress the video in full before watching it may be inconvenient or require additional storage. The design of data compression schemes involves trade-offs among various factors, including the degree of compression, the amount of distortion introduced (when using lossy data compression), and the computational resources required to compress and decompress the data.
+
 ## [Data Structure](https://en.wikipedia.org/wiki/Data_structure)
 A _data structure_ is a data organization, management, and storage format that enables efficient access and modificaton. More precisely, a data structure is a collection of data values, the relationships among them, and the functions or operations that can be applied to the data.
 
@@ -210,6 +217,11 @@ The _half adder_ is a circuit that adds two single binary digits A and B. It has
 ## [Hard Disk Drive](https://en.wikipedia.org/wiki/Hard_disk_drive)
 A _hard disk drive_ (_HDD_), _hard disk_, _hard drive_, or _fixed disk_ is an electro-mechanical data storage device that stores and retrieves digital data using magnetic storage and one or more rigid rapidly rotating platters coated with magnetic material. The platters are paired with magnetic heads, usually arranged on a moving actuator arm, which read and write data to the platter surfaces. Data is accessed in a random-access manner, meaning that individual blocks of data can be stored and retrieved in any order. HDDs are a type of non-volatile storage, retaining stored data even when powered off.
 
+## [Huffman Coding](https://en.wikipedia.org/wiki/Huffman_coding)
+In computer science and information theory, a _Huffman code_ is a particular type of optimal [prefix code](#prefix-code) that is commonly used for [lossless](#lossless-compression) [data compression](#data-compression). The process of finding or using such a code proceeds by means of Huffman coding, an [algorithm](#algorithm) developed by [David A. Huffman](https://en.wikipedia.org/wiki/David_A._Huffman) while he was a Sc.D. student at MIT, and published in the 1952 paper "A Method for the Construction of Minimum-Redundancy Codes".
+
+The output from Huffman's algorithm can be viewed as a variable-length code table for encoding a source symbol (such as a character in a file). The algorithm derives this table from the estimated probability or frequency of occurrence (weight) for each possible value of the source symbol. As in other entropy encoding methods, more common symbols are generally represented using fewer bits than less common symbols. Huffman's method can be efficiently implemented, finding a code in time linear to the number of input weights if these weights are sorted. However, although optimal among methods encoding symbols separately, Huffman coding is not always optimal among all compression methods - it is replaced with arithmetic coding or asymmetric numeral systems if better compression ratio is required.
+
 ## [Instruction Pipelining](https://en.wikipedia.org/wiki/Instruction_pipelining)
 A technique for implementing instruction-level parallelism within a single processor. Pipelining attempts to keep every part of the processor busy with some instruction by dividing incoming instructions into a series of sequential steps performed by different processor units with different parts of instructions processed in parallel.
 
@@ -248,6 +260,22 @@ Linked lists are amongst the simplest and most common data structures. They can 
 
 ## [Logic Gate](https://en.wikipedia.org/wiki/Logic_gate)
 A physical electronic/electromechanical device implementing a boolean function. It performs a logical operation on one or more binary inputs to produce a single binary output.
+
+## [Lossless Compression](https://en.wikipedia.org/wiki/Lossless_compression)
+_Lossless compression_ is a class of [data compression](#data-compression) algorithms that allows the original data to be perfectly reconstructed from the compressed data. By contrast, [lossy compression](#lossy-compression) permits reconstruction only of an approximation of the original data, though usually with greatly improved compression rates (and therefore reduced media sizes).
+
+By operation of the [pigeonhole principle](https://en.wikipedia.org/wiki/Pigeonhole_principle), no lossless compression algorithm can efficiently compress all possible data. For this reason, many different algorithms exist that are designed either with a specific type of input data in mind or with specific assumptions about what kinds of redundancy the uncompressed data are likely to contain.
+
+Lossless data compression is used in many applications. For example, it is used in the ZIP file format and in the GNU tool gzip. It is also often used as a component within lossy data compression technologies (e.g. lossless mid/side joint stereo preprocessing by MP3 encoders and other lossy audio encoders).
+
+Lossless compression is used in cases where it is important that the original and the decompressed data be identical, or where deviations from the original data would be unfavourable. Typical examples are executable programs, text documents, and source code. Some image file formats, like PNG or GIF, use only lossless compression, while others like TIFF and MNG may use either lossless or lossy methods. Lossless audio formats are most often used for archiving or production purposes, while smaller lossy audio files are typically used on portable players and in other cases where storage space is limited or exact replication of the audio is unnecessary.
+
+## [Lossy Compression](https://en.wikipedia.org/wiki/Lossy_compression)
+In information technology, _lossy compression_ or _irreversible compression_ is the class of [data encoding methods](#data-compression) that uses inexact approximations and partial data discarding to represent the content. These techniques are used to reduce data size for storing, handling, and transmitting content. The amount of data reduction possible using lossy compression is much higher than through [lossless](#lossless-compression) techniques.
+
+Well-designed lossy compression technology often reduces file sizes significantly before degradation is noticed by the end-user. Even when noticeable by the user, further data reduction may be desirable (e.g., for real-time communication, to reduce transmission times, or to reduce storage needs). The most widely used lossy compression algorithm is the [discrete cosine transform](https://en.wikipedia.org/wiki/Discrete_cosine_transform) (DCT), first published by [Nasir Ahmed](https://en.wikipedia.org/wiki/N._Ahmed), T. Natarajan and [K. R. Rao](https://en.wikipedia.org/wiki/K._R._Rao) in 1974. Recently, a new family of sinusoidal-hyperbolic transform functions, which have comparable properties and performance with DCT, have been proposed for lossy compression.
+
+Lossy compression is most commonly used to compress multimedia data (audio, video, and images), especially in applications such as streaming media and internet telephony. By contrast, lossless compression is typically required for text and data files, such as bank records and text articles. It can be advantageous to make a master lossless file which can then be used to produce additional copies from. This allows one to avoid basing new compressed copies off of a lossy source file, which would yield additional artifacts and further unnecessary information loss.
 
 ## [Machine Code](https://en.wikipedia.org/wiki/Machine_code)
 In computer programming, _machine code_, consisting of machine language instructions, is a low-level programming language used to directly control a computer's [central processing unit](#central-processing-unit). Each instruction causes the CPU to perform a specific task such as a _load_, a _store_, a _jump_, or an [arithmetic logic unit (ALU)](../05/README.md) operation on one or more units of of data in the CPU's [registers](#register) or memory.
@@ -347,6 +375,13 @@ A _printed circuit board_ (_PCB_) mechanically supports and electrically connect
 ## [Positional Notation](https://en.wikipedia.org/wiki/Positional_notation)
 A way of representing the values of a positional system (a numeral system in which the contribution of a digit to the value of a number is the product of the value of the digit by a factor determined by the position of the digit).
 
+## [Prefix Code](https://en.wikipedia.org/wiki/Prefix_code)
+A _prefix code_ is a type of code system distinguished by its possession of the "prefix property", which requires that there is no whole code word in the system that is a prefix (initial segment) of any other code word in the system. It is trivially true for fixed-length code, so only a point of consideration in variable-length code.
+
+For example, a code with code words {9, 55} has the prefix property; a code consisting of {9, 5, 59, 55} does not, because "5" is a prefix of "59" and also of "55". A prefix code is a uniquely decodable code: given a complete and accurate sequence, a receiver can identify each word without requiring a special marker between words. However, there are uniquely decodable codes that are not prefix codes; for instance, the reverse of a prefix code is still uniquely decodable (it is a suffix code), but it is not necessarily a prefix code.
+
+Prefix codes are also known as _prefix-free codes_, _prefix condition codes_ and _instantaneous codes_. Although [Huffman coding](#huffman-coding) is just one of many algorithms for deriving prefix codes, prefix codes are also widely referred to as "Huffman codes", even when the code was not produced by a Huffman algorithm. The term comma-free code is sometimes also applied as a synonym for prefix-free codes but in most mathematical books and articles a comma-free code is used to mean a self-synchronizing code, a subclass of prefix codes.
+
 ## [Pseudocode](https://en.wikipedia.org/wiki/Pseudocode)
 _Pseudocode_ is a plain language description of the steps in an algorithm or another system. Pseudocode often uses structural conventions of a normal programming language, but is intended for human reading rather than machine reading. It typically omits details that are essential for machine understanding of the algorithm, such as variable declarations and language-specific code.
 
@@ -388,6 +423,9 @@ A _resistor_ is a passive two-terminal electrical component that implements elec
 
 ## [Ripple-Carry Adder](https://en.wikipedia.org/wiki/Adder_(electronics)#Ripple-carry_adder)
 A _ripple-carry adder_ is a circuit that utilizes multiple [full adders](#full-adder) to add _N_-bit numbers. Each full adder inputs a C<sub>in</sub>, which is the C<sub>out</sub> of the previous adder. This kind of adder is called a ripper-carry adder (RCA) because each carry bit "ripples" to the next full adder. The first (and only the first) full adder may be replaced with a [half adder](#half-adder) under the assumption that C<sub>in</sub> = 0.
+
+## [Run-Length Encoding](https://en.wikipedia.org/wiki/Run-length_encoding)
+_Run-length encoding_ (_RLE_) is a form of [lossless](#lossless-compression) [data compression](#data-compression) in which runs of data (sequences in which the same data value occurs in many consecutive data elements) are stored as a single data value and count, rather than as the original run. This is most useful on data that contains many such runs. Consider, for example, simple graphic images such as icons, line drawings, Conway's Game of Life, and animations. It is not useful with files that don't have many runs as it could greatly increase the file size.
 
 ## [Scheduling](https://en.wikipedia.org/wiki/Scheduling_(computing))
 _Scheduling_ is the method by which work is assigned to resources that complete the work. The work may be virtual computation elements such as threads, processes or data flows, which are in turn scheduled onto hardware resources such as processors, network links or expansion cards.
