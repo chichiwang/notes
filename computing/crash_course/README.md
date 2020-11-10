@@ -70,6 +70,7 @@ Date: July 2020 - Ongoing
     * [Memory Blocks](./20/README.md#memory-blocks)
     * [Fragmentation](./20/README.md#fragmentation)
     * [Hierarchical File System](./20/README.md#hierarchical-file-system)
+* 21: [Compression](./21/README.md)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 

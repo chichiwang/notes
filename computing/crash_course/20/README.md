@@ -101,4 +101,4 @@ Our directory file from the previous example will now not only need to be able t
 
 In addition to being able to create hierarchies of unlimited depth, this method also allows for the easy moving of files. If a file needs to move from one directory to another, no blocks of data need to be re-arranged - an entry is simply removed from one directory file and added to another.
 
-| [Previous: Memory & Storage](../19/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: Memory & Storage](../19/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Compression](../21/README.md) |
