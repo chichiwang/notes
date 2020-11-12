@@ -74,6 +74,7 @@ Date: July 2020 - Ongoing
   * [Run-Length Encoding](./21/README.md#run-length-encoding)
   * [Huffman Coding](./21/README.md#huffman-coding)
   * [Lossy Compression](./21/README.md#lossy-compression)
+* 22: [Keyboards & Command Line Interfaces](./22/README.md)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 
@@ -85,6 +86,8 @@ Date: July 2020 - Ongoing
 * [Circuit Digest: Half Adder Circuit and its Construction](https://circuitdigest.com/tutorial/half-adder-circuit-and-its-construction)
 * [Circuit Digest: Full Adder Circuit and its Construction](https://circuitdigest.com/tutorial/full-adder-circuit-theory-truth-table-construction)
 * [Diligent Blog: What is Sequential Logic?](https://blog.digilentinc.com/what-is-sequential-logic/)
+* [On This Day in Typewriter History](https://oztypewriter.blogspot.com/2011/08/on-this-day-in-typewriter-history.html)
+* [YouTube: Using a 1930 Teletype as a Linux Terminal](https://youtu.be/2XLZ4Z8LpEE)
 
 ### Tools and Software
 * [BOOLR](http://boolr.me/): A free, digital logic simulator

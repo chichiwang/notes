@@ -77,4 +77,4 @@ MPEG-4 videos, a common standard, are often 20 to 200 times smaller than the ori
 ![Mangled video compression](./video-compression-artifacts.JPG)
 <br /><br />
 
-| [Previous: Files & File Systems](../20/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: Files & File Systems](../20/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Keyboards & Command Line Interfaces](../22/README.md) |

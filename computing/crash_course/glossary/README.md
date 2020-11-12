@@ -49,7 +49,7 @@ A _capacitor_ is a device that stores electrical energy in an electric field. It
 To reduce computation time, engineers devised faster ways to add two binary numbers. The carry-look-ahead adder (CLA) works by creating two signals (_P_ and _G_) for each bit position, based on whether a carry is propagated through from a less significant bit position (at least one input is a 1), generated in that bit position (both inputs are 1), or killed in that bit position (both inputs are 0).
 
 ## [Central Processing Unit](https://en.wikipedia.org/wiki/Central_processing_unit)
-The _central processing unit_ (_CPU_), also known as a _central processor_, _main processor_, or just _processor_, is the electronic circuitry within a computer that executes instructions that make up a computer program. The CPU performs basic arithmetic, logic, controlling, and input/output (I/O) operations specified by the instructions in the program.
+The _central processing unit_ (_CPU_), also known as a _central processor_, _main processor_, or just _processor_, is the electronic circuitry within a computer that executes instructions that make up a computer program. The CPU performs basic arithmetic, logic, controlling, and [input/output](#inputoutput) (I/O) operations specified by the instructions in the program.
 
 ## [Class Hierarchy](https://en.wikipedia.org/wiki/Class_hierarchy)
 A _class hierarchy_ or _inheritance tree_ in computer science is a classification of object types, denoting objects as the instantiations of classes (class is like a blueprint, the object is what is built from that blueprint) inter-relating the various classes by relationships such as "inherits", "extends", "is an abstraction of", "an interface definition". In object-oriented programing, a class is a template that the defines the state and behavior common to objects of a certain kind. A class can be defined in terms of other classes.
@@ -82,8 +82,13 @@ A _composite data type_ or _compound data type_ is any data type which can be co
 ## [Computational Complexity](https://en.wikipedia.org/wiki/Computational_complexity)
 The _computational complexity_ or simply _complexity_ of an [algorithm](#algorithm) is the amount of resources required to run it. Particular focus is given to time and memory requirements.
 
+## [Computer Keyboard](https://en.wikipedia.org/wiki/Computer_keyboard)
+A _computer keyboard_ is a typewriter-style device which uses an arrangement of buttons or keys to act as mechanical levers or electronic switches. Replacing early [punched cards](#punched-card) and [paper tape](#punched-tape) technology, interaction via teleprinter-style keyboards have been the main input method for computers since the 1970s, supplemented by the computer mouse since the 1980s.
+
+Keyboard keys (buttons) typically have a set of characters engraved or printed on them, and each press of a key typically corresponds to a single written symbol. However, producing some symbols may require pressing and holding several keys simultaneously or in sequence. While most keyboard keys produce letters, numbers or symbols (characters), other keys or simultaneous key presses can prompt the computer to execute system commands, such as such as the Control-Alt-Delete combination used with Microsoft Windows. In a modern computer, the interpretation of key presses is generally left to the software: the information sent to the computer, the scan code, tells it only which key (or keys) on which row and column, was pressed or released.
+
 ## [Computer Terminal](https://en.wikipedia.org/wiki/Computer_terminal)
-A _computer terminal_ is an electronic or electromechanical hardware device that can be used for entering data into, and transcribing data from, a computer or a computing system. The teletype was an example of an early day hardcopy terminal, and predated the use of a computer screen by decades.
+A _computer terminal_ is an electronic or electromechanical hardware device that can be used for entering data into, and transcribing data from, a computer or a computing system. The [teletype](#teleprinter) was an example of an early day hardcopy terminal, and predated the use of a computer screen by decades.
 
 Early terminals were inexpensive devices but very slow compared to [punched cards](#punched-card) or paper tape for input, but as the technology improved and video displays were introduced, terminals pushed these older forms of interaction from the industry. A related development was [timesharing](#time-sharing) systems, which evolved in parallel and made up for any inefficiencies of the user's typing ability with the ability to support multiple users on the same machine, each at their own terminal/terminals.
 
@@ -100,6 +105,11 @@ In computer science _control flow_ (or _flow of control_) is the order in which 
 
 ## [Control Unit](https://en.wikipedia.org/wiki/Control_unit)
 The _control unit_ (_CU_) is a component of a computer's central processing unit (CPU) that directs the operation of the processor. It tells the computer's memory, arithmetic and logic unit and input and output devices how to respond to the instructions that have been sent to the processor.
+
+## [Command Line Interface](https://en.wikipedia.org/wiki/Command-line_interface)
+A _command-line interface_ (_CLI_) processes commands to a computer program in the form of lines of text. The program which handles the interface is called a _command-line interpreter_ or _command-line processor_. [Operating systems](#operating-system) implement a command-line interface in a shell for interactive access to operating system functions or services. Such access was primarily provided to users by computer terminals starting in the mid-1960s, and continued to be used throughout the 1970s and 1980s on VAX/VMS, [Unix systems](#unix) and [personal computer](#personal-computer) systems including DOS, CP/M and Apple DOS.
+
+Today, many users rely upon graphical user interfaces and menu-driven interactions. However, some programming and maintenance tasks may not have a graphical user interface and may still use a command line.
 
 ## [CPU Cache](https://en.wikipedia.org/wiki/CPU_cache)
 A hardware cache used by the [CPU](#central-processing-unit) of a computer to reduce the average cost (time or energy) to access data from the main memory. This cache is a smaller, faster memory, located closer to a processor core, which stores copies of the data from frequently used memory locations. Most CPUs have different independent caches, including instruction and data cahces, where the data cache is usually organized as a hierarchy of more cache levels (L1, L2, L3, L4, etc.).
@@ -222,6 +232,23 @@ In computer science and information theory, a _Huffman code_ is a particular typ
 
 The output from Huffman's algorithm can be viewed as a variable-length code table for encoding a source symbol (such as a character in a file). The algorithm derives this table from the estimated probability or frequency of occurrence (weight) for each possible value of the source symbol. As in other entropy encoding methods, more common symbols are generally represented using fewer bits than less common symbols. Huffman's method can be efficiently implemented, finding a code in time linear to the number of input weights if these weights are sorted. However, although optimal among methods encoding symbols separately, Huffman coding is not always optimal among all compression methods - it is replaced with arithmetic coding or asymmetric numeral systems if better compression ratio is required.
 
+## [Human-In-The-Loop](https://en.wikipedia.org/wiki/Human-in-the-loop)
+_Human-in-the-loop_ or _HITL_ is defined as a model that requires human interaction. HITL is associated with modeling and simulation (M&S) in the live, virtual, and constructive taxonomy. HITL models may conform to human factors requirements as in the case of a mockup. In this type of simulation a human is always part of the simulation and consequently influences the outcome in such a way that is difficult if not impossible to reproduce exactly. HITL also readily allows for the identification of problems and requirements that may not be easily identified by other means of simulation.
+
+HITL is often referred to as interactive simulation, which is a special kind of physical simulation in which physical simulations include human operators, such as in a flight or a driving simulator.
+
+## [Human-Computer Interaction](https://en.wikipedia.org/wiki/Human%E2%80%93computer_interaction)
+_Humancomputer interaction_ (_HCI_) studies the design and use of computer technology, focused on the interfaces between people (users) and computers. Researchers in the field of HCI observe the ways in which humans interact with computers and design technologies that let humans interact with computers in novel ways.
+
+## [Input/Output](https://en.wikipedia.org/wiki/Input/output)
+In computing, _input/output_ or _I/O_ (or, informally, _io_ or _IO_) is the communication between an information processing system, such as a computer, and the outside world, possibly a human or another information processing system. Inputs are the signals or data received by the system and outputs are the signals or data sent from it. The term can also be used as part of an action; to "perform I/O" is to perform an input or output operation.
+
+I/O devices are the pieces of hardware used by a human (or other system) to communicate with a computer. For instance, a keyboard or computer mouse is an input device for a computer, while monitors and printers are output devices. Devices for communication between computers, such as modems and network cards, typically perform both input and output operations.
+
+The designation of a device as either input or output depends on perspective. Mice and keyboards take physical movements that the human user outputs and convert them into input signals that a computer can understand; the output from these devices is the computer's input. Similarly, printers and monitors take signals that computers output as input, and they convert these signals into a representation that human users can understand. From the human user's perspective, the process of reading or seeing these representations is receiving output; this type of interaction between computers and humans is studied in the field of [humancomputer interaction](#human-computer-interaction). A further complication is that a device traditionally considered an input device, e.g., card reader, keyboard, may accept control commands to, e.g., select stacker, display keyboard lights, while a device traditionally considered as an output device may provide status data, e.g., low toner, out of paper, paper jam.
+
+In computer architecture, the combination of the [CPU](#central-processing-unit) and main memory, to which the CPU can read or write directly using individual instructions, is considered the brain of a computer. Any transfer of information to or from the CPU/memory combo, for example by reading data from a [disk drive](#hard-disk-drive), is considered I/O. The CPU and its supporting circuitry may provide memory-mapped I/O that is used in low-level computer programming, such as in the implementation of device drivers, or may provide access to I/O channels. An I/O algorithm is one designed to exploit locality and perform efficiently when exchanging data with a secondary storage device, such as a disk drive.
+
 ## [Instruction Pipelining](https://en.wikipedia.org/wiki/Instruction_pipelining)
 A technique for implementing instruction-level parallelism within a single processor. Pipelining attempts to keep every part of the processor busy with some instruction by dividing incoming instructions into a series of sequential steps performed by different processor units with different parts of instructions processed in parallel.
 
@@ -238,7 +265,7 @@ An _integrated development environment_ (_IDE_) is a software application that p
 A characteristic of a product or system, whose interaces are completely understood, to work with other products or systems, at present or in the future, in either implementation or access, without any restrictions. The term was initially defined for information technology or systems engineering services to allow for information exchange.
 
 ## [Kernel](https://en.wikipedia.org/wiki/Kernel_(operating_system))
-The _kernel_ is a computer program at the core of a computer's [operating system](#operating-system) with complete control over everything in the system. It is an integral part of any operating system. It is the "portion of the operating system code that is always resident in memory". It facilitates interactions between hardware and software components. On most systems, it is one of the first programs loaded on startup (after the bootloader). It handles the rest of startup as well as input/output (I/O) requests from software, translating them into data-processing instructions for the central processing unit. It handles memory and peripherals like keyboards, monitors, printers, and speakers.
+The _kernel_ is a computer program at the core of a computer's [operating system](#operating-system) with complete control over everything in the system. It is an integral part of any operating system. It is the "portion of the operating system code that is always resident in memory". It facilitates interactions between hardware and software components. On most systems, it is one of the first programs loaded on startup (after the bootloader). It handles the rest of startup as well as [input/output](#inputoutput) (I/O) requests from software, translating them into data-processing instructions for the central processing unit. It handles memory and peripherals like keyboards, monitors, printers, and speakers.
 
 ## [Lambda Calculus](https://en.wikipedia.org/wiki/Lambda_calculus)
 _Lambda calculus_ (also written as _λ-calculus_) is a formal system in mathematical logic for expressing computation based on function abstraction and application using variable binding and substitution. It is a universal model of computation that can be used to simulate any Turing machine. It was introduced by the mathematician Alonzo Church in the 1930s as part of his research into the foundations of mathematics.
@@ -363,6 +390,9 @@ An _operation code_ (also known as _opcode_, _instruction machine code_, _instru
 ## [Out-Of-Order Execution](https://en.wikipedia.org/wiki/Out-of-order_execution)
 _Out-of-order execution_ (or _dynamic execution_) is a paradigm used in most high-performance [CPUs](#central-processing-unit) to make use of [instruction cycles](#clock-signal) that would otherwise be wasted. In this paradigm, a processor executes instructions in an order governed by the availability of input data and execution units, rather than by their original order in a program. In doing so, the processor can avoid being idle while waiting for the preceding instruction to complete and can, in the meantime, process the next instructions that are able to run immediately and independently.
 
+## [Parameter](https://en.wikipedia.org/wiki/Parameter_(computer_programming))
+In computer programming, a _parameter_ or a _formal argument_, is a special kind of variable, used in a [subroutine](#subroutine) to refer to one of the pieces of data provided as input to the subroutine. These pieces of data are the values of the _arguments_ (often called _actual arguments_ or _actual parameters_) with which the subroutine is going to be called/invoked. An ordered list of parameters is usually included in the definition of a subroutine, so that, each time the subroutine is called, its arguments for that call are evaluated, and the resulting values can be assigned to the corresponding parameters.
+
 ## [Personal Computer](https://en.wikipedia.org/wiki/Personal_computer)
 A _personal computer_ (_PC_) is a multi-purpose computer whose size, capabilities, and price make it feasible for individual use. Personal computers are intended to be operated directly by an end user, rather than by a computer expert or technician. Unlike large, costly minicomputers and mainframes, time-sharing by many people at the same time is not used with personal computers.
 
@@ -406,7 +436,7 @@ A collection of entities that are maintained in a sequence that can be modified 
 ## [README](https://en.wikipedia.org/wiki/README)
 A _README_ file contains information about other files in a directory or archive of computer software. A form of [documentation](#software-documentation), it is usally a simple plain text file called `Read Me`, `READ.ME`, `README.txt`, `README.md` (for a text file using [markdown](https://en.wikipedia.org/wiki/Markdown) markup), `README.1ST` - or simply `README`.
 
-The file's name is generally written in uppercase letters. On Unix-like systems in particular this makes it easily noticed - both because lowercase filenames are more usual, and because traditionally the `ls` sommand sorts and displays files in ASCII-code order, so that uppercase filenames appear first.
+The file's name is generally written in uppercase letters. On [Unix-like systems](#unix) in particular this makes it easily noticed - both because lowercase filenames are more usual, and because traditionally the `ls` sommand sorts and displays files in ASCII-code order, so that uppercase filenames appear first.
 
 ## [Random-Access Memory](https://en.wikipedia.org/wiki/Random-access_memory)
 _Random-access memory_ (_RAM_) is a form of computer memory that can be read and changed in any order, typically used to store working data and machine code. Most RAM is [volatile](#volatile-memory).
@@ -491,6 +521,9 @@ A _superscalar [CPU](#central-processing-unt)_ design makes a form of parallel c
 
 ## [Syntax](https://en.wikipedia.org/wiki/Syntax_(programming_languages))
 The _syntax_ of a computer language is the set of rules that defines th combinations of symbols that are considered to be correctly structured [statements](#statement) and expressions in that language. This applies to both _programming languages_ where the document represents source code, and to _markup languages_, where the document represents data.
+
+## [Teleprinter](https://en.wikipedia.org/wiki/Teleprinter)
+A _teleprinter_ (_teletypewriter_, _teletype_ or _TTY_) is an electromechanical device that can be used to send and receive typed messages through various communications channels, in both point-to-point and point-to-multipoint configurations. Initially they were used in telegraphy, which developed in the late 1830s and 1840s as the first use of electrical engineering, though teleprinters were not used for telegraphy until 1887 at the earliest. The machines were adapted to provide a user interface to early mainframe computers and minicomputers, sending typed data to the computer and printing the response. Some models could also be used to create [punched tape](#punched-tape) for data storage (either from typed input or from data received from a remote source) and to read back such tape for local printing or transmission.
 
 ## [Time-Sharing](https://en.wikipedia.org/wiki/Time-sharing)
 In computing, time-sharing is the sharing of a computing resource among many users at the same time by means of multiprogramming and multi-tasking.
