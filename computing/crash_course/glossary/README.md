@@ -33,6 +33,13 @@ Means "of two states". From the latin "consisting of two". [Binary numbers](http
 ## [Bit](https://en.wikipedia.org/wiki/Bit)
 A basic unit of information in computing and digital communications. The name "bit" is a portmanteau of "binary digit." The bit represents a logical state with one of two possible values.
 
+## [Bitmap](https://en.wikipedia.org/wiki/Bitmap)
+In computing, a _bitmap_ is a mapping from some domain (for example, a range of integers) to [bits](#bit). It is also called a _bit array_ or _bitmap index_.
+
+As a noun, the term "bitmap" is very often used to refer to a particular bitmapping application: the _pix-map_, which refers to a map of [pixels](#pixel), where each one may store more than two colors, thus using more than one bit per pixel. In such a case, the domain in question is the array of pixels which constitute a digital graphic output device (a screen or monitor). In some contexts, the term bitmap implies one bit per pixel, while pixmap is used for images with multiple bits per pixel.
+
+A bitmap is a type of memory organization or image [file format](#file-format) used to store digital images. The term bitmap comes from the computer programming terminology, meaning just a map of bits, a spatially mapped array of bits. Now, along with pixmap, it commonly refers to the similar concept of a spatially mapped array of pixels. [Raster](#raster-scan) images in general may be referred to as bitmaps or pixmaps, whether synthetic or photographic, in files or memory.
+
 ## [Branch Predictor](https://en.wikipedia.org/wiki/Branch_predictor)
 A digital circuit that tries to guess which way a branch (e.g., an if-then-else structure) will go before this is known definitively. The purpose of the _branch predictor_ is to improve the flow in the [instruction pipeline](#instruction-pipelining).
 
@@ -47,6 +54,9 @@ A _capacitor_ is a device that stores electrical energy in an electric field. It
 
 ## [Carry-Look-Ahead Adder](https://en.wikipedia.org/wiki/Adder_(electronics)#Carry-lookahead_adder)
 To reduce computation time, engineers devised faster ways to add two binary numbers. The carry-look-ahead adder (CLA) works by creating two signals (_P_ and _G_) for each bit position, based on whether a carry is propagated through from a less significant bit position (at least one input is a 1), generated in that bit position (both inputs are 1), or killed in that bit position (both inputs are 0).
+
+## [Cathode-Ray Tube](https://en.wikipedia.org/wiki/Cathode-ray_tube)
+The _cathode-ray tube_ (_CRT_) is a [vacuum tube](#vacuum-tube) that contains one or more electron guns and a phosphorescent screen, and is used to display images. It modulates, accelerates, and deflects electron beam(s) onto the screen to create the images. The images may represent electrical waveforms (oscilloscope), pictures (television, computer monitor), radar targets, or other phenomena. CRTs have also been used as memory devices, in which case the visible light emitted from the fluorescent material (if any) is not intended to have significant meaning to a visual observer (though the visible pattern on the tube face may cryptically represent the stored data).
 
 ## [Central Processing Unit](https://en.wikipedia.org/wiki/Central_processing_unit)
 The _central processing unit_ (_CPU_), also known as a _central processor_, _main processor_, or just _processor_, is the electronic circuitry within a computer that executes instructions that make up a computer program. The CPU performs basic arithmetic, logic, controlling, and [input/output](#inputoutput) (I/O) operations specified by the instructions in the program.
@@ -81,6 +91,11 @@ A _composite data type_ or _compound data type_ is any data type which can be co
 
 ## [Computational Complexity](https://en.wikipedia.org/wiki/Computational_complexity)
 The _computational complexity_ or simply _complexity_ of an [algorithm](#algorithm) is the amount of resources required to run it. Particular focus is given to time and memory requirements.
+
+## [Computer-Aided Design](https://en.wikipedia.org/wiki/Computer-aided_design)
+_Computer-aided design_ (_CAD_) is the use of computers (or workstations) to aid in the creation, modification, analysis, or optimization of a design. CAD software is used to increase the productivity of the designer, improve the quality of design, improve communications through documentation, and to create a database for manufacturing. CAD output is often in the form of electronic files for print, machining, or other manufacturing operations. The term _CADD_ (for _Computer Aided Design and Drafting_) is also used.
+
+Its use in designing electronic systems is known as electronic design automation (_EDA_). In mechanical design it is known as mechanical design automation (_MDA_) or _computer-aided drafting_ (_CAD_), which includes the process of creating a technical drawing with the use of computer software.
 
 ## [Computer Keyboard](https://en.wikipedia.org/wiki/Computer_keyboard)
 A _computer keyboard_ is a typewriter-style device which uses an arrangement of buttons or keys to act as mechanical levers or electronic switches. Replacing early [punched cards](#punched-card) and [paper tape](#punched-tape) technology, interaction via teleprinter-style keyboards have been the main input method for computers since the 1970s, supplemented by the computer mouse since the 1980s.
@@ -157,6 +172,11 @@ A [bit](#bit) that is associated with a block of computer memory and indicates w
 ## [Discrete Component](https://www.pcmag.com/encyclopedia/term/discrete-component)
 An elementary electronic device constructed as a single unit. Before the advent of [integrated circuits](#integrated-circuit) (chips), all [transistors](#transistor), [resistors](#resistor), [capacitors](#capacitor), and [diodes](#diode) were discrete. Discrete components are widely used in amplifiers and other electronic products that use large amounts of current. On a circuit board, they are intermingled with the chips, and there is hardly any electronic product that does not have at least one or two discrete resistors or capacitors.
 
+## [Dot Matrix](https://en.wikipedia.org/wiki/Dot_matrix)
+A _dot matrix_ is a 2-dimensional patterned array, used to represent characters, symbols and images. Every type of modern technology uses dot matrices for display of information, including mobile phones, televisions, and printers. They are also used in textiles with sewing, knitting and weaving.
+
+An alternate form of information display using lines and curves is known as a vector display, was used with early computing devices such as air traffic control radar displays and pen-based plotters but is no longer used. Electronic [vector displays](#vector-display) were typically monochrome only, and either don't fill in the interiors of closed vector shapes, or shape-filling is slow, time-consuming, and often non-uniform, as on pen-based plotters.
+
 ## [Drum Memory](https://en.wikipedia.org/wiki/Drum_memory)
 _Drum memory_ was a magnetic data storage device invented by [Gustav Tauschek](https://en.wikipedia.org/wiki/Gustav_Tauschek) in 1932 in Austria. Drums were widely used in the 1950s and into the 1960s as computer memory.
 
@@ -208,6 +228,11 @@ A _floppy disk_ or _floppy diskette_ (sometimes casually referred to as a _flopp
 ## [FLOPS](https://en.wikipedia.org/wiki/FLOPS)
 _Floating point operations per second_ (_FLOPS_, _flops_, or _flop/s_) is a measure of computer performance, useful in fields of scientific computations that require [floating point](#floating-point) calculations. For such cases it is a more accurate measure than measuring instructions per second.
 
+## [Framebuffer](https://en.wikipedia.org/wiki/Framebuffer)
+A _framebuffer_ (_frame buffer_, or sometimes _framestore_) is a portion of [random-access memory](#random-access-memory) (_RAM_) containing a [bitmap](#bitmap) that drives a video display. It is a memory buffer containing data representing all the [pixels](#pixel) in a complete video frame. Modern [video cards](#video-card) contain framebuffer circuitry in their cores. This circuitry converts an in-memory bitmap into a video signal that can be displayed on a computer monitor.
+
+In computing, a _screen buffer_ is a part of computer memory used by a computer application for the representation of the content to be shown on the computer display. The screen buffer may also be called the _video buffer_, the _regeneration buffer_, or _regen buffer_ for short. Screen buffers should be distinguished from video memory. To this end, the term off-screen buffer is also used.
+
 ## [Full Adder](https://en.wikipedia.org/wiki/Adder_(electronics)#Full_adder)
 A _full adder_ is a circuit that adds binary numbers and accounts for values carried in as well as out. A one-bit full adder adds three one-bit numbers (A, B, and C<sub>in</sub>). A and B are the [operands](#operand), and C<sub>in</sub> is a bit carried from the previous stage.
 
@@ -220,6 +245,9 @@ A graph with six vertices and seven edges.
 
 ## [Graph Traversal](https://en.wikipedia.org/wiki/Graph_traversal)
 _Graph traversal_, also known as _graph search_, refers to the process of visiting (checking and/or updating) each vertex in a graph. Such traversals are classified by the order in which the vertices are visited. _Tree traversal_ is a special case of graph traversal.
+
+## [Graphics Library](https://en.wikipedia.org/wiki/Graphics_library)
+A _graphics library_ is a program library designed to aid in rendering computer graphics to a monitor. This typically involves providing optimized versions of functions that handle common rendering tasks. This can be done purely in software and running on the [CPU](#central-processing-unit), common in embedded systems, or being hardware accelerated by a GPU, more common in PCs. By employing these functions, a program can assemble an image to be output to a monitor. This relieves the programmer of the task of creating and optimizing these functions, and allows them to focus on building the graphics program. Graphics libraries are mainly used in video games and simulations.
 
 ## [Half Adder](https://en.wikipedia.org/wiki/Adder_(electronics)#Half_adder)
 The _half adder_ is a circuit that adds two single binary digits A and B. It has two outputs, sum (S) and carry (C). The carry signal represents an overflow into the next digit of a multi-digit addition.
@@ -263,6 +291,9 @@ An _integrated development environment_ (_IDE_) is a software application that p
 
 ## [Interoperability](https://en.wikipedia.org/wiki/Interoperability)
 A characteristic of a product or system, whose interaces are completely understood, to work with other products or systems, at present or in the future, in either implementation or access, without any restrictions. The term was initially defined for information technology or systems engineering services to allow for information exchange.
+
+## [Liquid-Crystal Display](https://en.wikipedia.org/wiki/Liquid-crystal_display)
+A _liquid-crystal display_ (_LCD_) is a flat-panel display or other electronically modulated optical device that uses the light-modulating properties of liquid crystals combined with polarizers. Liquid crystals do not emit light directly, instead using a backlight or reflector to produce images in color or monochrome. LCDs are available to display arbitrary images (as in a general-purpose computer display) or fixed images with low information content, which can be displayed or hidden, such as preset words, digits, and seven-segment displays, as in a digital clock. They use the same basic technology, except that arbitrary images are made from a matrix of small pixels, while other displays have larger elements. LCDs can either be normally on (positive) or off (negative), depending on the polarizer arrangement. For example, a character positive LCD with a backlight will have black lettering on a background that is the color of the backlight, and a character negative LCD will have a black background with the letters being of the same color as the backlight. Optical filters are added to white on blue LCDs to give them their characteristic appearance.
 
 ## [Kernel](https://en.wikipedia.org/wiki/Kernel_(operating_system))
 The _kernel_ is a computer program at the core of a computer's [operating system](#operating-system) with complete control over everything in the system. It is an integral part of any operating system. It is the "portion of the operating system code that is always resident in memory". It facilitates interactions between hardware and software components. On most systems, it is one of the first programs loaded on startup (after the bootloader). It handles the rest of startup as well as [input/output](#inputoutput) (I/O) requests from software, translating them into data-processing instructions for the central processing unit. It handles memory and peripherals like keyboards, monitors, printers, and speakers.
@@ -396,6 +427,11 @@ In computer programming, a _parameter_ or a _formal argument_, is a special kind
 ## [Personal Computer](https://en.wikipedia.org/wiki/Personal_computer)
 A _personal computer_ (_PC_) is a multi-purpose computer whose size, capabilities, and price make it feasible for individual use. Personal computers are intended to be operated directly by an end user, rather than by a computer expert or technician. Unlike large, costly minicomputers and mainframes, time-sharing by many people at the same time is not used with personal computers.
 
+## [Pixel](https://en.wikipedia.org/wiki/Pixel)
+In digital imaging, a _pixel_, _pel_, or _picture element_ is a physical point in a raster image, or the smallest addressable element in an all points addressable display device; so it is the smallest controllable element of a picture represented on the screen.
+
+Each pixel is a sample of an original image; more samples typically provide more accurate representations of the original. The intensity of each pixel is variable. In color imaging systems, a color is typically represented by three or four component intensities such as red, green, and blue, or cyan, magenta, yellow, and black.
+
 ## [Pointer](https://en.wikipedia.org/wiki/Pointer_(computer_programming))
 An object in many programming languages that stores a memory address. This can be that of another value located in computer memory, or in some cases, that of memory-mapped computer hardware. A pointer _references_ a location in memory, and obtaining the value stored at that location is known as _dereferencing_ the pointer. As an analogy, a page number in a book's index could be considered a pointer to the corresponding page; dereferencing such a pointer would be done by flipping to the page with the given page number and reading the text found on the page. The actual format and content of a pointer variable is dependent on the underlying computer architecture.
 
@@ -436,10 +472,16 @@ A collection of entities that are maintained in a sequence that can be modified 
 ## [README](https://en.wikipedia.org/wiki/README)
 A _README_ file contains information about other files in a directory or archive of computer software. A form of [documentation](#software-documentation), it is usally a simple plain text file called `Read Me`, `READ.ME`, `README.txt`, `README.md` (for a text file using [markdown](https://en.wikipedia.org/wiki/Markdown) markup), `README.1ST` - or simply `README`.
 
-The file's name is generally written in uppercase letters. On [Unix-like systems](#unix) in particular this makes it easily noticed - both because lowercase filenames are more usual, and because traditionally the `ls` sommand sorts and displays files in ASCII-code order, so that uppercase filenames appear first.
+The file's name is generally written in uppercase letters. On [Unix-like systems](#unix) in particular this makes it easily noticed - both because lowercase filenames are more usual, and because traditionally the `ls` sommand sorts and displays files in [ASCII-code](#ascii) order, so that uppercase filenames appear first.
+
+## [Read-Only Memory](https://en.wikipedia.org/wiki/Read-only_memory)
+_Read-only memory_ (_ROM_) is a type of [non-volatile memory](#non-volatile-memory) used in computers and other electronic devices. Data stored in ROM cannot be electronically modified after the manufacture of the memory device. Read-only memory is useful for storing software that is rarely changed during the life of the system, also known as firmware. Software applications (like video games) for programmable devices can be distributed as plug-in cartridges containing ROM.
 
 ## [Random-Access Memory](https://en.wikipedia.org/wiki/Random-access_memory)
 _Random-access memory_ (_RAM_) is a form of computer memory that can be read and changed in any order, typically used to store working data and machine code. Most RAM is [volatile](#volatile-memory).
+
+## [Raster Scan](https://en.wikipedia.org/wiki/Raster_scan)
+A _raster scan_, or _raster scanning_, is the rectangular pattern of image capture and reconstruction in television. By analogy, the term is used for raster graphics, the pattern of image storage and transmission used in most computer [bitmap](#bitmap) image systems. The word raster comes from the Latin word _rastrum_ (a rake), which is derived from _radere_ (to scrape). The pattern left by the lines of a rake, when drawn straight, resembles the parallel lines of a raster: this line-by-line scanning is what creates a raster. It is a systematic process of covering the area progressively, one line at a time. Although often a great deal faster, it is similar in the most general sense to how one's gaze travels when one reads lines of text. Picture definition is stored in memory area is called Refresh Buffer or Frame Buffer. This memory area holds the intensity value of all the screen points. Stored intensity values are then retrieved from refresh buffer and pointed on the screen one row at a time.
 
 ## [Register](https://en.wikipedia.org/wiki/Processor_register)
 A _processor register_ (or _CPU register_) is a quickly accessible location available to a computer's processors. Registers usually consist of a small amount of fast storage and may be read-only or write-only. Some registers may have specific hardware functions.
@@ -525,6 +567,11 @@ The _syntax_ of a computer language is the set of rules that defines th combinat
 ## [Teleprinter](https://en.wikipedia.org/wiki/Teleprinter)
 A _teleprinter_ (_teletypewriter_, _teletype_ or _TTY_) is an electromechanical device that can be used to send and receive typed messages through various communications channels, in both point-to-point and point-to-multipoint configurations. Initially they were used in telegraphy, which developed in the late 1830s and 1840s as the first use of electrical engineering, though teleprinters were not used for telegraphy until 1887 at the earliest. The machines were adapted to provide a user interface to early mainframe computers and minicomputers, sending typed data to the computer and printing the response. Some models could also be used to create [punched tape](#punched-tape) for data storage (either from typed input or from data received from a remote source) and to read back such tape for local printing or transmission.
 
+## [Text Mode](https://en.wikipedia.org/wiki/Text_mode)
+_Text mode_ is a computer display mode in which content is internally represented on a computer screen in terms of characters rather than individual [pixels](#pixel). Typically, the screen consists of a uniform rectangular grid of character cells, each of which contains one of the characters of a character set. Text mode is contrasted to all points addressable (APA) mode or other kinds of computer graphics modes.
+
+Text mode applications communicate with the user with command-line interfaces and text user interfaces. Many character sets used in text mode applications also contain a limited set of predefined semi-graphical characters usable for drawing boxes, and other rudimentary graphics which can be used to highlight the content or to simulate widget or control interface objects found in GUI programs.
+
 ## [Time-Sharing](https://en.wikipedia.org/wiki/Time-sharing)
 In computing, time-sharing is the sharing of a computing resource among many users at the same time by means of multiprogramming and multi-tasking.
 
@@ -561,6 +608,9 @@ Unix distinguishes itself from its predecessors as the first portable operating 
 ## [Vacuum Tube](https://en.wikipedia.org/wiki/Vacuum_tube)
 A device that controls electric current flow in a high vacuum between electrodes to which an electric potential difference has been applied.
 
+## [Vector Monitor](https://en.wikipedia.org/wiki/Vector_monitor)
+A _vector monitor_, _vector display_, or _calligraphic display_ is a display device used for computer graphics up through the 1970s. It is a type of [CRT](#cathode-ray-tube), similar to that of an early oscilloscope. In a vector display, the image is composed of drawn lines rather than a grid of glowing pixels as in raster graphics. The electron beam follows an arbitrary path tracing the connected sloped lines, rather than following the same horizontal raster path for all images. The beam skips over dark areas of the image without visiting their points.
+
 ## [Version Control](https://en.wikipedia.org/wiki/Version_control)
 In software engineering, _version control_ (also known as _revision control_, _source control_, or _source code management_) is a class of systems responsible for managing changes to computer programs, documents, large web sites, or other collections of information. Version control is a component of software configuration management.
 
@@ -569,6 +619,12 @@ Changes are usually identified by a number or letter code, termed the "revision 
 The need for a logical way to organize and control revisions has existed for almost as long as writing has existed, but revision control became much more important, and complicated, when the era of computing began. The numbering of book editions and of specification revisions are examples that date back to the print-only era. Today, the most capable (as well as complex) revision control systems are those used in software development, where a team of people may concurrently make changes to the same files.
 
 _Version control systems_ (_VCS_) are most commonly run as stand-alone applications, but revision control is also embedded in various types of software such as word processors and spreadsheets, collaborative web docs and various content management systems, e.g., Wikipedia's page history. Revision control allows for the ability to revet a document to a previous revision, which is critical for allowing editors to track each other's edits, correct mistakes, and defend against vandalism and spamming in wikis.
+
+## [Video Card](https://en.wikipedia.org/wiki/Video_card)
+A _video card_ (also called a _graphics card_, _display card_, _graphics adapter_, or _display adapter_) is an expansion card which generates a feed of output images to a display device (such as a computer monitor). Frequently, these are advertised as discrete or dedicated graphics cards, emphasizing the distinction between these and integrated graphics. At the core of both is the graphics processing unit (GPU), which is the main part that does the actual computations, but should not be confused with the video card as a whole, although "GPU" is often used as a metonymic shorthand to refer to video cards
+
+## [Video RAM](https://en.wikipedia.org/wiki/Video_RAM_(dual-ported_DRAM))
+_Video RAM_, or _VRAM_, is a dual-ported variant of [dynamic RAM](#dynamic-random-access-memory) (DRAM), which was once commonly used to store the framebuffer in graphics adapters. Note that most computers and game consoles do not use this form of memory, and dual-ported VRAM should not be confused with other forms of video memory.
 
 ## [Virtual Memory](https://en.wikipedia.org/wiki/Virtual_memory)
 _Virtual memory_ (also _virtual storage_) is a memory management technique that provides an "idealized abstraction of the storage resources that are actually available on a given machine" which "create the illusion of a very large (main) memory."
