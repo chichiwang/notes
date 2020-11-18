@@ -75,6 +75,7 @@ Date: July 2020 - Ongoing
   * [Huffman Coding](./21/README.md#huffman-coding)
   * [Lossy Compression](./21/README.md#lossy-compression)
 * 22: [Keyboards & Command Line Interfaces](./22/README.md)
+* 23: [Screens & 2D Graphics](./23/README.md)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 

@@ -59,4 +59,4 @@ These text adventure games later became multiplayer, called [MUDs](https://en.wi
 
 Command line interfaces, while simple, are very powerful. Computer programming is still very much a written task and, as such, command lines are a natural interface. For this reason, even today, most programmers use command line interaces as part of their work. They are also the most common way to access computers that are physically far away, such as a server in a different country.
 
-| [Previous: Compression](../21/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: Compression](../21/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Screens & 2D Graphics](../23/README.md) |
