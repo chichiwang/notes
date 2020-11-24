@@ -76,6 +76,7 @@ Date: July 2020 - Ongoing
   * [Lossy Compression](./21/README.md#lossy-compression)
 * 22: [Keyboards & Command Line Interfaces](./22/README.md)
 * 23: [Screens & 2D Graphics](./23/README.md)
+* 24: [The Cold War and Consumerism](./24/README.md)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 

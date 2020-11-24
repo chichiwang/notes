@@ -77,5 +77,4 @@ Just like the other graphics schemes discussed, programs can manipulate pixel da
 
 The flexibility of bitmapped graphics opened up a whole new world of possibilities for interactive computing but remained expensive for decades. By as late as 1971 it was estimated there were around 70,000 electromechanical teletype machines and 70,000 terminals in use in the United States. At the same time there were only around 1,000 computers in the US that had interactive graphical screens.
 
-| [Previous: Keyboards & Command Line Interfaces](../22/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
-
+| [Previous: Keyboards & Command Line Interfaces](../22/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: The Cold War and Consumerism](../24/README.md) |
