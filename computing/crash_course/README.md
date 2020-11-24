@@ -77,6 +77,7 @@ Date: July 2020 - Ongoing
 * 22: [Keyboards & Command Line Interfaces](./22/README.md)
 * 23: [Screens & 2D Graphics](./23/README.md)
 * 24: [The Cold War and Consumerism](./24/README.md)
+* 25: [The Personal Computer Revolution](./25/README.md)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 
