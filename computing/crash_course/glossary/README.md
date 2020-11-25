@@ -246,6 +246,11 @@ A graph with six vertices and seven edges.
 ## [Graph Traversal](https://en.wikipedia.org/wiki/Graph_traversal)
 _Graph traversal_, also known as _graph search_, refers to the process of visiting (checking and/or updating) each vertex in a graph. Such traversals are classified by the order in which the vertices are visited. _Tree traversal_ is a special case of graph traversal.
 
+## [Graphical User Interface](https://en.wikipedia.org/wiki/Graphical_user_interface)
+The _graphical user interface_ is a form of user interface that allows users to interact with electronic devices through graphical icons and audio indicator such as primary notation, instead of text-based user interfaces, typed command labels or text navigation. _GUIs_ were introduced in reaction to the perceived steep learning curve of [command-line interfaces](#command-line-interface) (CLIs), which require commands to be typed on a computer keyboard.
+
+The actions in a GUI are usually performed through direct manipulation of the graphical elements. Beyond computers, GUIs are used in many handheld mobile devices such as MP3 players, portable media players, gaming devices, smartphones and smaller household, office and industrial controls. The term GUI tends not to be applied to other lower-display resolution types of interfaces, such as video games (where head-up display (HUD) is preferred), or not including flat screens, like volumetric displays because the term is restricted to the scope of two-dimensional display screens able to describe generic information, in the tradition of the computer science research at the Xerox Palo Alto Research Center.
+
 ## [Graphics Library](https://en.wikipedia.org/wiki/Graphics_library)
 A _graphics library_ is a program library designed to aid in rendering computer graphics to a monitor. This typically involves providing optimized versions of functions that handle common rendering tasks. This can be done purely in software and running on the [CPU](#central-processing-unit), common in embedded systems, or being hardware accelerated by a GPU, more common in PCs. By employing these functions, a program can assemble an image to be output to a monitor. This relieves the programmer of the task of creating and optimizing these functions, and allows them to focus on building the graphics program. Graphics libraries are mainly used in video games and simulations.
 
@@ -291,6 +296,13 @@ An _integrated development environment_ (_IDE_) is a software application that p
 
 ## [Interoperability](https://en.wikipedia.org/wiki/Interoperability)
 A characteristic of a product or system, whose interaces are completely understood, to work with other products or systems, at present or in the future, in either implementation or access, without any restrictions. The term was initially defined for information technology or systems engineering services to allow for information exchange.
+
+## [Interpreter](https://en.wikipedia.org/wiki/Interpreter_(computing))
+In computer science, an _interpreter_ is a computer program that directly executes instructions written in a programming or scripting language, without requiring them previously to have been compiled into a [machine language](#machine-code) program. An interpreter generally uses one of the following strategies for program execution:
+
+1. Parse the source code and perform its behavior directly;
+2. Translate source code into some efficient intermediate representation and immediately execute this;
+3. Explicitly execute stored precompiled code made by a compiler which is part of the interpreter system.
 
 ## [Liquid-Crystal Display](https://en.wikipedia.org/wiki/Liquid-crystal_display)
 A _liquid-crystal display_ (_LCD_) is a flat-panel display or other electronically modulated optical device that uses the light-modulating properties of liquid crystals combined with polarizers. Liquid crystals do not emit light directly, instead using a backlight or reflector to produce images in color or monochrome. LCDs are available to display arbitrary images (as in a general-purpose computer display) or fixed images with low information content, which can be displayed or hidden, such as preset words, digits, and seven-segment displays, as in a digital clock. They use the same basic technology, except that arbitrary images are made from a matrix of small pixels, while other displays have larger elements. LCDs can either be normally on (positive) or off (negative), depending on the polarizer arrangement. For example, a character positive LCD with a backlight will have black lettering on a background that is the color of the backlight, and a character negative LCD will have a black background with the letters being of the same color as the backlight. Optical filters are added to white on blue LCDs to give them their characteristic appearance.
@@ -353,6 +365,12 @@ _Magnetic tape_ is a medium for magnetic recording, made of a thin, magnetizable
 ## [Microarchitecture](https://en.wikipedia.org/wiki/Microarchitecture)
 In computer engineering, _microarchitecture_, also called _computer organization_, is the way a given [instruction set architecture (ISA)](https://en.wikipedia.org/wiki/Instruction_set_architecture) is implemented in a particular [processor](#central-processing-unit).
 
+## [Microcomputer](https://en.wikipedia.org/wiki/Microcomputer)
+A _microcomputer_ is a small, relatively inexpensive computer with a [microprocessor](#microprocessor) as its [central processing unit](#central-processing-unit) (CPU). It includes a microprocessor, memory and minimal [input/output](#inputoutput) (I/O) circuitry mounted on a single [printed circuit board](#printed-circuit-board) (PCB). Microcomputers became popular in the 1970s and 1980s with the advent of increasingly powerful microprocessors. The predecessors to these computers, mainframes and minicomputers, were comparatively much larger and more expensive (though indeed present-day mainframes such as the IBM System z machines use one or more custom microprocessors as their CPUs). Many microcomputers (when equipped with a keyboard and screen for input and output) are also [personal computers](#personal-computer) (in the generic sense).
+
+The Commodore 64 was one of the most popular microcomputers of its era, and is the best-selling model of home computer of all time.
+The abbreviation _micro_ was common during the 1970s and 1980s, but has now fallen out of common usage.
+
 ## [Microprocessor](https://en.wikipedia.org/wiki/Microprocessor)
 A _microprocessor_ is a [computer processor](#central-processing-unit) that incorporates the functions of a central processing unit on a single (or more) [integrated circuit](#integrated-circuit) (IC) of MOSFET construction. The microprocessor is a multipurpose, clock-driven, register-based, digital integrated circuit that accepts binary data as input, processes it according to instructions stored in its memory, and provides results (also in binary form) as output. Microprocessors contain both combinational logic and sequential digital logic. Microprocessors operate on numbers and symbols represented in the binary number system.
 
@@ -388,6 +406,9 @@ _Metadata_ is "data that provides information about other data". In other words,
 ## [Moore's Law](https://en.wikipedia.org/wiki/Moore%27s_law)
 _Moore's Law_ is the observation that the number of transistors in a dense [integrated circuit](#integrated-circuit) (IC) doubles about every two years. Moore's Law is an observation and projection of a historical trend. Rather than a law of physics, it is an empirical relationship linked to gains from experience in production.
 
+## [Motherboard](https://en.wikipedia.org/wiki/Motherboard)
+A _motherboard_ (also called _mainboard_, _main circuit board_, _system board_, _baseboard_, _planar board_, _logic board_, and _mobo_) is the main [printed circuit board](#printed-circuit-board) (PCB) in general-purpose computers and other expandable systems. It holds and allows communication between many of the crucial electronic components of a system, such as the [central processing unit](#central-processing-unit) (CPU) and [memory](#random-access-memory), and provides connectors for other peripherals. Unlike a backplane, a motherboard usually contains significant sub-systems, such as the central processor, the chipset's [input/output](#inputoutput) and memory controllers, interface connectors, and other components integrated for general use.
+
 ## [Multi-Core Processor](https://en.wikipedia.org/wiki/Multi-core_processor)
 A _multi-core processor_ is a [computer processor](#central-processing-unit) [integrated circuit](#integrated-circuit) with two or more separate processing units, called _cores_, each of which reads and executes program instructions, as if the computer had several processors.
 
@@ -408,6 +429,9 @@ The _null character_ (also _null terminator_) is a control character with a valu
 
 ## [Object-Oriented Programming](https://en.wikipedia.org/wiki/Object-oriented_programming)
 A programming paradigm based on the concept of "objects", which can contain data and code: data in the form of _fields_ (often known as _attributes_ or _properties_), and code, in the form of procedures (often known as _methods_).
+
+## [Open Architecture](https://en.wikipedia.org/wiki/Open_architecture)
+_Open architecture_ is a type of computer architecture or software architecture intended to make adding, upgrading, and swapping components easy. For example, the IBM PC, Amiga 500 and Apple IIe have an open architecture supporting plug-in cards, whereas the Apple IIc computer has a closed architecture. Open architecture systems may use a standardized system bus such as S-100, PCI or ISA or they may incorporate a proprietary bus standard such as that used on the Apple II, with up to a dozen slots that allow multiple hardware manufacturers to produce add-ons, and for the user to freely install them. By contrast, closed architectures, if they are expandable at all, have one or two "expansion ports" using a proprietary connector design that may require a license fee from the manufacturer, or enhancements may only be installable by technicians with specialized tools or training.
 
 ## [Operand](https://en.wikipedia.org/wiki/Operand)
 In mathematics, an _operand_ is the object of a mathematical operation, i.e., it is the object or quantity that is being operated on.
@@ -436,7 +460,7 @@ Each pixel is a sample of an original image; more samples typically provide more
 An object in many programming languages that stores a memory address. This can be that of another value located in computer memory, or in some cases, that of memory-mapped computer hardware. A pointer _references_ a location in memory, and obtaining the value stored at that location is known as _dereferencing_ the pointer. As an analogy, a page number in a book's index could be considered a pointer to the corresponding page; dereferencing such a pointer would be done by flipping to the page with the given page number and reading the text found on the page. The actual format and content of a pointer variable is dependent on the underlying computer architecture.
 
 ## [Printed Circuit Board](https://en.wikipedia.org/wiki/Printed_circuit_board)
-A _printed circuit board_ (_PCB_) mechanically supports and electrically connects electrical or electronic components using conductive tracks, pads, and other features etched from one or more sheet layers of copper laminated onto and/or between sheet layers of a non-conductive substrate. Components are generally soldered onto the PCB electrically connect and mechanically fasten them to it.
+A _printed circuit board_ (_PCB_) mechanically supports and electrically connects electrical or electronic components using conductive tracks, pads, and other features etched from one or more sheet layers of copper laminated onto and/or between sheet layers of a non-conductive substrate. Components are generally soldered onto the PCB to electrically connect and mechanically fasten them to it.
 
 ## [Positional Notation](https://en.wikipedia.org/wiki/Positional_notation)
 A way of representing the values of a positional system (a numeral system in which the contribution of a digit to the value of a number is the product of the value of the digit by a factor determined by the position of the digit).
