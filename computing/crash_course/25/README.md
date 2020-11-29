@@ -40,4 +40,4 @@ IBM alone sold two million PCs in the first three years, overtaking Apple. With 
 
 To survive the onslaught of low-cost PCs, Apple needed to step up its game and offer a user experience that PCs and DOS couldn't. Their answer was the [Macintosh](https://en.wikipedia.org/wiki/Macintosh), released in 1984. This ground breaking, reasonably low-cost, all-in-one computer booted not a [command-line text interface](../glossary/README.md#command-line-interface), but rather a [graphical user interface](../glossary/README.md#graphical-user-interface).
 
-| [Previous: The Cold War and Consumerism](../24/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: The Cold War and Consumerism](../24/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Graphical User Interfaces](../26/README.md) |
