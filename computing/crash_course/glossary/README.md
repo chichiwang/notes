@@ -102,6 +102,13 @@ A _computer keyboard_ is a typewriter-style device which uses an arrangement of 
 
 Keyboard keys (buttons) typically have a set of characters engraved or printed on them, and each press of a key typically corresponds to a single written symbol. However, producing some symbols may require pressing and holding several keys simultaneously or in sequence. While most keyboard keys produce letters, numbers or symbols (characters), other keys or simultaneous key presses can prompt the computer to execute system commands, such as such as the Control-Alt-Delete combination used with Microsoft Windows. In a modern computer, the interpretation of key presses is generally left to the software: the information sent to the computer, the scan code, tells it only which key (or keys) on which row and column, was pressed or released.
 
+## [Computer Mouse](https://en.wikipedia.org/wiki/Computer_mouse)
+A computer _mouse_ (plural _mice_, rarely _mouses_) is a hand-held pointing device that detects two-dimensional motion relative to a surface. This motion is typically translated into the motion of a pointer on a display, which allows a smooth control of the graphical user interface of a computer.
+
+The first public demonstration of a mouse controlling a computer system was in 1968. Mice originally used a ball rolling on a surface to detect motion, but modern mice often have optical sensors that have no moving parts. Originally wired to a computer, many modern mice are cordless, relying on short-range radio communication with the connected system.
+
+In addition to moving a cursor, computer mice have one or more buttons to allow operations such as selection of a menu item on a display. Mice often also feature other elements, such as touch surfaces and scroll wheels, which enable additional control and dimensional input.
+
 ## [Computer Terminal](https://en.wikipedia.org/wiki/Computer_terminal)
 A _computer terminal_ is an electronic or electromechanical hardware device that can be used for entering data into, and transcribing data from, a computer or a computing system. The [teletype](#teleprinter) was an example of an early day hardcopy terminal, and predated the use of a computer screen by decades.
 
@@ -129,6 +136,13 @@ Today, many users rely upon graphical user interfaces and menu-driven interactio
 ## [CPU Cache](https://en.wikipedia.org/wiki/CPU_cache)
 A hardware cache used by the [CPU](#central-processing-unit) of a computer to reduce the average cost (time or energy) to access data from the main memory. This cache is a smaller, faster memory, located closer to a processor core, which stores copies of the data from frequently used memory locations. Most CPUs have different independent caches, including instruction and data cahces, where the data cache is usually organized as a hierarchy of more cache levels (L1, L2, L3, L4, etc.).
 
+## [Cut, Copy, and Paste](https://en.wikipedia.org/wiki/Cut,_copy,_and_paste)
+In humancomputer interaction and user interface design, _cut, copy, and paste_ are related commands that offer an interprocess communication technique for transferring data through a computer's user interface. The _cut_ command removes the selected data from its original position, while the _copy_ command creates a duplicate; in both cases the selected data is kept in temporary storage (the clipboard). The data from the clipboard is later inserted wherever a _paste_ command is issued. The data remains available to any application supporting the feature, thus allowing easy data transfer between applications.
+
+The command names are an interface metaphor based on the physical procedure used in manuscript editing to create a page layout.
+
+This interaction technique has close associations with related techniques in [graphical user interfaces](#graphical-user-interface) (GUIs) that use pointing devices such as a [computer mouse](#computer-mouse) (by drag and drop, for example). Typically, clipboard support is provided by an [operating system](#operating-system) as part of its GUI and widget toolkit.
+
 ## [Data Compression](https://en.wikipedia.org/wiki/Data_compression)
 In signal processing, _data compression_, _source coding_, or _bit-rate reduction_ is the process of encoding information using fewer [bits](#bit) than the original representation. Any particular compression is either [lossy](#lossy-compression) or [lossless](#lossless-compression). Lossless compression reduces bits by identifying and eliminating statistical redundancy. No information is lost in lossless compression. Lossy compression reduces bits by removing unnecessary or less important information. Typically, a device that performs data compression is referred to as an encoder, and one that performs the reversal of the process (decompression) as a decoder.
 
@@ -155,6 +169,11 @@ Delay line memory is a form of computer memory, now obsolete, that was used on s
 Analog delay line technology had been used since the 1920s to delay the propagation of analog signals. When a delay line is used as a memory device, an amplifier and a pulse shaper are connected between the output of the delay line and the input. These devices recirculate the signals from the output back into the input, creating a loop that maintains the signal as long as power is applied. The shaper ensures the pulses remain well-formed, removing any degradation due to losses in the medium.
 
 The memory capacity is determined by dividing the time taken to transmit one bit into the time it takes for data to circulate through the delay line. Early delay-line memory systems had capacities of a few thousand bits, with recirculation times measured in microseconds. To read or write a particular bit stored in such a memory, it is necessary to wait for that bit to circulate through the delay line into the electronics. The delay to read or write any particular bit is no longer than the recirculation time.
+
+## [Desktop Metaphor](https://en.wikipedia.org/wiki/Desktop_metaphor)
+In computing, the _desktop metaphor_ is an interface metaphor which is a set of unifying concepts used by [graphical user interfaces](#graphical-user-interface) to help users interact more easily with the computer. The desktop metaphor treats the computer monitor as if it is the top of the user's desk, upon which objects such as documents and folders of documents can be placed. A document can be opened into a [window](#window), which represents a paper copy of the document placed on the desktop. Small applications called desk accessories are also available, such as a desk calculator or notepad, etc.
+
+The desktop metaphor itself has been extended and stretched with various implementations of desktop environments, since access to features and usability of the computer are usually more important than maintaining the 'purity' of the metaphor. Hence we find trash cans on the desktop, as well as disks and network volumes (which can be thought of as filing cabinetsnot something normally found on a desktop). Other features such as menu bars or taskbars have no direct counterpart on a real-world desktop, though this may vary by environment and the function provided; for instance, a familiar wall calendar can sometimes be displayed or otherwise accessed via a taskbar or menu bar belonging to the desktop.
 
 ## [Device Driver](https://en.wikipedia.org/wiki/Device_driver)
 In computing, a _device driver_ is a computer program that operates or controls a particular type of device that is attached to a computer. A driver provides a software interface to hardware devices, enabling operating systems and other computer programs to access hardware functions without needing to know precise details about the hardware being used.
@@ -186,6 +205,11 @@ Drums were displaced as primary computer memory by magnetic core memory, which o
 
 ## [Dynamic Random-Access Memory](https://en.wikipedia.org/wiki/Dynamic_random-access_memory)
 _DRAM_ is a type of [random access](#random-access-memory) semiconductor memory that stores each bit of data in a memory cell consisting of a tiny [capacitor](#capacitor) and transitor.
+
+## [Event-Driven Programming](https://en.wikipedia.org/wiki/Event-driven_programming)
+In computer programming, _event-driven programming_ is a [programming paradigm](../../../paradigms/overview/README.md) in which the flow of the program is determined by events such as user actions ([mouse](#computer-mouse) clicks, key presses), sensor outputs, or messages from other programs or threads. Event-driven programming is the dominant paradigm used in [graphical user interfaces](#graphical-user-interface) and other applications (e.g., JavaScript web applications) that are centered on performing certain actions in response to user input. This is also true of programming for device drivers (e.g., P in USB device driver stacks).
+
+In an event-driven application, there is generally a main loop that listens for events and then triggers a callback function when one of those events is detected. In embedded systems, the same may be achieved using hardware interrupts instead of a constantly running main loop. Event-driven programs can be written in any programming language, although the task is easier in languages that provide high-level abstractions, such as await and closures.
 
 ## [File](https://en.wikipedia.org/wiki/Computer_file)
 A _computer file_ is a computer resource for recording data discretely in a computer storage device. Just as words can be written to paper, so can information be written to a computer file. Files can be edited and transferred through the internet on that particular computer system.
@@ -456,6 +480,15 @@ In digital imaging, a _pixel_, _pel_, or _picture element_ is a physical point i
 
 Each pixel is a sample of an original image; more samples typically provide more accurate representations of the original. The intensity of each pixel is variable. In color imaging systems, a color is typically represented by three or four component intensities such as red, green, and blue, or cyan, magenta, yellow, and black.
 
+## [Point and Click](https://en.wikipedia.org/wiki/Point_and_click)
+_Point and click_ are the actions of a computer user moving a pointer to a certain location on a screen (pointing) and then pressing a button on a [mouse](#computer-mouse), usually the left button (click), or other pointing device. An example of point and click is in hypermedia, where users click on hyperlinks to navigate from document to document.
+
+Point and click can be used with any number of input devices varying from mouses, touch pads, trackpoint, joysticks, scroll buttons, and roller balls.
+
+User interfaces, for example [graphical user interfaces](#graphical-user-interface), are sometimes described as "point-and-click interfaces", often to suggest that they are very easy to use, requiring that the user simply point to indicate their wishes. These interfaces are sometimes referred to condescendingly (e.g., by [Unix](#unix) users) as "click-and-drool" or "point-and-drool" interfaces.
+
+The use of this phrase to describe software implies that the interface can be controlled solely through the mouse (or some other means such as a stylus), with little or no input from the [keyboard](#computer-keyboard), as with many graphical user interfaces.
+
 ## [Pointer](https://en.wikipedia.org/wiki/Pointer_(computer_programming))
 An object in many programming languages that stores a memory address. This can be that of another value located in computer memory, or in some cases, that of memory-mapped computer hardware. A pointer _references_ a location in memory, and obtaining the value stored at that location is known as _dereferencing_ the pointer. As an analogy, a page number in a book's index could be considered a pointer to the corresponding page; dereferencing such a pointer would be done by flipping to the page with the given page number and reading the text found on the page. The actual format and content of a pointer variable is dependent on the underlying computer architecture.
 
@@ -550,7 +583,7 @@ _Solid-state electronics_ means semiconductor electronics: electronic equipment 
 The term "solid state" became popular in the beginning of the semiconductor era in the 1960s to distinguish this new technology based on the transistor, in which the electronic action of devices occurred in a solid state, from previous electronic equipment that used [vacuum tubes](#vacuum-tube), in which the electronic action occurred in a gaseous state. A semiconductor device works by controlling an electric current consisting of electrons or holes moving within a solid crystalline piece of semiconducting material such as silicon, while the thermionic vacuum tubes it replaced worked by controlling current conducted by a gas of particles, electrons or ions, moving in a vacuum within a sealed tube.
 
 ## [Source-Code Repository](https://en.wikipedia.org/wiki/Comparison_of_source-code-hosting_facilities)
-A _source-code repository_ is a file archive and web hosting facility for source code of software, documentation, web pages, and other works, accessible either publicly or privately. They are often used by open-source software projects and other multi-developer projects to maintain revision and version history, or [version control](#version-control). Many repositories provide a bug tracking system, and offer release managment, mailing lists, and wiki-based project documentation. Software authors generally retain their copyright when softare is posted to a code hosting facility.
+A _source-code repository_ is a file archive and web hosting facility for source code of software, documentation, web pages, and other works, accessible either publicly or privately. They are often used by open-source software projects and other multi-developer projects to maintain revision and version history, or [version control](#version-control). Many repositories provide a bug tracking system, and offer release managment, mailing lists, and wiki-based project documentation. Software authors generally retain their copyright when software is posted to a code hosting facility.
 
 ## [Speculative Execution](https://en.wikipedia.org/wiki/Speculative_execution)
 An optimization technique where a computer system performs some task that may not be needed. Work is done before it is known whether it is actually needed, so as to prevent a delay that would have to be incurred by doing the work after it is known that it is needed. If it turns out the work was not needed after all, most changes made by the work are reverted and the results are ignored.
@@ -662,3 +695,20 @@ Computer memory that requires power to maintain the stored information. It retai
 
 ## [Wafer](https://en.wikipedia.org/wiki/Wafer_(electronics))
 In electronics, a _wafer_ (also called a _slice_ or _substrate_) is a thin slice of semicondutor, such as crytalline silicon (c-Si), used for the fabrication of [integrated circuits](#integrated-circuit) and, in photovoltaics, to manufacture solar cells. The wafer serves as the substrate for microelectronic devices built in and upon the wafer. It undergoes many microfabrication processes, such as doping, ion implantation, etching, thin-film deposition of various materials, and photolithographic patterning. Finally, the individual microcircuits are separated by wafer dicing and packaged as an integrated circuit.
+
+## [Window](https://en.wikipedia.org/wiki/Window_(computing))
+In computing, a _window_ is a graphical control element. It consists of a visual area containing some of the [graphical user interface](#graphical-user-interface) of the program it belongs to and is framed by a window decoration. It usually has a rectangular shape that can overlap with the area of other windows. It displays the output of and may allow input to one or more processes.
+
+Windows are primarily associated with graphical displays, where they can be manipulated with a pointer by employing some kind of pointing device. Text-only displays can also support windowing, as a way to maintain multiple independent display areas, such as multiple buffers in Emacs. Text windows are usually controlled by [keyboard](#computer-keyboard), though some also respond to the [mouse](#computer-mouse).
+
+A graphical user interface (GUI) using windows as one of its main "metaphors" is called a windowing system, whose main components are the display server and the window manager.
+
+## [WIMP](https://en.wikipedia.org/wiki/WIMP_(computing))
+In humancomputer interaction, _WIMP_ stands for "[windows](#window), icons, menus, pointer", denoting a style of interaction using these elements of the user interface. Other expansions are sometimes used, such as substituting "[mouse](#computer-mouse)" and "mice" for menus, or "pull-down menu" and "pointing" for pointer.
+
+Though the acronym has fallen into disuse, it has often been likened to the term [graphical user interface](#graphical-user-interface) (GUI). Any interface that uses graphics can be called a GUI, and WIMP systems derive from such systems. However, while all WIMP systems use graphics as a key element (the icon and pointer elements), and therefore are GUIs, the reverse is not true. Some GUIs are not based in windows, icons, menus, and pointers. For example, most mobile phones represent actions as icons and menus, but do not often don't rely on a conventional pointer or containerized windows to host program interactions.
+
+WIMP interaction was developed at [Xerox PARC](https://en.wikipedia.org/wiki/PARC_(company)) (see [Xerox Alto](https://en.wikipedia.org/wiki/Xerox_Alto), developed in 1973) and popularized with [Apple's](https://en.wikipedia.org/wiki/Apple_Inc.) introduction of the [Macintosh](https://en.wikipedia.org/wiki/Macintosh) in 1984, which added the concepts of the "menu bar" and extended window management.
+
+## [WYSIWYG](https://en.wikipedia.org/wiki/WYSIWYG)
+In computing, _What You See Is What You Get_ (_WYSIWYG_) is a system where editing software allows content to be edited in a form that resembles its appearance when printed or displayed as a finished product such as a printed document, web page, or slide presentation.
