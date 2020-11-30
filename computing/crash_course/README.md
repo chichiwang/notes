@@ -79,6 +79,7 @@ Date: July 2020 - Ongoing
 * 24: [The Cold War and Consumerism](./24/README.md)
 * 25: [The Personal Computer Revolution](./25/README.md)
 * 26: [Graphical User Interfaces](./26/README.md)
+* 27: [3D Graphics](./27/README.md)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 

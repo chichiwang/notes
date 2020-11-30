@@ -38,4 +38,4 @@ Looking to make the desktop metaphor even easier and friendlier, Microsoft worke
 ![Microsoft Bob](./microsoft_bob.png)
 <br /><br />
 
-| [Previous: The Personal Computer Revolution](../25/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: The Personal Computer Revolution](../25/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: 3D Graphics](../27/README.md) |
