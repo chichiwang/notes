@@ -93,6 +93,7 @@ Date: July 2020 - Ongoing
 * [Diligent Blog: What is Sequential Logic?](https://blog.digilentinc.com/what-is-sequential-logic/)
 * [On This Day in Typewriter History](https://oztypewriter.blogspot.com/2011/08/on-this-day-in-typewriter-history.html)
 * [YouTube: Using a 1930 Teletype as a Linux Terminal](https://youtu.be/2XLZ4Z8LpEE)
+* [Tea Journey: The Significance of the Utah Teapot](https://teajourney.pub/utah-teapot/)
 
 ### Tools and Software
 * [BOOLR](http://boolr.me/): A free, digital logic simulator

@@ -1,4 +1,11 @@
 # Glossary
+## [3D Projection](https://en.wikipedia.org/wiki/3D_projection)
+A _3D projection_ (or _graphical projection_) is a design technique used to display a three-dimensional (3D) object on a two-dimensional (2D) surface. These projections rely on visual perspective and aspect analysis to project a complex object for viewing capability on a simpler plane.
+
+3D projections use the primary qualities of an object's basic shape to create a map of points, that are then connected to one another to create a visual element. The result is a graphic that contains conceptual properties to interpret that the figure or image is not actually flat (2D), but rather, is a solid object (3D) being viewed on a 2D display.
+
+3D objects are largely displayed on two-dimensional mediums (i.e. paper and computer monitors). As such, graphical projections are a commonly used design element; notably, in engineering drawing, drafting, and computer graphics. Projections can be calculated through employment of mathematical analysis and formulae, or by using various geometric and optical techniques.
+
 ## [Algorithm](https://en.wikipedia.org/wiki/Algorithm)
 In mathematics and computer science, an _algorithm_ is a finite sequence of well-defined, computer-implementable instructions, typically to solve a class of problems or to perform a computation. Algorithms are always unambiguous and are used as specifications for performing calculations, data processing, automated reasoning, or other tasks.
 
@@ -20,6 +27,11 @@ ASCII is one of the [IEEE milestones](https://en.wikipedia.org/wiki/Timeline_of_
 
 ## [Assembler](https://en.wikipedia.org/wiki/Assembly_language#Assembler)
 An _assembler_ program creates object code by translating combinations of _mnemonics_ and syntax for operations and addressing modes into their numerical equivalents.
+
+## [Back-Face Culling](https://en.wikipedia.org/wiki/Back-face_culling)
+In computer graphics, _back-face culling_ determines whether a polygon of a graphical object is visible. It is a step in the graphical pipeline that tests whether the points in the polygon appear in clockwise or counter-clockwise order when projected onto the screen. If the user has specified that front-facing polygons have a clockwise winding, but the polygon projected on the screen has a counter-clockwise winding then it has been rotated to face away from the camera and will not be drawn.
+
+The process makes rendering objects quicker and more efficient by reducing the number of polygons for the program to draw. For example, in a city street scene, there is generally no need to draw the polygons on the sides of the buildings facing away from the camera; they are completely occluded by the sides facing the camera.
 
 ## [Batch Processing](https://en.wikipedia.org/wiki/Batch_processing)
 Computerized _batch processing_ is the running of "jobs that can run without end user interaction, or can be scheduled to run as resources permit."
@@ -240,6 +252,12 @@ In computing, _file system fragmentation_, sometimes called _file system aging_,
 
 In modern computers, with [SSD "disks"](#solid-state-electronics) that do not rotate and are not really discs in the conventional sense, file system fragmentation is not as much of a performance problem (that should be "fixed"), as there is no movement of heads or discs. In fact, overly defragmenting such drives can slowly shorten their lifespan.
 
+## [Fillrate](https://en.wikipedia.org/wiki/Fillrate)
+The term pixel _fillrate_ refers to the number of pixels a [video card](#video-card) can render to screen and write to video memory in a second or in case of texture fillrate the number of texture map elements (texels) [GPU](#graphics-processing-unit) can map to pixels in a second. Pixel fillrates are given in megapixels per second or in gigapixels per second (in the case of newer cards), and they are obtained by multiplying the number of Raster Output Units (ROPs) by the clock frequency of the graphics processor unit (GPU) of a video card and texture fillrate is obtained by multiplying the number of Texture Mapping Units (TMUs) by the clock frequency of the graphics processing unit (GPU). Texture fillrates are given in mega or gigatexels per second. However, there is no full agreement on how to calculate and report fillrates. Other possible method is: to multiply the number of pixel pipelines by the clock frequency. The results of these multiplications correspond to a theoretical number. The actual fillrate depends on many other factors. In the past, the fillrate has been used as an indicator of performance by video card manufacturers such as ATI and NVIDIA, however, the importance of the fillrate as a measurement of performance has declined as the bottleneck in graphics applications has shifted. For example, today, the number and speed of unified shader processing units has gained attention.
+
+## [Flat Shading](https://en.wikipedia.org/wiki/Shading#Flat_shading)
+Here, the lighting is evaluated only once for each polygon (usually for the first vertex in the polygon, but sometimes for the centroid for [triangle meshes](#polygon-mesh)), based on the polygon's surface normal and on the assumption that all polygons are flat. The computed color is used for the whole polygon, making the corners look sharp. This is usually used when more advanced shading techniques are too computationally expensive. Specular highlights are rendered poorly with _flat shading_: If there happens to be a large specular component at the representative vertex, that brightness is drawn uniformly over the entire face. If a specular highlight doesn't fall on the representative point, it is missed entirely. Consequently, the specular reflection component is usually not included in flat shading computation.
+
 ## [Flip-Flop](https://en.wikipedia.org/wiki/Flip-flop_(electronics))
 A _flip-flop_, or _latch_, is a circuit that has two stable states that can be used to store state information. The circuit can be made to change state by signals applied to one more more control inputs and will have one or two outputs.
 
@@ -276,7 +294,10 @@ The _graphical user interface_ is a form of user interface that allows users to 
 The actions in a GUI are usually performed through direct manipulation of the graphical elements. Beyond computers, GUIs are used in many handheld mobile devices such as MP3 players, portable media players, gaming devices, smartphones and smaller household, office and industrial controls. The term GUI tends not to be applied to other lower-display resolution types of interfaces, such as video games (where head-up display (HUD) is preferred), or not including flat screens, like volumetric displays because the term is restricted to the scope of two-dimensional display screens able to describe generic information, in the tradition of the computer science research at the Xerox Palo Alto Research Center.
 
 ## [Graphics Library](https://en.wikipedia.org/wiki/Graphics_library)
-A _graphics library_ is a program library designed to aid in rendering computer graphics to a monitor. This typically involves providing optimized versions of functions that handle common rendering tasks. This can be done purely in software and running on the [CPU](#central-processing-unit), common in embedded systems, or being hardware accelerated by a GPU, more common in PCs. By employing these functions, a program can assemble an image to be output to a monitor. This relieves the programmer of the task of creating and optimizing these functions, and allows them to focus on building the graphics program. Graphics libraries are mainly used in video games and simulations.
+A _graphics library_ is a program library designed to aid in rendering computer graphics to a monitor. This typically involves providing optimized versions of functions that handle common rendering tasks. This can be done purely in software and running on the [CPU](#central-processing-unit), common in embedded systems, or being hardware accelerated by a [GPU](#graphics-processing-unit), more common in PCs. By employing these functions, a program can assemble an image to be output to a monitor. This relieves the programmer of the task of creating and optimizing these functions, and allows them to focus on building the graphics program. Graphics libraries are mainly used in video games and simulations.
+
+## [Graphics Processing Unit](https://en.wikipedia.org/wiki/Graphics_processing_unit)
+A _graphics processing unit_ (_GPU_) is a specialized, electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images in a frame buffer intended for output to a display device. GPUs are used in embedded systems, mobile phones, personal computers, workstations, and game consoles. Modern GPUs are very efficient at manipulating computer graphics and image processing. Their highly parallel structure makes them more efficient than general-purpose [central processing units](#central-processing-unit) (CPUs) for algorithms that process large blocks of data in parallel. In a [personal computer](#personal-computer), a GPU can be present on a [video card](#video-card) or embedded on the [motherboard](#motherboard). In certain CPUs, they are embedded on the CPU die.
 
 ## [Half Adder](https://en.wikipedia.org/wiki/Adder_(electronics)#Half_adder)
 The _half adder_ is a circuit that adds two single binary digits A and B. It has two outputs, sum (S) and carry (C). The carry signal represents an overflow into the next digit of a multi-digit addition.
@@ -327,6 +348,11 @@ In computer science, an _interpreter_ is a computer program that directly execut
 1. Parse the source code and perform its behavior directly;
 2. Translate source code into some efficient intermediate representation and immediately execute this;
 3. Explicitly execute stored precompiled code made by a compiler which is part of the interpreter system.
+
+## [Jaggies](https://en.wikipedia.org/wiki/Jaggies)
+_"Jaggies"_ is the informal name for artifacts in [raster images](#raster-scan), most frequently from aliasing, which in turn is often caused by non-linear mixing effects producing high-frequency components, or missing or poor anti-aliasing filtering prior to sampling.
+
+Jaggies are stair-like lines that appear where there should be "smooth" straight lines or curves. For example, when a nominally straight, un-aliased line steps across one pixel either horizontally or vertically, a "dogleg" occurs halfway through the line, where it crosses the threshold from one pixel to the other.
 
 ## [Liquid-Crystal Display](https://en.wikipedia.org/wiki/Liquid-crystal_display)
 A _liquid-crystal display_ (_LCD_) is a flat-panel display or other electronically modulated optical device that uses the light-modulating properties of liquid crystals combined with polarizers. Liquid crystals do not emit light directly, instead using a backlight or reflector to produce images in color or monochrome. LCDs are available to display arbitrary images (as in a general-purpose computer display) or fixed images with low information content, which can be displayed or hidden, such as preset words, digits, and seven-segment displays, as in a digital clock. They use the same basic technology, except that arbitrary images are made from a matrix of small pixels, while other displays have larger elements. LCDs can either be normally on (positive) or off (negative), depending on the polarizer arrangement. For example, a character positive LCD with a backlight will have black lettering on a background that is the color of the backlight, and a character negative LCD will have a black background with the letters being of the same color as the backlight. Optical filters are added to white on blue LCDs to give them their characteristic appearance.
@@ -448,6 +474,11 @@ A _node_ is a basic unit of a data structure, such as a [linked list](#linked-li
 ## [Non-Volatile Memory](https://en.wikipedia.org/wiki/Non-volatile_memory)
 A type of computer memory that can retrieve stored data even after having been power cycled.
 
+## [Normal](https://en.wikipedia.org/wiki/Normal_(geometry))
+In geometry, a _normal_ is an object such as a line, ray, or vector that is perpendicular to a given object. For example, in two dimensions, the normal line to a curve at a given point is the line perpendicular to the tangent line to the curve at the point. A normal vector may have length one (a unit vector) or its length may represent the curvature of the object (a curvature vector); its algebraic sign may indicate sides (interior or exterior).
+
+In three dimensions, a surface normal, or simply normal, to a surface at point P is a vector perpendicular to the tangent plane of the surface at P. The word "normal" is also used as an adjective: a line normal to a plane, the normal component of a force, the normal vector, etc. The concept of normality generalizes to orthogonality (right angles).
+
 ## [Null Character](https://en.wikipedia.org/wiki/Null_character)
 The _null character_ (also _null terminator_) is a control character with a value of zero. It is present in many character sets. It is available in nearly all mainstream programming languages. It is often abbreviated as _NUL_ (or _NULL_ though in some contexts that term is used for the _null pointer_, a different object). In 8-bit codes, it is known as a _null byte_.
 
@@ -466,14 +497,25 @@ An _operating system_ (_OS_) is system software that manages computer hardware, 
 ## [Operation Code](https://en.wikipedia.org/wiki/Opcode)
 An _operation code_ (also known as _opcode_, _instruction machine code_, _instruction code_, _instruction syllable_, _instruction parcel_, or _opstring_) is the portion of a machine language instruction that specifies the operation to be performed. Besides the opcode itself, most instructions specify the data they will process in the form of [operands](#operand).
 
+## [Orthographic Projection](https://en.wikipedia.org/wiki/Orthographic_projection)
+_Orthographic projection_ (sometimes referred to as _orthogonal projection_, used to be called _analemma_) is a means of representing three-dimensional objects in two dimensions. It is a form of parallel projection, in which all the projection lines are orthogonal to the projection plane, resulting in every plane of the scene appearing in affine transformation on the viewing surface. The obverse of an orthographic projection is an oblique projection, which is a parallel projection in which the projection lines are not orthogonal to the projection plane.
+
 ## [Out-Of-Order Execution](https://en.wikipedia.org/wiki/Out-of-order_execution)
 _Out-of-order execution_ (or _dynamic execution_) is a paradigm used in most high-performance [CPUs](#central-processing-unit) to make use of [instruction cycles](#clock-signal) that would otherwise be wasted. In this paradigm, a processor executes instructions in an order governed by the availability of input data and execution units, rather than by their original order in a program. In doing so, the processor can avoid being idle while waiting for the preceding instruction to complete and can, in the meantime, process the next instructions that are able to run immediately and independently.
+
+## [Painter's Algorithm](https://en.wikipedia.org/wiki/Painter%27s_algorithm)
+The _painter’s algorithm_ (also _depth-sort algorithm_ and _priority fill_) is an algorithm for visible surface determination in 3D computer graphics that works on a polygon-by-polygon basis rather than a pixel-by-pixel, row by row, or area by area basis of other Hidden Surface Removal algorithms. The painter’s algorithm creates images by sorting the polygons within the image by their depth and placing each polygon in order from the farthest to the closest object.
 
 ## [Parameter](https://en.wikipedia.org/wiki/Parameter_(computer_programming))
 In computer programming, a _parameter_ or a _formal argument_, is a special kind of variable, used in a [subroutine](#subroutine) to refer to one of the pieces of data provided as input to the subroutine. These pieces of data are the values of the _arguments_ (often called _actual arguments_ or _actual parameters_) with which the subroutine is going to be called/invoked. An ordered list of parameters is usually included in the definition of a subroutine, so that, each time the subroutine is called, its arguments for that call are evaluated, and the resulting values can be assigned to the corresponding parameters.
 
 ## [Personal Computer](https://en.wikipedia.org/wiki/Personal_computer)
 A _personal computer_ (_PC_) is a multi-purpose computer whose size, capabilities, and price make it feasible for individual use. Personal computers are intended to be operated directly by an end user, rather than by a computer expert or technician. Unlike large, costly minicomputers and mainframes, time-sharing by many people at the same time is not used with personal computers.
+
+## [Perspective Projection](https://en.wikipedia.org/wiki/3D_projection#Perspective_projection)
+Perspective projection or perspective transformation is a linear projection where three dimensional objects are projected on a picture plane. This has the effect that distant objects appear smaller than nearer objects.
+
+It also means that lines which are parallel in nature (that is, meet at the point at infinity) appear to intersect in the projected image, for example if railways are pictured with perspective projection, they appear to converge towards a single point, called the vanishing point. Photographic lenses and the human eye work in the same way, therefore perspective projection looks most realistic. Perspective projection is usually categorized into one-point, two-point and three-point perspective, depending on the orientation of the projection plane towards the axes of the depicted object.
 
 ## [Pixel](https://en.wikipedia.org/wiki/Pixel)
 In digital imaging, a _pixel_, _pel_, or _picture element_ is a physical point in a raster image, or the smallest addressable element in an all points addressable display device; so it is the smallest controllable element of a picture represented on the screen.
@@ -491,6 +533,11 @@ The use of this phrase to describe software implies that the interface can be co
 
 ## [Pointer](https://en.wikipedia.org/wiki/Pointer_(computer_programming))
 An object in many programming languages that stores a memory address. This can be that of another value located in computer memory, or in some cases, that of memory-mapped computer hardware. A pointer _references_ a location in memory, and obtaining the value stored at that location is known as _dereferencing_ the pointer. As an analogy, a page number in a book's index could be considered a pointer to the corresponding page; dereferencing such a pointer would be done by flipping to the page with the given page number and reading the text found on the page. The actual format and content of a pointer variable is dependent on the underlying computer architecture.
+
+## [Polygon Mesh](https://en.wikipedia.org/wiki/Polygon_mesh)
+In 3D computer graphics and solid modeling, a _polygon mesh_ is a collection of _vertices_, _edges_ and _faces_ that defines the shape of a polyhedral object. The faces usually consist of triangles (triangle mesh), quadrilaterals (quads), or other simple convex polygons (n-gons), since this simplifies rendering, but may also be more generally composed of concave polygons, or even polygons with holes.
+
+The study of polygon meshes is a large sub-field of computer graphics (specifically 3D computer graphics) and geometric modeling. Different representations of polygon meshes are used for different applications and goals. The variety of operations performed on meshes may include: Boolean logic, smoothing, simplification, and many others. Algorithms also exist for ray tracing, collision detection, and rigid-body dynamics with polygon meshes. If the mesh's edges are rendered instead of the faces, then the model becomes a [wireframe model](#wire-frame-model).
 
 ## [Printed Circuit Board](https://en.wikipedia.org/wiki/Printed_circuit_board)
 A _printed circuit board_ (_PCB_) mechanically supports and electrically connects electrical or electronic components using conductive tracks, pads, and other features etched from one or more sheet layers of copper laminated onto and/or between sheet layers of a non-conductive substrate. Components are generally soldered onto the PCB to electrically connect and mechanically fasten them to it.
@@ -556,6 +603,11 @@ A _ripple-carry adder_ is a circuit that utilizes multiple [full adders](#full-a
 ## [Run-Length Encoding](https://en.wikipedia.org/wiki/Run-length_encoding)
 _Run-length encoding_ (_RLE_) is a form of [lossless](#lossless-compression) [data compression](#data-compression) in which runs of data (sequences in which the same data value occurs in many consecutive data elements) are stored as a single data value and count, rather than as the original run. This is most useful on data that contains many such runs. Consider, for example, simple graphic images such as icons, line drawings, Conway's Game of Life, and animations. It is not useful with files that don't have many runs as it could greatly increase the file size.
 
+## [Scanline Rendering](https://en.wikipedia.org/wiki/Scanline_rendering)
+_Scanline rendering_ (also _scan line rendering_ and _scan-line rendering_) is an algorithm for visible surface determination, in 3D computer graphics, that works on a row-by-row basis rather than a polygon-by-polygon or [pixel](#pixel)-by-pixel basis. All of the polygons to be rendered are first sorted by the top y coordinate at which they first appear, then each row or scan line of the image is computed using the intersection of a scanline with the polygons on the front of the sorted list, while the sorted list is updated to discard no-longer-visible polygons as the active scan line is advanced down the picture.
+
+The main advantage of this method is that sorting vertices along the normal of the scanning plane reduces the number of comparisons between edges. Another advantage is that it is not necessary to translate the coordinates of all vertices from the main memory into the working memory - only vertices defining edges that intersect the current scan line need to be in active memory, and each vertex is read in only once. The main memory is often very slow compared to the link between the [central processing unit](#central-processing-unit) and [cache memory](#cpu-cache), and thus avoiding re-accessing vertices in main memory can provide a substantial speedup.
+
 ## [Scheduling](https://en.wikipedia.org/wiki/Scheduling_(computing))
 _Scheduling_ is the method by which work is assigned to resources that complete the work. The work may be virtual computation elements such as threads, processes or data flows, which are in turn scheduled onto hardware resources such as processors, network links or expansion cards.
 
@@ -571,6 +623,9 @@ Magnetic sequential access memory is typically used for secondary storage in gen
 ## [Sequential Logic](https://en.wikipedia.org/wiki/Sequential_logic)
 A type of [logic circuit](#logic-gate) whose output depends not only on the present value of its input signals but on the sequence of past inputs (the input history).
 
+## [Shading](https://en.wikipedia.org/wiki/Shading)
+_Shading_ refers to the depiction of depth perception in 3D models (within the field of 3D computer graphics) or illustrations (in visual art) by varying the level of darkness. Shading tries to approximate local behavior of light on the object's surface and is not to be confused with techniques of adding shadows, such as shadow mapping or shadow volumes, which fall under global behavior of light.
+
 ## [Software Documentation](https://en.wikipedia.org/wiki/Software_documentation)
 Written text or illustration that accompanies computer software or is embedded in the source code. The documentation either explains how the software operates or how to use it, and may mean different things to people in different roles.
 
@@ -584,6 +639,13 @@ The term "solid state" became popular in the beginning of the semiconductor era 
 
 ## [Source-Code Repository](https://en.wikipedia.org/wiki/Comparison_of_source-code-hosting_facilities)
 A _source-code repository_ is a file archive and web hosting facility for source code of software, documentation, web pages, and other works, accessible either publicly or privately. They are often used by open-source software projects and other multi-developer projects to maintain revision and version history, or [version control](#version-control). Many repositories provide a bug tracking system, and offer release managment, mailing lists, and wiki-based project documentation. Software authors generally retain their copyright when software is posted to a code hosting facility.
+
+## [Spatial Anti-Aliasing](https://en.wikipedia.org/wiki/Spatial_anti-aliasing)
+In digital signal processing, _spatial anti-aliasing_ is a technique for minimizing the distortion artifacts known as aliasing when representing a high-resolution image at a lower resolution. Anti-aliasing is used in digital photography, computer graphics, digital audio, and many other applications.
+
+Anti-aliasing means removing signal components that have a higher frequency than is able to be properly resolved by the recording (or sampling) device. This removal is done before (re)sampling at a lower resolution. When sampling is performed without removing this part of the signal, it causes undesirable artifacts such as black-and-white noise.
+
+In signal acquisition and audio, anti-aliasing is often done using an analog anti-aliasing filter to remove the out-of-band component of the input signal prior to sampling with an analog-to-digital converter. In digital photography, optical anti-aliasing filters made of birefringent materials smooth the signal in the spatial optical domain. The anti-aliasing filter essentially blurs the image slightly in order to reduce the resolution to or below that achievable by the digital sensor (the larger the pixel pitch, the lower the achievable resolution at the sensor level).
 
 ## [Speculative Execution](https://en.wikipedia.org/wiki/Speculative_execution)
 An optimization technique where a computer system performs some task that may not be needed. Work is done before it is known whether it is actually needed, so as to prevent a delay that would have to be incurred by doing the work after it is known that it is needed. If it turns out the work was not needed after all, most changes made by the work are reverted and the results are ignored.
@@ -629,6 +691,11 @@ _Text mode_ is a computer display mode in which content is internally represente
 
 Text mode applications communicate with the user with command-line interfaces and text user interfaces. Many character sets used in text mode applications also contain a limited set of predefined semi-graphical characters usable for drawing boxes, and other rudimentary graphics which can be used to highlight the content or to simulate widget or control interface objects found in GUI programs.
 
+## [Texture Mapping](https://en.wikipedia.org/wiki/Texture_mapping)
+_Texture mapping_ is a method for defining high frequency detail, surface texture, or color information on a computer-generated graphic or 3D model. The original technique was pioneered by Edwin Catmull in 1974.
+
+Texture mapping originally referred to _diffuse mapping_, a method that simply mapped pixels from a texture to a 3D surface ("wrapping" the image around the object). In recent decades, the advent of _multi-pass rendering_, _multitexturing_, _mipmaps_, and more complex mappings such as _height mapping_, _bump mapping_, _normal mapping_, _displacement mapping_, _reflection mapping_, _specular mapping_, _occlusion mapping_, and many other variations on the technique (controlled by a materials system) have made it possible to simulate near-photorealism in real time by vastly reducing the number of polygons and lighting calculations needed to construct a realistic and functional 3D scene.
+
 ## [Time-Sharing](https://en.wikipedia.org/wiki/Time-sharing)
 In computing, time-sharing is the sharing of a computing resource among many users at the same time by means of multiprogramming and multi-tasking.
 
@@ -662,6 +729,11 @@ Unix systems are characterized by a modular design that is sometimes called the 
 
 Unix distinguishes itself from its predecessors as the first portable operating system: almost the entire operating system is written in the C programming language, which allows Unix to operate on numerous platforms.
 
+## [Utah Teapot](https://en.wikipedia.org/wiki/Utah_teapot)
+The _Utah teapot_, or the _Newell teapot_, is a 3D test model that has become a standard reference object and an in-joke within the computer graphics community. It is a mathematical model of an ordinary, Melitta-brand teapot that appears solid, cylindrical, and partially convex. Using a teapot model is considered the 3D equivalent of a "Hello, World!" program, a way to create an easy 3D scene with a somewhat complex model acting as the basic geometry for a scene with a light setup. Some programming libraries, such as the OpenGL Utility Toolkit, even have functions dedicated to drawing teapots.
+
+The teapot model was created in 1975 by early computer graphics researcher [Martin Newell](https://en.wikipedia.org/wiki/Martin_Newell_(computer_scientist)), a member of the pioneering graphics program at the University of Utah. It was one of the first to be modeled (using bézier curves) rather than precisely measured.
+
 ## [Vacuum Tube](https://en.wikipedia.org/wiki/Vacuum_tube)
 A device that controls electric current flow in a high vacuum between electrodes to which an electric potential difference has been applied.
 
@@ -678,7 +750,7 @@ The need for a logical way to organize and control revisions has existed for alm
 _Version control systems_ (_VCS_) are most commonly run as stand-alone applications, but revision control is also embedded in various types of software such as word processors and spreadsheets, collaborative web docs and various content management systems, e.g., Wikipedia's page history. Revision control allows for the ability to revet a document to a previous revision, which is critical for allowing editors to track each other's edits, correct mistakes, and defend against vandalism and spamming in wikis.
 
 ## [Video Card](https://en.wikipedia.org/wiki/Video_card)
-A _video card_ (also called a _graphics card_, _display card_, _graphics adapter_, or _display adapter_) is an expansion card which generates a feed of output images to a display device (such as a computer monitor). Frequently, these are advertised as discrete or dedicated graphics cards, emphasizing the distinction between these and integrated graphics. At the core of both is the graphics processing unit (GPU), which is the main part that does the actual computations, but should not be confused with the video card as a whole, although "GPU" is often used as a metonymic shorthand to refer to video cards
+A _video card_ (also called a _graphics card_, _display card_, _graphics adapter_, or _display adapter_) is an expansion card which generates a feed of output images to a display device (such as a computer monitor). Frequently, these are advertised as discrete or dedicated graphics cards, emphasizing the distinction between these and integrated graphics. At the core of both is the [graphics processing unit](#graphics-processing-unit) (GPU), which is the main part that does the actual computations, but should not be confused with the video card as a whole, although "GPU" is often used as a metonymic shorthand to refer to video cards
 
 ## [Video RAM](https://en.wikipedia.org/wiki/Video_RAM_(dual-ported_DRAM))
 _Video RAM_, or _VRAM_, is a dual-ported variant of [dynamic RAM](#dynamic-random-access-memory) (DRAM), which was once commonly used to store the framebuffer in graphics adapters. Note that most computers and game consoles do not use this form of memory, and dual-ported VRAM should not be confused with other forms of video memory.
@@ -710,5 +782,18 @@ Though the acronym has fallen into disuse, it has often been likened to the term
 
 WIMP interaction was developed at [Xerox PARC](https://en.wikipedia.org/wiki/PARC_(company)) (see [Xerox Alto](https://en.wikipedia.org/wiki/Xerox_Alto), developed in 1973) and popularized with [Apple's](https://en.wikipedia.org/wiki/Apple_Inc.) introduction of the [Macintosh](https://en.wikipedia.org/wiki/Macintosh) in 1984, which added the concepts of the "menu bar" and extended window management.
 
+## [Wire-Frame Model](https://en.wikipedia.org/wiki/Wire-frame_model)
+A _wire-frame model_, also _wireframe model_, is a visual representation of a three-dimensional (3D) physical object used in 3D computer graphics. It is created by specifying each edge of the physical object where two mathematically continuous smooth surfaces meet, or by connecting an object's constituent vertices using (straight) lines or curves. The object is projected into screen space and rendered by drawing lines at the location of each edge. The term "wire frame" comes from designers using metal wire to represent the three-dimensional shape of solid objects. 3D wire frame computer models allow for the construction and manipulation of solids and solid surfaces. 3D solid modeling efficiently draws higher quality representations of solids than conventional line drawing.
+
+Using a wire-frame model allows for the visualization of the underlying design structure of a 3D model. Traditional two-dimensional views and drawings/renderings can be created by the appropriate rotation of the object, and the selection of hidden line removal via cutting planes.
+
 ## [WYSIWYG](https://en.wikipedia.org/wiki/WYSIWYG)
 In computing, _What You See Is What You Get_ (_WYSIWYG_) is a system where editing software allows content to be edited in a form that resembles its appearance when printed or displayed as a finished product such as a printed document, web page, or slide presentation.
+
+## [Z-Buffering](https://en.wikipedia.org/wiki/Z-buffering)
+In computer graphics, _z-buffering_, also known as _depth buffering_, is the management of image depth coordinates in 3D graphics, usually done in hardware, sometimes in software. It is one solution to the visibility problem, which is the problem of deciding which elements of a rendered scene are visible, and which are hidden. Z-buffering was first described in 1974 by Wolfgang Straßer in Chapter 6 (page 6-1) of his PhD thesis. The [painter's algorithm](#painters-algorithm) is another common solution which, though less efficient, can also handle non-opaque scene elements. The z-buffer uses the Image space method for hidden surface detection. A z-buffer can refer to a data structure or to the method used to perform operations on that structure.
+
+## [Z-Fighting](https://en.wikipedia.org/wiki/Z-fighting)
+_Z-fighting_, also called _stitching_, is a phenomenon in 3D rendering that occurs when two or more primitives have very similar distances to the camera. This would cause them to have near-similar or identical values in the [z-buffer](#z-buffering), which keeps track of depth. This then means that when a specific pixel is being rendered, it is nearly random which one of the two primitives gets drawn in that pixel because the z-buffer cannot distinguish precisely which one is farther from the other. Traditionally, the farther pixel would be discarded. It is particularly prevalent with coplanar polygons, where two faces occupy essentially the same space, with neither in front. Affected pixels are rendered with fragments from one polygon or the other arbitrarily, in a manner determined by the precision of the z-buffer. It can also vary as the scene or camera is changed, causing one polygon to "win" the z test, then another, and so on. The overall effect is a flickering, noisy rasterization of two polygons which "fight" to color the screen pixels. This problem is usually caused by limited sub-pixel precision and [floating point](#floating-point) and fixed point round-off errors.
+
+The more z-buffer precision one uses, the less likely it is that z-fighting will be encountered. But for coplanar polygons, the problem is inevitable unless corrective action is taken.
