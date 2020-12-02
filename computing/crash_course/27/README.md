@@ -81,4 +81,4 @@ Rendering a full 3D scene takes a fair amount of computation. It is the same typ
 
 A modern graphics card can contain 3584 processing cores offering massive parallelization. Hardware like this can process hundreds of millions of polygons every second.
 
-| [Previous: Graphical User Interfaces](../26/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: Graphical User Interfaces](../26/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Computer Networks](../28/README.md) |
