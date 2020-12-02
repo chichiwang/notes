@@ -12,6 +12,9 @@ In mathematics and computer science, an _algorithm_ is a finite sequence of well
 ## [API](https://en.wikipedia.org/wiki/API)
 An _application programming interface_ (_API_) is a computing interface which defines interactions between multiple software intermediaries. It defines the kinds of calls or requests that can be made, how to make them, the data formats that should be used, the conventions to follow, etc. It can also provide extension mechanisms so that users can extend existing functionality in various ways and to varying degrees. An API can be entirely custom, specific to a component, or it can be designed based on an industry-standard to ensure interoperability. Through information hiding, APIs enable modular programming, which allows users to use the interface independently of the implementation.
 
+## [ARPANET](https://en.wikipedia.org/wiki/ARPANET)
+The _ARPANET_ (an acronym for _Advanced Research Projects Agency Network_) was the first wide-area [packet-switching](#packet-switching) [network](#computer-network) with distributed control and one of the first networks to implement the [TCP/IP protocol suite](#internet-protocol-suite). Both technologies became the technical foundation of the [Internet](#internet). The ARPANET was established by the Advanced Research Projects Agency (ARPA) of the United States Department of Defense.
+
 ## [Array](https://en.wikipedia.org/wiki/Array_data_structure)
 An _array data structure_, or simply an _array_, is a [data structure](#data-structure) consisting of a collection of elements (values of variables), each identified by at least one _array index_ or _key_. An array is stored in such that the position of each element can be computed from its index tuple by a mathematical formula. The simplest type of data structure is a linear array, also called one-dimensional array.
 
@@ -27,6 +30,11 @@ ASCII is one of the [IEEE milestones](https://en.wikipedia.org/wiki/Timeline_of_
 
 ## [Assembler](https://en.wikipedia.org/wiki/Assembly_language#Assembler)
 An _assembler_ program creates object code by translating combinations of _mnemonics_ and syntax for operations and addressing modes into their numerical equivalents.
+
+## [Bandwidth](https://en.wikipedia.org/wiki/Bandwidth_(computing))
+In computing, _bandwidth_ is the maximum rate of data transfer across a given path. Bandwidth may be characterized as _network bandwidth_, _data bandwidth_, or _digital bandwidth_.
+
+This definition of _bandwidth_ is in contrast to the field of signal processing, wireless communications, modem data transmission, digital communications, and electronics, in which bandwidth is used to refer to analog signal bandwidth measured in hertz, meaning the frequency range between lowest and highest attainable frequency while meeting a well-defined impairment level in signal power. The actual bit rate that can be achieved depends not only on the signal bandwidth but also on the noise on the channel.
 
 ## [Back-Face Culling](https://en.wikipedia.org/wiki/Back-face_culling)
 In computer graphics, _back-face culling_ determines whether a polygon of a graphical object is visible. It is a step in the graphical pipeline that tests whether the points in the polygon appear in clockwise or counter-clockwise order when projected onto the screen. If the user has specified that front-facing polygons have a clockwise winding, but the polygon projected on the screen has a counter-clockwise winding then it has been rotated to face away from the camera and will not be drawn.
@@ -64,6 +72,11 @@ A unit of digital information that most commonly consists of 8 [bits](#bit). Thi
 ## [Capacitor](https://en.wikipedia.org/wiki/Capacitor)
 A _capacitor_ is a device that stores electrical energy in an electric field. It is a passive electronic component with two terminals.
 
+## [Carrier-Sense Multiple Access](https://en.wikipedia.org/wiki/Carrier-sense_multiple_access)
+_Carrier-sense multiple access_ (_CSMA_) is a media access control (MAC) protocol in which a node verifies the absence of other traffic before transmitting on a shared transmission medium, such as an electrical bus or a band of the electromagnetic spectrum.
+
+A transmitter attempts to determine whether another transmission is in progress before initiating a transmission using a carrier-sense mechanism. That is, it tries to detect the presence of a carrier signal from another node before attempting to transmit. If a carrier is sensed, the node waits for the transmission in progress to end before initiating its own transmission. Using CSMA, multiple nodes may, in turn, send and receive on the same medium. Transmissions by one node are generally received by all other nodes connected to the medium.
+
 ## [Carry-Look-Ahead Adder](https://en.wikipedia.org/wiki/Adder_(electronics)#Carry-lookahead_adder)
 To reduce computation time, engineers devised faster ways to add two binary numbers. The carry-look-ahead adder (CLA) works by creating two signals (_P_ and _G_) for each bit position, based on whether a carry is propagated through from a less significant bit position (at least one input is a 1), generated in that bit position (both inputs are 1), or killed in that bit position (both inputs are 0).
 
@@ -72,6 +85,9 @@ The _cathode-ray tube_ (_CRT_) is a [vacuum tube](#vacuum-tube) that contains on
 
 ## [Central Processing Unit](https://en.wikipedia.org/wiki/Central_processing_unit)
 The _central processing unit_ (_CPU_), also known as a _central processor_, _main processor_, or just _processor_, is the electronic circuitry within a computer that executes instructions that make up a computer program. The CPU performs basic arithmetic, logic, controlling, and [input/output](#inputoutput) (I/O) operations specified by the instructions in the program.
+
+## [Circuit Switching](https://en.wikipedia.org/wiki/Circuit_switching)
+_Circuit switching_ is a method of implementing a telecommunications network in which two network nodes establish a dedicated communications channel (circuit) through the network before the nodes may communicate. The circuit guarantees the full bandwidth of the channel and remains connected for the duration of the communication session. The circuit functions as if the nodes were physically connected as with an electrical circuit. Circuit switching contrasts with [message switching](#message-switching) and [packet switching](#packet-switching).
 
 ## [Class Hierarchy](https://en.wikipedia.org/wiki/Class_hierarchy)
 A _class hierarchy_ or _inheritance tree_ in computer science is a classification of object types, denoting objects as the instantiations of classes (class is like a blueprint, the object is what is built from that blueprint) inter-relating the various classes by relationships such as "inherits", "extends", "is an abstraction of", "an interface definition". In object-oriented programing, a class is a template that the defines the state and behavior common to objects of a certain kind. A class can be defined in terms of other classes.
@@ -85,8 +101,20 @@ A _clock generator_ is an electronic oscillator (circuit) that produces a [clock
 ## [Code Reuse](https://en.wikipedia.org/wiki/Code_reuse)
 _Code reuse_, also called _software reuse_ is the use of existing software, or software knowledge, to build new software, following the [reusability principles](https://en.wikipedia.org/wiki/Reusability).
 
+## [Collision Domain](https://en.wikipedia.org/wiki/Collision_domain)
+A _collision domain_ is a network segment connected by a shared medium or through repeaters where simultaneous data transmissions collide with one another. The collision domain applies particularly in wireless networks, but also affected early versions of [Ethernet](#ethernet). A network collision occurs when more than one device attempts to send a [packet](#network-packet) on a network segment at the same time. Members of a collision domain may be involved in collisions with one another. Devices outside the collision domain do not have collisions with those inside.
+
+Only one device in the collision domain may transmit at any one time, and the other devices in the domain listen to the network and refrain from transmitting while others are already transmitting in order to avoid collisions. Because only one device may be transmitting at any one time, total network bandwidth is shared among all devices on the collision domain. Collisions also decrease network efficiency on a collision domain as collisions require devices to abort transmission and retransmit at a later time.
+
+Since data [bits](#bit) are propagated at a finite speed, simultaneously is to be defined in terms of the size of the collision domain and the minimum packet size allowed. A smaller packet size or a larger dimension would make it possible for a sender to finish sending the packet without the first bits of the message being able to reach the most remote node. So, that node could start sending as well, without a clue to the transmission already taking place and destroying the first packet. Unless the size of the collision domain allows the initial sender to receive the second transmission attempt  the collision  within the time it takes to send the packet he would neither be able to detect the collision nor to repeat the transmission - this is called a _late collision_.
+
 ## [Combinational Logic](https://en.wikipedia.org/wiki/Combinational_logic)
 A type of [logic circuit](#logic-gate) whose output is a pure function of the present input only.
+
+## [Command Line Interface](https://en.wikipedia.org/wiki/Command-line_interface)
+A _command-line interface_ (_CLI_) processes commands to a computer program in the form of lines of text. The program which handles the interface is called a _command-line interpreter_ or _command-line processor_. [Operating systems](#operating-system) implement a command-line interface in a shell for interactive access to operating system functions or services. Such access was primarily provided to users by computer terminals starting in the mid-1960s, and continued to be used throughout the 1970s and 1980s on VAX/VMS, [Unix systems](#unix) and [personal computer](#personal-computer) systems including DOS, CP/M and Apple DOS.
+
+Today, many users rely upon graphical user interfaces and menu-driven interactions. However, some programming and maintenance tasks may not have a graphical user interface and may still use a command line.
 
 ## [Comment](https://en.wikipedia.org/wiki/Comment_(computer_programming))
 In computer programming, a _comment_ is a programmer-readable explanation or annotation in the source code of a computer program. They are added with the purpose of making the source code easier for humans to understand, and are generally ignored by [compilers](#compiler) and interpreters. The syntax of comments in various programming languages varies considerably.
@@ -121,6 +149,11 @@ The first public demonstration of a mouse controlling a computer system was in 1
 
 In addition to moving a cursor, computer mice have one or more buttons to allow operations such as selection of a menu item on a display. Mice often also feature other elements, such as touch surfaces and scroll wheels, which enable additional control and dimensional input.
 
+## [Computer Network](https://en.wikipedia.org/wiki/Computer_network)
+A _computer network_ is a group of computers that use a set of common communication protocols over digital interconnections for the purpose of sharing resources located on or provided by the network nodes. The interconnections between nodes are formed from a broad spectrum of telecommunication network technologies, based on physically wired, optical, and wireless radio-frequency methods that may be arranged in a variety of network topologies.
+
+The nodes of a computer network may be classified by many means as [personal computers](#personal-computer), servers, networking hardware, or general-purpose hosts. They are identified by hostnames and network addresses. Hostnames serve as memorable labels for the nodes, rarely changed after initial assignment. Network addresses serve for locating and identifying the nodes by communication protocols such as the [Internet Protocol](#internet-protocol).
+
 ## [Computer Terminal](https://en.wikipedia.org/wiki/Computer_terminal)
 A _computer terminal_ is an electronic or electromechanical hardware device that can be used for entering data into, and transcribing data from, a computer or a computing system. The [teletype](#teleprinter) was an example of an early day hardcopy terminal, and predated the use of a computer screen by decades.
 
@@ -139,11 +172,6 @@ In computer science _control flow_ (or _flow of control_) is the order in which 
 
 ## [Control Unit](https://en.wikipedia.org/wiki/Control_unit)
 The _control unit_ (_CU_) is a component of a computer's central processing unit (CPU) that directs the operation of the processor. It tells the computer's memory, arithmetic and logic unit and input and output devices how to respond to the instructions that have been sent to the processor.
-
-## [Command Line Interface](https://en.wikipedia.org/wiki/Command-line_interface)
-A _command-line interface_ (_CLI_) processes commands to a computer program in the form of lines of text. The program which handles the interface is called a _command-line interpreter_ or _command-line processor_. [Operating systems](#operating-system) implement a command-line interface in a shell for interactive access to operating system functions or services. Such access was primarily provided to users by computer terminals starting in the mid-1960s, and continued to be used throughout the 1970s and 1980s on VAX/VMS, [Unix systems](#unix) and [personal computer](#personal-computer) systems including DOS, CP/M and Apple DOS.
-
-Today, many users rely upon graphical user interfaces and menu-driven interactions. However, some programming and maintenance tasks may not have a graphical user interface and may still use a command line.
 
 ## [CPU Cache](https://en.wikipedia.org/wiki/CPU_cache)
 A hardware cache used by the [CPU](#central-processing-unit) of a computer to reduce the average cost (time or energy) to access data from the main memory. This cache is a smaller, faster memory, located closer to a processor core, which stores copies of the data from frequently used memory locations. Most CPUs have different independent caches, including instruction and data cahces, where the data cache is usually organized as a hierarchy of more cache levels (L1, L2, L3, L4, etc.).
@@ -185,7 +213,7 @@ The memory capacity is determined by dividing the time taken to transmit one bit
 ## [Desktop Metaphor](https://en.wikipedia.org/wiki/Desktop_metaphor)
 In computing, the _desktop metaphor_ is an interface metaphor which is a set of unifying concepts used by [graphical user interfaces](#graphical-user-interface) to help users interact more easily with the computer. The desktop metaphor treats the computer monitor as if it is the top of the user's desk, upon which objects such as documents and folders of documents can be placed. A document can be opened into a [window](#window), which represents a paper copy of the document placed on the desktop. Small applications called desk accessories are also available, such as a desk calculator or notepad, etc.
 
-The desktop metaphor itself has been extended and stretched with various implementations of desktop environments, since access to features and usability of the computer are usually more important than maintaining the 'purity' of the metaphor. Hence we find trash cans on the desktop, as well as disks and network volumes (which can be thought of as filing cabinetsnot something normally found on a desktop). Other features such as menu bars or taskbars have no direct counterpart on a real-world desktop, though this may vary by environment and the function provided; for instance, a familiar wall calendar can sometimes be displayed or otherwise accessed via a taskbar or menu bar belonging to the desktop.
+The desktop metaphor itself has been extended and stretched with various implementations of desktop environments, since access to features and usability of the computer are usually more important than maintaining the 'purity' of the metaphor. Hence we find trash cans on the desktop, as well as disks and [network](#computer-network) volumes (which can be thought of as filing cabinets - not something normally found on a desktop). Other features such as menu bars or taskbars have no direct counterpart on a real-world desktop, though this may vary by environment and the function provided; for instance, a familiar wall calendar can sometimes be displayed or otherwise accessed via a taskbar or menu bar belonging to the desktop.
 
 ## [Device Driver](https://en.wikipedia.org/wiki/Device_driver)
 In computing, a _device driver_ is a computer program that operates or controls a particular type of device that is attached to a computer. A driver provides a software interface to hardware devices, enabling operating systems and other computer programs to access hardware functions without needing to know precise details about the hardware being used.
@@ -218,10 +246,16 @@ Drums were displaced as primary computer memory by magnetic core memory, which o
 ## [Dynamic Random-Access Memory](https://en.wikipedia.org/wiki/Dynamic_random-access_memory)
 _DRAM_ is a type of [random access](#random-access-memory) semiconductor memory that stores each bit of data in a memory cell consisting of a tiny [capacitor](#capacitor) and transitor.
 
+## [Ethernet](https://en.wikipedia.org/wiki/Ethernet)
+_Ethernet_ is a family of wired computer networking technologies commonly used in [local area networks](#local-area-network) (LAN), metropolitan area networks (MAN) and wide area networks (WAN). It was commercially introduced in 1980 and first standardized in 1983 as IEEE 802.3. Ethernet has since been refined to support higher bit rates, a greater number of nodes, and longer link distances, but retains much backward compatibility. Over time, Ethernet has largely replaced competing wired LAN technologies such as Token Ring, FDDI and ARCNET.
+
 ## [Event-Driven Programming](https://en.wikipedia.org/wiki/Event-driven_programming)
 In computer programming, _event-driven programming_ is a [programming paradigm](../../../paradigms/overview/README.md) in which the flow of the program is determined by events such as user actions ([mouse](#computer-mouse) clicks, key presses), sensor outputs, or messages from other programs or threads. Event-driven programming is the dominant paradigm used in [graphical user interfaces](#graphical-user-interface) and other applications (e.g., JavaScript web applications) that are centered on performing certain actions in response to user input. This is also true of programming for device drivers (e.g., P in USB device driver stacks).
 
 In an event-driven application, there is generally a main loop that listens for events and then triggers a callback function when one of those events is detected. In embedded systems, the same may be achieved using hardware interrupts instead of a constantly running main loop. Event-driven programs can be written in any programming language, although the task is easier in languages that provide high-level abstractions, such as await and closures.
+
+## [Exponential Backoff](https://en.wikipedia.org/wiki/Exponential_backoff)
+_Exponential backoff_ is an algorithm that uses feedback to multiplicatively decrease the rate of some process, in order to gradually find an acceptable rate.
 
 ## [File](https://en.wikipedia.org/wiki/Computer_file)
 A _computer file_ is a computer resource for recording data discretely in a computer storage device. Just as words can be written to paper, so can information be written to a computer file. Files can be edited and transferred through the internet on that particular computer system.
@@ -305,6 +339,11 @@ The _half adder_ is a circuit that adds two single binary digits A and B. It has
 ## [Hard Disk Drive](https://en.wikipedia.org/wiki/Hard_disk_drive)
 A _hard disk drive_ (_HDD_), _hard disk_, _hard drive_, or _fixed disk_ is an electro-mechanical data storage device that stores and retrieves digital data using magnetic storage and one or more rigid rapidly rotating platters coated with magnetic material. The platters are paired with magnetic heads, usually arranged on a moving actuator arm, which read and write data to the platter surfaces. Data is accessed in a random-access manner, meaning that individual blocks of data can be stored and retrieved in any order. HDDs are a type of non-volatile storage, retaining stored data even when powered off.
 
+## [Header](https://en.wikipedia.org/wiki/Header_(computing))
+In information technology, _header_ refers to supplemental data placed at the beginning of a block of data being stored or transmitted. In data transmission, the data following the header is sometimes called the payload or body.
+
+It is vital that header composition follows a clear and unambiguous specification or format, to allow for parsing.
+
 ## [Huffman Coding](https://en.wikipedia.org/wiki/Huffman_coding)
 In computer science and information theory, a _Huffman code_ is a particular type of optimal [prefix code](#prefix-code) that is commonly used for [lossless](#lossless-compression) [data compression](#data-compression). The process of finding or using such a code proceeds by means of Huffman coding, an [algorithm](#algorithm) developed by [David A. Huffman](https://en.wikipedia.org/wiki/David_A._Huffman) while he was a Sc.D. student at MIT, and published in the 1952 paper "A Method for the Construction of Minimum-Redundancy Codes".
 
@@ -339,6 +378,23 @@ An _integrated circuit_ or _monolithic integrated circuit_ (also referred to as 
 ## [Integrated Development Environment](https://en.wikipedia.org/wiki/Integrated_development_environment)
 An _integrated development environment_ (_IDE_) is a software application that provides comprehensive facilities to computer programmers for software development. An IDE normally consists of at least a source code editor, build automation tools and a debugger. Some IDEs, Such as [NetBeans](https://en.wikipedia.org/wiki/NetBeans) and [Eclipse](https://en.wikipedia.org/wiki/Eclipse_(software)), contain the necessary [compiler](#compiler), interpreter, or both; others such as [SharpDevelop](https://en.wikipedia.org/wiki/SharpDevelop) and [Lazarus](https://en.wikipedia.org/wiki/Lazarus_(IDE)) do not.
 
+## [Internet](https://en.wikipedia.org/wiki/Internet)
+The _Internet_ (or _internet_) is the global system of interconnected [computer networks](#computer-network) that uses the [Internet protocol suite](#internet-protocol-suite) (TCP/IP) to communicate between networks and devices. It is a network of networks that consists of private, public, academic, business, and government networks of local to global scope, linked by a broad array of electronic, wireless, and optical networking technologies. The Internet carries a vast range of information resources and services, such as the inter-linked hypertext documents and applications of the World Wide Web (WWW), electronic mail, telephony, and file sharing.
+
+## [Internet Control Message Protocol](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol)
+The _Internet Control Message Protocol_ (_ICMP_) is a supporting protocol in the [Internet protocol suite](#internet-protocol-suite). It is used by network devices, including routers, to send error messages and operational information indicating success or failure when communicating with another [IP address](#ip-address), for example, an error is indicated when a requested service is not available or that a host or router could not be reached. ICMP differs from transport protocols such as TCP and UDP in that it is not typically used to exchange data between systems, nor is it regularly employed by end-user network applications (with the exception of some diagnostic tools like ping and traceroute).
+
+## [Internet Of Things](https://en.wikipedia.org/wiki/Internet_of_things)
+The _Internet of things_ (_IoT_) describes the [network](#computer-network) of physical objects - “things” - that are embedded with sensors, software, and other technologies for the purpose of connecting and exchanging data with other devices and systems over the [Internet](#internet).
+
+## [Internet Protocol](https://en.wikipedia.org/wiki/Internet_Protocol)
+The _Internet Protocol_ (_IP_) is the principal communications protocol in the Internet protocol suite for relaying datagrams across network boundaries. Its [routing](#routing) function enables internetworking, and essentially establishes the [Internet](#internet).
+
+IP has the task of delivering [packets](#network-packet) from the source host to the destination host solely based on the [IP addresses](#ip-address) in the packet headers. For this purpose, IP defines packet structures that encapsulate the data to be delivered. It also defines addressing methods that are used to label the datagram with source and destination information.
+
+## [Internet Protocol Suite](https://en.wikipedia.org/wiki/Internet_protocol_suite)
+The _Internet protocol suite_ is the conceptual model and set of communications protocols used in the [Internet](#internet) and similar [computer networks](#computer-network). It is commonly known as _TCP/IP_ because the foundational protocols in the suite are the Transmission Control Protocol (TCP) and the [Internet Protocol](#internet-protocol) (IP). During its development, versions of it were known as the Department of Defense (DoD) model because the development of the networking method was funded by the United States Department of Defense through DARPA. Its implementation is a protocol stack.
+
 ## [Interoperability](https://en.wikipedia.org/wiki/Interoperability)
 A characteristic of a product or system, whose interaces are completely understood, to work with other products or systems, at present or in the future, in either implementation or access, without any restrictions. The term was initially defined for information technology or systems engineering services to allow for information exchange.
 
@@ -349,13 +405,28 @@ In computer science, an _interpreter_ is a computer program that directly execut
 2. Translate source code into some efficient intermediate representation and immediately execute this;
 3. Explicitly execute stored precompiled code made by a compiler which is part of the interpreter system.
 
+## [IP Address](https://en.wikipedia.org/wiki/IP_address)
+An _Internet Protocol address_ (_IP address_) is a numerical label assigned to each device connected to a [computer network](#computer-network) that uses the [Internet Protocol](#internet-protocol) for communication. An IP address serves two main functions: host or network interface identification and location addressing.
+
 ## [Jaggies](https://en.wikipedia.org/wiki/Jaggies)
 _"Jaggies"_ is the informal name for artifacts in [raster images](#raster-scan), most frequently from aliasing, which in turn is often caused by non-linear mixing effects producing high-frequency components, or missing or poor anti-aliasing filtering prior to sampling.
 
 Jaggies are stair-like lines that appear where there should be "smooth" straight lines or curves. For example, when a nominally straight, un-aliased line steps across one pixel either horizontally or vertically, a "dogleg" occurs halfway through the line, where it crosses the threshold from one pixel to the other.
 
+## [Latency](https://en.wikipedia.org/wiki/Latency_(engineering))
+_Latency_ from a general point of view is a time delay between the cause and the effect of some physical change in the system being observed, but, known within gaming circles as "lag", latency is a time interval between the input to a simulation and the visual or auditory response, often occurring because of [network](#computer-network) delay in online games.
+
+Latency is physically a consequence of the limited velocity which any physical interaction can propagate. The magnitude of this velocity is always less than or equal to the speed of light. Therefore, every physical system with any physical separation (distance) between cause and effect will experience some sort of latency, regardless of the nature of stimulation that it has been exposed to.
+
+The precise definition of latency depends on the system being observed or the nature of the simulation. In communications, the lower limit of latency is determined by the medium being used to transfer information. In reliable two-way communication systems, latency limits the maximum rate that information can be transmitted, as there is often a limit on the amount of information that is "in-flight" at any one moment. In the field of humanmachine interaction, perceptible latency has a strong effect on user satisfaction and usability.
+
 ## [Liquid-Crystal Display](https://en.wikipedia.org/wiki/Liquid-crystal_display)
 A _liquid-crystal display_ (_LCD_) is a flat-panel display or other electronically modulated optical device that uses the light-modulating properties of liquid crystals combined with polarizers. Liquid crystals do not emit light directly, instead using a backlight or reflector to produce images in color or monochrome. LCDs are available to display arbitrary images (as in a general-purpose computer display) or fixed images with low information content, which can be displayed or hidden, such as preset words, digits, and seven-segment displays, as in a digital clock. They use the same basic technology, except that arbitrary images are made from a matrix of small pixels, while other displays have larger elements. LCDs can either be normally on (positive) or off (negative), depending on the polarizer arrangement. For example, a character positive LCD with a backlight will have black lettering on a background that is the color of the backlight, and a character negative LCD will have a black background with the letters being of the same color as the backlight. Optical filters are added to white on blue LCDs to give them their characteristic appearance.
+
+## [Local Area Network](https://en.wikipedia.org/wiki/Local_area_network)
+A _local area network_ (_LAN_) is a computer network that interconnects computers within a limited area such as a residence, school, laboratory, university campus or office building. By contrast, a wide area network (WAN) not only covers a larger geographic distance, but also generally involves leased telecommunication circuits.
+
+[Ethernet](#ethernet) and Wi-Fi are the two most common technologies in use for local area networks. Historical network technologies include ARCNET, Token ring, and AppleTalk.
 
 ## [Kernel](https://en.wikipedia.org/wiki/Kernel_(operating_system))
 The _kernel_ is a computer program at the core of a computer's [operating system](#operating-system) with complete control over everything in the system. It is an integral part of any operating system. It is the "portion of the operating system code that is always resident in memory". It facilitates interactions between hardware and software components. On most systems, it is one of the first programs loaded on startup (after the bootloader). It handles the rest of startup as well as [input/output](#inputoutput) (I/O) requests from software, translating them into data-processing instructions for the central processing unit. It handles memory and peripherals like keyboards, monitors, printers, and speakers.
@@ -397,6 +468,9 @@ Well-designed lossy compression technology often reduces file sizes significantl
 
 Lossy compression is most commonly used to compress multimedia data (audio, video, and images), especially in applications such as streaming media and internet telephony. By contrast, lossless compression is typically required for text and data files, such as bank records and text articles. It can be advantageous to make a master lossless file which can then be used to produce additional copies from. This allows one to avoid basing new compressed copies off of a lossy source file, which would yield additional artifacts and further unnecessary information loss.
 
+## [MAC Address](https://en.wikipedia.org/wiki/MAC_address)
+A _media access control address_ (_MAC address_) is a unique identifier assigned to a network interface controller (NIC) for use as a network address in communications within a network segment. This use is common in most IEEE 802 networking technologies, including [Ethernet](#ethernet), Wi-Fi, and Bluetooth. Within the Open Systems Interconnection (OSI) network model, MAC addresses are used in the medium access control protocol sublayer of the data link layer. As typically represented, MAC addresses are recognizable as six groups of two hexadecimal digits, separated by hyphens, colons, or without a separator.
+
 ## [Machine Code](https://en.wikipedia.org/wiki/Machine_code)
 In computer programming, _machine code_, consisting of machine language instructions, is a low-level programming language used to directly control a computer's [central processing unit](#central-processing-unit). Each instruction causes the CPU to perform a specific task such as a _load_, a _store_, a _jump_, or an [arithmetic logic unit (ALU)](../05/README.md) operation on one or more units of of data in the CPU's [registers](#register) or memory.
 
@@ -411,6 +485,9 @@ The process of reading the core causes the core to be reset to a zero, thus eras
 
 ## [Magnetic Tape](https://en.wikipedia.org/wiki/Magnetic_tape)
 _Magnetic tape_ is a medium for magnetic recording, made of a thin, magnetizable coating on a long, narrow strip of plastic film. It was developed in Germany in 1928, based on magnetic wire recording. Devices that record and playback audio and video using magnetic tape are tape recorders and video tape recorders respectively. A device that stores computer data on magnetic tape is known as a tape drive.
+
+## [Message Switching](https://en.wikipedia.org/wiki/Message_switching)
+In telecommunications, _message switching_ involves messages routed in their entirety, one hop at a time. It evolved from [circuit switching](#circuit-switching) and was the precursor of [packet switching](#packet-switching).
 
 ## [Microarchitecture](https://en.wikipedia.org/wiki/Microarchitecture)
 In computer engineering, _microarchitecture_, also called _computer organization_, is the way a given [instruction set architecture (ISA)](https://en.wikipedia.org/wiki/Instruction_set_architecture) is implemented in a particular [processor](#central-processing-unit).
@@ -468,6 +545,18 @@ A _multiplexer_ (or _mux_/_data selector_) is a device that selects between seve
 ## [Multitasking](https://en.wikipedia.org/wiki/Computer_multitasking)
 _Multitasking_ is the concurrent execution of multiple tasks (also known as processes) over a certain period of time. New tasks can interrupt already started ones before they finish, instead of waiting for them to end. As a result, a computer executes segments of multiple tasks in an interleaved manner, while the tasks share common processing resources such as [central processing units](#central-processing-unit) (CPUs) and main memory. Multitasking automatically interrputs the running program, saving its state (partial results, memory contents and computer register contents) and loading the saved state of another program and transferring control to it. This "context switch" may be initiated at fixed time intervals (pre-emptive multitasking), or the running program may be coded to signal to the supervisory software when it can be interrupted (cooperative multitasking).
 
+## [Network Packet](https://en.wikipedia.org/wiki/Network_packet)
+In telecommunications and computer networking, a _network packet_ is a formatted unit of data carried by a [packet-switched](#packet-switching) network. A packet consists of control information and user data; the latter is also known as the payload. Control information provides data for delivering the payload (e.g., source and destination network addresses, error detection codes, or sequencing information). Typically, control information is found in packet [headers](#header) and trailers.
+
+In packet switching, the bandwidth of the transmission medium is shared between multiple communication sessions, in contrast to circuit switching, in which circuits are preallocated for the duration of one session and data is typically transmitted as a continuous bit stream.
+
+## [Network Switch](https://en.wikipedia.org/wiki/Network_switch)
+A _network switch_ (also called _switching hub_, _bridging hub_, and, by the IEEE, _MAC bridge_) is networking hardware that connects devices on a [computer network](#computer-networ) by using packet switching to receive and forward data to the destination device.
+
+A network switch is a multiport network bridge that uses MAC addresses to forward data at the data link layer (layer 2) of the OSI model. Some switches can also forward data at the network layer (layer 3) by additionally incorporating [routing](#routing) functionality. Such switches are commonly known as layer-3 switches or multilayer switches.
+
+Switches for [Ethernet](#ethernet) are the most common form of network switch. The first Ethernet switch was introduced by Kalpana in 1990. Switches also exist for other types of networks including Fibre Channel, Asynchronous Transfer Mode, and InfiniBand.
+
 ## [Node](https://en.wikipedia.org/wiki/Node_(computer_science))
 A _node_ is a basic unit of a data structure, such as a [linked list](#linked-list) or _[tree](#tree)_ data structure. Nodes contain data and also may link to other nodes. Links between nodes are often implemented by [pointers](#pointer).
 
@@ -502,6 +591,9 @@ _Orthographic projection_ (sometimes referred to as _orthogonal projection_, use
 
 ## [Out-Of-Order Execution](https://en.wikipedia.org/wiki/Out-of-order_execution)
 _Out-of-order execution_ (or _dynamic execution_) is a paradigm used in most high-performance [CPUs](#central-processing-unit) to make use of [instruction cycles](#clock-signal) that would otherwise be wasted. In this paradigm, a processor executes instructions in an order governed by the availability of input data and execution units, rather than by their original order in a program. In doing so, the processor can avoid being idle while waiting for the preceding instruction to complete and can, in the meantime, process the next instructions that are able to run immediately and independently.
+
+## [Packet Switching](https://en.wikipedia.org/wiki/Packet_switching)
+In telecommunications, _packet switching_ is a method of grouping data that is transmitted over a digital network into packets. Packets are made of a [header](#header) and a payload. Data in the header is used by networking hardware to direct the packet to its destination, where the payload is extracted and used by application software. Packet switching is the primary basis for data communications in [computer networks](#computer-network) worldwide.
 
 ## [Painter's Algorithm](https://en.wikipedia.org/wiki/Painter%27s_algorithm)
 The _painter’s algorithm_ (also _depth-sort algorithm_ and _priority fill_) is an algorithm for visible surface determination in 3D computer graphics that works on a polygon-by-polygon basis rather than a pixel-by-pixel, row by row, or area by area basis of other Hidden Surface Removal algorithms. The painter’s algorithm creates images by sorting the polygons within the image by their depth and placing each polygon in order from the farthest to the closest object.
@@ -600,6 +692,9 @@ A _resistor_ is a passive two-terminal electrical component that implements elec
 ## [Ripple-Carry Adder](https://en.wikipedia.org/wiki/Adder_(electronics)#Ripple-carry_adder)
 A _ripple-carry adder_ is a circuit that utilizes multiple [full adders](#full-adder) to add _N_-bit numbers. Each full adder inputs a C<sub>in</sub>, which is the C<sub>out</sub> of the previous adder. This kind of adder is called a ripper-carry adder (RCA) because each carry bit "ripples" to the next full adder. The first (and only the first) full adder may be replaced with a [half adder](#half-adder) under the assumption that C<sub>in</sub> = 0.
 
+## [Routing](https://en.wikipedia.org/wiki/Routing)
+_Routing_ is the process of selecting a path for traffic in a network or between or across multiple networks. Broadly, routing is performed in many types of networks, including circuit-switched networks, such as the public switched telephone network (PSTN), and [computer networks](#computer-network), such as the [Internet](#internet).
+
 ## [Run-Length Encoding](https://en.wikipedia.org/wiki/Run-length_encoding)
 _Run-length encoding_ (_RLE_) is a form of [lossless](#lossless-compression) [data compression](#data-compression) in which runs of data (sequences in which the same data value occurs in many consecutive data elements) are stored as a single data value and count, rather than as the original run. This is most useful on data that contains many such runs. Consider, for example, simple graphic images such as icons, line drawings, Conway's Game of Life, and animations. It is not useful with files that don't have many runs as it could greatly increase the file size.
 
@@ -625,6 +720,9 @@ A type of [logic circuit](#logic-gate) whose output depends not only on the pres
 
 ## [Shading](https://en.wikipedia.org/wiki/Shading)
 _Shading_ refers to the depiction of depth perception in 3D models (within the field of 3D computer graphics) or illustrations (in visual art) by varying the level of darkness. Shading tries to approximate local behavior of light on the object's surface and is not to be confused with techniques of adding shadows, such as shadow mapping or shadow volumes, which fall under global behavior of light.
+
+## [Sneakernet](https://en.wikipedia.org/wiki/Sneakernet)
+_Sneakernet_ is an informal term for the transfer of electronic information by physically moving media such as [magnetic tape](#magnetic-tape), [floppy disks](#floppy-disk), optical discs, USB flash drives or external [hard drives](#hard-disk-drive) between computers, rather than transmitting it over a [computer network](#computer-network). The term, a tongue-in-cheek play on net(work) as in [Internet](#internet) or [Ethernet](#ethernet), refers to walking in sneakers as the transport mechanism.
 
 ## [Software Documentation](https://en.wikipedia.org/wiki/Software_documentation)
 Written text or illustration that accompanies computer software or is embedded in the source code. The documentation either explains how the software operates or how to use it, and may mean different things to people in different roles.
@@ -682,6 +780,9 @@ A _superscalar [CPU](#central-processing-unt)_ design makes a form of parallel c
 
 ## [Syntax](https://en.wikipedia.org/wiki/Syntax_(programming_languages))
 The _syntax_ of a computer language is the set of rules that defines th combinations of symbols that are considered to be correctly structured [statements](#statement) and expressions in that language. This applies to both _programming languages_ where the document represents source code, and to _markup languages_, where the document represents data.
+
+## [TCP Congestion Control](https://en.wikipedia.org/wiki/TCP_congestion_control)
+Transmission Control Protocol (TCP) uses a network congestion-avoidance algorithm that includes various aspects of an additive increase/multiplicative decrease (AIMD) scheme, along with other schemes including slow start and congestion window, to achieve congestion avoidance. The TCP congestion-avoidance algorithm is the primary basis for congestion control in the [Internet](#internet). Per the end-to-end principle, congestion control is largely a function of internet hosts, not the [network](#computer-network) itself. There are several variations and versions of the algorithm implemented in protocol stacks of operating systems of computers that connect to the Internet.
 
 ## [Teleprinter](https://en.wikipedia.org/wiki/Teleprinter)
 A _teleprinter_ (_teletypewriter_, _teletype_ or _TTY_) is an electromechanical device that can be used to send and receive typed messages through various communications channels, in both point-to-point and point-to-multipoint configurations. Initially they were used in telegraphy, which developed in the late 1830s and 1840s as the first use of electrical engineering, though teleprinters were not used for telegraphy until 1887 at the earliest. The machines were adapted to provide a user interface to early mainframe computers and minicomputers, sending typed data to the computer and printing the response. Some models could also be used to create [punched tape](#punched-tape) for data storage (either from typed input or from data received from a remote source) and to read back such tape for local printing or transmission.
@@ -767,6 +868,9 @@ Computer memory that requires power to maintain the stored information. It retai
 
 ## [Wafer](https://en.wikipedia.org/wiki/Wafer_(electronics))
 In electronics, a _wafer_ (also called a _slice_ or _substrate_) is a thin slice of semicondutor, such as crytalline silicon (c-Si), used for the fabrication of [integrated circuits](#integrated-circuit) and, in photovoltaics, to manufacture solar cells. The wafer serves as the substrate for microelectronic devices built in and upon the wafer. It undergoes many microfabrication processes, such as doping, ion implantation, etching, thin-film deposition of various materials, and photolithographic patterning. Finally, the individual microcircuits are separated by wafer dicing and packaged as an integrated circuit.
+
+## [Wi-Fi](https://en.wikipedia.org/wiki/Wi-Fi)
+_Wi-Fi_ is a family of wireless network protocols, based on the IEEE 802.11 family of standards, which are commonly used for [local area networking](#local-area-network) of devices and Internet access. Wi‑Fi is a trademark of the non-profit Wi-Fi Alliance, which restricts the use of the term Wi-Fi Certified to products that successfully complete interoperability certification testing. As of 2017, the Wi-Fi Alliance consisted of more than 800 companies from around the world. As of 2019, over 3.05 billion Wi-Fi enabled devices are shipped globally each year. Devices that can use Wi-Fi technologies include [personal computer](#personal-computer) desktops and laptops, smartphones and tablets, smart TVs, printers, smart speakers, cars, and drones.
 
 ## [Window](https://en.wikipedia.org/wiki/Window_(computing))
 In computing, a _window_ is a graphical control element. It consists of a visual area containing some of the [graphical user interface](#graphical-user-interface) of the program it belongs to and is framed by a window decoration. It usually has a rectangular shape that can overlap with the area of other windows. It displays the output of and may allow input to one or more processes.
