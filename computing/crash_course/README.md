@@ -81,6 +81,7 @@ Date: July 2020 - Ongoing
 * 26: [Graphical User Interfaces](./26/README.md)
 * 27: [3D Graphics](./27/README.md)
 * 28: [Computer Networks](./28/README.md)
+* 29: [The Internet](./29/README.md)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 

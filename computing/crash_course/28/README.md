@@ -55,4 +55,4 @@ The world's first packet-switched network, and the ancestor to the modern intern
 <br />
 Each block is a location, like a university or research lab, that operated a router. They also plugged in one or more computers - seen in the diagram are [PDP-1's](https://en.wikipedia.org/wiki/PDP-1), [IBM Systemr/360s](https://en.wikipedia.org/wiki/IBM_System/360), and even an [ATLAS](https://en.wikipedia.org/wiki/Atlas_(computer)) in London connected over a satellite link. Obviously the internet has grown by leaps and bounds in the decades since. Today, instead of a few dozen computers online, it's estimated to be nearing 10 billion and it continues to grow rapidly, especially with the advent of Wi-Fi-connected refridgerators, thermostats, and other smart appliances forming an ["internet of things"](../glossary/README.md#internet-of-things).
 
-| [Previous: 3D Graphics](../27/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: 3D Graphics](../27/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: The Internet](../29/README.md) |
