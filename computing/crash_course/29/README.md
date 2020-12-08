@@ -48,4 +48,4 @@ In [computer networking](../glossary/README.md#computer-network) the [physical l
 
 Abstraction allows computer engineers and scientists to be improving all of these different levels of the stack simultaneously, without being overwhelmed by the full complexity.
 
-| [Previous: Computer Networks](../28/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: Computer Networks](../28/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: The World Wide Web](../30/README.md) |
