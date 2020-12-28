@@ -86,8 +86,17 @@ As a noun, the term "bitmap" is very often used to refer to a particular bitmapp
 
 A bitmap is a type of memory organization or image [file format](#file-format) used to store digital images. The term bitmap comes from the computer programming terminology, meaning just a map of bits, a spatially mapped array of bits. Now, along with pixmap, it commonly refers to the similar concept of a spatially mapped array of pixels. [Raster](#raster-scan) images in general may be referred to as bitmaps or pixmaps, whether synthetic or photographic, in files or memory.
 
+
+## [Black Hat](https://en.wikipedia.org/wiki/Black_hat_(computer_security))
+A _black hat hacker_ (or _black-hat hacker_) is a [hacker](#security-hacker) who violates computer security for personal gain or malice.
+
 ## [Botnet](https://en.wikipedia.org/wiki/Botnet)
 A _botnet_ is a number of [Internet](#internet)-connected devices, each of which is running one or more bots. Botnets can be used to perform [Distributed Denial-of-Service](#denial-of-service-attack) (DDoS) attacks, steal data, send spam, and allow the attacker to access the device and its connection. The owner can control the botnet using command and control (C&C) software. The word "botnet" is a portmanteau of the words "robot" and "network". The term is usually used with a negative or malicious connotation.
+
+## [Bounds Checking](https://en.wikipedia.org/wiki/Bounds_checking)
+In computer programming, _bounds checking_ is any method of detecting whether a variable is within some bounds before it is used. It is usually used to ensure that a number fits into a given type (range checking), or that a variable being used as an array index is within the bounds of the array (index checking). A failed bounds check usually results in the generation of some sort of exception signal.
+
+Because performing bounds checking during every usage is time-consuming, it is not always done. Bounds-checking elimination is a compiler optimization technique that eliminates unneeded bounds checking.
 
 ## [Branch Predictor](https://en.wikipedia.org/wiki/Branch_predictor)
 A digital circuit that tries to guess which way a branch (e.g., an if-then-else structure) will go before this is known definitively. The purpose of the _branch predictor_ is to improve the flow in the [instruction pipeline](#instruction-pipelining).
@@ -96,6 +105,13 @@ A digital circuit that tries to guess which way a branch (e.g., an if-then-else 
 In cryptography, a _brute-force attack_ consists of an attacker submitting many passwords or passphrases with the hope of eventually guessing a combination correctly. The attacker systematically checks all possible passwords and passphrases until the correct one is found. Alternatively, the attacker can attempt to guess the key which is typically created from the password using a key derivation function. This is known as an exhaustive key search.
 
 A brute-force attack is a cryptanalytic attack that can, in theory, be used to attempt to decrypt any encrypted data (except for data encrypted in an information-theoretically secure manner). Such an attack might be used when it is not possible to take advantage of other weaknesses in an encryption system (if any exist) that would make the task easier.
+
+## [Buffer Overflow](https://en.wikipedia.org/wiki/Buffer_overflow)
+In information security and programming, a _buffer overflow_, or _buffer overrun_, is an anomaly where a program, while writing data to a buffer, overruns the buffer's boundary and overwrites adjacent memory locations.
+
+Buffers are areas of memory set aside to hold data, often while moving it from one section of a program to another, or between programs. Buffer overflows can often be triggered by malformed inputs; if one assumes all inputs will be smaller than a certain size and the buffer is created to be that size, then an anomalous transaction that produces more data could cause it to write past the end of the buffer. If this overwrites adjacent data or executable code, this may result in erratic program behavior, including memory access errors, incorrect results, and crashes.
+
+[Exploiting](#exploit) the behavior of a buffer overflow is a well-known security exploit. On many systems, the memory layout of a program, or the system as a whole, is well defined. By sending in data designed to cause a buffer overflow, it is possible to write into areas known to hold executable code and replace it with malicious code, or to selectively overwrite data pertaining to the program's state, therefore causing behavior that was not intended by the original programmer. Buffers are widespread in [operating system](#operating-system) (OS) code, so it is possible to make attacks that perform privilege escalation and gain unlimited access to the computer's resources. The famed Morris worm in 1988 used this as one of its attack techniques.
 
 ## [Bus](https://en.wikipedia.org/wiki/Bus_(computing))
 A _bus_ is a communication system that transfers data between components inside a computer, or between computers. The expression covers all related hardware components (wire, optical fiber, etc.) and software, including communication protocols.
@@ -136,6 +152,9 @@ A _clock signal_ (or _logic beat_) oscillates between a high and a low state and
 
 ## [Clock Generator](https://en.wikipedia.org/wiki/Clock_generator)
 A _clock generator_ is an electronic oscillator (circuit) that produces a [clock signal](#clock-signal) for use in synchronizing a circuit's operation. The signal can range from a simple symmetrical square wave to more complex arrangements. The basic parts that all clock generators share are a resonant circuit and an amplifier.
+
+## [Code Injection](https://en.wikipedia.org/wiki/Code_injection)
+_Code injection_ is the [exploitation](#exploit) of a computer bug that is caused by processing invalid data. Injection is used by an attacker to introduce (or "inject") code into a vulnerable computer program and change the course of execution. The result of successful code injection can be disastrous, for example by allowing computer worms to propagate.
 
 ## [Code Reuse](https://en.wikipedia.org/wiki/Code_reuse)
 _Code reuse_, also called _software reuse_ is the use of existing software, or software knowledge, to build new software, following the [reusability principles](https://en.wikipedia.org/wiki/Reusability).
@@ -205,6 +224,11 @@ Early terminals were inexpensive devices but very slow compared to [punched card
 
 The function of a terminal is typically confined to transcription and input of data; a device with significant local programmable data processing capability may be called a "smart terminal" or fat client. A terminal that depends on the host computer for its processing power is called a "dumb terminal" or a thin client. A personal computer can run terminal emulator software that replicates the function of a terminal, sometimes allowing concurrent use of local programs and access to a distant terminal host system.
 
+## [Computer Worm](https://en.wikipedia.org/wiki/Computer_worm)
+A _computer worm_ is a standalone [malware](#malware) computer program that replicates itself in order to spread to other computers. It often uses a [computer network](#computer-network) to spread itself, relying on security failures on the target computer to access it. It will use this machine as a host to scan and infect other computers. When these new worm-invaded computers are controlled, the worm will continue to scan and infect other computers using these computers as hosts, and this behaviour will continue. Computer worms use recursive methods to copy themselves without host programs and distribute themselves based on the law of exponential growth, thus controlling and infecting more and more computers in a short time. Worms almost always cause at least some harm to the network, even if only by consuming [bandwidth](#bandwidth), whereas viruses almost always corrupt or modify files on a targeted computer.
+
+Many worms are designed only to spread, and do not attempt to change the systems they pass through. However, as the Morris worm and Mydoom showed, even these "payload-free" worms can cause major disruption by increasing network traffic and other unintended effects.
+
 ## [Conditional](https://en.wikipedia.org/wiki/Conditional_(computer_programming))
 In computer science, _conditional statements_, _conditional expressions_, and _conditional constructs_ are features of a programming language, which performs different computations or actions depending on whether a programmer-specified boolean _condition_ evaluates to `true` or `false`. Apart from the case of [branch prediction](#branch-predictor), this is always achieved by selectively altering the [control flow](#control-flow) based on some condition.
 
@@ -231,6 +255,14 @@ In humancomputer interaction and user interface design, _cut, copy, and paste_ a
 The command names are an interface metaphor based on the physical procedure used in manuscript editing to create a page layout.
 
 This interaction technique has close associations with related techniques in [graphical user interfaces](#graphical-user-interface) (GUIs) that use pointing devices such as a [computer mouse](#computer-mouse) (by drag and drop, for example). Typically, clipboard support is provided by an [operating system](#operating-system) as part of its GUI and widget toolkit.
+
+## [Cybercrime](https://en.wikipedia.org/wiki/Cybercrime)
+_Cybercrime_, or _computer-oriented crime_, is a crime that involves a computer and a [network](#computer-network). The computer may have been used in the commission of a crime, or it may be the target. Cybercrime may threaten a person, company or a nation's security and financial health.
+
+## [Cyberwarfare](https://en.wikipedia.org/wiki/Cyberwarfare)
+_Cyberwarfare_ is the use of digital attacks to attack a nation, causing comparable harm to actual warfare and or disrupting the vital computer systems. There is significant debate among experts regarding the definition of cyberwarfare, and even if such a thing exists. One view is that the term "cyberwarfare" is a misnomer, since no offensive cyber actions to date could be described as "war". An alternative view is that "cyberwarfare" is a suitable label for cyber attacks which cause physical damage to people and objects in the real world.
+
+While there is debate over how to define and use "cyberwarfare" as a term, many countries including the United States, United Kingdom, Russia, India, Pakistan, China, Israel, Iran, and North Korea have active cyber capabilities for offensive and defensive operations. As states explore the use of cyber operations and combine capabilities the likelihood of physical confrontation and violence playing out as a result of, or part of, a cyber operation is increased. However, meeting the scale and protracted nature of war is unlikely, thus ambiguity remains.
 
 ## [Data Compression](https://en.wikipedia.org/wiki/Data_compression)
 In signal processing, _data compression_, _source coding_, or _bit-rate reduction_ is the process of encoding information using fewer [bits](#bit) than the original representation. Any particular compression is either [lossy](#lossy-compression) or [lossless](#lossless-compression). Lossless compression reduces bits by identifying and eliminating statistical redundancy. No information is lost in lossless compression. Lossy compression reduces bits by removing unnecessary or less important information. Typically, a device that performs data compression is referred to as an encoder, and one that performs the reversal of the process (decompression) as a decoder.
@@ -325,6 +357,9 @@ In computer programming, _event-driven programming_ is a [programming paradigm](
 
 In an event-driven application, there is generally a main loop that listens for events and then triggers a callback function when one of those events is detected. In embedded systems, the same may be achieved using hardware interrupts instead of a constantly running main loop. Event-driven programs can be written in any programming language, although the task is easier in languages that provide high-level abstractions, such as await and closures.
 
+## [Exploit](https://en.wikipedia.org/wiki/Exploit_(computer_security))
+An _exploit_ (from the English verb to _exploit_, meaning "to use something to one’s own advantage") is a piece of software, a chunk of data, or a sequence of commands that takes advantage of a bug or vulnerability to cause unintended or unanticipated behavior to occur on computer software, hardware, or something electronic (usually computerized). Such behavior frequently includes things like gaining control of a computer system, allowing privilege escalation, or a [denial-of-service](#denial-of-service-attack) (DoS or related DDoS) attack.
+
 ## [Exponential Backoff](https://en.wikipedia.org/wiki/Exponential_backoff)
 _Exponential backoff_ is an algorithm that uses feedback to multiplicatively decrease the rate of some process, in order to gradually find an acceptable rate.
 
@@ -403,6 +438,9 @@ A _graphics library_ is a program library designed to aid in rendering computer 
 
 ## [Graphics Processing Unit](https://en.wikipedia.org/wiki/Graphics_processing_unit)
 A _graphics processing unit_ (_GPU_) is a specialized, electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images in a frame buffer intended for output to a display device. GPUs are used in embedded systems, mobile phones, personal computers, workstations, and game consoles. Modern GPUs are very efficient at manipulating computer graphics and image processing. Their highly parallel structure makes them more efficient than general-purpose [central processing units](#central-processing-unit) (CPUs) for algorithms that process large blocks of data in parallel. In a [personal computer](#personal-computer), a GPU can be present on a [video card](#video-card) or embedded on the [motherboard](#motherboard). In certain CPUs, they are embedded on the CPU die.
+
+## [Hacktivism](https://en.wikipedia.org/wiki/Hacktivism)
+In Internet activism, _hacktivism_, or _hactivism_ (a portmanteau of [hack](#security-hacker) and activism), is the use of computer-based techniques such as hacking as a form of civil disobedience to promote a political agenda or social change. With roots in hacker culture and hacker ethics, its ends are often related to free speech, human rights, or freedom of information movements.
 
 ## [Half Adder](https://en.wikipedia.org/wiki/Adder_(electronics)#Half_adder)
 The _half adder_ is a circuit that adds two single binary digits A and B. It has two outputs, sum (S) and carry (C). The carry signal represents an overflow into the next digit of a multi-digit addition.
@@ -736,6 +774,11 @@ Perspective projection or perspective transformation is a linear projection wher
 
 It also means that lines which are parallel in nature (that is, meet at the point at infinity) appear to intersect in the projected image, for example if railways are pictured with perspective projection, they appear to converge towards a single point, called the vanishing point. Photographic lenses and the human eye work in the same way, therefore perspective projection looks most realistic. Perspective projection is usually categorized into one-point, two-point and three-point perspective, depending on the orientation of the projection plane towards the axes of the depicted object.
 
+## [Phishing](https://en.wikipedia.org/wiki/Phishing)
+_Phishing_ is the fraudulent attempt to obtain sensitive information or data, such as usernames, passwords and credit card details, by disguising oneself as a trustworthy entity in an electronic communication. Typically carried out by email spoofing, instant messaging, and text messaging, phishing often directs users to enter personal information at a fake website which matches the look and feel of the legitimate site.
+
+Phishing is an example of [social engineering](#social-engineering) techniques used to deceive users. Users are lured by communications purporting to be from trusted parties such as social web sites, auction sites, banks, colleagues/executives, online payment processors or IT administrators.
+
 ## [Physical Layer](https://en.wikipedia.org/wiki/Physical_layer)
 In the seven-layer OSI model of [computer networking](#computer-network), the _physical layer_ or _layer 1_ is the first and lowest layer. This layer may be implemented by a PHY chip.
 
@@ -815,6 +858,11 @@ _Read-only memory_ (_ROM_) is a type of [non-volatile memory](#non-volatile-memo
 ## [Random-Access Memory](https://en.wikipedia.org/wiki/Random-access_memory)
 _Random-access memory_ (_RAM_) is a form of computer memory that can be read and changed in any order, typically used to store working data and machine code. Most RAM is [volatile](#volatile-memory).
 
+## [Ransomware](https://en.wikipedia.org/wiki/Ransomware)
+_Ransomware_ is a type of [malware](#malware) from cryptovirology that threatens to publish the victim's data or perpetually block access to it unless a ransom is paid. While some simple ransomware may lock the system so that it is not difficult for a knowledgeable person to reverse, more advanced malware uses a technique called cryptoviral extortion. It encrypts the victim's files, making them inaccessible, and demands a ransom payment to decrypt them. In a properly implemented cryptoviral extortion attack, recovering the files without the decryption key is an intractable problem  and difficult to trace digital currencies such as paysafecard or Bitcoin and other cryptocurrencies are used for the ransoms, making tracing and prosecuting the perpetrators difficult.
+
+Ransomware attacks are typically carried out using a [Trojan](#trojan-horse) disguised as a legitimate file that the user is tricked into downloading or opening when it arrives as an email attachment. However, one high-profile example, the WannaCry worm, traveled automatically between computers without user interaction.
+
 ## [Raster Scan](https://en.wikipedia.org/wiki/Raster_scan)
 A _raster scan_, or _raster scanning_, is the rectangular pattern of image capture and reconstruction in television. By analogy, the term is used for raster graphics, the pattern of image storage and transmission used in most computer [bitmap](#bitmap) image systems. The word raster comes from the Latin word _rastrum_ (a rake), which is derived from _radere_ (to scrape). The pattern left by the lines of a rake, when drawn straight, resembles the parallel lines of a raster: this line-by-line scanning is what creates a raster. It is a systematic process of covering the area progressively, one line at a time. Although often a great deal faster, it is similar in the most general sense to how one's gaze travels when one reads lines of text. Picture definition is stored in memory area is called Refresh Buffer or Frame Buffer. This memory area holds the intensity value of all the screen points. Stored intensity values are then retrieved from refresh buffer and pointed on the screen one row at a time.
 
@@ -851,7 +899,7 @@ A scheduler is what carries out the scheduling activity. Schedulers are often im
 A _search engine_ is a software system that is designed to carry out web searches ([Internet](#internet) searches), which means to search the [World Wide Web](#world-wide-web) in a systematic way for particular information specified in a textual web search query. The search results are generally presented in a line of results, often referred to as search engine results pages (SERPs). The information may be a mix of [links](#hyperlink) to [web pages](#web-page), images, videos, infographics, articles, research papers, and other types of [files](#file). Some search engines also mine data available in databases or open directories. Unlike web directories, which are maintained only by human editors, search engines also maintain real-time information by running an algorithm on a [web crawler](#web-crawler). Internet content that is not capable of being searched by a web search engine is generally described as the deep web.
 
 ## [Security Hacker](https://en.wikipedia.org/wiki/Security_hacker)
-A _security hacker_ is someone who explores methods for breaching defenses and exploiting weaknesses in a computer system or [network](#computer-network). Hackers may be motivated by a multitude of reasons, such as profit, protest, information gathering, challenge, recreation, or to evaluate system weaknesses to assist in formulating defenses against potential hackers. The subculture that has evolved around hackers is often referred to as the "computer underground".
+A _security hacker_ is someone who explores methods for breaching defenses and [exploiting](#exploit) weaknesses in a computer system or [network](#computer-network). Hackers may be motivated by a multitude of reasons, such as profit, protest, information gathering, challenge, recreation, or to evaluate system weaknesses to assist in formulating defenses against potential hackers. The subculture that has evolved around hackers is often referred to as the "computer underground".
 
 ## [Sequential Access Memory](https://en.wikipedia.org/wiki/Sequential_access_memory)
 In computing, sequential access memory (SAM) is a class of data storage devices that read stored data in a sequence. This is in contrast to [random access memory](#random-access-memory) (RAM) where data can be accessed in any order. Sequential access devices are usually a form of magnetic storage or optical storage.
@@ -876,6 +924,11 @@ _Shading_ refers to the depiction of depth perception in 3D models (within the f
 
 ## [Sneakernet](https://en.wikipedia.org/wiki/Sneakernet)
 _Sneakernet_ is an informal term for the transfer of electronic information by physically moving media such as [magnetic tape](#magnetic-tape), [floppy disks](#floppy-disk), optical discs, USB flash drives or external [hard drives](#hard-disk-drive) between computers, rather than transmitting it over a [computer network](#computer-network). The term, a tongue-in-cheek play on net(work) as in [Internet](#internet) or [Ethernet](#ethernet), refers to walking in sneakers as the transport mechanism.
+
+## [Social Engineering](https://en.wikipedia.org/wiki/Social_engineering_(security))
+In the context of information security, _social engineering_ is the psychological manipulation of people into performing actions or divulging confidential information. This differs from social engineering within the social sciences, which does not concern the divulging of confidential information. A type of confidence trick for the purpose of information gathering, fraud, or system access, it differs from a traditional "con" in that it is often one of many steps in a more complex fraud scheme.
+
+It has also been defined as "any act that influences a person to take an action that may or may not be in their best interests."
 
 ## [Software Documentation](https://en.wikipedia.org/wiki/Software_documentation)
 Written text or illustration that accompanies computer software or is embedded in the source code. The documentation either explains how the software operates or how to use it, and may mean different things to people in different roles.
@@ -988,6 +1041,13 @@ A _tree_ is a widely used abstract data type that simulates a hierarchical _tree
 <br/>
 A generic, and so non-binary, unsorted, some labels duplicated, arbitrary diagram of a tree.
 
+## [Trojan Horse](https://en.wikipedia.org/wiki/Trojan_horse_(computing))
+In computing, a _Trojan horse_ (or simply _trojan_) is any [malware](#malware) which misleads users of its true intent. The term is derived from the Ancient Greek story of the deceptive Trojan Horse that led to the fall of the city of Troy.
+
+Trojans are generally spread by some form of [social engineering](#social-engineering), for example where a user is duped into executing an email attachment disguised to appear not suspicious, (e.g., a routine form to be filled in), or by clicking on some fake advertisement on social media or anywhere else. Although their payload can be anything, many modern forms act as a backdoor, contacting a controller which can then have unauthorized access to the affected computer. Trojans may allow an attacker to access users' personal information such as banking information, passwords, or personal identity. It can also delete a user's files or infect other devices connected to the network. Ransomware attacks are often carried out using a trojan.
+
+Unlike computer viruses, worms, and rogue security software, trojans generally do not attempt to inject themselves into other files or otherwise propagate themselves.
+
 ## [Trusted Computing Base](https://en.wikipedia.org/wiki/Trusted_computing_base)
 The _trusted computing base_ (_TCB_) of a computer system is the set of all hardware, firmware, and/or software components that are critical to its security, in the sense that bugs or vulnerabilities occurring inside the TCB might jeopardize the security properties of the entire system. By contrast, parts of a computer system outside the TCB must not be able to misbehave in a way that would leak any more privileges than are granted to them in accordance to the security policy.
 
@@ -1080,6 +1140,11 @@ The primary function of a web server is to store, process and deliver web pages 
 
 A user agent, commonly a [web browser](#web-browser) or [web crawler](#web-crawler), initiates communication by making a request for a specific resource using HTTP and the server responds with the content of that resource or an error message if unable to do so. The resource is typically a real file on the server's secondary storage, but this is not necessarily the case and depends on how the web server is implemented.
 
+## [White Hat](https://en.wikipedia.org/wiki/White_hat_(computer_security))
+The term _"white hat"_ in [Internet](#internet) slang refers to an ethical [computer hacker](#security-hacker), or a computer security expert, who specializes in penetration testing and in other testing methodologies that ensures the security of an organization's information systems. Ethical hacking is a term meant to imply a broader category than just penetration testing. Contrasted with black hat, a malicious hacker, the name comes from Western films, where heroic and antagonistic cowboys might traditionally wear a white and a black hat respectively. While a white hat hacker hacks under good intentions with permission, and a black hat hacker, most often unauthorized, has malicious intent, there is a third kind known as a grey hat hacker who hacks with good intentions but at times without permission.
+
+White hat hackers may also work in teams called "sneakers and/or hacker clubs", red teams, or tiger teams.
+
 ## [Wi-Fi](https://en.wikipedia.org/wiki/Wi-Fi)
 _Wi-Fi_ is a family of wireless network protocols, based on the IEEE 802.11 family of standards, which are commonly used for [local area networking](#local-area-network) of devices and Internet access. Wi‑Fi is a trademark of the non-profit Wi-Fi Alliance, which restricts the use of the term Wi-Fi Certified to products that successfully complete interoperability certification testing. As of 2017, the Wi-Fi Alliance consisted of more than 800 companies from around the world. As of 2019, over 3.05 billion Wi-Fi enabled devices are shipped globally each year. Devices that can use Wi-Fi technologies include [personal computer](#personal-computer) desktops and laptops, smartphones and tablets, smart TVs, printers, smart speakers, cars, and drones.
 
@@ -1122,3 +1187,10 @@ In computer graphics, _z-buffering_, also known as _depth buffering_, is the man
 _Z-fighting_, also called _stitching_, is a phenomenon in 3D rendering that occurs when two or more primitives have very similar distances to the camera. This would cause them to have near-similar or identical values in the [z-buffer](#z-buffering), which keeps track of depth. This then means that when a specific pixel is being rendered, it is nearly random which one of the two primitives gets drawn in that pixel because the z-buffer cannot distinguish precisely which one is farther from the other. Traditionally, the farther pixel would be discarded. It is particularly prevalent with coplanar polygons, where two faces occupy essentially the same space, with neither in front. Affected pixels are rendered with fragments from one polygon or the other arbitrarily, in a manner determined by the precision of the z-buffer. It can also vary as the scene or camera is changed, causing one polygon to "win" the z test, then another, and so on. The overall effect is a flickering, noisy rasterization of two polygons which "fight" to color the screen pixels. This problem is usually caused by limited sub-pixel precision and [floating point](#floating-point) and fixed point round-off errors.
 
 The more z-buffer precision one uses, the less likely it is that z-fighting will be encountered. But for coplanar polygons, the problem is inevitable unless corrective action is taken.
+
+## [Zero-Day](https://en.wikipedia.org/wiki/Zero-day_(computing))
+A _zero-day_ (also known as _0-day_) vulnerability is a computer-software vulnerability that is unknown to those who should be interested in mitigating the vulnerability (including the vendor of the target software). Until the vulnerability is mitigated, hackers can exploit it to adversely affect computer programs, data, additional computers or a [network](#computer-network). An [exploit](#exploit) directed at a zero-day is called a _zero-day exploit_, or _zero-day attack_.
+
+The term "zero-day" originally referred to the number of days since a new piece of software was released to the public, so "zero-day" software was software that had been obtained by hacking into a developer's computer before release. Eventually the term was applied to the vulnerabilities that allowed this hacking, and to the number of days that the vendor has had to fix them. Once the vendor learns of the vulnerability, the vendor will usually create patches or advise workarounds to mitigate it.
+
+The more recently that the vendor has become aware of the vulnerability, the more likely that no fix or mitigation has been developed. Even after a fix is developed, the fewer the days since then, the higher the probability that an attack against the afflicted software will be successful, because not every user of that software will have applied the fix. For zero-day exploits, unless the vulnerability is inadvertently fixed, e.g. by an unrelated update that happens to fix the vulnerability, the probability that a user has applied a vendor-supplied patch that fixes the problem is zero, so the exploit would remain available. Zero-day attacks are a severe threat.
