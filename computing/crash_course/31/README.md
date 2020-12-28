@@ -45,4 +45,4 @@ There are also conferences where like-minded hackers and security experts can mi
 
 Even after reducing code and auditing it, clever attackers are bound to find tricks that allow them access. With this in mind, good developers should take the approach that when, not if, their programs are compromised the damage should be limited and contained, and not let it compromise other processes running on the machine. This is a principle called _isolation_. To achieve isolation applications can be "sandboxed" wherein the operating system allocates a block of memory that each application can access, but no other program can. It is also possible for a single computer to run multiple Virtual Machines to sandbox individual applications: in the worst case scenario a program will only compromise the virtual machine on which it is running.
  
-| [Previous: The World Wide Web](../30/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: The World Wide Web](../30/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Hackers & Cyber Attacks](../32/README.md) |
