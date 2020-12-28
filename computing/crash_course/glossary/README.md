@@ -6,6 +6,11 @@ A _3D projection_ (or _graphical projection_) is a design technique used to disp
 
 3D objects are largely displayed on two-dimensional mediums (i.e. paper and computer monitors). As such, graphical projections are a commonly used design element; notably, in engineering drawing, drafting, and computer graphics. Projections can be calculated through employment of mathematical analysis and formulae, or by using various geometric and optical techniques.
 
+## [Access Control](https://en.wikipedia.org/wiki/Access_control)
+In the fields of physical security and information security, _access control_ (_AC_) is the selective restriction of access to a place or other resource while access management describes the process. The act of accessing may mean consuming, entering, or using. Permission to access a resource is called authorization.
+
+Locks and login credentials are two analogous mechanisms of access control.
+
 ## [Acknowledgement](https://en.wikipedia.org/wiki/Acknowledgement_(data_networks))
 In data networking, telecommunications, and computer buses, an _acknowledgement_ (_ACK_) is a signal that is passed between communicating processes, computers, or devices to signify acknowledgement, or receipt of message, as part of a communications protocol. The negative-acknowledgement (_NAK_ or _NACK_) signal is sent to reject a previously received message or to indicate some kind of error. Acknowledgements and negative acknowledgements inform a sender of the receiver's state so that it can adjust its own state accordingly.
 
@@ -36,6 +41,9 @@ ASCII is one of the [IEEE milestones](https://en.wikipedia.org/wiki/Timeline_of_
 ## [Assembler](https://en.wikipedia.org/wiki/Assembly_language#Assembler)
 An _assembler_ program creates object code by translating combinations of _mnemonics_ and syntax for operations and addressing modes into their numerical equivalents.
 
+## [Authentication](https://en.wikipedia.org/wiki/Authentication)
+_Authentication_ is the act of proving an assertion, such as the identity of a computer system user. In contrast with identification, the act of indicating a person or thing's identity, authentication is the process of verifying that identity. It might involve validating personal identity documents, verifying the authenticity of a website with a digital certificate, determining the age of an artifact by carbon dating, or ensuring that a product or document is not counterfeit.
+
 ## [Bandwidth](https://en.wikipedia.org/wiki/Bandwidth_(computing))
 In computing, _bandwidth_ is the maximum rate of data transfer across a given path. Bandwidth may be characterized as _network bandwidth_, _data bandwidth_, or _digital bandwidth_.
 
@@ -63,6 +71,11 @@ A mathematical notation that describes the limiting behavior of a function when 
 ## [Binary](https://en.wikipedia.org/wiki/Binary)
 Means "of two states". From the latin "consisting of two". [Binary numbers](https://en.wikipedia.org/wiki/Binary_number) are numbers represented by two digits. [Binary code](https://en.wikipedia.org/wiki/Binary_code) consists of instructions consisting of two symbols.
 
+## [Biometrics](https://en.wikipedia.org/wiki/Biometrics)
+_Biometrics_ are body measurements and calculations related to human characteristics. _Biometrics authentication_ (or _realistic authentication_) is used in computer science as a form of identification and access control. It is also used to identify individuals in groups that are under surveillance.
+
+Biometric identifiers are the distinctive, measurable characteristics used to label and describe individuals. Biometric identifiers are often categorized as physiological versus behavioral characteristics. Physiological characteristics are related to the shape of the body. Examples include, but are not limited to fingerprint, palm veins, face recognition, DNA, palm print, hand geometry, iris recognition, retina and odour/scent. Behavioral characteristics are related to the pattern of behavior of a person, including but not limited to typing rhythm, gait, keystroke, signature, behavioral profiling, and voice. Some researchers have coined the term _behaviometrics_ to describe the latter class of biometrics.
+
 ## [Bit](https://en.wikipedia.org/wiki/Bit)
 A basic unit of information in computing and digital communications. The name "bit" is a portmanteau of "binary digit." The bit represents a logical state with one of two possible values.
 
@@ -73,8 +86,16 @@ As a noun, the term "bitmap" is very often used to refer to a particular bitmapp
 
 A bitmap is a type of memory organization or image [file format](#file-format) used to store digital images. The term bitmap comes from the computer programming terminology, meaning just a map of bits, a spatially mapped array of bits. Now, along with pixmap, it commonly refers to the similar concept of a spatially mapped array of pixels. [Raster](#raster-scan) images in general may be referred to as bitmaps or pixmaps, whether synthetic or photographic, in files or memory.
 
+## [Botnet](https://en.wikipedia.org/wiki/Botnet)
+A _botnet_ is a number of [Internet](#internet)-connected devices, each of which is running one or more bots. Botnets can be used to perform [Distributed Denial-of-Service](#denial-of-service-attack) (DDoS) attacks, steal data, send spam, and allow the attacker to access the device and its connection. The owner can control the botnet using command and control (C&C) software. The word "botnet" is a portmanteau of the words "robot" and "network". The term is usually used with a negative or malicious connotation.
+
 ## [Branch Predictor](https://en.wikipedia.org/wiki/Branch_predictor)
 A digital circuit that tries to guess which way a branch (e.g., an if-then-else structure) will go before this is known definitively. The purpose of the _branch predictor_ is to improve the flow in the [instruction pipeline](#instruction-pipelining).
+
+## [Brute-Force Attack](https://en.wikipedia.org/wiki/Brute-force_attack)
+In cryptography, a _brute-force attack_ consists of an attacker submitting many passwords or passphrases with the hope of eventually guessing a combination correctly. The attacker systematically checks all possible passwords and passphrases until the correct one is found. Alternatively, the attacker can attempt to guess the key which is typically created from the password using a key derivation function. This is known as an exhaustive key search.
+
+A brute-force attack is a cryptanalytic attack that can, in theory, be used to attempt to decrypt any encrypted data (except for data encrypted in an information-theoretically secure manner). Such an attack might be used when it is not possible to take advantage of other weaknesses in an encryption system (if any exist) that would make the task easier.
 
 ## [Bus](https://en.wikipedia.org/wiki/Bus_(computing))
 A _bus_ is a communication system that transfers data between components inside a computer, or between computers. The expression covers all related hardware components (wire, optical fiber, etc.) and software, including communication protocols.
@@ -172,6 +193,11 @@ A _computer network_ is a group of computers that use a set of common communicat
 
 The nodes of a computer network may be classified by many means as [personal computers](#personal-computer), servers, networking hardware, or general-purpose hosts. They are identified by hostnames and network addresses. Hostnames serve as memorable labels for the nodes, rarely changed after initial assignment. Network addresses serve for locating and identifying the nodes by communication protocols such as the [Internet Protocol](#internet-protocol).
 
+## [Computer Security](https://en.wikipedia.org/wiki/Computer_security)
+_Computer security_, _cybersecurity_ or _information technology security_ (_IT security_) is the protection of computer systems and [networks](#computer-network) from the theft of or damage to their hardware, software, or electronic data, as well as from the disruption or misdirection of the services they provide.
+
+The field is becoming more significant due to the increased reliance on computer systems, the [Internet](#internet) and wireless network standards such as Bluetooth and [Wi-Fi](#wi-fi), and due to the growth of "smart" devices, including smartphones, televisions, and the various devices that constitute the ["Internet of things"](#internet-of-things). Owing to its complexity, both in terms of politics and technology, cybersecurity is also one of the major challenges in the contemporary world.
+
 ## [Computer Terminal](https://en.wikipedia.org/wiki/Computer_terminal)
 A _computer terminal_ is an electronic or electromechanical hardware device that can be used for entering data into, and transcribing data from, a computer or a computing system. The [teletype](#teleprinter) was an example of an early day hardcopy terminal, and predated the use of a computer screen by decades.
 
@@ -236,10 +262,22 @@ Analog delay line technology had been used since the 1920s to delay the propagat
 
 The memory capacity is determined by dividing the time taken to transmit one bit into the time it takes for data to circulate through the delay line. Early delay-line memory systems had capacities of a few thousand bits, with recirculation times measured in microseconds. To read or write a particular bit stored in such a memory, it is necessary to wait for that bit to circulate through the delay line into the electronics. The delay to read or write any particular bit is no longer than the recirculation time.
 
+## [Denial-Of-Service Attack](https://en.wikipedia.org/wiki/Denial-of-service_attack)
+In computing, a _denial-of-service attack_ (_DoS attack_) is a cyber-attack in which the perpetrator seeks to make a machine or [network](#computer-network) resource unavailable to its intended users by temporarily or indefinitely disrupting services of a host connected to the Internet. Denial of service is typically accomplished by flooding the targeted machine or resource with superfluous requests in an attempt to overload systems and prevent some or all legitimate requests from being fulfilled.
+
+In a _distributed denial-of-service attack_ (_DDoS attack_), the incoming traffic flooding the victim originates from many different sources. This effectively makes it impossible to stop the attack simply by blocking a single source.
+
+A DoS or DDoS attack is analogous to a group of people crowding the entry door of a shop, making it hard for legitimate customers to enter, thus disrupting trade.
+
 ## [Desktop Metaphor](https://en.wikipedia.org/wiki/Desktop_metaphor)
 In computing, the _desktop metaphor_ is an interface metaphor which is a set of unifying concepts used by [graphical user interfaces](#graphical-user-interface) to help users interact more easily with the computer. The desktop metaphor treats the computer monitor as if it is the top of the user's desk, upon which objects such as documents and folders of documents can be placed. A document can be opened into a [window](#window), which represents a paper copy of the document placed on the desktop. Small applications called desk accessories are also available, such as a desk calculator or notepad, etc.
 
 The desktop metaphor itself has been extended and stretched with various implementations of desktop environments, since access to features and usability of the computer are usually more important than maintaining the 'purity' of the metaphor. Hence we find trash cans on the desktop, as well as disks and [network](#computer-network) volumes (which can be thought of as filing cabinets - not something normally found on a desktop). Other features such as menu bars or taskbars have no direct counterpart on a real-world desktop, though this may vary by environment and the function provided; for instance, a familiar wall calendar can sometimes be displayed or otherwise accessed via a taskbar or menu bar belonging to the desktop.
+
+## [Determinism](https://en.wikipedia.org/wiki/Determinism)
+_Determinism_ is the philosophical view that all events are determined completely by previously existing causes. Deterministic theories throughout the history of philosophy have sprung from diverse and sometimes overlapping motives and considerations. The opposite of determinism is some kind of indeterminism (otherwise called nondeterminism) or randomness. Determinism is often contrasted with free will.
+
+Determinism often is taken to mean causal determinism, which in physics is known as cause-and-effect. It is the concept that events within a given paradigm are bound by causality in such a way that any state (of an object or event) is completely determined by prior states. This meaning can be distinguished from other varieties of determinism mentioned below.
 
 ## [Device Driver](https://en.wikipedia.org/wiki/Device_driver)
 In computing, a _device driver_ is a computer program that operates or controls a particular type of device that is attached to a computer. A driver provides a software interface to hardware devices, enabling operating systems and other computer programs to access hardware functions without needing to know precise details about the hardware being used.
@@ -543,6 +581,11 @@ Each core stores one bit of information. A core can be magnetized in either the 
 
 The process of reading the core causes the core to be reset to a zero, thus erasing it. This is called destructive readout. When not being read or written, the cores maintain the last value they had, even if the power is turned off. Therefore they are a type of [non-volatile memory](#non-volatile-memory).
 
+## [Malware](https://en.wikipedia.org/wiki/Malware)
+_Malware_ (a portmanteau for _malicious software_) is any software intentionally designed to cause damage to a computer, server, client, or [computer network](#computer-network) (by contrast, software that causes unintentional harm due to some deficiency is typically described as a software bug). A wide variety of malware types exist, including computer viruses, worms, Trojan horses, ransomware, spyware, adware, rogue software, wiper and scareware.
+
+Programs are also considered malware if they secretly act against the interests of the computer user. For example, at one point Sony music Compact discs silently installed a rootkit on purchasers' computers with the intention of preventing illicit copying, but which also reported on users' listening habits, and unintentionally created extra security vulnerabilities.
+
 ## [Magnetic Tape](https://en.wikipedia.org/wiki/Magnetic_tape)
 _Magnetic tape_ is a medium for magnetic recording, made of a thin, magnetizable coating on a long, narrow strip of plastic film. It was developed in Germany in 1928, based on magnetic wire recording. Devices that record and playback audio and video using magnetic tape are tape recorders and video tape recorders respectively. A device that stores computer data on magnetic tape is known as a tape drive.
 
@@ -599,6 +642,9 @@ A _motherboard_ (also called _mainboard_, _main circuit board_, _system board_, 
 ## [Multi-Core Processor](https://en.wikipedia.org/wiki/Multi-core_processor)
 A _multi-core processor_ is a [computer processor](#central-processing-unit) [integrated circuit](#integrated-circuit) with two or more separate processing units, called _cores_, each of which reads and executes program instructions, as if the computer had several processors.
 
+## [Multi-Factor Authentication](https://en.wikipedia.org/wiki/Multi-factor_authentication)
+_Multi-factor authentication_ (_MFA_; encompassing _Two-factor authentication_ or _2FA_, along with similar terms) is an electronic authentication method in which a computer user is granted access to a website or application only after successfully presenting two or more pieces of evidence (or factors) to an authentication mechanism: knowledge (something only the user knows), possession (something only the user has), and inherence (something only the user is). It protects the user from an unknown person trying to access their data such as personal ID details or financial assets.
+
 ## [Multiplexer](https://en.wikipedia.org/wiki/Multiplexer)
 A _multiplexer_ (or _mux_/_data selector_) is a device that selects between several analog or digital input signals and forwards it to a single output line.
 
@@ -651,6 +697,9 @@ A programming paradigm based on the concept of "objects", which can contain data
 
 ## [Open Architecture](https://en.wikipedia.org/wiki/Open_architecture)
 _Open architecture_ is a type of computer architecture or software architecture intended to make adding, upgrading, and swapping components easy. For example, the IBM PC, Amiga 500 and Apple IIe have an open architecture supporting plug-in cards, whereas the Apple IIc computer has a closed architecture. Open architecture systems may use a standardized system bus such as S-100, PCI or ISA or they may incorporate a proprietary bus standard such as that used on the Apple II, with up to a dozen slots that allow multiple hardware manufacturers to produce add-ons, and for the user to freely install them. By contrast, closed architectures, if they are expandable at all, have one or two "expansion ports" using a proprietary connector design that may require a license fee from the manufacturer, or enhancements may only be installable by technicians with specialized tools or training.
+
+## [Open-Source Software](https://en.wikipedia.org/wiki/Open-source_software)
+_Open-source software_ (_OSS_) is a type of computer software in which source code is released under a license in which the copyright holder grants users the rights to use, study, change, and distribute the software to anyone and for any purpose. Open-source software may be developed in a collaborative public manner. Open-source software is a prominent example of open collaboration.
 
 ## [Operand](https://en.wikipedia.org/wiki/Operand)
 In mathematics, an _operand_ is the object of a mathematical operation, i.e., it is the object or quantity that is being operated on.
@@ -801,6 +850,9 @@ A scheduler is what carries out the scheduling activity. Schedulers are often im
 ## [Search Engine](https://en.wikipedia.org/wiki/Search_engine)
 A _search engine_ is a software system that is designed to carry out web searches ([Internet](#internet) searches), which means to search the [World Wide Web](#world-wide-web) in a systematic way for particular information specified in a textual web search query. The search results are generally presented in a line of results, often referred to as search engine results pages (SERPs). The information may be a mix of [links](#hyperlink) to [web pages](#web-page), images, videos, infographics, articles, research papers, and other types of [files](#file). Some search engines also mine data available in databases or open directories. Unlike web directories, which are maintained only by human editors, search engines also maintain real-time information by running an algorithm on a [web crawler](#web-crawler). Internet content that is not capable of being searched by a web search engine is generally described as the deep web.
 
+## [Security Hacker](https://en.wikipedia.org/wiki/Security_hacker)
+A _security hacker_ is someone who explores methods for breaching defenses and exploiting weaknesses in a computer system or [network](#computer-network). Hackers may be motivated by a multitude of reasons, such as profit, protest, information gathering, challenge, recreation, or to evaluate system weaknesses to assist in formulating defenses against potential hackers. The subculture that has evolved around hackers is often referred to as the "computer underground".
+
 ## [Sequential Access Memory](https://en.wikipedia.org/wiki/Sequential_access_memory)
 In computing, sequential access memory (SAM) is a class of data storage devices that read stored data in a sequence. This is in contrast to [random access memory](#random-access-memory) (RAM) where data can be accessed in any order. Sequential access devices are usually a form of magnetic storage or optical storage.
 
@@ -898,6 +950,11 @@ _Texture mapping_ is a method for defining high frequency detail, surface textur
 
 Texture mapping originally referred to _diffuse mapping_, a method that simply mapped pixels from a texture to a 3D surface ("wrapping" the image around the object). In recent decades, the advent of _multi-pass rendering_, _multitexturing_, _mipmaps_, and more complex mappings such as _height mapping_, _bump mapping_, _normal mapping_, _displacement mapping_, _reflection mapping_, _specular mapping_, _occlusion mapping_, and many other variations on the technique (controlled by a materials system) have made it possible to simulate near-photorealism in real time by vastly reducing the number of polygons and lighting calculations needed to construct a realistic and functional 3D scene.
 
+## [Threat Model](https://en.wikipedia.org/wiki/Threat_model)
+_Threat modeling_ is a process by which potential threats, such as structural vulnerabilities or the absence of appropriate safeguards, can be identified, enumerated, and mitigations can be prioritized. The purpose of threat modeling is to provide defenders with a systematic analysis of what controls or defenses need to be included, given the nature of the system, the probable attacker's profile, the most likely attack vectors, and the assets most desired by an attacker. Threat modeling answers questions like _“Where am I most vulnerable to attack?”_, _“What are the most relevant threats?”_, and _“What do I need to do to safeguard against these threats?”_.
+
+Conceptually, most people incorporate some form of threat modeling in their daily life and don't even realize it. Commuters use threat modeling to consider what might go wrong during the morning drive to work and to take preemptive action to avoid possible accidents. Children engage in threat modeling when determining the best path toward an intended goal while avoiding the playground bully. In a more formal sense, threat modeling has been used to prioritize military defensive preparations since antiquity.
+
 ## [Time-Sharing](https://en.wikipedia.org/wiki/Time-sharing)
 In computing, time-sharing is the sharing of a computing resource among many users at the same time by means of multiprogramming and multi-tasking.
 
@@ -930,6 +987,11 @@ A _tree_ is a widely used abstract data type that simulates a hierarchical _tree
 ![Tree](./tree.svg)
 <br/>
 A generic, and so non-binary, unsorted, some labels duplicated, arbitrary diagram of a tree.
+
+## [Trusted Computing Base](https://en.wikipedia.org/wiki/Trusted_computing_base)
+The _trusted computing base_ (_TCB_) of a computer system is the set of all hardware, firmware, and/or software components that are critical to its security, in the sense that bugs or vulnerabilities occurring inside the TCB might jeopardize the security properties of the entire system. By contrast, parts of a computer system outside the TCB must not be able to misbehave in a way that would leak any more privileges than are granted to them in accordance to the security policy.
+
+The careful design and implementation of a system's trusted computing base is paramount to its overall security. Modern [operating systems](#operating-system) strive to reduce the size of the TCB so that an exhaustive examination of its code base (by means of manual or computer-assisted software audit or program verification) becomes feasible.
 
 ## [Turing Completeness](https://en.wikipedia.org/wiki/Turing_completeness)
 In _computability theory_, a system of data-manipulation rules (such as a computer's instruction set, a programming language, or a cellular automaton) is said to be _Turing-complete_ or _computationally universal_ if it can be used to simulate any [Turing machine](#turing-machine). This means that this system is able to recognize or decide other data-manipulation rule sets. Turing completeness is used as a way to express the power of such a data-manipulation rule set. Virtually all programming languages today are Turing-complete. The concept is named after English mathematician and computer scientist [Alan Turing](https://en.wikipedia.org/wiki/Alan_Turing).
