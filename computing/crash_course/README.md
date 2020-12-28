@@ -84,6 +84,7 @@ Date: July 2020 - Ongoing
 * 28: [Computer Networks](./28/README.md)
 * 29: [The Internet](./29/README.md)
 * 30: [The World Wide Web](./30/README.md)
+* 31: [Cybersecurity](./31/README.md)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 

@@ -39,4 +39,4 @@ Early search engines used very simple metrics to rank order their search results
 
 On the other hand there are good technical reasons why a user may want different types of data to flow at different speeds: a video call requires high priority, but it is not a big deal if an email comes in a few seconds late. Net-neutrality opponents also argue that market forces and competition would discourage bad behavior because customers would leave ISPs that are throttling sites that they frequent.
 
-| [Previous: The Internet](../29/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: The Internet](../29/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Cybersecurity](../31/README.md) |
