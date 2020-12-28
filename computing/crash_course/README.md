@@ -6,6 +6,7 @@ Notes on a series of videos produced by PBS digital studios and shared on Youtub
 In this course Carrie Anne Philbin outlines the history and design decisions that led to modern computers, describes the basic elements of computing and software, identifies and explains the basic components of computer hardware, and discusses how far computers have gone and where they may yet go.
 
 Youtube: [Video Playlist](https://www.youtube.com/playlist?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo)
+
 Date: July 2020 - Ongoing
 
 ## Table of Contents
