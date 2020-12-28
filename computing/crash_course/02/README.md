@@ -3,7 +3,7 @@
 
 The [Harvard Mark I](https://en.wikipedia.org/wiki/Harvard_Mark_I) was one of the largest electro-mechanical computers ever built. It was completed in 1944 by IBM for the allies during WWII. It contained 765,000 components, 3,000,000 connections, and 500 miles of wire. One of the earliest uses for this technology was running simulations for the Manhattan Project. The brains of these machines were [relays](../glossary/README.md#relay).
 
-Unfortunately, the mechanical arm inside of a relay has mass and cannot move instangly between open and closed states. A good relay in the 1940s might be able to flip back and forth 50 times in a second.
+Unfortunately, the mechanical arm inside of a relay has mass and cannot move instantly between open and closed states. A good relay in the 1940s might be able to flip back and forth 50 times in a second.
 
 The Harvard Mark I could do 3 additions or substractions per second. It could perform multiplication in 6 seconds. Divisions took 15 seconds. More complex operations, such as triganometric functions could take over a minutes.
 
