@@ -86,6 +86,7 @@ Date: July 2020 - Ongoing
 * 30: [The World Wide Web](./30/README.md)
 * 31: [Cybersecurity](./31/README.md)
 * 32: [Hackers & Cyber Attacks](./32/README.md)
+* 33: [Cryptography](./33/README.md)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 

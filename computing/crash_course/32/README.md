@@ -27,4 +27,4 @@ If bugs are left open on enough systems it allows hackers to write a program tha
 
 Despite all of the hard working White Hats, exploits documented online, and software engineering best practices, cyber attacks happen on a daily basis. They cost the global economy roughly half a trillion dollars annually, and that figure will only increase as the world becomes more reliant on computing systems. This is especially worrying to governments, as infrastructure is increasingly computer-driven (power plants, the electrical grid, traffic lights, water treatment plants, oil refineries, air traffic control, and many other key systems). Many experts predict that the next major war will be fought in cyberspace, where nations are brought to their knees not by physical attack, but rather crippled economically and infrastructurally through [cyberwarfare](../glossary/README.md#cyberwarfare).
 
-| [Previous: Cybersecurity](../31/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: Cybersecurity](../31/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Cryptography](../33/README.md) |
