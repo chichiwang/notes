@@ -88,6 +88,7 @@ Date: July 2020 - Ongoing
 * 32: [Hackers & Cyber Attacks](./32/README.md)
 * 33: [Cryptography](./33/README.md)
 * 34: [Machine Learning & Artificial Intelligence](./34/README.md)
+* 35: [Computer Vision](./35/README.md)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 
