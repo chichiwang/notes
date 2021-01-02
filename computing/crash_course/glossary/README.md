@@ -28,8 +28,23 @@ The _ARPANET_ (an acronym for _Advanced Research Projects Agency Network_) was t
 ## [Array](https://en.wikipedia.org/wiki/Array_data_structure)
 An _array data structure_, or simply an _array_, is a [data structure](#data-structure) consisting of a collection of elements (values of variables), each identified by at least one _array index_ or _key_. An array is stored in such that the position of each element can be computed from its index tuple by a mathematical formula. The simplest type of data structure is a linear array, also called one-dimensional array.
 
+## [Artificial General Intelligence](https://en.wikipedia.org/wiki/Artificial_general_intelligence)
+_Artificial general intelligence_ (_AGI_) is the hypothetical intelligence of a machine that has the capacity to understand or learn any intellectual task that a human being can. It is a primary goal of some [artificial intelligence](#artificial-intelligence) research and a common topic in science fiction and futures studies. AGI can also be referred to as _strong AI_, _full AI_, or _general intelligent action_. Some academic sources reserve the term "strong AI" for machines that can experience consciousness. Today's AI is speculated to be decades away from AGI.
+
+In contrast to strong AI, [weak AI](#weak-ai) (also called _narrow AI_) is not intended to perform human cognitive abilities, rather, weak AI is limited to the use of software to study or accomplish specific problem solving or reasoning tasks.
+
 ## [Artificial Intelligence](https://en.wikipedia.org/wiki/Artificial_intelligence)
 _Artificial intelligence_ (_AI_), sometimes called _machine intelligence_, is intelligence demonstrated by machines, unlike the _natural intelligence_ displayed by humans and animals. Leading AI textbooks define the field of study of "intelligent agents": any device that perceives its environment and takes actions that maximize its chance of successfully achieving its goals. Colloquially, the term "artificial intelligence" is often used to describe machines (or computers) that mimic "cognitive" functions that humans associate with the human mind, such as "learning" and "problem solving".
+
+## [Artificial Neural Network](https://en.wikipedia.org/wiki/Artificial_neural_network)
+_Artificial neural networks_ (_ANNs_), usually simply called _neural networks_ (_NNs_), are computing systems vaguely inspired by the biological neural networks that constitute animal brains.
+
+An ANN is based on a collection of connected units or nodes called [artificial neurons](#artificial-neuron), which loosely model the neurons in a biological brain. Each connection, like the synapses in a biological brain, can transmit a signal to other neurons. An artificial neuron that receives a signal then processes it and can signal neurons connected to it. The "signal" at a connection is a real number, and the output of each neuron is computed by some non-linear function of the sum of its inputs. The connections are called edges. Neurons and edges typically have a weight that adjusts as learning proceeds. The weight increases or decreases the strength of the signal at a connection. Neurons may have a threshold such that a signal is sent only if the aggregate signal crosses that threshold. Typically, neurons are aggregated into layers. Different layers may perform different transformations on their inputs. Signals travel from the first layer (the input layer), to the last layer (the output layer), possibly after traversing the layers multiple times.
+
+## [Artificial Neuron](https://en.wikipedia.org/wiki/Artificial_neuron)
+An _artificial neuron_ is a mathematical function conceived as a model of biological neurons, a neural network. Artificial neurons are elementary units in an [artificial neural network](#artificial-neural-network). The artificial neuron receives one or more inputs (representing excitatory postsynaptic potentials and inhibitory postsynaptic potentials at neural dendrites) and sums them to produce an output (or activation, representing a neuron's action potential which is transmitted along its axon). Usually each input is separately weighted, and the sum is passed through a non-linear function known as an activation function or transfer function. The transfer functions usually have a sigmoid shape, but they may also take the form of other non-linear functions, piecewise linear functions, or step functions. They are also often monotonically increasing, continuous, differentiable and bounded. The thresholding function has inspired building logic gates referred to as threshold logic; applicable to building logic circuits resembling brain processing. For example, new devices such as memristors have been extensively used to develop such logic in recent times.
+
+The artificial neuron transfer function should not be confused with a linear system's transfer function.
 
 ## [ASCII](https://en.wikipedia.org/wiki/ASCII)
 _ASCII_ ,abbreviated from _American Standard Code for Information Interchange_, is a character encoding standard for electronic communication. ASCII codes represent text in computers, telecommunications equipment, and other devices. Most modern character-encoding schemes are based on ASCII, although they support many additional characters.
@@ -301,6 +316,16 @@ In computer programming and software development, _debugging_ is the process of 
 
 Debugging tactics can involve interactive debugging, [control flow](#control-flow) analysis, unit testing, integration testing, log file analysis, monitoring at the application or system level, memory dumps, and profiling. Many programming languages and software development tools also offer programs to aid in debugging, known as _debuggers_.
 
+## [Decision Tree](https://en.wikipedia.org/wiki/Decision_tree)
+A _decision tree_ is a decision support tool that uses a [tree-like](#tree) model of decisions and their possible consequences, including chance event outcomes, resource costs, and utility. It is one way to display an [algorithm](#algorithm) that only contains conditional control statements.
+
+Decision trees are commonly used in operations research, specifically in decision analysis, to help identify a strategy most likely to reach a goal, but are also a popular tool in [machine learning](#machine-learning).
+
+## [Deep Learning](https://en.wikipedia.org/wiki/Deep_learning)
+_Deep learning_ (also known as _deep structured learning_) is part of a broader family of [machine learning](#machine-learning) methods based on [artificial neural networks](#artificial-neural-network) with representation learning. Learning can be supervised, semi-supervised or unsupervised.
+
+Deep-learning architectures such as deep neural networks, deep belief networks, recurrent neural networks and convolutional neural networks have been applied to fields including computer vision, machine vision, speech recognition, natural language processing, audio recognition, social network filtering, machine translation, bioinformatics, drug design, medical image analysis, material inspection and board game programs, where they have produced results comparable to and in some cases surpassing human expert performance.
+
 ## [Defense in Depth](https://en.wikipedia.org/wiki/Defense_in_depth_(computing))
 _Defense in depth_ is a concept used in Information security in which multiple layers of security controls (defense) are placed throughout an information technology (IT) system. Its intent is to provide redundancy in the event a security control fails or a vulnerability is exploited that can cover aspects of personnel, procedural, technical and physical security for the duration of the system's life cycle.
 
@@ -315,6 +340,9 @@ Delay line memory is a form of computer memory, now obsolete, that was used on s
 Analog delay line technology had been used since the 1920s to delay the propagation of analog signals. When a delay line is used as a memory device, an amplifier and a pulse shaper are connected between the output of the delay line and the input. These devices recirculate the signals from the output back into the input, creating a loop that maintains the signal as long as power is applied. The shaper ensures the pulses remain well-formed, removing any degradation due to losses in the medium.
 
 The memory capacity is determined by dividing the time taken to transmit one bit into the time it takes for data to circulate through the delay line. Early delay-line memory systems had capacities of a few thousand bits, with recirculation times measured in microseconds. To read or write a particular bit stored in such a memory, it is necessary to wait for that bit to circulate through the delay line into the electronics. The delay to read or write any particular bit is no longer than the recirculation time.
+
+## [Dependent and Independent Variables](https://en.wikipedia.org/wiki/Dependent_and_independent_variables)
+_Dependent and independent variables_ are variables in mathematical modeling, statistical modeling and experimental sciences. _Dependent variables_ receive this name because, in an experiment, their values are studied under the supposition or hypothesis that they depend, by some law or rule (e.g., by a mathematical function), on the values of other variables. _Independent variables_, in turn, are not seen as depending on any other variable in the scope of the experiment in question; thus, even if the existing dependency is invertible (e.g., by finding the inverse function when it exists), the nomenclature is kept if the inverse dependency is not the object of study in the experiment. In this sense, some common independent variables are time, space, density, mass, fluid flow rate, and previous values of some observed value of interest (e.g. human population size) to predict future values (the dependent variable). Variables are given a special name that only applies to experimental investigations. The independent variable is the variable the experimenter changes or controls and is assumed to have a direct effect on the dependent variable. Two examples of common independent variables are gender and educational level.
 
 ## [Denial-Of-Service Attack](https://en.wikipedia.org/wiki/Denial-of-service_attack)
 In computing, a _denial-of-service attack_ (_DoS attack_) is a cyber-attack in which the perpetrator seeks to make a machine or [network](#computer-network) resource unavailable to its intended users by temporarily or indefinitely disrupting services of a host connected to the Internet. Denial of service is typically accomplished by flooding the targeted machine or resource with superfluous requests in an attempt to overload systems and prevent some or all legitimate requests from being fulfilled.
@@ -585,6 +613,11 @@ _Key exchange_ (also _key establishment_) is a method in [cryptography](#cryptog
 
 If the sender and receiver wish to exchange encrypted messages, each must be equipped to encrypt messages to be sent and decrypt messages received. The nature of the equipping they require depends on the encryption technique they might use. If they use a code, both will require a copy of the same codebook. If they use a cipher, they will need appropriate keys. If the cipher is a [symmetric key cipher](#symmetric-key-algorithm), both will need a copy of the same key. If it is an [asymmetric key cipher](#public-key-cryptography) with the public/private key property, both will need the other's public key.
 
+## [Labeled Data](https://en.wikipedia.org/wiki/Labeled_data)
+_Labeled data_ is a group of samples that have been tagged with one or more labels. Labeling typically takes a set of unlabeled data and augments each piece of it with informative tags. For example, a data label might indicate whether a photo contains a horse or a cow, which words were uttered in an audio recording, what type of action is being performed in a video, what the topic of a news article is, what the overall sentiment of a tweet is, or whether a dot in an X-ray is a tumor.
+
+Labels can be obtained by asking humans to make judgments about a given piece of unlabeled data. Labeled data is significantly more expensive to obtain than the raw unlabeled data.
+
 ## [Latency](https://en.wikipedia.org/wiki/Latency_(engineering))
 _Latency_ from a general point of view is a time delay between the cause and the effect of some physical change in the system being observed, but, known within gaming circles as "lag", latency is a time interval between the input to a simulation and the visual or auditory response, often occurring because of [network](#computer-network) delay in online games.
 
@@ -645,6 +678,9 @@ A _media access control address_ (_MAC address_) is a unique identifier assigned
 
 ## [Machine Code](https://en.wikipedia.org/wiki/Machine_code)
 In computer programming, _machine code_, consisting of machine language instructions, is a low-level programming language used to directly control a computer's [central processing unit](#central-processing-unit). Each instruction causes the CPU to perform a specific task such as a _load_, a _store_, a _jump_, or an [arithmetic logic unit (ALU)](../05/README.md) operation on one or more units of of data in the CPU's [registers](#register) or memory.
+
+## [Machine Learning](https://en.wikipedia.org/wiki/Machine_learning)
+_Machine learning_ (_ML_) is the study of computer [algorithms](#algorithm) that improve automatically through experience. It is seen as a subset of artificial intelligence. Machine learning algorithms build a model based on sample data, known as "training data", in order to make predictions or decisions without being explicitly programmed to do so. Machine learning algorithms are used in a wide variety of applications, such as email filtering and computer vision, where it is difficult or unfeasible to develop conventional algorithms to perform the needed tasks.
 
 ## [Magnetic Core Memory](https://en.wikipedia.org/wiki/Magnetic-core_memory)
 _Magnetic-core memory_ was the predominant form of random-access computer memory for 20 years between about 1955 and 1975. Such memory is often just called _core memory_, or, informally, _core_.
@@ -901,6 +937,11 @@ The file's name is generally written in uppercase letters. On [Unix-like systems
 ## [Read-Only Memory](https://en.wikipedia.org/wiki/Read-only_memory)
 _Read-only memory_ (_ROM_) is a type of [non-volatile memory](#non-volatile-memory) used in computers and other electronic devices. Data stored in ROM cannot be electronically modified after the manufacture of the memory device. Read-only memory is useful for storing software that is rarely changed during the life of the system, also known as firmware. Software applications (like video games) for programmable devices can be distributed as plug-in cartridges containing ROM.
 
+## [Reinforcement Learning](https://en.wikipedia.org/wiki/Reinforcement_learning)
+_Reinforcement learning_ (_RL_) is an area of [machine learning](#machine-learning) concerned with how intelligent agents ought to take actions in an environment in order to maximize the notion of cumulative reward. Reinforcement learning is one of three basic machine learning paradigms, alongside supervised learning and unsupervised learning.
+
+Reinforcement learning differs from supervised learning in not needing [labelled input/output](#labeled-data) pairs be presented, and in not needing sub-optimal actions to be explicitly corrected. Instead the focus is on finding a balance between exploration (of uncharted territory) and exploitation (of current knowledge).
+
 ## [Random-Access Memory](https://en.wikipedia.org/wiki/Random-access_memory)
 _Random-access memory_ (_RAM_) is a form of computer memory that can be read and changed in any order, typically used to store working data and machine code. Most RAM is [volatile](#volatile-memory).
 
@@ -1018,6 +1059,9 @@ In _computer programming_ a _statement_ is a syntactic unit of an imperative pro
 ## [Static Random-Access Memory](https://en.wikipedia.org/wiki/Static_random-access_memory)
 _Static Random-Access Memory_ (_SRAM_) is a type of [RAM](#random-access-memory) that uses latching circuitry ([flip-flop](#flip-flop)) to store each bit. SRAM is [volatile memory](#volatile-memory): data is lost whenever power is removed.
 
+## [Statistical Classification](https://en.wikipedia.org/wiki/Statistical_classification)
+In statistics, _classification_ is the problem of identifying to which of a set of categories (sub-populations) a new observation belongs, on the basis of a training set of data containing observations (or instances) whose category membership is known. Examples are assigning a given email to the "spam" or "non-spam" class, and assigning a diagnosis to a given patient based on observed characteristics of the patient (sex, blood pressure, presence or absence of certain symptoms, etc.). Classification is an example of pattern recognition.
+
 ## [String](https://en.wikipedia.org/wiki/String_(computer_science))
 Traditionally a sequence of characters, either as a literal constant or as some kind of variable. The latter may allow its elements to be mutated and the length changed, or it may be fixed (after creation). A _string_ is generally considered a data type and is often implemented as an [array](#array) data structure of [bytes](#byte) (or words) that stores a sequence of elements, typically characters, using some character encoding. _String_ may also denote more general arrays or other sequence (or list) data types and structures.
 
@@ -1039,6 +1083,9 @@ A _supercomputer_ is a computer with a high level of performance as compared to 
 
 ## [Superscalar](https://simple.wikipedia.org/wiki/Superscalar)
 A _superscalar [CPU](#central-processing-unt)_ design makes a form of parallel computing calle instruction-level parallelism inside a single CPU, which allows more work to be done at the same clock rate. This means the CPU executes more than one instruction during a clock cycle by running multiple instructions at the same time (called _instruction dispatching_) on duplicate functional units.
+
+## [Support Vector Machine](https://en.wikipedia.org/wiki/Support-vector_machine)
+In [machine learning](#machine-learning), _support-vector machines_ (_SVMs_, also _support-vector networks_) are supervised learning models with associated learning algorithms that analyze data for [classification](#statistical-classification) and regression analysis. Developed at AT&T Bell Laboratories by Vapnik with colleagues (Boser et al., 1992, Guyon et al., 1993, Vapnik et al., 1997), SVMs are one of the most robust prediction methods, being based on statistical learning frameworks or VC theory proposed by Vapnik and Chervonenkis (1974) and Vapnik (1982, 1995). Given a set of training examples, each marked as belonging to one of two categories, an SVM training algorithm builds a model that assigns new examples to one category or the other, making it a non-probabilistic binary linear classifier (although methods such as Platt scaling exist to use SVM in a probabilistic classification setting). An SVM maps training examples to points in space so as to maximise the width of the gap between the two categories. New examples are then mapped into that same space and predicted to belong to a category based on which side of the gap they fall.
 
 ## [Symmetric-Key Algorithm](https://en.wikipedia.org/wiki/Symmetric-key_algorithm)
 _Symmetric-key algorithms_ are [algorithms](#algorithm) for [cryptography](#cryptography) that use the same cryptographic keys for both [encryption](#encryption) of plaintext and decryption of ciphertext. The keys may be identical or there may be a simple transformation to go between the two keys. The keys, in practice, represent a shared secret between two or more parties that can be used to maintain a private information link. This requirement that both parties have access to the secret key is one of the main drawbacks of symmetric key encryption, in comparison to [public-key encryption](#public-key-cryptography) (also known as asymmetric key encryption).
@@ -1076,6 +1123,13 @@ Its emergence as the prominent model of computing in the 1970s represented a maj
 In computing, _traceroute_ and _tracert_ are [computer network](#computer-network) diagnostic commands for displaying possible [routes](#routing) (paths) and measuring transit delays of [packets](#network-packet) across an [Internet Protocol](#internet-protocol) (IP) network. The history of the route is recorded as the round-trip times of the packets received from each successive host (remote node) in the route (path); the sum of the mean times in each hop is a measure of the total time spent to establish the connection. Traceroute proceeds unless all (usually three) sent packets are lost more than twice; then the connection is lost and the route cannot be evaluated. Ping, on the other hand, only computes the final round-trip times from the destination point.
 
 For Internet Protocol Version 6 (IPv6) the tool sometimes has the name traceroute6 or tracert6.
+
+## [Training Dataset](https://en.wikipedia.org/wiki/Training,_validation,_and_test_sets#Training_dataset)
+A _training dataset_ is a dataset of examples used during the learning process and is used to fit the parameters (e.g., weights) of, for example, a [classifier](#statistical-classification).
+
+For classification tasks, a supervised learning algorithm looks at the training dataset to determine, or learn, the optimal combinations of variables that will generate a good predictive model. The goal is to produce a trained (fitted) model that generalizes well to new, unknown data. The fitted model is evaluated using “new” examples from the held-out datasets (validation and test datasets) to estimate the model’s accuracy in classifying new data. To reduce the risk of issues such as overfitting, the examples in the validation and test datasets should not be used to train the model.
+
+Most approaches that search through training data for empirical relationships tend to overfit the data, meaning that they can identify and exploit apparent relationships in the training data that do not hold in general.
 
 ## [Transistor](https://en.wikipedia.org/wiki/Transistor)
 Similar to a [relay](#relay) or [vacuum tube](#vacuum-tube) a _transistor_ is a switch that can be opened or closed via the application of a current to a control wire. Typically a transistor consists of two electrodes separated by a gate electrode (a semiconductor). By changing the electrical charge of the gate, the conductivity of the semiconductor could be manipulated.
@@ -1178,6 +1232,9 @@ Computer memory that requires power to maintain the stored information. It retai
 
 ## [Wafer](https://en.wikipedia.org/wiki/Wafer_(electronics))
 In electronics, a _wafer_ (also called a _slice_ or _substrate_) is a thin slice of semicondutor, such as crytalline silicon (c-Si), used for the fabrication of [integrated circuits](#integrated-circuit) and, in photovoltaics, to manufacture solar cells. The wafer serves as the substrate for microelectronic devices built in and upon the wafer. It undergoes many microfabrication processes, such as doping, ion implantation, etching, thin-film deposition of various materials, and photolithographic patterning. Finally, the individual microcircuits are separated by wafer dicing and packaged as an integrated circuit.
+
+## [Weak AI](https://en.wikipedia.org/wiki/Weak_AI)
+_Weak artificial intelligence_ (_weak AI_), is [artificial intelligence](#artificial-intelligence) that implements a limited part of mind, or as _narrow AI_, is focused on one narrow task. In John Searle's terms it “would be useful for testing hypothesis about minds, but would not actually be minds”. Contrast with [strong AI](#artificial-general-intelligence) which is defined as a machine with the ability to apply intelligence to any problem, rather than just one specific problem, sometimes considered to require consciousness, sentience and mind.
 
 ## [Web Browser](https://en.wikipedia.org/wiki/Web_browser)
 A _web browser_ (commonly referred to as a _browser_) is a software application for accessing information on the [World Wide Web](#world-wide-web). When a user requests a web page from a particular website, the web browser retrieves the necessary content from a [web server](#web-server) and then displays the page on the user's device.
