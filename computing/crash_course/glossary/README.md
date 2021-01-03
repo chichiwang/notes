@@ -245,6 +245,11 @@ Early terminals were inexpensive devices but very slow compared to [punched card
 
 The function of a terminal is typically confined to transcription and input of data; a device with significant local programmable data processing capability may be called a "smart terminal" or fat client. A terminal that depends on the host computer for its processing power is called a "dumb terminal" or a thin client. A personal computer can run terminal emulator software that replicates the function of a terminal, sometimes allowing concurrent use of local programs and access to a distant terminal host system.
 
+## [Computer Vision](https://en.wikipedia.org/wiki/Computer_vision)
+_Computer vision_ is an interdisciplinary scientific field that deals with how computers can gain high-level understanding from digital images or videos. From the perspective of engineering, it seeks to understand and automate tasks that the human visual system can do.
+
+Computer vision tasks include methods for acquiring, processing, analyzing and understanding digital images, and extraction of high-dimensional data from the real world in order to produce numerical or symbolic information, e.g. in the forms of decisions. Understanding in this context means the transformation of visual images (the input of the retina) into descriptions of the world that make sense to thought processes and can elicit appropriate action. This image understanding can be seen as the disentangling of symbolic information from image data using models constructed with the aid of geometry, physics, statistics, and learning theory.
+
 ## [Computer Worm](https://en.wikipedia.org/wiki/Computer_worm)
 A _computer worm_ is a standalone [malware](#malware) computer program that replicates itself in order to spread to other computers. It often uses a [computer network](#computer-network) to spread itself, relying on security failures on the target computer to access it. It will use this machine as a host to scan and infect other computers. When these new worm-invaded computers are controlled, the worm will continue to scan and infect other computers using these computers as hosts, and this behaviour will continue. Computer worms use recursive methods to copy themselves without host programs and distribute themselves based on the law of exponential growth, thus controlling and infecting more and more computers in a short time. Worms almost always cause at least some harm to the network, even if only by consuming [bandwidth](#bandwidth), whereas viruses almost always corrupt or modify files on a targeted computer.
 
@@ -261,6 +266,12 @@ In computer science _control flow_ (or _flow of control_) is the order in which 
 
 ## [Control Unit](https://en.wikipedia.org/wiki/Control_unit)
 The _control unit_ (_CU_) is a component of a computer's central processing unit (CPU) that directs the operation of the processor. It tells the computer's memory, arithmetic and logic unit and input and output devices how to respond to the instructions that have been sent to the processor.
+
+## [Convolution](https://en.wikipedia.org/wiki/Kernel_(image_processing)#Convolution)
+_Convolution_ is the process of adding each element of the image to its local neighbors, weighted by the [kernel](#kernel-image-processing). This is related to a form of mathematical convolution. The matrix operation being performedconvolutionis not traditional matrix multiplication, despite being similarly denoted by `*`.
+
+## [Convolutional Neural Network](https://en.wikipedia.org/wiki/Convolutional_neural_network)
+In [deep learning](#deep-learning), a _convolutional neural network_ (_CNN_, or _ConvNet_) is a class of deep [neural networks](#artificial-neural-network), most commonly applied to analyzing visual imagery. They are also known as _shift invariant_ or _space invariant artificial neural networks_ (_SIANN_), based on their shared-weights architecture and translation invariance characteristics. They have applications in image and video recognition, recommender systems, image classification, medical image analysis, natural language processing, brain-computer interfaces, and financial time series.
 
 ## [CPU Cache](https://en.wikipedia.org/wiki/CPU_cache)
 A hardware cache used by the [CPU](#central-processing-unit) of a computer to reduce the average cost (time or energy) to access data from the main memory. This cache is a smaller, faster memory, located closer to a processor core, which stores copies of the data from frequently used memory locations. Most CPUs have different independent caches, including instruction and data cahces, where the data cache is usually organized as a hierarchy of more cache levels (L1, L2, L3, L4, etc.).
@@ -404,6 +415,9 @@ Drums were displaced as primary computer memory by magnetic core memory, which o
 ## [Dynamic Random-Access Memory](https://en.wikipedia.org/wiki/Dynamic_random-access_memory)
 _DRAM_ is a type of [random access](#random-access-memory) semiconductor memory that stores each bit of data in a memory cell consisting of a tiny [capacitor](#capacitor) and transitor.
 
+## [Emotion Recognition](https://en.wikipedia.org/wiki/Emotion_recognition)
+_Emotion recognition_ is the process of identifying human emotion. People vary widely in their accuracy at recognizing the emotions of others. Use of technology to help people with emotion recognition is a relatively nascent research area. Generally, the technology works best if it uses multiple modalities in context. To date, the most work has been conducted on automating the recognition of facial expressions from video, spoken expressions from audio, written expressions from text, and physiology as measured by wearables.
+
 ## [Encryption](https://en.wikipedia.org/wiki/Encryption)
 In [cryptography](#cryptography), _encryption_ is the process of encoding information. This process converts the original representation of the information, known as _plaintext_, into an alternative form known as _ciphertext_. Ideally, only authorized parties can decipher a ciphertext back to plaintext and access the original information. Encryption does not itself prevent interference but denies the intelligible content to a would-be interceptor. For technical reasons, an encryption scheme usually uses a pseudo-random encryption key generated by an [algorithm](#algorithm). It is possible to decrypt the message without possessing the key, but, for a well-designed encryption scheme, considerable computational resources and skills are required. An authorized recipient can easily decrypt the message with the key provided by the originator to recipients but not to unauthorized users. Historically, various forms of encryption have been used to aid in cryptography. Early encryption techniques were often utilized in military messaging. Since then, new techniques have emerged and become commonplace in all areas of modern computing. Modern encryption schemes utilize the concepts of public-key and [symmetric-key](#symmetric-key-algorithm). Modern encryption techniques ensure security because modern computers are inefficient at cracking the encryption.
 
@@ -420,6 +434,9 @@ An _exploit_ (from the English verb to _exploit_, meaning "to use something to o
 
 ## [Exponential Backoff](https://en.wikipedia.org/wiki/Exponential_backoff)
 _Exponential backoff_ is an [algorithm](#algorithm) that uses feedback to multiplicatively decrease the rate of some process, in order to gradually find an acceptable rate.
+
+## [Feature Detection](https://en.wikipedia.org/wiki/Feature_detection_(computer_vision))
+In [computer vision](#computer-vision) and image processing _feature detection_ includes methods for computing abstractions of image information and making local decisions at every image point whether there is an image feature of a given type at that point or not. The resulting features will be subsets of the image domain, often in the form of isolated points, continuous curves or connected regions.
 
 ## [File](https://en.wikipedia.org/wiki/Computer_file)
 A _computer file_ is a computer resource for recording data discretely in a computer storage device. Just as words can be written to paper, so can information be written to a computer file. Files can be edited and transferred through the internet on that particular computer system.
@@ -635,6 +652,9 @@ A _local area network_ (_LAN_) is a computer network that interconnects computer
 
 ## [Kernel](https://en.wikipedia.org/wiki/Kernel_(operating_system))
 The _kernel_ is a computer program at the core of a computer's [operating system](#operating-system) with complete control over everything in the system. It is an integral part of any operating system. It is the "portion of the operating system code that is always resident in memory". It facilitates interactions between hardware and software components. On most systems, it is one of the first programs loaded on startup (after the bootloader). It handles the rest of startup as well as [input/output](#inputoutput) (I/O) requests from software, translating them into data-processing instructions for the central processing unit. It handles memory and peripherals like keyboards, monitors, printers, and speakers.
+
+## [Kernel (Image Processing)](https://en.wikipedia.org/wiki/Kernel_(image_processing))
+In image processing, a _kernel_, _convolution matrix_, or _mask_ is a small matrix. It is used for blurring, sharpening, embossing, edge detection, and more. This is accomplished by doing a [convolution](#convolution) between a kernel and an image.
 
 ## [Lambda Calculus](https://en.wikipedia.org/wiki/Lambda_calculus)
 _Lambda calculus_ (also written as _λ-calculus_) is a formal system in mathematical logic for expressing computation based on function abstraction and application using variable binding and substitution. It is a universal model of computation that can be used to simulate any Turing machine. It was introduced by the mathematician Alonzo Church in the 1930s as part of his research into the foundations of mathematics.
@@ -929,19 +949,6 @@ _Quality assurance_ (_QA_) is a way of preventing mistakes and defects in manufa
 ## [Queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type))
 A collection of entities that are maintained in a sequence that can be modified by the addition of entities at one end of the sequence and the removal of entities from the other end of the sequence. By convention, the end of the sequence at which elements are added is called the back, tail, or rear of the queue, and the end at which elements are removed is called the head or front of the queue, analgously to the words used when people line up to wait for goods or services.
 
-## [README](https://en.wikipedia.org/wiki/README)
-A _README_ file contains information about other files in a directory or archive of computer software. A form of [documentation](#software-documentation), it is usally a simple plain text file called `Read Me`, `READ.ME`, `README.txt`, `README.md` (for a text file using [markdown](https://en.wikipedia.org/wiki/Markdown) markup), `README.1ST` - or simply `README`.
-
-The file's name is generally written in uppercase letters. On [Unix-like systems](#unix) in particular this makes it easily noticed - both because lowercase filenames are more usual, and because traditionally the `ls` sommand sorts and displays files in [ASCII-code](#ascii) order, so that uppercase filenames appear first.
-
-## [Read-Only Memory](https://en.wikipedia.org/wiki/Read-only_memory)
-_Read-only memory_ (_ROM_) is a type of [non-volatile memory](#non-volatile-memory) used in computers and other electronic devices. Data stored in ROM cannot be electronically modified after the manufacture of the memory device. Read-only memory is useful for storing software that is rarely changed during the life of the system, also known as firmware. Software applications (like video games) for programmable devices can be distributed as plug-in cartridges containing ROM.
-
-## [Reinforcement Learning](https://en.wikipedia.org/wiki/Reinforcement_learning)
-_Reinforcement learning_ (_RL_) is an area of [machine learning](#machine-learning) concerned with how intelligent agents ought to take actions in an environment in order to maximize the notion of cumulative reward. Reinforcement learning is one of three basic machine learning paradigms, alongside supervised learning and unsupervised learning.
-
-Reinforcement learning differs from supervised learning in not needing [labelled input/output](#labeled-data) pairs be presented, and in not needing sub-optimal actions to be explicitly corrected. Instead the focus is on finding a balance between exploration (of uncharted territory) and exploitation (of current knowledge).
-
 ## [Random-Access Memory](https://en.wikipedia.org/wiki/Random-access_memory)
 _Random-access memory_ (_RAM_) is a form of computer memory that can be read and changed in any order, typically used to store working data and machine code. Most RAM is [volatile](#volatile-memory).
 
@@ -953,8 +960,21 @@ Ransomware attacks are typically carried out using a [Trojan](#trojan-horse) dis
 ## [Raster Scan](https://en.wikipedia.org/wiki/Raster_scan)
 A _raster scan_, or _raster scanning_, is the rectangular pattern of image capture and reconstruction in television. By analogy, the term is used for raster graphics, the pattern of image storage and transmission used in most computer [bitmap](#bitmap) image systems. The word raster comes from the Latin word _rastrum_ (a rake), which is derived from _radere_ (to scrape). The pattern left by the lines of a rake, when drawn straight, resembles the parallel lines of a raster: this line-by-line scanning is what creates a raster. It is a systematic process of covering the area progressively, one line at a time. Although often a great deal faster, it is similar in the most general sense to how one's gaze travels when one reads lines of text. Picture definition is stored in memory area is called Refresh Buffer or Frame Buffer. This memory area holds the intensity value of all the screen points. Stored intensity values are then retrieved from refresh buffer and pointed on the screen one row at a time.
 
+## [README](https://en.wikipedia.org/wiki/README)
+A _README_ file contains information about other files in a directory or archive of computer software. A form of [documentation](#software-documentation), it is usally a simple plain text file called `Read Me`, `READ.ME`, `README.txt`, `README.md` (for a text file using [markdown](https://en.wikipedia.org/wiki/Markdown) markup), `README.1ST` - or simply `README`.
+
+The file's name is generally written in uppercase letters. On [Unix-like systems](#unix) in particular this makes it easily noticed - both because lowercase filenames are more usual, and because traditionally the `ls` sommand sorts and displays files in [ASCII-code](#ascii) order, so that uppercase filenames appear first.
+
+## [Read-Only Memory](https://en.wikipedia.org/wiki/Read-only_memory)
+_Read-only memory_ (_ROM_) is a type of [non-volatile memory](#non-volatile-memory) used in computers and other electronic devices. Data stored in ROM cannot be electronically modified after the manufacture of the memory device. Read-only memory is useful for storing software that is rarely changed during the life of the system, also known as firmware. Software applications (like video games) for programmable devices can be distributed as plug-in cartridges containing ROM.
+
 ## [Register](https://en.wikipedia.org/wiki/Processor_register)
 A _processor register_ (or _CPU register_) is a quickly accessible location available to a computer's processors. Registers usually consist of a small amount of fast storage and may be read-only or write-only. Some registers may have specific hardware functions.
+
+## [Reinforcement Learning](https://en.wikipedia.org/wiki/Reinforcement_learning)
+_Reinforcement learning_ (_RL_) is an area of [machine learning](#machine-learning) concerned with how intelligent agents ought to take actions in an environment in order to maximize the notion of cumulative reward. Reinforcement learning is one of three basic machine learning paradigms, alongside supervised learning and unsupervised learning.
+
+Reinforcement learning differs from supervised learning in not needing [labelled input/output](#labeled-data) pairs be presented, and in not needing sub-optimal actions to be explicitly corrected. Instead the focus is on finding a balance between exploration (of uncharted territory) and exploitation (of current knowledge).
 
 ## [Relay](https://en.wikipedia.org/wiki/Relay)
 Electronically controlled, mechanical switches. In a relay a control wire connected to a coil of wire which is used to create an electromagnetic field when current flows through. This field attracts a metal arm inside the relay, completing a circuit.
@@ -962,6 +982,11 @@ Electronically controlled, mechanical switches. In a relay a control wire connec
 
 ## [Resistor](https://en.wikipedia.org/wiki/Resistor)
 A _resistor_ is a passive two-terminal electrical component that implements electrical resistance as a circuit element. In electronic circuits, resistors are used to reduce current flow, adjust signal levels, to divide voltages, bias active elements, and terminate transmission lines, among other uses. High-power resistors that can dissipate many watts of electrical power as heat, may be used as part of motor controls, in power distribution systems, or as test loads for generators. Fixed resistors have resistances that only change slightly with temperature, time or operating voltage. Variable resistors can be used to adjust circuit elements (such as a volume control or light dimmer), or as sensing devices for heat, force, or chemical activity.
+
+## [RGB Color Model](https://en.wikipedia.org/wiki/RGB_color_model)
+The _RGB color model_ is an additive color model in which red, green, and blue light are added together in various ways to reproduce a broad array of colors. The name of the model comes from the initials of the three additive primary colors, red, green, and blue.
+
+The main purpose of the RGB color model is for the sensing, representation, and display of images in electronic systems, such as televisions and computers, though it has also been used in conventional photography. Before the electronic age, the RGB color model already had a solid theory behind it, based in human perception of colors.
 
 ## [Ripple-Carry Adder](https://en.wikipedia.org/wiki/Adder_(electronics)#Ripple-carry_adder)
 A _ripple-carry adder_ is a circuit that utilizes multiple [full adders](#full-adder) to add _N_-bit numbers. Each full adder inputs a C<sub>in</sub>, which is the C<sub>out</sub> of the previous adder. This kind of adder is called a ripper-carry adder (RCA) because each carry bit "ripples" to the next full adder. The first (and only the first) full adder may be replaced with a [half adder](#half-adder) under the assumption that C<sub>in</sub> = 0.
@@ -1219,6 +1244,9 @@ A _video card_ (also called a _graphics card_, _display card_, _graphics adapter
 
 ## [Video RAM](https://en.wikipedia.org/wiki/Video_RAM_(dual-ported_DRAM))
 _Video RAM_, or _VRAM_, is a dual-ported variant of [dynamic RAM](#dynamic-random-access-memory) (DRAM), which was once commonly used to store the framebuffer in graphics adapters. Note that most computers and game consoles do not use this form of memory, and dual-ported VRAM should not be confused with other forms of video memory.
+
+## [Viola-Jones Object Detection Framework](https://en.wikipedia.org/wiki/Viola%E2%80%93Jones_object_detection_framework)
+The _Viola-Jones object detection framework_ is an object detection framework which was proposed in 2001 by Paul Viola and Michael Jones. Although it can be trained to detect a variety of object classes, it was motivated primarily by the problem of face detection.
 
 ## [Virtual Memory](https://en.wikipedia.org/wiki/Virtual_memory)
 _Virtual memory_ (also _virtual storage_) is a memory management technique that provides an "idealized abstraction of the storage resources that are actually available on a given machine" which "create the illusion of a very large (main) memory."
