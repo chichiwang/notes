@@ -70,4 +70,4 @@ As is true throughout computer science, abstraction is the key to building compl
 
 Today computer vision is everywhere, whether its barcodes being scanned at stores, self-driving cars, or photo filters superimposing mustaches on faces. Computer scientists are only getting started, enabled by recent advances in computing like extremely fast [GPUs](../glossary/README.md#graphics-processing-unit). Computers with a human-like ability to see are going to change how we interact with them.
 
-| [Previous: Machine Learning & Artificial Intelligence](../34/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: Machine Learning & Artificial Intelligence](../34/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Natural Language Processing](../36/README.md) |
