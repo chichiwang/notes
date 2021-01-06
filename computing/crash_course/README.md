@@ -90,6 +90,9 @@ Date: July 2020 - Ongoing
 * 34: [Machine Learning & Artificial Intelligence](./34/README.md)
 * 35: [Computer Vision](./35/README.md)
 * 36: [Natural Language Processing](./36/README.md)
+  * [NLP](./36/README.md#nlp)
+  * [Speech Recognition](./36/README.md#speech-recognition)
+  * [Speech Synthesis](./36/README.md#speech-synthesis)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 
