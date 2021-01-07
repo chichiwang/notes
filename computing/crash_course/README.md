@@ -93,6 +93,7 @@ Date: July 2020 - Ongoing
   * [NLP](./36/README.md#nlp)
   * [Speech Recognition](./36/README.md#speech-recognition)
   * [Speech Synthesis](./36/README.md#speech-synthesis)
+* 37: [Robots](./37/README.md)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 
