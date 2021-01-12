@@ -19,6 +19,9 @@ Oftentimes, data messages in telecommunications contain [checksums](#checksum) t
 ## [Algorithm](https://en.wikipedia.org/wiki/Algorithm)
 In mathematics and computer science, an _algorithm_ is a finite sequence of well-defined, computer-implementable instructions, typically to solve a class of problems or to perform a computation. Algorithms are always unambiguous and are used as specifications for performing calculations, data processing, automated reasoning, or other tasks.
 
+## [Android](https://en.wikipedia.org/wiki/Android_(robot))
+An _android_ is a [robot](#robot) or other artificial being designed to resemble a human, and often made from a flesh-like material. Historically, androids were completely within the domain of science fiction and frequently seen in film and television, but recent advances in robot technology now allow the design of functional and realistic humanoid robots.
+
 ## [API](https://en.wikipedia.org/wiki/API)
 An _application programming interface_ (_API_) is a computing interface which defines interactions between multiple software intermediaries. It defines the kinds of calls or requests that can be made, how to make them, the data formats that should be used, the conventions to follow, etc. It can also provide extension mechanisms so that users can extend existing functionality in various ways and to varying degrees. An API can be entirely custom, specific to a component, or it can be designed based on an industry-standard to ensure interoperability. Through information hiding, APIs enable modular programming, which allows users to use the interface independently of the implementation.
 
@@ -58,6 +61,9 @@ An _assembler_ program creates object code by translating combinations of _mnemo
 
 ## [Authentication](https://en.wikipedia.org/wiki/Authentication)
 _Authentication_ is the act of proving an assertion, such as the identity of a computer system user. In contrast with identification, the act of indicating a person or thing's identity, authentication is the process of verifying that identity. It might involve validating personal identity documents, verifying the authenticity of a website with a digital certificate, determining the age of an artifact by carbon dating, or ensuring that a product or document is not counterfeit.
+
+## [Automaton](https://en.wikipedia.org/wiki/Automaton)
+An _automaton_ (plural: _automata_ or _automatons_) is a relatively self-operating machine, or a machine or control mechanism designed to automatically follow a predetermined sequence of operations, or respond to predetermined instructions. Some automata, such as bellstrikers in mechanical clocks, are designed to give the illusion to the casual observer that they are operating under their own power. Since long ago, the term is commonly associated with automated puppets that resemble moving humans or animals, built to impress and/or to entertain people.
 
 ## [Bandwidth](https://en.wikipedia.org/wiki/Bandwidth_(computing))
 In computing, _bandwidth_ is the maximum rate of data transfer across a given path. Bandwidth may be characterized as _network bandwidth_, _data bandwidth_, or _digital bandwidth_.
@@ -267,6 +273,9 @@ A _conditional loop_, or _repetitive control structure_, is a way for computer p
 ## [Control Flow](https://en.wikipedia.org/wiki/Control_flow)
 In computer science _control flow_ (or _flow of control_) is the order in which individual [statements](#statement), instructions, or function calls of an imperative program are executed or evaluated. The emphasis on explicit _control flow_ distinguishes an _imperative programming language_ from a _declarative programming language_.
 
+## [Control Loop](https://en.wikipedia.org/wiki/Control_loop)
+A _control loop_ is the fundamental building block of industrial control systems. It consists of all the physical components and control functions necessary to automatically adjust the value of a measured process variable (PV) to equal the value of a desired set-point (SP). It includes the process sensor, the controller function, and the final control element (FCE) which are all required for automatic control.
+
 ## [Control Unit](https://en.wikipedia.org/wiki/Control_unit)
 The _control unit_ (_CU_) is a component of a computer's central processing unit (CPU) that directs the operation of the processor. It tells the computer's memory, arithmetic and logic unit and input and output devices how to respond to the instructions that have been sent to the processor.
 
@@ -441,10 +450,17 @@ In an event-driven application, there is generally a main loop that listens for 
 An _exploit_ (from the English verb to _exploit_, meaning "to use something to one’s own advantage") is a piece of software, a chunk of data, or a sequence of commands that takes advantage of a bug or vulnerability to cause unintended or unanticipated behavior to occur on computer software, hardware, or something electronic (usually computerized). Such behavior frequently includes things like gaining control of a computer system, allowing privilege escalation, or a [denial-of-service](#denial-of-service-attack) (DoS or related DDoS) attack.
 
 ## [Exponential Backoff](https://en.wikipedia.org/wiki/Exponential_backoff)
-_Exponential backoff_ is an [algorithm](#algorithm) that uses feedback to multiplicatively decrease the rate of some process, in order to gradually find an acceptable rate.
+_Exponential backoff_ is an [algorithm](#algorithm) that uses [feedback](#feedback) to multiplicatively decrease the rate of some process, in order to gradually find an acceptable rate.
 
 ## [Feature Detection](https://en.wikipedia.org/wiki/Feature_detection_(computer_vision))
 In [computer vision](#computer-vision) and image processing _feature detection_ includes methods for computing abstractions of image information and making local decisions at every image point whether there is an image feature of a given type at that point or not. The resulting features will be subsets of the image domain, often in the form of isolated points, continuous curves or connected regions.
+
+## [Feedback](https://en.wikipedia.org/wiki/Feedback)
+_Feedback_ occurs when outputs of a system are routed back as inputs as part of a chain of cause-and-effect that forms a circuit or loop. The system can then be said to feed back into itself. The notion of cause-and-effect has to be handled carefully when applied to feedback systems:
+
+> Simple causal reasoning about a feedback system is difficult because the first system influences the second and second system influences the first, leading to a circular argument. This makes reasoning based upon cause and effect tricky, and it is necessary to analyze the system as a whole.
+
+Karl Johan Åström and Richard M.Murray, Feedback Systems: An Introduction for Scientists and Engineers
 
 ## [File](https://en.wikipedia.org/wiki/Computer_file)
 A _computer file_ is a computer resource for recording data discretely in a computer storage device. Just as words can be written to paper, so can information be written to a computer file. Files can be edited and transferred through the internet on that particular computer system.
@@ -566,6 +582,11 @@ _Hypertext_ is text displayed on a computer display or other electronic devices 
 ## [Hypertext Transfer Protocol](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
 The _Hypertext Transfer Protocol_ (_HTTP_) is an application layer protocol for distributed, collaborative, hypermedia information systems. HTTP is the foundation of data communication for the [World Wide Web](#world-wide-web), where [hypertext](#hypertext) documents include [hyperlinks](#hyperlink) to other resources that the user can easily access, for example by a mouse click or by tapping the screen in a [web browser](#web-browser).
 
+## [Industrial Robot](https://en.wikipedia.org/wiki/Industrial_robot)
+An _industrial robot_ is a [robot](#robot) system used for manufacturing. Industrial robots are automated, programmable and capable of movement on three or more axes.
+
+Typical applications of robots include welding, painting, assembly, disassembly, pick and place for [printed circuit boards](#printed-circuit-board), packaging and labeling, palletizing, product inspection, and testing; all accomplished with high endurance, speed, and precision. They can assist in material handling.
+
 ## [Input/Output](https://en.wikipedia.org/wiki/Input/output)
 In computing, _input/output_ or _I/O_ (or, informally, _io_ or _IO_) is the communication between an information processing system, such as a computer, and the outside world, possibly a human or another information processing system. Inputs are the signals or data received by the system and outputs are the signals or data sent from it. The term can also be used as part of an action; to "perform I/O" is to perform an input or output operation.
 
@@ -589,6 +610,9 @@ An _integrated development environment_ (_IDE_) is a software application that p
 
 ## [Internet](https://en.wikipedia.org/wiki/Internet)
 The _Internet_ (or _internet_) is the global system of interconnected [computer networks](#computer-network) that uses the [Internet protocol suite](#internet-protocol-suite) (TCP/IP) to communicate between networks and devices. It is a network of networks that consists of private, public, academic, business, and government networks of local to global scope, linked by a broad array of electronic, wireless, and optical networking technologies. The Internet carries a vast range of information resources and services, such as the inter-[linked](#hyperlink) [hypertext](#hypertext) documents and applications of the World Wide Web (WWW), electronic mail, telephony, and file sharing.
+
+## [Internet Bot](https://en.wikipedia.org/wiki/Internet_bot)
+An _Internet bot_, _web robot_, _robot_ or simply _bot_, is a software application that runs automated tasks (scripts) over the [Internet](#internet). Typically, bots perform tasks that are simple and repetitive, much faster than a person could. The most extensive use of bots is for [web crawling](#web-crawler), in which an automated script fetches, analyzes and files information from [web servers](#web-server). More than half of all web traffic is generated by bots.
 
 ## [Internet Control Message Protocol](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol)
 The _Internet Control Message Protocol_ (_ICMP_) is a supporting protocol in the [Internet protocol suite](#internet-protocol-suite). It is used by network devices, including routers, to send error messages and operational information indicating success or failure when communicating with another [IP address](#ip-address), for example, an error is indicated when a requested service is not available or that a host or router could not be reached. ICMP differs from transport protocols such as [TCP](#transmission-control-protocol) and [UDP](#user-datagram-protocol) in that it is not typically used to exchange data between systems, nor is it regularly employed by end-user network applications (with the exception of some diagnostic tools like ping and traceroute).
@@ -652,6 +676,9 @@ _Latency_ from a general point of view is a time delay between the cause and the
 Latency is physically a consequence of the limited velocity which any physical interaction can propagate. The magnitude of this velocity is always less than or equal to the speed of light. Therefore, every physical system with any physical separation (distance) between cause and effect will experience some sort of latency, regardless of the nature of stimulation that it has been exposed to.
 
 The precise definition of latency depends on the system being observed or the nature of the simulation. In communications, the lower limit of latency is determined by the medium being used to transfer information. In reliable two-way communication systems, latency limits the maximum rate that information can be transmitted, as there is often a limit on the amount of information that is "in-flight" at any one moment. In the field of humanmachine interaction, perceptible latency has a strong effect on user satisfaction and usability.
+
+## [Lethal Autonomous Weapon](https://en.wikipedia.org/wiki/Lethal_autonomous_weapon)
+_Lethal autonomous weapons_ (_LAWs_) are a type of autonomous military system that can independently search for and engage targets based on programmed constraints and descriptions. LAWs are also known as _lethal autonomous weapon systems_ (_LAWS_), _autonomous weapon systems_ (_AWS_), _robotic weapons_, _killer robots_ or _slaughterbots_. LAWs may operate in the air, on land, on water, under water, or in space. The autonomy of current systems as of 2018 was restricted in the sense that a human gives the final command to attack - though there are exceptions with certain "defensive" systems.
 
 ## [Liquid-Crystal Display](https://en.wikipedia.org/wiki/Liquid-crystal_display)
 A _liquid-crystal display_ (_LCD_) is a flat-panel display or other electronically modulated optical device that uses the light-modulating properties of liquid crystals combined with polarizers. Liquid crystals do not emit light directly, instead using a backlight or reflector to produce images in color or monochrome. LCDs are available to display arbitrary images (as in a general-purpose computer display) or fixed images with low information content, which can be displayed or hidden, such as preset words, digits, and seven-segment displays, as in a digital clock. They use the same basic technology, except that arbitrary images are made from a matrix of small pixels, while other displays have larger elements. LCDs can either be normally on (positive) or off (negative), depending on the polarizer arrangement. For example, a character positive LCD with a backlight will have black lettering on a background that is the color of the backlight, and a character negative LCD will have a black background with the letters being of the same color as the backlight. Optical filters are added to white on blue LCDs to give them their characteristic appearance.
@@ -803,6 +830,12 @@ In neuropsychology, linguistics, and the philosophy of language, a _natural lang
 ## [Natural Language Processing](https://en.wikipedia.org/wiki/Natural_language_processing)
 _Natural language processing_ (_NLP_) is a subfield of linguistics, computer science, and [artificial intelligence](#artificial-intelligence) concerned with the interactions between computers and human language, in particular how to program computers to process and analyze large amounts of [natural language](#natural-language) data. The result is a computer capable of "understanding" the contents of documents, including the contextual nuances of the language within them. The technology can then accurately extract information and insights contained in the documents as well as categorize and organize the documents themselves.
 
+## [Negative Feedback](https://en.wikipedia.org/wiki/Negative_feedback)
+_Negative feedback_ (or _balancing feedback_) occurs when some function of the output of a system, process, or mechanism is fed back in a manner that tends to reduce the fluctuations in the output, whether caused by changes in the input or by other disturbances.
+
+Whereas positive feedback tends to lead to instability via exponential growth, oscillation or chaotic behavior, negative feedback generally promotes stability. Negative feedback tends to promote a settling to equilibrium, and reduces the effects of perturbations. Negative feedback loops in which just the right amount of correction is applied with optimum timing can be very stable, accurate, and responsive.
+
+
 ## [Net Neutrality](https://en.wikipedia.org/wiki/Net_neutrality)
 _Network neutrality_, most commonly called _net neutrality_, is the principle that [Internet service providers](#internet-service-provider) (ISPs) must treat all [Internet](#internet) communications equally, and not discriminate or charge differently based on user, content, website, platform, application, type of equipment, source address, destination address, or method of communication.
 
@@ -843,6 +876,9 @@ In three dimensions, a surface normal, or simply normal, to a surface at point P
 
 ## [Null Character](https://en.wikipedia.org/wiki/Null_character)
 The _null character_ (also _null terminator_) is a control character with a value of zero. It is present in many character sets. It is available in nearly all mainstream programming languages. It is often abbreviated as _NUL_ (or _NULL_ though in some contexts that term is used for the _null pointer_, a different object). In 8-bit codes, it is known as a _null byte_.
+
+## [Numerical Control](https://en.wikipedia.org/wiki/Numerical_control)
+_Numerical control_ (also _computer numerical control_, and commonly called _CNC_) is the automated control of machining tools (such as drills, lathes, mills) and 3D printers by means of a computer. A CNC machine processes a piece of material (metal, plastic, wood, ceramic, or composite) to meet specifications by following a coded programmed instruction and without a manual operator directly controlling the machining operation.
 
 ## [Object-Oriented Programming](https://en.wikipedia.org/wiki/Object-oriented_programming)
 A programming paradigm based on the concept of "objects", which can contain data and code: data in the form of _fields_ (often known as _attributes_ or _properties_), and code, in the form of procedures (often known as _methods_).
@@ -920,6 +956,11 @@ _Phrase structure rules_ are a type of rewrite rule used to describe a given lan
 In the seven-layer OSI model of [computer networking](#computer-network), the _physical layer_ or _layer 1_ is the first and lowest layer. This layer may be implemented by a PHY chip.
 
 The physical layer defines the means of transmitting raw bits over a physical data link connecting network nodes. The bitstream may be grouped into code words or symbols and converted to a physical signal that is transmitted over a transmission medium. The physical layer provides an electrical, mechanical, and procedural interface to the transmission medium. The shapes and properties of the electrical connectors, the frequencies to broadcast on, the line code to use and similar low-level parameters, are specified by the physical layer.
+
+## [PID Controller](https://en.wikipedia.org/wiki/PID_controller)
+A _proportional-integral-derivative controller_ (_PID controller_ or _three-term controller_) is a [control loop](#control-loop) mechanism employing [feedback](#feedback) that is widely used in industrial control systems and a variety of other applications requiring continuously modulated control. A PID controller continuously calculates an _error value_ ___e(t)___ as the difference between a desired setpoint (SP) and a measured process variable (PV) and applies a correction based on proportional, integral, and derivative terms (denoted _P_, _I_, and _D_ respectively), hence the name.
+
+In practical terms it automatically applies an accurate and responsive correction to a control function. An everyday example is the cruise control on a car, where ascending a hill would lower speed if only constant engine power were applied. The controller's PID algorithm restores the measured speed to the desired speed with minimal delay and overshoot by increasing the power output of the engine.
 
 ## [Pixel](https://en.wikipedia.org/wiki/Pixel)
 In digital imaging, a _pixel_, _pel_, or _picture element_ is a physical point in a raster image, or the smallest addressable element in an all points addressable display device; so it is the smallest controllable element of a picture represented on the screen.
@@ -1029,7 +1070,12 @@ The _RGB color model_ is an additive color model in which red, green, and blue l
 The main purpose of the RGB color model is for the sensing, representation, and display of images in electronic systems, such as televisions and computers, though it has also been used in conventional photography. Before the electronic age, the RGB color model already had a solid theory behind it, based in human perception of colors.
 
 ## [Ripple-Carry Adder](https://en.wikipedia.org/wiki/Adder_(electronics)#Ripple-carry_adder)
-A _ripple-carry adder_ is a circuit that utilizes multiple [full adders](#full-adder) to add _N_-bit numbers. Each full adder inputs a C<sub>in</sub>, which is the C<sub>out</sub> of the previous adder. This kind of adder is called a ripper-carry adder (RCA) because each carry bit "ripples" to the next full adder. The first (and only the first) full adder may be replaced with a [half adder](#half-adder) under the assumption that C<sub>in</sub> = 0.
+A _ripple-carry adder_ is a circuit that utilizes multiple [full adders](#full-adder) to add _N_-bit numbers. Each full adder inputs a C<sub>in</sub>, which is the C<sub>out</sub> of the previous adder. This kind of adder is called a ripper-carry adder (RCA) because each carry bit "ripples" to the next full adder. The first (and only the first) full adder may be replaced with a [half addeComputer Vision]r](#half-adder) under the assumption that C<sub>in</sub> = 0.
+
+## [Robot](https://en.wikipedia.org/wiki/Robot)
+A _robot_ is a machine - especially one programmable by a computer capable of carrying out a complex series of actions automatically. Robots can be guided by an external control device or the control may be embedded within. Robots may be constructed on the lines of human form, but most robots are machines designed to perform a task with no regard to their aesthetics.
+
+Robots can be autonomous or semi-autonomous and range from humanoids such as Honda's _Advanced Step in Innovative Mobility_ (_ASIMO_) and TOSY's _TOSY Ping Pong Playing Robot_ (_TOPIO_) to industrial robots, medical operating robots, patient assist robots, dog therapy robots, collectively programmed swarm robots, UAV drones such as General Atomics _MQ-1 Predator_, and even microscopic nano robots. By mimicking a lifelike appearance or automating movements, a robot may convey a sense of intelligence or thought of its own. Autonomous things are expected to proliferate in the coming decade, with home robotics and the autonomous car as some of the main drivers.
 
 ## [Routing](https://en.wikipedia.org/wiki/Routing)
 _Routing_ is the process of selecting a path for traffic in a network or between or across multiple networks. Broadly, routing is performed in many types of networks, including circuit-switched networks, such as the public switched telephone network (PSTN), and [computer networks](#computer-network), such as the [Internet](#internet).
@@ -1057,6 +1103,11 @@ A _search engine_ is a software system that is designed to carry out web searche
 
 ## [Security Hacker](https://en.wikipedia.org/wiki/Security_hacker)
 A _security hacker_ is someone who explores methods for breaching defenses and [exploiting](#exploit) weaknesses in a computer system or [network](#computer-network). Hackers may be motivated by a multitude of reasons, such as profit, protest, information gathering, challenge, recreation, or to evaluate system weaknesses to assist in formulating defenses against potential hackers. The subculture that has evolved around hackers is often referred to as the "computer underground".
+
+## [Self-Driving Car](https://en.wikipedia.org/wiki/Self-driving_car)
+A _self-driving car_, also known as an _autonomous vehicle_ (_AV_), _driverless car_, or _robo-car_ is a vehicle that is capable of sensing its environment and moving safely with little or no human input.
+
+Self-driving cars combine a variety of sensors to perceive their surroundings, such as radar, lidar, sonar, GPS, odometry and inertial measurement units. Advanced control systems interpret sensory information to identify appropriate navigation paths, as well as obstacles and relevant signage.
 
 ## [Sequential Access Memory](https://en.wikipedia.org/wiki/Sequential_access_memory)
 In computing, sequential access memory (SAM) is a class of data storage devices that read stored data in a sequence. This is in contrast to [random access memory](#random-access-memory) (RAM) where data can be accessed in any order. Sequential access devices are usually a form of magnetic storage or optical storage.
@@ -1191,6 +1242,21 @@ Texture mapping originally referred to _diffuse mapping_, a method that simply m
 _Threat modeling_ is a process by which potential threats, such as structural vulnerabilities or the absence of appropriate safeguards, can be identified, enumerated, and mitigations can be prioritized. The purpose of threat modeling is to provide defenders with a systematic analysis of what controls or defenses need to be included, given the nature of the system, the probable attacker's profile, the most likely attack vectors, and the assets most desired by an attacker. Threat modeling answers questions like _“Where am I most vulnerable to attack?”_, _“What are the most relevant threats?”_, and _“What do I need to do to safeguard against these threats?”_.
 
 Conceptually, most people incorporate some form of threat modeling in their daily life and don't even realize it. Commuters use threat modeling to consider what might go wrong during the morning drive to work and to take preemptive action to avoid possible accidents. Children engage in threat modeling when determining the best path toward an intended goal while avoiding the playground bully. In a more formal sense, threat modeling has been used to prioritize military defensive preparations since antiquity.
+
+## [Three Laws of Robotics](https://en.wikipedia.org/wiki/Three_Laws_of_Robotics)
+The _Three Laws of Robotics_ (often shortened to _The Three Laws_ or known as _Asimov's Laws_) are a set of rules devised by science fiction author Isaac Asimov. The rules were introduced in his 1942 short story "Runaround" (included in the 1950 collection _I, Robot_), although they had been foreshadowed in some earlier stories. The Three Laws, quoted from the "Handbook of Robotics, 56th Edition, 2058 A.D.", are:
+
+**First Law**
+
+A robot may not injure a human being or, through inaction, allow a human being to come to harm.
+
+**Second Law**
+
+A robot must obey the orders given it by human beings except where such orders would conflict with the First Law.
+
+**Third Law**
+
+A robot must protect its own existence as long as such protection does not conflict with the First or Second Law.
 
 ## [Time-Sharing](https://en.wikipedia.org/wiki/Time-sharing)
 In computing, time-sharing is the sharing of a computing resource among many users at the same time by means of multiprogramming and multi-tasking.
