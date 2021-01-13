@@ -94,6 +94,7 @@ Date: July 2020 - Ongoing
   * [Speech Recognition](./36/README.md#speech-recognition)
   * [Speech Synthesis](./36/README.md#speech-synthesis)
 * 37: [Robots](./37/README.md)
+* 38: [Psychology of Computing](./38/README.md)
 * [Glossary](./glossary/README.md)
 * [Additional Resources](#additional-resources)
 

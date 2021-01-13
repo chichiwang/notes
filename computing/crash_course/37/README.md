@@ -89,4 +89,4 @@ The danger was obvious to science fiction writer [Isaac Asimov](https://en.wikip
 
 In short, it is a code of conduct or moral compass for robots - guiding them to do no harm, especially to humans. It is inadequate for practical application and it leaves plenty of room for equivocation. Still, Asimov's laws inspired many science fiction and academic discussions and today there are conferences dedicated to the topic of robot ethics. Importantly, Asimov crafted his fictional rules as a way to push back on "robot as a menace" memes common in fiction from his childhood. These were stories where robots went off the rails, harming or destroying their creators in the process. Asimov, by contrast, envisioned robots as useful, reliable, and even lovable machines.
 
-| [Previous: Natural Language Processing](../36/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: Natural Language Processing](../36/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Psychology of Computing](../38/README.md) |
