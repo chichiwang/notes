@@ -16,6 +16,9 @@ In data networking, telecommunications, and computer buses, an _acknowledgement_
 
 Oftentimes, data messages in telecommunications contain [checksums](#checksum) to verify the integrity of the payload and [header](#header). Checksums work in such a way that if a single bit of the data is corrupted, the checksum would have a different value, so they can provide an inexpensive way to check for (probable) signal integrity. If a message is received with an invalid checksum (that is, the data received would have a different checksum than the message had), the receiver can know that some information was corrupted. Most often, when checksums are employed, a corrupted message received will either not be served an ACK signal, or will be served a NAK signal.
 
+## [Affective Computing](https://en.wikipedia.org/wiki/Affective_computing)
+_Affective computing_ is the study and development of systems and devices that can recognize, interpret, process, and simulate human affects. It is an interdisciplinary field spanning computer science, psychology, and cognitive science. While some core ideas in the field may be traced as far back as to early philosophical inquiries into emotion, the more modern branch of computer science originated with Rosalind Picard's 1995 paper on affective computing and her book _Affective Computing_ published by MIT Press. One of the motivations for the research is the ability to give machines emotional intelligence, including to simulate empathy. The machine should interpret the emotional state of humans and adapt its behavior to them, giving an appropriate response to those emotions.
+
 ## [Algorithm](https://en.wikipedia.org/wiki/Algorithm)
 In mathematics and computer science, an _algorithm_ is a finite sequence of well-defined, computer-implementable instructions, typically to solve a class of problems or to perform a computation. Algorithms are always unambiguous and are used as specifications for performing calculations, data processing, automated reasoning, or other tasks.
 
@@ -229,6 +232,9 @@ Its use in designing electronic systems is known as electronic design automation
 A _computer keyboard_ is a typewriter-style device which uses an arrangement of buttons or keys to act as mechanical levers or electronic switches. Replacing early [punched cards](#punched-card) and [paper tape](#punched-tape) technology, interaction via teleprinter-style keyboards have been the main input method for computers since the 1970s, supplemented by the computer mouse since the 1980s.
 
 Keyboard keys (buttons) typically have a set of characters engraved or printed on them, and each press of a key typically corresponds to a single written symbol. However, producing some symbols may require pressing and holding several keys simultaneously or in sequence. While most keyboard keys produce letters, numbers or symbols (characters), other keys or simultaneous key presses can prompt the computer to execute system commands, such as such as the Control-Alt-Delete combination used with Microsoft Windows. In a modern computer, the interpretation of key presses is generally left to the software: the information sent to the computer, the scan code, tells it only which key (or keys) on which row and column, was pressed or released.
+
+## [Computer-Mediated Communication](https://en.wikipedia.org/wiki/Computer-mediated_communication)
+_Computer-mediated communication_ (_CMC_) is defined as any human communication that occurs through the use of two or more electronic devices. While the term has traditionally referred to those communications that occur via computer-mediated formats (e.g., instant messaging, email, chat rooms, online forums, social network services), it has also been applied to other forms of text-based interaction such as text messaging. Research on CMC focuses largely on the social effects of different computer-supported communication technologies. Many recent studies involve Internet-based social networking supported by social software.
 
 ## [Computer Mouse](https://en.wikipedia.org/wiki/Computer_mouse)
 A computer _mouse_ (plural _mice_, rarely _mouses_) is a hand-held pointing device that detects two-dimensional motion relative to a surface. This motion is typically translated into the motion of a pointer on a display, which allows a smooth control of the graphical user interface of a computer.
@@ -571,7 +577,10 @@ _Human-in-the-loop_ or _HITL_ is defined as a model that requires human interact
 HITL is often referred to as interactive simulation, which is a special kind of physical simulation in which physical simulations include human operators, such as in a flight or a driving simulator.
 
 ## [Human-Computer Interaction](https://en.wikipedia.org/wiki/Human%E2%80%93computer_interaction)
-_Humancomputer interaction_ (_HCI_) studies the design and use of computer technology, focused on the interfaces between people (users) and computers. Researchers in the field of HCI observe the ways in which humans interact with computers and design technologies that let humans interact with computers in novel ways.
+_Human-computer interaction_ (_HCI_) studies the design and use of computer technology, focused on the interfaces between people (users) and computers. Researchers in the field of HCI observe the ways in which humans interact with computers and design technologies that let humans interact with computers in novel ways.
+
+## [Human-Robot Interaction](https://en.wikipedia.org/wiki/Human%E2%80%93robot_interaction)
+_Human-robot interaction_ is the study of interactions between humans and [robots](#robot). It is often referred as _HRI_ by researchers. Human-robot interaction is a multidisciplinary field with contributions from [human-computer interaction](#human-computer-interaction), [artificial intelligence](#artificial-intelligence), robotics, [natural language](#natural-language) understanding, design, humanities and social sciences.
 
 ## [Hyperlink](https://en.wikipedia.org/wiki/Hyperlink)
 _Hyperlink_ computing, a _hyperlink_, or simply a _link_, is a reference to data that the user can follow by clicking or tapping. A hyperlink points to a whole document or to a specific element within a document. [Hypertext](#hypertext) is text with hyperlinks. The text that is linked from is called anchor text. A software system that is used for viewing and creating hypertext is a hypertext system, and to create a hyperlink is to hyperlink (or simply to link). A user following hyperlinks is said to navigate or browse the hypertext.
@@ -581,6 +590,9 @@ _Hypertext_ is text displayed on a computer display or other electronic devices 
 
 ## [Hypertext Transfer Protocol](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
 The _Hypertext Transfer Protocol_ (_HTTP_) is an application layer protocol for distributed, collaborative, hypermedia information systems. HTTP is the foundation of data communication for the [World Wide Web](#world-wide-web), where [hypertext](#hypertext) documents include [hyperlinks](#hyperlink) to other resources that the user can easily access, for example by a mouse click or by tapping the screen in a [web browser](#web-browser).
+
+## [Icon](https://en.wikipedia.org/wiki/Icon_(computing))
+In computing, an _icon_ is a pictogram or ideogram displayed on a computer screen in order to help the user navigate a computer system. The icon itself is a quickly comprehensible symbol of a software tool, function, or a data [file](#file), accessible on the system and is more like a traffic sign than a detailed illustration of the actual entity it represents. It can serve as an electronic [hyperlink](#hyperlink) or file shortcut to access the program or data. The user can activate an icon using a [mouse](#computer-mouse), pointer, finger, or recently voice commands. Their placement on the screen, also in relation to other icons, may provide further information to the user about their usage. In activating an icon, the user can move directly into and out of the identified function without knowing anything further about the location or requirements of the file or code.
 
 ## [Industrial Robot](https://en.wikipedia.org/wiki/Industrial_robot)
 An _industrial robot_ is a [robot](#robot) system used for manufacturing. Industrial robots are automated, programmable and capable of movement on three or more axes.
@@ -1321,6 +1333,9 @@ A _Turing machine_ is a mathematical model of computation that defines an abstra
 
 The machine operates on an infinite memory tape divided into discrete "cells". The machine positions its "head" over a cell and "reads" or "scans" the symbol there. Then, as per the symbol and the machine's own present state in a "finite table" of user-specified instructions, the machine writes a symbol (e.g., a digit or letter fom a finite alphabet) in the cell (some models allow symbol erasure or no writing) then either moves the tape one cell left or right (some models allow no motion, some models move the head) then (as determined by the observed symbol and the machines' own state in the table) either proceeds to a subsequent instruction or halts the computation.
 
+## [Uncanny Valley](https://en.wikipedia.org/wiki/Uncanny_valley)
+In aesthetics, the _uncanny valley_ is a hypothesized relationship between the degree of an object's resemblance to a human being and the emotional response to such an object. The concept suggests that humanoid objects which imperfectly resemble actual human beings provoke uncanny or strangely familiar feelings of eeriness and revulsion in observers. "Valley" denotes a dip in the human observer's affinity for the replica, a relation that otherwise increases with the replica's human likeness.
+
 ## [Unix](https://en.wikipedia.org/wiki/Unix)
 _Unix_ is a family of multitasking, multiuser computer operating systems that derive from the original AT&T Unix, development starting in the 1970s at the Bell Labs research center by Ken Thompson, Dennis Ritchie, and others.
 
@@ -1330,6 +1345,9 @@ Unix distinguishes itself from its predecessors as the first portable operating 
 
 ## [URL](https://en.wikipedia.org/wiki/URL)
 A _Uniform Resource Locator_ (_URL_), colloquially termed a web address, is a reference to a web resource that specifies its location on a [computer network](#computer-network) and a mechanism for retrieving it. A URL is a specific type of Uniform Resource Identifier (URI), although many people use the two terms interchangeably. URLs occur most commonly to reference [web pages](#web-page) (http), but are also used for file transfer (ftp), email (mailto), database access (JDBC), and many other applications.
+
+## [Usability](https://en.wikipedia.org/wiki/Usability)
+_Usability_ can be described as the capacity of a system to provide a condition for its users to perform the tasks safely, effectively, and efficiently while enjoying the experience. In software engineering, usability is the degree to which a software can be used by specified consumers to achieve quantified objectives with effectiveness, efficiency, and satisfaction in a quantified context of use.
 
 ## [User Datagram Protocol](https://en.wikipedia.org/wiki/User_Datagram_Protocol)
 In [computer networking](#computer-network), the _User Datagram Protocol_ (_UDP_) is one of the core members of the [Internet protocol suite](#internet-protocol-suite). The protocol was designed by David P. Reed in 1980 and formally defined in RFC 768. With UDP, computer applications can send messages, in this case referred to as datagrams, to other hosts on an [Internet Protocol](#internet-protocol) (IP) network. Prior communications are not required in order to set up communication channels or data paths.
