@@ -16,6 +16,9 @@ In data networking, telecommunications, and computer buses, an _acknowledgement_
 
 Oftentimes, data messages in telecommunications contain [checksums](#checksum) to verify the integrity of the payload and [header](#header). Checksums work in such a way that if a single bit of the data is corrupted, the checksum would have a different value, so they can provide an inexpensive way to check for (probable) signal integrity. If a message is received with an invalid checksum (that is, the data received would have a different checksum than the message had), the receiver can know that some information was corrupted. Most often, when checksums are employed, a corrupted message received will either not be served an ACK signal, or will be served a NAK signal.
 
+## [Active Learning](https://en.wikipedia.org/wiki/Active_learning)
+_Active learning_ is "a method of learning in which students are actively or experientially involved in the learning process and where there are different levels of active learning, depending on student involvement." (Bonwell & Eison 1991) Bonwell & Eison (1991) states that "students participate [in active learning] when they are doing something besides passively listening." In a report from the Association for the Study of Higher Education (ASHE), authors discuss a variety of methodologies for promoting active learning. They cite literature that indicates students must do more than just listen in order to learn. They must read, write, discuss, and be engaged in solving problems. This process relates to the three learning domains referred to as knowledge, skills and attitudes (KSA). This taxonomy of learning behaviors can be thought of as "the goals of the learning process." In particular, students must engage in such higher-order thinking tasks as analysis, synthesis, and evaluation.
+
 ## [Affective Computing](https://en.wikipedia.org/wiki/Affective_computing)
 _Affective computing_ is the study and development of systems and devices that can recognize, interpret, process, and simulate human affects. It is an interdisciplinary field spanning computer science, psychology, and cognitive science. While some core ideas in the field may be traced as far back as to early philosophical inquiries into emotion, the more modern branch of computer science originated with Rosalind Picard's 1995 paper on affective computing and her book _Affective Computing_ published by MIT Press. One of the motivations for the research is the ability to give machines emotional intelligence, including to simulate empathy. The machine should interpret the emotional state of humans and adapt its behavior to them, giving an appropriate response to those emotions.
 
@@ -88,6 +91,13 @@ A backlink is a reference comparable to a citation. The quantity, quality, and r
 
 ## [Batch Processing](https://en.wikipedia.org/wiki/Batch_processing)
 Computerized _batch processing_ is the running of "jobs that can run without end user interaction, or can be scheduled to run as resources permit."
+
+## [Bayesian Knowledge Tracing](https://en.wikipedia.org/wiki/Bayesian_Knowledge_Tracing)
+_Bayesian Knowledge Tracing_ is an [algorithm](#algorithm) used in many [intelligent tutoring systems](#intelligent-tutoring-system) to model each learner's mastery of the knowledge being tutored.
+
+It models student knowledge in a Hidden Markov Model as a latent variable, updated by observing the correctness of each student's interaction in which they apply the skill in question.
+
+BKT assumes that student knowledge is represented as a set of binary variables, one per skill, where the skill is either mastered by the student or not. Observations in BKT are also binary: a student gets a problem/step either right or wrong. Intelligent tutoring systems often use BKT for mastery learning and problem sequencing. In its most common implementation, BKT has only skill-specific parameters.
 
 ## [Big O Notation](https://en.wikipedia.org/wiki/Big_O_notation)
 A mathematical notation that describes the limiting behavior of a function when the argument tends towards a certain value or infinity. Big O is a member of a family of notations invented by [Paul Bachmann](https://en.wikipedia.org/wiki/Paul_Gustav_Heinrich_Bachmann), [Edmund Landau](https://en.wikipedia.org/wiki/Edmund_Landau), and others, collectively called _Bachmann-Landau notation_ or _asymptotic notation_. In computer science, big O notation is used to classify [algorithms](#algorithm) according to how their run time or space requirements grow as the input size grows.
@@ -416,6 +426,9 @@ A [bit](#bit) that is associated with a block of computer memory and indicates w
 ## [Discrete Component](https://www.pcmag.com/encyclopedia/term/discrete-component)
 An elementary electronic device constructed as a single unit. Before the advent of [integrated circuits](#integrated-circuit) (chips), all [transistors](#transistor), [resistors](#resistor), [capacitors](#capacitor), and [diodes](#diode) were discrete. Discrete components are widely used in amplifiers and other electronic products that use large amounts of current. On a circuit board, they are intermingled with the chips, and there is hardly any electronic product that does not have at least one or two discrete resistors or capacitors.
 
+## [Domain Model](https://en.wikipedia.org/wiki/Domain_model)
+In software engineering, a _domain model_ is a conceptual model of the domain that incorporates both behaviour and data. In ontology engineering, a domain model is a formal representation of a knowledge domain with concepts, roles, datatypes, individuals, and rules, typically grounded in a description logic.
+
 ## [Domain Name System](https://en.wikipedia.org/wiki/Domain_Name_System)
 The _Domain Name System_ (_DNS_) is a hierarchical and decentralized naming system for computers, services, or other resources connected to the [Internet](#internet) or a [private network](#computer-network). It associates various information with domain names assigned to each of the participating entities. Most prominently, it translates more readily memorized domain names to the numerical [IP addresses](#ip-address) needed for locating and identifying computer services and devices with the underlying network protocols. By providing a worldwide, distributed directory service, the Domain Name System has been an essential component of the functionality of the Internet since 1985.
 
@@ -437,6 +450,14 @@ Drums were displaced as primary computer memory by magnetic core memory, which o
 
 ## [Dynamic Random-Access Memory](https://en.wikipedia.org/wiki/Dynamic_random-access_memory)
 _DRAM_ is a type of [random access](#random-access-memory) semiconductor memory that stores each bit of data in a memory cell consisting of a tiny [capacitor](#capacitor) and transitor.
+
+## [Educational Data Mining](https://en.wikipedia.org/wiki/Educational_data_mining)
+_Educational data mining_ (_EDM_) describes a research field concerned with the application of data mining, [machine learning](#machine-learning) and statistics to information generated from educational settings (e.g., universities and [intelligent tutoring systems](#intelligent-tutoring-system)). At a high level, the field seeks to develop and improve methods for exploring this data, which often has multiple levels of meaningful hierarchy, in order to discover new insights about how people learn in the context of such settings. In doing so, EDM has contributed to theories of learning investigated by researchers in educational psychology and the learning sciences. The field is closely tied to that of learning analytics, and the two have been compared and contrasted.
+
+## [Educational Technology](https://en.wikipedia.org/wiki/Educational_technology)
+_Educational technology_ (commonly abbreviated as _EduTech_, or _EdTech_) is the combined use of computer hardware, software, and educational theory and practice to facilitate learning. When referred to with its abbreviation, EdTech, it is often referring to the industry of companies that create educational technology.
+
+In addition to practical educational experience, educational technology is based on theoretical knowledge from various disciplines such as communication, education, psychology, sociology, artificial intelligence, and computer science. It encompasses several domains including learning theory, computer-based training, online learning, and m-learning, where mobile technologies are used.
 
 ## [Emotion Recognition](https://en.wikipedia.org/wiki/Emotion_recognition)
 _Emotion recognition_ is the process of identifying human emotion. People vary widely in their accuracy at recognizing the emotions of others. Use of technology to help people with emotion recognition is a relatively nascent research area. Generally, the technology works best if it uses multiple modalities in context. To date, the most work has been conducted on automating the recognition of facial expressions from video, spoken expressions from audio, written expressions from text, and physiology as measured by wearables.
@@ -620,6 +641,9 @@ An _integrated circuit_ or _monolithic integrated circuit_ (also referred to as 
 ## [Integrated Development Environment](https://en.wikipedia.org/wiki/Integrated_development_environment)
 An _integrated development environment_ (_IDE_) is a software application that provides comprehensive facilities to computer programmers for software development. An IDE normally consists of at least a source code editor, build automation tools and a debugger. Some IDEs, Such as [NetBeans](https://en.wikipedia.org/wiki/NetBeans) and [Eclipse](https://en.wikipedia.org/wiki/Eclipse_(software)), contain the necessary [compiler](#compiler), interpreter, or both; others such as [SharpDevelop](https://en.wikipedia.org/wiki/SharpDevelop) and [Lazarus](https://en.wikipedia.org/wiki/Lazarus_(IDE)) do not.
 
+## [Intelligent Tutoring System](https://en.wikipedia.org/wiki/Intelligent_tutoring_system)
+An _intelligent tutoring system_ (_ITS_) is a computer system that aims to provide immediate and customized instruction or feedback to learners, usually without requiring intervention from a human teacher. ITSs have the common goal of enabling learning in a meaningful and effective manner by using a variety of computing technologies. There are many examples of ITSs being used in both formal education and professional settings in which they have demonstrated their capabilities and limitations. There is a close relationship between intelligent tutoring, cognitive learning theories and design; and there is ongoing research to improve the effectiveness of ITS. An ITS typically aims to replicate the demonstrated benefits of one-to-one, personalized tutoring, in contexts where students would otherwise have access to one-to-many instruction from a single teacher (e.g., classroom lectures), or no teacher at all (e.g., online homework). ITSs are often designed with the goal of providing access to high quality education to each and every student.
+
 ## [Internet](https://en.wikipedia.org/wiki/Internet)
 The _Internet_ (or _internet_) is the global system of interconnected [computer networks](#computer-network) that uses the [Internet protocol suite](#internet-protocol-suite) (TCP/IP) to communicate between networks and devices. It is a network of networks that consists of private, public, academic, business, and government networks of local to global scope, linked by a broad array of electronic, wireless, and optical networking technologies. The Internet carries a vast range of information resources and services, such as the inter-[linked](#hyperlink) [hypertext](#hypertext) documents and applications of the World Wide Web (WWW), electronic mail, telephony, and file sharing.
 
@@ -773,6 +797,18 @@ Programs are also considered malware if they secretly act against the interests 
 
 ## [Magnetic Tape](https://en.wikipedia.org/wiki/Magnetic_tape)
 _Magnetic tape_ is a medium for magnetic recording, made of a thin, magnetizable coating on a long, narrow strip of plastic film. It was developed in Germany in 1928, based on magnetic wire recording. Devices that record and playback audio and video using magnetic tape are tape recorders and video tape recorders respectively. A device that stores computer data on magnetic tape is known as a tape drive.
+
+## [Massive Open Online Course](https://en.wikipedia.org/wiki/Massive_open_online_course)
+A _massive open online course_ (_MOOC_) is an online course aimed at unlimited participation and open access via the Web. In addition to traditional course materials, such as filmed lectures, readings, and problem sets, many MOOCs provide interactive courses with user forums or social media discussions to support community interactions among students, professors, and teaching assistants (TAs), as well as immediate feedback to quick quizzes and assignments. MOOCs are a widely researched development in distance education, first introduced in 2008, that emerged as a popular mode of learning in 2012.
+
+Early MOOCs (cMOOCs) often emphasized open-access features, such as open licensing of content, structure and learning goals, to promote the reuse and remixing of resources. Some later MOOCs (xMOOCs) use closed licenses for their course materials while maintaining free access for students.
+
+## [Mastery Learning](https://en.wikipedia.org/wiki/Mastery_learning)
+_Mastery learning_ (or, as it was initially called, _"learning for mastery"_) is an instructional strategy and educational philosophy, first formally proposed by Benjamin Bloom in 1968. Mastery learning maintains that students must achieve a level of mastery (e.g., 90% on a knowledge test) in prerequisite knowledge before moving forward to learn subsequent information. If a student does not achieve mastery on the test, they are given additional support in learning and reviewing the information and then tested again. This cycle continues until the learner accomplishes mastery, and they may then move on to the next stage.
+
+Mastery learning methods suggest that the focus of instruction should be the time required for different students to learn the same material and achieve the same level of mastery. This is very much in contrast with classic models of teaching, which focus more on differences in students' ability and where all students are given approximately the same amount of time to learn and the same set of instructions.
+
+In mastery learning, there is a shift in responsibilities, so that student's failure is more due to the instruction and not necessarily lack of ability on his or her part. Therefore, in a mastery learning environment, the challenge becomes providing enough time and employing instructional strategies so that all students can achieve the same level of learning.
 
 ## [Message Switching](https://en.wikipedia.org/wiki/Message_switching)
 In telecommunications, _message switching_ involves messages routed in their entirety, one hop at a time. It evolved from [circuit switching](#circuit-switching) and was the precursor of [packet switching](#packet-switching).
@@ -941,6 +977,9 @@ _Parsing_, _syntax analysis_, or _syntactic analysis_ is the process of analyzin
 
 The term has slightly different meanings in different branches of linguistics and computer science. Traditional sentence parsing is often performed as a method of understanding the exact meaning of a sentence or word, sometimes with the aid of devices such as sentence diagrams. It usually emphasizes the importance of grammatical divisions such as subject and predicate.
 
+## [Pedagogical Agent](https://en.wikipedia.org/wiki/Pedagogical_agent)
+_A pedagogical agent_ is a concept borrowed from computer science and [artificial intelligence](#artificial-intelligence) and applied to education, usually as part of an [intelligent tutoring system](#intelligent-tutoring-system) (ITS). It is a simulated human-like interface between the learner and the content, in an educational environment. A pedagogical agent is designed to model the type of interactions between a student and another person. Mabanza and de Wet define it as "a character enacted by a computer that interacts with the user in a socially engaging manner". A pedagogical agent can be assigned different roles in the learning environment, such as tutor or co-learner, depending on the desired purpose of the agent. "A tutor agent plays the role of a teacher, while a co-learner agent plays the role of a learning companion".
+
 ## [Personal Computer](https://en.wikipedia.org/wiki/Personal_computer)
 A _personal computer_ (_PC_) is a multi-purpose computer whose size, capabilities, and price make it feasible for individual use. Personal computers are intended to be operated directly by an end user, rather than by a computer expert or technician. Unlike large, costly minicomputers and mainframes, time-sharing by many people at the same time is not used with personal computers.
 
@@ -1015,6 +1054,9 @@ A _prefix code_ is a type of code system distinguished by its possession of the 
 For example, a code with code words {9, 55} has the prefix property; a code consisting of {9, 5, 59, 55} does not, because "5" is a prefix of "59" and also of "55". A prefix code is a uniquely decodable code: given a complete and accurate sequence, a receiver can identify each word without requiring a special marker between words. However, there are uniquely decodable codes that are not prefix codes; for instance, the reverse of a prefix code is still uniquely decodable (it is a suffix code), but it is not necessarily a prefix code.
 
 Prefix codes are also known as _prefix-free codes_, _prefix condition codes_ and _instantaneous codes_. Although [Huffman coding](#huffman-coding) is just one of many [algorithms](#algorithm) for deriving prefix codes, prefix codes are also widely referred to as "Huffman codes", even when the code was not produced by a Huffman algorithm. The term comma-free code is sometimes also applied as a synonym for prefix-free codes but in most mathematical books and articles a comma-free code is used to mean a self-synchronizing code, a subclass of prefix codes.
+
+## [Production](https://en.wikipedia.org/wiki/Production_(computer_science))
+A _production_ or _production rule_ in computer science is a rewrite rule specifying a symbol substitution that can be recursively performed to generate new symbol sequences. A finite set of productions **P** is the main component in the specification of a formal grammar (specifically a generative grammar). The other components are a finite set **N** of nonterminal symbols, a finite set (known as an alphabet) **Σ**  of terminal symbols that is disjoint from **N** and a distinguished symbol **S** ∈ **N** that is the start symbol.
 
 ## [Pseudocode](https://en.wikipedia.org/wiki/Pseudocode)
 _Pseudocode_ is a plain language description of the steps in an [algorithm](#algorithm) or another system. Pseudocode often uses structural conventions of a normal programming language, but is intended for human reading rather than machine reading. It typically omits details that are essential for machine understanding of the algorithm, such as variable declarations and language-specific code.
