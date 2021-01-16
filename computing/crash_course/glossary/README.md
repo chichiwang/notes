@@ -124,6 +124,9 @@ A bitmap is a type of memory organization or image [file format](#file-format) u
 ## [Black Hat](https://en.wikipedia.org/wiki/Black_hat_(computer_security))
 A _black hat hacker_ (or _black-hat hacker_) is a [hacker](#security-hacker) who violates computer security for personal gain or malice.
 
+## [Brain-Computer Interface](https://en.wikipedia.org/wiki/Brain%E2%80%93computer_interface)
+A _brain-computer_ interface (_BCI_), sometimes called a _neural control interface_ (_NCI_), _mind-machine interface_ (_MMI_), _direct neural interface_ (_DNI_), or _brain-machine interface_ (_BMI_), is a direct communication pathway between an enhanced or wired brain and an external device. BCIs are often directed at researching, mapping, assisting, augmenting, or repairing human cognitive or sensory-motor functions.
+
 ## [Botnet](https://en.wikipedia.org/wiki/Botnet)
 A _botnet_ is a number of [Internet](#internet)-connected devices, each of which is running one or more bots. Botnets can be used to perform [Distributed Denial-of-Service](#denial-of-service-attack) (DDoS) attacks, steal data, send spam, and allow the attacker to access the device and its connection. The owner can control the botnet using command and control (C&C) software. The word "botnet" is a portmanteau of the words "robot" and "network". The term is usually used with a negative or malicious connotation.
 
@@ -332,6 +335,11 @@ _Cyberwarfare_ is the use of digital attacks to attack a nation, causing compara
 
 While there is debate over how to define and use "cyberwarfare" as a term, many countries including the United States, United Kingdom, Russia, India, Pakistan, China, Israel, Iran, and North Korea have active cyber capabilities for offensive and defensive operations. As states explore the use of cyber operations and combine capabilities the likelihood of physical confrontation and violence playing out as a result of, or part of, a cyber operation is increased. However, meeting the scale and protracted nature of war is unlikely, thus ambiguity remains.
 
+## [Cyborg](https://en.wikipedia.org/wiki/Cyborg)
+A _cyborg_, a portmanteau of "<i>cyb</i>ernetic <i>org</i>anism", is a being with both organic and biomechatronic body parts. The term was coined in 1960 by Manfred Clynes and Nathan S. Kline.
+
+The term cyborg is not the same thing as bionic, biorobot or [android](#android); it applies to an organism that has restored function or enhanced abilities due to the integration of some artificial component or technology that relies on some sort of feedback. While cyborgs are commonly thought of as mammals, including humans, they might also conceivably be any kind of organism.
+
 ## [Data Compression](https://en.wikipedia.org/wiki/Data_compression)
 In signal processing, _data compression_, _source coding_, or _bit-rate reduction_ is the process of encoding information using fewer [bits](#bit) than the original representation. Any particular compression is either [lossy](#lossy-compression) or [lossless](#lossless-compression). Lossless compression reduces bits by identifying and eliminating statistical redundancy. No information is lost in lossless compression. Lossy compression reduces bits by removing unnecessary or less important information. Typically, a device that performs data compression is referred to as an encoder, and one that performs the reversal of the process (decompression) as a decoder.
 
@@ -416,6 +424,11 @@ The elements of a dialogue system are not defined, however they are different fr
 _Diffie-Hellman key exchange_ is a method of securely exchanging [cryptographic](#cryptography) keys over a public channel and was one of the first [public-key protocols](#public-key-cryptography) as conceived by Ralph Merkle and named after Whitfield Diffie and Martin Hellman. DH is one of the earliest practical examples of public [key exchange](#key-exchange) implemented within the field of cryptography. Published in 1976 by Diffie and Hellman, this is the earliest publicly known work that proposed the idea of a private key and a corresponding public key.
 
 Traditionally, secure encrypted communication between two parties required that they first exchange keys by some secure physical means, such as paper key lists transported by a trusted courier. The DiffieHellman key exchange method allows two parties that have no prior knowledge of each other to jointly establish a shared secret key over an insecure channel. This key can then be used to encrypt subsequent communications using a [symmetric key cipher](#symmetric-key-algorithm).
+
+## [Digital Immortality](https://en.wikipedia.org/wiki/Digital_immortality)
+_Digital immortality_ (or _"virtual immortality"_) is the hypothetical concept of storing (or transferring) a person's personality in more durable media, i.e., a computer. The result might look like an avatar behaving, reacting, and thinking like a person on the basis of that person's digital archive. After the death of the individual, this avatar could remain static or continue to learn and develop autonomously.
+
+A considerable portion of [transhumanists](#transhumanism) and singularitarians place great hope into the belief that they may eventually become immortal by creating one or many non-biological functional copies of their brains, thereby leaving their "biological shell". These copies may then "live eternally" in a version of digital "heaven" or paradise.
 
 ## [Diode](https://en.wikipedia.org/wiki/Diode)
 An electronic component that permits the one-way flow of current. A diode is a kind of [vacuum tube](#vacuum-tube).
@@ -1264,6 +1277,9 @@ Substitution ciphers can be compared with transposition ciphers. In a transposit
 ## [Supercomputer](https://en.wikipedia.org/wiki/Supercomputer)
 A _supercomputer_ is a computer with a high level of performance as compared to a general-purpose computer. Supercomputers play an important role in the field of computational science, and are used for a wide range of computationally intensive tasks in various fields, including quantum mechanics, weather forecasting, climate research, oil and gas exploration, molecular modeling, and physical simulations.
 
+## [Superintelligence](https://en.wikipedia.org/wiki/Superintelligence)
+A _superintelligence_ is a hypothetical agent that possesses intelligence far surpassing that of the brightest and most gifted human minds. "Superintelligence" may also refer to a property of problem-solving systems (e.g., superintelligent language translators or engineering assistants) whether or not these high-level intellectual competencies are embodied in agents that act in the world. A superintelligence may or may not be created by an intelligence explosion and associated with a [technological singularity](#technological-singularity).
+
 ## [Superscalar](https://simple.wikipedia.org/wiki/Superscalar)
 A _superscalar [CPU](#central-processing-unt)_ design makes a form of parallel computing calle instruction-level parallelism inside a single CPU, which allows more work to be done at the same clock rate. This means the CPU executes more than one instruction during a clock cycle by running multiple instructions at the same time (called _instruction dispatching_) on duplicate functional units.
 
@@ -1278,6 +1294,14 @@ The _syntax_ of a computer language is the set of rules that defines th combinat
 
 ## [TCP Congestion Control](https://en.wikipedia.org/wiki/TCP_congestion_control)
 [Transmission Control Protocol](#transmission-control-protocol) (TCP) uses a network congestion-avoidance [algorithm](#algorithm) that includes various aspects of an additive increase/multiplicative decrease (AIMD) scheme, along with other schemes including slow start and congestion window, to achieve congestion avoidance. The TCP congestion-avoidance algorithm is the primary basis for congestion control in the [Internet](#internet). Per the end-to-end principle, congestion control is largely a function of internet hosts, not the [network](#computer-network) itself. There are several variations and versions of the algorithm implemented in protocol stacks of operating systems of computers that connect to the Internet.
+
+## [Technological Singularity](https://en.wikipedia.org/wiki/Technological_singularity)
+The _technological singularity_ also, simply, _the singularity_ is a hypothetical point in time at which technological growth becomes uncontrollable and irreversible, resulting in unforeseeable changes to human civilization. According to the most popular version of the singularity hypothesis, called intelligence explosion, an upgradable intelligent agent will eventually enter a "runaway reaction" of self-improvement cycles, each new and more intelligent generation appearing more and more rapidly, causing an "explosion" in intelligence and resulting in a powerful [superintelligence](#superintelligence) that qualitatively far surpasses all human intelligence.
+
+## [Technological Unemployment](https://en.wikipedia.org/wiki/Technological_unemployment)
+_Technological unemployment_ is the loss of jobs caused by technological change. It is a key type of structural unemployment.
+
+Technological change typically includes the introduction of labour-saving "mechanical-muscle" machines or more efficient "mechanical-mind" processes ([automation](#automation)), and humans' role in these processes are minimized. Just as horses were gradually made obsolete by the automobile, humans' jobs have also been affected throughout modern history. Historical examples include artisan weavers reduced to poverty after the introduction of mechanized looms. During World War II, Alan Turing's Bombe machine compressed and decoded thousands of man-years worth of encrypted data in a matter of hours. A contemporary example of technological unemployment is the displacement of retail cashiers by self-service tills.
 
 ## [Teleprinter](https://en.wikipedia.org/wiki/Teleprinter)
 A _teleprinter_ (_teletypewriter_, _teletype_ or _TTY_) is an electromechanical device that can be used to send and receive typed messages through various communications channels, in both point-to-point and point-to-multipoint configurations. Initially they were used in telegraphy, which developed in the late 1830s and 1840s as the first use of electrical engineering, though teleprinters were not used for telegraphy until 1887 at the earliest. The machines were adapted to provide a user interface to early mainframe computers and minicomputers, sending typed data to the computer and printing the response. Some models could also be used to create [punched tape](#punched-tape) for data storage (either from typed input or from data received from a remote source) and to read back such tape for local printing or transmission.
@@ -1329,6 +1353,11 @@ For classification tasks, a supervised learning algorithm looks at the training 
 
 Most approaches that search through training data for empirical relationships tend to overfit the data, meaning that they can identify and exploit apparent relationships in the training data that do not hold in general.
 
+## [Transhumanism](https://en.wikipedia.org/wiki/Transhumanism)
+_Transhumanism_ is a philosophical movement that advocates for the transformation of the human condition by developing and making widely available sophisticated technologies able to greatly modify or enhance human intellect and physiology.
+
+Transhumanist thinkers study the potential benefits and dangers of emerging technologies that could overcome fundamental human limitations as well as the ethical limitations of using such technologies. The most common transhumanist thesis is that human beings may eventually be able to transform themselves into different beings with abilities so greatly expanded from the current condition as to merit the label of posthuman beings.
+
 ## [Transistor](https://en.wikipedia.org/wiki/Transistor)
 Similar to a [relay](#relay) or [vacuum tube](#vacuum-tube) a _transistor_ is a switch that can be opened or closed via the application of a current to a control wire. Typically a transistor consists of two electrodes separated by a gate electrode (a semiconductor). By changing the electrical charge of the gate, the conductivity of the semiconductor could be manipulated.
 
@@ -1374,6 +1403,13 @@ In _computability theory_, a system of data-manipulation rules (such as a comput
 A _Turing machine_ is a mathematical model of computation that defines an abstract machine, which manipulates symbols on a strip of tape according to a table of rules. Despite the model's simplicity, given any computer [algorithm](#algorithm), a Turing machine capable of simulating that algorithm's logic can be constructed.
 
 The machine operates on an infinite memory tape divided into discrete "cells". The machine positions its "head" over a cell and "reads" or "scans" the symbol there. Then, as per the symbol and the machine's own present state in a "finite table" of user-specified instructions, the machine writes a symbol (e.g., a digit or letter fom a finite alphabet) in the cell (some models allow symbol erasure or no writing) then either moves the tape one cell left or right (some models allow no motion, some models move the head) then (as determined by the observed symbol and the machines' own state in the table) either proceeds to a subsequent instruction or halts the computation.
+
+## [Ubiquitous Computing](https://en.wikipedia.org/wiki/Ubiquitous_computing)
+_Ubiquitous computing_ (or _"ubicomp"_) is a concept in software engineering and computer science where computing is made to appear anytime and everywhere. In contrast to desktop computing, ubiquitous computing can occur using any device, in any location, and in any format. A user interacts with the computer, which can exist in many different forms, including laptop computers, tablets and terminals in everyday objects such as a refrigerator or a pair of glasses. The underlying technologies to support ubiquitous computing include [Internet](#internet), advanced middleware, [operating system](#operating-system), mobile code, sensors, [microprocessors](#microprocessor), new [I/O](#inputoutput) and user interfaces, [computer networks](#computer-network), mobile protocols, location and positioning, and new materials.
+
+This paradigm is also described as _pervasive computing_, ambient intelligence, or "everyware". Each term emphasizes slightly different aspects. When primarily concerning the objects involved, it is also known as physical computing, the [Internet of Things](#internet-of-things), haptic computing, and "things that think". Rather than propose a single definition for ubiquitous computing and for these related terms, a taxonomy of properties for ubiquitous computing has been proposed, from which different kinds or flavors of ubiquitous systems and applications can be described.
+
+Ubiquitous computing touches on distributed computing, mobile computing, location computing, mobile networking, sensor networks, [human-computer interaction](#human-computer-interaction), context-aware smart home technologies, and [artificial intelligence](#artificial-intelligence).
 
 ## [Uncanny Valley](https://en.wikipedia.org/wiki/Uncanny_valley)
 In aesthetics, the _uncanny valley_ is a hypothesized relationship between the degree of an object's resemblance to a human being and the emotional response to such an object. The concept suggests that humanoid objects which imperfectly resemble actual human beings provoke uncanny or strangely familiar feelings of eeriness and revulsion in observers. "Valley" denotes a dip in the human observer's affinity for the replica, a relation that otherwise increases with the replica's human likeness.
