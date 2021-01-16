@@ -1,4 +1,4 @@
-# Crash Course: Computer Science - WIP
+# Crash Course: Computer Science
 **Author**: [Chi-chi Wang](https://github.com/chichiwang)
 
 Notes on a series of videos produced by PBS digital studios and shared on Youtube on the field of computer science.
@@ -7,7 +7,7 @@ In this course Carrie Anne Philbin outlines the history and design decisions tha
 
 Youtube: [Video Playlist](https://www.youtube.com/playlist?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo)
 
-Date: July 2020 - Ongoing
+Date: July 2020 - January 2021
 
 ## Table of Contents
 * 01: [Early Computing](./01/README.md)

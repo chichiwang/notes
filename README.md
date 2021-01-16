@@ -20,7 +20,7 @@ For example: The [README.md](./paradigms/declarative/README.md) for [Declarative
 ## Notes Available
 * [**Computing Concepts**](./computing)
   * [Containers](./computing/containers)
-  * [Crash Course: Computer Science](./computing/crash_course/README.md) (WIP)
+  * [Crash Course: Computer Science](./computing/crash_course/README.md)
   * [Non-Relational Databases](./computing/nosql)
   * [Structure and Interpretation of Computer Progams](./computing/sicp) (WIP)
 * [**Operating Systems**](./os)
@@ -41,7 +41,6 @@ Notes currently in progress:
 * [Unit Testing With Python](./languages/python/unit_testing)
 * [Structure and Interpretation of Computer Programs](./computing/sicp)
 * [Linux Command Line Interface Fundamentals](./os/linux/cli/fundamentals)
-* [Crash Course: Computer Science](./computing/crash_course/README.md)
 
 ## Topics of Interest
 * [Decision Fatigue](https://en.wikipedia.org/wiki/Decision_fatigue)
