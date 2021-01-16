@@ -55,4 +55,4 @@ There is debate over whether robots should also act like humans. A lot of eviden
 
 Without a doubt psychology and computer science are a potent combination with great potential to affect everyday lives. This opens up a lot of questions such as should a laptop be able to lie to a user? What if that makes the user more efficient or happy? Should social media companies curate the content they display to a user to make users stay on the site longer and purchase more products? These types of ethical considerations are not easy to answer, but psychology can at least unlock understanding of the effects and implications of design choices in computing systems.
 
-| [Previous: Robots](../37/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: Robots](../37/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Education Technology](../39/README.md) |
