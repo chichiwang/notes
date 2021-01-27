@@ -10,6 +10,9 @@ An overview of the fundamentals of the Linux command line. These notes follow al
   * [Pseudo Consoles](#pseudo-consoles)
   * [Shells](#shells)
   * [Bash History](#bash-history)
+  * [Working With Text Files](#working-with-text-files)
+    * [cat](#cat)
+    * [tac](#tac)
 * [Additional Resources](#additional-resources)
 
 ## Working On The Command Line
@@ -34,7 +37,7 @@ From within Linux you can access physical consoles via the command: `CTRL+ALT+Fx
 
 Once inside the terminal you can use the command `tty` to display the current terminal name. The command `who` will display the user who is logged on. In order to exit the terminal you can use the commands `exit`, `logout`, or the keys `CTRL+D`.
 
-Often the graphical terminal (graphical environment) is tty1, so you can access it from a command line console by pressing `CTRL+ALT+F1`.
+Often the graphical terminal (graphical environment) is `tty1`, so you can access it from a command line console by pressing `CTRL+ALT+F1`.
 
 To change terminals from within a console you can use the command `chvt` followed by the tty number. For example, if you are on tty 2 and you want to switch to the tty 3, you would enter the command `chvt 3`.
 
@@ -47,7 +50,7 @@ Pseudo terminals are named by the following convention: `/dev/psts/x` where `x` 
 
 More information about a console connection can be found by inspecting the `SSH_` variables. Using autocomplete on `$SSH_` will display the environment variables set up for a SSH connection.
 
-Often these terminals represent remote connections (via SSH or Telnet) as well as connections from the GUI (via XTerminal or Gnome Terminal).
+Often these terminals represent remote connections (via [SSH](https://en.wikipedia.org/wiki/SSH_(Secure_Shell)) or [Telnet](https://en.wikipedia.org/wiki/Telnet)) as well as connections from the GUI (via XTerminal or Gnome Terminal).
 
 **SSH vs Telnet**
 
@@ -98,6 +101,73 @@ Running `!4` in this instance re-ran the command `cd /etc`.
 History variables can be used to control history behavior. Setting the variable `HISTCONTROL` to `erasedups` to erase duplicate commands from the bash history.
 
 The in-memory history can be cleared with the command `history -c`. `history -r` can be used to restore the history from the last point of save to the `.bash_history` file. `history -w` can be used to write the current in-memory history to the `.bash_history` file, overwriting it.
+
+## Working With Text Files
+There are many tools in the Linux command line used for reading the contents of files, including:
+* `cat`: Write the contents of a file, sequentially, to standard output
+* `tac`: Write the contents of a file, in reverse-line order, to standard output
+* `head`: Display the top _n_ lines of a file
+* `tail`: Display the bottom _n_ lines of a file
+* `cut`: Display certain columns
+* `less`: Page through a file
+* `sort`: Sort the output of the above operations, organizing the data into columns.
+
+### cat
+[cat](https://en.wikipedia.org/wiki/Cat_(Unix)) is a standard Unix utility that reads files sequentially, writing them to [standard output](https://en.wikipedia.org/wiki/Standard_output). The name is derived from its function to con<b>cat</b>enate files.
+
+`cat` can be used to show a file's contents, especially useful for smaller files.
+
+```bash
+$ cat hello.txt
+Hello,
+$ cat world.txt
+world!
+$ cat hello.txt world.txt
+Hello,
+world!
+$
+```
+
+`cat` can also be passed options to display hidden characters in a file:
+
+```bash
+$ cat -vet hello.txt
+Hello, $
+$ cat -vet hello-world.txt
+Hello, $
+world!$
+$
+```
+
+Above, the trailing `$` in the output denotes the end of a line of text. This is useful for debugging issues such as scripts that contain invisible characters. Files created in windows notepad will have different invisible characters at each line termination than Linux has which can lead to script execution problems:
+
+```bash
+$ cat test.sh
+#!/bin/bash
+echo "hello"
+echo "goodbye"
+$ cat -vet test.sh
+#!/bin/bash^M$
+echo "hello"^M$
+echo "goodbye"^M$
+```
+
+The above shows that a shell script contains invalid hidden characters at the end of each line which would lead to exceptions at execution.
+
+### tac
+`tac` will concatenate files and write them to standard output, much like [cat](#cat) does, but it does so in reverse-line order:
+
+```bash
+$ cat hello-world.txt
+Hello,
+world!
+$ tac hello-world.txt
+world!
+Hello,
+$
+```
+
+The first displayed line is the last line of the file, the last displayed line is the first line of the file.
 
 ## Additional Resources
 * [Linux Virtual Console And Terminal Explained](https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html)
