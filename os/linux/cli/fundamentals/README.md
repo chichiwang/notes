@@ -13,6 +13,7 @@ An overview of the fundamentals of the Linux command line. These notes follow al
   * [Working With Text Files](#working-with-text-files)
     * [cat](#cat)
     * [tac](#tac)
+  * [/proc/ Directory](#proc-directory)
 * [Additional Resources](#additional-resources)
 
 ## Working On The Command Line
@@ -169,6 +170,75 @@ $
 
 The first displayed line is the last line of the file, the last displayed line is the first line of the file.
 
+## /proc/ Directory
+The Linux [kernel](https://en.wikipedia.org/wiki/Kernel_(operating_system)) hastwo primary functions: to control access to physical devices on the computer and to schedule when and how processes interact with these devices. The `/proc/` directory (`proc` file system) is where Linux maintains its running configuration on the filesystem. It contains a hierarchy of special files that represent the current state of the kernel, allowing applications and users to peer into the kernel's view of the system.
+
+Listing out the directory:
+
+```bash
+$ ls /proc
+1     1426  27    35    3897  6        cmdline      mounts  uptime
+1028  1577  2742  356   3898  7        cpuinfo      net     version
+1074  1763  28    37    50    968      filesystems  self    version_signature
+1135  1956  30    3894  5182  994      interrupts   stat
+1210  2177  3014  3895  5445  bus      loadavg      sys
+1309  2473  337   3896  5485  cgroups  meminfo      tty
+$
+```
+The numbers directories represent running processes. The current configuration shows in the files on the right.
+
+The file `/proc/version` specifies the version of the Linux kernel, the version of `gcc` used to compile the kernel, and the time of kernel compilation. It also includes the kernel compiler's user name.
+
+```bash
+$ cat /proc/version
+Linux version 4.4.0-19041-Microsoft (Microsoft@Microsoft.com) (gcc version 5.4.0 (GCC) ) #488-Microsoft Mon Sep 01 13:43:00 PST 2020
+$
+```
+
+`/proc/mounts` contains all of the currently mounted filesystems, which shows the user which filesystems are available to them.
+
+Most users are familiar with two primary types of files: text and binary. The `/proc/` directory contains another type of file: a _virtual file_. For this reason `/proc/` is also referred to as a _virtual file system_. Virtual files have a number of unique qualities, including:
+* Most of them are listed as 0 bytes in size, but can contain a large amount of information when viewed.
+* Most of the time/date stamps on virtual files reflect the current time/date, indicative of the fact they are constantly updated.
+
+Virtual files like `/proc/interrupts`, `/proc/meminfo`, `/proc/mounts`, and `/proc/partitions` provide an up-to-the-moment glimpse of the system's hardware. Other virtual files like the `/proc/filesystems` file and the `/proc/sys` directory provide system configuration information and interfaces. Most files within `/proc/` operate similarly to text files, storing useful system and hardware data in human-readable text format. `cat`, `more`, and `less` can be used to view these.
+
+`/proc/cpuinfo` contains information about the system's CPU for example:
+
+```bash
+$ cat /proc/cpuinfo
+processor       : 0
+vendor_id       : GenuineIntel
+cpu family      : 6
+model           : 158
+model name      : Intel(R) Core(TM) i7-8850H CPU @ 2.60GHz
+stepping        : 10
+microcode       : 0xffffffff
+cpu MHz         : 2592.000
+cache size      : 256 KB
+physical id     : 0
+siblings        : 12
+core id         : 0
+cpu cores       : 6
+apicid          : 0
+initial apicid  : 0
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 6  
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov ...
+bogomips        : 5184.00
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 36 bits physical, 48 bits virtual
+power management:
+...
+$
+```
+
+Some files in `/proc/` contain information that is not human-readable and must be accessed with tools such as `lspci`, `apm`, `free`, and `top`.
+
 ## Additional Resources
 * [Linux Virtual Console And Terminal Explained](https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html)
 * [What is "the Shell"?](http://linuxcommand.org/lc3_lts0010.php)
+* [The Proc File System](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/ch-proc)
