@@ -13,6 +13,8 @@ An overview of the fundamentals of the Linux command line. These notes follow al
   * [Working With Text Files](#working-with-text-files)
     * [cat](#cat)
     * [tac](#tac)
+    * [head](#head)
+    * [tail](#tail)
   * [/proc/ Directory](#proc-directory)
 * [Additional Resources](#additional-resources)
 
@@ -169,6 +171,32 @@ $
 ```
 
 The first displayed line is the last line of the file, the last displayed line is the first line of the file.
+
+### head
+`head` is a program used to display the beginning of a text file or piped data. By default `head` will display the first 10 lines of the file. The option `-n` is used to specify the number of lines to display from the top of a file.
+
+```bash
+$ # Display the first 3 lines of the /etc/passwd file
+$ head -n 3 /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+$
+```
+
+### tail
+`tail` is a program to display the end of a text file or piped data. By default `tail` will dispay the last 10 lines of the file. The option `-n` is used to specify the number of lines to display from the bottom of a file.
+
+```bash
+$ # Display te last 3 lines of the /etc/passwd file
+$ tail -n 3 /etc/passwd
+sshd:x:109:65534::/run/sshd:/usr/sbin/nologin
+pollinate:x:110:1::/var/cache/pollinate:/bin/false
+cwang:x:1000:1000:,,,:/home/cwang:/usr/bin/zsh
+$
+```
+
+Additionally, the `-f` option is used for following a file, that is keeping it open and constantly watching the last 10 lines of the file. This is particularly useful for tailing log files to always see the latest events written to them.
 
 ## /proc/ Directory
 The Linux [kernel](https://en.wikipedia.org/wiki/Kernel_(operating_system)) hastwo primary functions: to control access to physical devices on the computer and to schedule when and how processes interact with these devices. The `/proc/` directory (`proc` file system) is where Linux maintains its running configuration on the filesystem. It contains a hierarchy of special files that represent the current state of the kernel, allowing applications and users to peer into the kernel's view of the system.
