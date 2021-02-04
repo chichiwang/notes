@@ -15,6 +15,8 @@ An overview of the fundamentals of the Linux command line. These notes follow al
     * [tac](#tac)
     * [head](#head)
     * [tail](#tail)
+    * [more](#more)
+    * [less](#less)
   * [/proc/ Directory](#proc-directory)
 * [Additional Resources](#additional-resources)
 
@@ -107,12 +109,13 @@ The in-memory history can be cleared with the command `history -c`. `history -r`
 
 ## Working With Text Files
 There are many tools in the Linux command line used for reading the contents of files, including:
-* `cat`: Write the contents of a file, sequentially, to standard output
-* `tac`: Write the contents of a file, in reverse-line order, to standard output
-* `head`: Display the top _n_ lines of a file
-* `tail`: Display the bottom _n_ lines of a file
+* [cat](#cat): Write the contents of a file, sequentially, to standard output
+* [tac](#tac): Write the contents of a file, in reverse-line order, to standard output
+* [head](#head): Display the top _n_ lines of a file
+* [tail](#tail): Display the bottom _n_ lines of a file
 * `cut`: Display certain columns
-* `less`: Page through a file
+* [more](#more): Page through a file
+* [less](#less): Page through a file
 * `sort`: Sort the output of the above operations, organizing the data into columns.
 
 ### cat
@@ -153,6 +156,7 @@ $ cat -vet test.sh
 #!/bin/bash^M$
 echo "hello"^M$
 echo "goodbye"^M$
+$
 ```
 
 The above shows that a shell script contains invalid hidden characters at the end of each line which would lead to exceptions at execution.
@@ -197,6 +201,24 @@ $
 ```
 
 Additionally, the `-f` option is used for following a file, that is keeping it open and constantly watching the last 10 lines of the file. This is particularly useful for tailing log files to always see the latest events written to them.
+
+### more
+`more` is a program to view the contents of a text file one screen at a time. `more` is a very basic [terminal pager](https://en.wikipedia.org/wiki/Terminal_pager) that allows only forward navigation through a file - with newer implementations allowing limited backwards navigation (will not allow backwards navigation through a pipe). 
+
+To page through a file, enter the command `more path/to/file`. In order to view the contents of a directory that contains many files, pipe the contents to the program: `ls -al /etc | more`.
+
+To page through the displayed contents use the `space` bar. To exit out of viewing the file, press `q`.
+
+Use `?` or `h` to see the help screen while in the interactive mode.
+
+### less
+`less` is a program to view the contents of a text file one screen at a time. It is similar to `more` but has additional capabilities such forward and backward navigation through a file or pipe, and extra functions like search, or navigating to a specific line number. To help remember the difference between `less` and `more`, a common joke is to say "less &gt; more" meaning `less` has more functionality than `more`. A similar saying is that "less is more, more or less".
+
+To page through a file, enter the command `less path/to/file`. In order to view the contents of a directory that contains many files, pipe the contents to the program: `ls -al /etc | less`.
+
+The `Page Up` and `Page Down` buttons can be used to navigate the file. To go to a particular line number press `[number]G` to jump there. Search can be initiated with `/[string]`. Press `n` to go to the next occurence of the search string, and `N` to go to the previous. Use `q` to quit the file interactive view.
+
+Use `?` or `h` to see the help screen while in this interactive mode.
 
 ## /proc/ Directory
 The Linux [kernel](https://en.wikipedia.org/wiki/Kernel_(operating_system)) hastwo primary functions: to control access to physical devices on the computer and to schedule when and how processes interact with these devices. The `/proc/` directory (`proc` file system) is where Linux maintains its running configuration on the filesystem. It contains a hierarchy of special files that represent the current state of the kernel, allowing applications and users to peer into the kernel's view of the system.
