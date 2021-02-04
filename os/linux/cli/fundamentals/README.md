@@ -15,6 +15,8 @@ An overview of the fundamentals of the Linux command line. These notes follow al
     * [tac](#tac)
     * [head](#head)
     * [tail](#tail)
+    * [cut](#cut)
+    * [sort](#sort)
     * [more](#more)
     * [less](#less)
   * [/proc/ Directory](#proc-directory)
@@ -113,10 +115,10 @@ There are many tools in the Linux command line used for reading the contents of 
 * [tac](#tac): Write the contents of a file, in reverse-line order, to standard output
 * [head](#head): Display the top _n_ lines of a file
 * [tail](#tail): Display the bottom _n_ lines of a file
-* `cut`: Display certain columns
+* [cut](#cut): Display certain columns
+* [sort](#sort): Sort the output of the above operations, organizing the data into columns.
 * [more](#more): Page through a file
 * [less](#less): Page through a file
-* `sort`: Sort the output of the above operations, organizing the data into columns.
 
 ### cat
 [cat](https://en.wikipedia.org/wiki/Cat_(Unix)) is a standard Unix utility that reads files sequentially, writing them to [standard output](https://en.wikipedia.org/wiki/Standard_output). The name is derived from its function to con<b>cat</b>enate files.
@@ -201,6 +203,104 @@ $
 ```
 
 Additionally, the `-f` option is used for following a file, that is keeping it open and constantly watching the last 10 lines of the file. This is particularly useful for tailing log files to always see the latest events written to them.
+
+### cut
+`cut` is a command line utility which is used to extract sections from each line of input (usually from a file).
+
+Extraction of line segments can typically be done in bytes (`-b`), characters (`-c`), or fields (`-f`) separated by a delimiter (`-d` - the `tab` character by default). A range must be provided in each case which consists of one of `N`, `N-M`, `N-` (`N` to the end of the line), or `-M` (beginning of the line to `M`), where N and M are counted from 1 (there is no zeroth value).
+
+This command will display only certain fields from a file. This could be a comma-separated file or a space-separated file. The `-d` argument can be used to specify the delimiter to use.
+
+Using the `/etc/passwd` file as example:
+
+```bash
+$ tail -n /etc/passwd
+shd:x:109:65534::/run/sshd:/usr/sbin/nologin
+pollinate:x:110:1::/var/cache/pollinate:/bin/false
+cwang:x:1000:1000:,,,:/home/cwang:/usr/bin/zsh
+$
+```
+
+The files in this file are comma-separated. The first field in a line is the username, and the third field is the user id. To only see the usernames and user ids:
+
+
+```bash
+$ cut -f1,3 -d":" /etc/passwd
+...
+sshd:109
+pollinate:110
+cwang:1000
+$
+```
+
+The previous command outputs the contents of the file, with only the specified files displayed.
+
+### sort
+`sort` is a standard command line program that prints the lines of input or concatenation of all files listed in its argument list in sorted order. Sorting is done on one or more sort keys extracted from each line of input. By default the entire input is taken as sort key. Blank space is the default field separator.
+
+```bash
+$ sort /etc/passwd
+_apt:x:104:65534::/nonexistent:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+...
+$
+```
+
+Passing a file to `sort` with no arguments, the output will be every line of the file sorted on the first character of each line alphabetically. Running sort with the `-r` argument will run a reverse sort.
+
+```bash
+$ sort -r /etc/passwd
+:x:33:33:www-data:/var/www:/usr/sbin/nologin
+uuidd:x:106:110::/run/uuidd:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+...
+$
+```
+
+This now outputs the lines of the file in reverse-alphabetical order. To sort on a particular field use the `-k` argument to specify the field and `-t` to specify the delimiter:
+
+```bash
+$ sort -k2 -t "/" /etc/passwd
+sync:x:4:65534:sync:/bin:/bin/sync
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+cwang:x:1000:1000:,,,:/home/cwang:/usr/bin/zsh
+...
+$
+```
+
+The above example sorts on the home directory rather than on the username.
+
+`sort` can be combined with other programs to achieve the desired output:
+
+```bash
+$ cut -f 1,6 -d ":" /etc/passwd | sort -k 2 -t ":" | tail -n 3
+news:/var/spool/news
+uucp:/var/spool/uucp
+www-data:/var/www
+$
+```
+
+The above command displays the last 3 lines of `/etc/passwd` after sorting on the home directory, only displaying the username and home directory.
+
+To run `sort` on numeric fields, pass the argument `-n` to specify a numeric sort:
+
+```bash
+$ sort -k3 -n -t ":" /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+...
+$
+```
+
+The above example outputs the lines of `/etc/passwd` sorted numerically on the user id.
 
 ### more
 `more` is a program to view the contents of a text file one screen at a time. `more` is a very basic [terminal pager](https://en.wikipedia.org/wiki/Terminal_pager) that allows only forward navigation through a file - with newer implementations allowing limited backwards navigation (will not allow backwards navigation through a pipe). 
