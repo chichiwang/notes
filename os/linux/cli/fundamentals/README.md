@@ -10,16 +10,16 @@ An overview of the fundamentals of the Linux command line. These notes follow al
   * [Pseudo Consoles](#pseudo-consoles)
   * [Shells](#shells)
   * [Bash History](#bash-history)
-  * [Working With Text Files](#working-with-text-files)
-    * [cat](#cat)
-    * [tac](#tac)
-    * [head](#head)
-    * [tail](#tail)
-    * [cut](#cut)
-    * [sort](#sort)
-    * [more](#more)
-    * [less](#less)
-  * [/proc/ Directory](#proc-directory)
+* [Working With Text Files](#working-with-text-files)
+  * [cat](#cat)
+  * [tac](#tac)
+  * [head](#head)
+  * [tail](#tail)
+  * [cut](#cut)
+  * [sort](#sort)
+  * [more](#more)
+  * [less](#less)
+* [/proc/ Directory](#proc-directory)
 * [Additional Resources](#additional-resources)
 
 ## Working On The Command Line
@@ -108,6 +108,8 @@ Running `!4` in this instance re-ran the command `cd /etc`.
 History variables can be used to control history behavior. Setting the variable `HISTCONTROL` to `erasedups` to erase duplicate commands from the bash history.
 
 The in-memory history can be cleared with the command `history -c`. `history -r` can be used to restore the history from the last point of save to the `.bash_history` file. `history -w` can be used to write the current in-memory history to the `.bash_history` file, overwriting it.
+
+[▲ Return to Table of Contents](#table-of-contents)
 
 ## Working With Text Files
 There are many tools in the Linux command line used for reading the contents of files, including:
@@ -320,6 +322,8 @@ The `Page Up` and `Page Down` buttons can be used to navigate the file. To go to
 
 Use `?` or `h` to see the help screen while in this interactive mode.
 
+[▲ Return to Table of Contents](#table-of-contents)
+
 ## /proc/ Directory
 The Linux [kernel](https://en.wikipedia.org/wiki/Kernel_(operating_system)) hastwo primary functions: to control access to physical devices on the computer and to schedule when and how processes interact with these devices. The `/proc/` directory (`proc` file system) is where Linux maintains its running configuration on the filesystem. It contains a hierarchy of special files that represent the current state of the kernel, allowing applications and users to peer into the kernel's view of the system.
 
@@ -387,6 +391,8 @@ $
 ```
 
 Some files in `/proc/` contain information that is not human-readable and must be accessed with tools such as `lspci`, `apm`, `free`, and `top`.
+
+[▲ Return to Table of Contents](#table-of-contents)
 
 ## Additional Resources
 * [Linux Virtual Console And Terminal Explained](https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html)
