@@ -164,7 +164,7 @@ $
 The above shows that a shell script contains invalid hidden characters at the end of each line which would lead to exceptions at execution.
 
 ### tac
-`tac` will concatenate files and write them to standard output, much like [cat](#cat) does, but it does so in reverse-line order:
+[tac](https://en.wikipedia.org/wiki/Cat_(Unix)#tac) will concatenate files and write them to standard output, much like [cat](#cat) does, but it does so in reverse-line order:
 
 ```bash
 $ cat hello-world.txt
@@ -179,7 +179,7 @@ $
 The first displayed line is the last line of the file, the last displayed line is the first line of the file.
 
 ### head
-`head` is a program used to display the beginning of a text file or piped data. By default `head` will display the first 10 lines of the file. The option `-n` is used to specify the number of lines to display from the top of a file.
+[head](https://en.wikipedia.org/wiki/Head_(Unix)) is a program used to display the beginning of a text file or piped data. By default `head` will display the first 10 lines of the file. The option `-n` is used to specify the number of lines to display from the top of a file.
 
 ```bash
 $ # Display the first 3 lines of the /etc/passwd file
@@ -191,7 +191,7 @@ $
 ```
 
 ### tail
-`tail` is a program to display the end of a text file or piped data. By default `tail` will dispay the last 10 lines of the file. The option `-n` is used to specify the number of lines to display from the bottom of a file.
+[tail](https://en.wikipedia.org/wiki/Tail_(Unix)) is a program to display the end of a text file or piped data. By default `tail` will dispay the last 10 lines of the file. The option `-n` is used to specify the number of lines to display from the bottom of a file.
 
 ```bash
 $ # Display te last 3 lines of the /etc/passwd file
@@ -205,7 +205,7 @@ $
 Additionally, the `-f` option is used for following a file, that is keeping it open and constantly watching the last 10 lines of the file. This is particularly useful for tailing log files to always see the latest events written to them.
 
 ### cut
-`cut` is a command line utility which is used to extract sections from each line of input (usually from a file).
+[cut](https://en.wikipedia.org/wiki/Cut_(Unix)) is a command line utility which is used to extract sections from each line of input (usually from a file).
 
 Extraction of line segments can typically be done in bytes (`-b`), characters (`-c`), or fields (`-f`) separated by a delimiter (`-d` - the `tab` character by default). A range must be provided in each case which consists of one of `N`, `N-M`, `N-` (`N` to the end of the line), or `-M` (beginning of the line to `M`), where N and M are counted from 1 (there is no zeroth value).
 
@@ -236,7 +236,7 @@ $
 The previous command outputs the contents of the file, with only the specified files displayed.
 
 ### sort
-`sort` is a standard command line program that prints the lines of input or concatenation of all files listed in its argument list in sorted order. Sorting is done on one or more sort keys extracted from each line of input. By default the entire input is taken as sort key. Blank space is the default field separator.
+[sort](https://en.wikipedia.org/wiki/Sort_(Unix)) is a standard command line program that prints the lines of input or concatenation of all files listed in its argument list in sorted order. Sorting is done on one or more sort keys extracted from each line of input. By default the entire input is taken as sort key. Blank space is the default field separator.
 
 ```bash
 $ sort /etc/passwd
@@ -303,7 +303,7 @@ $
 The above example outputs the lines of `/etc/passwd` sorted numerically on the user id.
 
 ### more
-`more` is a program to view the contents of a text file one screen at a time. `more` is a very basic [terminal pager](https://en.wikipedia.org/wiki/Terminal_pager) that allows only forward navigation through a file - with newer implementations allowing limited backwards navigation (will not allow backwards navigation through a pipe). 
+[more](https://en.wikipedia.org/wiki/More_(command)) is a program to view the contents of a text file one screen at a time. `more` is a very basic [terminal pager](https://en.wikipedia.org/wiki/Terminal_pager) that allows only forward navigation through a file - with newer implementations allowing limited backwards navigation (will not allow backwards navigation through a pipe). 
 
 To page through a file, enter the command `more path/to/file`. In order to view the contents of a directory that contains many files, pipe the contents to the program: `ls -al /etc | more`.
 
@@ -312,7 +312,7 @@ To page through the displayed contents use the `space` bar. To exit out of viewi
 Use `?` or `h` to see the help screen while in the interactive mode.
 
 ### less
-`less` is a program to view the contents of a text file one screen at a time. It is similar to `more` but has additional capabilities such forward and backward navigation through a file or pipe, and extra functions like search, or navigating to a specific line number. To help remember the difference between `less` and `more`, a common joke is to say "less &gt; more" meaning `less` has more functionality than `more`. A similar saying is that "less is more, more or less".
+[less](https://en.wikipedia.org/wiki/Less_(Unix)) is a program to view the contents of a text file one screen at a time. It is similar to `more` but has additional capabilities such forward and backward navigation through a file or pipe, and extra functions like search, or navigating to a specific line number. To help remember the difference between `less` and `more`, a common joke is to say "less &gt; more" meaning `less` has more functionality than `more`. A similar saying is that "less is more, more or less".
 
 To page through a file, enter the command `less path/to/file`. In order to view the contents of a directory that contains many files, pipe the contents to the program: `ls -al /etc | less`.
 
