@@ -19,6 +19,9 @@ An overview of the fundamentals of the Linux command line. These notes follow al
   * [sort](#sort)
   * [more](#more)
   * [less](#less)
+* [Basic File Management](#basic-file-management)
+  * [cp](#cp)
+  * [mv](#mv)
 * [/proc/ Directory](#proc-directory)
 * [Additional Resources](#additional-resources)
 
@@ -393,6 +396,158 @@ $
 Some files in `/proc/` contain information that is not human-readable and must be accessed with tools such as `lspci`, `apm`, `free`, and `top`.
 
 [▲ Return to Table of Contents](#table-of-contents)
+
+## Basic File Management
+There are a list of basic tools to use for Linux file management:
+* [cp](#cp): copy files/directories
+* [mv](#mv): move and rename files/directories
+* `rm`: delete files/directories
+* `ls`: list files/directories
+* `dd`: imaging tool to create files of certain sizes, backing up data or complete discs
+* `rsync`: used for backing up, or to synchronize directory content (across different machines)
+* `tar`: create zipped up archives
+* `find`: search files/directories
+
+### cp
+[cp](https://en.wikipedia.org/wiki/Cp_(Unix)) is a command that has three principal modes of operation:
+1. Copying a file to another file
+2. Copying one or more files to a directory
+3. Copying entire directories to another directory
+
+The basic syntax is `cp sourceFile destinationFile` where `sourceFile` is the file to be copied, and `destinationFile` is the new file to be created from the copy operation.
+
+Copy a file within the same directory:
+```bash
+$ ls
+file1
+$ cp file1 file2
+$ ls
+file1 file2
+$ cat file1
+This is file one
+$ cat file2
+This is file one
+$
+```
+
+Copy a file to a new diretory
+```bash
+$ ls
+file1
+$ cat file1
+This is file one
+$ mkdir dir1
+$ ls
+dir1 file1
+$ cp file1 dir1/
+$ ls
+dir1 file1
+$ ls dir1
+file1
+$ cat dir1/file1
+This is file one
+$
+```
+
+Using the `-i` argument runs `cp` in interactive mode, issuing a prompt prior to overwriting files. This can be useful when copying many files at once:
+```bash
+$ ls
+dir1 file1
+$ ls dir1
+file1
+$ cp -i file1 dir1/
+cp: overwrite 'dir1/file1'? y
+$
+```
+
+This command can be used with [globs](https://en.wikipedia.org/wiki/Glob_(programming)) as well:
+```bash
+$ ls
+dir1 file1 file2 file3 file4
+$ ls dir1/
+$ cp file? dir1/
+$ ls
+dir1 file1 file2 file3 file4
+$ ls dir1/
+file1 file2 file3 file4
+$
+```
+
+The argument `-R` can be used to run a recursive operation:
+```bash
+$ ls
+files
+$ ls files/
+file1 file2 file3
+$ mkdir backup
+$ ls
+backup files
+$ cp -R files/ backup/
+$ ls files/
+file1 file2 file3
+$ ls backup/
+files
+$ ls -R backup/
+backup/:
+files
+
+backup/files:
+file1 file2 file3
+$
+```
+
+The `-a` argument will run copies in archive mode, which will preserve the ownership and permissions of a file being copied:
+```bash
+$ sudo -i
+[sudo] password for root:
+root@system:$ ls -l file1
+-rw-r---r-- 1 user user 20 Jun 1 12:00 file1
+root@system:$ cp file1 file2
+root@system:$ ls -l file2
+-rw-r---r-- 1 root root 20 Jun 1 12:01 file2
+root@system:$ cp -a file1 file2
+root@system:$ ls -l file2
+rrw-r---r-- 1 user user 20 Jun 1 12:00 file2
+root@system:$
+```
+
+### mv
+[mv](https://en.wikipedia.org/wiki/Mv) is a Linux command that moves one or more files or directories from one place to another. If both filenames are on the same filesystem, this results in a simple file rename; otherwise the file content is copied to a new location and the old file is removed.
+
+The basic syntax is `mv sourcefile destination` where `sourceFile` is the file to be copied, and `destination` is the new file/directory to copy the file to.
+
+Renaming a file:
+```bash
+$ ls
+file1
+$ cat file1
+This is file one
+$ mv file1 renamedFile
+$ ls
+renamedFile
+$ cat renamedFile
+This is file one
+$
+```
+
+Moving a file:
+```bash
+$ ls
+file1
+$ cat file1
+This is file one
+$ mkdir dir1
+$ ls
+dir1 file1
+$ mv file1 dir1/
+$ ls
+dir1
+$ ls dir1
+file1
+$ cat dir1/file1
+This is file one
+$
+```
 
 ## Additional Resources
 * [Linux Virtual Console And Terminal Explained](https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html)
