@@ -19,11 +19,13 @@ An overview of the fundamentals of the Linux command line. These notes follow al
   * [sort](#sort)
   * [more](#more)
   * [less](#less)
+* [/proc/ Directory](#proc-directory)
+* [alias](#alias)
 * [Basic File Management](#basic-file-management)
   * [cp](#cp)
   * [mv](#mv)
   * [rm](#rm)
-* [/proc/ Directory](#proc-directory)
+  * [ls](#ls)
 * [Additional Resources](#additional-resources)
 
 ## Working On The Command Line
@@ -398,12 +400,57 @@ Some files in `/proc/` contain information that is not human-readable and must b
 
 [▲ Return to Table of Contents](#table-of-contents)
 
+### alias
+[alias](https://en.wikipedia.org/wiki/Alias_(command)) is a command in Linux which enables a replacement of a word by another string. It is mainly used for abbreviating a system command, or for adding default arguments to a regularly used command.
+
+An alias will last the life of the shell session. Regularly used aliases can be set from the shell's rc file (such as `.bashrc`) so that they will be available upon the start of the corresponding shell session.
+
+Punching in `alias` into the command line will list out current aliases in use:
+```bash
+$ alias
+history=omz_history
+l='ls -lah'
+la='ls -lAh'
+ll='ls -lh'
+ls='ls --color=tty'
+lsa='ls -lah'
+md='mkdir -p'
+rd=rmdir
+$
+```
+
+To create a new alias, assign `alias='command to alias'`:
+```bash
+$ alias myalias='echo "Hello, Alias!"'
+$ myalias
+Hello, Alias!
+$
+```
+
+To unalias a command, use `unalias`:
+```bash
+$ unalias myalias
+$ myalias
+bash: command not found: myalias
+$
+```
+
+To use the unaliased version of a alias command, precede it with a backslash:
+```bash
+$ alias ls='ls -l'
+$ ls file1
+-rwxrwxrwx 1 cwang cwang 0 Feb  7 16:55 file1
+$ \ls file1
+file1
+$
+```
+
 ## Basic File Management
 There are a list of basic tools to use for Linux file management:
 * [cp](#cp): copy files/directories
 * [mv](#mv): move and rename files/directories
 * [rm](#rm): delete files/directories
-* `ls`: list files/directories
+* [ls](#ls): list files/directories
 * `dd`: imaging tool to create files of certain sizes, backing up data or complete discs
 * `rsync`: used for backing up, or to synchronize directory content (across different machines)
 * `tar`: create zipped up archives
@@ -605,6 +652,44 @@ $ rm -rf files
 $ ls
 $
 ```
+
+### ls
+[ls](https://en.wikipedia.org/wiki/Ls) is a command in Linux to list files. When invoked without any arguments `ls` lists the files in the current working directory.
+
+Using `ls` by itself will give a listing of the current working directory:
+```bash
+$ ls
+backup file1
+$
+```
+
+The `-l` argument will have `ls` provide a long listing format, showing the file permissions, the ownership, the create date, and any symlink data for files.
+```bash
+$ ls -l file1
+-rwxrwxrwx 1 cwang cwang 0 Feb  7 17:16 file1
+$ ls -l
+total 0
+drwxrwxrwx 1 cwang cwang 4096 Feb  7 17:16 dir1
+-rwxrwxrwx 1 cwang cwang    0 Feb  7 17:16 file1
+lrwxrwxrwx 1 cwang cwang    5 Feb  7 17:17 symlink1 -> file1
+$
+```
+
+The `-d` flag can be used to inspect a directory.
+```bash
+$ ls -ld backup
+drwxrwxrwx 1 cwang cwang 4096 Feb  7 16:35 backup
+$
+```
+
+The `-F` flag can be used to show file types for listed files, using a classifier symbol to denote file types:
+```bash
+$ ls -F
+dir1/ file1 symlink1@
+$
+```
+
+The `-t` flag will give a listing sorted by the last modified time.
 
 ## Additional Resources
 * [Linux Virtual Console And Terminal Explained](https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html)
