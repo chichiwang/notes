@@ -27,6 +27,7 @@ An overview of the fundamentals of the Linux command line. These notes follow al
   * [rm](#rm)
   * [ls](#ls)
   * [dd](#dd)
+  * [rsync](#rsync)
 * [Additional Resources](#additional-resources)
 
 ## Working On The Command Line
@@ -454,7 +455,7 @@ There are a list of basic tools to use for Linux file management:
 * [rm](#rm): delete files/directories
 * [ls](#ls): list files/directories
 * [dd](#dd): imaging tool to create files of certain sizes, backing up data or complete discs
-* `rsync`: used for backing up, or to synchronize directory content (across different machines)
+* [rsync](#rsync): used for backing up, or to synchronize directory content (across different machines)
 * `tar`: create zipped up archives
 * `find`: search files/directories
 
@@ -696,7 +697,17 @@ The `-t` flag will give a listing sorted by the last modified time.
 ### dd
 [dd](https://en.wikipedia.org/wiki/Dd_(Unix)) is a Linux utility, the primary purpose of which is to convert and copy files. On Unix systems, device drivers for hardware (such as hard disk drives) and special device files (such as `/dev/zero` and `/dev/random`) appear in the file system just like normal files; `dd` can also read and/or write from/to these files, provided that function is implemented in their respective driver. As a result `dd` can be used for tasks such as backing up the boot sector of a hard drive, and obtaining a fixed amount of random data. The `dd` program can also perform conversions as it is copied, including byte order swapping and conversion to and from the ASCII and EBCDIC text encodings.
 
+## rsync
+`rsync` is a fast, versatile file copying tool. It can copy locally, to/from another host over any remote shell, or to/from a remote rsync daemon. It offers a large number of options that control every aspect of its behavior and permit very flexible specification of the set of files to be copied.
+
+Like with `cp`, the `-a` flag can be used to run it in archive mode, preserving the ownership and permissions of the files copied. The `-v` flag will run it in verbose mode, outputting progress and issues as it runs.
+
+The `-e` flag can be used to copy resources to/from external sources, such as a remote server (`rsync -ave ssh`).
+
+The `--delete` flag will tell `rsync` to synchronize deletions and remove files that do not exist in the source directory from the target directory.
+
 ## Additional Resources
 * [Linux Virtual Console And Terminal Explained](https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html)
 * [What is "the Shell"?](http://linuxcommand.org/lc3_lts0010.php)
 * [The Proc File System](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/ch-proc)
+* [rsync(1) - Linux man page](https://linux.die.net/man/1/rsync)
