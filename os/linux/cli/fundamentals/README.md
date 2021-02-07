@@ -26,6 +26,7 @@ An overview of the fundamentals of the Linux command line. These notes follow al
   * [mv](#mv)
   * [rm](#rm)
   * [ls](#ls)
+  * [dd](#dd)
 * [Additional Resources](#additional-resources)
 
 ## Working On The Command Line
@@ -444,6 +445,7 @@ $ \ls file1
 file1
 $
 ```
+[▲ Return to Table of Contents](#table-of-contents)
 
 ## Basic File Management
 There are a list of basic tools to use for Linux file management:
@@ -451,7 +453,7 @@ There are a list of basic tools to use for Linux file management:
 * [mv](#mv): move and rename files/directories
 * [rm](#rm): delete files/directories
 * [ls](#ls): list files/directories
-* `dd`: imaging tool to create files of certain sizes, backing up data or complete discs
+* [dd](#dd): imaging tool to create files of certain sizes, backing up data or complete discs
 * `rsync`: used for backing up, or to synchronize directory content (across different machines)
 * `tar`: create zipped up archives
 * `find`: search files/directories
@@ -690,6 +692,9 @@ $
 ```
 
 The `-t` flag will give a listing sorted by the last modified time.
+
+### dd
+[dd](https://en.wikipedia.org/wiki/Dd_(Unix)) is a Linux utility, the primary purpose of which is to convert and copy files. On Unix systems, device drivers for hardware (such as hard disk drives) and special device files (such as `/dev/zero` and `/dev/random`) appear in the file system just like normal files; `dd` can also read and/or write from/to these files, provided that function is implemented in their respective driver. As a result `dd` can be used for tasks such as backing up the boot sector of a hard drive, and obtaining a fixed amount of random data. The `dd` program can also perform conversions as it is copied, including byte order swapping and conversion to and from the ASCII and EBCDIC text encodings.
 
 ## Additional Resources
 * [Linux Virtual Console And Terminal Explained](https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html)
