@@ -22,6 +22,7 @@ An overview of the fundamentals of the Linux command line. These notes follow al
 * [Basic File Management](#basic-file-management)
   * [cp](#cp)
   * [mv](#mv)
+  * [rm](#rm)
 * [/proc/ Directory](#proc-directory)
 * [Additional Resources](#additional-resources)
 
@@ -401,7 +402,7 @@ Some files in `/proc/` contain information that is not human-readable and must b
 There are a list of basic tools to use for Linux file management:
 * [cp](#cp): copy files/directories
 * [mv](#mv): move and rename files/directories
-* `rm`: delete files/directories
+* [rm](#rm): delete files/directories
 * `ls`: list files/directories
 * `dd`: imaging tool to create files of certain sizes, backing up data or complete discs
 * `rsync`: used for backing up, or to synchronize directory content (across different machines)
@@ -546,6 +547,62 @@ $ ls dir1
 file1
 $ cat dir1/file1
 This is file one
+$
+```
+
+### rm
+[rm](https://en.wikipedia.org/wiki/Rm_(Unix)) is a basic command in Linux used to remove objects such as files, directories, and symbolic links from file systems. [rmdir](https://en.wikipedia.org/wiki/Rmdir) (or `rd`) similarly is used to remove an empty directory on various operating systems.
+
+```bash
+$ ls
+file1 file2 file3
+$ rm file1
+$ ls
+file2 file3
+$ rm -i file2
+rm: remove regular file 'file2'? y
+$ ls
+file3
+$
+```
+
+Interactive mode, `-i`, is more useful when deleting multiple files than when dleting a single file.
+```bash
+$ ls
+file1 file2 file3 filenew files
+$ rm -i f*
+rm: remove regular file 'file1'?: y
+rm: remove regular file 'file2'?: y
+rm: remove regular file 'file3'?: y
+rm: remove regular file 'filenew'?: n
+rm: cannot remove 'files': Is a directory
+$ ls
+filenew files
+$
+```
+
+`rmdir` can be used to remove empty directories
+```bash
+$ ls
+files backup
+$ rmdir backup
+rmdir: failed to remove 'backup/': Directory not empty
+$ ls
+files backup
+$ rmdir files
+$ ls
+backup
+$
+```
+
+To remove a directory and its contents, use the recursive switch (`-r`) and force switch (`-f`):
+```bash
+$ ls
+files
+$ rm files
+rm: cannot remove 'files': Is a directory
+$ rm -rf files
+$ ls
 $
 ```
 
