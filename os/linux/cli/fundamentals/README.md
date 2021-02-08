@@ -33,6 +33,7 @@ An overview of the fundamentals of the Linux command line. These notes follow al
 * [Streams and Pipes](#streams-and-pipes)
   * [Redirecting Output](#redirecting-output)
   * [noclobber](#noclobber)
+  * [Redirecting to Standard Input](#redirecting-to-standard-input)
 * [Additional Resources](#additional-resources)
 
 ## Working On The Command Line
@@ -975,6 +976,18 @@ $ cat file1
 cwang
 $
 ```
+
+### Redirecting to Standard Input
+In addition to redirecting standard streams to files, files can be redirected to standard streams, effectively reading from files. An example use case for this would be a weekly scheduled task to email the root user the free disk space available on the system. Reading into a program uses the `<` operator.
+
+Example of the described script:
+```bash
+$ df -h > diskfree.txt
+$ mail root -s "Message" < diskfree.txt
+$
+```
+
+In the above example, [df](https://en.wikipedia.org/wiki/Df_(Unix)) (disk free) is used to populate `diskfree.txt` and then the contents of that file are read into the body of the (mail)[https://en.wikipedia.org/wiki/Mail_(Unix)] command.
 
 ## Additional Resources
 * [Linux Virtual Console And Terminal Explained](https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html)
