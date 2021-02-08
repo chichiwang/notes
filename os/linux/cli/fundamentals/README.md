@@ -30,6 +30,7 @@ An overview of the fundamentals of the Linux command line. These notes follow al
   * [rsync](#rsync)
   * [tar](#tar)
   * [find](#find)
+* [Streams and Pipes](#streams-and-pipes)
 * [Additional Resources](#additional-resources)
 
 ## Working On The Command Line
@@ -847,6 +848,48 @@ $
 ```
 
 [▲ Return to Table of Contents](#table-of-contents)
+
+## Streams and Pipes
+[Streams](https://en.wikipedia.org/wiki/Standard_streams) and [pipes](https://en.wikipedia.org/wiki/Pipeline_(Unix)) are queues that are used to implement a portion of the link between a user process (specifically, a file descriptor) and a character device driver (for example: a serial port, or pty). Working with streams and pipes if often about redirecting the output of one command through to a file or to the input of another command.
+
+Some common redirection operations include:
+* `>`: Write to file (create/overwrite)
+* `>>`: Append to file
+* `noclobber`: Setting to prevent overwriting of files
+* `>|`: Write to file (create/overwrite) explicitly ignoring noclobber
+* `<`: Read from file
+
+Some common pipeline operations include:
+* `|`: unamed pipe
+* `mkfifo`: Create a named pipe file
+
+The syntax for redirecting output looks like:
+```bash
+$ ls /etc > file1.txt
+$
+```
+
+The above command creates/overwrites a file in the current working directory, `file1.txt`, and writes the output of `ls /etc` to the contents of the file.
+
+A more correct syntax would be:
+```bash
+$ ls /etc 1> file1.txt
+$
+```
+
+In the above example, `1` specifies the [file descriptor](https://en.wikipedia.org/wiki/File_descriptor) of the the standard stream `STDOUT`. This is the default file descriptor in redirection operations. To specify errors are written to the file instead:
+```bash
+$ ls /etc 2> file1.txt
+$
+```
+
+The file descriptor `2` specifies the `STDERR` stream, which will then be written to `file1.txt` instead. In order to write both contents of `STDOUT` and `STDERR` to `file1.txt`:
+```bash
+$ ls /etc > file1.txt 2>&1
+$
+```
+
+The `ls /etc > file1.txt` portion of the command redirects `STDOUT` to `file1.txt`. The `2>&1` says to send the `STDERR` stream to the same location as the `STDOUT`.
 
 ## Additional Resources
 * [Linux Virtual Console And Terminal Explained](https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html)
