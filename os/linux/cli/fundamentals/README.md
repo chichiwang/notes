@@ -34,6 +34,7 @@ An overview of the fundamentals of the Linux command line. These notes follow al
   * [Redirecting Output](#redirecting-output)
   * [noclobber](#noclobber)
   * [Redirecting to Standard Input](#redirecting-to-standard-input)
+  * [Pipes](#pipes)
 * [Additional Resources](#additional-resources)
 
 ## Working On The Command Line
@@ -988,6 +989,64 @@ $
 ```
 
 In the above example, [df](https://en.wikipedia.org/wiki/Df_(Unix)) (disk free) is used to populate `diskfree.txt` and then the contents of that file are read into the body of the (mail)[https://en.wikipedia.org/wiki/Mail_(Unix)] command.
+
+### Pipes
+A [pipeline](https://en.wikipedia.org/wiki/Pipeline_(Unix)) in Linux is a mechanism for inter-process communication using message passing. A pipeline is a set of processes chained together by their standard streams, so that the output text of each process (`STDOUT`) is passed directly as input (`STDIN`) to the next one. The second process is started as the first processe is still executing, and they are executed concurrently.
+
+_Anonymous pipes_ are pipelines where data written by one process is buffered by the operating system until it is read by the next process, and this uni-directional channel disappears when processes are complete. This differs from _named pipes_, where messages are passed to or from a pipe that is named (by making it a file) and remains after processes are completed.
+
+Commonly, anonymous pipes look something like:
+```bash
+$ ls -l | wc -l
+6
+$
+```
+
+The `|` (pipe) character joins the `ls` command with the `wc` command. In this example the output of `ls` is sent as input to `wc`.
+
+To create a named pipe, the [mkfifo](https://linux.die.net/man/3/mkfifo) command is used. This creates a FIFO special file (a named pipe) of type "pipe". Redirection can be used to and from the pipe, but it allows separate processes running in separate shells to be able to communicate - providing a level of inter-process communication.
+
+In one process, a command can be redirected to the pipe file:
+```bash
+$ ls -l > mypipe
+
+```
+
+In shell 1, where process 1 is running the output of `ls` is redirected to the pipe file. The pipe file will marshal the information through to the input of process 2. Shell 1 will pause in the meantime, waiting for the input to be read from the pipe file.
+
+In a second shell, a second process can be started:
+```bash
+$ wc -l < mypipe
+```
+
+Once this command is entered, the data is now enabled to flow from `ls` to `wc` through the implementation of `mypipe`. This is a form of [IPC](https://en.wikipedia.org/wiki/Inter-process_communication) (inter-process communication).
+
+This looks something like:
+```bash
+$ mkfifo /tmp/mypipe
+$ ls -F /tmp/mypipe
+/tmp/mypipe |
+$ ls -l /tmp/mypipe
+prw-r--r-- 1 cwang cwang 0 Feb  8 15:24 /tmp/mypipe
+$
+```
+
+The filetype is denoted by a `|` to indicate a pipe, and using the long listing format, the filetype is specified as `p` to denote a pipe.
+
+To redirect output to the pipe:
+```bash
+$ ls /etc > /tmp/mypipe
+
+```
+
+The process now stalls waiting for the pipeline to be serviced. In another shell session:
+```bash
+$ wc -l < /tmp/mypipe
+189
+$
+```
+
+And now both shell processes are freed up.
 
 ## Additional Resources
 * [Linux Virtual Console And Terminal Explained](https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html)
