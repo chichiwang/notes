@@ -32,6 +32,7 @@ An overview of the fundamentals of the Linux command line. These notes follow al
   * [find](#find)
 * [Streams and Pipes](#streams-and-pipes)
   * [Redirecting Output](#redirecting-output)
+  * [noclobber](#noclobber)
 * [Additional Resources](#additional-resources)
 
 ## Working On The Command Line
@@ -924,6 +925,54 @@ Now neither `STDOUT` nor `STDERR` appear in the console, but both have been writ
 To silence the output of the above operation without writing either the `STDOUT` or `STDERR` to a file, send the streams to the [null device](https://en.wikipedia.org/wiki/Null_device) `/dev/null`:
 ```bash
 $ ls /home /hime > /dev/null 2>&1
+$
+```
+
+### noclobber
+[Clobbering](https://en.wikipedia.org/wiki/Clobbering) a file or computer memory means overwriting its contents. Running `set -o noclobber` will set the shell option to prevent existing files from being overwritten. This safety switch can be overridden with `>|` redirection.
+
+**Note**: Running `set -o` by itself will list out all of the shell options available and their current setting.
+
+Using `noclobber`:
+```bash
+$ ls
+file1
+$ cat file1
+This is file one
+$ ls /home > file1
+$ cat file1
+cwang
+$ set -o noclobber
+$ ls /home > file1
+zsh: file exists: file1
+$ ls /home > file2
+$ ls /home > file2
+zsh: file exists: file2
+$
+```
+
+`noclobber` does not prevent appending to a file:
+```bash
+$ ls
+file1
+$ cat file1
+This is file one
+$ ls /home >> file1
+$ cat file1
+This is file one
+cwang
+$
+```
+
+To override `noclobber` use the stream redirect `>|`:
+```bash
+$ ls
+file1
+$ cat file1
+This is file one
+$ ls /home >| file1
+$ cat file1
+cwang
 $
 ```
 
