@@ -20,14 +20,17 @@ An overview of the fundamentals of the Linux command line. These notes follow al
   * [more](#more)
   * [less](#less)
 * [/proc/ Directory](#proc-directory)
-* [alias](#alias)
-* [Basic File Management](#basic-file-management)
+* [alias](#alias)ls
+    file1 file2 file3
+    $ tar -cvf files.tar .
+    asic File Management](#basic-file-management)
   * [cp](#cp)
   * [mv](#mv)
   * [rm](#rm)
   * [ls](#ls)
   * [dd](#dd)
   * [rsync](#rsync)
+  * [tar](#tar)
 * [Additional Resources](#additional-resources)
 
 ## Working On The Command Line
@@ -440,7 +443,10 @@ $
 To use the unaliased version of a alias command, precede it with a backslash:
 ```bash
 $ alias ls='ls -l'
-$ ls file1
+$ls
+file1 file2 file3
+$ tar -cvf files.tar .
+ile1
 -rwxrwxrwx 1 cwang cwang 0 Feb  7 16:55 file1
 $ \ls file1
 file1
@@ -456,7 +462,7 @@ There are a list of basic tools to use for Linux file management:
 * [ls](#ls): list files/directories
 * [dd](#dd): imaging tool to create files of certain sizes, backing up data or complete discs
 * [rsync](#rsync): used for backing up, or to synchronize directory content (across different machines)
-* `tar`: create zipped up archives
+* [tar](#tar): create zipped up archives
 * `find`: search files/directories
 
 ### cp
@@ -471,7 +477,10 @@ Copy a file within the same directory:
 ```bash
 $ ls
 file1
-$ cp file1 file2
+$ cp fils
+file1 file2 file3
+$ tar -cvf files.tar .
+ile2
 $ ls
 file1 file2
 $ cat file1
@@ -705,6 +714,84 @@ Like with `cp`, the `-a` flag can be used to run it in archive mode, preserving 
 The `-e` flag can be used to copy resources to/from external sources, such as a remote server (`rsync -ave ssh`).
 
 The `--delete` flag will tell `rsync` to synchronize deletions and remove files that do not exist in the source directory from the target directory.
+
+### tar
+[tar](https://en.wikipedia.org/wiki/Tar_(computing)) is a utility for collecting many files into one archive file, often referred to as a **tarball**, for distribution or backup purposes. The name is derived from "<b>t</b>ape <b>ar</b>chive", as it was originally developed to write data to sequential I/O devices with no file system of their own.
+
+The `tar` utility generates a `.tar` file, which is a single file that contains many files/directories. Optionally, `tar` can be used to to compress the generated archive using [gzip](https://en.wikipedia.org/wiki/Gzip) into a `tar.gz` file. `tar` may also use other compression algorithms to compress archive files.
+
+Frequently when downloading software from the internet, it will be distributed as a `tar.gz` file.
+
+To create a tar archive, use the `-c` flag to create, the `-v` for verbose output, and the `-f` flag to specify the output archive file.
+```bash
+$ ls
+file1 file2 file3
+$ tar -cvf files.tls
+file1 file2 file3
+$ tar -cvf files.tar .
+./
+./file1
+./file2
+./file3
+tar: ./files.tar: file is the archive; not dumped
+$ ls
+file1 file2 file3 files.tar
+$
+```
+
+To compress the target archive file with gzip, use the `-z` flag:
+```bash
+$ ls
+file1 file2 file3
+$ tar -cvzf files.tgz .
+./
+./file1
+./file2
+./file3
+./files.tgz
+$ ls
+file1 file2 file3 files.tgz
+$
+```
+
+To use [bzip2](https://en.wikipedia.org/wiki/Bzip2) compression, use the `-j` flag instead:
+```bash
+$ ls
+file1 file2 file3
+$ tar -cvjf files.bz2 .
+./
+./file1
+./file2
+./file3
+tar: .: file changed as we read it
+$ ls
+file1 file2 file3 files.bz2
+$
+```
+
+To see inside an archive use the `-t` flag (to test the archive).
+```bash
+$ ls
+files.tgz
+$ tar -tzf files.tgz
+file1
+file2
+file3
+$
+```
+
+To expand the archive, use the `-x` flag. By default this will expand the contents of the archive into the current directory.
+```bash
+$ ls
+files.tgz
+$ tar -xzvf files.tgz
+file1
+file2
+file3
+$ ls
+file1 file2 file3 files.tgz
+$
+```
 
 ## Additional Resources
 * [Linux Virtual Console And Terminal Explained](https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html)
