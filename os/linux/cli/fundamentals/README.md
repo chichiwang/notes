@@ -20,10 +20,8 @@ An overview of the fundamentals of the Linux command line. These notes follow al
   * [more](#more)
   * [less](#less)
 * [/proc/ Directory](#proc-directory)
-* [alias](#alias)ls
-    file1 file2 file3
-    $ tar -cvf files.tar .
-    asic File Management](#basic-file-management)
+* [alias](#alias)
+* [Basic File Management](#basic-file-management)
   * [cp](#cp)
   * [mv](#mv)
   * [rm](#rm)
@@ -31,6 +29,7 @@ An overview of the fundamentals of the Linux command line. These notes follow al
   * [dd](#dd)
   * [rsync](#rsync)
   * [tar](#tar)
+  * [find](#find)
 * [Additional Resources](#additional-resources)
 
 ## Working On The Command Line
@@ -405,7 +404,7 @@ Some files in `/proc/` contain information that is not human-readable and must b
 
 [▲ Return to Table of Contents](#table-of-contents)
 
-### alias
+## alias
 [alias](https://en.wikipedia.org/wiki/Alias_(command)) is a command in Linux which enables a replacement of a word by another string. It is mainly used for abbreviating a system command, or for adding default arguments to a regularly used command.
 
 An alias will last the life of the shell session. Regularly used aliases can be set from the shell's rc file (such as `.bashrc`) so that they will be available upon the start of the corresponding shell session.
@@ -443,15 +442,13 @@ $
 To use the unaliased version of a alias command, precede it with a backslash:
 ```bash
 $ alias ls='ls -l'
-$ls
-file1 file2 file3
-$ tar -cvf files.tar .
-ile1
+$ ls file1
 -rwxrwxrwx 1 cwang cwang 0 Feb  7 16:55 file1
 $ \ls file1
 file1
 $
 ```
+
 [▲ Return to Table of Contents](#table-of-contents)
 
 ## Basic File Management
@@ -463,7 +460,7 @@ There are a list of basic tools to use for Linux file management:
 * [dd](#dd): imaging tool to create files of certain sizes, backing up data or complete discs
 * [rsync](#rsync): used for backing up, or to synchronize directory content (across different machines)
 * [tar](#tar): create zipped up archives
-* `find`: search files/directories
+* [find](#find): search files/directories
 
 ### cp
 [cp](https://en.wikipedia.org/wiki/Cp_(Unix)) is a command that has three principal modes of operation:
@@ -477,10 +474,7 @@ Copy a file within the same directory:
 ```bash
 $ ls
 file1
-$ cp fils
-file1 file2 file3
-$ tar -cvf files.tar .
-ile2
+$ cp file1 file2
 $ ls
 file1 file2
 $ cat file1
@@ -706,7 +700,7 @@ The `-t` flag will give a listing sorted by the last modified time.
 ### dd
 [dd](https://en.wikipedia.org/wiki/Dd_(Unix)) is a Linux utility, the primary purpose of which is to convert and copy files. On Unix systems, device drivers for hardware (such as hard disk drives) and special device files (such as `/dev/zero` and `/dev/random`) appear in the file system just like normal files; `dd` can also read and/or write from/to these files, provided that function is implemented in their respective driver. As a result `dd` can be used for tasks such as backing up the boot sector of a hard drive, and obtaining a fixed amount of random data. The `dd` program can also perform conversions as it is copied, including byte order swapping and conversion to and from the ASCII and EBCDIC text encodings.
 
-## rsync
+### rsync
 `rsync` is a fast, versatile file copying tool. It can copy locally, to/from another host over any remote shell, or to/from a remote rsync daemon. It offers a large number of options that control every aspect of its behavior and permit very flexible specification of the set of files to be copied.
 
 Like with `cp`, the `-a` flag can be used to run it in archive mode, preserving the ownership and permissions of the files copied. The `-v` flag will run it in verbose mode, outputting progress and issues as it runs.
@@ -792,6 +786,67 @@ $ ls
 file1 file2 file3 files.tgz
 $
 ```
+
+### find
+[find](https://en.wikipedia.org/wiki/Find_(Unix)) is a command-line utility in Linux that locates files based on some user-specified criteria and then applies some requested action on each matched object. `find` can locate files based on their name, size, based on their date of creation/modification, and so forth. Once files matching the criteria are found, commands can be executed on the matching files (the default action is the print display the matched files to STDOUT).
+
+The `-print` flag will print out matched files. The `-exec` will execute certain commands against the matched files. The `-delete` flag will delete the matched files.
+
+The `-newer` flag will find files newer than the file specified. In the following example, `file1` is older than `file2` and `file3`:
+```bash
+$ ls
+file1 file2 file3
+$ find . -newer file1
+.
+./file2
+./file3
+$ fine -newer file2
+.
+./file3
+$
+```
+
+The `-delete` flag can be used to specify that matched files should be deleted. The `-type` flag can be used to specify the matched file types (where `f` would be a regular file, and `d` would be a directory). Combining these to delete files newer than file2:
+```bash
+$ ls
+file1 file2 file3
+$ find -newer file2 -type f -delete
+$ ls
+file1 file2
+$
+```
+
+The `-maxdepth` option can be used to restrict the maximum depth of the `find` operation.
+```bash
+$ find /usr/share -maxdepth 1 -name "*.pdf"
+$ find /usr/share -maxdepth 2 -name "*.pdf"
+$ find /usr/share -maxdepth 3 -name "*.pdf"
+/usr/share/doc/shared-mime-info/shared-mime-info-spec.pdf
+$
+```
+
+The `-exec` option can then be used to run operations on the matched files, where `{}` are used in the command as placeholder for the matched filename and `\;` is used to denote the end of the line:
+```bash
+$ find /usr/share -maxdepth 3 -name "*.pdf" -exec ls -lh {} \;
+-rw-r--r-- 1 root root 138K Oct 10  2017 /usr/share/doc/shared-mime-info/shared-mime-info-spec.pdf
+$
+```
+
+The `-size` option can be used to filter for files that are within some specified size parameter, for example greater than 1mb in size:
+```bash
+$ find /usr/share -maxdepth 3 -size +1M -exec ls -lh {} \;
+-rw-r--r-- 1 root root 1.4M Mar 15  2018 /usr/share/GeoIP/GeoIP.dat
+-rw-r--r-- 1 root root 5.3M Mar 15  2018 /usr/share/GeoIP/GeoIPv6.dat
+-rw-r--r-- 1 root root 2.9M May  5  2018 /usr/share/command-not-found/commands.db
+-rw-r--r-- 1 root root 4.4M Jun  4  2020 /usr/share/i18n/locales/cns11643_stroke
+-rw-r--r-- 1 root root 1.1M Jun  4  2020 /usr/share/i18n/locales/iso14651_t1_pinyin
+-rw-r--r-- 1 root root 3.7M Jun 29  2020 /usr/share/info/python3.7.info.gz
+-rw-r--r-- 1 root root 2.2M Oct 10  2017 /usr/share/mime/packages/freedesktop.org.xml
+-rw-r--r-- 1 root root 1.1M Feb 10  2019 /usr/share/misc/pci.ids
+$
+```
+
+[▲ Return to Table of Contents](#table-of-contents)
 
 ## Additional Resources
 * [Linux Virtual Console And Terminal Explained](https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html)
