@@ -35,6 +35,7 @@ An overview of the fundamentals of the Linux command line. These notes follow al
   * [noclobber](#noclobber)
   * [Redirecting to Standard Input](#redirecting-to-standard-input)
   * [Pipes](#pipes)
+  * [tee](#tee)
 * [Additional Resources](#additional-resources)
 
 ## Working On The Command Line
@@ -340,7 +341,7 @@ Use `?` or `h` to see the help screen while in this interactive mode.
 [▲ Return to Table of Contents](#table-of-contents)
 
 ## /proc/ Directory
-The Linux [kernel](https://en.wikipedia.org/wiki/Kernel_(operating_system)) hastwo primary functions: to control access to physical devices on the computer and to schedule when and how processes interact with these devices. The `/proc/` directory (`proc` file system) is where Linux maintains its running configuration on the filesystem. It contains a hierarchy of special files that represent the current state of the kernel, allowing applications and users to peer into the kernel's view of the system.
+The Linux [kernel](https://en.wikipedia.org/wiki/Kernel_(operating_system)) has two primary functions: to control access to physical devices on the computer and to schedule when and how processes interact with these devices. The `/proc/` directory (`proc` file system) is where Linux maintains its running configuration on the filesystem. It contains a hierarchy of special files that represent the current state of the kernel, allowing applications and users to peer into the kernel's view of the system.
 
 Listing out the directory:
 
@@ -1047,6 +1048,36 @@ $
 ```
 
 And now both shell processes are freed up.
+
+### tee
+[tee](https://en.wikipedia.org/wiki/Tee_(command)) is a command in Linux which reads `STDIN` and writes it to both `STDOUT` and one or more files, effectively duplicating its input. It is primarily used in conjunction with pipes and filters. The command is named after the [T-Splitter](https://en.wikipedia.org/wiki/Piping_and_plumbing_fitting#Tee) used in plumbing.
+
+Using the standard redirection operations `>`, `>>`, and so forth, `STDOUT` is redirected to a file. However, there is benefit to redirect both to the screen and to a file. `tee` is used to send output to a file AND to the screen at the same time.
+
+When running a redirection, the output is not visible on the screen. The content will be in the file redirected to:
+```bash
+$ ls
+file1
+$ ls > newfile
+$ cat !$
+cat newfile
+file1
+newfile
+$
+```
+
+To redirect the output, and have it still appear on the screen:
+```bash
+$ ls
+file1
+$ ls | tee newfile
+file1
+$ cat newfile
+file1
+$
+```
+
+[▲ Return to Table of Contents](#table-of-contents)
 
 ## Additional Resources
 * [Linux Virtual Console And Terminal Explained](https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html)
