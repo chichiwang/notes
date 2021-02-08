@@ -31,6 +31,7 @@ An overview of the fundamentals of the Linux command line. These notes follow al
   * [tar](#tar)
   * [find](#find)
 * [Streams and Pipes](#streams-and-pipes)
+  * [Redirecting Output](#redirecting-output)
 * [Additional Resources](#additional-resources)
 
 ## Working On The Command Line
@@ -863,6 +864,7 @@ Some common pipeline operations include:
 * `|`: unamed pipe
 * `mkfifo`: Create a named pipe file
 
+### Redirecting Output
 The syntax for redirecting output looks like:
 ```bash
 $ ls /etc > file1.txt
@@ -890,6 +892,40 @@ $
 ```
 
 The `ls /etc > file1.txt` portion of the command redirects `STDOUT` to `file1.txt`. The `2>&1` says to send the `STDERR` stream to the same location as the `STDOUT`.
+
+In order to redirect one stream, but not another:
+```bash
+$ ls /home /hime
+: cannot access '/hime': No such file or directory
+/home:
+cwang
+$ ls /home /hime 2>> error.log
+/home:
+cwang
+$ cat error.log
+ls: cannot access '/hime': No such file or directory
+$
+```
+
+In the above example, the `STDOUT` was still printed to the console, but the error was not - instead it was redirected to the file `error.log`.
+
+Redirecting both `STDOUT` and `STDERR`:
+```bash
+$ ls /home /hime > out.txt 2>&1
+$ cat out.txt
+ls: cannot access '/hime': No such file or directory
+/home:
+cwang
+$
+```
+
+Now neither `STDOUT` nor `STDERR` appear in the console, but both have been written to the `out.txt` instead.
+
+To silence the output of the above operation without writing either the `STDOUT` or `STDERR` to a file, send the streams to the [null device](https://en.wikipedia.org/wiki/Null_device) `/dev/null`:
+```bash
+$ ls /home /hime > /dev/null 2>&1
+$
+```
 
 ## Additional Resources
 * [Linux Virtual Console And Terminal Explained](https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html)
