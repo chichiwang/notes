@@ -39,6 +39,7 @@ An overview of the fundamentals of the Linux command line. These notes follow al
 * [Processes](#processes)
   * [uptime](#uptime)
   * [Managing Jobs](#managing-jobs)
+  * [Managing Processes](#managing-processes)
 * [Additional Resources](#additional-resources)
 
 ## Working On The Command Line
@@ -1215,6 +1216,107 @@ $ jobs
 
 To foreground the job with focus, use `fg`. To foreground a specific job, pass the job number to `fg` (ex: `fg 2`).
 
+### Managing Processes
+A _process_ is a proram in execution memory (or in other words: an instance of a program in memory). A program can be a command, a shell script, or any binary executable or any application.
+
+A process has some attributes associated with it:
+* `PID`: Process ID. Every process created in Linux has an identification number associated with it. This process ID is used by the kernel to identify the process. The PID is unique for a process at any given point in time, however it does get recycled.
+* `PPID`: Parent Process ID. Every process is created by some other process. The process that creates another process is its _parent process_, the process being created is the _child process_.
+* `TTY`: Terminal to which the process is associated to. Every command is run from a terminal which is associated to the process. Not all processes are associated with a terminal, however. Processes which do not belong to any terminal are known as _daemons_.
+* `UID`: User ID. This is the id of the user whom the process belongs to. Only the user that a process belongs to may kill that process (excepting root users and administrators). When a process attempts to access files, the accessibility depends on the permissions the process owner has on those files.
+
+The `ps` (process status) command is used to list running processes:
+```bash
+$ ps
+  PID TTY          TIME CMD
+ 1903 pts/12   00:00:00 zsh
+ 1313 pts/12   00:00:00 ps
+$
+```
+
+Without passing `ps` any flags it will restrict itself to listing out processes in the current environment (the current shell). Passing `-l` to `ps` will provide the long listing format:
+```bash
+$ ps -l
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+0 S  1000  1903   341  0  80   0 -  5325 -      pts/12   00:00:00 zsh
+0 R  1000  2844  1903  0  80   0 -  4272 -      pts/12   00:00:00 ps
+$
+```
+
+The long listing format displays the parent process id, the user id, or each process, as well as the priority, the [nice value](https://en.wikipedia.org/wiki/Nice_(Unix)), the size, and the memory.
+
+Passing `-f`  to `ps` will provide the full listing format:
+```bash
+$ ps -f
+UID        PID  PPID  C STIME TTY          TIME CMD
+cwang     1903   341  0 17:46 pts/12   00:00:00 -zsh
+cwang     4724  1903  0 19:34 pts/12   00:00:00 ps -f
+$
+```
+
+In this view the user id name (rather than number) is displayed. There is a proces id and parent process id, as well as the start time. The command is also displayed with all switched used (rather than just the command).
+
+To see all running processes, pass `-e` to the `ps` command:
+```bash
+$ ps -ef
+```
+
+This command will list out all running processes, including those owned by `root`. In order to search through the process, pipe the output of `ps` into `grep`:
+```bash
+$ ps -ef | grep tmux
+cwang      341     1  0 17:46 ?        00:00:18 tmux new
+cwang     5302    50  0 17:47 pts/0    00:00:00 tmux a -t notes
+$
+```
+
+A useful shortcut is `pgrep`, which will list out matching process ids:
+```bash
+$ pgrep tmux
+341
+5302
+$
+```
+
+To send a kill signal to a process, use `kill`:
+```bash
+$ sleep 900&
+[1] 11585
+$ pgrep sleep
+11585
+$ kill 11585
+[1]  + 11585 terminated  sleep 900
+$
+```
+
+The default signal `kill` sends is `-15` (or `-term`, `-sigterm`). This is a request to terminate.
+
+Another way to send a kill signal to a process is via `pkill`:
+```bash
+$ sleep 900&
+[1] 12836
+$ pkill sleep
+[1]  + 12836 terminated  sleep 900
+```
+
+`pkill` combines the search and the kill signal into one command.
+
+The `killall` command can be used to kill all running processes that match a search:
+```bash
+$ sleep 900&
+[1] 14197
+$ sleep 905&
+[2] 14246
+$ sleep 910&
+[3] 14295
+$ killall sleep
+[1]    14197 terminated  sleep 900
+[2]  - 14246 terminated  sleep 905
+[3]  + 14295 terminated  sleep 910
+$
+```
+
+Again the default signal here is a terminate (`-15`). To list all signals that can be passed with `kill`, run `kill -l`. The best signal to send to kill a process is a terminate (`SIGTERM`) but some processes (such as the bash shell itself) do not respond to a terminate signal. To force kill these processes, send a `SIGKILL` (`-9`) signal to these processes.
+
 ## Additional Resources
 * [Linux Virtual Console And Terminal Explained](https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html)
 * [What is "the Shell"?](http://linuxcommand.org/lc3_lts0010.php)
@@ -1222,3 +1324,4 @@ To foreground the job with focus, use `fg`. To foreground a specific job, pass t
 * [rsync(1) - Linux man page](https://linux.die.net/man/1/rsync)
 * [Processes in Linux/Unix](https://www.geeksforgeeks.org/processes-in-linuxunix/)
 * [What is the difference between a job and a process?](https://unix.stackexchange.com/a/4215)
+* [What is a process in UNIX/Linux?](https://www.theunixschool.com/2012/09/what-is-process-in-unix-linux.html)
