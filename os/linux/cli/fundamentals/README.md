@@ -37,6 +37,7 @@ An overview of the fundamentals of the Linux command line. These notes follow al
   * [Pipes](#pipes)
   * [tee](#tee)
 * [Processes](#processes)
+  * [uptime](#uptime)
 * [Additional Resources](#additional-resources)
 
 ## Working On The Command Line
@@ -1094,7 +1095,7 @@ Some adminstrative commands for managing processes include:
 * `pgrep`: for searching processes
 * `pkill`: for killing processes
 * `killall`: for killing all of a specified group of processes
-* `uptime`: for viewing uptime and load averages over a period of time
+* [uptime](#uptime): for viewing uptime and load averages over a period of time
 * `top`: for listing processes by metrics (cpu utilization, memory utilizaton, etc.)
 
 These commands all come from the package `procps`. On Debian based systems the contents of the `procps` package can be listed using:
@@ -1106,6 +1107,46 @@ On RedHat based systems, the contents of `procps` can be listed by running:
 ```bash
 $ rpm -ql procps
 ```
+
+### uptime
+[uptime](https://www.computerhope.com/unix/uptime.htm) is a Linux program in the `procps` family that displays:
+* The current time
+* How long the system has been running
+* How many users are currently logged in
+* The system load averages for the past 1, 5, and 15 minutes
+
+Sample output of `uptime`:
+```bash
+$ uptime
+ 18:34:34 up 48 min,  0 users,  load average: 0.52, 0.58, 0.59
+$
+```
+
+In this sample output, the system has been up for 48 minutes. The load average reads `0.52` over the last minute, `0.58` over the last 5 minutes, and `0.59` over the last 15 minutes.
+
+**Rule of thumb** for load averages: single core values should be less than 1, dual core less than 2, etc.
+
+`uptime` reads its information from a couple of files from the `/proc/` directory.
+* `/proc/uptime` shows how long the system has been up, and how long it has been idle.
+* `/proc/loadavg` displays load averages and number of processes running on the system.
+
+Looking at the contents of `/proc/uptime`:
+```bash
+$ cat /proc/uptime
+3135.31 36012.60
+$
+```
+
+The first number indicates how long the system has been up, in seconds. The second number indicates how long the system has been idle (across all cores), in seconds.
+
+Looking at the contents of `/proc/loadavg`:
+```bash
+$ cat /proc/loadavg
+0.52 0.58 0.59 3/52 1878
+$
+```
+
+The first three numbers are the load averages over the last 1, 5, and 15 minutes. The next value indicates there are 3 running processes out of 52 processes. `1878` is the last process id to have been issued.
 
 ## Additional Resources
 * [Linux Virtual Console And Terminal Explained](https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html)
