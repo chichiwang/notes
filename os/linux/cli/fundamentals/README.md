@@ -36,6 +36,7 @@ An overview of the fundamentals of the Linux command line. These notes follow al
   * [Redirecting to Standard Input](#redirecting-to-standard-input)
   * [Pipes](#pipes)
   * [tee](#tee)
+* [Processes](#processes)
 * [Additional Resources](#additional-resources)
 
 ## Working On The Command Line
@@ -1079,8 +1080,36 @@ $
 
 [▲ Return to Table of Contents](#table-of-contents)
 
+## Processes
+Whenever a command is issued it creates/starts a new process. Linux assigns this process a unique 5-digit id number known as the process id (pid).
+
+Foreground processes run in the CLI and consume the prompt until it completes, preventing other processes from being run in the same shell for its runtime duration. Background processes can be run in parallel as they do not comsume the shell prompt except when awaiting input.
+
+Some adminstrative commands for managing processes include:
+* `bg`: for backgrounding tasks
+* `fg`: for foregrounding tasks
+* `jobs`: for viewing job status
+* `kill`: for killing jobs
+* `ps`: for displaying proccesses
+* `pgrep`: for searching processes
+* `pkill`: for killing processes
+* `killall`: for killing all of a specified group of processes
+* `uptime`: for viewing uptime and load averages over a period of time
+* `top`: for listing processes by metrics (cpu utilization, memory utilizaton, etc.)
+
+These commands all come from the package `procps`. On Debian based systems the contents of the `procps` package can be listed using:
+```bash
+$ dpkg -L procps
+```
+
+On RedHat based systems, the contents of `procps` can be listed by running:
+```bash
+$ rpm -ql procps
+```
+
 ## Additional Resources
 * [Linux Virtual Console And Terminal Explained](https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html)
 * [What is "the Shell"?](http://linuxcommand.org/lc3_lts0010.php)
 * [The Proc File System](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/ch-proc)
 * [rsync(1) - Linux man page](https://linux.die.net/man/1/rsync)
+* [Processes in Linux/Unix](https://www.geeksforgeeks.org/processes-in-linuxunix/)
