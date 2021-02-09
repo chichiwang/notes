@@ -38,6 +38,7 @@ An overview of the fundamentals of the Linux command line. These notes follow al
   * [tee](#tee)
 * [Processes](#processes)
   * [uptime](#uptime)
+  * [Managing Jobs](#managing-jobs)
 * [Additional Resources](#additional-resources)
 
 ## Working On The Command Line
@@ -1148,9 +1149,76 @@ $
 
 The first three numbers are the load averages over the last 1, 5, and 15 minutes. The next value indicates there are 3 running processes out of 52 processes. `1878` is the last process id to have been issued.
 
+### Managing Jobs
+In Linux a [job](https://en.wikipedia.org/wiki/Job_control_(Unix)) is the shell's representation of a [process group](https://en.wikipedia.org/wiki/Process_group). Any program the user interactively sarts that doesn't detach (ie, not a daemon) is considered a job.
+
+A running interactive program can be suspended with `Ctrl+Z`. It can be restarted in the foreground using `fg` or in the background using `bg`.
+
+The idea of managing jobs is that a user on a single console can run multiple tasks. A user may be limited to a single console due to restrictions on multiple logons.
+
+Running the `ps` command shows all current running processes:
+```bash
+$ ps
+  PID TTY          TIME CMD
+   1903 pts/12   00:00:00 zsh
+   18524 pts/12   00:00:00 ps
+$
+```
+
+In the above example, there is only one running process, the `ps` command itself.
+
+Simulating a long-running task with `sleep` will lock up the command prompt. However, pressying `Ctrl+Z` will suspend the running task:
+```bash
+$ sleep 180
+^Z
+[1]  + 20182 suspended  sleep 180
+$
+```
+
+Upon suspending the task, a list of processes is displayed. The `+` next to the `sleep` command indicates this process currengly has focus. Running the `bg` command will background the currently focused process:
+
+```bash
+$ bg
+[1]  + 20182 continued  sleep 180
+$ ps
+  PID TTY          TIME CMD
+   1903 pts/12   00:00:00 zsh
+   20182 pts/12   00:00:00 sleep
+   21695 pts/12   00:00:00 ps
+$
+```
+
+To just look at background/foreground jobs (as opposed to all running processes), use the `jobs` command:
+
+```bash
+$ jobs
+[1]  + running    sleep 180
+$
+```
+
+Running a command with the `&` suffix will start that process directly in the background.
+```bash
+$ sleep 200 &
+[1] 23502
+$ jobs
+[1]  + running    sleep 200
+$
+```
+
+When inspecting multiple jobs, the job with focus will have the `+` next to it.
+```bash
+$ jobs
+[1]    running    sleep 200
+[2]  - running    sleep 205
+[3]  + running    sleep 215
+```
+
+To foreground the job with focus, use `fg`. To foreground a specific job, pass the job number to `fg` (ex: `fg 2`).
+
 ## Additional Resources
 * [Linux Virtual Console And Terminal Explained](https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html)
 * [What is "the Shell"?](http://linuxcommand.org/lc3_lts0010.php)
 * [The Proc File System](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/ch-proc)
 * [rsync(1) - Linux man page](https://linux.die.net/man/1/rsync)
 * [Processes in Linux/Unix](https://www.geeksforgeeks.org/processes-in-linuxunix/)
+* [What is the difference between a job and a process?](https://unix.stackexchange.com/a/4215)
