@@ -51,7 +51,7 @@ Another new test case added, `test_missing_entry_raises_KeyError` demonstrates t
 You can run a test case with the CLI in verbose mode by changing into the test directory and running `python3.7 -m unittest -v`. The `-v` flag tells Python's unit test runner to run in verbose mode.
 
 This mode will list out all of the test cases being run:
-```bash
+```console
 test_create_phonebook (test_phonebook_01.PhonebookTest_01) ... ok
 test_lookup_entry_by_name (test_phonebook_01.PhonebookTest_01) ... ok
 test_missing_entry_raises_KeyError (test_phonebook_01.PhonebookTest_01) ... ok
@@ -63,7 +63,7 @@ OK
 ```
 
 To run a single test case, you can pass in the `-q` flag to the CLI with the fully qualified name of the test case:
-```bash
+```console
 > python3.7 -m unittest -q test_phonebook_01.PhonebookTest_01.test_lookup_entry_by_name
 ```
 
@@ -81,7 +81,7 @@ def test_test_case_to_skip(self):
 An example of a skipped test case can be found in [exercise 02](./exercises/02%20-%20skip%20test%20case) under the test file [test_phonebook_02.py](./exercises/02%20-%20skip%20test%20case/test_phonebook_02.py). 
 
 Running this test in verbose mode via CLI, `python3.7 -m unittest -v`, will display the skipped test in the output:
-```bash
+```console
 test_create_phonebook (test_phonebook_02.PhonebookTest_02) ... ok
 test_empty_phonebook_is_consistent (test_phonebook_02.PhonebookTest_02) ... skipped 'WIP'
 test_lookup_entry_by_name (test_phonebook_02.PhonebookTest_02) ... ok
