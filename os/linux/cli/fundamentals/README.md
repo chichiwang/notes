@@ -40,6 +40,7 @@ An overview of the fundamentals of the Linux command line. These notes follow al
   * [uptime](#uptime)
   * [Managing Jobs](#managing-jobs)
   * [Managing Processes](#managing-processes)
+  * [top](#top)
 * [Additional Resources](#additional-resources)
 
 ## Working On The Command Line
@@ -108,7 +109,7 @@ To call a previously used command, you can use the `!` operator. `!v` will run t
 `cat ~/.bash_history` will display all of the commands saved in the bash history file. The command `history` can be used to display all of the commands saved in memory, even since the last save to the bash history file. The system will generally save to the bash history upon log out of the session, but you can force a save to history with the command `history -a`.
 
 You can also use a line number from the history file to rerun a command:
-```bash
+```console
 > history
 1 cd ~
 2 mkdir test
@@ -147,7 +148,7 @@ There are many tools in the Linux command line used for reading the contents of 
 
 `cat` can be used to show a file's contents, especially useful for smaller files.
 
-```bash
+```console
 $ cat hello.txt
 Hello,
 $ cat world.txt
@@ -160,7 +161,7 @@ $
 
 `cat` can also be passed options to display hidden characters in a file:
 
-```bash
+```console
 $ cat -vet hello.txt
 Hello, $
 $ cat -vet hello-world.txt
@@ -171,7 +172,7 @@ $
 
 Above, the trailing `$` in the output denotes the end of a line of text. This is useful for debugging issues such as scripts that contain invisible characters. Files created in windows notepad will have different invisible characters at each line termination than Linux has which can lead to script execution problems:
 
-```bash
+```console
 $ cat test.sh
 #!/bin/bash
 echo "hello"
@@ -188,7 +189,7 @@ The above shows that a shell script contains invalid hidden characters at the en
 ### tac
 [tac](https://en.wikipedia.org/wiki/Cat_(Unix)#tac) will concatenate files and write them to standard output, much like [cat](#cat) does, but it does so in reverse-line order:
 
-```bash
+```console
 $ cat hello-world.txt
 Hello,
 world!
@@ -203,7 +204,7 @@ The first displayed line is the last line of the file, the last displayed line i
 ### head
 [head](https://en.wikipedia.org/wiki/Head_(Unix)) is a program used to display the beginning of a text file or piped data. By default `head` will display the first 10 lines of the file. The option `-n` is used to specify the number of lines to display from the top of a file.
 
-```bash
+```console
 $ # Display the first 3 lines of the /etc/passwd file
 $ head -n 3 /etc/passwd
 root:x:0:0:root:/root:/bin/bash
@@ -215,7 +216,7 @@ $
 ### tail
 [tail](https://en.wikipedia.org/wiki/Tail_(Unix)) is a program to display the end of a text file or piped data. By default `tail` will dispay the last 10 lines of the file. The option `-n` is used to specify the number of lines to display from the bottom of a file.
 
-```bash
+```console
 $ # Display te last 3 lines of the /etc/passwd file
 $ tail -n 3 /etc/passwd
 sshd:x:109:65534::/run/sshd:/usr/sbin/nologin
@@ -235,7 +236,7 @@ This command will display only certain fields from a file. This could be a comma
 
 Using the `/etc/passwd` file as example:
 
-```bash
+```console
 $ tail -n /etc/passwd
 shd:x:109:65534::/run/sshd:/usr/sbin/nologin
 pollinate:x:110:1::/var/cache/pollinate:/bin/false
@@ -246,7 +247,7 @@ $
 The files in this file are comma-separated. The first field in a line is the username, and the third field is the user id. To only see the usernames and user ids:
 
 
-```bash
+```console
 $ cut -f1,3 -d":" /etc/passwd
 ...
 sshd:109
@@ -260,7 +261,7 @@ The previous command outputs the contents of the file, with only the specified f
 ### sort
 [sort](https://en.wikipedia.org/wiki/Sort_(Unix)) is a standard command line program that prints the lines of input or concatenation of all files listed in its argument list in sorted order. Sorting is done on one or more sort keys extracted from each line of input. By default the entire input is taken as sort key. Blank space is the default field separator.
 
-```bash
+```console
 $ sort /etc/passwd
 _apt:x:104:65534::/nonexistent:/usr/sbin/nologin
 backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
@@ -271,7 +272,7 @@ $
 
 Passing a file to `sort` with no arguments, the output will be every line of the file sorted on the first character of each line alphabetically. Running sort with the `-r` argument will run a reverse sort.
 
-```bash
+```console
 $ sort -r /etc/passwd
 :x:33:33:www-data:/var/www:/usr/sbin/nologin
 uuidd:x:106:110::/run/uuidd:/usr/sbin/nologin
@@ -282,7 +283,7 @@ $
 
 This now outputs the lines of the file in reverse-alphabetical order. To sort on a particular field use the `-k` argument to specify the field and `-t` to specify the delimiter:
 
-```bash
+```console
 $ sort -k2 -t "/" /etc/passwd
 sync:x:4:65534:sync:/bin:/bin/sync
 bin:x:2:2:bin:/bin:/usr/sbin/nologin
@@ -297,7 +298,7 @@ The above example sorts on the home directory rather than on the username.
 
 `sort` can be combined with other programs to achieve the desired output:
 
-```bash
+```console
 $ cut -f 1,6 -d ":" /etc/passwd | sort -k 2 -t ":" | tail -n 3
 news:/var/spool/news
 uucp:/var/spool/uucp
@@ -309,7 +310,7 @@ The above command displays the last 3 lines of `/etc/passwd` after sorting on th
 
 To run `sort` on numeric fields, pass the argument `-n` to specify a numeric sort:
 
-```bash
+```console
 $ sort -k3 -n -t ":" /etc/passwd
 root:x:0:0:root:/root:/bin/bash
 daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
@@ -349,7 +350,7 @@ The Linux [kernel](https://en.wikipedia.org/wiki/Kernel_(operating_system)) has 
 
 Listing out the directory:
 
-```bash
+```console
 $ ls /proc
 1     1426  27    35    3897  6        cmdline      mounts  uptime
 1028  1577  2742  356   3898  7        cpuinfo      net     version
@@ -363,7 +364,7 @@ The numbers directories represent running processes. The current configuration s
 
 The file `/proc/version` specifies the version of the Linux kernel, the version of `gcc` used to compile the kernel, and the time of kernel compilation. It also includes the kernel compiler's user name.
 
-```bash
+```console
 $ cat /proc/version
 Linux version 4.4.0-19041-Microsoft (Microsoft@Microsoft.com) (gcc version 5.4.0 (GCC) ) #488-Microsoft Mon Sep 01 13:43:00 PST 2020
 $
@@ -379,7 +380,7 @@ Virtual files like `/proc/interrupts`, `/proc/meminfo`, `/proc/mounts`, and `/pr
 
 `/proc/cpuinfo` contains information about the system's CPU for example:
 
-```bash
+```console
 $ cat /proc/cpuinfo
 processor       : 0
 vendor_id       : GenuineIntel
@@ -420,7 +421,7 @@ Some files in `/proc/` contain information that is not human-readable and must b
 An alias will last the life of the shell session. Regularly used aliases can be set from the shell's rc file (such as `.bashrc`) so that they will be available upon the start of the corresponding shell session.
 
 Punching in `alias` into the command line will list out current aliases in use:
-```bash
+```console
 $ alias
 history=omz_history
 l='ls -lah'
@@ -434,7 +435,7 @@ $
 ```
 
 To create a new alias, assign `alias='command to alias'`:
-```bash
+```console
 $ alias myalias='echo "Hello, Alias!"'
 $ myalias
 Hello, Alias!
@@ -442,7 +443,7 @@ $
 ```
 
 To unalias a command, use `unalias`:
-```bash
+```console
 $ unalias myalias
 $ myalias
 bash: command not found: myalias
@@ -450,7 +451,7 @@ $
 ```
 
 To use the unaliased version of a alias command, precede it with a backslash:
-```bash
+```console
 $ alias ls='ls -l'
 $ ls file1
 -rwxrwxrwx 1 cwang cwang 0 Feb  7 16:55 file1
@@ -481,7 +482,7 @@ There are a list of basic tools to use for Linux file management:
 The basic syntax is `cp sourceFile destinationFile` where `sourceFile` is the file to be copied, and `destinationFile` is the new file to be created from the copy operation.
 
 Copy a file within the same directory:
-```bash
+```console
 $ ls
 file1
 $ cp file1 file2
@@ -495,7 +496,7 @@ $
 ```
 
 Copy a file to a new diretory
-```bash
+```console
 $ ls
 file1
 $ cat file1
@@ -514,7 +515,7 @@ $
 ```
 
 Using the `-i` argument runs `cp` in interactive mode, issuing a prompt prior to overwriting files. This can be useful when copying many files at once:
-```bash
+```console
 $ ls
 dir1 file1
 $ ls dir1
@@ -525,7 +526,7 @@ $
 ```
 
 This command can be used with [globs](https://en.wikipedia.org/wiki/Glob_(programming)) as well:
-```bash
+```console
 $ ls
 dir1 file1 file2 file3 file4
 $ ls dir1/
@@ -538,7 +539,7 @@ $
 ```
 
 The argument `-R` can be used to run a recursive operation:
-```bash
+```console
 $ ls
 files
 $ ls files/
@@ -561,7 +562,7 @@ $
 ```
 
 The `-a` argument will run copies in archive mode, which will preserve the ownership and permissions of a file being copied:
-```bash
+```console
 $ sudo -i
 [sudo] password for root:
 root@system:$ ls -l file1
@@ -581,7 +582,7 @@ root@system:$
 The basic syntax is `mv sourcefile destination` where `sourceFile` is the file to be copied, and `destination` is the new file/directory to copy the file to.
 
 Renaming a file:
-```bash
+```console
 $ ls
 file1
 $ cat file1
@@ -595,7 +596,7 @@ $
 ```
 
 Moving a file:
-```bash
+```console
 $ ls
 file1
 $ cat file1
@@ -616,7 +617,7 @@ $
 ### rm
 [rm](https://en.wikipedia.org/wiki/Rm_(Unix)) is a basic command in Linux used to remove objects such as files, directories, and symbolic links from file systems. [rmdir](https://en.wikipedia.org/wiki/Rmdir) (or `rd`) similarly is used to remove an empty directory on various operating systems.
 
-```bash
+```console
 $ ls
 file1 file2 file3
 $ rm file1
@@ -630,7 +631,7 @@ $
 ```
 
 Interactive mode, `-i`, is more useful when deleting multiple files than when dleting a single file.
-```bash
+```console
 $ ls
 file1 file2 file3 filenew files
 $ rm -i f*
@@ -645,7 +646,7 @@ $
 ```
 
 `rmdir` can be used to remove empty directories
-```bash
+```console
 $ ls
 files backup
 $ rmdir backup
@@ -659,7 +660,7 @@ $
 ```
 
 To remove a directory and its contents, use the recursive switch (`-r`) and force switch (`-f`):
-```bash
+```console
 $ ls
 files
 $ rm files
@@ -673,14 +674,14 @@ $
 [ls](https://en.wikipedia.org/wiki/Ls) is a command in Linux to list files. When invoked without any arguments `ls` lists the files in the current working directory.
 
 Using `ls` by itself will give a listing of the current working directory:
-```bash
+```console
 $ ls
 backup file1
 $
 ```
 
 The `-l` argument will have `ls` provide a long listing format, showing the file permissions, the ownership, the create date, and any symlink data for files.
-```bash
+```console
 $ ls -l file1
 -rwxrwxrwx 1 cwang cwang 0 Feb  7 17:16 file1
 $ ls -l
@@ -692,14 +693,14 @@ $
 ```
 
 The `-d` flag can be used to inspect a directory.
-```bash
+```console
 $ ls -ld backup
 drwxrwxrwx 1 cwang cwang 4096 Feb  7 16:35 backup
 $
 ```
 
 The `-F` flag can be used to show file types for listed files, using a classifier symbol to denote file types:
-```bash
+```console
 $ ls -F
 dir1/ file1 symlink1@
 $
@@ -727,7 +728,7 @@ The `tar` utility generates a `.tar` file, which is a single file that contains 
 Frequently when downloading software from the internet, it will be distributed as a `tar.gz` file.
 
 To create a tar archive, use the `-c` flag to create, the `-v` for verbose output, and the `-f` flag to specify the output archive file.
-```bash
+```console
 $ ls
 file1 file2 file3
 $ tar -cvf files.tls
@@ -744,7 +745,7 @@ $
 ```
 
 To compress the target archive file with gzip, use the `-z` flag:
-```bash
+```console
 $ ls
 file1 file2 file3
 $ tar -cvzf files.tgz .
@@ -759,7 +760,7 @@ $
 ```
 
 To use [bzip2](https://en.wikipedia.org/wiki/Bzip2) compression, use the `-j` flag instead:
-```bash
+```console
 $ ls
 file1 file2 file3
 $ tar -cvjf files.bz2 .
@@ -774,7 +775,7 @@ $
 ```
 
 To see inside an archive use the `-t` flag (to test the archive).
-```bash
+```console
 $ ls
 files.tgz
 $ tar -tzf files.tgz
@@ -785,7 +786,7 @@ $
 ```
 
 To expand the archive, use the `-x` flag. By default this will expand the contents of the archive into the current directory.
-```bash
+```console
 $ ls
 files.tgz
 $ tar -xzvf files.tgz
@@ -803,7 +804,7 @@ $
 The `-print` flag will print out matched files. The `-exec` will execute certain commands against the matched files. The `-delete` flag will delete the matched files.
 
 The `-newer` flag will find files newer than the file specified. In the following example, `file1` is older than `file2` and `file3`:
-```bash
+```console
 $ ls
 file1 file2 file3
 $ find . -newer file1
@@ -817,7 +818,7 @@ $
 ```
 
 The `-delete` flag can be used to specify that matched files should be deleted. The `-type` flag can be used to specify the matched file types (where `f` would be a regular file, and `d` would be a directory). Combining these to delete files newer than file2:
-```bash
+```console
 $ ls
 file1 file2 file3
 $ find -newer file2 -type f -delete
@@ -827,7 +828,7 @@ $
 ```
 
 The `-maxdepth` option can be used to restrict the maximum depth of the `find` operation.
-```bash
+```console
 $ find /usr/share -maxdepth 1 -name "*.pdf"
 $ find /usr/share -maxdepth 2 -name "*.pdf"
 $ find /usr/share -maxdepth 3 -name "*.pdf"
@@ -836,14 +837,14 @@ $
 ```
 
 The `-exec` option can then be used to run operations on the matched files, where `{}` are used in the command as placeholder for the matched filename and `\;` is used to denote the end of the line:
-```bash
+```console
 $ find /usr/share -maxdepth 3 -name "*.pdf" -exec ls -lh {} \;
 -rw-r--r-- 1 root root 138K Oct 10  2017 /usr/share/doc/shared-mime-info/shared-mime-info-spec.pdf
 $
 ```
 
 The `-size` option can be used to filter for files that are within some specified size parameter, for example greater than 1mb in size:
-```bash
+```console
 $ find /usr/share -maxdepth 3 -size +1M -exec ls -lh {} \;
 -rw-r--r-- 1 root root 1.4M Mar 15  2018 /usr/share/GeoIP/GeoIP.dat
 -rw-r--r-- 1 root root 5.3M Mar 15  2018 /usr/share/GeoIP/GeoIPv6.dat
@@ -874,7 +875,7 @@ Some common pipeline operations include:
 
 ### Redirecting Output
 The syntax for redirecting output looks like:
-```bash
+```console
 $ ls /etc > file1.txt
 $
 ```
@@ -882,19 +883,19 @@ $
 The above command creates/overwrites a file in the current working directory, `file1.txt`, and writes the output of `ls /etc` to the contents of the file.
 
 A more correct syntax would be:
-```bash
+```console
 $ ls /etc 1> file1.txt
 $
 ```
 
 In the above example, `1` specifies the [file descriptor](https://en.wikipedia.org/wiki/File_descriptor) of the the standard stream `STDOUT`. This is the default file descriptor in redirection operations. To specify errors are written to the file instead:
-```bash
+```console
 $ ls /etc 2> file1.txt
 $
 ```
 
 The file descriptor `2` specifies the `STDERR` stream, which will then be written to `file1.txt` instead. In order to write both contents of `STDOUT` and `STDERR` to `file1.txt`:
-```bash
+```console
 $ ls /etc > file1.txt 2>&1
 $
 ```
@@ -902,7 +903,7 @@ $
 The `ls /etc > file1.txt` portion of the command redirects `STDOUT` to `file1.txt`. The `2>&1` says to send the `STDERR` stream to the same location as the `STDOUT`.
 
 In order to redirect one stream, but not another:
-```bash
+```console
 $ ls /home /hime
 : cannot access '/hime': No such file or directory
 /home:
@@ -918,7 +919,7 @@ $
 In the above example, the `STDOUT` was still printed to the console, but the error was not - instead it was redirected to the file `error.log`.
 
 Redirecting both `STDOUT` and `STDERR`:
-```bash
+```console
 $ ls /home /hime > out.txt 2>&1
 $ cat out.txt
 ls: cannot access '/hime': No such file or directory
@@ -930,7 +931,7 @@ $
 Now neither `STDOUT` nor `STDERR` appear in the console, but both have been written to the `out.txt` instead.
 
 To silence the output of the above operation without writing either the `STDOUT` or `STDERR` to a file, send the streams to the [null device](https://en.wikipedia.org/wiki/Null_device) `/dev/null`:
-```bash
+```console
 $ ls /home /hime > /dev/null 2>&1
 $
 ```
@@ -941,7 +942,7 @@ $
 **Note**: Running `set -o` by itself will list out all of the shell options available and their current setting.
 
 Using `noclobber`:
-```bash
+```console
 $ ls
 file1
 $ cat file1
@@ -959,7 +960,7 @@ $
 ```
 
 `noclobber` does not prevent appending to a file:
-```bash
+```console
 $ ls
 file1
 $ cat file1
@@ -972,7 +973,7 @@ $
 ```
 
 To override `noclobber` use the stream redirect `>|`:
-```bash
+```console
 $ ls
 file1
 $ cat file1
@@ -987,7 +988,7 @@ $
 In addition to redirecting standard streams to files, files can be redirected to standard streams, effectively reading from files. An example use case for this would be a weekly scheduled task to email the root user the free disk space available on the system. Reading into a program uses the `<` operator.
 
 Example of the described script:
-```bash
+```console
 $ df -h > diskfree.txt
 $ mail root -s "Message" < diskfree.txt
 $
@@ -1001,7 +1002,7 @@ A [pipeline](https://en.wikipedia.org/wiki/Pipeline_(Unix)) in Linux is a mechan
 _Anonymous pipes_ are pipelines where data written by one process is buffered by the operating system until it is read by the next process, and this uni-directional channel disappears when processes are complete. This differs from _named pipes_, where messages are passed to or from a pipe that is named (by making it a file) and remains after processes are completed.
 
 Commonly, anonymous pipes look something like:
-```bash
+```console
 $ ls -l | wc -l
 6
 $
@@ -1012,7 +1013,7 @@ The `|` (pipe) character joins the `ls` command with the `wc` command. In this e
 To create a named pipe, the [mkfifo](https://linux.die.net/man/3/mkfifo) command is used. This creates a FIFO special file (a named pipe) of type "pipe". Redirection can be used to and from the pipe, but it allows separate processes running in separate shells to be able to communicate - providing a level of inter-process communication.
 
 In one process, a command can be redirected to the pipe file:
-```bash
+```console
 $ ls -l > mypipe
 
 ```
@@ -1020,14 +1021,14 @@ $ ls -l > mypipe
 In shell 1, where process 1 is running the output of `ls` is redirected to the pipe file. The pipe file will marshal the information through to the input of process 2. Shell 1 will pause in the meantime, waiting for the input to be read from the pipe file.
 
 In a second shell, a second process can be started:
-```bash
+```console
 $ wc -l < mypipe
 ```
 
 Once this command is entered, the data is now enabled to flow from `ls` to `wc` through the implementation of `mypipe`. This is a form of [IPC](https://en.wikipedia.org/wiki/Inter-process_communication) (inter-process communication).
 
 This looks something like:
-```bash
+```console
 $ mkfifo /tmp/mypipe
 $ ls -F /tmp/mypipe
 /tmp/mypipe |
@@ -1039,13 +1040,13 @@ $
 The filetype is denoted by a `|` to indicate a pipe, and using the long listing format, the filetype is specified as `p` to denote a pipe.
 
 To redirect output to the pipe:
-```bash
+```console
 $ ls /etc > /tmp/mypipe
 
 ```
 
 The process now stalls waiting for the pipeline to be serviced. In another shell session:
-```bash
+```console
 $ wc -l < /tmp/mypipe
 189
 $
@@ -1059,7 +1060,7 @@ And now both shell processes are freed up.
 Using the standard redirection operations `>`, `>>`, and so forth, `STDOUT` is redirected to a file. However, there is benefit to redirect both to the screen and to a file. `tee` is used to send output to a file AND to the screen at the same time.
 
 When running a redirection, the output is not visible on the screen. The content will be in the file redirected to:
-```bash
+```console
 $ ls
 file1
 $ ls > newfile
@@ -1071,7 +1072,7 @@ $
 ```
 
 To redirect the output, and have it still appear on the screen:
-```bash
+```console
 $ ls
 file1
 $ ls | tee newfile
@@ -1101,12 +1102,12 @@ Some adminstrative commands for managing processes include:
 * `top`: for listing processes by metrics (cpu utilization, memory utilizaton, etc.)
 
 These commands all come from the package `procps`. On Debian based systems the contents of the `procps` package can be listed using:
-```bash
+```console
 $ dpkg -L procps
 ```
 
 On RedHat based systems, the contents of `procps` can be listed by running:
-```bash
+```console
 $ rpm -ql procps
 ```
 
@@ -1118,7 +1119,7 @@ $ rpm -ql procps
 * The system load averages for the past 1, 5, and 15 minutes
 
 Sample output of `uptime`:
-```bash
+```console
 $ uptime
  18:34:34 up 48 min,  0 users,  load average: 0.52, 0.58, 0.59
 $
@@ -1133,7 +1134,7 @@ In this sample output, the system has been up for 48 minutes. The load average r
 * `/proc/loadavg` displays load averages and number of processes running on the system.
 
 Looking at the contents of `/proc/uptime`:
-```bash
+```console
 $ cat /proc/uptime
 3135.31 36012.60
 $
@@ -1142,7 +1143,7 @@ $
 The first number indicates how long the system has been up, in seconds. The second number indicates how long the system has been idle (across all cores), in seconds.
 
 Looking at the contents of `/proc/loadavg`:
-```bash
+```console
 $ cat /proc/loadavg
 0.52 0.58 0.59 3/52 1878
 $
@@ -1158,7 +1159,7 @@ A running interactive program can be suspended with `Ctrl+Z`. It can be restarte
 The idea of managing jobs is that a user on a single console can run multiple tasks. A user may be limited to a single console due to restrictions on multiple logons.
 
 Running the `ps` command shows all current running processes:
-```bash
+```console
 $ ps
   PID TTY          TIME CMD
    1903 pts/12   00:00:00 zsh
@@ -1169,7 +1170,7 @@ $
 In the above example, there is only one running process, the `ps` command itself.
 
 Simulating a long-running task with `sleep` will lock up the command prompt. However, pressying `Ctrl+Z` will suspend the running task:
-```bash
+```console
 $ sleep 180
 ^Z
 [1]  + 20182 suspended  sleep 180
@@ -1178,7 +1179,7 @@ $
 
 Upon suspending the task, a list of processes is displayed. The `+` next to the `sleep` command indicates this process currengly has focus. Running the `bg` command will background the currently focused process:
 
-```bash
+```console
 $ bg
 [1]  + 20182 continued  sleep 180
 $ ps
@@ -1191,14 +1192,14 @@ $
 
 To just look at background/foreground jobs (as opposed to all running processes), use the `jobs` command:
 
-```bash
+```console
 $ jobs
 [1]  + running    sleep 180
 $
 ```
 
 Running a command with the `&` suffix will start that process directly in the background.
-```bash
+```console
 $ sleep 200 &
 [1] 23502
 $ jobs
@@ -1207,7 +1208,7 @@ $
 ```
 
 When inspecting multiple jobs, the job with focus will have the `+` next to it.
-```bash
+```console
 $ jobs
 [1]    running    sleep 200
 [2]  - running    sleep 205
@@ -1226,7 +1227,7 @@ A process has some attributes associated with it:
 * `UID`: User ID. This is the id of the user whom the process belongs to. Only the user that a process belongs to may kill that process (excepting root users and administrators). When a process attempts to access files, the accessibility depends on the permissions the process owner has on those files.
 
 The `ps` (process status) command is used to list running processes:
-```bash
+```console
 $ ps
   PID TTY          TIME CMD
  1903 pts/12   00:00:00 zsh
@@ -1235,7 +1236,7 @@ $
 ```
 
 Without passing `ps` any flags it will restrict itself to listing out processes in the current environment (the current shell). Passing `-l` to `ps` will provide the long listing format:
-```bash
+```console
 $ ps -l
 F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
 0 S  1000  1903   341  0  80   0 -  5325 -      pts/12   00:00:00 zsh
@@ -1246,7 +1247,7 @@ $
 The long listing format displays the parent process id, the user id, or each process, as well as the priority, the [nice value](https://en.wikipedia.org/wiki/Nice_(Unix)), the size, and the memory.
 
 Passing `-f`  to `ps` will provide the full listing format:
-```bash
+```console
 $ ps -f
 UID        PID  PPID  C STIME TTY          TIME CMD
 cwang     1903   341  0 17:46 pts/12   00:00:00 -zsh
@@ -1257,12 +1258,12 @@ $
 In this view the user id name (rather than number) is displayed. There is a proces id and parent process id, as well as the start time. The command is also displayed with all switched used (rather than just the command).
 
 To see all running processes, pass `-e` to the `ps` command:
-```bash
+```console
 $ ps -ef
 ```
 
 This command will list out all running processes, including those owned by `root`. In order to search through the process, pipe the output of `ps` into `grep`:
-```bash
+```console
 $ ps -ef | grep tmux
 cwang      341     1  0 17:46 ?        00:00:18 tmux new
 cwang     5302    50  0 17:47 pts/0    00:00:00 tmux a -t notes
@@ -1270,7 +1271,7 @@ $
 ```
 
 A useful shortcut is `pgrep`, which will list out matching process ids:
-```bash
+```console
 $ pgrep tmux
 341
 5302
@@ -1278,7 +1279,7 @@ $
 ```
 
 To send a kill signal to a process, use `kill`:
-```bash
+```console
 $ sleep 900&
 [1] 11585
 $ pgrep sleep
@@ -1291,7 +1292,7 @@ $
 The default signal `kill` sends is `-15` (or `-term`, `-sigterm`). This is a request to terminate.
 
 Another way to send a kill signal to a process is via `pkill`:
-```bash
+```console
 $ sleep 900&
 [1] 12836
 $ pkill sleep
@@ -1301,7 +1302,7 @@ $ pkill sleep
 `pkill` combines the search and the kill signal into one command.
 
 The `killall` command can be used to kill all running processes that match a search:
-```bash
+```console
 $ sleep 900&
 [1] 14197
 $ sleep 905&
@@ -1316,6 +1317,55 @@ $
 ```
 
 Again the default signal here is a terminate (`-15`). To list all signals that can be passed with `kill`, run `kill -l`. The best signal to send to kill a process is a terminate (`SIGTERM`) but some processes (such as the bash shell itself) do not respond to a terminate signal. To force kill these processes, send a `SIGKILL` (`-9`) signal to these processes.
+
+### top
+[top](https://en.wikipedia.org/wiki/Top_(software)) (table of processes) is a task manager program that displays information about CPU and memory utilization. This program has many useful functionalities for managing processes. From `top` processes can be killed, be sent renice or nice signals, displayed and sorted by CPU/memory utilization.
+
+To run `top` just enter the command `top`. This will bring up a table of running processes sorted on the CPU usage.
+
+![Example view of top](./top.jpg)
+<br /><br />
+
+The top line of the screen displays the load information, gathered from `/proc/uptime`. This can be toggled on/off with the `L` key. Below the load information is information about the running processes: the total number of processes, the number running, the number sleeped, etc. To toggle this information use the `T` key. Below the tasks/CPU utilization information is information about the memory utilization, toggled with `M`.
+
+By default, `top` sorts on the `%CPU` priority. Using `F` will bring up a menu to manage the fields displayed as well as sorted by. Pressing `N` will provide a prompt to renice a process, and `K` will bring up a prompt to kill a process.
+
+To exit this view press `q` or `Ctrl+L` (to clear the screen). To just display one capture of top, use the `-n` flag to print it to screen after which it will quit the program automatically.
+
+```console
+$ top -n 1
+top - 19:12:21 up 28 min,  0 users,  load average: 0.52, 0.58, 0.59
+Tasks:  30 total,   1 running,  29 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  2.6 us,  2.8 sy,  0.0 ni, 94.4 id,  0.0 wa,  0.2 hi,  0.0 si,  0.0 st
+KiB Mem : 33047140 total, 22991132 free,  9826656 used,   229352 buff/cache
+KiB Swap: 10066329+total, 10066065+free,     2636 used. 23086752 avail Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND           
+   1 root      20   0    8936    308    264 S   0.0  0.0   0:00.04 init
+   6 root      20   0    8936    216    172 S   0.0  0.0   0:00.01 init
+   7 cwang     20   0  981120  51084  43096 S   0.0  0.2   0:03.79 terminator
+  27 cwang     20   0   15100    796    628 S   0.0  0.0   0:00.00 dbus-launch
+  28 cwang     20   0   15112   1280   1116 S   0.0  0.0   0:00.00 dbus-daemon
+  30 cwang     20   0  312472   3892   3492 S   0.0  0.0   0:00.01 at-spi-bus-laun
+  35 cwang     20   0   15112   2080   1964 S   0.0  0.0   0:00.01 dbus-daemon
+  37 cwang     20   0  167848   4152   3344 S   0.0  0.0   0:00.01 at-spi2-registr
+  50 cwang     20   0   20340   5420   5368 S   0.0  0.0   0:00.66 zsh
+ 337 cwang     20   0   13408    736    580 S   0.0  0.0   0:00.00 ssh-agent
+ 356 cwang     20   0   14836   2804   2052 S   0.0  0.0   0:05.16 tmux: server
+ 967 cwang     20   0   20352   5344   5216 S   0.0  0.0   0:00.48 zsh
+ 993 cwang     20   0   20352   5344   5208 S   0.0  0.0   0:00.49 zsh
+1027 cwang     20   0   20352   5348   5212 S   0.0  0.0   0:00.57 zsh
+1074 cwang     20   0   20352   5344   5216 S   0.0  0.0   0:00.62 zsh
+$                                          
+```
+
+To run multiple captures, pass `-n` the number of desired captures. To add a delay between captures, use the `-d` flag to specify the number of seconds between each capture:
+
+```console
+$ top -n 2 -d 3
+```
+
+[▲ Return to Table of Contents](#table-of-contents)
 
 ## Additional Resources
 * [Linux Virtual Console And Terminal Explained](https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html)
