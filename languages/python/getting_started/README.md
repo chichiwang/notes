@@ -805,7 +805,7 @@ Python 3.7 introduces a new `breakpoint()` function through the standard library
 Executables of your Python applications can be created using [pyinstaller](https://www.pyinstaller.org/).
 
 To create an exe file, simply enter into the command line while in your project directory:
-```bash
+```console
 $ pyinstaller main.py
 ```
 Replace `main.py` with your own entrypoint file.
@@ -813,7 +813,7 @@ Replace `main.py` with your own entrypoint file.
 Pyinstaller will create a `/build` and `/dist` directory, as well as a `main.spec` file, in your project directory. Inside of the `/dist/main` directory you will find a `main.exe` file.
 
 Building your project this way generates a number of `.pyd` and `.dll` files in your `/dist` directory that are necessary to run your new executable. In order to bundle everything into a single `.exe` file run the following in your command line:
-```bash
+```console
 $ pyinstaller --onefile main.py
 ```
 The `--onefile` flag tells pyinstaller to bundle everything into a single executable. When you run pyinstaller with this flag, the `/dist` directory will only contain a single file: `main.exe`.
