@@ -120,17 +120,17 @@ The [Zen of Python](https://www.python.org/dev/peps/pep-0020/) are a set of prin
 
 ### The Read-Eval-Print-Loop
 To start the REPL enter into the command line:
-```bash
+```console
 $ python3
 ```
 
 or for a specific version of Python:
-```bash
+```console
 $ python3.7
 ```
 
 You will see the command prompt:
-```python
+```console
 >>> 
 ```
 
@@ -1965,17 +1965,17 @@ setup(
 `distutils` setup can also bundle your Python script up into packages, that are easy to distribute to others, in a number of distribution formats.
 
 This is done with the `sdist` (source distribution) command:
-```bash
+```console
 $ python setup.py sdist --format zip
 ```
 
 To see all of the formats supported by `sdist` you can use:
-```bash
+```console
 $ python setup.py sdist --help-formats
 ```
 
 To find out more about `distutils`, pass `--help` to `setup.py`:
-```bash
+```console
 $ python setup.py --help
 ```
 
