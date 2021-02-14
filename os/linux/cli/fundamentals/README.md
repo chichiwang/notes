@@ -43,6 +43,8 @@ An overview of the fundamentals of the Linux command line. These notes follow al
   * [top](#top)
 * [grep](#grep)
 * [sed](#sed)
+* [vi and vim](#vi-and-vim)
+  * [Configuration Files](#configuration-files)
 * [Additional Resources](#additional-resources)
 
 ## Working On The Command Line
@@ -1518,6 +1520,105 @@ $
 The `sample.conf` file in this example has now been modified to the target output from the `sed` operation.
 
 [▲ Return to Table of Contents](#table-of-contents)
+
+## vi and vim
+[Vi](https://en.wikipedia.org/wiki/Vi) is a screen-oriented text editor originally created for Unix operating systems. The name "vi" is derived from the shortest unambiguous abbreviation for the _ex_ command _visual_, which switches the ex line editor to visual mode. [Vim](https://en.wikipedia.org/wiki/Vim_(text_editor)) (a contraction of **Vi IMproved**) is a clone, with additions, of vi. On most systems now _vi_ just links or is aliased to _vim_. vi and vim are the most common text editors used in Linux.
+
+Vim is a modal editor, meaning it has three modes of operation:
+1. Command Mode: the default mode
+2. Insert Mode: used when editing a file
+3. Last Line Mode: Enter from Command Mode using `:`
+
+To open a file use:
+```console
+$ vim newfile
+$
+```
+
+To open a file directly to a specific line (ex: 127):
+```console
+$ vim +127 /etc/services
+$
+```
+
+To open a file directly to the first line that contains a particular string (using a regular expression pattern, ex: "DocumentRoot"):
+```console
+$ vim +/DocumentRoot /etc/httpd/httpd.conf
+$
+```
+
+In Last Line Mode, to save and quit:
+* To save a file: `w`
+* To save and exit a file: `x` or `wq`
+* To exit a file: `q`
+* To exit a file without saving: `q!`
+
+In Command mode, to enter Insert Mode:
+* Before the cursor: `i`
+* After the cursor: `a`
+* At the start of the line the cursor is on: `I`
+* At the end of the line the cursor is on: `A`
+* Insert a line above the line the cursor is on: `O`
+* Insert a line below the line the cursor is on: `o`
+
+In Insert Mode, to exit back to Command Mode, press `Esc`.
+In Command Mode, to enter Last Line Mode: `:`
+In Last Line Mode, to exit back to Command Mode: press `Esc`
+
+In Command Mode, to move the cursor:
+* Go to a line: `#gg` or `#G` where `#` is the target line number
+* Foward one word: `w`
+* Backwards one word: `b`
+* Forward n words: `#w` where `#` is the number of words to jump forward
+* Backwards n words: `#b` where `#` is the number of words to jump backwards
+* To the end of the line: `$`
+* To the start of the line: `^`
+
+In Last Line Mode, to move the cursor:
+* Go to a line: `#` where `#` is the target line number
+
+In Last Line Mode, to set options:
+* Show line numbers: `set number`
+* Hide line numbers: `set nonumber`
+* Toggle line numbers: `set invnumber`
+* Prevent highlighting matched patterns on search: `set nohlsearch`
+* Turn syntax highlighting on: `syntax on`
+
+In Command Mode, to edit text:
+* Delete a character: `x`
+* Delete n characters: `#x` where `#` is the number of characters to delete
+* Delete a word from the cursor position to the end: `dw`
+* Delete a word under the cursor: `diw`
+* Delete a word under the cursor and the spaces before/after it: `daw`
+* Delete a line: `dd`
+* Delete n lines: `#dd` where `#` is the number of lines to delete
+
+In Last Line Mode, to edit text:
+* Read in from a file (append file contents to current file): `r path/to/file`
+* Read in the output of a command (append command output to current file): `r! command` where `command` is the command whose output will be appended
+* Write to a file: `w path/to/file`
+* Write a range of line numbers to a file: `1,5w path/to/file` where `1` is the starting line and `5` is the ending line of the segment to write to `file`
+
+In Last Line Mode, to search and replace text:
+* Search the document: `/searchterm` where `searchterm` is the search term
+  * Use `n` to jump to the next occurrence of the term
+  * Use `N` to jump to )the previous occurence of the term
+  * `/` from Command Mode will enter Last Line Mode with the `/` applied
+* Search and replace complete document: `%s/searchterm/replaceterm/` where `searchterm` is the search term, and `replaceterm` is the text to replace it with
+* Search and replace part of the document: `1,20s/searchterm/replaceterm/` where `1` is the first line to search/replace, and `20` is the last line to search/replace
+
+In Command Mode, to recover from mistakes:
+* Undo changes: `u`
+* Redo changes: `Ctrl + r`
+
+### Configuration Files
+The system-wide configuration file for vim lives at `/etc/vim/vimrc`. Configuration files for individual users lives at `~/.vimrc`.
+
+To map macros to keys:
+* Command Mode (normal mode) mapping: `nmap`
+  * To map `Ctrl+n` to toggle line numbers: `nmap <C-N> :set invnumber<CR>`
+* To set a setting in Last Line Mode, use `set`
+  * To always show number: `set number`
 
 ## Additional Resources
 * [Linux Virtual Console And Terminal Explained](https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html)
