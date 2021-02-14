@@ -2,7 +2,7 @@
 
 ## Table of Contents
 * **Courses**
-  * [Getting Started](./getting-started)
+  * [Getting Started](./getting-started/README.md)
     * **Level**: Beginner
-  * [Fundamentals](./fundamentals) - WIP
+  * [Fundamentals](./fundamentals/README.md)
     * **Level**: Beginner

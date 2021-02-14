@@ -1,7 +1,9 @@
-# Linux Command Line Interface Fundamentals (WIP)
+# Linux Command Line Interface Fundamentals
 **Author**: [Chi-chi Wang](https://github.com/chichiwang)
 
 An overview of the fundamentals of the Linux command line. These notes follow along with the [PluralSight Course](https://app.pluralsight.com/library/courses/linux-cli-fundamentals/table-of-contents) of the same title.
+
+Notes completed: February 2021
 
 ## Table of Contents
 * [Working On The Command Line](#working-on-the-command-line)

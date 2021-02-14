@@ -1,4 +1,4 @@
 # Notes: Linux
 
 ## Table of Contents
-* [Command Line Interface](./cli)
+* [Command Line Interface](./cli/README.md)
