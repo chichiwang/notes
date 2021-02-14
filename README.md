@@ -25,6 +25,8 @@ For example: The [README.md](./paradigms/declarative/README.md) for [Declarative
   * [Structure and Interpretation of Computer Progams](./computing/sicp/README.md) (WIP)
 * [**Operating Systems**](./os/README.md)
   * [Linux](./os/linux/README.md)
+    * [Command Line Interface](./os/linux/cli/README.md)
+    * [Vim](./os/linux/vim/README.md)
 * [**Programming Languages**](./languages/README.md)
   * [Elm](./languages/elm/README.md)
   * [Haskell](./languages/haskell/README.md)
@@ -40,6 +42,7 @@ For example: The [README.md](./paradigms/declarative/README.md) for [Declarative
 Notes currently in progress:
 * [Unit Testing With Python](./languages/python/unit_testing)
 * [Structure and Interpretation of Computer Programs](./computing/sicp)
+* [Smash into Vim](./os/linux/vim/smash/README.md)
 
 ## Topics of Interest
 * [Decision Fatigue](https://en.wikipedia.org/wiki/Decision_fatigue)
