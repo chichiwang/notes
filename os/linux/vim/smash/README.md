@@ -10,6 +10,7 @@ Notes completed: ongoing
   * [Common Conventions](#common-conventions)
 * [Basic Operations](#basic-operations)
 * [Configuration](#configuration)
+* [Files and Directories](#files-and-directories)
 
 ## Vim
 The [vim](https://en.wikipedia.org/wiki/Vim_(text_editor)) text editor was specifically built to help programmers edit text more efficiently, because of its origins in the terminal. It can be daunting, but it is not as hard as it looks.
@@ -186,5 +187,35 @@ Vim configuration files are simple sequences of commands just as would be run in
 To configure vim on a per-document basis, use [modelines](https://vim.fandom.com/wiki/Modeline_magic). Modelines may have to be enabled in a vim configuration file. Modelines must appear at the top or bottom of a file (the number of lines by which modelines can appear is set using the configuration `modelines`).
 
 Vim can also detect filetypes and apply custom syntax highlighting and configurations to different filetypes. For more details use `:help filetypes`.
+
+[▲ Return to Table of Contents](#table-of-contents)
+
+## Files and Directories
+Most tasks involve working with several files. Programming tasks may involve working with dozens, or hundreds, of files. Vim has very robust file finding/opening capabilities, as well as window arrangement capabilities. There are different ways to look for files: visual hierarchical views, textual lists, and everything in between. While vim's own file finding is very basic, there are many plugins available for file finding spread out across the visual/textual spectrum.
+
+Vim always has a current working directory. The `:pwd` command will display the current working directory, and it can be changed with `:cd path/to/directory`. `:set autochdir` can be used to automatically use the current file's directory as the working directory.
+
+`:e` can be used to open files. Tab auto-completion for filepaths using this command can be enabled by setting: `:set wildmode=list:longest`. Entering a directory into the `:e` command (ex: `:e ~`) will open a directory tree listing all contents of a directory that can be navigated.
+
+Directory Listing commands:
+* `i`: Thin, long, wide, or tree listings
+* `s`: Sort by name, time, or file size
+* `r`: Reverse sort order
+* `gh`: Hide/unhide dotfiles
+* `<Enter>`: Open the file/directory
+* `x`: View file with associated application
+* `d`: Make directory
+* `D` Delete the file/directory
+* `R`: Rename file/directory
+* `-`: Go up a directory
+
+When traversing a file, `gf` will jump to a file under the cursor. It is smart enough to recognize filepaths in a number of different filetypes.
+
+File-Finding Plugins:
+* [NERDTree](https://github.com/preservim/nerdtree): File system tree
+* [Project](https://github.com/vimplugin/project.vim): User-configured tree
+* [LustyExplorer](https://github.com/vim-scripts/LustyExplorer): Quick folder navigation
+* [FuzzyFinder](https://github.com/vim-scripts/FuzzyFinder): Flexible search
+* [PeepOpen](https://github.com/shemerey/vim-peepopen): Mac OS X GUI, Git metadata
 
 [▲ Return to Table of Contents](#table-of-contents)
