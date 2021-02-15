@@ -11,6 +11,9 @@ Notes completed: ongoing
 * [Basic Operations](#basic-operations)
 * [Configuration](#configuration)
 * [Files and Directories](#files-and-directories)
+* [Buffers](#buffers)
+* [Windows](#windows)
+* [Tabs](#tabs)
 
 ## Vim
 The [vim](https://en.wikipedia.org/wiki/Vim_(text_editor)) text editor was specifically built to help programmers edit text more efficiently, because of its origins in the terminal. It can be daunting, but it is not as hard as it looks.
@@ -217,5 +220,85 @@ File-Finding Plugins:
 * [LustyExplorer](https://github.com/vim-scripts/LustyExplorer): Quick folder navigation
 * [FuzzyFinder](https://github.com/vim-scripts/FuzzyFinder): Flexible search
 * [PeepOpen](https://github.com/shemerey/vim-peepopen): Mac OS X GUI, Git metadata
+
+[▲ Return to Table of Contents](#table-of-contents)
+
+## Buffers
+A _buffer_ in vim is the contents of a file in memory. There may be any number of buffers in memory. Vim's buffer navigation is passable, but a plugin can help make buffer management much simpler. Buffer numbers will not change while vim is open.
+
+Buffer Management:
+* `:ls`: List all buffers
+* `:buffers`: List all buffers
+* `:b3`: Open buffer number 3
+* `:bn`: Open next buffer
+* `:bp`: Open previous buffer
+* `:bd`: Delete buffer (close file)
+* `:bf`: Open the first buffer
+* `:bl`: Open the last buffer
+* `:ba`: Open a window for every buffer
+* `Ctrl+^`: Edit the alternate file (generally the last file edited)
+
+When listing out buffers, the first column is the buffer number. The second column shows the buffer's status with various flags:
+* `+`: Buffer with unsaved changes
+* `=`: Read-only buffer
+* `%`: Buffer in the current window
+
+Using the [Buffer Explorer](https://github.com/jlanzarotta/bufexplorer) plugin, `<leader>be` will open a buffer management window that can be navigated to manage buffers. Buffers in this window are sorted by most recently edited. Press `Enter` to open a buffer, `d` to close a buffer. Close the Buffer Explorer window with `q`.
+
+[▲ Return to Table of Contents](#table-of-contents)
+
+## Windows
+A _window_ in vim is a rectangular view of a buffer. There may be any number of windows onto a buffer. Windows can be arranged horizontally and vertically in any number of configurations, on a tab-by-tab basis.
+
+Window management:
+* `Ctrl+w s`: Split window horizontally
+* `Ctrl+w v`: Split window vertically
+
+* `Ctrl+w w`: Cycle focus counter-clockwise
+* `Ctrl+w W`: Cycle focus clockwise
+* `Ctrl+w p`: Focus previous window
+* `Ctrl+w t`: Move focus to top-left window
+* `Ctrl+w b`: Move focus to bottom-right window
+
+* `Ctrl+w h`: Move focus left
+* `Ctrl+w j`: Move focus down
+* `Ctrl+w k`: Move focus up
+* `Ctrl+w l`: Move focus right
+
+* `Ctrl+w H`: Move buffer left one window
+* `Ctrl+w J`: Move buffer down one window
+* `Ctrl+w K`: Move buffer up one window
+* `Ctrl+w L`: Move buffer right one window
+
+* `Ctrl+w r`: Rotate windows counter-clockwise
+* `Ctrl+w R`: Rotate windows clockwise
+* `Ctrl+w x`: Exchange the currently focused window with the next window
+* `Ctrl+w T`: Move the currently focused window to a new tab
+
+* `Ctrl+w +`: Increase window height by N (default 1)
+* `Ctrl+w -`: Decrease window height by N (default 1)
+* `Ctrl+w >`: Increase window width by N (default 1)
+* `Ctrl+w <`: Decrease window width by N (default 1)
+
+* `Ctrl+w c`: Close currently focused window
+* `Ctrl+w o`: Close all but the currently focused window
+
+Use `:h window-resize` to view documentation on resizing windows.
+
+[▲ Return to Table of Contents](#table-of-contents)
+
+## Tabs
+A _tab_ in vim holds one more more windows. Most commands work on a per-tab basis.
+
+Tab management:
+* `:tabnew`: Create new tab
+* `:tabedit path/to/file`: Open file in new tab
+* `:tabclose`: Close the currently focused tab
+* `:tabonly`: Close all but the currently focused tab
+* `:tabnext`: Focus the next tab
+* `:tabprevious`: Focus the previous tab
+* `:tabfirst`: Focus the first tab
+* `:tablast`: Focus the last tab
+* `:tabmove -2` Move the tab 2 to the left
 
 [▲ Return to Table of Contents](#table-of-contents)
