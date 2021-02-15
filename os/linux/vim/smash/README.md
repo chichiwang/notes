@@ -253,33 +253,27 @@ A _window_ in vim is a rectangular view of a buffer. There may be any number of 
 Window management:
 * `Ctrl+w s`: Split window horizontally
 * `Ctrl+w v`: Split window vertically
-
 * `Ctrl+w w`: Cycle focus counter-clockwise
 * `Ctrl+w W`: Cycle focus clockwise
 * `Ctrl+w p`: Focus previous window
 * `Ctrl+w t`: Move focus to top-left window
 * `Ctrl+w b`: Move focus to bottom-right window
-
 * `Ctrl+w h`: Move focus left
 * `Ctrl+w j`: Move focus down
 * `Ctrl+w k`: Move focus up
 * `Ctrl+w l`: Move focus right
-
 * `Ctrl+w H`: Move buffer left one window
 * `Ctrl+w J`: Move buffer down one window
 * `Ctrl+w K`: Move buffer up one window
 * `Ctrl+w L`: Move buffer right one window
-
 * `Ctrl+w r`: Rotate windows counter-clockwise
 * `Ctrl+w R`: Rotate windows clockwise
 * `Ctrl+w x`: Exchange the currently focused window with the next window
 * `Ctrl+w T`: Move the currently focused window to a new tab
-
 * `Ctrl+w +`: Increase window height by N (default 1)
 * `Ctrl+w -`: Decrease window height by N (default 1)
 * `Ctrl+w >`: Increase window width by N (default 1)
 * `Ctrl+w <`: Decrease window width by N (default 1)
-
 * `Ctrl+w c`: Close currently focused window
 * `Ctrl+w o`: Close all but the currently focused window
 
