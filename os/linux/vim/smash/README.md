@@ -78,75 +78,158 @@ Adding `!` to the end of a command will force it to happen without confirmation.
 
 ## Basic Operations
 Navigation:
-* `h`: Move cursor left 1 character
-* `j`: Move cursor down 1 character
-* `k`: Move cursor up 1 line
-* `l`: Move cursor right 1 line
-* `6l`: Move cursor right 6 characters
-* `2j`: Move cursor down 2 lines
-* `12G`: Go to line 12
-* `gg`: Go to the top of the file
-* `G`: Go to the end of the file
-* `w`: Move cursor forward 1 word
-* `3w`: Move cursor forward 3 words
-* `fN`: Move cursor to the first 'N' on the line
-* `3fN`: Move cursor to the third 'N' on the line
-* `/public`: Search against the regex "public" and places the cursor at the start of the first match
-  * `n` will place the cursor at the start of the next match
-  * `N` will place the cursor at the start of the previous match
+* By character:
+  * `h`: Move cursor left 1 character
+  * `j`: Move cursor down 1 line at the same column
+  * `gj`: Move cursor down 1 line at the same column
+  * `+` : Move cursor to the first character of the next line
+  * `k`: Move cursor up 1 line at the same column
+  * `gk`: Move cursor up 1 line at the same column
+  * `-`: Move cursor to the first character of the previous line
+  * `l`: Move cursor right 1 character
+  * `6l`: Move cursor right 6 characters
+  * `2j`: Move cursor down 2 lines at the same column
+* By line number:
+  * `42gg`: Move cursor to line 42
+  * `12G`: Move cursor to line 12
+  * `:12`: Move cursor to line 12
+* By file:
+  * `gg`: Move cursor to the start of the first line in the file
+  * `go`: Move cursor to the start of the first line in the file
+  * `G`: Move cursor to the start of the last line in the file
+* By screen:
+  * `H`: Move cursor to the start of the line at the top of screen
+  * `M`: Move cursor to the start of the line at the middle of screen
+  * `L`: Move cursor to the start of the line at the bottom of screen
+* By word:
+  * `b`: Move cursor back 1 word
+  * `B`: Move cursor back one code word
+  * `w`: Move cursor forward 1 word
+  * `W`: Move cursor forward 1 code word
+  * `3w`: Move cursor forward 3 words
+  * `e`: Move cursor to the end of word
+  * `e`: Move cursor to the end of code word
+* By character on current line:
+  * `fN`: Move cursor to the next 'N' on the line
+  * `FN`: Move cursor to the previous 'N' on the line
+  * `;`: Repeat last cursor jump with `f`/`F`
+  * `,`: Reverse of last cursor jump with `f`/`F`
+  * `3fN`: Move cursor to the third 'N' on the line
+* By position on current line:
+  * `0`: Move cursor to the start of the line
+  * `^`: Move cursor to the first word character on the line
+  * `$`: Move cursor to the end of the line
+  * `g0`: Move cursor to the start of the line
+  * `g^`: Move cursor to the first word character on the line
+  * `gm`: Move cursor to the middle of the screen on the line
+  * `g$`: Move cursor to the end of the line
+* By pattern matching:
+  * `/public`: Search against the regex "public" and places the cursor at the start of the first match
+    * `n` will place the cursor at the start of the next match
+    * `N` will place the cursor at the start of the previous match
+
+Marks:
+* Setting and navigating marks:
+  * `m[letter]`: Create a mark at the cursor using a letter (ex: `ma`, `mb`, etc.)
+    * Uppercase marks are valid across files (ex: `mA`, `mB`, etc.)
+    * Lowercase marks operate on a per-file basis (ex: `ma`, `mb`, etc.)
+  * `` `[letter] ``: Move the cursor to the character marked with the letter provided (ex: `` `a ``, `` `b ``, etc.)
+  * `'[letter]`: Move the cursor to the beginning of the line marked with the letter provided (ex: `'a`, `'b`, etc.)
+  * `:marks`: Display a list of marks
+* Operators with marks:
+  * `d'[letter]`: Deletes everything from the cursor position to the start of the line marked with the letter provided (ex: `d't`)
+* Built-in marks:
+  * `` `0-`9 ``: The location of the cursor when vim was last exited
+    * `` `0 `` being the most recent exit, `` `1 `` being the next most recent exit, and so forth
+  * `''` : The position of the cursor before the latest jump (can also use double backticks)
+  * `'.`: The location of the last edit (can also use `` `. ``)
+
+
+Scroll:
+* By cursor:
+  * `zt`: Scroll screen so cursor is at the top of screen
+  * `zz`: Scroll screen so cursor is in the middle of screen
+  * `zb`: Scroll screen so cursor is at the bottom of screen
+* By screen:
+  * `Ctrl+b`: Scroll up one screen
+  * `Ctrl+u`: Scroll up 1/2 screen
+  * `Ctrl+d`: Scroll down 1/2 screen
+  * `Ctrl+f`: Scroll down one screen
+* By line:
+  * `Ctrl+y`: Scroll up one line
+  * `Ctrl+e`: Scroll down one line
 
 Editing:
-* `i`: Insert text before the cursor
-* `a`: Insert text after the cursor
-* `yy`: Yank line (copy)
-* `p`: Paste below cursor
-* `P`: Paste above cursor
-* `cw`: Change word from the cursor position to end of word
-  * The removed word is placed into the paste register
-* `ciw`: Change the entire word under the cursor
-  * The removed word is placed into the paste register
-* `caw`: Change the entire word and surrounding spaces under the cursor
-  * The removed word is placed into the paste register
-* `rp`: Replace the character under the cursor with "p"
-* `3cw`: Change 3 words
-  * The removed words are placed into the paste register
-* `dw`: Delete word from the cursor position to the end of word
-  * The removed word is placed into the paste register
-* `diw`: Delete the entire word under the cursor
-  * The removed word is placed into the paste register
-* `daw`: Delete the entire word and surrounding spaces under the cursor
-  * The removed word is placed into the paste register
-* `u`: Undo
-* `Ctrl+r`: Redo
-* `%s/search/replace/gc` Search and replace "search" in the document with "replace"
-  * `%`: Search the current buffer
-  * `s`: Substitute
-  * `g`: Global/greedy - will replace all occurrences on a line, not just one per line
-  * `c`: Confirm each match
-* `.`: Repeat the last change
-  * Does not repeat commands in Command-Line Mode prefixed with `:`
+* Insert text:
+  * `i`: Insert text before the cursor
+  * `a`: Insert text after the cursor
+* Insert line:
+  * `o`: Insert new line below the cursor
+  * `O`: Insert new line above the cursor
+* Copy/paste:
+  * `yy`: Yank line (copy)
+  * `p`: Paste below cursor
+  * `P`: Paste above cursor
+* Replace text by cursor:
+  * `cw`: Change word from the cursor position to end of word
+    * The removed word is placed into the paste register
+  * `ciw`: Change the entire word under the cursor
+    * The removed word is placed into the paste register
+  * `caw`: Change the entire word and surrounding spaces under the cursor
+    * The removed word is placed into the paste register
+  * `rp`: Replace the character under the cursor with "p"
+  * `3cw`: Change 3 words
+    * The removed words are placed into the paste register
+  * `dw`: Delete word from the cursor position to the end of word
+    * The removed word is placed into the paste register
+  * `diw`: Delete the entire word under the cursor
+    * The removed word is placed into the paste register
+  * `daw`: Delete the entire word and surrounding spaces under the cursor
+    * The removed word is placed into the paste register
+* Undo/redo/repeat:
+  * `u`: Undo
+  * `Ctrl+r`: Redo
+  * `.`: Repeat the last change
+    * Does not repeat commands in Command-Line Mode prefixed with `:`
+* Search/replace by pattern:
+  * `%s/search/replace/gc` Search and replace "search" in the document with "replace"
+    * `%`: Search the current buffer
+    * `s`: Substitute
+    * `g`: Global/greedy - will replace all occurrences on a line, not just one per line
+    * `c`: Confirm each match
 
 Text Selection:
 * `v`: Visual mode (select characters)
 * `V`: Visual mode (select lines)
 * `/searchterm`: Search for a term
+  * `n`: Next match
+  * `N`: Previous match
 
 File Operations:
-* `:w`: Write file (save)
-* `:w!`: Overwrite file without confirmation
-* `:q`: Quit file
-* `:wq!`: Write and quit file without confirmation
+* `e`: Re-open the current file
+* `e!`: Discard changes and re-open the current file
 * `:e path/to/file`: Open a file, relative to vim's working direcotry
 * `:e path/to/dir`: Open a directory, relative to vim's working directory
   * Navigate with `h`, `j`, `k`, `l` and press `Enter` to open the file under the cursor
+* `:w`: Write the current file (save)
+* `:w!`: Overwrite the current file without confirmation
+* `:q`: Quit the current file
+* `:q!`: Discard changes and quit the current file
+* `:wq!`: Write and quit file without confirmation
+* `Ctrl+g`: Display in status line: current file, current cursor location
+
+Editor Operations:
 * `:syntax enable`: Turn on syntax highlighting
 * `:set syntax=filetype`: To allow better syntax highlighting, specify the filetype
+  * `:setfiletype ` + `Ctrl+d` to list out possible filetypes
 * `:w !sudo tee %`: Write to the sudo command with the current file
   * Useful for writing to protected files
   * `:w !cmd` means "write the current buffer _piped_ through command"
   * `%` is the _filename_ associated with the buffer
 * `:cd /path/to/dir`: Change vim's working directory
 * `:pwd`: Print out vim's working direcotry
+
+Buffer operations:
 * `:buffers`: List current buffers
  * `:ls` and `:files` will do the same thing
 * `:buffer`: Switch to a buffer given the name or number of the buffer
@@ -158,6 +241,9 @@ Configuration:
 * `set hlsearch`: Highlight search terms
 * `set nohlsearch`: Turn off search highlighting
 * `set incsearch`: Highlight matches as patterns are typed
+* `set laststatus=2`: Always show the status bar
+* `set ruler`: Show the cursor position in the status bar
+* `set number`: Show line numbers
 
 Opening files:
 * `vim -N path/to/file`: Opens the file with no vi compatibility
@@ -251,31 +337,36 @@ Using the [Buffer Explorer](https://github.com/jlanzarotta/bufexplorer) plugin, 
 A _window_ in vim is a rectangular view of a buffer. There may be any number of windows onto a buffer. Windows can be arranged horizontally and vertically in any number of configurations, on a tab-by-tab basis.
 
 Window management:
-* `Ctrl+w s`: Split window horizontally
-* `Ctrl+w v`: Split window vertically
-* `Ctrl+w w`: Cycle focus counter-clockwise
-* `Ctrl+w W`: Cycle focus clockwise
-* `Ctrl+w p`: Focus previous window
-* `Ctrl+w t`: Move focus to top-left window
-* `Ctrl+w b`: Move focus to bottom-right window
-* `Ctrl+w h`: Move focus left
-* `Ctrl+w j`: Move focus down
-* `Ctrl+w k`: Move focus up
-* `Ctrl+w l`: Move focus right
-* `Ctrl+w H`: Move buffer left one window
-* `Ctrl+w J`: Move buffer down one window
-* `Ctrl+w K`: Move buffer up one window
-* `Ctrl+w L`: Move buffer right one window
-* `Ctrl+w r`: Rotate windows counter-clockwise
-* `Ctrl+w R`: Rotate windows clockwise
-* `Ctrl+w x`: Exchange the currently focused window with the next window
-* `Ctrl+w T`: Move the currently focused window to a new tab
-* `Ctrl+w +`: Increase window height by N (default 1)
-* `Ctrl+w -`: Decrease window height by N (default 1)
-* `Ctrl+w >`: Increase window width by N (default 1)
-* `Ctrl+w <`: Decrease window width by N (default 1)
-* `Ctrl+w c`: Close currently focused window
-* `Ctrl+w o`: Close all but the currently focused window
+* Split:
+  * `Ctrl+w s`: Split window horizontally
+  * `Ctrl+w v`: Split window vertically
+* Move focus:
+  * `Ctrl+w w`: Cycle focus counter-clockwise
+  * `Ctrl+w W`: Cycle focus clockwise
+  * `Ctrl+w p`: Focus previous window
+  * `Ctrl+w t`: Move focus to top-left window
+  * `Ctrl+w b`: Move focus to bottom-right window
+  * `Ctrl+w h`: Move focus left
+  * `Ctrl+w j`: Move focus down
+  * `Ctrl+w k`: Move focus up
+  * `Ctrl+w l`: Move focus right
+* Move buffer:
+  * `Ctrl+w H`: Move buffer left one window
+  * `Ctrl+w J`: Move buffer down one window
+  * `Ctrl+w K`: Move buffer up one window
+  * `Ctrl+w L`: Move buffer right one window
+  * `Ctrl+w r`: Rotate windows counter-clockwise
+  * `Ctrl+w R`: Rotate windows clockwise
+  * `Ctrl+w x`: Exchange the currently focused window with the next window
+* Window size:
+  * `Ctrl+w +`: Increase window height by N (default 1)
+  * `Ctrl+w -`: Decrease window height by N (default 1)
+  * `Ctrl+w >`: Increase window width by N (default 1)
+  * `Ctrl+w <`: Decrease window width by N (default 1)
+* Close and tabs:
+  * `Ctrl+w c`: Close currently focused window
+  * `Ctrl+w o`: Close all but the currently focused window
+  * `Ctrl+w T`: Move the currently focused window to a new tab
 
 Use `:h window-resize` to view documentation on resizing windows.
 
