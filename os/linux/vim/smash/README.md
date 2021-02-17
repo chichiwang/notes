@@ -78,7 +78,7 @@ Adding `!` to the end of a command will force it to happen without confirmation.
 [▲ Return to Table of Contents](#table-of-contents)
 
 ## Basic Operations
-Navigation:
+### Navigation
 * By character:
   * `h`: Move cursor left 1 character
   * `j`: Move cursor down 1 line at the same column
@@ -130,7 +130,7 @@ Navigation:
     * `n` will place the cursor at the start of the next match
     * `N` will place the cursor at the start of the previous match
 
-Marks:
+### Marks
 * Setting and navigating marks:
   * `m[letter]`: Create a mark at the cursor using a letter (ex: `ma`, `mb`, etc.)
     * Uppercase marks are valid across files (ex: `mA`, `mB`, etc.)
@@ -147,7 +147,7 @@ Marks:
   * `'.`: The location of the last edit (can also use `` `. ``)
 
 
-Scroll:
+### Scroll
 * By cursor:
   * `zt`: Scroll screen so cursor is at the top of screen
   * `zz`: Scroll screen so cursor is in the middle of screen
@@ -161,7 +161,7 @@ Scroll:
   * `Ctrl+y`: Scroll up one line
   * `Ctrl+e`: Scroll down one line
 
-Text Selection:
+### Text Selection
 * Command Mode:
   * `{`: Move cursor to the top of the paragraph under the cursor
   * `}`: Move cursor to the top of the paragraph after the paragraph under the cursor
@@ -176,7 +176,7 @@ Text Selection:
     * `n`: Next match
     * `N`: Previous match
 
-File Operations:
+### File Operations
 * `e`: Re-open the current file
 * `e!`: Discard changes and re-open the current file
 * `:e path/to/file`: Open a file, relative to vim's working direcotry
@@ -193,12 +193,12 @@ File Operations:
   * `%` is the _filename_ associated with the buffer
 * `Ctrl+g`: Display in status line: current file, current cursor location
 
-Editor Operations:
+### Editor Operations
 * Directory:
   * `:cd /path/to/dir`: Change vim's working directory
   * `:pwd`: Print out vim's working direcotry
 
-Buffer operations:
+### Buffer Operations
 * `:buffers`: List current buffers
  * `:ls` and `:files` will do the same thing
 * `:buffer`: Switch to a buffer given the name or number of the buffer
@@ -206,7 +206,7 @@ Buffer operations:
 * `:bp`: Go to the previous buffer
 * `:bn`: Go to the next buffer
 
-Opening files:
+### Opening Files
 * `vim -N path/to/file`: Opens the file with no vi compatibility
   * Opening vim in compatible mode means all enhancemeents and improvements of vim over vi are turned off. If a personal configuration file `~/.vimrc` exists, vim automatically turns on `nocompatible` mode. `:help comapatible` will provide more details.
 
@@ -231,7 +231,7 @@ The grammar of a vim editing command goes: `[operator][extent][object]`:
   * `t`: Tag
   * `"`, `'`, `[`, `{`, `(`
 
-Editing commands:
+### Editing Commands
 * Insert text:
   * `i`: Insert text before the cursor
   * `I`: Insert text at the first non-blank character of the line
@@ -311,7 +311,7 @@ To configure vim on a per-document basis, use [modelines](https://vim.fandom.com
 
 Vim can also detect filetypes and apply custom syntax highlighting and configurations to different filetypes. For more details use `:help filetypes`.
 
-Configuration Options:
+### Configuration Options
 * Editor:
   * `set laststatus=2`: Always show the status bar
   * `set ruler`: Show the cursor position in the status bar
@@ -367,7 +367,7 @@ File-Finding Plugins:
 ## Buffers
 A _buffer_ in vim is the contents of a file in memory. There may be any number of buffers in memory. Vim's buffer navigation is passable, but a plugin can help make buffer management much simpler. Buffer numbers will not change while vim is open.
 
-Buffer Management:
+### Buffer Management
 * `:ls`: List all buffers
 * `:buffers`: List all buffers
 * `:b3`: Open buffer number 3
@@ -391,7 +391,7 @@ Using the [Buffer Explorer](https://github.com/jlanzarotta/bufexplorer) plugin, 
 ## Windows
 A _window_ in vim is a rectangular view of a buffer. There may be any number of windows onto a buffer. Windows can be arranged horizontally and vertically in any number of configurations, on a tab-by-tab basis.
 
-Window management:
+### Window Management
 * Split:
   * `Ctrl+w s`: Split window horizontally
   * `Ctrl+w v`: Split window vertically
@@ -430,7 +430,7 @@ Use `:h window-resize` to view documentation on resizing windows.
 ## Tabs
 A _tab_ in vim holds one more more windows. Most commands work on a per-tab basis.
 
-Tab management:
+### Tab Management
 * `:tabnew`: Create new tab
 * `:tabedit path/to/file`: Open file in new tab
 * `:tabclose`: Close the currently focused tab
