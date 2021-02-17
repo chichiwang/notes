@@ -11,6 +11,10 @@ Notes completed: ongoing
 * [Basic Operations](#basic-operations)
 * [Editing](#editing)
 * [Configuration](#configuration)
+  * [Mapping Keys](#mapping-keys)
+  * [Mapping Codes](#mapping-codes)
+  * [Map Leader](#map-leader)
+  * [Abbreviations](#abbreviations)
 * [Files and Directories](#files-and-directories)
 * [Buffers](#buffers)
 * [Windows](#windows)
@@ -168,7 +172,8 @@ Adding `!` to the end of a command will force it to happen without confirmation.
   * `(`: Move to the top of the sentence under the cursor
   * `)`: Move to the top of the sentence after the sentence under the cursor
   * `v`: Visual Mode (select characters)
-  * `V`: Visual mode (select lines)
+  * `V`: Visual Mode (select lines)
+  * `gv`: Return to the last Visual Mode selection state
 * Visual Mode:
   * `o`: While in Visual Mode, moves the cursor from one end of the selection to the other
 * Search:
@@ -285,6 +290,8 @@ The grammar of a vim editing command goes: `[operator][extent][object]`:
     * `g`: Global/greedy - will replace all occurrences on a line, not just one per line
     * `c`: Confirm each match
 
+[▲ Return to Table of Contents](#table-of-contents)
+
 ## Configuration
 Some of vim's default values are less than ideal, so it is worth knowing how to change them by editing a few files.
 
@@ -331,6 +338,38 @@ Vim can also detect filetypes and apply custom syntax highlighting and configura
   * `set tabstop=2`: Set the global tab width to 2
   * `set shiftwidth=2`: Set width of indentation to 2
   * `set expandtab`: Set editor to use spaces instead of tabs
+
+### Mapping Keys
+* `imap`: Bind a key in Insert Mode
+* `iunmap`: Unbind a key in Insert Mode
+* `nmap`: Bind a key in Normal Mode (Command Mode)
+* `nunmap`: Unbind a key in Normal Mode (Command Mode)
+* `vmap`: Bind a key in Visual Mode
+* `vunmap`: Unbind a key in Visual Mode
+* `map`: Bind a key in Normal, Visual, and operating-pending modes
+* `unmap`: Unbind a key in Normal, Visual, and operating-pending modes
+* `map!`: Bind a key in Command and Insert modes
+* `unmap!`: Unbind a key in Command and Insert modes
+* `nnoremap`: Safely swap characters in normal mode
+  * Will not allow rebinding of the bound key recursively
+
+In Command-Line Mode, enter `imap`, `nmap`, `vmap`, or `map` to see a list of current mappings.
+
+### Mapping Codes
+* `<Tab>`: Tab key
+* `<C-n>`: Ctrl + n
+* `<S-n>`: Shift + n
+* `<leader>`: Leader key (`\` by default)
+* `<cr>`: Carriage Return
+
+### Map Leader
+The map leader (default `\`) is a character whose sole purpose is to prevent custom mappings from conflicting with with vim's commands. To set the map leader: `let mapleader=","` to set it to `,` or `let mapleader=" "` to set it to the space bar.
+
+### Abbreviations
+To declare an abbreviation for long words that are typed often use `ab`. For example, to replace "ff" with "Firefox" in Insert Mode: `iab ff Firefox`. Vim applies abbreviates when `Space`, `Enter`, or `Escaped` is pressed, or when encountering punctuation.
+
+* `ab`: Declare an abbreviation for Insert Mode, Replace Mode, and Command-Line Mode
+* `iab`: Declare an abbreviation for Insert Mode
 
 [▲ Return to Table of Contents](#table-of-contents)
 
