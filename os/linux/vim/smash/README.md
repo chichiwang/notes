@@ -9,6 +9,7 @@ Notes completed: ongoing
 * [Vim](#vim)
   * [Common Conventions](#common-conventions)
 * [Basic Operations](#basic-operations)
+* [Editing](#editing)
 * [Configuration](#configuration)
 * [Files and Directories](#files-and-directories)
 * [Buffers](#buffers)
@@ -115,6 +116,7 @@ Navigation:
   * `;`: Repeat last cursor jump with `f`/`F`
   * `,`: Reverse of last cursor jump with `f`/`F`
   * `3fN`: Move cursor to the third 'N' on the line
+  * `%`: Move cursor to matching parentheses, quotes, or language-specific blocks
 * By position on current line:
   * `0`: Move cursor to the start of the line
   * `^`: Move cursor to the first word character on the line
@@ -159,51 +161,20 @@ Scroll:
   * `Ctrl+y`: Scroll up one line
   * `Ctrl+e`: Scroll down one line
 
-Editing:
-* Insert text:
-  * `i`: Insert text before the cursor
-  * `a`: Insert text after the cursor
-* Insert line:
-  * `o`: Insert new line below the cursor
-  * `O`: Insert new line above the cursor
-* Copy/paste:
-  * `yy`: Yank line (copy)
-  * `p`: Paste below cursor
-  * `P`: Paste above cursor
-* Replace text by cursor:
-  * `cw`: Change word from the cursor position to end of word
-    * The removed word is placed into the paste register
-  * `ciw`: Change the entire word under the cursor
-    * The removed word is placed into the paste register
-  * `caw`: Change the entire word and surrounding spaces under the cursor
-    * The removed word is placed into the paste register
-  * `rp`: Replace the character under the cursor with "p"
-  * `3cw`: Change 3 words
-    * The removed words are placed into the paste register
-  * `dw`: Delete word from the cursor position to the end of word
-    * The removed word is placed into the paste register
-  * `diw`: Delete the entire word under the cursor
-    * The removed word is placed into the paste register
-  * `daw`: Delete the entire word and surrounding spaces under the cursor
-    * The removed word is placed into the paste register
-* Undo/redo/repeat:
-  * `u`: Undo
-  * `Ctrl+r`: Redo
-  * `.`: Repeat the last change
-    * Does not repeat commands in Command-Line Mode prefixed with `:`
-* Search/replace by pattern:
-  * `%s/search/replace/gc` Search and replace "search" in the document with "replace"
-    * `%`: Search the current buffer
-    * `s`: Substitute
-    * `g`: Global/greedy - will replace all occurrences on a line, not just one per line
-    * `c`: Confirm each match
-
 Text Selection:
-* `v`: Visual mode (select characters)
-* `V`: Visual mode (select lines)
-* `/searchterm`: Search for a term
-  * `n`: Next match
-  * `N`: Previous match
+* Command Mode:
+  * `{`: Move cursor to the top of the paragraph under the cursor
+  * `}`: Move cursor to the top of the paragraph after the paragraph under the cursor
+  * `(`: Move to the top of the sentence under the cursor
+  * `)`: Move to the top of the sentence after the sentence under the cursor
+  * `v`: Visual Mode (select characters)
+  * `V`: Visual mode (select lines)
+* Visual Mode:
+  * `o`: While in Visual Mode, moves the cursor from one end of the selection to the other
+* Search:
+  * `/searchterm`: Search for a term
+    * `n`: Next match
+    * `N`: Previous match
 
 File Operations:
 * `e`: Re-open the current file
@@ -216,18 +187,16 @@ File Operations:
 * `:q`: Quit the current file
 * `:q!`: Discard changes and quit the current file
 * `:wq!`: Write and quit file without confirmation
-* `Ctrl+g`: Display in status line: current file, current cursor location
-
-Editor Operations:
-* `:syntax enable`: Turn on syntax highlighting
-* `:set syntax=filetype`: To allow better syntax highlighting, specify the filetype
-  * `:setfiletype ` + `Ctrl+d` to list out possible filetypes
 * `:w !sudo tee %`: Write to the sudo command with the current file
   * Useful for writing to protected files
   * `:w !cmd` means "write the current buffer _piped_ through command"
   * `%` is the _filename_ associated with the buffer
-* `:cd /path/to/dir`: Change vim's working directory
-* `:pwd`: Print out vim's working direcotry
+* `Ctrl+g`: Display in status line: current file, current cursor location
+
+Editor Operations:
+* Directory:
+  * `:cd /path/to/dir`: Change vim's working directory
+  * `:pwd`: Print out vim's working direcotry
 
 Buffer operations:
 * `:buffers`: List current buffers
@@ -237,19 +206,84 @@ Buffer operations:
 * `:bp`: Go to the previous buffer
 * `:bn`: Go to the next buffer
 
-Configuration:
-* `set hlsearch`: Highlight search terms
-* `set nohlsearch`: Turn off search highlighting
-* `set incsearch`: Highlight matches as patterns are typed
-* `set laststatus=2`: Always show the status bar
-* `set ruler`: Show the cursor position in the status bar
-* `set number`: Show line numbers
-
 Opening files:
 * `vim -N path/to/file`: Opens the file with no vi compatibility
   * Opening vim in compatible mode means all enhancemeents and improvements of vim over vi are turned off. If a personal configuration file `~/.vimrc` exists, vim automatically turns on `nocompatible` mode. `:help comapatible` will provide more details.
 
 [▲ Return to Table of Contents](#table-of-contents)
+
+## Editing
+The grammar of a vim editing command goes: `[operator][extent][object]`:
+* `[operator]`: The command operator
+  * `c`: Change
+  * `d`: Delete
+  * `y`: Yank
+  * `v`: Visual
+* `[extent]`: The object extent
+  * `a`: All delimiters
+  * `i`: Inner object
+  * `[number]`: Number of objects
+* `[object]`: The command object
+  * `w`: Word
+  * `W`: Code word
+  * `s`: Sentence
+  * `p`: Paragraph
+  * `t`: Tag
+  * `"`, `'`, `[`, `{`, `(`
+
+Editing commands:
+* Insert text:
+  * `i`: Insert text before the cursor
+  * `I`: Insert text at the first non-blank character of the line
+  * `a`: Insert text after the cursor
+  * `A`: Insert text at the end of the line
+* Insert line:
+  * `o`: Insert new line below the cursor
+  * `O`: Insert new line above the cursor
+* Copy/paste:
+  * `yy`: Yank line (copy)
+    * `Y` also works
+  * `p`: Paste below cursor
+  * `P`: Paste above cursor
+* Replace text by cursor:
+  * `cc`: Change the line under the cursor
+    * `C` also works
+  * `cw`: Change word from the cursor position to end of word
+  * `c3w`: Change the next 3 words from the cursor position.
+  * `ciw`: Change the entire word under the cursor
+  * `caw`: Change the entire word and surrounding spaces under the cursor
+  * `r`: Replace the character under the cursor with another character
+  * `rp`: Replace the character under the cursor with "p"
+  * `R`: Replace multiple characters starting at the cursor position
+    * `Backspace` restores the original text
+  * `3cw`: Change 3 words
+  * `J`: Joins the line under the cursor with the next line
+    * Removes the indent and inserts up to two spaces (not good for code)
+  * `5J`: Joins the line under the cursor with the next four lines
+  * `gJ`: Joins line line under the cursor with the next line
+    * Does not insert or remove any spaces
+* Remove text by cursor:
+  * `x`: Delete the character under the cursor
+  * `dd`: Delete the line under the cursor
+  * `dw`: Delete word from the cursor position to the end of word
+  * `diw`: Delete the entire word under the cursor
+  * `daw`: Delete the entire word and surrounding spaces under the cursor
+* Modify line:
+  * `<<`: Outdent line of text under the cursor in Command Mode
+  * `>>`: Indent line of text under the cursor in Command Mode
+  * `Ctrl+d`: Outdent line of text under the cursor in Insert Mode
+  * `Ctrl+t`: Indent line of text under the cursor in Insert Mode
+* Undo/redo/repeat:
+  * `u`: Undo
+  * `Ctrl+r`: Redo
+  * `.`: Repeat the last change
+    * Does not repeat commands in Command-Line Mode prefixed with `:`
+* Search/replace by pattern:
+  * `%s/search/replace/gc` Search and replace "search" in the document with "replace"
+    * `%`: Search the current buffer
+    * `s`: Substitute
+    * `g`: Global/greedy - will replace all occurrences on a line, not just one per line
+    * `c`: Confirm each match
 
 ## Configuration
 Some of vim's default values are less than ideal, so it is worth knowing how to change them by editing a few files.
@@ -276,6 +310,27 @@ Vim configuration files are simple sequences of commands just as would be run in
 To configure vim on a per-document basis, use [modelines](https://vim.fandom.com/wiki/Modeline_magic). Modelines may have to be enabled in a vim configuration file. Modelines must appear at the top or bottom of a file (the number of lines by which modelines can appear is set using the configuration `modelines`).
 
 Vim can also detect filetypes and apply custom syntax highlighting and configurations to different filetypes. For more details use `:help filetypes`.
+
+Configuration Options:
+* Editor:
+  * `set laststatus=2`: Always show the status bar
+  * `set ruler`: Show the cursor position in the status bar
+  * `set number`: Show line numbers
+* Syntax:
+  * `syntax enable`: Turn on syntax highlighting
+  * `set syntax=filetype`: To allow better syntax highlighting, specify the filetype
+    * `setfiletype ` + `Ctrl+d` to list out possible filetypes
+* Search:
+  * `set hlsearch`: Highlight search terms
+  * `set incsearch`: Highlight matches as patterns are typed
+  * `set nohlsearch`: Turn off search highlighting
+  * `set ignorecase`: Search patterns automatically ignore letter casing
+  * `set smartcase`: If search pattern contains uppercase letters, casing is respected
+    * Use in combination with `set ignorecase`
+* Format
+  * `set tabstop=2`: Set the global tab width to 2
+  * `set shiftwidth=2`: Set width of indentation to 2
+  * `set expandtab`: Set editor to use spaces instead of tabs
 
 [▲ Return to Table of Contents](#table-of-contents)
 
