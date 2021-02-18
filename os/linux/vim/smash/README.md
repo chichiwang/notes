@@ -19,6 +19,7 @@ Notes completed: ongoing
 * [Buffers](#buffers)
 * [Windows](#windows)
 * [Tabs](#tabs)
+* [Folding](#folding)
 
 ## Vim
 The [vim](https://en.wikipedia.org/wiki/Vim_(text_editor)) text editor was specifically built to help programmers edit text more efficiently, because of its origins in the terminal. It can be daunting, but it is not as hard as it looks.
@@ -202,6 +203,8 @@ Adding `!` to the end of a command will force it to happen without confirmation.
 * Directory:
   * `:cd /path/to/dir`: Change vim's working directory
   * `:pwd`: Print out vim's working direcotry
+* Format:
+  * `:retab`: Replace all tabs with spaces in the current buffer
 
 ### Buffer Operations
 * `:buffers`: List current buffers
@@ -323,6 +326,7 @@ Vim can also detect filetypes and apply custom syntax highlighting and configura
   * `set laststatus=2`: Always show the status bar
   * `set ruler`: Show the cursor position in the status bar
   * `set number`: Show line numbers
+  * `set foldcolumn=1`: Set the width of the fold column to 1
 * Syntax:
   * `syntax enable`: Turn on syntax highlighting
   * `set syntax=filetype`: To allow better syntax highlighting, specify the filetype
@@ -479,5 +483,32 @@ A _tab_ in vim holds one more more windows. Most commands work on a per-tab basi
 * `:tabfirst`: Focus the first tab
 * `:tablast`: Focus the last tab
 * `:tabmove -2` Move the tab 2 to the left
+
+[▲ Return to Table of Contents](#table-of-contents)
+
+## Folding
+[Folding](https://vim.fandom.com/wiki/Folding) allows the collapsing of long ranges of text into a single line, only displaying the first line of the fold. Many programming languages have a syntax file that supports folding.
+
+Vim offers several fold strategies defined by `foldmethod`. By default it is `manual`:
+`:set foldmethod=`
+* `indent`: Use spaces or tabs to find foldable blocks
+* `syntax`: Fold on language features(methods, classes)
+* `marker`: Fold on textual marks
+* `diff`: Fold unchanged text
+* `expr`: Custom, code-driven folding
+* `manual`: Select ranges to fold
+
+Vim does not have a lexer or parser, so there will be corner cases when folding by `indent` or `syntax` where the vim does not get the fold right. Folding manually can be tiresome, and polluting a text with markers should generally be avoided, so it is recommended that folds be performed by `syntax` or `indent`.
+
+### Fold Operations
+* `zk`: Move cursor up to the previous fold
+* `zj`: Move cursor down to the next fold
+* `zM`: Close all folds
+* `zc`: Close fold under the cursor
+* `za`: Toggle fold open/close under the cursor
+* `zo`: Open fold under the cursor
+* `zR`: Open all folds
+* `zi`: Toggle folding on/off altogether
+* `zx`: Close all folds except the fold under the cursor
 
 [▲ Return to Table of Contents](#table-of-contents)
