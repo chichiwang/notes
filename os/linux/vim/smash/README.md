@@ -22,6 +22,7 @@ Notes completed: ongoing
 * [Folding](#folding)
 * [Completion](#completion)
 * [Registers](#registers)
+* [Plugins](#plugins)
 * [Additional Resources](#additional-resources)
 
 ## Vim
@@ -570,6 +571,24 @@ To specify a register, prefix your command with `"`:
 * `"*p`: Insert the contents of the system cliboard after the cursor
 
 Using the lowercase name of a named register will overwrite its contents while using the capitalized version of the name will append the contents into the the register. This is useful for collecting text into a register for later pasting.
+
+[▲ Return to Table of Contents](#table-of-contents)
+
+## Plugins
+Plugins are [vim scripts](https://www.vim.org/scripts/index.php) that are loaded automatically when vim starts. There are two types of plugins:
+1. Global: Used for all files
+2. File Type: Used for a specific type of file
+
+Vim uses plugins internally for many of its built-in features. The [default file explorer](https://vim.fandom.com/wiki/File_explorer), for example, is the [netrw plugin](https://www.vim.org/scripts/script.php?script_id=1075). Almost all vim plugins are released in the [script section](https://www.vim.org/scripts/script_search_results.php?order_by=creation_date&direction=descending) of [vim.org](https://www.vim.org/).
+
+Vim doesn't provide a way to specify which versions of dependencies to use.
+
+Standard plugin installation involves copying plugin files to separate directories in the `~/.vim` directory. This process is made easier with the use of a plugin manager (which itself is a vim plugin). Most plugins are distributed as `.zip` files so installation entails unzipping them and copying their contents into `~/.vim`.
+
+Vim Plugin Managers:
+* [vim-plug](https://github.com/junegunn/vim-plug)
+* [pathogen](https://github.com/tpope/vim-pathogen)
+* [Vundle](https://github.com/VundleVim/Vundle.vim)
 
 [▲ Return to Table of Contents](#table-of-contents)
 
