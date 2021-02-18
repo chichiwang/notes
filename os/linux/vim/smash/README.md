@@ -1,9 +1,9 @@
-# Smash into Vim - WIP
+# Smash Into Vim
 **Author**: [Chi-chi Wang](https://github.com/chichiwang)
 
 These notes follow along with the [PluralSight Course](https://app.pluralsight.com/library/courses/smash-into-vim/table-of-contents) of the same title.
 
-Notes completed: ongoing
+Notes completed: 02/17/2021
 
 ## Table of Contents
 * [Vim](#vim)
@@ -516,6 +516,7 @@ Vim does not have a lexer or parser, so there will be corner cases when folding 
 ### Fold Operations
 * `zk`: Move cursor up to the previous fold
 * `zj`: Move cursor down to the next fold
+* `zm`: Close one more level of folds throughout the buffer
 * `zM`: Close all folds
 * `zc`: Close fold under the cursor
 * `za`: Toggle fold open/close under the cursor

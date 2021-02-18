@@ -2,5 +2,5 @@
 
 ## Table of Contents
 * **Courses**
-  * [Smash into Vim](./smash/README.md) - (WIP)
+  * [Smash Into Vim](./smash/README.md)
     * **Level**: Beginner

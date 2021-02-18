@@ -42,7 +42,6 @@ For example: The [README.md](./paradigms/declarative/README.md) for [Declarative
 Notes currently in progress:
 * [Unit Testing With Python](./languages/python/unit_testing)
 * [Structure and Interpretation of Computer Programs](./computing/sicp)
-* [Smash into Vim](./os/linux/vim/smash/README.md)
 
 ## Topics of Interest
 * [Decision Fatigue](https://en.wikipedia.org/wiki/Decision_fatigue)

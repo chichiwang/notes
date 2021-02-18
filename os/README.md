@@ -1,4 +1,4 @@
 # Notes: Operating Systems
 
 ## Table of Contents
-* [Linux](./linux)
+* [Linux](./linux/README.md)
