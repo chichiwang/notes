@@ -23,6 +23,7 @@ Notes completed: ongoing
 * [Completion](#completion)
 * [Registers](#registers)
 * [Plugins](#plugins)
+* [Documentation](#documentation)
 * [Additional Resources](#additional-resources)
 
 ## Vim
@@ -589,6 +590,24 @@ Vim Plugin Managers:
 * [vim-plug](https://github.com/junegunn/vim-plug)
 * [pathogen](https://github.com/tpope/vim-pathogen)
 * [Vundle](https://github.com/VundleVim/Vundle.vim)
+
+[▲ Return to Table of Contents](#table-of-contents)
+
+## Documentation
+To access vim documentation use `:help` or `:h`. The documentation is divided into two manuals:
+1. User Manual: Explains how to accomplish various tasks
+2. Reference Manual: Detailed documentation of all commands and operations
+
+To find documentation on any particular subject, use `:h [subject]`. Tab autocompletion on the help subject can be useful as well. Type `:h au` and then press `Tab` to display all of the possibilities
+
+Documentation commands:
+* `:help`: Bring up documentation
+  * `:h` works as well
+* `:help [subject]`: Bring up documentation for a subject
+  * `:h [subject]` works as well
+* `Ctrl+]` while the cursor is on a subject tag, will jump to subject
+  * `Ctrl+t` or `Ctrl+o` will return to the previous subject
+* `:q` to close the help window
 
 [▲ Return to Table of Contents](#table-of-contents)
 
