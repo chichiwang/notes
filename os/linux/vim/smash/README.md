@@ -20,6 +20,9 @@ Notes completed: ongoing
 * [Windows](#windows)
 * [Tabs](#tabs)
 * [Folding](#folding)
+* [Completion](#completion)
+* [Registers](#registers)
+* [Additional Resources](#additional-resources)
 
 ## Vim
 The [vim](https://en.wikipedia.org/wiki/Vim_(text_editor)) text editor was specifically built to help programmers edit text more efficiently, because of its origins in the terminal. It can be daunting, but it is not as hard as it looks.
@@ -205,6 +208,10 @@ Adding `!` to the end of a command will force it to happen without confirmation.
   * `:pwd`: Print out vim's working direcotry
 * Format:
   * `:retab`: Replace all tabs with spaces in the current buffer
+* Macros:
+  * `q[a-z]`: Start recording a macro into a named register (`qa` starts recording a macro into the `a` register)
+    * Press `q` again to finish recoring a series of operations
+  * `@[a-z]`: Execute a recorded macro in the specified named register (`@a` will execute the macro stored in the `a` register)
 
 ### Buffer Operations
 * `:buffers`: List current buffers
@@ -281,6 +288,7 @@ The grammar of a vim editing command goes: `[operator][extent][object]`:
   * `>>`: Indent line of text under the cursor in Command Mode
   * `Ctrl+d`: Outdent line of text under the cursor in Insert Mode
   * `Ctrl+t`: Indent line of text under the cursor in Insert Mode
+  * `=`: Automatically indent a selection in Visual Mode
 * Undo/redo/repeat:
   * `u`: Undo
   * `Ctrl+r`: Redo
@@ -327,6 +335,9 @@ Vim can also detect filetypes and apply custom syntax highlighting and configura
   * `set ruler`: Show the cursor position in the status bar
   * `set number`: Show line numbers
   * `set foldcolumn=1`: Set the width of the fold column to 1
+  * `set paste`: Disable automatic indentation
+  * `set nopaste`: Enable automatic indentation
+  * `set clipboard=unnamed`: Use the system clipboard in the unnamed register
 * Syntax:
   * `syntax enable`: Turn on syntax highlighting
   * `set syntax=filetype`: To allow better syntax highlighting, specify the filetype
@@ -510,5 +521,59 @@ Vim does not have a lexer or parser, so there will be corner cases when folding 
 * `zR`: Open all folds
 * `zi`: Toggle folding on/off altogether
 * `zx`: Close all folds except the fold under the cursor
+
+[▲ Return to Table of Contents](#table-of-contents)
+
+## Completion
+Vim can complete words using a variety of different sources, and each source has its own completion command.
+
+### Completion Operations
+* `Ctrl+n`: Activate completion, or completion menu for multiple options
+  * `Ctrl+n`: Move down to the next suggestion in the suggestion window
+    * Down arrow works as well
+  * `Ctrl+p`: Move up to the previous suggestion in the suggestion window
+    * Up Arrow works as well
+  * To use the highlighted suggestion, hit `Enter` or resume typing
+
+[▲ Return to Table of Contents](#table-of-contents)
+
+## Registers
+Vim registers are the equivalent of a clipboard, but there are many of them. The default register vim uses is the _unnamed register_. There are also 26 named registers, one for each letter of the alphabet. When using the copy/delete/paste/change commands, vim by default will use the unamed register, but the command can be specified to use a different register instead.
+
+* Operators:
+  * `y`: Yank (copy)
+  * `d`: Delete (cut)
+  * `c`: Change (cut)
+  * `p`: Paste after the cursor
+  * `P`: Paste before the cursor
+* Registers:
+  * `"`: Default/unamed register
+  * `a-z`: Named registers
+  * `*`: System clipboard
+  * `0`: Yank register
+    * Holds the last bit of text that was yanked
+  * `1-9`: Delete registers
+    * Contains the last nine pieces of text deleted, with the most recent being `1` and least recent being `9`
+  * `_`: Black hole register
+    * Permanently removes text copied into it, non-recoverable
+    * Useful for not polluting the other registers (`"_dd` will remove a line of text from the buffer permanently)
+  * `+`: Interact with the system clipboard in Windows, Mac, and Linux
+  * `*`: Interact with the primary cliboard in Linux, and the system clipboard in Windows and Mac (these two systems only have one clipboard)
+* Commands:
+  * `:register`: View the contents of all registers
+
+To specify a register, prefix your command with `"`:
+* `"ayy`: Yank the line under the cursor into register `a`
+* `"add`: Delete the line under the cursor into register `a`
+* `"ap`: Insert the contents of register `a` after the cursor
+* `"*yiw`: Copy a word into the primary/system cliboard
+* `"*p`: Insert the contents of the system cliboard after the cursor
+
+Using the lowercase name of a named register will overwrite its contents while using the capitalized version of the name will append the contents into the the register. This is useful for collecting text into a register for later pasting.
+
+[▲ Return to Table of Contents](#table-of-contents)
+
+## Additional Resources
+* [5 Minutes Vim: Vim's Registers](https://www.barbarianmeetscoding.com/blog/5-minutes-vim-copy-pasting-and-registers#vims-registers)
 
 [▲ Return to Table of Contents](#table-of-contents)
