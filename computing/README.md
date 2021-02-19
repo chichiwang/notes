@@ -1,10 +1,10 @@
 # Notes: Computing Concepts
 
 ## Table of Contents
-* [Containers](./containers)
+### Research
+* [Containers](./containers/README.md)
+* [Non-Relational Databases](./nosql/README.md)
+### Courses/Books
 * [Crash Course: Computer Science](./crash_course/README.md)
-* [Non-Relational Databases](./nosql)
+* [The Elements of Programming Style](./elements_programming_style/README.md) (WIP)
 * [Structure and Interpretation of Computer Progams](./computing/sicp) (WIP)
-
-## TODO
-- [ ] Create `Recommended Resources` and include [Crash Course: Computer Science](https://www.youtube.com/playlist?list=PLME-KWdxI8dcaHSzzRsNuOLXtM2Ep_C7a)
