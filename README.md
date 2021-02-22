@@ -43,6 +43,7 @@ Notes currently in progress:
 * [Unit Testing With Python](./languages/python/unit_testing/README.md)
 * [Structure and Interpretation of Computer Programs](./computing/sicp/README.md)
 * [The Elements of Programming Style](./computing/elements_programming_style/README.md)
+* [Practical Common Lisp](./languages/lisp/practical_common_lisp/README.md)
 
 ## Topics of Interest
 * [Decision Fatigue](https://en.wikipedia.org/wiki/Decision_fatigue)
