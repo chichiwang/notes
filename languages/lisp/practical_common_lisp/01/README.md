@@ -26,4 +26,4 @@ Other than Common Lisp, the one general-purpose Lisp dialect that still has an a
 
 Two other Lisp dialects still in widespread use are Elisp, the extension language for the Emacs editor, and Autolisp, the extension language for Autodesk's AutoCAD computer-aided design tool.
 
-| [Table of Contents](../README.md#table-of-contents) | Next |
+| [Table of Contents](../README.md#notes) | Next |
