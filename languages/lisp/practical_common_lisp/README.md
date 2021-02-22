@@ -6,6 +6,7 @@ Notes from the book [Practical Common Lisp](http://www.gigamonkeys.com/book/) wr
 Date: WIP
 
 ## Table of Contents
+* 01: [Why Lisp?](./01/README.md)
 * [Additional Resources](#additional-resources)
 
 ## Additional Resources
