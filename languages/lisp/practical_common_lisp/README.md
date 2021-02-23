@@ -9,10 +9,12 @@ Date: WIP
 ### Getting Started
 * [Installing Common Lisp](#installing-common-lisp)
   * [Vim Plugins](#vim-plugins)
+  * [Lisp in a Box](#lisp-in-a-box)
 * [Using the REPL](#using-the-repl)
 
 ### Notes
 * 01: [Why Lisp?](./01/README.md)
+* 02: [A Tour of the REPL](./02/README.md)
 * [Additional Resources](#additional-resources)
 
 ## Installing Common Lisp
@@ -24,6 +26,9 @@ For the purposes of this set of notes, the [sbcl](http://www.sbcl.org/) Common L
 [Slimv](https://github.com/vim-scripts/slimv.vim), alternatively, is a SWANK client for vim, similar to [SLIME](https://common-lisp.net/project/slime/) for Emacs.
 
 For instructions on installing either plugin, or using them, please follow [Susam Pal's guide](https://susam.in/blog/lisp-in-vim-with-slimv-or-vlime/).
+
+### Lisp in a Box
+[Lispbox](https://common-lisp.net/project/lispbox/) is an IDE for Common Lisp development. It is a pre-configured packaging of the [Emacs](https://en.wikipedia.org/wiki/Emacs) editing environment, [SLIME](http://common-lisp.net/project/slime/), [Quicklisp](http://www.quicklisp.org/), and [Clozure Common Lisp](https://ccl.clozure.com/). Lispbox is designed to get programmers new to Common Lisp up and running in a Lisp development environment with minimu hassle.
 
 ## Using the REPL
 To use the REPL, use the executable `sbcl` in your console:
@@ -46,3 +51,4 @@ To exit the REPL enter the command `(quit)`.
 * [The Common Lisp Cookbook - Getting Started](https://lispcookbook.github.io/cl-cookbook/getting-started.html)
 * [Vlime](https://github.com/vlime/vlime)
 * [Lisp in Vim with Slimv or Vlime](https://susam.in/blog/lisp-in-vim-with-slimv-or-vlime/)
+* [The Common Lisp Cookbook](https://lispcookbook.github.io/cl-cookbook)
