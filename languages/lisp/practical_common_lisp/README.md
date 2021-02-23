@@ -23,6 +23,8 @@ For the purposes of this set of notes, the [sbcl](http://www.sbcl.org/) Common L
 
 [Slimv](https://github.com/vim-scripts/slimv.vim), alternatively, is a SWANK client for vim, similar to [SLIME](https://common-lisp.net/project/slime/) for Emacs.
 
+For instructions on installing either plugin, or using them, please follow [Susam Pal's guide](https://susam.in/blog/lisp-in-vim-with-slimv-or-vlime/).
+
 ## Using the REPL
 To use the REPL, use the executable `sbcl` in your console:
 ```console
@@ -43,3 +45,4 @@ To exit the REPL enter the command `(quit)`.
 * [Getting Started | Common Lisp](https://lisp-lang.org/learn/getting-started/)
 * [The Common Lisp Cookbook - Getting Started](https://lispcookbook.github.io/cl-cookbook/getting-started.html)
 * [Vlime](https://github.com/vlime/vlime)
+* [Lisp in Vim with Slimv or Vlime](https://susam.in/blog/lisp-in-vim-with-slimv-or-vlime/)
