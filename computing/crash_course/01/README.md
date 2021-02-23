@@ -1,4 +1,4 @@
-# 01: Early Computing
+# Early Computing
 [Video Link](https://youtu.be/O5nskjZ_GoI)
 
 The earliest recognized device for computing was the abacus, invented in ancient Mesopotamia around 2,500 BCE. It was a manual calculator for adding and subtracting numbers and stores the current state of the computation.
