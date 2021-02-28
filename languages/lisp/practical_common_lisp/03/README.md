@@ -3,6 +3,15 @@
 
 This chapter follows an exercise to create a simple database in-memory. The purpose of this exercise to show a simple example of what working in Common Lisp looks like. The final code, after following this exercise, is available at [./cd-database.lisp](./cd-database.lisp).
 
+## Sections
+* [Return to Table of Contents](../README.md)
+* [Creating a Property List](#creating-a-property-list)
+* [A List of Lists](#a-list-of-lists)
+* [Formatting the Output](#formatting-the-output)
+* [Prompting the User for Input](#prompting-the-user-for-input)
+* [Saving and Loading the Database](#saving-and-loading-the-database)
+* [Querying the Database](#querying-the-database)
+
 ## Creating a Property List
 
 To create a list, use the `LIST` function:
@@ -295,5 +304,147 @@ To use `LOAD-DB`:
 ```
 
 ## Querying the Database
+The function `REMOVE-IF-NOT` takes a predicate and a list and returns a list containing only the elements that match the predicate (essentially a filter function). This function does not mutate the original list - it returns a new one. The predicate is a function that takes a single argument and returns a boolean value `NIL` for false, and any other value for true.
+```console
+* (remove-if-not #'evenp '(1 2 3 4 5 6 7 8 9 10))
+(2 4 6 8 10)
+*
+```
+
+In the above example, the predicate function `EVENP` returns `T` if its argument is an even number and `NIL` otherwise. The notation `#'` tells Lisp to retrieve a function with the provided name. Without `#'` Lisp would attempt to retrieve the value of a variable with the name instead of the function.
+
+`REMOVE-IF-NOT` could also be passed an anonmymous function. To achieve the same behavior as using `EVENP`:
+```console
+* (remove-if-not #'(lambda (x) (= 0 (mod x 2))) '(1 2 3 4 5 6 7 8 9 10))
+(2 4 6 8 10)
+*
+```
+
+In this case, the predicate is the following anonymous function:
+```lisp
+(lambda (x) (= 0 (mod x 2)))
+```
+
+`LAMBDA` is not the name of a function, rather it is an indicator used to define an anonymous function. Excepting the lack of a name, a `LAMBDA` expression looks a lot like `DEFUN`: a parameter list followed by the body of the function.
+
+`GETF` can be used to extract named fields from a _plist_. Assuming `cd` is the name of a variable holding a single database record, the expression `(getf cd :artist)` could be used to extract the name of the `Artist`.
+
+The `EQUAL` function, when provided string arguments, compares them character by character. `(equal (getf cd :artist) "Dixie Chicks")` will test whether the `Artist` field of a given `cd` is equal to `"Dixie Chicks."`.
+
+```console
+* (remove-if-not
+  #'(lambda (cd) (equal (getf cd :artist) "Dixie Chicks")) *db*)
+((:TITLE "Fly" :ARTIST "Dixie Chicks" :RATING 8 :RIPPED T)
+  (:TITLE "Home" :ARTIST "Dixie Chicks" :RATING 9 :RIPPED T))
+*
+```
+
+To wrap this expression in a function that takes the name of the artist as argument:
+```lisp
+(defun select-by-artist (artist)
+  (remove-if-not
+  #'(lambda (cd) (equal (getf cd :artist) artist))
+  *db*))
+```
+
+The lambda in the prior expression has access to the variable `artist` despite containing code that will not run until it is invoked in `REMOVE-IF-NOT`. The anonymous function doesn't just save from the need to write a regular function, it also allows the creation of a function that derives part of its meaning (the value of `artist`) from the context in which it is embedded.
+
+`SELECT-BY-ARTIST` is useful, but a function would need to be created for every possible query: `SELECT-BY-TITLE`, `SELECT-BY-RATING`, `SELECT-BY-TITLE-AND-ARTIST`, and so on. Instead a more general `SELECT` can be created that takes a selector function as its argument:
+```lisp
+(defun select (selector-fn)
+  (remove-if-not selector-fn *db*))
+```
+
+`SELECT` can now be passed a function to select the field requested:
+```console
+* (select #'(lambda (cd) (equal (getf cd :artist) "Dixie Chicks")))
+((:TITLE "Fly" :ARTIST "Dixie Chicks" :RATING 8 :RIPPED T)
+  (:TITLE "Home" :ARTIST "Dixie Chicks" :RATING 9 :RIPPED T))
+*
+```
+
+To wrap the lambda up into a declarative function:
+```lisp
+(defun artist-selector (artist)
+  #'(lambda (cd) (equal (getf cd :artist) artist)))
+```
+
+Now a selection by artist can be executed like:
+```console
+* (select (artist-selector "Dixie Chicks"))
+((:TITLE "Fly" :ARTIST "Dixie Chicks" :RATING 8 :RIPPED T)
+  (:TITLE "Home" :ARTIST "Dixie Chicks" :RATING 9 :RIPPED T))
+*
+```
+
+Using this approach, a function would have to be created for every single field a user may want to select by. A better approach would be to write a single general-purpose selector-function generator: that is a function that would generate a selector-function for different fields, or even combinations of fields. To achieve this, a feature called _keyword parameters_ will beed to be leveraged.
+
+In the functions created thus far, a list of paremeters has been specified that are bound to corresponding arguments in the call to the function:
+```lisp
+(defun foo (a b c) (list a b c))
+```
+
+The above function has 3 parameters and must be called with 3 arguments. However, at times it is advantageous to create a function that acceps a varying number of arguments. Keyword parameters is a way to achieve this. A usage of keyword parameters looks like:
+```lisp
+(defun foo (&key a b c) (list a b c))
+```
+
+With the addition of the `&key` at the start of the arguments list, legal function calls to `FOO` can look like:
+```console
+* (foo :a 1 :b 2 :c 3)
+(1 2 3)
+* (foo :c 3 :b 2 :a 1)
+(1 2 3)
+* (foo :a 1 :c 3)
+(1 NIL 3)
+* (foo)
+(NIL NIL NIL)
+*
+```
+
+The variables `a`, `b`, and `c` are now bound to the values that follow the corresponding symbols in the arguments list. If a particular symbol is not present at all, the corresponding value is set to `NIL`.
+
+In order to distinguish between a `NIL` that was explicitly passed in as argument and a default value `NIL` for a given keyword symbol, rather than passing a list of keyword names to `&key` a list can instead be passed consisting of the name of the parameter, a default value, and another paramter name (called a _supplied-p_ parameter). The supplied-p parameter will be set to true or false depending on whether an argument was actually passed for that keyword parameter in a particular call to the function:
+```lisp
+(defun foo (&key a (b 20) (c 30 c-p)) (list a b c c-p))
+```
+
+The same function calls from earlier now yield:
+```console
+* (foo :a 1 :b 2 :c 3)
+(1 2 3 T)
+* (foo :c 3 :b 2 :a 1)
+(1 2 3 T)
+* (foo :a 1 :c 3)
+(1 20 3 T)
+* (foo)
+(NIL 20 30 NIL)
+*
+```
+
+A general selector-function generator, called `WHERE` (much like the DSL in SQL databases), is a function that takes four keyword parameters corresponding to the fields in the CD records, and generates a selector function that selects any CDs that match all of the values provided to `WHERE`. It will allow for operations like `(select (where :artist "Dixie Chicks"))` or `(select (where :rating 10 :ripped nil))`:
+```lisp
+(defun where (&key title artist rating (ripped nil ripped-p))
+  #'(lambda (cd)
+    (and
+      (if title    (equal (getf cd :title)  title)  t)
+      (if artist   (equal (getf cd :artist) artist) t)
+      (if rating   (equal (getf cd :rating) rating) t)
+      (if ripped-p (equal (getf cd :ripped) ripped) t))))
+```
+
+This function returns an anonymous function that returns the logical `AND` of one clause per field in the CD records. Each clause checks if the appropriate argument was passed in and then either compares to the value in the corresponding field of `cd` record or returns `T` if the parameter wasn't passed in.
+
+Database queries can now be made:
+```console
+* (select (where :artist "Dixie Chicks"))
+((:TITLE "Fly" :ARTIST "Dixie Chicks" :RATING 8 :RIPPED T)
+  (:TITLE "Home" :ARTIST "Dixie Chicks" :RATING 9 :RIPPED T))
+* (select (where :rating 10 :ripped nil))
+NIL
+* (select (where :rating 10 :ripped t))
+((:TITLE "Give Us a Break" :ARTIST "Limpopo" :RATING 10 :RIPPED T))
+*
+```
 
 | [Previous: A Tour of the REPL](../02/README.md) | [Table of Contents](../README.md#notes) | Next |
