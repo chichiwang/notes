@@ -160,4 +160,4 @@ Even when a Lisp app is deployed, there's often still a way to get to a REPL. It
 
 > Debugging a program running on a $100M piece of hardware that is 100 million miles away is an interesting experience. Having a read-eval-print loop running on the spacecraft proved invaluable in finding and fixing the problem.
 
-| [Previous: Why Lisp?](../01/README.md) | [Table of Contents](../README.md#notes) | Next |
+| [Previous: Why Lisp?](../01/README.md) | [Table of Contents](../README.md#notes) | [Next: A Simple Database](../03/README.md) |

@@ -15,6 +15,7 @@ Date: WIP
 ### Notes
 * 01: [Why Lisp?](./01/README.md)
 * 02: [A Tour of the REPL](./02/README.md)
+* 03: [A Practical Database](./03/README.md)
 * [Additional Resources](#additional-resources)
 
 ## Installing Common Lisp
@@ -52,3 +53,4 @@ To exit the REPL enter the command `(quit)`.
 * [Vlime](https://github.com/vlime/vlime)
 * [Lisp in Vim with Slimv or Vlime](https://susam.in/blog/lisp-in-vim-with-slimv-or-vlime/)
 * [The Common Lisp Cookbook](https://lispcookbook.github.io/cl-cookbook)
+* [Common Lisp the Language, 2nd Edition](https://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node1.html)
