@@ -10,6 +10,7 @@ This chapter follows an exercise to create a simple database in-memory. The purp
 * [Prompting the User for Input](#prompting-the-user-for-input)
 * [Saving and Loading the Database](#saving-and-loading-the-database)
 * [Querying the Database](#querying-the-database)
+* [Updating Existing Records](#updating-existing-records)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -457,6 +458,50 @@ NIL
 ((:TITLE "Give Us a Break" :ARTIST "Limpopo" :RATING 10 :RIPPED T))
 *
 ```
+
+[▲ Return to Sections](#sections)
+
+## Updating Existing Records
+To define a function that updates particular records:
+```lisp
+(defun update (selector-fn &key title artist rating (ripped nil ripped-p))
+  (setf *db*
+    (mapcar
+    #'(lambda (row)
+      (when (funcall selector-fn row)
+        (if title    (setf (getf row :title)  title))
+        (if artist   (setf (getf row :artist) artist))
+        (if rating   (setf (getf row :rating) rating))
+        (if ripped-p (setf (getf row :ripped) ripped)))
+      row) *db*)))
+```
+
+The `MAPCAR` function maps over a list (`*db*` in this case) and returns the result of calling a function on each item of the list.
+
+`SETF` is a general assignment operator that can be used to assign more than just variables. In the above example it is used to assign a complex form (`(getf row :title)` for example).
+
+To use this `UPDATE` function:
+```console
+* (select (where :artist "Dixie Chicks"))
+((:TITLE "Fly" :ARTIST "Dixie Chicks" :RATING 8 :RIPPED T)
+  (:TITLE "Home" :ARTIST "Dixie Chicks" :RATING 9 :RIPPED T))
+* (update (where :artist "Dixie Chicks") :rating 11)
+((:TITLE "Roses" :ARTIST "Kathy Mattea" :RATING 9 :RIPPED T)
+  (:TITLE "Fly" :ARTIST "Dixie Chicks" :RATING 11 :RIPPED T)
+  (:TITLE "Home" :ARTIST "Dixie Chicks" :RATING 11 :RIPPED T)
+  (:TITLE "Rockin' the Suburbs" :ARTIST "Ben Folds" :RATING 6 :RIPPED T)
+  (:TITLE "Give Us a Break" :ARTIST "Limpopo" :RATING 10 :RIPPED T)
+  (:TITLE "Lyle Lovett" :ARTIST "Lyle Lovett" :RATING 9 :RIPPED T))
+*
+```
+
+To define a function that deletes particular records:
+```lisp
+(defun delete-rows (selector-fn)
+  (setf *db* (remove-if selector-fn *db*)))
+```
+
+The function `REMOVE-IF` returns a list with all of the elements that match the provided predicate removed.
 
 [▲ Return to Sections](#sections)
 
