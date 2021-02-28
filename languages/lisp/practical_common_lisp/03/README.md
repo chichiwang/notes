@@ -4,13 +4,14 @@
 This chapter follows an exercise to create a simple database in-memory. The purpose of this exercise to show a simple example of what working in Common Lisp looks like. The final code, after following this exercise, is available at [./cd-database.lisp](./cd-database.lisp).
 
 ## Sections
-* [Return to Table of Contents](../README.md)
 * [Creating a Property List](#creating-a-property-list)
 * [A List of Lists](#a-list-of-lists)
 * [Formatting the Output](#formatting-the-output)
 * [Prompting the User for Input](#prompting-the-user-for-input)
 * [Saving and Loading the Database](#saving-and-loading-the-database)
 * [Querying the Database](#querying-the-database)
+
+[◂ Return to Table of Contents](../README.md)
 
 ## Creating a Property List
 
@@ -47,6 +48,8 @@ To use this function:
 *
 ```
 
+[▲ Return to Sections](#sections)
+
 ## A List of Lists
 
 To start recording a list of CDs, a larger construct to hold records is required. A list would make a good choice. Define a variable to create a new list:
@@ -74,6 +77,8 @@ CDs can be added to the database like so:
 ```
 
 The output of each call to `ADD-RECORD` is the return value. `PUSH` returns the new value of the variable it is modifying.
+
+[▲ Return to Sections](#sections)
 
 ## Formatting the Output
 
@@ -138,6 +143,8 @@ RIPPED:   T
 NIL
 *
 ```
+
+[▲ Return to Sections](#sections)
 
 ## Prompting the User for Input
 Reading in a single line of text is done with the `READ-LINE` function. The global variable [*query-io*](https://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node183.html) contains the input stream conntected to the terminal. To create a function to read a line of input from the terminal:
@@ -248,6 +255,8 @@ NIL
 *
 ```
 
+[▲ Return to Sections](#sections)
+
 ## Saving and Loading the Datbase
 To save the current database (`*db*`) to a file, define a function `SAVE-DB`:
 ```lisp
@@ -302,6 +311,8 @@ To use `LOAD-DB`:
   (:TITLE "Lyle Lovett" :ARTIST "Lyle Lovett" :RATING 9 :RIPPED T))
 *
 ```
+
+[▲ Return to Sections](#sections)
 
 ## Querying the Database
 The function `REMOVE-IF-NOT` takes a predicate and a list and returns a list containing only the elements that match the predicate (essentially a filter function). This function does not mutate the original list - it returns a new one. The predicate is a function that takes a single argument and returns a boolean value `NIL` for false, and any other value for true.
@@ -446,5 +457,7 @@ NIL
 ((:TITLE "Give Us a Break" :ARTIST "Limpopo" :RATING 10 :RIPPED T))
 *
 ```
+
+[▲ Return to Sections](#sections)
 
 | [Previous: A Tour of the REPL](../02/README.md) | [Table of Contents](../README.md#notes) | Next |
