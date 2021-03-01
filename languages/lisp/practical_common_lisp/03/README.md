@@ -11,6 +11,9 @@ This chapter follows an exercise to create a simple database in-memory. The purp
 * [Saving and Loading the Database](#saving-and-loading-the-database)
 * [Querying the Database](#querying-the-database)
 * [Updating Existing Records](#updating-existing-records)
+* [Removing Duplication](#removing-duplication)
+  * [Macros](#macros)
+  * [Refactoring With Macros](#refactoring-with-macros)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -502,6 +505,173 @@ To define a function that deletes particular records:
 ```
 
 The function `REMOVE-IF` returns a list with all of the elements that match the provided predicate removed.
+
+[▲ Return to Sections](#sections)
+
+## Removing Duplication
+The `WHERE` function defined in a [previous section](#querying-the-database) still contains some code duplication:
+```lisp
+(defun where (&key title artist rating (ripped nil ripped-p))
+  #'(lambda (cd)
+    (and
+      (if title    (equal (getf cd :title)  title)  t)
+      (if artist   (equal (getf cd :artist) artist) t)
+      (if rating   (equal (getf cd :rating) rating) t)
+      (if ripped-p (equal (getf cd :ripped) ripped) t))))
+```
+
+The body of the function contains a clause (ex: `(if title    (equal (getf cd :title)  title)  t)`) per field of the records. The `UPDATE` function contains the same code duplication:
+```lisp
+(defun update (selector-fn &key title artist rating (ripped nil ripped-p))
+  (setf *db*
+    (mapcar
+    #'(lambda (row)
+      (when (funcall selector-fn row)
+        (if title    (setf (getf row :title)  title))
+        (if artist   (setf (getf row :artist) artist))
+        (if rating   (setf (getf row :rating) rating))
+        (if ripped-p (setf (getf row :ripped) ripped)))
+      row) *db*)))
+```
+
+The problem with the code duplication found in `WHERE` and `UPDATE` are:
+1. Multiple points of change when record fields changes.
+2. Inefficient lambdas are returned - the returned lambdas check every field in the record regardless of which fields were provided to the original function.
+
+A more efficient lambda for the `WHERE` function to return, if invoked like so:
+```lisp
+(select (where :title "Give Us a Break" :ripped t))
+```
+
+would look something like:
+```lisp
+(select
+#'(lambda (cd)
+  (and (equal (getf cd :title) "Give Us a Break")
+       (equal (getf cd :ripped) t))))
+```
+
+The above lambda only has clasuses for the fields specified in the call to `WHERE` above.
+
+### Macros
+The Lisp feature that makes this sort of dynamic lambda generation trivially easy is its macro system. A Lisp macro is essentially a code generator that gets run automatically by the compiler. When a Lisp expression contains a call to a macro, instead of evaluating the arguments and passing them to the function, the Lisp compiler passes the arguments, unevaluated, to the macro code, which returns a new Lisp expression that is then evaluated in place of the original macro call.
+
+For example:
+The function `REVERSE` takes a list of arguments and returns a new list that is its reverse:
+```console
+* (reverse '(1 2 3))
+(3 2 1)
+*
+```
+
+To define a macro to reverse a list:
+```lisp
+(defmacro backwards (expr) (reverse expr))
+```
+
+To define a macro, the `DEFMACRO` function is used (rather than `DEFUN` for defining functions). The function signature of `DEFMACRO` is the same as for `DEFUN`: it consists of a name, followed by a list of parameters, followed by a body of expressions.
+
+To run the macro:
+```console
+* (backwards ("hello, world" t format))
+hello, world
+NIL
+*
+```
+
+The way this works is:
+1. When the REPL started to evaluate the `BACKWARDS` expression it recognized `BACKWARDS` as the name of a macro.
+2. The REPL left the expression `("hello, world" t format)` unevaluated, which is good since this is not a legal Lisp form.
+3. The code inside of the `BACKWARDS` macro passed the list to `REVERSE` which returned the list form `(format t "hello, world")`.
+4. `BACKWARDS` passed the resulting list back out to the REPL, which evaluated it in place of the original expression.
+
+In this way the `BACKWARDS` macro defines a new language that is a lot like Lisp, only backwards, that can be dropped into anytime simply by wrapping a backward Lisp expression into a call to the `BACKWARDS` macro. In a compiled Lisp program this new language is just as efficient as normal Lisp because all the macro code runs at compile time.
+
+Simply stated, the copiler will generate the same code whether provided `(backwards ("hello, world" t format))` or `(format t "hello, world")`.
+
+### Refactoring With Macros
+To create a function that returns the necessary getter for a record for a given record:
+```lisp
+(defun make-comparison-expr (field value)
+  (list 'equal (list 'getf 'cd field) value))
+```
+
+The above `MAKE-COMPARISON-EXPR` function accepts a `field` and `value` as arguments, then returns a form that checks for equality in a field for `cd`:
+```console
+* (make-comparison-expr :rating 10)
+(EQUAL (GETF CD :RATING) 10)
+* (make-comparison-expr :title "Give Us a Break")
+(EQUAL (GETF CD :TITLE) "Give Us a Break")
+*
+```
+
+The `'` operator stops Lisp from evaluating a form. This prevents Lisp from executing the forms provided in the above definition for `MAKE-COMPARISON-EXPR`. Another operator, `` ` ``, can be used instead. `` ` `` also stops Lisp evaluation of an expression just like `'`.
+```console
+* '(1 2 3)
+(1 2 3)
+* `(1 2 3)
+(1 2 3)
+*
+```
+
+Unlike `'` however, when using `` ` ``, any subexpression precened by `,` will be evaluated by Lisp:
+```console
+* '(1 2 (+ 1 2))
+(1 2 (+ 1 2))
+* `(1 2 ,(+ 1 2))
+(1 2 3)
+*
+```
+
+In the above example, the subexpression `(+ 1 2)` is evaluated when using `` ` `` and preceded by `,`.
+
+Using the backtick operator, `MAKE-COMPARISON-EXPR` can be re-written:
+```lisp
+(defun make-comparison-expr (field value)
+  `(equal (getf cd ,field) ,value))
+```
+
+To use `MAKE-COMPARISON-EXPR`:
+```lisp
+* (make-comparison-expr :artist "Dixie Chicks")
+(EQUAL (GETF CD :ARTIST) "Dixie Chicks")
+*
+```
+
+To create a function that makes a list of comparison expressions:
+```lisp
+(defun make-comparisons-list (fields)
+  (loop while fields
+    collecting (make-comparison-expr (pop fields) (pop fields))))
+```
+
+The above `LOOP` expression loops while there are elements left in the `fields` list, popping off two at a time, passing them to `MAKE-COMPARISON-EXPR`, and collecting the results to be returned at the end of the loop.
+
+The `POP` macro performs the inverse operation of `PUSH`.
+
+To use `MAKE-COMPARISONS-LIST`:
+```console
+* (make-comparisons-list (list :artist "Dixie Chicks" :ripped t))
+((EQUAL (GETF CD :ARTIST) "Dixie Chicks") (EQUAL (GETF CD :RIPPED) T))
+*
+```
+
+Now to wrap the list returned by `MAKE-COMPARISONS-LIST` in an `AND` and an anonymous function:
+```lisp
+(defmacro where (&rest clauses)
+  `#'(lambda (cd) (and ,@(make-comparisons-list clauses))))
+```
+
+This macro uses a variatnt of `,` (namely `,@`) before the call to `MAKE-COMPARISONS-LIST`. The `,@` expression splices the value of the following expression (which must evaluate to a list) into the enclosing list:
+```console
+* `(and ,(list 1 2 3))
+(AND (1 2 3))
+* `(and ,@(list 1 2 3))
+(AND 1 2 3)
+*
+```
+
+The use of the `&rest` in the argument list, like `&key` modifies the way the arguments are parsed. With `&rest` in its parameter list, a function or macro can take an arbitrary number of arguments, which are collected into a single list that becomes the value of the variable whose name follows `&rest`.
 
 [▲ Return to Sections](#sections)
 
