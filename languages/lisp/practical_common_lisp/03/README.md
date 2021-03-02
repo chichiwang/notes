@@ -675,4 +675,4 @@ The use of the `&rest` in the argument list, like `&key` modifies the way the ar
 
 [▲ Return to Sections](#sections)
 
-| [Previous: A Tour of the REPL](../02/README.md) | [Table of Contents](../README.md#notes) | Next |
+| [Previous: A Tour of the REPL](../02/README.md) | [Table of Contents](../README.md#notes) | [Next: Syntax and Semantics](../04/README.md) |
