@@ -10,6 +10,7 @@ It is worth looking at how Lisp's syntax and semantics are defined, and how it d
 * [S-expressions](#s-expressions)
   * [Numbers](#numbers)
   * [Strings](#strings)
+  * [Names](#names)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -37,7 +38,22 @@ The basic elements of [s-expressions](https://en.wikipedia.org/wiki/S-expression
 
 **Lists** are delimited by parentheses and can contain any number of white-space separated elements. **Atoms** are everything else. The elements of lists are themselves s-expressions (atoms or nested lists). Comments are not technically s-expresions. They start with a semicolon and extend to the end of a line. They are treated essentially like whitespace.
 
-The syntactic rules governing the most common kinds of atoms:
+Numbers, strings, and symbols can be combined with parentheses-delimited lists to build s-expressions representing arbitrary trees of objects, such as:
+```lisp
+x             ; the symbol X
+()            ; the empty list
+(1 2 3)       ; a list of three numbers
+("foo" "bar") ; a list of two strings
+(x y z)       ; a list of three symbols
+(x 1 "foo")   ; a list of a symbol, a number, and a string
+(+ (* 2 3) 4) ; a list of a symbol, a list, and a number.
+```
+
+The following is a slightly more complex example that has a four-item list that contains two symbols, an empty list, and another list that itself contains two symbols and a string:
+```lisp
+(defun hello-world ()
+  (format t "hello, world"))
+```
 
 ### Numbers
 Any sequence of digits, possibly prefaced by a sign (`+` and `-`), contianing a decimal point (`.`) or a solidus (`/`), or ending with an exponent marker is read as a number:
@@ -67,6 +83,33 @@ String literals are enclosed in double quotes. Within a string, a backslash (`\`
 "fo\\o"   ; the string containing the characters f, o, \, and o.
 "fo\"o"   ; the string containing the characters f, o, ", and o.
 ```
+
+### Names
+Names used in Lisp, such as `FORMAT`, `hello-world`, and `*db*` are represented by objects called _sympbols_. The _reader_ does not know how a name will be used (whether it's the name of a variable, function, or something else). The reader simply reads a sequence of characters and builds an object to represent the name.
+
+Almost any character can appear in a name, with a few exceptions:
+* Whitespaces cannot appear in names (lists are separated by whitespace).
+* Digits are valid, so long as the name as a whole cannot be interpreted as a number.
+* Names can contain periods, but the reader can't read a name that consists of only periods.
+* 10 characters that serve syntactic purposes cannot appear in names:
+  * Open and close parentheses: `(`, `)`
+  * Double and single quotes: `"`, `'`
+  * Backticks: `` ` ``
+  * Commas: `,`
+  * Colons and semicolons: `:`, `;`
+  * Backslash: `\`
+  * Vertical bar: `|`
+
+While reading names, the reader converts all unescaped chaacers in a name to their uppercase equivalents. The reader reads `foo`, `Foo`, and `FOO` as the same symbol: _FOO_. However, `\f\o\o\` and `|foo|` will both be read as _foo_, which is a different object than the symbol _FOO_. Standard style is to write code in all lowercase and let the reader change names to uppercase.
+
+To ensure the same textual name is always read as the same symbol, the reader _interns_ symbols. After the reader has read a name and converted it to all uppercase, it looks in a table (called a _package_) for an existing symbol with the same name. If a symbol with the same name exists in the package, it returns the symbol already in the table. Otherwise it creates a new symbol and adds it to the table. In this way, wherever the same name appears in any s-expression, the same object will be used to represent it.
+
+Certain naming conventions exist distinct to Lisp:
+* Names are lowercase (as in `foo`)
+* Names are hyphenated (as in `hello-world`)
+* Global variables are given names that start and end with `*` (as in `*db*`)
+* Constants are given names that start and end with `+` (as in `+my-const+`)
+* Somtimes, particularly low-level functions are given names that start with `%` or `%%`
 
 [▲ Return to Sections](#sections)
 
