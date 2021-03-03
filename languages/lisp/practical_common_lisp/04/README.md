@@ -10,6 +10,8 @@ It is worth looking at how Lisp's syntax and semantics are defined, and how it d
 * [S-expressions](#s-expressions)
   * [Numbers](#numbers)
 
+[◂ Return to Table of Contents](../README.md)
+
 ## Language Processing
 In most programming languages the language processor takes a sequence of characters representing the text of a program and either executes the behaviors indicated (interpreter) or produces a copiled version of the program that will execute the behaviors when run (compiler). Language processors are usually divided into subsystems that are each responsible for one part of translating a program text into behavior or object code. Typically a language processor is split into three phases, each of which feeds the into the next:
 1. **A lexical analyzer**: breaks up the stream of characters into tokens.
