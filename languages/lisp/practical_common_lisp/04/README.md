@@ -9,6 +9,7 @@ It is worth looking at how Lisp's syntax and semantics are defined, and how it d
 * [Language Processing](#language-processing)
 * [S-expressions](#s-expressions)
   * [Numbers](#numbers)
+  * [Strings](#strings)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -32,7 +33,6 @@ Some consequences of this split in processing:
 [▲ Return to Sections](#sections)
 
 ## S-expressions
-
 The basic elements of [s-expressions](https://en.wikipedia.org/wiki/S-expression) are _lists_ and _atoms_.
 
 **Lists** are delimited by parentheses and can contain any number of white-space separated elements. **Atoms** are everything else. The elements of lists are themselves s-expressions (atoms or nested lists). Comments are not technically s-expresions. They start with a semicolon and extend to the end of a line. They are treated essentially like whitespace.
@@ -58,6 +58,15 @@ Any sequence of digits, possibly prefaced by a sign (`+` and `-`), contianing a 
 These different forms represent different kinds of numbers: integers, ratios, and floating point. Lisp also supports complex numbers.
 
 Numbers may be notated many ways. No matter how they are written, all rationals (integers and ratios) are represented internally in "simplified" form. The objects that represent `-2/8` and `-1/4` are not distinct from one another. `1.0` and `1.0e0` are just different ways of writing the same number. On the other hand `1.0`, `1.0d0`, and `1` can all denote different objects because the different floating-point representations and integers are different types.
+
+### Strings
+String literals are enclosed in double quotes. Within a string, a backslash (`\`) escapes the next character. The only characters that must be escaped within a string are double quotes and backslashes:
+```lisp
+"foo"     ; the string containing the characters f, o, and o.
+"fo\o"    ; the same string
+"fo\\o"   ; the string containing the characters f, o, \, and o.
+"fo\"o"   ; the string containing the characters f, o, ", and o.
+```
 
 [▲ Return to Sections](#sections)
 
