@@ -11,6 +11,7 @@ It is worth looking at how Lisp's syntax and semantics are defined, and how it d
   * [Numbers](#numbers)
   * [Strings](#strings)
   * [Names](#names)
+* [S-expressions as Lisp Forms](#s-expressions-as-lisp-forms)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -112,5 +113,24 @@ Certain naming conventions exist distinct to Lisp:
 * Somtimes, particularly low-level functions are given names that start with `%` or `%%`
 
 [▲ Return to Sections](#sections)
+
+## S-expressions as Lisp Forms
+
+After the reader has translated the text sourcecode into s-expressions, the s-expressions can be evaluated as Lisp code (not every s-expression that the reader can read can be evaluated as Lisp code).
+
+Common Lisp's evaluation rule defines a second level of syntax that determines which s-expressions can be treated as Lisp forms:
+* Any _atom_ (non-list or the empty list) is a legal Lisp form.
+* Any list that has a symbol as its first element is a legal Lisp form.
+  * Three different list forms are evaluated in three different ways, the evaluator must determine whether the symbol that starts the list is the name of a _function_, _macro_, or _special operator_.
+  * If the symbol has not yet been defined, it is assumed to be a _function_ name.
+
+_Atoms_, the simplest Lisp forms, can be divided into 2 categories:
+* Symbols: evaluated as a form, is considered the name of a variable and evaluates to the current value of the variable.
+  * Some symbols are also self-evaluating: the variables they name can be assigned the value of the symbol itself.
+    * `T` and `NIL` are self-evaluating symbols.
+    * Keyword symbols (symbols whose names start with `:` are self-evaluating symbols.
+* Everything else: numbers, strings, etc. are _self-eveluating objects_. When these expressions are passed to the notional evaluation function, it is simply returned.
+
+The _evaluator_ can be thought of as a function that takes an argument of syntactically correct Lisp and returns a value: this is the _value_ of the form. When the evaluator is a _compiler_, it converts the expression into code that will compute the appropriate value when its run.
 
 | [Previous: A Simple Database](../03/README.md) | [Table of Contents](../README.md#notes) | Next |
