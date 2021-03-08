@@ -305,4 +305,4 @@ Comments should be prefaced with one to four semicolons depending on the scope o
 
 [▲ Return to Sections](#sections)
 
-| [Previous: A Simple Database](../03/README.md) | [Table of Contents](../README.md#notes) | Next |
+| [Previous: A Simple Database](../03/README.md) | [Table of Contents](../README.md#notes) | [Next: Functions](../05/README.md) |

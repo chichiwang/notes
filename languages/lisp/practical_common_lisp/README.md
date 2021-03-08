@@ -17,6 +17,7 @@ Date: WIP
 * 02: [A Tour of the REPL](./02/README.md)
 * 03: [A Practical Database](./03/README.md)
 * 04: [Syntax and Semantics](./04/README.md)
+* 05: [Functions](./05/README.md)
 * [Additional Resources](#additional-resources)
 
 ## Installing Common Lisp
