@@ -16,6 +16,7 @@ It is worth looking at how Lisp's syntax and semantics are defined, and how it d
   * [Special Operators](#special-operators)
   * [Macros](#macros)
 * [Truth, Falsehood, and Equality](#truth-falsehood-and-equality)
+* [Formatting Lisp Code](#formatting-lisp-code)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -246,6 +247,61 @@ There are two schools of thought on when to use `EQ` and when to use `EQL`:
   * The performance difference between `EQ` and `EQL` is not significant compared to real performance bottlenecks.
 
 `EQUAL` and `EQUALP` are general: they operate on all types of objects. They are less fundamental than `EQ` or `EQL`: they each define a less discriminating notion of equivalence than `EQL`, allowing different objects to be considered equivalent.
+
+[▲ Return to Sections](#sections)
+
+## Formatting Lisp Code
+Proper formatting is important to reading and writing code fluently and idomatically. Identations should reflect the structure of the code so that counting parentheses is unnecessary. Each new level of nesting gets indented, and items at the same level of nesting are lined up.
+
+A function call that needs to be broken up across multiple lines might be written as thus:
+```lisp
+(some-function arg-with-a-long-name
+               another-arg-with-an-even-longer-name)
+```
+
+Macros and special forms that implement control constructs are indented so that the "body" elements are indented two spaces relative to the opening parenthesis of the form:
+```lisp
+(defun print-list (list)
+  (dolist (i list)
+    (format t "item: ~a~%" i)))
+```
+
+One of the advantages of Lisp's regular syntax is that it is fairly easy for software such as editors to know how to indent it.
+
+The closing parenthesis should always appear on the same line as the last element of the list it is closing. This, for example, is incorrect:
+```lisp
+(defun foo ()
+  (dotimes (i 10)
+    (format t "~d. hello~%" i)
+  )
+)
+```
+
+Instead it should read:
+```lisp
+(defun foo()
+  (dotimes (i 10)
+    (format t "~d. hello~%" i)))
+```
+
+Comments should be prefaced with one to four semicolons depending on the scope of the comment:
+```lisp
+;;;; Four semicolons are used for a file header comment.
+
+;;; A comment with three semicolons will usually be a paragraph
+;;; comment that applies to a large section of code that follows
+
+(defun foo (x)
+  (dotimes (i x)
+    ;; Two semicolons indicate this comment applies to the code
+    ;; that follows. Note that this comment is indented the same
+    ;; as the code that follows.
+    (some-function-call)
+    (another i)             ; this comment applies to this line only
+    (and-another)           ; and this is for this line
+    (baz)))
+```
+
 
 [▲ Return to Sections](#sections)
 
