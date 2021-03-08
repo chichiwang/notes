@@ -15,6 +15,7 @@ It is worth looking at how Lisp's syntax and semantics are defined, and how it d
   * [Function Calls](#function-calls)
   * [Special Operators](#special-operators)
   * [Macros](#macros)
+* [Truth, Falsehood, and Equality](#truth-falsehood-and-equality)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -207,6 +208,44 @@ Because macros generate their expansions at compile time, they can do relatively
 Since the evaluator doesn't evaluate elements of the macro form before passing them to the macro function, they don't need to be well-formed Lisp forms. Each macro defines its own local syntax: it assigns a meaning to the s-expressions in the macro form by virtue of how it uses them to generate its expansion.
 
 Macros serve a different purpse than functions, providing a hook into the compiler.
+
+[▲ Return to Sections](#sections)
+
+## Truth, Falsehood, and Equality
+In Lisp the symbol `NIL` is the only false value, everything else is true. The symbol `T` is the canonical true value and can be used to return a non-`NIL` value.
+
+`NIL` is the only object that's both an atom and a list: in addition to falsehood, it is also used to represent the empty list. This equivalence between `NIL` and the empty list is built into the reader: if the reader sees `()`, it reads it as the symbol `NIL`. They are completely interchangeable. Because `NIL` is the name of a constant variable with the symbol `NIL` as its value, the expressions `nil`, `()`, `'nil`, and `'()` all evaluate to the same thing. The unquoted forms are evaluated as a reference to the constant variable whose value is the symbol `NIL`, the quoted forms are passed to the `QUOTE` special operator which evaluates the symbol directly. For the same reason, `t` and `'t` both evaluate to the same thing: the symbol `T`.
+
+Common Lisp provides a number of type-specific equality predicates. Among them:
+* `=` is used to compare numbers.
+* `CHAR=` is used to compare characters.
+* `EQ` tests for "object identity". Two objects are `EQ` if they're identical.
+  * The object identity of numbers and characters depends on how those data types are implemented in a particular Lisp. `EQ` may consider two numbers or two characters with the same value to be equivalent, or it may not.
+  * Never use `EQ` to compare values that may be numbers or characters. If a Lisp implementer changes how they represent numbers or characters, the behavior of EQ could change as well.
+* `EQL` behaves like `EQ` except it is guaranteed to consider two objects of the same class, representing the same numeric or character value to be equivalent.
+  * `(eql 1 1)` is guaranteed to be true.
+  * `(eql 1 1.0)` is guaranteed to be false (the integer value `1` and the floating point value `1.0` are instances of different classes.
+* `EQUAL` considers lists equivalent if they have the same structure and contents, recursively.
+  * Considers strings equivalent if they contain the same characters.
+  * Defines a looser definition of equivalence than `EQL` for bit vectors and pathnames.
+  * For all other data types: falls back on `EQL`.
+* `EQUALP` is less discriminating than `EQUAL`.
+  * Considers strings equivalent if they contain the same characters regardless of casing.
+  * Considers two characters equivalent if they only differ in casing.
+  * Numbers are equivalent if they represent the same mathematical value (`(equalp 1 1.0)` evauluates to true).
+  * Lists with `EQUALP` elements are `EQUALP`.
+  * Arrays with `EQUALP` elements are `EQUALP`.
+  * For all other data types: falls back on `EQL`.
+
+There are two schools of thought on when to use `EQ` and when to use `EQL`:
+1. Use `EQ` when possible:
+  * It is a way to indicate when the values being compared are not numbers or characters.
+  * It will be marginally more efficient than using `EQL` since `EQ` does not have to check its argument types.
+2. Always use `EQL`:
+  * Code comprehension is improved since a programmer reading the code does not have to validate the argument types.
+  * The performance difference between `EQ` and `EQL` is not significant compared to real performance bottlenecks.
+
+`EQUAL` and `EQUALP` are general: they operate on all types of objects. They are less fundamental than `EQ` or `EQL`: they each define a less discriminating notion of equivalence than `EQL`, allowing different objects to be considered equivalent.
 
 [▲ Return to Sections](#sections)
 
