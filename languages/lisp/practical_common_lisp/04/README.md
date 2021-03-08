@@ -12,6 +12,9 @@ It is worth looking at how Lisp's syntax and semantics are defined, and how it d
   * [Strings](#strings)
   * [Names](#names)
 * [S-expressions as Lisp Forms](#s-expressions-as-lisp-forms)
+  * [Function Calls](#function-calls)
+  * [Special Operators](#special-operators)
+  * [Macros](#macros)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -132,5 +135,79 @@ _Atoms_, the simplest Lisp forms, can be divided into 2 categories:
 * Everything else: numbers, strings, etc. are _self-eveluating objects_. When these expressions are passed to the notional evaluation function, it is simply returned.
 
 The _evaluator_ can be thought of as a function that takes an argument of syntactically correct Lisp and returns a value: this is the _value_ of the form. When the evaluator is a _compiler_, it converts the expression into code that will compute the appropriate value when its run.
+
+### Function Calls
+The basic syntax of a function call form:
+```
+(function-name argument*)
+```
+
+Where each of the arguments is a Lisp form. The evaluation of a function call form is to evaluate the remaining elements of the list as Lisp forms and pass the resulting values to the named function.
+
+```lisp
+(+ 1 2)
+```
+
+The preceding expression is evaluated by first evaluating `1`, then `2`, and then passing the resulting values to the `+` function which returns `3`.
+
+```lisp
+(* (+ 1 2) (- 3 4))
+```
+
+The precending expression is evaluated by first evaluating the arguments `(+ 1 2)` and `(- 3 4)` before passing them to the `*` function. Eventually the values `3` and `-1` are passed to the `*` function which returns `-3`.
+
+Functions are used for many of the operators and things that require special syntax in other languages. In this way Lisp's syntax remains regular.
+
+### Special Operators
+Not all operations can be defined as functions. Because all arguments to a function are evaluated before the function is called, there is no way to write a function that behaves like the `IF` operator:
+```lisp
+(if x (format t "yes") (format t "no))
+```
+
+If `IF` were a function, the evaluator would evaluate the argument expressions from left to right. First `x` would be evaluated as a variable yielding a value, then `(format t "yes")` would be evaluated as a function call yielding `NIL` after printing `"yes"` to standard output. The same would happen next for `(format t "no")`. Only after all three expressions following `IF` were evaluated would they be passed to `IF`, too late for it to control which of the two `FORMAT` expressions get evaluated.
+
+Common Lisp defines a couple dozen special operators (`IF` being one of them) that behave differently than functions. There are 25 in all, but only a small handful are used directly in day-to-day programming. The set of special operators is fixed by the language standard.
+
+When the first element of a list is a symbol naming a special operator, the rest of the expressions in the list are evaluated according to the rule for that operator.
+
+The basic form of an `IF` expression is:
+```
+(if test-form then-form [else-form])
+```
+
+First the evaluator evaluates the `test-form`. If that evaluates to a non-`NIL` value, then evaluate the `then-form` expression and return its value. Otherwise return the value of evaluating the `else-form` if provided, or `NIL` if it is not.
+
+The special operator `QUOTE` has simpler evaluation rules:
+```lisp
+(quote (+ 1 2))
+```
+
+This special operator takes a single expression as its argument and returns it, unevaluated. The preceding expression evaluates to the list `(+ 1 2)` and not the value `3`.
+
+A special syntax for `QUOTE` is built into the reader using the `'` character:
+```lisp
+'(+ 1 2)
+```
+
+From the perspective of the evaluator, both expressions are understood in the same way: a list whose first element is the symbol `QUOTE` and whose second element is the list `(+ 1 2)`.
+
+The special operators implement features of the language that require some special processing by the evaluator.
+
+### Macros
+Macros give users of the language a way to extend its syntax. A macro is a function that takes s-expressions as arguments and returns a Lisp form that's then evaluated in place of the macro form. The evaluation of a macro form occurs in two phases:
+1. The elements of the macro form are passed, unevaluated, to the macro function.
+2. The form returned by the macro function (its _expansion_) is evaluated according to the normal evaluation rules.
+
+It is important to keep a clear mental model of the two phases of evaluating a macro form. When Lisp code is compiled, the two phases happen at completely different times.
+
+When a whole file of source code is compiled with the function `COMPILE-FILE`, all the macro forms in the file are recursively expanded until the code consists of nothing but the function call forms and special forms. This macroless code is compiled into a FASL file that the `LOAD` function knows how to load. This compiled code isn't executed until the file is loaded.
+
+Because macros generate their expansions at compile time, they can do relatively large amounts of work generating their expansion without having to pay for it when the file is loaded or the functions defined in the file are called.
+
+Since the evaluator doesn't evaluate elements of the macro form before passing them to the macro function, they don't need to be well-formed Lisp forms. Each macro defines its own local syntax: it assigns a meaning to the s-expressions in the macro form by virtue of how it uses them to generate its expansion.
+
+Macros serve a different purpse than functions, providing a hook into the compiler.
+
+[▲ Return to Sections](#sections)
 
 | [Previous: A Simple Database](../03/README.md) | [Table of Contents](../README.md#notes) | Next |
