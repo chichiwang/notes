@@ -11,6 +11,7 @@ Functions in Common Lisp, like their counterparts in other languages, provide th
   * [Keyword Parameters](#keyword-parameters)
   * [Mixing Parameter Types](#mixing-parameter-types)
 * [Return Values](#return-values)
+* [Higher-Order Functions](#higher-order-function)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -201,6 +202,102 @@ The following function uses nested loops to find the first pair of numbers, each
 ```
 
 Having to supply the name of the function being returned from is not ideal: if the name of the function changes, the name used in `RETURN-FROM` must also be changed. However, explicit `RETURN-FROM` statements are used much less frequently in Lisp than return statements in C-derived languages (all Lisp expressions, including control constructs such as loops and conditionals, evlaluate to a value).
+
+[▲ Return to Sections](#sections)
+
+## Higher-Order Functions
+Situations exist where it is useful to be able to treat functions as data. There are times when it is advantageous to pass one function into another. Callbacks and hooks depend on being able to store references to code in order to run it later.
+
+In Lisp functions are just another kind of object. When a function is created with `DEFUN` two things happen:
+* A new function object is created.
+* The new function object is given a name.
+
+The special operator `FUNCTION` provides the mechanism for getting a reference to a function object. It takes a single argument and returns the function with that name:
+
+```console
+* (defun foo (x) (* 2 x))
+FOO
+* (function foo)
+#<FUNCTION FOO>
+*
+```
+
+The syntax `#'` is syntactic sugar for `FUNCTION`:
+```console
+* #'foo
+#<FUNCTION FOO>
+*
+```
+
+Common Lisp provides two functions for invoking a function through a function object:
+* `FUNCALL` invokes a function, taking the function object as the first parameter, and the arguments as the rest.
+* `APPLY` invokes a function, taking the function object as the first parameter, and a list of arguments to pass to the function as the second parameter.
+
+Using `FUNCALL` the following expressions are equivalent:
+```lisp
+(foo 1 2 3)
+(funcall #'foo 1 2 3)
+```
+
+The following function demonstrates an apt use of `FUNCALL`. It accepts a function object as an argument and plots a simple ASCII-art histogram of the values returned by the provided function when it's invoked on the values from `min` to `max`, stepping by `step`:
+```lisp
+(defun plot (fn min max step)
+  (loop for i from min to max by step do
+    (loop repeat (funcall fn i) do (format t "*"))
+    (format t "~%")))
+```
+
+`PLOT` can be called with any function that takes a single numeric argument, such as the built-in function `EXP` that returns the value of _e_ raised to the power of its argument:
+```console
+* (plot #'exp 0 4 1/2)
+*
+**
+***
+*****
+********
+*************
+*********************
+**********************************
+*******************************************************
+NIL
+*
+```
+
+`APPLY` behaves similar to `FUNCALL` but it accepts arguments differently. The first argument to `APPLY` is the function object to invoke, but the second argument is a list containing all of the arguments to pass to the target function.
+```console
+* (defvar *plot-arguments* (list #'exp 0 4 1/2))
+*PLOT-ARGUMENTS*
+* (apply #'plot *plot-arguments*)
+*
+**
+***
+*****
+********
+*************
+*********************
+**********************************
+*******************************************************
+NIL
+*
+```
+
+`APPLY` can also accept "loose" arguments as long as the last argument is a list:
+```console
+* (defvar *plot-data* (list 0 4 1/2))
+*PLOT-DATA*
+* (apply #'plot #'exp *plot-data*)
+*
+**
+***
+*****
+********
+*************
+*********************
+**********************************
+*******************************************************
+NIL
+*
+```
 
 [▲ Return to Sections](#sections)
 
