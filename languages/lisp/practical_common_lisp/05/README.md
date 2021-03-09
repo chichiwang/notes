@@ -11,7 +11,8 @@ Functions in Common Lisp, like their counterparts in other languages, provide th
   * [Keyword Parameters](#keyword-parameters)
   * [Mixing Parameter Types](#mixing-parameter-types)
 * [Return Values](#return-values)
-* [Higher-Order Functions](#higher-order-function)
+* [Higher-Order Functions](#higher-order-functions)
+* [Lambdas](#lambdas)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -298,6 +299,69 @@ NIL
 NIL
 *
 ```
+
+[▲ Return to Sections](#sections)
+
+## Lambdas
+Anonymous functions can be created with a `LAMBDA` expression. A `LAMBDA` expression looks like:
+```lisp
+(lambda (parameters) body)
+```
+
+It can be useful to think of `LAMBDA` as a special kind of function where the name itself directly describes what the function does. A `LAMBDA` expression can be used in place of a function name with `#'`:
+```lisp
+(funcall #'(lambda (x y) (+ x y)) 2 3)    ; 5
+```
+
+A `LAMBDA` expression can even be used as the "name" of a function in a function call expression:
+```lisp
+((lambda (x y) (+ x y)) 2 3)    ; 5
+```
+
+This is almost never done, it is merely worth noting that it's legal in order to emphasize that `LAMBDA` expressions can be used anywhere a formal function name can be.
+
+Anonymous functions are useful when a function only used in one place is simple enough to express inline. For example, a function `DOUBLE` could be defined:
+```lisp
+(defun double (x) (* 2 x))
+```
+
+This function could then be passed to `PLOT`:
+```console
+* (plot #'double 0 10 1)
+
+**
+****
+******
+********
+**********
+************
+**************
+****************
+******************
+********************
+NIL
+*
+```
+
+However it is easier, and arguably clearer, to write it like:
+```console
+* (plot #'(lambda (x) (* 2 x)) 0 10 1)
+
+**
+****
+******
+********
+**********
+************
+**************
+****************
+******************
+********************
+NIL
+*
+```
+
+The other important use of `LAMBDA` expressions is in making _closures_, functions that capture part of the environment where they're created.
 
 [▲ Return to Sections](#sections)
 
