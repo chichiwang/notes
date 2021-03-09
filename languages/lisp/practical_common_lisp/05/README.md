@@ -10,6 +10,7 @@ Functions in Common Lisp, like their counterparts in other languages, provide th
   * [Rest Parameters](#rest-parameters)
   * [Keyword Parameters](#keyword-parameters)
   * [Mixing Parameter Types](#mixing-parameter-types)
+* [Return Values](#return-values)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -182,6 +183,24 @@ If rest parameters and keyword parameters are used in a function, both behaviors
 
 (foo :a 1 :b 2 :c 3)    ; ((:A 1 :B 2 :C 3) 1 2 3)
 ```
+
+[▲ Return to Sections](#sections)
+
+## Return Values
+By default functions return the value of evaluating the last expression in the function body. This is the most common way to return a value from a function.
+
+The `RETURN-FROM` special operator can be used to immediately return any value from the function. `RETURN-FROM` is not actually tied to functions; it is used to return from a block of code defined with the `BLOCK` special operator. However, `DEFUN` automatically wraps the whole function body in a block with the same name as a function so evaluating a `RETURN-FROM` with the name of the function and the return value will cause the function to immediate exit with said value. The first argument to `RETURN-FROM` is the name of the block from which to return, the second argument is the value to return.
+
+The following function uses nested loops to find the first pair of numbers, each less than 10, whose product is greater than the argument:
+```lisp
+(defun foo (n)
+  (dotimes (i 10)
+    (dotimes (j 10)
+      (when (> (* i j) n)
+        (return-from foo (list i j))))))
+```
+
+Having to supply the name of the function being returned from is not ideal: if the name of the function changes, the name used in `RETURN-FROM` must also be changed. However, explicit `RETURN-FROM` statements are used much less frequently in Lisp than return statements in C-derived languages (all Lisp expressions, including control constructs such as loops and conditionals, evlaluate to a value).
 
 [▲ Return to Sections](#sections)
 
