@@ -365,4 +365,4 @@ The other important use of `LAMBDA` expressions is in making _closures_, functio
 
 [▲ Return to Sections](#sections)
 
-| [Previous: Syntax and Semantics](../04/README.md) | [Table of Contents](../README.md#notes) | Next |
+| [Previous: Syntax and Semantics](../04/README.md) | [Table of Contents](../README.md#notes) | [Next: Variables](../06/README.md) |
