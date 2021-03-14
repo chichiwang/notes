@@ -5,6 +5,7 @@ Common Lisp supports two kinds of variables: _lexical_ and _dynamic_. These two 
 
 ## Sections
 * [Basics](#basics)
+* [Lexical Variables](#lexical-variables)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -74,5 +75,36 @@ Another binding form is a variant of `LET`: `LET*`. In a `LET*` expression the i
 
 [▲ Return to Sections](#sections)
 
+## Lexical Varaibles
+By default all binding forms in Common Lisp introduce _lexically scoped_ variables. Lexically scoped variables can only be referred to by code that's textually within the binding form. Anonymous functions within binding calls can also reference variables created in enclosing binding calls:
+```lisp
+(let ((count 0)) #'(lambda () (setf count (1+ count))))
+```
+
+In the above example: The anonoymous function containing the reference to `count` will be returned as the value of the `LET` form, and can be invoked via `FUNCALL` by code not in the scope of the `LET`. In this case the binding of `count` (created when the flow of control entered the `LET` form) will remain as long as a reference exists to the function object returned by the `LET` form. This anonymous function is called a _closure_ because it "closes over" the binding created by the `LET`.
+
+Closures capture the binding (not the value) of variables. Closures can not only access the value of varaibles it closes over, but it can also assign new values that will persist between calls to the closure:
+```console
+* (defparameter *fn* (let ((count 0)) #'(lambda () (setf count (1+ count)))))
+*FN*
+* (funcall *fn*)
+1
+* (funcall *fn*)
+2
+* (funcall *fn*)
+3
+*
+```
+
+A single closure can close over many variable bindings simply by referring to them. Multiple closures can capture the same binding. The following expression returns a list of three closures:
+```lisp
+(let ((count 0))
+  (list
+   #'(lambda () (incf count))
+   #'(labmda () (decf count))
+   #'(lambda () count)))
+```
+
+[▲ Return to Sections](#sections)
 
 | [Previous: Functions](../05/README.md) | [Table of Contents](../README.md#notes) | Next |
