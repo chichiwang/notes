@@ -7,6 +7,7 @@ Common Lisp supports two kinds of variables: _lexical_ and _dynamic_. These two 
 * [Basics](#basics)
 * [Lexical Variables](#lexical-variables)
 * [Dynamic Variables](#dynamic-variables)
+* [Constants](#constants)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -207,6 +208,18 @@ Binding a global variable has two effects:
 2. It opens up the possiblity that downstream code will assign a new value to a binding established higher up on the stack.
 
 Dynamic variables should only be used when one or both of these characteristics are desired.
+
+[▲ Return to Sections](#sections)
+
+## Constants
+All constant variables are global and are defined with `DEFCONSTANT`. `DEFCONSTANT` has the same function signature as `DEFPARAMETER`:
+```lisp
+(defconstant name initial-value-form [ documentation-string ])
+```
+
+`DEFCONSTANT` has a global effect on the name used. Thereafter the name can only be used to refer to the constant - it can't be used as a function parameter or rebound with any other binding form. Many Lisp programmers follow a naming convention of using names that start and end with `+`. This convention is less universally followed than the `*` convention for globally special names.
+
+While the language allows a constant to be redefined using `DEFCONSTANT` with a different initial-value-form, what happens after the redefinition is not explicitly defined. Most implementations will require code that references the constant to be reevaluated in order to see the new value. It's a good idea to use `DEFCONSTANT` only to define values that are _really_ constant. For values that may change, `DEFPARAMETER` should be used instead.
 
 [▲ Return to Sections](#sections)
 
