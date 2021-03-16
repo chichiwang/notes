@@ -296,4 +296,4 @@ Both `ROTATEF` and `SHIFTF` can be used with any number of arguments and are gua
 
 [▲ Return to Sections](#sections)
 
-| [Previous: Functions](../05/README.md) | [Table of Contents](../README.md#notes) | Next |
+| [Previous: Functions](../05/README.md) | [Table of Contents](../README.md#notes) | [Next: Macros: Standard Control Constructs](../07/README.md) |

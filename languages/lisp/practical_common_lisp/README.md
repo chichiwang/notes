@@ -19,6 +19,7 @@ Date: WIP
 * 04: [Syntax and Semantics](./04/README.md)
 * 05: [Functions](./05/README.md)
 * 06: [Variables](./06/README.md)
+* 07: [Macros: Standard Control Constructs](./07/README.md)
 * [Additional Resources](#additional-resources)
 
 ## Installing Common Lisp
