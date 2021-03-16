@@ -8,6 +8,7 @@ Common Lisp supports two kinds of variables: _lexical_ and _dynamic_. These two 
 * [Lexical Variables](#lexical-variables)
 * [Dynamic Variables](#dynamic-variables)
 * [Constants](#constants)
+* [Assignment](#assignment)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -220,6 +221,78 @@ All constant variables are global and are defined with `DEFCONSTANT`. `DEFCONSTA
 `DEFCONSTANT` has a global effect on the name used. Thereafter the name can only be used to refer to the constant - it can't be used as a function parameter or rebound with any other binding form. Many Lisp programmers follow a naming convention of using names that start and end with `+`. This convention is less universally followed than the `*` convention for globally special names.
 
 While the language allows a constant to be redefined using `DEFCONSTANT` with a different initial-value-form, what happens after the redefinition is not explicitly defined. Most implementations will require code that references the constant to be reevaluated in order to see the new value. It's a good idea to use `DEFCONSTANT` only to define values that are _really_ constant. For values that may change, `DEFPARAMETER` should be used instead.
+
+[▲ Return to Sections](#sections)
+
+## Assignment
+Once a binding has been created, two things can be done with the binding:
+1. Get the current value of the binding.
+2. Set the binding to a new value.
+
+To assign a new value to a binding use the `SETF` macro, Common Lisp's general-purpose assignment operator:
+```lisp
+(setf place value)
+```
+
+Assigning a new value to a binding has no effect on any other bindings of that variable:
+```lisp
+(defun foo (x) (setf x 10))
+```
+
+In the above example, the `SETF` in the function `FOO` will have no effect on any value outside of `FOO`. The binding is created when `FOO` is called.
+```lisp
+(let ((y 20))
+  (foo y)
+  (print y))
+```
+
+The above example will print `20`, not `10`.
+
+`SETF` can be used to assign multiple places in sequence:
+```lisp
+(setf x 1 y 2)
+```
+
+`SETF` returns the newly assigned value. It is possible to nest `SETF` calls to assign the same value to multiple places:
+```lisp
+(setf x (setf y (random 10)))
+```
+
+Common Lisp supports composite data structures (such as arrays, hash tables, list, and user-defined data structures) that consist of multiple places that can each hold a value. `SETF` can assign any of those places a value (it is enough possible to extend `SETF` to assign user-defined places).
+
+| Assignment Target  |       Example Assignment        |
+| ------------------ | ------------------------------- |
+| Simple variable    | `(setf x 10)`                   |
+| Array element      | `(setf (aref a 0) 10)`          |
+| Hash table key     | `(setf (gethash 'key hash) 10)` |
+| Slot named 'field' | `setf (field o) 10)`            |
+
+While all assignments can be expressed with `SETF`, certain patterns of assigning a new value based on the current value are common enough to warrant their own operators. The macros `INCF` and `DEF` are useful for incrementing/decrementing the value of a place by a certain amount (defaults to 1):
+```lisp
+(incf x)    ; === (setf x (+ x 1))
+(decf x)    ; === (setf x (- x 1))
+(incf x 10) ; === (setf x (+ x 10))
+```
+
+`INCF` and `DECF` are a kind of macro called _modify macros_. Modify macros are macros built on top of `SETF` that modify places by assigning a new value based on the current value of the place. Modify macros are defined in a way that makes them save to use with places where the place expression must be evaluated only once. In general, modify macros are guaranteed to evaluate both their arguments and the subforms of the place form exactly once each, in left-to-right order.
+
+The macro `PUSH` is another modify macro. Two slightly esoteric but useful modify macros are `ROTATEF` and `SHIFTF`.
+
+`ROTATEF` rotates values between places:
+```lisp
+(rotatef a b)
+```
+
+The above expression will swap the values of the two variables and return `NIL`.
+
+`SHIFTF` is similar to `ROTATEF` except instead of rotatng values it shifts them to the left (the last argument provides a value that's moved to the second-to-last-argument):
+```lisp
+(shiftf a b 10)
+```
+
+The above will assign the value in place `b` to place `a` and the value `10` to place `b`.
+
+Both `ROTATEF` and `SHIFTF` can be used with any number of arguments and are guaranteed to evaluate them exactly once, in left-to-right order.
 
 [▲ Return to Sections](#sections)
 
