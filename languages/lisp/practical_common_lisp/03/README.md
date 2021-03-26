@@ -614,7 +614,7 @@ The `'` operator stops Lisp from evaluating a form. This prevents Lisp from exec
 *
 ```
 
-Unlike `'` however, when using `` ` ``, any subexpression precened by `,` will be evaluated by Lisp:
+Unlike `'` however, when using `` ` ``, any subexpression preceded by `,` will be evaluated by Lisp:
 ```console
 * '(1 2 (+ 1 2))
 (1 2 (+ 1 2))
