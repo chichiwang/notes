@@ -16,6 +16,7 @@ This chapter provides an overview of some of these standard control-construct ma
 * [UNLESS](#unless)
 * [COND](#cond)
 * [AND, OR, and NOT](#and-or-and-not)
+* [Loops](#loops)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -123,6 +124,13 @@ NIL
 5
 *
 ```
+
+[▲ Return to Sections](#sections)
+
+## Loops
+None of Lisp's 25 special operators directly support structured looping. All of Lisp's looping control constructs are macros built on top of a pair of special operators that provide a primitive goto facility.
+
+`DO` is the general looping construct that two other Lisp standard marcos, `DOLIST` and `DOTIMES`, are built on top of. `LOOP` is a standard macro that provides a full-blown mini-language for expressing looping constructs in a non-Lisp-like language.
 
 [▲ Return to Sections](#sections)
 
