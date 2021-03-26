@@ -14,6 +14,7 @@ This chapter provides an overview of some of these standard control-construct ma
 ## Table of Contents
 * [WHEN](#when)
 * [UNLESS](#unless)
+* [COND](#cond)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -60,6 +61,35 @@ The symmetrical counterpart to the `WHEN` macro is `UNLESS` which evaluates the 
 ```lisp
 (defmacro unless (condition &rest body)
   `(if (not ,condition) (progn ,@body)))
+```
+
+[▲ Return to Sections](#sections)
+
+## COND
+Another instance where `IF` expressions can get ugly is in multi-branching conditions:
+```lisp
+(if a
+  (do-x)
+  (if b
+    (do-y)
+    (do-z)))
+```
+
+This gets even messier when multiple forms are required in the `then-form`s requireing `PROGN`s to resolve. `COND` is Common Lisp's standard macro for expressing multibranch conditionals:
+```lisp
+(cond
+  (condition-form-1 form*)
+      .
+      .
+      .
+  (condition-form-N form*))
+```
+
+Each element of the body represents one branch pf the conditional and consists of a list containing a `condition-form` and zero or more `form`s to be evaluated if that branch passes the `condition`. The `condition-form`s are evaluated in the order the branches appear in the body until one of them evaluates to true. The remaining forms of that branch are evaluated  and the value of the last form in the branch is returned. If a branch contains no form after the `condition-form`, the value of the `condition-form` is returned. By convention the `condition-form` passed to the last branch of a `COND` expression is `T`:
+```lisp
+(cond (a (do-x))
+      (b (do-y))
+      (t (do-z))))
 ```
 
 [▲ Return to Sections](#sections)
