@@ -15,6 +15,7 @@ This chapter provides an overview of some of these standard control-construct ma
 * [WHEN](#when)
 * [UNLESS](#unless)
 * [COND](#cond)
+* [AND, OR, and NOT](#and-or-and-not)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -90,6 +91,37 @@ Each element of the body represents one branch pf the conditional and consists o
 (cond (a (do-x))
       (b (do-y))
       (t (do-z))))
+```
+
+[▲ Return to Sections](#sections)
+
+## AND, OR, and NOT
+Three useful boolean logic operators available in Lisp are: `AND`, `OR`, and `NOT`.
+
+`NOT` is a function that takes a single argument and inverts its truth value, returning `T` if the argument is `NIL` and `NIL` otherwise.
+
+`AND` and `OR` are standard macros that implement logical conjunction and disjunction of any number of subforms. They are defined as macros so that they can _short-circuit_: they evaluate only as many of their subforms, in left-to-right order, as necessary to determine the overall truth value.
+
+`AND` stops and returns `NIL` as soon as one of its subforms evaluated to `NIL`. If none of its subforms evaluates to `NIL`, `AND` returns the value of the last subform.
+
+`OR` stops as soon as one of its subforms evaluates to non-`NIL` and returns the resulting value. If none of the subforms evaluate to true, `OR` returns `NIL`.
+
+```console
+* (not nil)
+T
+* (not (= 1 1))
+NIL
+* (and (= 1 2) (= 3 3))
+NIL
+* (or (= 1 2) (= 3 3))
+T
+* (and (= 1 1) (+ 2 3))
+5
+* (and (= 1 1) (not t) (= 2 2))
+NIL
+* (or (= 0 1) (+ 2 3))
+5
+*
 ```
 
 [▲ Return to Sections](#sections)
