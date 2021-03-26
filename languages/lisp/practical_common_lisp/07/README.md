@@ -11,4 +11,57 @@ Each macro defines its own syntax, determining how the s-expressions passed to i
 
 This chapter provides an overview of some of these standard control-construct macros defined by Common Lisp.
 
+## Table of Contents
+* [WHEN](#when)
+* [UNLESS](#unless)
+
+[◂ Return to Table of Contents](../README.md)
+
+## WHEN
+The `IF` special operator has the following base form:
+```lisp
+(if condition then-form [else-form])
+```
+
+The `condition` is evaluated and, if the value is non-`NIL`, the `then-form` is evaluated and the resulting value is returned. If the `condition` evaluates to a `NIL` value, the `else-form` is evaluated instead. If there is no `else-form` and the `condition` evaluates to `NIL`, then `NIL` is returned:
+```lisp
+(if (> 2 3) "Yup" "Nope") ; "Nope"
+(if (> 2 3) "Yup")        ; NIL
+(if (> 3 2) "Yup" "Nope") ; "Yup"
+```
+
+However, `IF` is restrictive in that the `then-form` and `else-form` are each restricted to being a single Lisp form. In order to perform a sequence of actions in either clause, they need to be wrapped in some other syntax:
+```lisp
+(if (spam-p current-message)
+    (progn
+      (file-in-spam-folder current-message)
+      (update-spam-database current-message)))
+```
+
+`PROGN` is a special operator that executes any number of forms in order and returns the value of the last form. The above can become tedious to write, however.
+
+The macro `WHEN` alleviates this burden, taking a `condition` that if evaluated to true, will then evaluate all of the lisp forms in the body:
+```lisp
+(when (spam-p current-message)
+  (file-in-spam-folder current-message)
+  (update-spam-database current-message))
+```
+
+`WHEN` is provided by Common Lisp as a standard macro, but if it wasn't built into Lisp, it could be defined (using the backquote notation discussed in [Chapter 3](../03/README.md#macros)):
+```lisp
+(defmacro when (condition &rest body)
+  `(if ,condition (progn ,@body)))
+```
+
+[▲ Return to Sections](#sections)
+
+## UNLESS
+The symmetrical counterpart to the `WHEN` macro is `UNLESS` which evaluates the `body` only if the condition evaluates to `NIL`. This standard macro can be defined:
+```lisp
+(defmacro unless (condition &rest body)
+  `(if (not ,condition) (progn ,@body)))
+```
+
+[▲ Return to Sections](#sections)
+
 | [Previous: Variables](../06/README.md) | [Table of Contents](../README.md#notes) | Next |
