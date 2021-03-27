@@ -18,6 +18,7 @@ This chapter provides an overview of some of these standard control-construct ma
 * [AND, OR, and NOT](#and-or-and-not)
 * [Loops](#loops)
   * [DOLIST](#dolist)
+  * [DOTIMES](#dotimes)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -160,6 +161,28 @@ To break out of a `DOLIST` before the end of the list use `RETURN`:
 NIL
 *
 ```
+
+[▲ Return to Sections](#sections)
+
+### DOTIMES
+`DOTIMES` is a high level looping construct for counting loops:
+```lisp
+(dotimes (var count-form)
+  body-form*)
+```
+
+The `count-form` must evaluate to an integer. Each time through the loop `var` holds successive integers from 0 to one less than that number:
+```console
+* (dotimes (i 4) (print i))
+0 
+1 
+2 
+3 
+NIL
+*
+```
+
+As with `DOLIST`: `RETURN` may be used to break out of the loop early.
 
 [▲ Return to Sections](#sections)
 
