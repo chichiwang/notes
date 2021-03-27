@@ -19,6 +19,7 @@ This chapter provides an overview of some of these standard control-construct ma
 * [Loops](#loops)
   * [DOLIST](#dolist)
   * [DOTIMES](#dotimes)
+  * [DO](#do)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -183,6 +184,62 @@ NIL
 ```
 
 As with `DOLIST`: `RETURN` may be used to break out of the loop early.
+
+[▲ Return to Sections](#sections)
+
+### DO
+`DOLIST` and `DOTIMES` are not flexible enough to use for all loops. The general `DO` loop is available for the situations such as stepping multiple variables in parallel, or using an arbitrary expression to test for the end of the loop.
+
+`DO` allows the binding of any number of variables and gives complete control over how they change on each step through the loop. It also accepst the test that determines when to end the loop, as well as a form to evaluate at the end of the loop to generate a return value for the entire `DO` expression.
+```lisp
+(do (variable-definition*)
+    (end-test-form retsult-form*)
+  statement*)
+```
+
+Each `variable-definition` introduces a variable that will be available in the scope of the body of the loop. The full form of a single variable definition is a list consisting of three elements:
+```lisp
+(var init-form step-form)
+```
+
+The `init-form` is evaluated at the beginning of the loop and the resulting values bound to the variable `var`. Before each subsequent iteration of the loop, the `step-form` will be evaluated and the new value assigned to `var`. The `step-form` is optional and if left out the variable will kep its value from iteration to iteration unless explicitly assigned a new value in the loop body. If the `init-form` is not provided for a variable, that variable will be bound to `NIL`. A planin variable name can be provided as shorthand for a list containing just the name.
+
+At the beginning of each iteration, after all loop variables have been assigned their new values, the `end-test-form` is evaluated. As long as it evaluates to `NIL`, the iteration proceeds, evaluating the `statements` in order. When the `end-test-form` evaluates to true, the `results-forms` are evaluated, and the value of the last result form is returned as the value of the entire `DO` expression.
+
+At each step of the iteration the `step-form`s for all variables are evaluated before assigning any of the values to the variables. Any other loop variable can be referenced in the `step-form`s:
+```lisp
+(do ((n 0 (1+ n))
+     (cur 0 next)
+     (next 1 (+ cur next)))
+    ((= 10 n) cur))
+```
+
+In the above example `(1+ n)`, `next`, and `(+ cur next)` are all evaluated using the old values of `n`, `cur`, and `next`. Only after all of the `step-form`s have been evaluated are the variables given their new values.
+
+Because multiple variables can be stepped, often there is no need for a body at all. The `result-form` may be left out if the loop is being used as a control construct.
+
+Example of a `DO` loop that omits the `result-form`:
+```lisp
+(do ((i 0 (1+ i)))
+    ((>= i 4))
+  (print i))
+```
+
+Example of a `DO` loop that omits the body (`statement`):
+```lisp
+(do ((n 0 (1+ n))
+     (cur 0 next)
+     (next 1 (+ cur next)))
+    (= 10 n) cur)
+```
+
+Exampe of a `DO` loop that binds no variables:
+```lisp
+(do ()
+    ((> (get-universal-time) *some-future-date*))
+  (format t "Waiting~%")
+  (sleep 60))
+```
 
 [▲ Return to Sections](#sections)
 
