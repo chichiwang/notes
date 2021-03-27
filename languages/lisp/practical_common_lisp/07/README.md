@@ -305,4 +305,4 @@ While the `LOOP` macro is quite a bit more complicated than macros such as `WHEN
 
 [▲ Return to Sections](#sections)
 
-| [Previous: Variables](../06/README.md) | [Table of Contents](../README.md#notes) | Next |
+| [Previous: Variables](../06/README.md) | [Table of Contents](../README.md#notes) | [Next: Macros: Custom Defined](../08/README.md) |

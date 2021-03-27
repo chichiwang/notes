@@ -20,6 +20,7 @@ Date: WIP
 * 05: [Functions](./05/README.md)
 * 06: [Variables](./06/README.md)
 * 07: [Macros: Standard Control Constructs](./07/README.md)
+* 08: [Macros: Custom Defined](./08/README.md)
 * [Additional Resources](#additional-resources)
 
 ## Installing Common Lisp
