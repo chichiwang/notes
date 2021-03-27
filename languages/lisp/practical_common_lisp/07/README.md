@@ -17,6 +17,7 @@ This chapter provides an overview of some of these standard control-construct ma
 * [COND](#cond)
 * [AND, OR, and NOT](#and-or-and-not)
 * [Loops](#loops)
+  * [DOLIST](#dolist)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -131,6 +132,34 @@ NIL
 None of Lisp's 25 special operators directly support structured looping. All of Lisp's looping control constructs are macros built on top of a pair of special operators that provide a primitive goto facility.
 
 `DO` is the general looping construct that two other Lisp standard marcos, `DOLIST` and `DOTIMES`, are built on top of. `LOOP` is a standard macro that provides a full-blown mini-language for expressing looping constructs in a non-Lisp-like language.
+
+[▲ Return to Sections](#sections)
+
+### DOLIST
+`DOLIST` loops across a list of items, executing the loop body with a variable holding the successive items of the list:
+```lisp
+(dolist (var list-form)
+  body-form*)
+```
+
+When the loop starts, the `list-form` is evaluated once to produce a list. Then the body of the loop is evaluated once for each item in the list with the variable `var` holding the value of the item:
+```console
+* (dolist (x '(1 2 3)) (print x))
+1 
+2 
+3 
+NIL
+*
+```
+
+To break out of a `DOLIST` before the end of the list use `RETURN`:
+```console
+* (dolist (x '(1 2 3)) (print x) (if (evenp x) (return)))
+1 
+2 
+NIL
+*
+```
 
 [▲ Return to Sections](#sections)
 
