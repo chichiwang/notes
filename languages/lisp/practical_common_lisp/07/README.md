@@ -20,6 +20,7 @@ This chapter provides an overview of some of these standard control-construct ma
   * [DOLIST](#dolist)
   * [DOTIMES](#dotimes)
   * [DO](#do)
+  * [LOOP](#loop)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -240,6 +241,67 @@ Exampe of a `DO` loop that binds no variables:
   (format t "Waiting~%")
   (sleep 60))
 ```
+
+[▲ Return to Sections](#sections)
+
+### LOOP
+The `LOOP` macro provides an easier way to express looping over various data structures: lists, vectors, hash tables, and packages. It also allows accumulating values in various ways while looping: collecting, counting, summing, minimizing, and maximizing.
+
+The `LOOP` macro comes in two flavors: _simple_ and _extended_.
+
+The _simple_ version is an infinite loop that doesn't bind any variables:
+```lisp
+(loop
+  body-form*)
+```
+
+The forms in the body are evaluated each time through the loop, which will iterate forever unless `RETURN` is used to break out.
+```lisp
+(loop
+  (when (> (get-universal-time) *some-future-date*)
+    (return))
+  (format t "Waiting~%")
+  (sleep 60))
+```
+
+The _extended_ `LOOP` is quite different: it is distinguished by the use of certain _loop keywords_ that implement a special-purpose language for expressing looping idioms. This syntax is contreversial in the Lisp community. Detractors complain that its syntax is un-Lispy. `LOOP`'s fans assert that complicated looping constructs are difficult enough to understand without wrapping them in `DO`s cryptic syntax.
+
+Here is an example of an idiomatic `DO` loop that collects the numbers from 1 to 10 into a list:
+```lisp
+(do ((nums nil) (i 1 (1+ i)))
+    ((> i 10) (nreverse nums))
+  (push i nums))
+```
+
+The above example returns the value `(1 2 3 4 5 6 7 8 9 10)`. The `LOOP` version, by contrast, looks like:
+```lisp
+(loop for i from 1 to 10 collecting i)
+```
+
+This example of a `LOOP` sums the first 10 squares:
+```lisp
+(loop for x from 1 to 10 summing (expt x 2))  ; 385
+```
+
+This example counts the number of vowels in a string:
+```lisp
+(loop for x across "the quick brown fox jumps over the lazy dog"
+      counting (find x "aeiou"))
+```
+
+The above example returns `11`.
+
+This example computes the eleventh Fibbonaci number:
+```lisp
+(loop for i below 10
+      and a = 9 then b
+      and b = 1 then (+ b a)
+      finally (return a))
+```
+
+The symbols `across`, `and`, `below`, `collecting`, `counting`, `finally`, `for`, `from`, `summing`, `then`, and `to` are some of the _loop keywords_ whose presence identifies these examples as instances of the _extended_ `LOOP`.
+
+While the `LOOP` macro is quite a bit more complicated than macros such as `WHEN` or `UNLESS` it is still just another macro. If it hadn't been included in the standard library, it could be implemented by a programmer and shared via a library.
 
 [▲ Return to Sections](#sections)
 
