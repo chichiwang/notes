@@ -5,6 +5,7 @@ Perhaps the biggest barrier to proper understanding of macros is that they are s
 
 ## Sections
 * [Macro Expansion vs. Runtime](#macro-expanson-vs-runtime)
+* [DEFMACRO](#defmacro)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -31,6 +32,27 @@ When the code in `FOO` is compiled, the `WHEN` macro will be run with those two 
 ```
 
 When Lisp is interpreted, rather than compiked, this distinction between macro expansion time and runtime is less clear because they are temporally intertwined. The language doesn't specify exactly how an interpreter must handle macros. Regardless, macros are always passed the unevaluated Lisp objects representing the subforms of the macro form. The job of the macro is to produce code that will do something rather than to do anything directly.
+
+[▲ Return to Sections](#sections)
+
+## DEFMACRO
+`DEFMACRO` stands for _DEFine MACRO_ and is used to define a macro. The basica skeleton of `DEFMACRO` is:
+```lisp
+(defmacro name (parameter*)
+  "Optional documentation string."
+  body-form*)
+```
+
+Macros can use the full power of Lisp to generate their expansion. The job of a macro is to translate a macro form (a lisp form whose first element is the name of the macro) into code that does a particular thing. The first step of writing a macro is to write at least one example of a call to the macro and the code into which that code should expand. The second step is to write the actual macro code.
+
+Simple macros will consist of a backquoted template with macro parameters plugged into the right places. Complex macros will be significant programs in their own right, complete with helper functions and data structures.
+
+After writing the macro, it needs to be hardened against leaking details of its implementation. Leaky macro abstractions can potentially interact with code in the calling environment in undesirable ways.
+
+To sum up creating a macro:
+1. Write a sample call to the macro and the code it should expand into.
+2. Write code that generates the handwritten expansion fronm the arguments in the sample call.
+3. Ensure the macro abstraction does not leak.
 
 [▲ Return to Sections](#sections)
 
