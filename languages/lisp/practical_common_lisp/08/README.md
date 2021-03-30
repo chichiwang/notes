@@ -6,6 +6,7 @@ Perhaps the biggest barrier to proper understanding of macros is that they are s
 ## Sections
 * [Macro Expansion vs. Runtime](#macro-expanson-vs-runtime)
 * [DEFMACRO](#defmacro)
+* [A Sample Macro: do-primes](#a-sample-macro-do-primes)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -53,6 +54,38 @@ To sum up creating a macro:
 1. Write a sample call to the macro and the code it should expand into.
 2. Write code that generates the handwritten expansion fronm the arguments in the sample call.
 3. Ensure the macro abstraction does not leak.
+
+[▲ Return to Sections](#sections)
+
+## A Sample Macro: do-primes
+We will create a sample macro `DO-PRIMES` that provides a looping construct similar to `DOTIMES` and `DOLIST` except that instead of iterating over integers or elements of a list, it iterates over successive prime numbers.
+
+First we define utility functions:
+```lisp
+(defun primep (number)
+  (when (> number 1)
+    (loop for fac from 2 to (isqrt number) never (zerop (mod number fac)))))
+
+(defun next-prime (number)
+  (loop for n from number when (primep n) return n))
+```
+
+`PRIMEP` tests whether a given number is prime. `NEXT-PRIME` returns the next prime number greater than or equal to its argument.
+
+Following the steps from the [previous section](#defmacro), first we need one example call to the macro:
+```lisp
+(do-primes (p 0 19)
+  (format t "~d" p))
+```
+
+The above code intends to express a loop that executes the body once each for each prime number greater or equal to `0` and less than or equal to `19`. The variable `p` will be assigned to that number on every iteration of the `DO-PRIMES` loop.
+
+The above code could expand to:
+```lisp
+(do ((p (next-prime 0) (next-prime (+1 p))))
+    ((> p 19))
+  (format t "~d" p))
+```
 
 [▲ Return to Sections](#sections)
 
