@@ -37,3 +37,4 @@ Notes currently in progress:
 ## Topics of Interest
 * [Decision Fatigue](https://en.wikipedia.org/wiki/Decision_fatigue)
   * Both on a technical and a process/operational level.
+* [LLVM](https://www.aosabook.org/en/llvm.html)
