@@ -136,8 +136,6 @@ None of Lisp's 25 special operators directly support structured looping. All of 
 
 `DO` is the general looping construct that two other Lisp standard marcos, `DOLIST` and `DOTIMES`, are built on top of. `LOOP` is a standard macro that provides a full-blown mini-language for expressing looping constructs in a non-Lisp-like language.
 
-[▲ Return to Sections](#sections)
-
 ### DOLIST
 `DOLIST` loops across a list of items, executing the loop body with a variable holding the successive items of the list:
 ```lisp
@@ -164,8 +162,6 @@ NIL
 *
 ```
 
-[▲ Return to Sections](#sections)
-
 ### DOTIMES
 `DOTIMES` is a high level looping construct for counting loops:
 ```lisp
@@ -185,8 +181,6 @@ NIL
 ```
 
 As with `DOLIST`: `RETURN` may be used to break out of the loop early.
-
-[▲ Return to Sections](#sections)
 
 ### DO
 `DOLIST` and `DOTIMES` are not flexible enough to use for all loops. The general `DO` loop is available for the situations such as stepping multiple variables in parallel, or using an arbitrary expression to test for the end of the loop.
@@ -241,8 +235,6 @@ Exampe of a `DO` loop that binds no variables:
   (format t "Waiting~%")
   (sleep 60))
 ```
-
-[▲ Return to Sections](#sections)
 
 ### LOOP
 The `LOOP` macro provides an easier way to express looping over various data structures: lists, vectors, hash tables, and packages. It also allows accumulating values in various ways while looping: collecting, counting, summing, minimizing, and maximizing.
