@@ -7,6 +7,7 @@ Perhaps the biggest barrier to proper understanding of macros is that they are s
 * [Macro Expansion vs. Runtime](#macro-expanson-vs-runtime)
 * [DEFMACRO](#defmacro)
 * [A Sample Macro: do-primes](#a-sample-macro-do-primes)
+* [Macro Parameters](#macro-parameters)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -86,6 +87,42 @@ The above code could expand to:
     ((> p 19))
   (format t "~d" p))
 ```
+
+[▲ Return to Sections](#sections)
+
+## Macro Parameters
+The first step in any macro is to extract the parts of the lisp argument objects that are needed to compute the expansion. For macros that simply interpolate their arguments directly into a template this step is trivial - defining the right parameters to hold the different arguments will suffice.
+
+This is a bit more complex for a macro like `DO-PRIMES`. The first argument to the `DO-PRIMES` call is a list containing the name of the loop variable `p`, the lower bound `0`, and the upper bound `19`. This list as a whole does not appear in the expansion, these three arguments are split up in different locations.
+
+`DO-PRIMES` can be defined with two parameters: one to hold the list and a `&rest` parameter to hold the body forms. The list will need to be taken apart:
+```lisp
+(defmacro do-primes (var-and-range &rest body)
+  (let ((var (first var-and-range))
+        (start (second var-and-range))
+        (end (third var-and-range)))
+    `(do ((,var (next-prime ,start) (next-prime (1+ ,var))))
+         ((> ,var ,end))
+      ,@body)))
+```
+
+In the above definition the variables `var`, `start`, and `end` each hold a value extracted from `var-and-range`. These variables are then interpolated into the backquote expression that generates `DO-PRIME`'s expansion.
+
+`var-and-range` does not need to be extracted explicitly in this way, however, because macro parameter lists are what are called _destructuring_ parameter lists. Destructuring involves taking apart a structure (in this case the list structure of the forms passed to a macro).
+
+Within a destructuring parameter list a parameter name can be replaced with a nested parameter list. For example, `var-and-range` in the above definition can be replaced with a list `(var start end)` and the three elements in the list will automatically be destructured into those three parameters.
+
+Another special feature of macro parameter lists is that `&body` can be used as a synonym for `&rest`. Semantically `&body` and `&rest` are equivalent, but many development environments will use the presence of a `&body` parameter to modify how they indent uses of the macro. Typically `&body` parameters are used to hold a list of forms that make up the body of the macro.
+
+Knowing this, the above macro definition can be condensed to:
+```lisp
+(defmacro do-primes ((var start end) &body body)
+  `(do ((var (next-prime ,start) (next-prime (1+ ,var))))
+       ((> ,var ,end))
+    ,@body))
+```
+
+In addition to being more concise, destructuring parameter lists also provide automatic error checking. With `DO-PRIMES` defined in this way Lisp will be able to detect a call whose first argument isn't a three-element list and will provide a meaningful error message. In development environments such as SLIME the environment will be able to communicate the syntax of the macro call.
 
 [▲ Return to Sections](#sections)
 
