@@ -8,6 +8,7 @@ Perhaps the biggest barrier to proper understanding of macros is that they are s
 * [DEFMACRO](#defmacro)
 * [A Sample Macro: do-primes](#a-sample-macro-do-primes)
 * [Macro Parameters](#macro-parameters)
+* [Generating the Expansion](#generating-the-expansion)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -117,12 +118,56 @@ Another special feature of macro parameter lists is that `&body` can be used as 
 Knowing this, the above macro definition can be condensed to:
 ```lisp
 (defmacro do-primes ((var start end) &body body)
-  `(do ((var (next-prime ,start) (next-prime (1+ ,var))))
+  `(do ((,var (next-prime ,start) (next-prime (1+ ,var))))
        ((> ,var ,end))
     ,@body))
 ```
 
 In addition to being more concise, destructuring parameter lists also provide automatic error checking. With `DO-PRIMES` defined in this way Lisp will be able to detect a call whose first argument isn't a three-element list and will provide a meaningful error message. In development environments such as SLIME the environment will be able to communicate the syntax of the macro call.
+
+[▲ Return to Sections](#sections)
+
+## Generating the Expansion
+A backquoted expression is similar to a quoted expression except that subexpressions can be "unquoted" by preceding them with a `,`. A subexpression (which must be a list) preceded by `,@` will be spliced into the enclosing list.
+
+The backquote syntax is a particularly concise way of expressing code that generates lists: `` `(,a b)`` may be read as `(list a 'b)`. The language standard does not specify exactly what code the reader must produce as long as it generates the right list structure.
+
+The following table shows examples of backquoted expressions, their equivalent list-building code, and the result of the backquoted expresion:
+
+| Backquote Syntax         | Equivlent List-Building Code              | Result             |
+| ------------------------ | ----------------------------------------- | ------------------ |
+| `` `(a (+ 1 2) c)``      | `(list 'a '(+1 2) 'c)`                    | `(a (+ 1 2) c)`    |
+| `` `(a ,(+ 1 2) c)``     | `(list 'a (+ 1 2) 'c)`                    | `(a 3 c)`          |
+| `` `(a (list 1 2) c)``   | `(list 'a '(list 1 2) 'c)`                | `(a (list 1 2) c)` |
+| `` `(a ,(list 1 2) c)``  | `(list 'a (list 1 2) 'c)`                 | `(a (1 2) c)`      |
+| `` `(a ,@(list 1 2) c)`` | `(append (list 'a) (list 1 2) (list 'c))` | `(a 1 2 c)`        |
+
+The backquote expression is a convenience. The previous definition of `DO-PRIMES` written using explicit list-building code would look like:
+```lisp
+(defmarco do-primes-a ((var start end) &body body)
+  (append '(do)
+          (list (list (list var
+                            (list 'next-prime start)
+                            (list 'next-prime (list '1+ var)))))
+          (list (list (list '> var end)))
+          body))
+```
+
+To verify if a macro definition works as intended there are 2 approaches:
+1. Run the macro and if the resulting behavior is correct, it can be assumed the expression is correct:
+```console
+* (do-primes (p 0 19) (format t "~d " p))
+2 3 5 7 11 13 17 19 
+NIL
+*
+```
+2. Check the macro directly by looking at the expansion of a particular call. The function `MACROEXPAND-1` takes any Lisp expression as an argument and returns the result of doing one level of macro expansion. Because `MACROEXPAND-1` is a function, to pass it a literal macro form, that form must be quoted:
+```console
+* (macroexpand-1 '(do-primes (p 0 19) (format t "~d " p)))
+(DO ((P (NEXT-PRIME 0) (NEXT-PRIME (1+ P)))) ((> P 19)) (FORMAT T "~d " P))
+T
+*
+```
 
 [▲ Return to Sections](#sections)
 
