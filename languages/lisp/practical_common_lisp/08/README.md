@@ -4,11 +4,12 @@
 Perhaps the biggest barrier to proper understanding of macros is that they are so well integrated into the language. The key to understanding macros is to clearly understand the distinction between the code that generates code (macros) and the code that eventually makes up the program (everything else).
 
 ## Sections
-* [Macro Expansion vs. Runtime](#macro-expanson-vs-runtime)
+* [Macro Expansion vs. Runtime](#macro-expansion-vs-runtime)
 * [DEFMACRO](#defmacro)
 * [A Sample Macro: do-primes](#a-sample-macro-do-primes)
 * [Macro Parameters](#macro-parameters)
 * [Generating the Expansion](#generating-the-expansion)
+* [Plugging the Leaks](#plugging-the-leaks)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -168,6 +169,167 @@ NIL
 T
 *
 ```
+
+[▲ Return to Sections](#sections)
+
+## Plugging the Leaks
+A _leaky abstraction_ is termed for an abstraction that leaks detaiks it is supposed to be abstracting away. Macros are a way of creating an abstraction and so should not leak. A macro can leak in one of three ways:
+1. ?
+2. ?
+3. ?
+
+The macro `DO-PRIMES` suffers from one of these leaks: it evaluates the `end` subform too many times:
+```lisp
+(defmacro do-primes ((var start end) &body body)
+  `(do ((,var (next-prime ,start) (next-prime (1+ ,var))))
+       ((> ,var ,end))
+    ,@body))
+```
+
+If an expression, such as `(random 100)`, was passed as the `end` argument to `DO-PRIMES` the expression `(random 100)` would evaluate each time the runtime encounters the end test for the loop.  `(random 100)` will not be evaluated prior to being passed to `DO-PRIMES`.
+```console
+* (macroexpand-1 '(do-primes (p 0 (random 100)) (format t "~d " p)))
+(DO ((P (NEXT-PRIME 0) (NEXT-PRIME (1+ P))))
+    ((> P (RANDOM 100)))
+  (FORMAT T "~d " P))
+T
+*
+```
+
+While the total number of iterations will still be random, it will be drawn from a much different distribution than the uniform distribution that `RANDOM` returns.
+
+This is a leak because the caller of the macro needs to be aware that the `end` form is going to be evaluated more than once.
+
+Prorammers calling `DO-PRIMES` would typically expect the forms passed to macros to be evaluated no more times than absolutely necessary. `DO-PRIMES` is modeled after the standard macros `DOTIMES` and `DOLIST`, neither of which causes any of the forms except those in the body to be evaluated more than once.
+
+Following the Principle of Least Astonishment when implementing macros, the multiple evaluation should be fixed:
+```lisp
+(defmacro do-primes ((var start end) &body body)
+  `(do ((ending-value ,end)
+        (,var (next-prime ,start) (next-prime (1+ ,var))))
+       ((> ,var ending-value))
+      ,@body))
+```
+
+The above code evaluates the `end` form once to pass it to the `DO` loop's initialiation form. `DO-PRIMES` will no longer evaluate the `end` form on every iteration of the loop. However this introduces two more leaks.
+
+The first leak this introduces is that beause the initialization forms for variables in a `DO` loop are evaluated in the order the variables are defined, when the macro expansion is evaluated, the expression passed as `end` will be evaluated before the expression passed as `start`, opposite the order they appear in the macro call.
+
+To resolve this:
+```lisp
+(defmacro do-primes ((var start end) &body body)
+  `(do ((,var (next-prime ,start) (next-prime (1+ ,var)))
+        (ending-value ,end))
+       ((> ,var ending-value))
+      ,@body))
+```
+
+The above code reverses the order of the two variable definitions.
+
+The final leak in this macro was created by using the variable name `ending-value`. The problem is that the name, which ought to be an internal detail of the macro implementation, can end up interacting with code passed to the macro, or in the context where the macro is called.
+
+Because of this leak, the following macro call does not work:
+```lisp
+(do-primes (ending-value 0 10)
+  (print ending-value))
+```
+
+`MACROEXPAND-1` reveals the issue:
+```console
+CL-USER> (macroexpand-1 (do-primes (ending-value 0 10) (print ending-value))) 
+; in:
+;      MACROEXPAND-1 (DO-PRIMES (ENDING-VALUE 0 10)
+;                  (PRINT ENDING-VALUE))
+;     (ENDING-VALUE 10)
+; 
+; caught ERROR:
+;   The variable ENDING-VALUE occurs more than once in the LET.
+; 
+; compilation unit finished
+;   caught 1 ERROR condition
+Execution of a form compiled with errors.
+```
+
+The macro call would look like this expanded:
+```lisp
+(do ((ending-value (next-prime 0) (next-prime (1+ ending-value)))
+     (ending-value 10))
+    ((> ending-value ending-value))
+  (print ending-value))
+```
+
+Some Lisps, like the console attempt at `MACROEXPAND-1` will reject this code because `ending-value` is used twice as a variable name in the same `DO` loop. If it is not rejected, the loop will run infinitely because `ending-value` will never be greater than itself.
+
+Similarly this call to `DO-PRIMES` would also be problematic:
+```lisp
+(let ((ending-value 0))
+  (do-primes (p 0 10)
+    (incf ending-value p))
+  ending-value)
+```
+
+This code will expand to:
+```lisp
+(let ((ending-value 0))
+  (do ((p (next-prime 0) (next-prime (1+ p)))
+       (ending-value 10))
+      ((> p ending-value))
+    (incf ending-value p))
+  ending-value)
+```
+
+The generated code is perfectly legal but it will not behave as the programmer expected. In this expansion the binding of `ending-value` established by `LET` outside the loop is shadowed by the variable with the same name inside the `DO`. The form `(incf ending-value p)` increments the loop variable `ending-value` instead of the outer variable with the same name creating an infinite loop.
+
+To patch this abstraction leak a symbol is needed, one that will never be used by the code calling the macro. The function `GENSYM` returns a unique symbol each time it's called. This symbol will never be read by the Lisp reader - it isn't interned in any package:
+```lisp
+(defmacro do-primes ((var start end) &body body)
+  (let ((ending-value-name (gensym)))
+    `(do ((,var (next-prime ,start) (next-prime (1+ ,var)))
+          (,ending-value-name ,end))
+         ((> ,var ,ending-value-name))
+      ,@body)))
+```
+
+The code that calls `GENSYM` isn't part of the expansion - it runs as part of the macro expander and creates a new symbol each time the macro is expanded. With this definition the previous problematic forms expand as intended. The first form:
+```lisp
+(do-primes (ending-value 0 10)
+  (print ending-value))
+```
+
+expands into:
+```lisp
+(do ((ending-value (next-prime 0) (next-prime (1+ ending-value)))
+     (#:g2141 10))
+    ((> ending-value #g2141))
+  (print ending-value))
+```
+
+Now the variable used to hold the ending value is the gensymed symbol `#:g2141`.
+
+The other previously problematic form:
+```lisp
+(let ((ending-value 0))
+  (do-primes (p 0 10)
+    (incf ending-value p))
+  ending-value)
+```
+
+expands into:
+```lisp
+(let ((ending-value 0))
+  (do ((p (next-prime 0) (next-prime (1+ p)))
+       (#:g2140 10))
+      ((> p #:g2140))
+    (incf ending-value p))
+  ending-value)
+```
+
+There is no leak because the `ending-value` variable bound by `LET` surrounding the `DO-PRIMES` loop is no longer shadowed by any variables introduced in the expanded code.
+
+These general rules of thumb can help avoid writing macros with abstraction leaks:
+* Unless there is a particular reason to do otherwise, include any subforms in the expansion in positions that will be evaluated in the same order as the subforms appear in the macro call.
+* Unless there is a particular reason to do otherwise, make sure subforms are evaluated only once by creating a variable in the expansion to hold the value of evaluating the artgument form and then using that variable anywhere else the value is needed in the expansion.
+* Use `GENSYM` at macro expansion time to create variable names used in the expansion.
 
 [▲ Return to Sections](#sections)
 
