@@ -10,6 +10,8 @@ Perhaps the biggest barrier to proper understanding of macros is that they are s
 * [Macro Parameters](#macro-parameters)
 * [Generating the Expansion](#generating-the-expansion)
 * [Plugging the Leaks](#plugging-the-leaks)
+* [Macro-Writing Macros](#macro-writing-macros)
+  * [ONCE-ONLY](#once-only)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -330,6 +332,68 @@ These general rules of thumb can help avoid writing macros with abstraction leak
 * Unless there is a particular reason to do otherwise, include any subforms in the expansion in positions that will be evaluated in the same order as the subforms appear in the macro call.
 * Unless there is a particular reason to do otherwise, make sure subforms are evaluated only once by creating a variable in the expansion to hold the value of evaluating the artgument form and then using that variable anywhere else the value is needed in the expansion.
 * Use `GENSYM` at macro expansion time to create variable names used in the expansion.
+
+[▲ Return to Sections](#sections)
+
+## Macro-Writing Macros
+Some patterns come up again and again in writing macros that can benefit from being abstracted away. One such pattern is a macro expansion that begins with a `LET` that introduces variables holding gensymed sumbols to be used in the expansion.
+
+A macro-writing macro is a macro that generates code that in turn generates code. While complex macro-writing-macros can get confusing, this `WITH-GENSYMS` is pretty straightforward. The goal is to be able to write the `DO-PRIMES` macro definition simpler:
+```lisp
+(defmacro do-primes ((var start end) &body body)
+  (with-gensyms (ending-value-name)
+    `(do ((,var (next-prime ,start) (next-prime (1+ ,var)))
+          (,ending-value-name ,end))
+         ((> ,var ,ending-value-name))
+       ,@body)))
+```
+
+In order to define `WITH-GENSYMS` so that the above macro expands to the same resulting code as before, the `WITH-GENSYMS` macro must expand into a `LET` that binds each named variable (in this case `ending-value-name`) to a gensymed symbol:
+```lisp
+(defmacro with-gensyms ((&rest names) &body body)
+  `(let ,(loop for n in names collect `(,n (gensym)))
+    ,@body))
+```
+
+The comma in the above definition is used to interpolate the value of the `LOOP` expression. The loop generates a list of binding forms where each binding form consists of a list containing one of the names given to `WITH-GENSYMS` and the literal code `(gensym)`. To test the code the `LOOP` expression would generate:
+```console
+CL-USER> (loop for n in '(a b c) collect `(,n (gensym))) 
+((A (GENSYM)) (B (GENSYM)) (C (GENSYM)))
+CL-USER> 
+```
+
+After the list of binding forms, the body argument to `WITH-GENSYMS` is spliced in as the body of the `LET` form.
+
+Expanding the form of the new definition of `DO-PRIMES` results in something like:
+```lisp
+(let ((ending-value-name (gensym)))
+  `(do ((,var (next-prime ,start) (next-prime (1+ ,var)))
+        (,ending-value-name ,end))
+       ((> ,var ,ending-value-name))
+      ,@body))
+```
+
+When the `DEFMACRO` of `DO-PRIMES` is expanded, the `WITH-GENSYMS` form is expanded into the code and compiled. The compiled version of `DO-PRIMES` is the same as if the outer `LET` form had been written by hand. When a function that uses `DO-PRIMES` is compiled, the code _generated_ by `WITH-GENSYMS` runs generated the `DO-PRIMES` expansion. The `WITH-GENSYMS` macro itself isn't needed to compile a `DO-PRIMES` form since it has already been expanded, back when `DO-PRIMES` itself was compiled.
+
+### ONCE-ONLY
+Another classic macro-writing macro is `ONCE-ONLY`, which is used to generate code that evaluate certain macro arguments only once and in a particular order. Using `ONCE-ONLY` the definition for `DO-PRIMES` could be written almost as simply as the original leaky version:
+```lisp
+(defmacro do-primes ((var start end) &body body)
+  (once-only (start end)
+    `(do ((,var (next-prime ,start) (next-prime (1+ ,var))))
+         ((> ,var ,end))
+        ,@body)))
+```
+
+The implementation of `ONCE-ONLY` relies on multiple levels of backquoting and unquoting:
+```lisp
+(defmacro once-only ((&rest names) &body body)
+  (let ((gensyms (loop for n in names collect (gensym))))
+    `(let (,@(loop for g in gensyms collect `(,g (gensym))))
+      `(let (,,@(loop for g in gensyms for n in names collect ``(,,g ,,n)))
+        ,(let (,@(loop for n in names for g in gensyms collect `(,n ,g)))
+          ,@body)))))
+```
 
 [▲ Return to Sections](#sections)
 
