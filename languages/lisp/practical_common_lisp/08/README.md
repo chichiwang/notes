@@ -6,7 +6,7 @@ Perhaps the biggest barrier to proper understanding of macros is that they are s
 ## Sections
 * [Macro Expansion vs. Runtime](#macro-expansion-vs-runtime)
 * [DEFMACRO](#defmacro)
-* [A Sample Macro: do-primes](#a-sample-macro-do-primes)
+* [A Sample Macro: DO-PRIMES](#a-sample-macro-do-primes)
 * [Macro Parameters](#macro-parameters)
 * [Generating the Expansion](#generating-the-expansion)
 * [Plugging the Leaks](#plugging-the-leaks)
@@ -62,7 +62,7 @@ To sum up creating a macro:
 
 [▲ Return to Sections](#sections)
 
-## A Sample Macro: do-primes
+## A Sample Macro: DO-PRIMES
 We will create a sample macro `DO-PRIMES` that provides a looping construct similar to `DOTIMES` and `DOLIST` except that instead of iterating over integers or elements of a list, it iterates over successive prime numbers.
 
 First we define utility functions:
