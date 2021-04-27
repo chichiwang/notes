@@ -175,10 +175,7 @@ T
 [▲ Return to Sections](#sections)
 
 ## Plugging the Leaks
-A _leaky abstraction_ is termed for an abstraction that leaks detaiks it is supposed to be abstracting away. Macros are a way of creating an abstraction and so should not leak. A macro can leak in one of three ways:
-1. ?
-2. ?
-3. ?
+A _leaky abstraction_ is termed for an abstraction that leaks detaiks it is supposed to be abstracting away. Macros are a way of creating an abstraction and so should not leak.
 
 The macro `DO-PRIMES` suffers from one of these leaks: it evaluates the `end` subform too many times:
 ```lisp
