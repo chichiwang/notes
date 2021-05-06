@@ -21,6 +21,7 @@ Date: WIP
 * 06: [Variables](./06/README.md)
 * 07: [Macros: Standard Control Constructs](./07/README.md)
 * 08: [Macros: Custom Defined](./08/README.md)
+* 09: [Building a Unit Test Framework](./09/README.md)
 * [Additional Resources](#additional-resources)
 
 ## Installing Common Lisp
