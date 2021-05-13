@@ -17,6 +17,7 @@ The exercise file for this chapter is located at [./test.lisp](./test.lisp).
 ## Sections
 * [Two First Tries](#two-first-tries)
 * [Refactoring](#refactoring)
+* [Fixing the Return Value](#fixing-the-return-value)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -136,6 +137,69 @@ CL-USER>
 ```
 
 Any further changes to how `TEST-+` behaves can be made by changing the definition for `CHECK`.
+
+[▲ Return to Sections](#sections)
+
+## Fixing the Return Value
+The first step to refactoring `TEST-+` to return a boolean to indicate if all the test suites passed or not is to make a change to `REPORT-RESULT` so that it returns the result of the test case it's reporting:
+```lisp
+(defun report-result (result form)
+  (format t "~:[FAIL~;pass~] ... ~a~%" result form)
+  result)
+```
+
+With the above change `REPORT-RESULT` returns the result of its test case. It may seem that changing the `PROGN` call in the macro `CHECK` to an `AND` would combine the results, however `AND` will short circult the expression and halt testing as soon as one test case fails, skipping the rest. A new macro is needed to combine the results of multiple forms without short-circuiting evaluation. This new macro should allow expressions to be combined like such:
+```lisp
+(combine-results
+  (foo)
+  (bar)
+  (baz))
+```
+
+This macro should expand to code that looks like:
+```lisp
+(let ((result t))
+  (unless (foo) (setf result nil))
+  (unless (bar) (setf result nil))
+  (unless (baz) (setf result nul))
+  result)
+```
+
+The issue with this macro expansion is that it introduces a variable (`result`) in the expansion. To avoid leaking the abstraction the `WITH-GENSYMS` macro from [the previous chapter](../08/README.md#macro-writing-macros) is needed. `COMBINE-RESULTS` can be defined as:
+```lisp
+(defmacro combine-results (&body forms)
+  (with-gensyms (result)
+    `(let ((,result t))
+      ,@(loop for f in forms collect `(unless ,f (setf ,result nil)))
+      ,result)))
+```
+
+`CHECK` can now be refactored to use `COMBINE-RESULTS` instead of `PROGN`:
+```lisp
+(defmacro check (&body forms)
+  `(combine-results
+    ,@(loop for f in forms collect `(report-result ,f ',f))))
+```
+
+Now calling `TEST-+` will return `T` when every test case passes:
+```console
+CL-USER> (test-+) 
+pass ... (= (+ 1 2) 3)
+pass ... (= (+ 1 2 3) 6)
+pass ... (= (+ -1 -3) -4)
+T
+CL-USER> 
+```
+
+If one of the test cases fails, `TEST-+` will return `NIL` instead:
+```console
+CL-USER> (test-+) 
+pass ... (= (+ 1 2) 3)
+FAIL ... (= (+ 1 2 3) 4)
+pass ... (= (+ -1 -3) -4)
+NIL
+CL-USER> 
+```
 
 [▲ Return to Sections](#sections)
 
