@@ -1,12 +1,4 @@
 # Building a Unit Test Framework
-CL-USER> (test-arithmetic) 
-pass ... (= (+ 1 2) 3)
-pass ... (= (+ 1 2 3) 6)
-pass ... (= (+ -1 -3) -4)
-pass ... (= (* 2 2) 4)
-pass ... (= (* 3 5) 15)
-T
-CL-USER> 
 [Chapter Link](http://www.gigamonkeys.com/book/practical-building-a-unit-test-framework.html)
 
 In this chapter we will develop a simple unit testing framework for Lisp. The main design goal of the test framework will be to make it as easy as possible to add new tests, to run various suites of tests, and to track down test failures. The key feature of an automated testing framework is that the framework is responsible for indicating whether all the tests passed. Each test case must be an expression that yields a boolean value: true or false, pass or fail.
@@ -29,6 +21,7 @@ The exercise file for this chapter is located at [./test.lisp](./test.lisp).
 * [Better Result Reporting](#better-result-reporting)
 * [An Abstraction Emerges](#an-abstraction-emerges)
 * [A Hierarchy of Tests](#a-hierarchy-of-tests)
+* [Wrapping Up](#wrapping-up)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -378,6 +371,18 @@ pass ... (TEST-MATH TEST-ARITHMETIC TEST-*): (= (* 3 5) 15)
 T
 CL-USER> 
 ```
+
+[▲ Return to Sections](#sections)
+
+## Wrapping Up
+As a framework for writing tests with a minimum of busywork and easily running them from the REPL, this is a reasonable start. The complete code can be found in this folder at [./test.lisp](./test.lisp).
+
+This exercise is illustrative of how programming in Lisp often goes:
+* **Define a simple version of the problem**: how to evaluate a bunch of boolean expressions and find out if they all return true.
+* **Refactor to simplify the code**: Simplify the code to be clean and straightforward.
+* **Remove duplication in usage**: Mature the code to eliminate duplication by the consumer.
+* **Make improvements**: Improve usage and output.
+* **Define abstractions**: When abstractions become apparent, cement them using macros.
 
 [▲ Return to Sections](#sections)
 
