@@ -28,6 +28,7 @@ The exercise file for this chapter is located at [./test.lisp](./test.lisp).
 * [Fixing the Return Value](#fixing-the-return-value)
 * [Better Result Reporting](#better-result-reporting)
 * [An Abstraction Emerges](#an-abstraction-emerges)
+* [A Hierarchy of Tests](#a-hierarchy-of-tests)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -316,6 +317,66 @@ With this new macro, `DEFTEST`, the function `TEST-+` can be rewritten:
     (= (+ 1 2) 3)
     (= (+ 1 2 3) 6)
     (= (+ -1 -3) -4)))
+```
+
+[▲ Return to Sections](#sections)
+
+## A Hierarchy of Tests
+Now that test functions have been established as first-class citizens the question might arise: should `TEST-ARITHMETIC` be a test function? As the code exists now, if `TEST-ARITHMETIC` was defined using `DEFTEST`, it's binding of `*test-name*` would always be shadowed by the bindings in `TEST-+` and `TEST-*` before any results are reported.
+
+With some changes, test results could be reported with a fully qualified path to the test case, something like:
+```console
+pass ... (TEST-ARITHMETIC TEST-+): (= (+ 1 2) 3)
+```
+
+To make this change, only the macro `DEFTEST` needs to be modified in how it assigns the dynamic variable `*test-name*`. The line in macro definition for `DEFTEST`:
+```lisp
+(let ((*test-name* ',name))
+```
+
+can be changed to:
+```lisp
+(let ((*test-name* (append *test-name* (list ',name))))
+```
+
+Since `APPEND` returns a new list made up of the elements of its arguments, this version will bind `*test-name*` to a list containing the old contents of `*test-name*` with the new name tacked onto the end. When each test function returns, the old value of `*test-name*` will be restored.
+
+Now `TEST-ARITHMETIC` can be redefined with `DEFTEST` instead of `DEFUN`:
+```lisp
+(deftest test-arithmetic ()
+  (combine-results
+    (test-+)
+    (test-*)))
+```
+
+The test results will now display the hierarchy of tests:
+```console
+CL-USER> (test-arithmetic) 
+pass ... (TEST-ARITHMETIC TEST-+): (= (+ 1 2) 3)
+pass ... (TEST-ARITHMETIC TEST-+): (= (+ 1 2 3) 6)
+pass ... (TEST-ARITHMETIC TEST-+): (= (+ -1 -3) -4)
+pass ... (TEST-ARITHMETIC TEST-*): (= (* 2 2) 4)
+pass ... (TEST-ARITHMETIC TEST-*): (= (* 3 5) 15)
+T
+CL-USER> 
+```
+
+As the test suite grows, new layers of test functions can be added and, as long as they're defined with `DEFTEST`, the results will be reported correctly. For example:
+```lisp
+(deftest test-math()
+  (test-arithmetic))
+```
+
+will give the following output:
+```console
+CL-USER> (test-math) 
+pass ... (TEST-MATH TEST-ARITHMETIC TEST-+): (= (+ 1 2) 3)
+pass ... (TEST-MATH TEST-ARITHMETIC TEST-+): (= (+ 1 2 3) 6)
+pass ... (TEST-MATH TEST-ARITHMETIC TEST-+): (= (+ -1 -3) -4)
+pass ... (TEST-MATH TEST-ARITHMETIC TEST-*): (= (* 2 2) 4)
+pass ... (TEST-MATH TEST-ARITHMETIC TEST-*): (= (* 3 5) 15)
+T
+CL-USER> 
 ```
 
 [▲ Return to Sections](#sections)
