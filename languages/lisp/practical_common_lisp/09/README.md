@@ -27,6 +27,7 @@ The exercise file for this chapter is located at [./test.lisp](./test.lisp).
 * [Refactoring](#refactoring)
 * [Fixing the Return Value](#fixing-the-return-value)
 * [Better Result Reporting](#better-result-reporting)
+* [An Abstraction Emerges](#an-abstraction-emerges)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -291,6 +292,30 @@ pass ... TEST-*: (= (* 2 2) 4)
 pass ... TEST-*: (= (* 3 5) 15)
 T
 CL-USER> 
+```
+
+[▲ Return to Sections](#sections)
+
+## An Abstraction Emerges
+With the changes to the test functions, several bits of duplication have been introduced. Each function has to include the name of the function twice (once in the `DEFUN` and once in the binding of `*test-name*`). Each function also uses the same three-line code pattern.
+
+The reason these functions start the same way is because they are both test functions. The duplication arises because the _test function_ abstraction has not been built out yet.
+
+A macro to capture this abstraction can be used to eliminate the duplication of code as well as cement the abstraction of a _test function_:
+```lisp
+(defmacro deftest (name parameters &body body)
+  `(defun ,name ,parameters
+    (let ((*test-name* ',name))
+      ,@body)))
+```
+
+With this new macro, `DEFTEST`, the function `TEST-+` can be rewritten:
+```lisp
+(deftest test-+ ()
+  (check
+    (= (+ 1 2) 3)
+    (= (+ 1 2 3) 6)
+    (= (+ -1 -3) -4)))
 ```
 
 [▲ Return to Sections](#sections)
