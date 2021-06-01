@@ -386,4 +386,4 @@ This exercise is illustrative of how programming in Lisp often goes:
 
 [▲ Return to Sections](#sections)
 
-| [Previous: Macros: Custom Defined](../08/README.md) | [Table of Contents](../README.md#notes) | Next |
+| [Previous: Macros: Custom Defined](../08/README.md) | [Table of Contents](../README.md#notes) | [Next: Numbers, Characters, and Strings](../10/README.md) |
