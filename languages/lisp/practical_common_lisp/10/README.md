@@ -13,6 +13,7 @@ In this chapter the built-in "scalar" types will be covered: numbers, characters
 * [Numbers](#numbers)
   * [Numeric Literals](#numeric-literals)
     * [Rational Numbers](#rational-numers)
+    * [Floating-Point Numbers](#floating-point-numbers)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -44,9 +45,11 @@ CL-USER>
 
 The syntax for for integer values is an optional sign (`+` or `-`) followed by one or more digits. Ratios are written as an optional sign and a sequence of numbers (representing the numerator), a slash (`/`), and another sequence of numbers representing the denonminator. All rational numbers are _canonicalized_ as they're read (`10` and `20/2` are the same number, so are `3/4` and `6/8`). Rational numbers are printed in _reduced_ form, integers are printed in integer syntax, ratios are printed with the numerator and denonminator reduced to lowest terms.
 
-If preceded by a `#B` or `#b`, a rational literal is read as a binary number with `0` and `1` being the only legal digits. A `#O` or `#o` prefix denotes an octal value (legal digits 0-7). `#X` or `#x` denotes a hexadecimal value (legal digits 0-F or 0-f).
-
-Rationals can be written in other bases using the prefix `#nR` where `n` is the base (always written in decimal). Additional digits beyond 9 are taken from the letters A-Z or a-z. These radix indicators apply to the whole rational - it is not possible to write a ratio where the numerator is in one base and the denonminator in another.
+An optional prefix can be applied to rational numbers to denote the numeral base of the digits:
+* `#b`/`#B`: Binary (the only legal digits being 0 and 1)
+* `#o`/`#O`: Octal (legal digits 0-7)
+* `#x`/`#X`: Hexadecimal (legal digits 0-F or 0-f)
+* `#nr`/`#nR`: Custom base where `n` is the base (always written in decimal). Additional digits beyond 9 are taken from the letters A-Z, a-z. These radix indicators apply to the whole rational - it is not possible to write a ratio where the numerator is in one base and the denonminator in another.
 
 Integer values, but not ratios, can also be terminated with a decimal point.
 
@@ -67,6 +70,38 @@ Integer values, but not ratios, can also be terminated with a decimal point.
 | #o777                          | 511                                      |
 | #xDADA                         | 56026                                    |
 | #36rABCDEFGHIJKLMNOPQRSTUVWXYZ | 8337503854730415241050377135811259267835 |
+
+
+#### Floating-Point Numbers
+
+Unlike rational numbers, the syntax used to denote a floating-point number can affect the actual type of number read. Common Lisp denotes four subtypes of floating-point number: _short_, _single_, _double_, and _long_. Each subtype can use a different number of bits in its representation, meaning each subtype can represent values spanning a different range and with different precision.
+
+The basic format for floating-point numbers is an optional sign followed by a nonempty sequence of decimal digits possibly with an embedded decimal point. This sequence can be followed by an exponent marker for _computerized scientific notation_. The exponent marker consists of a single letter followed by an optional sign and a sequence of digits (the power of ten by which the number before the exponent marker should be multiplied). The exponent marker marks the beginning of the exponent and indicates what floating-point representation should be used for the number.
+
+The exponent markers are:
+* `s`/`S`: Short
+* `f`/`F`: Single
+* `d`/`D`: Double
+* `l`/`L`: Long
+* `e`/`E`: Default (initially single-float)
+
+Numbers with no exponent marker are read in the default representation and must contain a decimal point followed by at least one digit to distinguish them from inteers. The digits in a floating-point number are always treated as base-10 digits. The `#B`, `#X`, `#O`, `#R` prefixes work only with rational values.
+
+**Some examples of floating-point numbers**, along with their canonical represenation:
+
+| Textual syntax | Canonical representation |
+| -------------- | ------------------------ |
+| 1.0            | 1.0                      |
+| 1e0            | 1.0                      |
+| 1d0            | 1.0d0                    |
+| 123.0          | 123.0                    |
+| 123e0          | 123.0                    |
+| 0.123          | 0.123                    |
+| .123           | 0.123                    |
+| 123e-3         | 0.123                    |
+| 123E-3         | 0.123                    |
+| 0.123e20       | 1.23e+19                 |
+| 123d23         | 1.23d+25                 |
 
 [▲ Return to Sections](#sections)
 
