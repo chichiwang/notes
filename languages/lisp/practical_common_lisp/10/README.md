@@ -14,6 +14,7 @@ In this chapter the built-in "scalar" types will be covered: numbers, characters
   * [Numeric Literals](#numeric-literals)
     * [Rational Numbers](#rational-numers)
     * [Floating-Point Numbers](#floating-point-numbers)
+    * [Complex Numbers](#complex-numbers)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -102,6 +103,27 @@ Numbers with no exponent marker are read in the default representation and must 
 | 123E-3         | 0.123                    |
 | 0.123e20       | 1.23e+19                 |
 | 123d23         | 1.23d+25                 |
+
+#### Complex Numbers
+Complex numbers are written their own syntax: `#c`/`#C` followed by a list of two real numbers representing the real and imaginary part of the complex number.
+
+There are five kinds of complex numbers. The real and imaginary parts must either be both rational or both be the same kind of floating point number. Complex numbers can be written a number of ways: if written with one rational and one floating-point part, the rational is converted to a float of the appropriate representation. If the real and imaginary parts are both floats of different representations, the one in the smaller representation is converted to match the larger representation.
+
+No complex numbers have a rational real component and a zero imaginary part. Such values are, mathematically speaking, rational and they are represented by the appropriate rational value. However, a complex number with a floating-point component and a zero imaginary part is represented as a different object than the floating-point number representing the real component.
+
+**Some examples of complex numbers**, along with their canonical representations:
+
+| Textual syntax | Canonical representation |
+| -------------- | ------------------------ |
+| #c(2        1) | #c(2 1)                  |
+| #c(2/3    3/4) | #c(2/3 3/4)              |
+| #c(2      1.0) | #c(2.0 1.0)              |
+| #c(2.0  1.0d0) | #c(2.0d0 1.0d0)          |
+| #c(1/2    1.0) | #c(0.5 1.0)              |
+| #c(3        0) | 3                        |
+| #c(3.0    0.0) | #c(3.0 0.0)              |
+| #c(1/2      0) | 1/2                      |
+| #c(-6/3     0) | -2                       |
 
 [▲ Return to Sections](#sections)
 
