@@ -18,6 +18,7 @@ In this chapter the built-in "scalar" types will be covered: numbers, characters
   * [Basic Math](#basic-math)
   * [Numeric Comparisons](#numeric-comparisons)
   * [Higher Math](#higher-math)
+* [Characters](#characters)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -267,6 +268,28 @@ Lisp supports a large range of mathematical operations including, but not limite
 * `ASINH`, `ACOSH`, `ATANH`: inverse hyperbolic functions
 
 Lisp also provides functions to get at the individual bits of an integer, to extract the parts of a ratio or a complex number, etc. For a complete list of mathematic functions see any [Common Lisp reference](https://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node1.html).
+
+[▲ Return to Sections](#sections)
+
+## Characters
+Common Lisp characters are a distinct type of object from numbers. The Common Lisp standard did not mandate a particular representation of characters. Today several Lisp implementations use [Unicode](https://en.wikipedia.org/wiki/Unicode) as their native character encoding.
+
+The read syntax for character objects is `#\` followed by the desired character or the character's name:
+| Read Syntax | Character |
+| ----------- | --------- |
+| `#\x`       | `x`       |
+| `#\"`       | `"`       |
+| `#\(`       | `(`       |
+| `#\ `       | ` `       |
+| `#\Space`   | ` `       |
+
+Other semistandard names (that implementations must use if the character set has the appropriate characters):
+* _Tab_
+* _Page_
+* _Rubout_
+* _Linefeed_
+* _Return_
+* _Backspace_
 
 [▲ Return to Sections](#sections)
 
