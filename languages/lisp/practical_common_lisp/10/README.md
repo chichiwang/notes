@@ -12,10 +12,11 @@ In this chapter the built-in "scalar" types will be covered: numbers, characters
 ## Sections
 * [Numbers](#numbers)
   * [Numeric Literals](#numeric-literals)
-    * [Rational Numbers](#rational-numers)
+    * [Rational Numbers](#rational-numbers)
     * [Floating-Point Numbers](#floating-point-numbers)
     * [Complex Numbers](#complex-numbers)
   * [Basic Math](#basic-math)
+  * [Numeric Comparisons](#numeric-comparisons)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -190,6 +191,68 @@ Shorthand functions:
 (incf x 10) === (setf x (+ x 10))
 (decf x 10) === (setf x (- x 10))
 ```
+
+[▲ Return to Sections](#sections)
+
+### Numeric Comparisons
+The function `=` is the numeric equality predicate. It compares numbers by mathematical value, ignoring differences in type. The generic equality predicate `EQL` will consider different types inequivalent but `=` will not. The generic equality predicate `EQUALP` uses `=` to compare numbers.
+
+Comparison functions:
+* `=`: Mathematical value number equality predicate.
+* `/=`: Returns true only if _all_ of its areguments are different values.
+* `<`: Returns true if each argument is less than the argument after it in value.
+* `>`: Returns true if each argument is greater than the argument after it in value.
+* `<=`: Returns true if each argument is less than or equal to the argument after it in value.
+* `>=`: Returns true if each argument is greater than or equal to the argument after it in value.
+* `MIN`: Returns the argument with the smallest numerical value.
+* `MAX`: Returns the argument with the greatest numerical value.
+* `ZEROP`: Returns true if the argument is equal to zero.
+* `MINUSP`: Returns true if the argument is less than zero.
+* `PLUSP`: Returns true if the argument is greater than zero.
+* `EVENP`: Returns true if its single integer argument is even.
+* `ODDP`: Returns true if its single integer argument is odd.
+
+The _P_ suffix on the names of some functions is a standard naming convention for predicate functions (functions that test some condition and returns a boolean).
+
+| Expression                    | Result |
+| ----------------------------- | ------ |
+| (= 1 1)                       | T      |
+| (= 10 20/2)                   | T      |
+| (= 1 1.0 #c(1.0 0.0) #c(1 0)) | T      |
+| (/= 1 1)                      | NIL    |
+| (/= 1 2)                      | T      |
+| (/= 1 2 3)                    | T      |
+| (/= 1 2 3 1)                  | NIL    |
+| (/= 1 2 3 1.0)                | NIL    |
+| (eql 1 1)                     | T      |
+| (eql 1 1.0)                   | NIL    |
+| (equalp 1 1)                  | T      |
+| (equalp 1 1.0)                | T      |
+| (&lt; 2 3)                    | T      |
+| (&gt; 2 3)                    | NIL    |
+| (&gt; 3 2)                    | T      |
+| (&lt; 2 3 4)                  | T      |
+| (&lt; 2 3 3)                  | NIL    |
+| (&lt;= 2 3 3)                 | T      |
+| (&lt;= 2 3 3 4)               | T      |
+| (&lt;= 2 3 4 3)               | NIL    |
+| (max 10 11)                   | 11     |
+| (min -12 -10)                 | -12    |
+| (max -1 2 -3)                 | 2      |
+| (zerop 0)                     | T      |
+| (zerop 1)                     | NIL    |
+| (zerop 0.0)                   | T      |
+| (zerop #c(0 0.0))             | T      |
+| (minusp 0)                    | NIL    |
+| (minusp 1)                    | NIL    |
+| (minusp -1)                   | T      |
+| (plusp 0)                     | NIL    |
+| (plusp 1)                     | T      |
+| (plusp -1)                    | NIL    |
+| (evenp 0)                     | T      |
+| (evenp 1)                     | NIL    |
+| (oddp 0)                      | NIL    |
+| (oddp 1)                      | T      |
 
 [▲ Return to Sections](#sections)
 
