@@ -20,6 +20,7 @@ In this chapter the built-in "scalar" types will be covered: numbers, characters
   * [Higher Math](#higher-math)
 * [Characters](#characters)
   * [Character Comparisons](#character-comparisons)
+* [Strings](#strings)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -311,6 +312,32 @@ Other functions that deal with characters provide functions for, among other thi
 * Translating between numeric values representing character codes and actual character objects
 
 For complete details, see a [Common Lisp reference](https://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node1.html).
+
+[▲ Return to Sections](#sections)
+
+## Strings
+Strings in Common Lisp are a composite data type, namely a one-dimensional array of characters. But strings also have their own literal syntax and a library of functions for performing string-specific operations.
+
+Literal strings are written in enclosed double quotes. Any character supported by the character set can be included in a literal string except for `"` and `\` - these must be escaped with a backslash.
+
+| Literal      | Contents | Comment                                       |
+| ------------ | -------- | --------------------------------------------- |
+| "foobar"     | foobar   | Plain string.                                 |
+| "foo\"bar"   | foo"bar  | The backslash escapes quote.                  |
+| "foo\\bar"   | foo\bar  | The first backslash escapes second backslash. |
+| "\"foobar\"" | "foobar" | The backslashes escape quotes.                |
+| "foo\bar"    | foobar   | The backslash escapes _b_.                    |
+
+**Note**: The REPL will ordinarily print strings in readable form, adding the enclosing quotation marks and any necessary escaping backslashes. To see the contents of a string the `FORMAT` function, designed to print human-readable output, must be used.
+
+```console
+CL-USER> "foo\"bar"
+"foo\"bar"
+CL-USER> (format t "foo\"bar")
+foo"bar
+NIL
+CL-USER>
+```
 
 [▲ Return to Sections](#sections)
 
