@@ -19,6 +19,7 @@ In this chapter the built-in "scalar" types will be covered: numbers, characters
   * [Numeric Comparisons](#numeric-comparisons)
   * [Higher Math](#higher-math)
 * [Characters](#characters)
+  * [Character Comparisons](#character-comparisons)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -290,6 +291,26 @@ Other semistandard names (that implementations must use if the character set has
 * _Linefeed_
 * _Return_
 * _Backspace_
+
+### Character Comparisons
+The main thing that can be done with characters (other than putting them into strings) is to compare them with other characters. The numeric comparison functions, such as `<` and `>` cannot be used to compare characters. Instead, two sets of functions provide character-specific analogs to the numeric comparators; one set is case-sensitive, the other is case-insensitive.
+
+| Numeric Analog | Case-Sensitive | Case-Insensitive    |
+| -------------- | -------------- | ------------------- |
+| `=`            | `CHAR=`        | `CHAR-EQUAL`        |
+| `/=`           | `CHAR/=`       | `CHAR-NOT-EQUAL`    |
+| `<`            | `CHAR<`        | `CHAR-LESSP`        |
+| `>`            | `CHAR>`        | `CHAR-GREATERP`     |
+| `<=`           | `CHAR<=`       | `CHAR-NOT-GREATERP` |
+| `>=`           | `CHAR>=`       | `CHAR-NOT-LESSP`    |
+
+Other functions that deal with characters provide functions for, among other things:
+* Testing if a character is alphabetic or a digit character
+* Testing the casing of a character
+* Obtaining the corresponding character in a different case
+* Translating between numeric values representing character codes and actual character objects
+
+For complete details, see a [Common Lisp reference](https://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node1.html).
 
 [▲ Return to Sections](#sections)
 
