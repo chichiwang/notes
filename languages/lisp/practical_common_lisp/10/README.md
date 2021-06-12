@@ -373,4 +373,4 @@ Other string functions convert the case of strings and trim characters from one 
 
 [▲ Return to Sections](#sections)
 
-| [Previous: Building a Unit Test Framework](../09/README.md) | [Table of Contents](../README.md#notes) | Next |
+| [Previous: Building a Unit Test Framework](../09/README.md) | [Table of Contents](../README.md#notes) | [Next: Collections](../11/README.md) |
