@@ -11,6 +11,7 @@ Date: WIP
   * [Vim Plugins](#vim-plugins)
   * [Lisp in a Box](#lisp-in-a-box)
 * [Using the REPL](#using-the-repl)
+* [Additional Resources](#additional-resources)
 
 ### Notes
 * 01: [Why Lisp?](./01/README.md)
@@ -23,7 +24,6 @@ Date: WIP
 * 08: [Macros: Custom Defined](./08/README.md)
 * 09: [Building a Unit Test Framework](./09/README.md)
 * 10: [Numbers, Characters, and Strings](./10/README.md)
-* [Additional Resources](#additional-resources)
 
 ## Installing Common Lisp
 For the purposes of this set of notes, the [sbcl](http://www.sbcl.org/) Common Lisp implementation will be used. To install `sbcl` follow the instructions in [The Common Lisp Cookbook - Getting Started](https://lispcookbook.github.io/cl-cookbook/getting-started.html).
@@ -55,6 +55,7 @@ distribution for more information.
 To exit the REPL enter the command `(quit)`.
 
 ## Additional Resources
+* [Common Lisp the Language, 2nd Edition](https://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node1.html)
 * [Getting Started | Common Lisp](https://lisp-lang.org/learn/getting-started/)
 * [The Common Lisp Cookbook - Getting Started](https://lispcookbook.github.io/cl-cookbook/getting-started.html)
 * [Vlime](https://github.com/vlime/vlime)
