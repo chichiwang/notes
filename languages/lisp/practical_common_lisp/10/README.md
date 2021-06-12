@@ -15,6 +15,7 @@ In this chapter the built-in "scalar" types will be covered: numbers, characters
     * [Rational Numbers](#rational-numers)
     * [Floating-Point Numbers](#floating-point-numbers)
     * [Complex Numbers](#complex-numbers)
+  * [Basic Math](#basic-math)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -124,6 +125,71 @@ No complex numbers have a rational real component and a zero imaginary part. Suc
 | #c(3.0    0.0) | #c(3.0 0.0)              |
 | #c(1/2      0) | 1/2                      |
 | #c(-6/3     0) | -2                       |
+
+[▲ Return to Sections](#sections)
+
+### Basic Math
+Basic arithmetic operations are supported for all of the different types of numbers in Lisp. These functions can be called with any number of arguments.
+
+* `+`: Addition
+* `-`: Subtraction
+* `*`: Multiplication
+* `/`: Division
+
+| Expression         | Result  |
+| ------------------ | ------- |
+| (+ 5)              | 5       |
+| (+ 1 2)            | 3       |
+| (+ 1 2 3)          | 6       |
+| (+ 10.0 3.0)       | 13.0    |
+| (+ #c(1 2) #c(3 4) | #c(4 6) |
+| (- 2)              | -2      |
+| (- 5 4)            | 1       |
+| (- 10 3 5)         | 2       |
+| (* 2)              | 2       |
+| (* 2 3)            | 6       |
+| (* 2 3 4)          | 24      |
+| (/ 4)              | 1/4     |
+| (/ 10 5)           | 2       |
+| (/ 10 5 2)         | 1       |
+| (/ 2 3)            | 2/3     |
+
+If all of the arguments are the same type of number (rational, floating-point, complex) then the result will be the same type, except in the case where the result of an operation on complex numbers with rational components yields a number with a zero imaginary part (in which case the result will be rational).
+
+Floating-point and complex numbers are _contiguous_ meaning if all of the arguments are reals but one or more are floating-point values, the other arguments are converted to the nearest floating-point representation of the actual floating-point arguments. Floating-point numbers of a smaller representation are converted to the larger representation. If any of the arguments are complex, any real numbers are converted to the complex equivalents.
+
+| Expression           | Result    |
+| -------------------- | --------- |
+| (+ 1 2.0)            | 3.0       |
+| (/ 2 3.0)            | 0.6666667 |
+| (+ #c(1 2) 3)        | #c(4 2)   |
+| (+ #c(1 2) 3/2)      | #c(5/2 2) |
+| (+ #c(1 1) #c(2 -1)) | 3         |
+
+Because `/` doesn't truncate, Common Lisp provides four flavors of truncating and rounding for converting a real number (rational or floating-point) to an integer:
+* `FLOOR`: Truncates towards negative infinity, returning the largest integer less than or equal to the argument.
+* `CEILING`: Truncates towards positive infinity, returning the smallest integer greater than or equal to the argument.
+* `TRUNCATE`: Truncates towards zero, behaving like `FLOOR` for positive arguments and `CEILING` for negative arguments.
+* `ROUND`: Rounds to the nearest integer. If the argument is exactly halfway between two integers it rounds to the nearest even integer.
+
+Two additional functions that are related:
+* `MOD`: Returns the modulus of a truncating division on real numbers.
+* `REM`: Returns the remainder of a truncating division on real numbers.
+
+For positive quotients `MOD` and `REM` return the same results, but for negagive quotients they return different results.
+
+Shorthand functions:
+* `1+`: Add by one and return the result.
+* `1-`: Subtract by one and return the result.
+* `INCF`: Increment a value stored in a variable by a specified amount (default 1).
+* `DECF`: Decrement a value stored in a variable by a specified amount (default 1).
+
+```lisp
+(incf x)    === (setf x (1+ x)) === (setf x (+ x 1))
+(decf x)    === (setf x (1- x)) === (setf x (- x 1))
+(incf x 10) === (setf x (+ x 10))
+(decf x 10) === (setf x (- x 10))
+```
 
 [▲ Return to Sections](#sections)
 
