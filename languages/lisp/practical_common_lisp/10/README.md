@@ -17,6 +17,7 @@ In this chapter the built-in "scalar" types will be covered: numbers, characters
     * [Complex Numbers](#complex-numbers)
   * [Basic Math](#basic-math)
   * [Numeric Comparisons](#numeric-comparisons)
+  * [Higher Math](#higher-math)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -253,6 +254,19 @@ The _P_ suffix on the names of some functions is a standard naming convention fo
 | (evenp 1)                     | NIL    |
 | (oddp 0)                      | NIL    |
 | (oddp 1)                      | T      |
+
+[▲ Return to Sections](#sections)
+
+### Higher Math
+Lisp supports a large range of mathematical operations including, but not limited to:
+* `LOG`: logarithms
+* `EXP` and `EXPT`: exponentiation
+* `SIN`, `COS`, `TAN`: trigonometric functions
+* `ASIN`, `ACOS`, `ATAN`: inverse trigonometric functions
+* `SINH`, `COSH`, `TANH`: hyperbolic functions
+* `ASINH`, `ACOSH`, `ATANH`: inverse hyperbolic functions
+
+Lisp also provides functions to get at the individual bits of an integer, to extract the parts of a ratio or a complex number, etc. For a complete list of mathematic functions see any [Common Lisp reference](https://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node1.html).
 
 [▲ Return to Sections](#sections)
 
