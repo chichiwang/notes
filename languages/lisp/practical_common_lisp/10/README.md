@@ -21,6 +21,7 @@ In this chapter the built-in "scalar" types will be covered: numbers, characters
 * [Characters](#characters)
   * [Character Comparisons](#character-comparisons)
 * [Strings](#strings)
+  * [String Comparisons](#string-comparisons)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -323,9 +324,9 @@ Literal strings are written in enclosed double quotes. Any character supported b
 | Literal      | Contents | Comment                                       |
 | ------------ | -------- | --------------------------------------------- |
 | "foobar"     | foobar   | Plain string.                                 |
-| "foo\"bar"   | foo"bar  | The backslash escapes quote.                  |
-| "foo\\bar"   | foo\bar  | The first backslash escapes second backslash. |
-| "\"foobar\"" | "foobar" | The backslashes escape quotes.                |
+| "foo\\"bar"   | foo"bar  | The backslash escapes quote.                  |
+| "foo\\\\bar"   | foo\bar  | The first backslash escapes second backslash. |
+| "\\"foobar\\"" | "foobar" | The backslashes escape quotes.                |
 | "foo\bar"    | foobar   | The backslash escapes _b_.                    |
 
 **Note**: The REPL will ordinarily print strings in readable form, adding the enclosing quotation marks and any necessary escaping backslashes. To see the contents of a string the `FORMAT` function, designed to print human-readable output, must be used.
@@ -338,6 +339,37 @@ foo"bar
 NIL
 CL-USER>
 ```
+
+### String Comparisons
+A set of functions exist for string comparison that follow the same naming convention as exists for [character comparisons](#character-comparisons), except using the prefix "STRING" rather than "CHAR".
+
+| Numeric Analog | Case-Sensitive | Case-Insensitive      |
+| -------------- | -------------- | --------------------- |
+| `=`            | `STRING=`      | `STRING-EQUAL`        |
+| `/=`           | `STRING/=`     | `STRING-NOT-EQUAL`    |
+| `<`            | `STRING<`      | `STRING-LESSP`        |
+| `>`            | `STRING>`      | `STRING-GREATERP`     |
+| `<=`           | `STRING<=`     | `STRING-NOT-GREATERP` |
+| `>=`           | `STRING>=`     | `STRING-NOT-LESSP`    |
+
+Unlike character and number comparators, string comparators can only compare two strings. They also accept keyword arguments that restrict the comparison to a substring of either or both strings provided. The arguments `:start1`, `:end1`, `:start2`, and `:end2` specify the starting (inclusive) and ending (inclusive) indicies of substrings in the first and second arguments.
+
+The following expression compares the substring "bar" in the two arguments and returns true:
+```lisp
+(string= "foobarbaz" "quuxbarfoo" :start1 3 :end1 6 :start2 4 :end2 7)
+```
+
+The `:end1` and `:end2` arguments can be `NIL` or omitted to indicate that the corresponding substring extends to the end of the string.
+
+The comparators that return true when their arguments differ (all string comparators except for `STRING=` and `STRING-EQUAL`) return the index in the first string where the mismatch was detected. When comparing substrings the resulting value is still an index into the string as a whole.
+
+| Expression                                        | Result |
+| ------------------------------------------------- | ------ |
+| (string/= "lisp" "lissome")                       | 3      |
+| (string&lt; "lisp" "lisper")                      | 4      |
+| (string&lt; "foobar" "abaz" :start1 3 :start2 1 ) | 5      |
+
+Other string functions convert the case of strings and trim characters from one or both ends of a string. Since strings are really a kind of sequence, sequence functions can be used with strings.
 
 [▲ Return to Sections](#sections)
 
