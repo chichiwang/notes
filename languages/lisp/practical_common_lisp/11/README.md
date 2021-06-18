@@ -11,6 +11,7 @@ Lisp is famous for its list data structure and most Lisp books start their discu
 * [Vectors](#vectors)
   * [Subtypes of Vectors](#subtypes-of-vectors)
   * [Vectors as Sequences](#vectors-as-sequences)
+* [Sequence Iterating Functions](#sequence-iterating-functions)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -117,16 +118,90 @@ Vectors and lists are the two concrete subtypes of the abstract type _sequence_.
 ```lisp
 (defparameter *x* (vector 1 2 3))
 
-(length *x*) ;3
-(elt *x* 0)  ;1
-(elt *x* 1)  ;2
-(elt *x* 2)  ;3
-(elt *x* 3)  ;error
+(length *x*) ; ==> 3
+(elt *x* 0)  ; ==> 1
+(elt *x* 1)  ; ==> 2
+(elt *x* 2)  ; ==> 3
+(elt *x* 3)  ; ==> error
 ```
 
 `ELT` is also a `SETF`able place, the value of a particular element can be set:
 ```lisp
 (setf (elt *x* 0) 10)
+```
+
+[▲ Return to Sections](#sections)
+
+## Sequence Iterating Functions
+Common Lisp provides a large library of sequence functions. One group of basic sequence functions express certain operations on sequences such as finding or filtering specific elements without writing explicit loops.
+
+**Basic sequence functions**
+| Name         | Required Arguments           | Returns                                                |
+| ------------ | ---------------------------- | ------------------------------------------------------ |
+| `COUNT`      | Item and sequence            | Number of times item appears in sequence               |
+| `FIND`       | Item and sequence            | Item or `NIL`                                          |
+| `POSITION`   | Item and sequence            | Index into sequence or `NIL`                           |
+| `REMOVE`     | Item and sequence            | Sequence with instances of item removed                |
+| `SUBSTITUTE` | New item, item, and sequence | Sequence with instances of item replaced with new item |
+
+Simple examples of these functions in use:
+```lisp
+(count 1 #(1 2 1 2 3 1 2 3 4))         ; ==> 3
+(remove 1 #(1 2 1 2 3 1 2 3 4))        ; ==> #(2 2 3 2 3 4)
+(remove 1 '(1 2 1 2 3 1 2 3 4))        ; ==> (2 2 3 2 3 4)
+(remove #\a "foobarbaz")               ; ==> "foobrbz"
+(substitute 10 1 #(1 2 1 2 3 1 2 3 4)) ; ==> #(10 2 10 2 3 10 2 3 4)
+(substitute 10 1 '(1 2 1 2 3 1 2 3 4)) ; ==> (10 2 10 2 3 10 2 3 4)
+(substitute #\x #\b "foobarbaz")       ; ==> "fooxarxaz"
+(find 1 #(1 2 1 2 3 1 2 3 4))          ; ==> 1
+(find 10 #(1 2 1 2 3 1 2 3 4))         ; ==> NIL
+(position 1 #(1 2 1 2 3 1 2 3 4))      ; ==> 0
+```
+
+`REMOVE` and `SUBSTITUTE` always return a sequence of the same type as their sequence argument.
+
+These five functions accept keyword arguments that augment their behavior:
+| Argument    | Meaning                                                                                                                     | Default |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `:test`     | Two-argument function used to compare item (or value extracted by `:key` function) to element.                              | `EQL`   |
+| `:key`      | One-argument function to extract key value from actual sequence element. `NIL` means use element as is.                     | `NIL`   |
+| `:start`    | Starting index (inclusive) of subsequence.                                                                                  | 0       |
+| `:end`      | Ending index (exclusive) of subsequence. `NIL` indicates end of sequence.                                                   | `NIL`   |
+| `:from-end` | If true, the sequence will be traversed in reverse order, from end to start.                                                | `NIL`   |
+| `:count`    | Number indicating the number of elements to remove or substitute or `NIL` to indicate all (`REMOVE` and `SUBSTITUTE` only). | `NIL`   |
+
+Example usages of keyword arguments:
+```lisp
+(count "foo" #("foo" "bar" "baz") :test #'string=)                ; ==> 1
+
+(find 'c #((a 10) (b 20) (c 30) (d 40)) :key #'first)             ; ==> (C 30)
+(find 'a #((a 10) (b 20) (a 30) (b 40)) :key #'first)             ; ==> (A 10)
+(find 'a #((a 10) (b 20) (a 30) (b 40)) :key #'first :from-end t) ; ==> (A 30)
+
+(remove #\a "foobarbaz" :count 1)                                 ; ==> "foobrbaz"
+(remove #\a "foobarbaz" :count 1 :from-end t)                     ; ==> "foobarbz"
+```
+
+While `:from-end` can't change the results of the `COUNT` function, it does affect the order the elements are passed to any `:test` or `:key` functions, which could possibly have side effects.
+
+```console
+CL-USER> (defparameter *v* #((a 10) (b 20) (a 30) (b 40)))
+*V*
+CL-USER> (defun verbose-first (x) (format t "Looking at ~s~%" x) (first x))
+VERBOSE-FIRST
+CL-USER> (count 'a *v* :key #'verbose-first)
+Looking at (A 10)
+Looking at (B 20)
+Looking at (A 30)
+Looking at (B 40)
+2
+CL-USER> (count 'a *v* :key #'verbose-first :from-end t)
+Looking at (B 40)
+Looking at (A 30)
+Looking at (B 20)
+Looking at (A 10)
+2
+CL-USER>
 ```
 
 [▲ Return to Sections](#sections)
