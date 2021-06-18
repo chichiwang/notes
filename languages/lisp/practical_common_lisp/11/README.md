@@ -10,6 +10,7 @@ Lisp is famous for its list data structure and most Lisp books start their discu
 ## Sections
 * [Vectors](#vectors)
   * [Subtypes of Vectors](#subtypes-of-vectors)
+  * [Vectors as Sequences](#vectors-as-sequences)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -107,6 +108,26 @@ Literal strings, such as `"Foo"` are like the literal vectors written in the `#(
 ```
 
 _Bit vectors_ are vectors whose elements are all zeroes and ones. They have a special read/print syntax that looks like `#*00001111` and a fairly large library of functions. The type descriptor passed as the `:element-type` to create a bit vector is the symbol `BIT`.
+
+### Vectors as Sequences
+Vectors and lists are the two concrete subtypes of the abstract type _sequence_. The two most basic sequence functions are:
+* `LENGTH`: Returns the length of a sequence. For vectors with a fill-pointer, this will be the value of the fill-pointer.
+* `ELT`: Short for _element_. Access an individual element of a sequence via an integer index. Will signal an error if the index is out of bounds.
+
+```lisp
+(defparameter *x* (vector 1 2 3))
+
+(length *x*) ;3
+(elt *x* 0)  ;1
+(elt *x* 1)  ;2
+(elt *x* 2)  ;3
+(elt *x* 3)  ;error
+```
+
+`ELT` is also a `SETF`able place, the value of a particular element can be set:
+```lisp
+(setf (elt *x* 0) 10)
+```
 
 [▲ Return to Sections](#sections)
 
