@@ -9,6 +9,7 @@ Lisp is famous for its list data structure and most Lisp books start their discu
 
 ## Sections
 * [Vectors](#vectors)
+  * [Subtypes of Vectors](#subtypes-of-vectors)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -94,6 +95,18 @@ Even a vector with a fill-pointer is not completely resizable. The vector `*x*` 
 ```
 
 This creates an _adjustable_ vector whose underlying memory can be resized as needed. To add an element to an adjustable vector the function `VECTOR-PUSH-EXTEND` is used. This function works just like `VECTOR-PUSH` except it will automatically expand the array if the vector is already full (if the fill-pointer is equal to the size of the underlying storage).
+
+### Subtypes of Vectors
+The vectors created in the last section are all _generalized_ vectors that can hold any type of objects. It is also possible to create _specialized_ vectors that are restricted to holding certain types of elements. One advantage to specialized vectors is that they may be stored more compactly, and can provide slightly faster access to their elements than generalized vectors.
+
+One type of specialized vector is a _string_: strings are vectors specialized to hold characters. Strings are important enough to get their own read/print syntax in the form of double quotes and their own string-specific functions. Strings are, however, also vectors. All of the functions that take vector arguments can also accept strings as argument.
+
+Literal strings, such as `"Foo"` are like the literal vectors written in the `#(...)` syntax: their size is fixed and they must not be modified. `MAKE-ARRAY` can be used to resizable strings if passed another keyword argument, `:element-type`. This argument takes a _type_ descriptor. To create a string, the symbol `CHARACTER` can be passed in as the element type:
+```lisp
+(make-array 5 :fill-pointer 0 :adjustable t :element-type 'character)
+```
+
+_Bit vectors_ are vectors whose elements are all zeroes and ones. They have a special read/print syntax that looks like `#*00001111` and a fairly large library of functions. The type descriptor passed as the `:element-type` to create a bit vector is the symbol `BIT`.
 
 [▲ Return to Sections](#sections)
 
