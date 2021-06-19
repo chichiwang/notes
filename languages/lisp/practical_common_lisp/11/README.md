@@ -12,6 +12,7 @@ Lisp is famous for its list data structure and most Lisp books start their discu
   * [Subtypes of Vectors](#subtypes-of-vectors)
   * [Vectors as Sequences](#vectors-as-sequences)
 * [Sequence Iterating Functions](#sequence-iterating-functions)
+  * [Higher-Order Function Variants](#higher-order-function-variants)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -202,6 +203,37 @@ Looking at (B 20)
 Looking at (A 10)
 2
 CL-USER>
+```
+
+### Higher-Order Function Variants
+For each of the above functions, Common Lisp provides two _higher-order function_ variants that, in place of the item argument, take a function to be called on each element of the sequence.
+
+One set is each basic function with an `-IF` appended to them. These functions count, find, remove, and substitute elements of the sequence for which the function argument returns true.
+
+The other set of variants is each basic function with an `-IF-NOT` suffix. These count, find, remove, and substitute elements of the sequence for which the function does not return true.
+
+These two sets of variants will accept all of the same keyword arguments as their base counterparts execept for `:test` (which is no longer necessary since the main argument is already a function). Given a `:key` argument, the value extracted by the `:key` function is passed to the predicate function instead of the element.
+
+The `REMOVE` family of functions also supports a variant `REMOVE-DUPLICATES` that only accepts one argument, the sequence, which removes all but one instance of each duplicated element. This variant accepts all of the same keyword arguments as `REMOVE` except for `:count` since it always removes all duplicates.
+
+Example usages of these higher-order function variants:
+```lisp
+(count-if #'evenp #(1 2 3 4 5))         ; ==> 2
+(count-if-not #'evenp #(1 2 3 4 5))     ; ==> 3
+(position-if #'digit-char-p "abcd0001") ; ==> 4
+
+;; ==> #("foo" "foom")
+(remove-if-not #'(lambda (x) (char= (elt x 0) #\f))
+  ("foo" "bar" "baz" "foom"))
+
+(count-if #'evenp #((1 a) (2 b) (3 c) (4 d) (5 e)) :key #'first)     ; ==> 2
+(count-if-not #'evenp #((1 a) (2 b) (3 c) (4 d) (5 e)) :key #'first) ; ==> 3
+
+;; ==> #("foo" "bar")
+(remove-if-not #'alpha-char-p
+  #("foo" "bar" "1baz") :key #'(lambda (x) (elt x 0)))
+
+(remove-duplicates #(1 2 1 2 3 1 2 3 4)) ; ==> #(1 2 3 4)
 ```
 
 [▲ Return to Sections](#sections)
