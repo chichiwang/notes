@@ -13,6 +13,7 @@ Lisp is famous for its list data structure and most Lisp books start their discu
   * [Vectors as Sequences](#vectors-as-sequences)
 * [Sequence Iterating Functions](#sequence-iterating-functions)
   * [Higher-Order Function Variants](#higher-order-function-variants)
+* [Whole Sequence Manipulations](#whole-sequence-manipulations)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -234,6 +235,30 @@ Example usages of these higher-order function variants:
   #("foo" "bar" "1baz") :key #'(lambda (x) (elt x 0)))
 
 (remove-duplicates #(1 2 1 2 3 1 2 3 4)) ; ==> #(1 2 3 4)
+```
+
+[▲ Return to Sections](#sections)
+
+## Whole Sequence Manipulations
+Some functions perform operations on an entire sequence (or sequences) at a time:
+
+| Function      | Arguments                                     | Return Value                                                                                    |
+| ------------- | --------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `COPY-SEQ`    | A sequence                                    | A new sequence of the same type as the argument, containing the same elements.                  |
+| `REVERSE`     | A sequence                                    | A new sequence of the same type as the argument, containing the same elements in reverse order. |
+| `CONCATENATE` | A type descriptor and any number of sequences | A new sequence of the type specified, containing the elements of all sequences provided.        |
+
+Examples of these functions in use:
+```lisp
+(copy-seq #(1 2 3 2 1)) ; ==> #(1 2 3 2 1)
+(copy-seq "foobar")     ; ==> "foobar"
+
+(reverse #(1 2 3 4 5))  ; ==> #(5 4 3 2 1)
+(reverse "foobar")      ; ==> "raboof"
+
+(concatenate 'vector #(1 2 3) '(4 5 6))    ; ==> #(1 2 3 4 5 6)
+(concatenate 'list #(1 2 3) '(4 5 6))      ; ==> (1 2 3 4 5 6)
+(concatenate 'string "abc" '(#\d #\e #\f)) ; ==> "abcdef"
 ```
 
 [▲ Return to Sections](#sections)
