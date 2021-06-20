@@ -18,6 +18,7 @@ Lisp is famous for its list data structure and most Lisp books start their discu
 * [Subsequence Manipulations](#subsequence-manipulations)
 * [Sequence Predicates](#sequence-predicates)
 * [Sequence Mapping Functions](#sequence-mapping-functions)
+* [Hash Tables](#hash-tables)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -367,6 +368,28 @@ Four functions are used to iterate over sequences testing a boolean predicate. T
 (reduce #'+ #(1 2 3 4 5 6 7 8 9 10)) ; ==> 55
 (reduce #'max #(5 1 2 8 10 3 7))     ; ==> 10
 ```
+
+[▲ Return to Sections](#sections)
+
+## Hash Tables
+The other general-purpose collection provided by Common Lisp is the hash table. Hash tables allow the use of arbitrary objects as indexes, or keys.
+
+`MAKE-HASH-TABLE` creates a hash table that considers two keys equivalent if they're the same object according to `EQL`. Since two strings with the same contents are not necessarily `EQL`, it is better to provide a different `:test` to `MAKE-HASH-TABLE` when using string keys (using the symbol `'EQUAL`). The `:test` argument cannot accept arbitrary functions, it can only accept `EQ`, `EQL`, `EQUAL`, and `EQUALP`.
+
+The `GETHASH` function provides access to the elements of a hash table. It accepts two arguments: a key and a hash table. It returns the value at a given key, if stored, or `NIL` if not.
+```lisp
+(defparameter *h* (make-hash-table))
+
+(gethash 'foo *h*) ; ==> NIL
+
+(setf (gethash 'foo *h*) 'quux)
+
+(gethash 'foo *h*) ; ==> QUUX
+```
+
+`GETHASH` actually has multiple return values: the primary value is the value stored under the given key or `NIL`, the secondary value is a boolean indicating whether the key is present under the hash table. The way multiple values works, the extra return value is discarded unless the caller explicitly handles it with a form that can handle multiple return values.
+
+`REMHASH` takes the same arguments as `GETHASH` but removes the specified entry. `CLRHASH` will clear a hash table of all of its key/value pairs.
 
 [▲ Return to Sections](#sections)
 
