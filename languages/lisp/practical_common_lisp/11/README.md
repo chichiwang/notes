@@ -19,6 +19,7 @@ Lisp is famous for its list data structure and most Lisp books start their discu
 * [Sequence Predicates](#sequence-predicates)
 * [Sequence Mapping Functions](#sequence-mapping-functions)
 * [Hash Tables](#hash-tables)
+  * [Hash Table Iteration](#hash-table-iteration)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -390,6 +391,32 @@ The `GETHASH` function provides access to the elements of a hash table. It accep
 `GETHASH` actually has multiple return values: the primary value is the value stored under the given key or `NIL`, the secondary value is a boolean indicating whether the key is present under the hash table. The way multiple values works, the extra return value is discarded unless the caller explicitly handles it with a form that can handle multiple return values.
 
 `REMHASH` takes the same arguments as `GETHASH` but removes the specified entry. `CLRHASH` will clear a hash table of all of its key/value pairs.
+
+### Hash Table Iteration
+Common Lisp provides a couple of ways to iterate over the entries in a hash table.
+
+`MAPHASH` takes a two-argument function and a hash table and invokes the function once for each key/value pair in the hash table.
+```lisp
+;; Print all of the key/value pairs in the hash table *h*
+(maphash #'(lambda (k v) (format t "~a => ~a~%" k v)) *h*)
+```
+
+The consequences of adding/removing elements from a hash table while iterating over it aren't specified and are likely to be bad, with two exceptions:
+* `SETF` can be used with `GETHASH` to change the value of the current entry.
+* `REMHASH` can be used to remove the current entry.
+
+```lisp
+;; Remove all entries whose value is less than 10 from a hash table *h*
+(maphash #'(lambda (k v) (when (< v 10) (remhash k *h*))) *h*)
+```
+
+Another way to iterate over a hash table is with the extended `LOOP` macro. `LOOP` will be covered in a later chapter.
+
+```lisp
+;; Print all of the key/value pairs in the hash table *h* with LOOP
+(loop for k being the hash-keys in *h* using (hash-value v)
+  do (format t "~a => ~a~%" k v))
+```
 
 [▲ Return to Sections](#sections)
 
