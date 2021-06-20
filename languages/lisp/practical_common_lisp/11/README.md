@@ -16,6 +16,7 @@ Lisp is famous for its list data structure and most Lisp books start their discu
 * [Whole Sequence Manipulations](#whole-sequence-manipulations)
 * [Sorting and Merging](#sorting-and-merging)
 * [Subsequence Manipulations](#subsequence-manipulations)
+* [Sequence Predicates](#sequence-predicates)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -319,6 +320,30 @@ The `MISMATCH` function accepts two sequences and returns the index of the first
 ```lisp
 (mismatch "foobarbaz" "foom")         ; ==> 3
 (mismatch "foobar" "bar" :from-end t) ; ==> 3
+```
+
+[▲ Return to Sections](#sections)
+
+## Sequence Predicates
+Four functions are used to iterate over sequences testing a boolean predicate. The first argument to these functions is the predicate, the remaining arguments are sequences. The predicate should accept as many arguments as the number of sequences passed to these functions. The elements of the sequences are passed to the predicate (one element from each sequence) until one of the sequences runs out of elements or the overall termination test is met.
+
+| Function   | Termination Test                                                             |
+| ---------- | ---------------------------------------------------------------------------- |
+| `EVERY`    | Returns false as soon as the predicate fails, else returns true.             |
+| `SOME`     | Returns the first non-`NIL` value the predicate returns, else returns false. |
+| `NOTANY`   | Returns false as soon as the predicate is satisfied, else returns true.      |
+| `NOTEVERY` | Returns true as soon as the predicate fails, else returns false.             |
+
+```lisp
+(every #'evenp #(1 2 3 4 5))    ; ==> NIL
+(some #'evenp #(1 2 3 4 5))     ; ==> T
+(notany #'evenp #(1 2 3 4 5))   ; ==> NIL
+(notevery #'evenp #(1 2 3 4 5)) ; ==> T
+
+(every #'> #(1 2 3 4) #(5 4 3 2))    ; ==> NIL
+(some #'> #(1 2 3 4) #(5 4 3 2))     ; ==> T
+(notany #'> #(1 2 3 4) #(5 4 3 2))   ; ==> NIL
+(notevery #'> #(1 2 3 4) #(5 4 3 2)) ; ==> T
 ```
 
 [▲ Return to Sections](#sections)
