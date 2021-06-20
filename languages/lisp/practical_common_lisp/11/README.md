@@ -14,6 +14,7 @@ Lisp is famous for its list data structure and most Lisp books start their discu
 * [Sequence Iterating Functions](#sequence-iterating-functions)
   * [Higher-Order Function Variants](#higher-order-function-variants)
 * [Whole Sequence Manipulations](#whole-sequence-manipulations)
+* [Sorting and Merging](#sorting-and-merging)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -259,6 +260,27 @@ Examples of these functions in use:
 (concatenate 'vector #(1 2 3) '(4 5 6))    ; ==> #(1 2 3 4 5 6)
 (concatenate 'list #(1 2 3) '(4 5 6))      ; ==> (1 2 3 4 5 6)
 (concatenate 'string "abc" '(#\d #\e #\f)) ; ==> "abcdef"
+```
+
+[▲ Return to Sections](#sections)
+
+## Sorting and Merging
+`SORT` and `STABLE-SORT` allow for the sorting of sequences. Both functions accept a sequence and a two-argument predicate and return a sorted version of the sequence.
+
+`STABLE-SORT` guarantees not to reorder elements considered equivalent by the predicate function. `SORT` only guarantees the result is sorted and may reorder equivalent elements.
+
+`SORT` and `STABLE-SORT` are both _destructive_ functions: they can modify the sequence passed in. If the sequence to be sorted must be preserved, it is advised a copy is used as argument instead. If the original sequence is no longer required, it may be passed in and subsequently overwritten with the return value:
+```lisp
+(setf my-sequence (sort my-sequence #'string<))
+```
+
+Both of these sort functions also accept a keyword argument `:key` which should be a function used to extract the values passed to the sorting predicate in place of the actual elements. The keys are only used to determine the ordering of the elements in the sequence, the returned sorted sequence will contain the actual elements of the argument sequence.
+
+The `MERGE` function accepts two sequences and a predicate function and returns a sequence produced by merging the two sequences, according to the predicate. Like the two sort functions, `MERGE` can accept a `:key` argument. Like `CONCATENATE` the first argument to `MERGE` must be a type descriptor specifying the type of sequence to produce.
+
+```lisp
+(merge 'vector #(1 3 5) #(2 4 6) #'<) ; ==> #(1 2 3 4 5 6)
+(merge 'list #(1 3 5) #(2 4 6) #'<) ; ==> (1 2 3 4 5 6)
 ```
 
 [▲ Return to Sections](#sections)
