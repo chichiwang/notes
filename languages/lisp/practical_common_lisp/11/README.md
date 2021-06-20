@@ -17,6 +17,7 @@ Lisp is famous for its list data structure and most Lisp books start their discu
 * [Sorting and Merging](#sorting-and-merging)
 * [Subsequence Manipulations](#subsequence-manipulations)
 * [Sequence Predicates](#sequence-predicates)
+* [Sequence Mapping Functions](#sequence-mapping-functions)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -344,6 +345,27 @@ Four functions are used to iterate over sequences testing a boolean predicate. T
 (some #'> #(1 2 3 4) #(5 4 3 2))     ; ==> T
 (notany #'> #(1 2 3 4) #(5 4 3 2))   ; ==> NIL
 (notevery #'> #(1 2 3 4) #(5 4 3 2)) ; ==> T
+```
+
+[▲ Return to Sections](#sections)
+
+## Sequence Mapping Functions
+`MAP` takes a _n_-argument function and _n_ sequences. It returns a new sequence containing the result of applying the function to subsequent elements of the sequences. `MAP` needs to be provided a symbol type descriptor for what sort of resulting sequence to generate:
+```lisp
+(map 'vector #'* #(1 2 3 4 5) #(10 9 8 7 6)) ; ==> #(10 18 24 28 30)
+```
+
+`MAP-INTO` is like `MAP` except it places the results of the operation into a sequence passed in as the first argument. The following expression will sum several vectors (`a`, `b`, and `c`) into one:
+```lisp
+(map-into a #'+ a b c)
+```
+
+`MAP-INTO` only affects as many elements as are present in the shortest sequence (including the sequence being mapped into). The number of elements affected is limited by the size of vectors. `MAP-INTO` will not extend an adjustable vector.
+
+`REDUCE` maps over a single sequence and applies a two-argument function to each set of elements in the sequence. `REDUCE` takes the keyword arguments: `:key`, `:from-end`, `:start`, `:end`, and `:initial-value`.
+```lisp
+(reduce #'+ #(1 2 3 4 5 6 7 8 9 10)) ; ==> 55
+(reduce #'max #(5 1 2 8 10 3 7))     ; ==> 10
 ```
 
 [▲ Return to Sections](#sections)
