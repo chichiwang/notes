@@ -15,6 +15,7 @@ Lisp is famous for its list data structure and most Lisp books start their discu
   * [Higher-Order Function Variants](#higher-order-function-variants)
 * [Whole Sequence Manipulations](#whole-sequence-manipulations)
 * [Sorting and Merging](#sorting-and-merging)
+* [Subsequence Manipulations](#subsequence-manipulations)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -281,6 +282,43 @@ The `MERGE` function accepts two sequences and a predicate function and returns 
 ```lisp
 (merge 'vector #(1 3 5) #(2 4 6) #'<) ; ==> #(1 2 3 4 5 6)
 (merge 'list #(1 3 5) #(2 4 6) #'<) ; ==> (1 2 3 4 5 6)
+```
+
+[▲ Return to Sections](#sections)
+
+## Subsequence Manipulations
+The `SUBSEQ` function will extract a subsequence starting at a particular index:
+```lisp
+(subseq "foobarbaz" 3)   ; ==> "barbaz"
+(subseq "foobarbaz" 3 6) ; ==> "bar"
+```
+
+`SUBSEQ` is `SETF`able but will not expand or shrink a sequence:
+```lisp
+(defparameter *x* (copy-seq "foobarbaz"))
+
+(setf (subseq *x* 3 6) "xxx")  ; subsequence and new value are same length
+*x*                            ; ==> "fooxxxbaz"
+
+(setf (subseq *x* 3 6) "abcd") ; new value too long, extra character ignored.
+*x*                            ; ==> "fooabcbaz"
+
+(setf (subseq *x* 3 6) "xx")   ; new value too short, only two characters changed
+*x*                            ; ==> "fooxxcbaz"
+```
+
+The `FILL` function will set multiple elements of a given sequence to a particular value. The required arguments are a sequence and the value with which to fill it. The `:start` and `:end` keyword arguments are used to limit the effects to a given subsequence.
+
+The `SEARCH` function works like `POSITION` except the first argument is a sequence rather than a single item:
+```lisp
+(position #\b "foobarbaz") ; ==> 3
+(search "bar" "foobarbaz") ; ==> 3
+```
+
+The `MISMATCH` function accepts two sequences and returns the index of the first pair of mismatched elements. It returns `NIL` if the two sequences match. `MISMATCH` accepts many of the sequence function keyword arguments: `:key`, `:start1`, `:end1`, `:start2`, `:end2`, `:from-end`.
+```lisp
+(mismatch "foobarbaz" "foom")         ; ==> 3
+(mismatch "foobar" "bar" :from-end t) ; ==> 3
 ```
 
 [▲ Return to Sections](#sections)
