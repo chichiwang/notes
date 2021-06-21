@@ -420,4 +420,4 @@ Another way to iterate over a hash table is with the extended `LOOP` macro. `LOO
 
 [▲ Return to Sections](#sections)
 
-| [Previous: Numbers, Characters, and Strings](../10/README.md) | [Table of Contents](../README.md#notes) | Next |
+| [Previous: Numbers, Characters, and Strings](../10/README.md) | [Table of Contents](../README.md#notes) | [Next: List Processing](../12/README.md) |

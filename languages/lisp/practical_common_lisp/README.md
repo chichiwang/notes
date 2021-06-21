@@ -25,6 +25,7 @@ Date: WIP
 * 09: [Building a Unit Test Framework](./09/README.md)
 * 10: [Numbers, Characters, and Strings](./10/README.md)
 * 11: [Collections](./11/README.md)
+* 12: [List Processing](./12/README.md)
 
 ## Installing Common Lisp
 For the purposes of this set of notes, the [sbcl](http://www.sbcl.org/) Common Lisp implementation will be used. To install `sbcl` follow the instructions in [The Common Lisp Cookbook - Getting Started](https://lispcookbook.github.io/cl-cookbook/getting-started.html).
