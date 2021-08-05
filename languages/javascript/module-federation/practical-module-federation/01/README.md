@@ -92,4 +92,4 @@ Before Module Federation, Micro-FE frameworks would use custom loaders (or off-t
 * Module Federation: Easier to use alone if all applications use the same view framework.
 * [SingleSPA](https://single-spa.js.org/): Offers the ability to route between Micro-FEs, or mount different frameworks on a single page via an organized, opinionated convention.
 
-| [Table of Contents](../README.md#table-of-contents) | Next |
+| [Table of Contents](../README.md#table-of-contents) | [Next: Getting Started](../02/README.md) |
