@@ -43,4 +43,4 @@ Sample configuration for `shared`:
 
 The value of the spread `deps` object is that of all of the other runtime dependencies. The reason `react` and `react-dom` are marked as singletons is because these libraries track internal state and there cannot be multiple copies of these libraries on a single page. Marking them as `singleton` ensures that Webpack will never load more than one copy on the page at any given time.
 
-| [Previous: Introducing Module Federation](../01/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: Introducing Module Federation](../01/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: How Module Federation Works](../03/README.md) |
