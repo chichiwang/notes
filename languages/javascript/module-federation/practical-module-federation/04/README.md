@@ -107,4 +107,4 @@ ReactDOM.render(<div>Hello world</div>, document.getElementById("app"));
 
 This example gives Webpack the opportunity to process the remaining imports before executing the app and will avoid potential race conditions on importing all of the code.
 
-| [Previous: How Module Federation Works](../03/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: How Module Federation Works](../03/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: React State Sharing Options](../05/README.md) |

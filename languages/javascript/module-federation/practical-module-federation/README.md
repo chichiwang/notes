@@ -13,3 +13,4 @@ Date: WIP
 * 02: [Getting Started](./02/README.md)
 * 03: [How Module Federation Works](./03/README.md)
 * 04: [Resilient Sharing of React Components](./04/README.md)
+* 05: [React State Sharing Options](./05/README.md)
