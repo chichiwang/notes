@@ -24,4 +24,4 @@ Circular imports and nested remotes are supported:
 
 Webpack will resolve these circular imports correctly and efficiently.
 
-| [Previous: Getting Started](../02/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: Getting Started](../02/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Resilient Sharing of React Components](../04/README.md) |

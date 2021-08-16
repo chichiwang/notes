@@ -12,3 +12,4 @@ Date: WIP
 * 01: [Introducing Module Federation](./01/README.md)
 * 02: [Getting Started](./02/README.md)
 * 03: [How Module Federation Works](./03/README.md)
+* 04: [Resilient Sharing of React Components](./04/README.md)
