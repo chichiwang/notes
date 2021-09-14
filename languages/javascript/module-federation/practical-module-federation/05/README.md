@@ -18,4 +18,4 @@ When sharing state across applications using Recoil, share the [atoms](https://r
 ## [RXJS](https://rxjs.dev/)
 RXJS will have to be shared from the remote (although if only [subjects](https://rxjs.dev/api/index/class/Subject) are shared, this may not be required). Subjects can then be shared for host applications to subscribe to.
 
-| [Previous: Resilient Sharing of React Components](../04/README.md) | [Table of Contents](../README.md#table-of-contents) | Next |
+| [Previous: Resilient Sharing of React Components](../04/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Resilient Function and Data Sharing](../06/README.md) |

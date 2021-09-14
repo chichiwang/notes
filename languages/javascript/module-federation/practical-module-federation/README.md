@@ -14,3 +14,4 @@ Date: WIP
 * 03: [How Module Federation Works](./03/README.md)
 * 04: [Resilient Sharing of React Components](./04/README.md)
 * 05: [React State Sharing Options](./05/README.md)
+* 06: [Resilient Function and Data Sharing](./06/README.md)
