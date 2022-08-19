@@ -34,6 +34,7 @@ Notes currently in progress:
 * [The Elements of Programming Style](./computing/elements_programming_style/README.md)
 * [Practical Common Lisp](./languages/lisp/practical_common_lisp/README.md)
 * [Practical Module Federation](./languages/javascript/module-federatin/practical-module-federation/README.md)
+* [Practical Vim, Second Edition](./os/linux/vim/practical/README.md)
 
 ## Topics of Interest
 * [Decision Fatigue](https://en.wikipedia.org/wiki/Decision_fatigue)
