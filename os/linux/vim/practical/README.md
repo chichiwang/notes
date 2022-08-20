@@ -17,6 +17,7 @@ Date: WIP
   * [Showing the Cursor Position](#showing-the-cursor-position)
   * [Highlighting Search Matches](#highlighting-search-matches)
   * [Selecting Text in Visual Mode](#selecting-text-in-visual-mode)
+* [Using Example Files](#using-example-files)
 
 ### Chapters
 
@@ -122,3 +123,17 @@ Visual mode allows for the selection of text in the buffer to operate on. In the
 | `vit`      | &lt;a href="http[]()://pragprog.com/dnvim/"&gt;**Practical Vi<ins>m</ins>**&lt;/a&gt; |
 
 Note that the styling for a Visual selection is the same as for highlighted search matches. It should be clear from the context whether this style represents a search match or a Visual selection.
+
+## Using Example Files
+The examples in _Practical Vim_ may begin by showing the contents of a file _before_ modification. These code listings include a link to the code:
+
+**[macros/incremental.text](./code/macros/incremental.txt)**
+<pre lang="text">
+partridge in a pear tree
+turtle doves
+French hens
+calling birds
+golden rings
+</pre>
+
+Each time the file is linked along with the text in this manner, the example file can be used to follow along with the tips. These examples and source code can be downloaded from this notes repository and were originally sourced from [https://media.pragprog.com/titles/dnvim2/code/dnvim2-code.zip](https://media.pragprog.com/titles/dnvim2/code/dnvim2-code.zip).
