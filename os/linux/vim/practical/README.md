@@ -12,6 +12,8 @@ Date: WIP
   * [Key Combinations](#key-combinations)
   * [Placeholders](#placeholders)
   * [Special Keys](#special-keys)
+  * [Switching Modes](#switching-modes)
+  * [Command Line](#command-line)
 
 ### Chapters
 
@@ -62,3 +64,26 @@ Some keys are called by name. The following table shows a selection of them:
 | `<Up>`    | Press the up arrow key                                  |
 | `<Down>`  | Press the down arrow key                                |
 | `⎵`       | Press the space bar                                     |
+
+### Switching Modes
+It is common to switch between Normal and Insert mode while using Vim. Each keystroke could mean something different depending on which mode is active. An alternative style will be used to represent keystrokes entered in Insert mode, to differentiate them from Normal mode keystrokes.
+
+Consider this example:
+`cw`replacement&lt;Esc&gt;. The Normal mode `cw` command deletes to the end of the current word and switches to Insert mode. Then the sequence types out the word "replacement" before pressng the `<Esc>` key to switch back to Normal mode again.
+
+The Normal mode keystroke notation is also used for Visual mode keystrokes. The Insert mode styling will be used to indicate keystrokes entered in Command-Line mode and Replace mode. Which mode is active should be clear from context.
+
+### Command Line
+Some tips will execute a command-line, either in the shell or from inside Vim. The context of the command line will be differentiated by the prompt preceeding the command.
+
+| Prompt | Meaning                                                   |
+| ------ | --------------------------------------------------------- |
+| $      | Enter the command line in an external shell               |
+| :      | Use Command-Line mode to execute an Ex command            |
+| /      | Use Command-Line mode to perform a forward search         |
+| ?      | Use Command-Line mode to perform a backward search        |
+| =      | Use Command-Line mode to evaluate a Vim script expression |
+
+Any time an Ex command is listed inline (such as `:write`), following it up by pressing the `<CR>` key is implicit in the tip.
+
+However, Vim's search command allows a preview of the first match before pressing `<CR>`. When a search command is listed inline (such as /pattern`<CR>`) the `<CR>` keystroke is listed explicitly. If it is missing from a search command, the `<CR>` is meant to be excluded.
