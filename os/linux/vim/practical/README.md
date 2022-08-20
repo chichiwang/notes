@@ -1,4 +1,4 @@
-# Practical Common Lisp - WIP
+# Practical Vim - WIP
 **Author**: [Chi-chi Wang](https://github.com/chichiwang)
 
 Notes from the book [Practical Vim, Second Edition](https://pragprog.com/titles/dnvim2/practical-vim-second-edition/) written by Drew Neil.
@@ -14,6 +14,9 @@ Date: WIP
   * [Special Keys](#special-keys)
   * [Switching Modes](#switching-modes)
   * [Command Line](#command-line)
+  * [Showing the Cursor Position](#showing-the-cursor-position)
+  * [Highlighting Search Matches](#highlighting-search-matches)
+  * [Selecting Text in Visual Mode](#selecting-text-in-visual-mode)
 
 ### Chapters
 
@@ -87,3 +90,35 @@ Some tips will execute a command-line, either in the shell or from inside Vim. T
 Any time an Ex command is listed inline (such as `:write`), following it up by pressing the `<CR>` key is implicit in the tip.
 
 However, Vim's search command allows a preview of the first match before pressing `<CR>`. When a search command is listed inline (such as /pattern`<CR>`) the `<CR>` keystroke is listed explicitly. If it is missing from a search command, the `<CR>` is meant to be excluded.
+
+### Showing the Cursor Position
+When showing the contents of a buffer it is useful to indicate where the cursor is positioned. In this example, the cursor is placed on the first letter of the word "One":
+
+<ins>O</ins>ne two three
+
+When a change involves several steps the contents of the buffer pass through intermediate states. To illustrate this process a table will be used to show the commands executed in the left column and the contents of the buffer in the right column:
+
+| Keystrokes | Buffer Contents          |
+| ---------- | ------------------------ |
+| {start}    | <ins>O</ins>ne two three |
+| `dw`       | <ins>t</ins>wo three     |
+
+In row 2 the `dw` command will delete the word under the cursor. The contents of the buffer shown in the same row display the state of the buffer after the command has been run.
+
+### Highlighting Search Matches
+When demonstrating Vim's search command any matches in the buffer can be demonstrated by bold text. In the following example, searching for the string "the" causes the four occurrences of the pattern to be bolded:
+
+| Keystrokes | Buffer Contents                                                                                           |
+| ---------- | --------------------------------------------------------------------------------------------------------- |
+| {start}    | **<ins>t</ins>he** problem with these new recruits is that they don't keep their boots clean.             |
+| /the`<CR>` | **the** problem with **<ins>t</ins>he**se new recruits is that **the**y don't keep **the**ir boots clean. |
+
+### Selecting Text in Visual Mode
+Visual mode allows for the selection of text in the buffer to operate on. In the below example the `it` text object is used to select the contents of the &lt;a&gt; tag:
+
+| Keystrokes | Buffer Contents                                                                       |
+| ---------- | ------------------------------------------------------------------------------------- |
+| {start}    | &lt;a <ins>h</ins>ref="http[]()://pragprog.com/dnvim/"&gt;Practical Vim&lt;/a&gt;     |
+| `vit`      | &lt;a href="http[]()://pragprog.com/dnvim/"&gt;**Practical Vi<ins>m</ins>**&lt;/a&gt; |
+
+Note that the styling for a Visual selection is the same as for highlighted search matches. It should be clear from the context whether this style represents a search match or a Visual selection.
