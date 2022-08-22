@@ -8,6 +8,7 @@ Vim is optimized for repetition. Its efficiency comes from the way it tracks and
 * [Take One Step Back, Then Three Forward](#take-one-step-back-then-three-forward)
 * [Act, Repeat, Reverse](#act-repeat-reverse)
 * [Find and Replace by Hand](#find-and-replace-by-hand)
+* [Meet the Dot Formula](#meet-the-dot-formula)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -214,6 +215,14 @@ With the cursor positioned at the start of the word "content", the `cw` command 
 
 #### All Together Now
 Every time `n` is pressed, the cursor advances to the next occurrence of the word "content" and it can be assessed for replacement with "copy" using the dot command.
+
+[▲ Return to Sections](#sections)
+
+## Meet the Dot Formula
+_We've considered three simple editing tasks so far. Even though each problem was different, we found a solution using the dot command for each one. In this tip, we'll compare each solution and identify a common pattern - an optimal editing strategy tht I call the Dot Forumula._
+
+#### The Ideal: One Keystroke to Move, One Keystroke to Execute
+In all of the examples in this chapter ([Don't Repeat Yourself](#dont-repeat-yourself), [Take One Step Back, Then Three Forward](#take-one-step-back-then-three-forward), and [Find and Replace by Hand](#find-and-replace-by-hand)) the dot command repeats the last change and a single keystroke is all that's required to move the cursor to its next target. This is the ideal solution: one keystroke to move and one to execute. This pattern will be referred to as the _Dot Forumula_.
 
 [▲ Return to Sections](#sections)
 
