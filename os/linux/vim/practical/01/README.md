@@ -3,6 +3,11 @@ Vim is optimized for repetition. Its efficiency comes from the way it tracks and
 
 ## Sections
 * [The Dot Command](#the-dot-command)
+* [The Dot Command is a Micro Macro](#the-dot-command-is-a-micro-macro)
+  * [Reduce Extraneous Movement](#reduce-extraneous-movement)
+  * [Make the Change Repeatable](#make-the-change-repeatable)
+  * [Make the Motion Repeatable](#make-the-motion-repeatable)
+* [Two for the Price of One](#two-for-the-price-of-one)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -49,5 +54,93 @@ The `>G` command increases the indentation from the current line until the end o
 | `j.`       | Line one<br />&nbsp;&nbsp;Line two<br />&nbsp;&nbsp;&nbsp;&nbsp;Line three<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ins>L</ins>ine four |
 
 The `x`, `dd`, and `>` commands are all executed from Normal mode but a change is also created each time Insert mode is dipped into. From the moment Insert mode is entered (by pressing `i` for example) until Normal mode is returned to (by pressing `<Esc>`) Vim records every keystroke. After making a change like this, the dot command will replay all keystrokes.
+
+[▲ Return to Sections](#sections)
+
+## The Dot Command is a Micro Macro
+[Chatper 11 - Macros](../11/README.md) will describe how Vim can record any arbitrary number of keystrokes to be played back later. This allows for the capturing of repetitive workflows to be played back at a keystroke. The dot command can be thought of as a miniature macro.
+
+_For such a common use case as appending a semicolon at the end of a series of lines, Vim provides a dedicated command that combines two steps into one._
+
+Taking a snippet of Javascript code as example:
+
+**[the_vim_way/2_foo_bar.js](../code/the_vim_way/2_foo_bar.js)**
+<pre>
+<b>var</b> foo = 1
+<b>var</b> bar = 'a'
+<b>var</b> foobar = foo + bar
+</pre>
+
+A semicolon needs to be appended to the end of each line. This requires moving the cursor to the end of the line, then switching to Insert mode to make the change. The `$` command will handle the motion and then `a`;&lt;Esc&gt; will make the change. To complete the task on the remaining lines `j$.` could be run twice.
+
+The `j` command moves the cursor down one line, the `$` command moves the cursor to the end of the line, and then `.` will apply the semicolon.
+
+### Reduce Extraneous Movement
+While the `a` command appends after the current cursor position, the `A` command appends at the end of the current line regardless of where on the line the cursor sits. `A` squashes `$a` into a single keystroke. Below is a refinement of the previous example:
+
+| Keystrokes      | Buffer Contents                                                          |
+| --------------- | ------------------------------------------------------------------------ |
+| {start}         | <ins>v</ins>ar foo = 1<br />var bar = 'a'<br />var foobar = foo + bar    |
+| `A`;&lt;Esc&gt; | var foo = 1<ins>;</ins><br />var bar = 'a'<br />var foobar = foo + bar   |
+| `j`             | var foo = 1;<br />var bar = '<ins>a</ins>'<br />var foobar = foo + bar   |
+| `.`             | var foo = 1;<br />var bar = 'a'<ins>;</ins><br />var foobar = foo + bar  |
+| `j.`            | var foo = 1;<br />var bar = 'a';<br />var foobar = foo + bar<ins>;</ins> |
+
+By using `A` instead of `$a` the cursor just has to be anywhere on the next line to change, rather than at the end of it. The change can now be repeated on consecutive lines by typing `j.` as many times as it takes. One keystroke (`j`) to move the cursor and another (`.`) to apply the semicolon to the end of the line.
+
+While this formula works well for this small example, it would be cumbersome to apply to a large number of consecutive lines. For an alternative approach, consider running Normal mode commands across a range (outlined in [Chapter 5 - Command-Line Mode](../05/README.md)).
+
+_We can pad a single character with two spaces (one in front, the other behind) by using an idiomatic Vim solution. At first it might look slightly odd, but the solution has the benefit of being repeatable, which allows us to complete the task effortlessly._
+
+Taking the following line of code as example:
+
+**[the_vim_way/3_concat.js](../code/the_vim_way/3_concat.js)**
+<pre lang="text">
+<b>var</b> foo = "method("+argument1+","+argument2+")";
+</pre>
+
+Padding each + sign with spaces could make that line of code easier on the eyes:
+<pre lang="text">
+<b>var</b> foo = "method(" + argument1 + "," + argument2 + ")";
+</pre>
+
+### Make the Change Repeatable
+The idiomatic approach solves this problem:
+
+| Keystrokes  | Buffer Contents                                                               |
+| ----------- | ----------------------------------------------------------------------------- |
+| {start}     | <ins>v</ins>ar foo = "method("+argument1+", "+argument2+")";                  |
+| `f+`        | var foo = "method("<ins>+</ins>argument1+","+argument2+")";                   |
+| `s`⎵+⎵<Esc> | var foo = "method("&nbsp;+<ins>&nbsp;</ins>argument1+","+argument2+")";       |
+| `;`         | var foo = "method(" + argument1<ins>+</ins>","+argument2+")";                 |
+| `.`         | var foo = "method(" + argument1&nbsp;+<ins>&nbsp;</ins>","+argument2+")";     |
+| `;.`        | var foo = "method(" + argument1 + ","&nbsp;+<ins>&nbsp;</ins>argument2+")";   |
+| `;.`        | var foo = "method(" + argument1 + "," + argument2&nbsp;+<ins>&nbsp;</ins>")"; |
+
+The `s` command compounds two steps into one: it deletes the character under the cursor and then enters Insert mode. After deleting the + sign and entering Insert mode, `⎵+⎵` is typed in its place and then Insert mode is escaped. This allows the process to be repeated with the dot command so long as the cursor is moved to the next + sign.
+
+### Make the Motion Repeatable
+There's another trick in the above example: the `f{char}` command tells Vim to the cursor directly to the next occurrence of the specified character if found (`:h f`). Therefore `f+` will move the cursor straight to the next + symbol.
+
+The `;` command will repeat the last search that the `f` command performed, so instead of typing `f+` four times the first instance of it can be followed by three usages of the `;` command.
+
+[▲ Return to Sections](#sections)
+
+## Two for the Price of One
+Many of Vim's single-key commands can be see as a condensed version of two or more other commands. The table below shows an approximation of some examples:
+
+| Compound Command | Equivalent in Longhand |
+| ---------------- | ---------------------- |
+| `C`              | `c$`                   |
+| `s`              | `cl`                   |
+| `S`              | `^C`                   |
+| `I`              | `^i`                   |
+| `A`              | `$a`                   |
+| `o`              | `A<CR>`                |
+| `O`              | `ko`                   |
+
+Recognize that the `O` command can be used in place of `ko` (or worse `k$a<CR>`). Also note that all of these examples also switch from Normal to Insert mode. Think about how that might affect the dot command.
+
+[▲ Return to Sections](#sections)
 
 | [Table of Contents](../README.md#notes) |
