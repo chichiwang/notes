@@ -7,6 +7,7 @@ Vim is optimized for repetition. Its efficiency comes from the way it tracks and
 * [Two for the Price of One](#two-for-the-price-of-one)
 * [Take One Step Back, Then Three Forward](#take-one-step-back-then-three-forward)
 * [Act, Repeat, Reverse](#act-repeat-reverse)
+* [Find and Replace by Hand](#find-and-replace-by-hand)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -166,6 +167,53 @@ The following table summarizes Vim's repeatable commands along with their corres
 | Scan document for previous match | ?pattern`<CR>`        | `n`    | `N`     |
 | Perform substitution             | :s/target/replacement | `&`    | `u`     |
 | Execute a sequence of changes    | `qx{changes}q`        | `@x`   | `u`     |
+
+[▲ Return to Sections](#sections)
+
+## Find and Replace by Hand
+_Vim has a :substitute command for find-and-replace tasks, but with this alternative technique, we'll change the first occurrence by hand and then find and replace every other match one by one. The dot command will save us from labor, but we'll meet another nifty one-key command that makes jumping between matches a snap._
+
+In the following file the word "content" appears on every line:
+
+**[the_vim_way/1_copy_content.txt](../code/the_vim_way/1_copy_content.txt)**
+<pre lang="text">
+...We're waiting for content before the site can go live...
+...If you are content with this, let's go ahead with it...
+...We'll launch as soon as we have the content...
+</pre>
+
+Imagine the word "copy" (as in "copywriting") is preferred over the word "content". The substitute command could be used to replace all occurrences of "content" with "copy":
+
+```
+:%s/content/copy/g
+```
+
+However, this approach is not suitable for this text since it will create the phrase "If you are copy with this". The problem is that the word "content" has two meanings: one synonymous with the word "copy" and the other with "happy". In order to tackle this challenge, manual approval of each substitution must be provided. While the substitute command is capable of this ([Chapter 14 - Substitution](../14/README.md#eyeball-each-substitution)) there is an alternative approach that better fits the theme of this chapter.
+
+#### Be Lazy: Search Without Typing
+The `*` command executes a search for the word under the cursor (`:h *`). The word "content" can be searched for by using the search prompt (`/content`) or simply placing the cursor over the word and hitting `*`.
+
+Consider this workflow:
+
+| Keystrokes          | Buffer Contents                                                                                                                                                                                                    |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| {start}             | ...We're waiting for content before the site can go live...<br />...If you are <ins>c</ins>ontent with this, let's go ahead with it...<br />...We'll launch as soon as we have the content...                      |
+| `*`                 | ...We're waiting for <b>content</b> before the site can go live...<br />...If you are <b>content</b> with this, let's go ahead with it...<br />...We'll launch as soon as we have the <b><ins>c</ins>ontent</b>... |
+| `cw`copy&lt;Esc&gt; | ...We're waiting for <b>content</b> before the site can go live...<br />...If you are <b>content</b> with this, let's go ahead with it...<br />...We'll launch as soon as we have the cop<ins>y</ins>...           |
+| `n`                 | ...We're waiting for <b><ins>c</ins>ontent</b> before the site can go live...<br />...If you are <b>content</b> with this, let's go ahead with it...<br />...We'll launch as soon as we have the copy...           |
+| `.`                 | ...We're waiting for cop<ins>y</ins> before the site can go live...<br />...If you are <b>content</b> with this, let's go ahead with it...<br />...We'll launch as soon as we have the copy...                     |
+
+The cursor starts positioned over the word "content" and then the `*` command is executed. Two things will happen here:
+1. The cursor will jump foward to the next match.
+2. All occurrences will be highlighted (`:set hls` may need to be run if the highlighting does not appear, see [Chapter 13 - Search](../13/README.md#highlight-search-matches)).
+
+Once a search is executed, the cursor can be moved to the next match by pressing the `n` key.
+
+#### Make the Change Repeatable
+With the cursor positioned at the start of the word "content", the `cw` command will delete to the end of the word and then enter Insert mode. The word "copy" is written in Insert mode before escaping back to Normal mode. Since Vim records keystrokes until Insert mode is escaped, pressing `.` will now delete to the end of the current word under the cursor and replace it with "copy".
+
+#### All Together Now
+Every time `n` is pressed, the cursor advances to the next occurrence of the word "content" and it can be assessed for replacement with "copy" using the dot command.
 
 [▲ Return to Sections](#sections)
 
