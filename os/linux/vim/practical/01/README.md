@@ -2,17 +2,18 @@
 Vim is optimized for repetition. Its efficiency comes from the way it tracks and allows the replay of the most recent actions. Mastering how to craft actions so that they perform a useful unit of work when replayed is the key to becoming effective with Vim.
 
 ## Sections
-* [The Dot Command](#the-dot-command)
-* [The Dot Command is a Micro Macro](#the-dot-command-is-a-micro-macro)
-  * [Reduce Extraneous Movement](#reduce-extraneous-movement)
-  * [Make the Change Repeatable](#make-the-change-repeatable)
-  * [Make the Motion Repeatable](#make-the-motion-repeatable)
+* [Meet the Dot Command](#meet-the-dot-command)
+* [Don't Repeat Yourself](#dont-repeat-yourself)
 * [Two for the Price of One](#two-for-the-price-of-one)
+* [Take One Step Back, Then Three Forward](#take-one-step-back-then-three-forward)
+* [Act, Repeat, Reverse](#act-repeat-reverse)
 
 [◂ Return to Table of Contents](../README.md)
 
-## The Dot Command
-The dot command is the most powerful and versatile command in Vim. It allows the user to repeat the last change. Vim's documentation states that the dot command "repeats the last change" (`:h .`). Within this statement is the kernel of what makes Vim's modal editing model so effective.
+## Meet the Dot Command
+_The dot command lets us repeat the last change. It is the most powerful and versatile command in Vim._
+
+The dot command allows the user to repeat the last change. Vim's documentation states that the dot command "repeats the last change" (`:h .`). Within this statement is the kernel of what makes Vim's modal editing model so effective.
 
 The "last change" could be one of many thing. A change can act at the level of individual characters, entire lines, or even the whole file.
 
@@ -55,11 +56,12 @@ The `>G` command increases the indentation from the current line until the end o
 
 The `x`, `dd`, and `>` commands are all executed from Normal mode but a change is also created each time Insert mode is dipped into. From the moment Insert mode is entered (by pressing `i` for example) until Normal mode is returned to (by pressing `<Esc>`) Vim records every keystroke. After making a change like this, the dot command will replay all keystrokes.
 
-[▲ Return to Sections](#sections)
-
-## The Dot Command is a Micro Macro
+#### The Dot Command is a Micro Macro
 [Chatper 11 - Macros](../11/README.md) will describe how Vim can record any arbitrary number of keystrokes to be played back later. This allows for the capturing of repetitive workflows to be played back at a keystroke. The dot command can be thought of as a miniature macro.
 
+[▲ Return to Sections](#sections)
+
+## Don't Repeat Yourself
 _For such a common use case as appending a semicolon at the end of a series of lines, Vim provides a dedicated command that combines two steps into one._
 
 Taking a snippet of Javascript code as example:
@@ -75,7 +77,7 @@ A semicolon needs to be appended to the end of each line. This requires moving t
 
 The `j` command moves the cursor down one line, the `$` command moves the cursor to the end of the line, and then `.` will apply the semicolon.
 
-### Reduce Extraneous Movement
+#### Reduce Extraneous Movement
 While the `a` command appends after the current cursor position, the `A` command appends at the end of the current line regardless of where on the line the cursor sits. `A` squashes `$a` into a single keystroke. Below is a refinement of the previous example:
 
 | Keystrokes      | Buffer Contents                                                          |
@@ -88,41 +90,7 @@ While the `a` command appends after the current cursor position, the `A` command
 
 By using `A` instead of `$a` the cursor just has to be anywhere on the next line to change, rather than at the end of it. The change can now be repeated on consecutive lines by typing `j.` as many times as it takes. One keystroke (`j`) to move the cursor and another (`.`) to apply the semicolon to the end of the line.
 
-While this formula works well for this small example, it would be cumbersome to apply to a large number of consecutive lines. For an alternative approach, consider running Normal mode commands across a range (outlined in [Chapter 5 - Command-Line Mode](../05/README.md)).
-
-_We can pad a single character with two spaces (one in front, the other behind) by using an idiomatic Vim solution. At first it might look slightly odd, but the solution has the benefit of being repeatable, which allows us to complete the task effortlessly._
-
-Taking the following line of code as example:
-
-**[the_vim_way/3_concat.js](../code/the_vim_way/3_concat.js)**
-<pre lang="text">
-<b>var</b> foo = "method("+argument1+","+argument2+")";
-</pre>
-
-Padding each + sign with spaces could make that line of code easier on the eyes:
-<pre lang="text">
-<b>var</b> foo = "method(" + argument1 + "," + argument2 + ")";
-</pre>
-
-### Make the Change Repeatable
-The idiomatic approach solves this problem:
-
-| Keystrokes  | Buffer Contents                                                               |
-| ----------- | ----------------------------------------------------------------------------- |
-| {start}     | <ins>v</ins>ar foo = "method("+argument1+", "+argument2+")";                  |
-| `f+`        | var foo = "method("<ins>+</ins>argument1+","+argument2+")";                   |
-| `s`⎵+⎵<Esc> | var foo = "method("&nbsp;+<ins>&nbsp;</ins>argument1+","+argument2+")";       |
-| `;`         | var foo = "method(" + argument1<ins>+</ins>","+argument2+")";                 |
-| `.`         | var foo = "method(" + argument1&nbsp;+<ins>&nbsp;</ins>","+argument2+")";     |
-| `;.`        | var foo = "method(" + argument1 + ","&nbsp;+<ins>&nbsp;</ins>argument2+")";   |
-| `;.`        | var foo = "method(" + argument1 + "," + argument2&nbsp;+<ins>&nbsp;</ins>")"; |
-
-The `s` command compounds two steps into one: it deletes the character under the cursor and then enters Insert mode. After deleting the + sign and entering Insert mode, `⎵+⎵` is typed in its place and then Insert mode is escaped. This allows the process to be repeated with the dot command so long as the cursor is moved to the next + sign.
-
-### Make the Motion Repeatable
-There's another trick in the above example: the `f{char}` command tells Vim to the cursor directly to the next occurrence of the specified character if found (`:h f`). Therefore `f+` will move the cursor straight to the next + symbol.
-
-The `;` command will repeat the last search that the `f` command performed, so instead of typing `f+` four times the first instance of it can be followed by three usages of the `;` command.
+While this formula works well for this small example, it would be cumbersome to apply to a large number of consecutive lines. For an alternative approach, consider running Normal mode commands across a range (outlined in [Chapter 5 - Command-Line Mode](../05/README.md#run-normal-mode-commands-across-a-range)).
 
 [▲ Return to Sections](#sections)
 
@@ -140,6 +108,64 @@ Many of Vim's single-key commands can be see as a condensed version of two or mo
 | `O`              | `ko`                   |
 
 Recognize that the `O` command can be used in place of `ko` (or worse `k$a<CR>`). Also note that all of these examples also switch from Normal to Insert mode. Think about how that might affect the dot command.
+
+[▲ Return to Sections](#sections)
+
+## Take One Step Back, Then Three Forward
+_We can pad a single character with two spaces (one in front, the other behind) by using an idiomatic Vim solution. At first it might look slightly odd, but the solution has the benefit of being repeatable, which allows us to complete the task effortlessly._
+
+Taking the following line of code as example:
+
+**[the_vim_way/3_concat.js](../code/the_vim_way/3_concat.js)**
+<pre lang="text">
+<b>var</b> foo = "method("+argument1+","+argument2+")";
+</pre>
+
+Padding each + sign with spaces could make that line of code easier on the eyes:
+<pre lang="text">
+<b>var</b> foo = "method(" + argument1 + "," + argument2 + ")";
+</pre>
+
+#### Make the Change Repeatable
+The idiomatic approach solves this problem:
+
+| Keystrokes  | Buffer Contents                                                               |
+| ----------- | ----------------------------------------------------------------------------- |
+| {start}     | <ins>v</ins>ar foo = "method("+argument1+", "+argument2+")";                  |
+| `f+`        | var foo = "method("<ins>+</ins>argument1+","+argument2+")";                   |
+| `s`⎵+⎵<Esc> | var foo = "method("&nbsp;+<ins>&nbsp;</ins>argument1+","+argument2+")";       |
+| `;`         | var foo = "method(" + argument1<ins>+</ins>","+argument2+")";                 |
+| `.`         | var foo = "method(" + argument1&nbsp;+<ins>&nbsp;</ins>","+argument2+")";     |
+| `;.`        | var foo = "method(" + argument1 + ","&nbsp;+<ins>&nbsp;</ins>argument2+")";   |
+| `;.`        | var foo = "method(" + argument1 + "," + argument2&nbsp;+<ins>&nbsp;</ins>")"; |
+
+The `s` command compounds two steps into one: it deletes the character under the cursor and then enters Insert mode. After deleting the + sign and entering Insert mode, `⎵+⎵` is typed in its place and then Insert mode is escaped. This allows the process to be repeated with the dot command so long as the cursor is moved to the next + sign.
+
+#### Make the Motion Repeatable
+There's another trick in the above example: the `f{char}` command tells Vim to the cursor directly to the next occurrence of the specified character if found (`:h f`). Therefore `f+` will move the cursor straight to the next + symbol.
+
+The `;` command will repeat the last search that the `f` command performed, so instead of typing `f+` four times the first instance of it can be followed by three usages of the `;` command.
+
+[▲ Return to Sections](#sections)
+
+## Act, Repeat, Reverse
+_When facing a repetitive task, we can achieve an optimal editing strategy by making both the motion and the change repeatable. Vim has a knack for this. It remembers our actions and keeps the most common ones within close reach so that we can easily replay them. In this tip, we'll introduce each of the actions that Vim can repeat and learn how to reverse them._
+
+While the dot command repeats the last change some commands can be repeated by other means. For example `@:` can be used to repeat any Ex command (as discussed in [Chapter 5 - Command-Line Mode](../05/README.md#repeat-the-last-ex-command)). The last `:substitute` command can be repeated by pressing `&` ([Chapter 14 - Substitution](../14/README.md#repeat-the-previous-substitute-command)).
+
+Knowing how to repeat actions without having to spell them out every single time is the key to efficiency: first act, then repeat. Whenever Vim makes it easy to repeat an action or a motion it always provides some way of backing out of it. In the case of the dot command, the `u` key can be used to undo the last change. For the `f{char}` command, if the `;` key is pressed too many times, the `,` key will repeat the `f{char}` command in the reverse direction ([Chapter 8 - Navigate Inside Files with Motions](../08/README.md#find-by-character)).
+
+The following table summarizes Vim's repeatable commands along with their corresponding reverse key:
+
+| Intent                           | Act                   | Repeat | Reverse |
+| -------------------------------- | --------------------- | ------ | ------- |
+| Make a change                    | {edit}                | `.`    | `,`     |
+| Scan line for next character     | `f{char}`/`t{char}`   | `;`    | `,`     |
+| Scan line for previous character | `F{char}`/`T{char}`   | `;`    | `,`     |
+| Scan document for next match     | /pattern`<CR>`        | `n`    | `N`     |
+| Scan document for previous match | ?pattern`<CR>`        | `n`    | `N`     |
+| Perform substitution             | :s/target/replacement | `&`    | `u`     |
+| Execute a sequence of changes    | `qx{changes}q`        | `@x`   | `u`     |
 
 [▲ Return to Sections](#sections)
 
