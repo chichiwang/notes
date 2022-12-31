@@ -9,6 +9,7 @@ Programmers spend just a fraction of their time composing code. More of their ti
 * [Use Counts to Do Simple Arithmetic](#use-counts-to-do-simple-arithmethic)
 * [Don't Count If You Can Repeat](#dont-count-if-you-can-repeat)
 * [Combine and Conquer](#combine-and-conquer)
+* [Meet Operator-Pending Mode](#meet-operator-pending-mode)
 
 
 ## Chunking Undos
@@ -209,6 +210,17 @@ Similary, Vim's standard set of motions is comprehensive but new motions and tex
 Kana Natsuno's [textobj-entire plugin](https://github.com/kana/vim-textobj-entire) is a good example: it adds the text objects `ie` and `ae` which act on the entire file. Without the help of the plugin, to autoindent an entire file `gg=G` would be used: `gg` to move the cursor to the top of file, `=G` to autoindent to the end of file. With Kana's plugin `=ae` can be used instead and it would not matter where the cursor was in the file at the time the action was invoked.
 
 To learn more about creating custom motions, start by reading `:h omap-info`.
+
+[▲ Return to Sections](#sections)
+
+## Meet Operator-Pending Mode
+Normal, Insert, and Visual modes are readily identified in Vim, but there are other modes that are easy to overlook. Operator-Pending mode is one such mode. In inputting the keystrokes for the action `dw` Operator-Pending mode is triggered, lasting between the interval when the `d` and `w` keys are pressed.
+
+If Vim is thought of as a finite-state machine then Operator-Pending mode is a state that only accepts motion commands. This mode is activated when an operator is invoked and then nothing happens until a motion is supplied completing the operation. When Operator-Pending mode is active &lt;Esc&gt; will abort the operator and return Vim to Normal mode.
+
+There are commands in Vim that are invoked by two or more keystrokes (see `:h g`, `:h z`, `:h ctrl-w`, or `:h [`). In most of these cases the first keystroke merely acts as a prefix for the second and will not initiate Operator-Pending mode. These can be thought of namespaces that expand the number of available command mappings. Only operator commands initiate Operator-Pending mode.
+
+The reason an entire mode exists between inputting an operator and completing the action with a motion, whereas namespaced commands are an extension of Normal mode, is to allow custom mappings that initiate or target Operator-Pending mode. It allows Vim's vocabulary to be extended by the creation of custom operators and commands.
 
 [▲ Return to Sections](#sections)
 
