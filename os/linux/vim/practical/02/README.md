@@ -7,7 +7,6 @@ Programmers spend just a fraction of their time composing code. More of their ti
 * [Chunking Undos](#chunking-undos)
 * [Compose Repeatable Changes](#compose-repeatable-changes)
 * [Use Counts to Do Simple Arithmetic](#use-counts-to-do-simple-arithmethic)
-* [A Note on Number Formats](#a-note-on-number-formats)
 * [Don't Count If You Can Repeat](#dont-count-if-you-can-repeat)
 
 
@@ -124,9 +123,7 @@ For steps 1 and 2: `yyp` can be used to duplicate the target line, and `cW` can 
 
 Suppose the last line needed to be copied ten times, subtracting 180 from each successive line. Using the `180<C-x>` command the workflow becomes identical for each successive line. The keystrokes could even be recorded in a macro and then played back as many times as needed.
 
-[▲ Return to Sections](#sections)
-
-## A Note on Number Formats
+#### A Note on Number Formats
 Vim, prior to version 8.0, will interpret numbers with leading 0s to be in octal notation rather than decimal. If you attempt to run `<C-a>` on `007` for example you would get `010` which appears to be a decimal 10 but is actually an octal 8. To avoid this, the setting `set nrformats-=octal` can be added to the _vimrc_ file.
 
 As of version 8.0 of Vim, the _nrformats_ setting excludes octal by default which avoids this confusion.
@@ -152,6 +149,18 @@ For both `d2w` and `2dw`, the `u` key can be used to undo the change, returning 
 In this case, `dw.` is probably the superior option because it grants greater granularity to subsequent commands. To delete seven words either `d7w` or `d......` could be used and while `d7w` is far fewer keystrokes, it requires more of the user to count the exact number of words. If the count was incorrect and 8 words needed to be deleted, following `d7w` with a repeat or undo would not achieve the desired outcome. In this case `dw.` provides a greater level of control and granularity in subsequent commands.
 
 `dw.` in this instance is more in line with the mantra [Act, Repeat, Reverse](../01/README.md#act-repeat-reverse).
+
+#### Use a Count When It Matters
+Suppose instead the text "I have a couple of questions." needed to be changed to read "I have some more questions." This can be accomplished in the following way:
+
+| Keystrokes                | Buffer Contents                          |
+| ------------------------- | ---------------------------------------- |
+| {start}                   | I have <ins>a</ins> couple of questions. |
+| `c3w`some more&lt;Esc&gt; | I have some mor<ins>e</ins> questions.   |
+
+In this scenario it makes less sense to use the dot command. While the words "a couple of" could be removed with `dw..`, to add the new words Insert mode would have to be used. In this instance, staying in Normal mode feels more fluid and so `c3w` is preferred.
+
+These nuances in approach are a matter of personal preference and each user should determine how much they value a clean undo history and how tiresome it is to use counts.
 
 [▲ Return to Sections](#sections)
 
