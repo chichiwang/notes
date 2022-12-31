@@ -8,6 +8,7 @@ Programmers spend just a fraction of their time composing code. More of their ti
 * [Compose Repeatable Changes](#compose-repeatable-changes)
 * [Use Counts to Do Simple Arithmetic](#use-counts-to-do-simple-arithmethic)
 * [Don't Count If You Can Repeat](#dont-count-if-you-can-repeat)
+* [Combine and Conquer](#combine-and-conquer)
 
 
 ## Chunking Undos
@@ -164,5 +165,51 @@ These nuances in approach are a matter of personal preference and each user shou
 
 [▲ Return to Sections](#sections)
 
+## Combine and Conquer
+_Much of Vim's power stems from the way that operators and motions can be combined._
+
+#### Operator + motion = Action
+
+The `d{motion}` command can operate on a single character (`dl`), a complete word (`daw`), or an entire paragraph (`dap`). The reach of the command is defined by the motion. The same applies to `c{motion}`, `y{motion}`, and a handful of others. Collectively these commands are called _operators_ (see `:h operator` for the complete list).
+
+Below is a summary of some of the more common operators:
+
+| Trigger | Effect                                            |
+| ------- | ------------------------------------------------- |
+| `c`     | Change                                            |
+| `d`     | Delete                                            |
+| `y`     | Yank into register                                |
+| `g~`    | Swap case                                         |
+| `gu`    | Make lowercase                                    |
+| `gU`    | Make uppercase                                    |
+| `>`     | Shift right                                       |
+| `<`     | Shift left                                        |
+| `=`     | Autoindent                                        |
+| `!`     | Filter {motion} lines through an external program |
+
+The `g~`, `gu`, and `gU` commands are invoked by two keystrokes. The `g` can be considered to be a prefix that modifies the behavior of the subsequent keystroke (See [Meet Operator-Pending Mode](#meet-operator-pending-mode)).
+
+The combination of operators with motions forms a kind of grammar: an action is composed from an operator followed by a motion. Learning new operators and motions is learning new vocabulary in Vim. More ideas can be expressed as vocabulary grows.
+
+In the action `daw`, the `d` is a delete operator and `aw` is a motion for a full word. Knowing this: the motion `aw` can be combined with another operator `gU` in the form of `gUaw` to make an entire word uppercase. Combining the motion `ap` (a paragraph) with `gU` will form the action `gUap` to make an entire paragraph uppercase.
+
+In Vim, whenever an operator command is invoked in duplicate it acts upon the current line. `dd` will delete the current line while `>>` indents the entire line. The `gU` command, being two keystrokes, is a special case: `gUgU` can be used to uppercase an entire line, or `gUU` can be used as shorthand for this.
+
+### Extending Vim's Combinatorial Powers
+#### Custom Operators Work with Existing Motions
+The number of actions that can be performed using Vim's default set of operators and motions is vast, but these can be extended even further by rolling custom motions and operators.
+
+While the standard set of operators that ships with Vim is relatively small, it is possible to define new ones. Tim Pope's [commentary.vim plugin](https://github.com/tpope/vim-commentary) is a good example: it adds an operator for commenting and uncommenting lines of code in all languages supported by Vim. This plugin adds the operator `gc{motion}` which toggles comments for the specified lines. All motins will work with this custom operator: `gcap` will toggle commenting for the current paragraph, `gcG` will toggle commenting from the current line to the end of the file, `gcc` will toggle the current line.
+
+To learn more about creating custom operators, start by reading `:h :map-operator`.
+
+#### Custom Motions Work with Existing Operators
+Similary, Vim's standard set of motions is comprehensive but new motions and text objects can also be defined.
+
+Kana Natsuno's [textobj-entire plugin](https://github.com/kana/vim-textobj-entire) is a good example: it adds the text objects `ie` and `ae` which act on the entire file. Without the help of the plugin, to autoindent an entire file `gg=G` would be used: `gg` to move the cursor to the top of file, `=G` to autoindent to the end of file. With Kana's plugin `=ae` can be used instead and it would not matter where the cursor was in the file at the time the action was invoked.
+
+To learn more about creating custom motions, start by reading `:h omap-info`.
+
+[▲ Return to Sections](#sections)
 
 | [Previous: The Vim Way](../01/README.md) | [Table of Contents](../README.md#table-of-contents) |
