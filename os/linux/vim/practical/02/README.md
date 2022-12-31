@@ -6,6 +6,7 @@ Programmers spend just a fraction of their time composing code. More of their ti
 ## Sections
 * [Chunking Undos](#chunking-undos)
 * [Compose Repeatable Changes](#compose-repeatable-changes)
+* [Use Counts to Do Simple Arithmetic](#use-counts-to-do-simple-arithmethic)
 
 
 ## Chunking Undos
@@ -81,6 +82,46 @@ The _Delete an Entire Word_ solution utilizes a single operation: `daw` does not
 The `daw` technique imparts the most power onto subsequent dot commands and so should be considered the better approach to removing a word in this example.
 
 Making effective use of the dot command often requires some forethought. If the same small change needs to be made in a number of places, composing changes in a way that can be repeated with the dot command can be advantageous. Recognizing opportunities can take practice, but developing a habit of making changes repeatable will be more rewarding.
+
+[▲ Return to Sections](#sections)
+
+## Use Counts to Do Simple Arithmetic
+Most Normal mode commands can be executed with a count. This feature can be exploited to do simple arithmetic. Normal mode commands, when prefixed with a count, will execute the specified number of times (see `:h count`).
+
+The `<C-a>` and `<C-x>` commands perform addition and subtraction on numbers. When run without a count they increment or decrement a number by one. If prefixed by a number, however, these commands will add or subtract by any whole number:
+
+| Keystroke | Buffer Contents |
+| --------- | --------------- |
+| {start}   | <ins>5</ins>    |
+| `10<C-a>` | 1<ins>5</ins>   |
+
+If the cursor is not already positioned on a numeric digit, the `<C-a>` command will look ahead ofr a digit on the current line. If it finds one it will jump the cursor straight to that number (see `:h ctrl-a`).
+
+
+Using this snippet of CSS as example:
+
+**[normal_mode/sprite.css](../code/normal_mode/sprite.css)**
+```css
+.blog, .news { background-image: url(/sprite.png); }
+.blog { background-position: 0px 0px }
+```
+
+Suppose the following task:
+1. Duplicate the last line
+2. Replace the word "blog" with "news" on the duplicated line
+3. Change "0px" to "-180px" on the duplicated line
+
+For steps 1 and 2: `yyp` can be used to duplicate the target line, and `cW` can be used to change the first word. For step 3 one approach could be to jump to the "0px" using `f0` and then switching to Insert mode to manually change the value: `i-18<Esc>`. It would, however, be quicker just to run `180<C-x>` since it saves the step of moving the cursor into the correct position:
+
+| Keystrokes           | Buffer Contents                                                                                                                                          |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| {start}              | .blog, .news { background-image: url(/sprite.png); }</br><ins>.</ins>blog { background-position: 0px 0px }                                               |
+| `yyp`                | .blog, .news { background-image: url(/sprite.png); }</br>.blog { background-position: 0px 0px }</br><ins>.</ins>blog { background-position: 0px 0px }    |
+| `cW`.news&lt;Esc&gt; | .blog, .news { background-image: url(/sprite.png); }</br>.blog { background-position: 0px 0px }</br>.new<ins>s</ins> { background-position: 0px 0px }    |
+| `180<C-x>`           | .blog, .news { background-image: url(/sprite.png); }</br>.blog { background-position: 0px 0px }</br>.news { background-position: -18<ins>0</ins>px 0px } |
+
+Suppose the last line needed to be copied ten times, subtracting 180 from each successive line. Using the `180<C-x>` command the workflow becomes identical for each successive line. The keystrokes could even be recorded in a macro and then played back as many times as needed.
+
 
 [▲ Return to Sections](#sections)
 
