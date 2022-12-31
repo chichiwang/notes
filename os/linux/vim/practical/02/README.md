@@ -7,6 +7,7 @@ Programmers spend just a fraction of their time composing code. More of their ti
 * [Chunking Undos](#chunking-undos)
 * [Compose Repeatable Changes](#compose-repeatable-changes)
 * [Use Counts to Do Simple Arithmetic](#use-counts-to-do-simple-arithmethic)
+* [A Note on Number Formats](#a-note-on-number-formats)
 
 
 ## Chunking Undos
@@ -122,6 +123,12 @@ For steps 1 and 2: `yyp` can be used to duplicate the target line, and `cW` can 
 
 Suppose the last line needed to be copied ten times, subtracting 180 from each successive line. Using the `180<C-x>` command the workflow becomes identical for each successive line. The keystrokes could even be recorded in a macro and then played back as many times as needed.
 
+[▲ Return to Sections](#sections)
+
+## A Note on Number Formats
+Vim, prior to version 8.0, will interpret numbers with leading 0s to be in octal notation rather than decimal. If you attempt to run `<C-a>` on `007` for example you would get `010` which appears to be a decimal 10 but is actually an octal 8. To avoid this, the setting `set nrformats-=octal` can be added to the _vimrc_ file.
+
+As of version 8.0 of Vim, the _nrformats_ setting excludes octal by default which avoids this confusion.
 
 [▲ Return to Sections](#sections)
 
