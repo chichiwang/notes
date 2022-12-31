@@ -8,6 +8,7 @@ Programmers spend just a fraction of their time composing code. More of their ti
 * [Compose Repeatable Changes](#compose-repeatable-changes)
 * [Use Counts to Do Simple Arithmetic](#use-counts-to-do-simple-arithmethic)
 * [A Note on Number Formats](#a-note-on-number-formats)
+* [Don't Count If You Can Repeat](#dont-count-if-you-can-repeat)
 
 
 ## Chunking Undos
@@ -129,6 +130,28 @@ Suppose the last line needed to be copied ten times, subtracting 180 from each s
 Vim, prior to version 8.0, will interpret numbers with leading 0s to be in octal notation rather than decimal. If you attempt to run `<C-a>` on `007` for example you would get `010` which appears to be a decimal 10 but is actually an octal 8. To avoid this, the setting `set nrformats-=octal` can be added to the _vimrc_ file.
 
 As of version 8.0 of Vim, the _nrformats_ setting excludes octal by default which avoids this confusion.
+
+[▲ Return to Sections](#sections)
+
+## Don't Count If You Can Repeat
+Providing a count can minimize the number of keystrokes required to perform a certain action, but that is not always preferred. Consider the pros and cons of counting versus repeating.
+
+Suppose the buffer contains the following text:
+<pre>
+Delete <ins>m</ins>ore than one word
+</pre>
+
+From the current cursor position deleting 2 words so that the text reads "Delete one word" can be approached a number of ways: both `d2w` and `2dw` will work. With `d2w` the `d` invokes the delete command and then `2w` is provided as the motion - this could be read as "delete two words." In `2dw` the count applies to the delete command and can be read as "delete a word two times." Semantics aside, the result is the same. Another option, `dw.` can be read as "delete a word and then repeat."
+
+All three options presented require 3 keystrokes, but which is the better approach?
+
+For both `d2w` and `2dw`, the `u` key can be used to undo the change, returning both removed words to the buffer. Following either command with a dot command will delete a further two words.
+
+`dw.` is a slightly different scenario: here the change was `dw` so in order to restore two words `uu` or `2u` would have to be used. Following `dw.` with another dot command would delete just another word rather than two.
+
+In this case, `dw.` is probably the superior option because it grants greater granularity to subsequent commands. To delete seven words either `d7w` or `d......` could be used and while `d7w` is far fewer keystrokes, it requires more of the user to count the exact number of words. If the count was incorrect and 8 words needed to be deleted, following `d7w` with a repeat or undo would not achieve the desired outcome. In this case `dw.` provides a greater level of control and granularity in subsequent commands.
+
+`dw.` in this instance is more in line with the mantra [Act, Repeat, Reverse](../01/README.md#act-repeat-reverse).
 
 [▲ Return to Sections](#sections)
 
