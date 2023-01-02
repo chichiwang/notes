@@ -7,6 +7,7 @@ Replace mode is a special case for Insert mode which overwrites existing charact
 * [Make Corrections Instantly from Normal Mode](#make-corrections-instantly-from-normal-mode)
 * [Get Back to Normal Mode](#get-back-to-normal-mode)
 * [Paste from a Register Without Leaving Insert Mode](#paste-from-a-register-without-leaving-insert-mode)
+* [Tip: Remap the Caps Lock Key](#tip-remap-the-caps-lock-key)
 
 ## Make Corrections Instantly from Normal Mode
 _Besides using the backspace key there are a couple of Insert mode commands to make corrections immediately without exiting Insert mode._
@@ -71,6 +72,15 @@ The command `yt,` yanks the words "Practical Vim" into the yank register. In Ins
 The `<C-r>{register}` command is useful for pasting a few words in Insert mode. If the register contains a lot of text there will be a slight delay before the screen updates. This is because Vim inserts the text from the register as if it were being typed one character at a time. If the `textwidth` or `autoindent` options are enabled, the result may contain unwanted line breaks or extra indentation.
 
 The `<C-r><C-p>{register}` command is a bit smarter: it inserts text plainly and fixes unintended indentation (see `:h i_CTRL-R_CTRL-P`). However, this is a more complicated action.
+
+[▲ Return to Sections](#sections)
+
+## Tip: Remap the Caps Lock Key
+For Vim users the Caps Lock key is a nuisance. If Caps Lock is engaged, `k` and `j` will no longer navigate in Normal mode, but instead trigger the `K` and `J` commands (see `:h K` and `:h J`).
+
+For reasons such as this many Vim users remap the Caps Lock key to another key such as &lt;Ctrl&gt; or &lt;Esc&gt;. The caps lock key is in a useful, easy to reach position and when using Vim the &lt;Ctrl&gt; and &lt;Esc&gt; keys are far more useful.
+
+Remapping the Caps Lock key is done at the system level and the steps to do so will differ between operating systems. This change will impact the Caps Lock key system wide (however, caps lock is not a useful feature in the vast majority of cases).
 
 [▲ Return to Sections](#sections)
 
