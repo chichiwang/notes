@@ -9,6 +9,7 @@ Replace mode is a special case for Insert mode which overwrites existing charact
 * [Paste from a Register Without Leaving Insert Mode](#paste-from-a-register-without-leaving-insert-mode)
 * [Tip: Remap the Caps Lock Key](#tip-remap-the-caps-lock-key)
 * [Do Back-of-the-Envelope Calculations in Place](#do-back-of-the-envelope-calculations-in-place)
+* [Insert Unusual Characters by Character Code](#insert-unusual-characters-by-character-code)
 
 ## Make Corrections Instantly from Normal Mode
 _Besides using the backspace key there are a couple of Insert mode commands to make corrections immediately without exiting Insert mode._
@@ -107,6 +108,28 @@ Using the following example file:
 | `<C-r>=`6*35`<CR>` | 6 chairs, each costing <span>$</span>35, total <span>$</span>210<ins>&nbsp;</ins>    |
 
 The expression register is capable of much more than simple arithmetic (as will be highlighted in a later section).
+
+[▲ Return to Sections](#sections)
+
+## Insert Unusual Characters by Character Code
+_Vim can insert any character by its numeric code. This can be handy for enetering symbols that are not found on the keyboard._
+
+`<C-v>{code}` can be used to insert any character by its numeric code where {code} is the address of the desired character. Vim expects the numeric code to consist of 3 digits so, for example, the character 'A' would be inserted by `<C-v>065`.
+
+To insert a character whose numeric digit exceeds three digits (the Unicode Basic Mutilingual Plane has an address space for up to 65,535 characters) a four-digit hexadecimal code can be provided instead. The command `<C-v>u{code}` is used to do this. The _u_ preceeding the {code} is necessary in this instance.  For example: to insert an inverted question mark symbol ("¿") whose character code is 00bf enter `<C-v>u00bf`.
+
+For more information see `:h i_CTRL-V_digit`.
+
+To find the numeric code for any character in a document: place the cursor over the character and trigger the `ga` command. This outputs a message at the bottom of the screen revealing the character's code in decimal, hexadecimal, and octal notations (see `:h ga`). For the codes of characters not in a document, look up the unicode tables online.
+
+If the `<C-v>` command is followed by a nondigit key, the character represented by the key will be inserted literally. For example: if the `expandtab` option is enabled then pressing `<Tab>` will insert space characters instead of a tab character. However, pressing `<C-v><Tab>` will always insert a tab character literally, regardless of the `expandtab` option.
+
+| Keystrokes            | Effect                                                   |
+| --------------------- | -------------------------------------------------------- |
+| `<C-v>{123}`          | Insert character by 3 digit decimal code                 |
+| `<C-v>u{1234}`        | Insert character by 4 digit hexadecimal code             |
+| `<C-v>{nondigit}`     | Insert nondigit literally                                |
+| `<C-k>{char1}{char2}` | Insert character represented by `{char1}{char2}` digraph |
 
 [▲ Return to Sections](#sections)
 
