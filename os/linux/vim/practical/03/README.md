@@ -8,6 +8,7 @@ Replace mode is a special case for Insert mode which overwrites existing charact
 * [Get Back to Normal Mode](#get-back-to-normal-mode)
 * [Paste from a Register Without Leaving Insert Mode](#paste-from-a-register-without-leaving-insert-mode)
 * [Tip: Remap the Caps Lock Key](#tip-remap-the-caps-lock-key)
+* [Do Back-of-the-Envelope Calculations in Place](#do-back-of-the-envelope-calculations-in-place)
 
 ## Make Corrections Instantly from Normal Mode
 _Besides using the backspace key there are a couple of Insert mode commands to make corrections immediately without exiting Insert mode._
@@ -51,7 +52,7 @@ _Vim's yank and put operations are usually executed from Normal mode but sometim
 
 Using this example file with an unfinished excerpt of text:
 
-**[insert_mode/practical-vim.txt]**
+**[insert_mode/practical-vim.txt](../code/insert_mode/practical-vim.txt)**
 <pre lang="text">
 Practical Vim, by Drew Neil
 Read Drew Neil's
@@ -81,6 +82,31 @@ For Vim users the Caps Lock key is a nuisance. If Caps Lock is engaged, `k` and 
 For reasons such as this many Vim users remap the Caps Lock key to another key such as &lt;Ctrl&gt; or &lt;Esc&gt;. The caps lock key is in a useful, easy to reach position and when using Vim the &lt;Ctrl&gt; and &lt;Esc&gt; keys are far more useful.
 
 Remapping the Caps Lock key is done at the system level and the steps to do so will differ between operating systems. This change will impact the Caps Lock key system wide (however, caps lock is not a useful feature in the vast majority of cases).
+
+[▲ Return to Sections](#sections)
+
+## Do Back-of-the-Envelope Calculations in Place
+_The expression register allows calculations to be performed and then the result to be directly inserted into the document. This section presents one possible application of this powerful feature._
+
+Most of Vim's registers contain text either as a string of characters or as entire lines of text. The delete and yank commands set the contents of a register while the put command retrieves the contents of a register by inserting it into the document.
+
+The expression register is different: it can evaluate Vim script and return the result. This section will demonstrate how to use it like a calculator, passing it an arithmetic expression and using the return value as though it were a string of text saved in a regular register.
+
+The expression register is addressed by the = symbol. From Insert mode it can be accessed by pressing `<C-r>=`. This will open a prompt at the bottom of the screen where an expression can be entered to be evaluated. Entering an expression with `<CR>` will insert the result of the expression at the current position in the document.
+
+Using the following example file:
+
+**[insert_mode/back-of-evelope.txt](../code/insert_mode/back-of-envelope.txt)**
+<pre lang="text">
+6 chairs, each costing $35, total $
+</pre>
+
+| Keystrokes         | Buffer Contents                                                                      |
+| ------------------ | ------------------------------------------------------------------------------------ |
+| `A`                | 6 chairs, each costing <span>$</span>35, total <span>$</span><ins>&nbsp;</ins>       |
+| `<C-r>=`6*35`<CR>` | 6 chairs, each costing <span>$</span>35, total <span>$</span>210<ins>&nbsp;</ins>    |
+
+The expression register is capable of much more than simple arithmetic (as will be highlighted in a later section).
 
 [▲ Return to Sections](#sections)
 
