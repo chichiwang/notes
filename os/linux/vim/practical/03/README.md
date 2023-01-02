@@ -6,6 +6,7 @@ Replace mode is a special case for Insert mode which overwrites existing charact
 ## Sections
 * [Make Corrections Instantly from Normal Mode](#make-corrections-instantly-from-normal-mode)
 * [Get Back to Normal Mode](#get-back-to-normal-mode)
+* [Paste from a Register Without Leaving Insert Mode](#paste-from-a-register-without-leaving-insert-mode)
 
 ## Make Corrections Instantly from Normal Mode
 _Besides using the backspace key there are a couple of Insert mode commands to make corrections immediately without exiting Insert mode._
@@ -41,6 +42,35 @@ Vim novices frequently become fatigued by the constant need to switch modes but 
 Insert Normal mode is a special version of Normal mode that allows the exection of one Normal mode action before returning to Insert mode. To switch to Insert Normal mode, from Insert mode press `<C-o>` (see `:h i_CTRL-O`).
 
 One way to use this is to reposition the screen scroll while typing: `zz` will position the current line in the middle of the window. This can be triggered from Insert mode by pressing `<C-o>zz` without having to leave Insert mode allowing typing to continue uninterrupted.
+
+[▲ Return to Sections](#sections)
+
+## Paste from a Register Without Leaving Insert Mode
+_Vim's yank and put operations are usually executed from Normal mode but sometimes it is desirable to paste text into the document without leaving Insert mode._
+
+Using this example file with an unfinished excerpt of text:
+
+**[insert_mode/practical-vim.txt]**
+<pre lang="text">
+Practical Vim, by Drew Neil
+Read Drew Neil's
+</pre>
+
+The task is to complete the second line by inserting the title of the book. Since the text is already present in the first line, the operation will involve yanking it into a register and then appending it to the end of the next line in Insert mode:
+
+| Keystrokes   | Buffer Contents                                                                 |
+| ------------ | ------------------------------------------------------------------------------- |
+| `yt,`        | <ins>P</ins>ractical Vim, by Drew Neil<br/>Read Drew Neil's                     |
+| `jA`␣        | Practical Vim, by Drew Neil<br/>Read Drew Neil's <ins>&nbsp;</ins>              |
+| `<C-r>0`     | Practical Vim, by Drew Neil<br/>Read Drew Neil's Practical Vim<ins>&nbsp;</ins> |
+| .&lt;Esc&gt; | Practical Vim, by Drew Neil<br/>Read Drew Neil's Practical Vim<ins>.</ins>      |
+
+The command `yt,` yanks the words "Practical Vim" into the yank register. In Insert mode `<C-r>0` will paste the yanked text at the current cursor position. The general format of the command is `<C-r>{register}` where {register} is the address of the register to be inserted (see `:h i_CTRL-R`).
+
+#### Use <C-r>{register} for Character-wise Registers
+The `<C-r>{register}` command is useful for pasting a few words in Insert mode. If the register contains a lot of text there will be a slight delay before the screen updates. This is because Vim inserts the text from the register as if it were being typed one character at a time. If the `textwidth` or `autoindent` options are enabled, the result may contain unwanted line breaks or extra indentation.
+
+The `<C-r><C-p>{register}` command is a bit smarter: it inserts text plainly and fixes unintended indentation (see `:h i_CTRL-R_CTRL-P`). However, this is a more complicated action.
 
 [▲ Return to Sections](#sections)
 
