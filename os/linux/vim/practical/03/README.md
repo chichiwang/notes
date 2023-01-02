@@ -5,6 +5,7 @@ Replace mode is a special case for Insert mode which overwrites existing charact
 
 ## Sections
 * [Make Corrections Instantly from Normal Mode](#make-corrections-instantly-from-normal-mode)
+* [Get Back to Normal Mode](#get-back-to-normal-mode)
 
 ## Make Corrections Instantly from Normal Mode
 _Besides using the backspace key there are a couple of Insert mode commands to make corrections immediately without exiting Insert mode._
@@ -20,6 +21,26 @@ Another option in Vim is to switch to Normal mode, navigate to the start of the 
 | `<C-u>`    | Delete back to the start of the line  |
 
 These commands are not unique to Insert mode, nor to Vim itself. They can be used in Vim's command line as wel as in the bash shell.
+
+[▲ Return to Sections](#sections)
+
+## Get Back to Normal Mode
+_Insert mode is specialized for a single task: entering text. Normal mode is where a Vim user will spend most of their time. As such it is important to be able to quickly switch between Normal and Insert mode. The following are a couple of tricks to reduce the friction of mode switching._
+
+The classic method of getting back to Normal mode is to press `<Esc>`. `<C-]>` (see `:h i_CTRL-[`) can also be used to achieve the same effect.
+
+| Keystrokes | Effect                       |
+| -----------| ---------------------------- |
+| `<Esc>`    | Switch to Normal mode        |
+| `<C-[>`    | Switch to Normal mode        |
+| `<C-o>`    | Switch to Insert Normal mode |
+
+Vim novices frequently become fatigued by the constant need to switch modes but with practice it starts to feel natural. Vim provides a solution for one common scenario: the need to run a single Normal mode command while in Insert mode. This particular mode-switching friction can be resolved with _Insert Normal mode_.
+
+#### Meet Insert Normal Mode
+Insert Normal mode is a special version of Normal mode that allows the exection of one Normal mode action before returning to Insert mode. To switch to Insert Normal mode, from Insert mode press `<C-o>` (see `:h i_CTRL-O`).
+
+One way to use this is to reposition the screen scroll while typing: `zz` will position the current line in the middle of the window. This can be triggered from Insert mode by pressing `<C-o>zz` without having to leave Insert mode allowing typing to continue uninterrupted.
 
 [▲ Return to Sections](#sections)
 
