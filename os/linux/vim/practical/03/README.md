@@ -44,4 +44,4 @@ One way to use this is to reposition the screen scroll while typing: `zz` will p
 
 [▲ Return to Sections](#sections)
 
-| [Normal Mode](../02/README.md) | [Table of Contents](../README.md#table-of-contents) |
+| [Previous: 02 - Normal Mode](../02/README.md) | [Table of Contents](../README.md#table-of-contents) |

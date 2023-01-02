@@ -226,4 +226,4 @@ In all of the examples in this chapter ([Don't Repeat Yourself](#dont-repeat-you
 
 [▲ Return to Sections](#sections)
 
-| [Table of Contents](../README.md#table-of-contents) |
+| [Table of Contents](../README.md#table-of-contents) | [Next: 02 - Normal Mode](../02/README.md) |
