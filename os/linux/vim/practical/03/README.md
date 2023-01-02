@@ -11,6 +11,7 @@ Replace mode is a special case for Insert mode which overwrites existing charact
 * [Do Back-of-the-Envelope Calculations in Place](#do-back-of-the-envelope-calculations-in-place)
 * [Insert Unusual Characters by Character Code](#insert-unusual-characters-by-character-code)
 * [Insert Unusual Characters by Digraph](#insert-unusual-characters-by-digraph)
+* [Overwrite Existing Text with Replace Mode](#overwrite-existing-text-with-replace-mode)
 
 ## Make Corrections Instantly from Normal Mode
 _Besides using the backspace key there are a couple of Insert mode commands to make corrections immediately without exiting Insert mode._
@@ -150,6 +151,35 @@ The character pairs that make up a digraph are chosen to be descriptive, making 
 | 34       | ¾         |
 
 The default set of digraphs that ship with Vim follow certain conventions summarized under `:h digraphs-default`. A list of available digraphs can be viewed by running `:digraphs` but the output of this command is difficult to read. A more usable list can be found by looking at `:h digraph-table`.
+
+[▲ Return to Sections](#sections)
+
+## Overwrite Existing Text with Replace Mode
+_Replace mode is identical to Insert mode except that it overwrites existing text in the document._
+
+Using the following file as example:
+
+**[insert_mode/replace.txt](../code/insert_mode/replace.txt)**
+<pre lang="text">
+Typing in Insert mode extends the line. But in Replace mode the line length doesn't change.
+</pre>
+
+The operation to be performed is to combine the two sentences into a single sentence by changing the period to a comma and downcasing the "B" in the word "But":
+
+| Keystrokes        | Buffer Contents                                                                                        |
+| ----------------- | ------------------------------------------------------------------------------------------------------ |
+| {start}           | <ins>T</ins>yping in Insert mode extends the line. But in Replace mode the line length doesn't change. |
+| `f.`              | Typing in Insert mode extends the line<ins>.</ins> But in Replace mode the line length doesn't change. |
+| `R`,␣b&lt;Esc&gt; | Typing in Insert mode extends the line, <ins>b</ins>ut in Replace mode the line doesn't change.        |
+
+From Normal mode press `R` to engage Replace mode. Press `<Esc>` to leave Replace mode and return to Normal mode. The `<Insert>` key can also be used to toggle between Insert mode and Replace mode.
+
+#### Overwrite Tab Characters with Virtual Replace Mode
+Some characters can complicate matters in Replace mode. Take the tab character as example: tab is represented by a single character in the file but onscreen it expands to fill several columns as defined by the `tabstop` setting (see `:h tabstop`). If the cursor is over a tab stop in Replace mode, the next character typed would overwrite the tab character. This will appear to replace several characters with one causing a potentially drastic reduction in the length of the current line.
+
+Vim has a variant of Replace mode: Virtual Replace mode is triggered with `gR` and treats the tab character as though it consists of spaces instead. In Virtual Replace mode, characters of screen real estate are overwritten instead of the actual characters to be written to file. This tends to produce fewer surprises so Virtual Replace mode is recommended over Replace mode whenever possible.
+
+From Normal mode `r{char}` (see `:h r`) and `gr{char}` (see `:h gr`) can also be used to replace a single character before switching straight back to Normal mode.
 
 [▲ Return to Sections](#sections)
 
