@@ -26,6 +26,7 @@ Date: WIP
 
 ### Chapters
 * [01 - The Vim Way](./01/README.md)
+#### Part I: Modes
 * [02 - Normal Mode](./02/README.md)
 * [03 - Insert Mode](./03/README.md)
 
