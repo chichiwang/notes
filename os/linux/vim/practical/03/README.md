@@ -10,6 +10,7 @@ Replace mode is a special case for Insert mode which overwrites existing charact
 * [Tip: Remap the Caps Lock Key](#tip-remap-the-caps-lock-key)
 * [Do Back-of-the-Envelope Calculations in Place](#do-back-of-the-envelope-calculations-in-place)
 * [Insert Unusual Characters by Character Code](#insert-unusual-characters-by-character-code)
+* [Insert Unusual Characters by Digraph](#insert-unusual-characters-by-digraph)
 
 ## Make Corrections Instantly from Normal Mode
 _Besides using the backspace key there are a couple of Insert mode commands to make corrections immediately without exiting Insert mode._
@@ -130,6 +131,25 @@ If the `<C-v>` command is followed by a nondigit key, the character represented 
 | `<C-v>u{1234}`        | Insert character by 4 digit hexadecimal code             |
 | `<C-v>{nondigit}`     | Insert nondigit literally                                |
 | `<C-k>{char1}{char2}` | Insert character represented by `{char1}{char2}` digraph |
+
+[▲ Return to Sections](#sections)
+
+## Insert Unusual Characters by Digraph
+_Numeric codes can be difficult to remember and awkward to type. Unusual characters can also be inserted as digraphs: pairs of characters that are designed to be easier to remember._
+
+From Insert mode, typing `<C-k>{char1}{char2}` will insert a character by its digraph. For example, to digraph for the "¿" character is ?I so typing `<C-k>?I` while in Insert mode will provide the inverted question mark.
+
+The character pairs that make up a digraph are chosen to be descriptive, making them easier to remember or guess. For a few examples:
+
+| Digraph  | Character |
+| -------- | --------- |
+| &lt;&lt; | «         |
+| &gt;&gt; | »         |
+| 12       | ½         |
+| 14       | ¼         |
+| 34       | ¾         |
+
+The default set of digraphs that ship with Vim follow certain conventions summarized under `:h digraphs-default`. A list of available digraphs can be viewed by running `:digraphs` but the output of this command is difficult to read. A more usable list can be found by looking at `:h digraph-table`.
 
 [▲ Return to Sections](#sections)
 
