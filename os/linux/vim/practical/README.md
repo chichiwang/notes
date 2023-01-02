@@ -27,6 +27,7 @@ Date: WIP
 ### Chapters
 * [01 - The Vim Way](./01/README.md)
 * [02 - Normal Mode](./02/README.md)
+* [03 - Insert Mode](./03/README.md)
 
 ## Notation
 Special notation will be used in this book to denote key-presses in Vim. The notation used will be described below.

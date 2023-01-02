@@ -224,4 +224,4 @@ The reason an entire mode exists between inputting an operator and completing th
 
 [▲ Return to Sections](#sections)
 
-| [Previous: The Vim Way](../01/README.md) | [Table of Contents](../README.md#table-of-contents) |
+| [Previous: The Vim Way](../01/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Insert Mode](../03/README.md) |
