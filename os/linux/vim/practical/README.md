@@ -29,6 +29,7 @@ Date: WIP
 #### Part I: Modes
 * [02 - Normal Mode](./02/README.md)
 * [03 - Insert Mode](./03/README.md)
+* [03 - Visual Mode](./04/README.md)
 
 ## Notation
 Special notation will be used in this book to denote key-presses in Vim. The notation used will be described below.

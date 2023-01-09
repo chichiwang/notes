@@ -183,4 +183,4 @@ From Normal mode `r{char}` (see `:h r`) and `gr{char}` (see `:h gr`) can also be
 
 [▲ Return to Sections](#sections)
 
-| [Previous: 02 - Normal Mode](../02/README.md) | [Table of Contents](../README.md#table-of-contents) |
+| [Previous: 02 - Normal Mode](../02/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: 04 - Visual Mode](../04/README.md) |
