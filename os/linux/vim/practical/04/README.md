@@ -9,6 +9,7 @@ Visual-Block mode allows operations on rectangular columns of text. There are ma
 * [Grok Visual Mode](#grok-visual-mode)
 * [Meet Select Mode](#meet-select-mode)
 * [Define a Visual Selection](#define-a-visual-selection)
+* [Repeat Line-Wise Visual Commands](#repeat-line-wise-visual-commands)
 
 ## Grok Visual Mode
 _Visual mode allows the user to select a range of text and then operate upon it. Vim's perspective of selecting text is different than other text editors._
@@ -70,6 +71,39 @@ The _range_ of a Visual mode selection is marked by two ends: one end remains fi
 | `vbb`      | Select from **<ins>h</ins>ere to h**ere    |
 | `o`        | Select from <b>here to <ins>h</ins></b>ere |
 | `e`        | Select from **here to her<ins>e</ins>**    |
+
+[▲ Return to Sections](#sections)
+
+## Repeat Line-Wise Visual Commands
+_When the dot command is used to repeat a change made to a visual selection, it repeats the change on the same range of text._
+
+After executing a command from Visual mode Vim returns to Normal mode and the previously selected range of text is unselected. What if the same operation needs to be repeated on the same range of text?
+
+Using the following as example:
+
+**[visual_mode/fibonacci-malformed.py](../code/visual_mode/fibonacci-malformed.py)**
+<pre lang="python">
+def fib(n):
+    a, b = 0, 1
+    while a < n:
+print a,
+a, b = b, a+b
+fib(42)
+</pre>
+
+This code sample uses four spaces per indentation. In order to match this style so that the `<` and `>` commands work correctly, the `shiftwidth` and `softtabstop` options should be set to `4` and the `expandtab` option should be enabled. The following command will set the correct options: `:set shiftwidth=4 softtabstop=4 expandtab`.
+
+To fix the indentation in the above code sample, the two lines below the _while_ command should be indented a further two levels. To fix this visually select the two offending lines and use `>` to indent them one level. After using this command, however, Vim will drop back into Normal mode, requiring the operation to be repeated. One way to do this is to use `gv` to reselect the same lines and use `>` again. However, the dot command is a more elegant approach:
+
+| Keystrokes | Buffer Contents                                                                                                                                                                                                                                    |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| {start}    | def fib(n):<br/>&nbsp;&nbsp;&nbsp;&nbsp;a, b = 0, 1<br/>&nbsp;&nbsp;&nbsp;&nbsp;while a < n;<br/><ins>p</ins>rint a,<br/>a, b = b, a+b<br/>fib(42)                                                                                                 |
+| `Vj`       | def fib(n):<br/>&nbsp;&nbsp;&nbsp;&nbsp;a, b = 0, 1<br/>&nbsp;&nbsp;&nbsp;&nbsp;while a < n;<br/><b>print a,<br/><ins>a</ins>, b = b, a+b</b><br/>fib(42)                                                                                          |
+| `>.`       | def fib(n):<br/>&nbsp;&nbsp;&nbsp;&nbsp;a, b = 0, 1<br/>&nbsp;&nbsp;&nbsp;&nbsp;while a < n;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ins>p</ins>rint a,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a, b = b, a+b<br/>fib(42) |
+
+Another option would be to run `2>` from Visual mode to begin with, however the dot command provides instant visual feedback and granular control (hitting the dot command again will indent even further, `u` will undo a single indent instead of multiples).
+
+When the dot command is used to repeat a Visual mode command it acts on the same amount of text as was marked by the most recent visual selection. This can be beneficial when operating line-wise visual selections but can have unexpected results when operating character-wise selections.
 
 [▲ Return to Sections](#sections)
 
