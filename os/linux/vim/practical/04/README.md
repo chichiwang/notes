@@ -10,6 +10,7 @@ Visual-Block mode allows operations on rectangular columns of text. There are ma
 * [Meet Select Mode](#meet-select-mode)
 * [Define a Visual Selection](#define-a-visual-selection)
 * [Repeat Line-Wise Visual Commands](#repeat-line-wise-visual-commands)
+* [Prefer Operators to Visual Commands Where Possible](#prefer-operators-to-visual-commands-where-possible)
 
 ## Grok Visual Mode
 _Visual mode allows the user to select a range of text and then operate upon it. Vim's perspective of selecting text is different than other text editors._
@@ -104,6 +105,59 @@ To fix the indentation in the above code sample, the two lines below the _while_
 Another option would be to run `2>` from Visual mode to begin with, however the dot command provides instant visual feedback and granular control (hitting the dot command again will indent even further, `u` will undo a single indent instead of multiples).
 
 When the dot command is used to repeat a Visual mode command it acts on the same amount of text as was marked by the most recent visual selection. This can be beneficial when operating line-wise visual selections but can have unexpected results when operating character-wise selections.
+
+[▲ Return to Sections](#sections)
+
+## Prefer Operators to Visual Commands Where Possible
+
+Visual mode's weakness is that it doesn't always play well with the dot command. It is a good idea to use Normal mode operators when appropriate.
+
+Using the following as an example:
+
+**[visual_mode/list-of-links.html](../code/visual_mode/list-of-links.html)**
+```html
+<a href="#">one</a>
+<a href="#">two</a>
+<a href="#">three</a>
+```
+
+Suppose the challenge is to uppercase the text inside the anchor tags. The inner contents of a tag could be selected with `vit` which can be read as: _visually_ select _inside_ the _tag_.
+
+#### Using a Visual Operator
+
+In Visual mode a selection is made to operate on. In this case the `U` command could be used to convert selected characters to uppercase (`:h v_U`).
+
+| Keystrokes | Buffer Contents                                                                                                               |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| {start}    | <ins>&lt;</ins>a href="#"&gt;one&lt;/a&gt;<br />&lt;a href="#"&gt;two&lt;/a&gt;<br />&lt;a href="#"&gt;three&lt;/a&gt;        |
+| `vit`      | &lt;a href="#"&gt;<b>on<ins>e</ins></b>&lt;/a&gt;<br />&lt;a href="#"&gt;two&lt;/a&gt;<br />&lt;a href="#"&gt;three&lt;/a&gt; |
+| `U`        | &lt;a href="#"&gt;<ins>O</ins>NE&lt;/a&gt;<br />&lt;a href="#"&gt;two&lt;/a&gt;<br />&lt;a href="#"&gt;three&lt;/a&gt;        |
+
+
+After having transformed the first line, the dot command could be used to attempt to transform the next two lines. Running `j.` advances the cursors to the next line and then repeats the last change. After doing this for each line the text reads:
+
+```html
+<a href="#">ONE</a>
+<a href="#">TWO</a>
+<a href="#">THRee</a>
+```
+
+What happens is that when a Visual mode command is repeated, it affects the same range of text (see `:h visual-repeat`). The command is only repeated for a three-lettered word in the above example.
+
+#### Using a Normal Operator
+
+The Visual mode command `U` has a Normal mode equivalent: `gU{motion}` (`:h gU`). Using this command in Normal mode the subsequent changes can be made using the dot command:
+
+| Keystrokes | Buffer Contents                                                                                                               |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| {start}    | <ins>&lt;</ins>a href="#"&gt;one&lt;/a&gt;<br />&lt;a href="#"&gt;two&lt;/a&gt;<br />&lt;a href="#"&gt;three&lt;/a&gt;        |
+| `gUit`     | &lt;a href="#"&gt;<ins>O</ins>NE&lt;/a&gt;<br />&lt;a href="#"&gt;two&lt;/a&gt;<br />&lt;a href="#"&gt;three&lt;/a&gt;        |
+| `j.`       | &lt;a href="#"&gt;ONE&lt;/a&gt;<br />&lt;a href="#"&gt;<ins>T</ins>WO&lt;/a&gt;<br />&lt;a href="#"&gt;three&lt;/a&gt;        |
+| `j.`       | &lt;a href="#"&gt;ONE&lt;/a&gt;<br />&lt;a href="#"&gt;TWO&lt;/a&gt;<br />&lt;a href="#"&gt;<ins>T</ins>HREE&lt;/a&gt;        |
+
+The underlying semantics of `vitU` and `gUit` are different. The four keystrokes of `vitU` are considered two separate commands: `vit` to make the selection and `U` to transform the selection. `gUit`, on the other hand, can be considered a single command comprised of an opeartor (`gU`) followed by a motion (`it`).
+
+In order to set up the dot command so that it repeats a useful operation it is better to stay out of Visual mode. **Prefer operator commands over their Visual mode equivalents when working through a repetitive set of changes**. Visual mode is perfectly adequate for one-off changes and for modifying a range of text whose structure is difficult to trace.
 
 [▲ Return to Sections](#sections)
 
