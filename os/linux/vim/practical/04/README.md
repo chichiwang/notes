@@ -11,6 +11,7 @@ Visual-Block mode allows operations on rectangular columns of text. There are ma
 * [Define a Visual Selection](#define-a-visual-selection)
 * [Repeat Line-Wise Visual Commands](#repeat-line-wise-visual-commands)
 * [Prefer Operators to Visual Commands Where Possible](#prefer-operators-to-visual-commands-where-possible)
+* [Edit Tablular Data with Visual-Block Mode](#edit-tablular-data-with-visual-block-mode)
 
 ## Grok Visual Mode
 _Visual mode allows the user to select a range of text and then operate upon it. Vim's perspective of selecting text is different than other text editors._
@@ -158,6 +159,42 @@ The Visual mode command `U` has a Normal mode equivalent: `gU{motion}` (`:h gU`)
 The underlying semantics of `vitU` and `gUit` are different. The four keystrokes of `vitU` are considered two separate commands: `vit` to make the selection and `U` to transform the selection. `gUit`, on the other hand, can be considered a single command comprised of an opeartor (`gU`) followed by a motion (`it`).
 
 In order to set up the dot command so that it repeats a useful operation it is better to stay out of Visual mode. **Prefer operator commands over their Visual mode equivalents when working through a repetitive set of changes**. Visual mode is perfectly adequate for one-off changes and for modifying a range of text whose structure is difficult to trace.
+
+[▲ Return to Sections](#sections)
+
+## Edit Tablular Data with Visual-Block Mode
+
+Vim provides the capability to edit columns of text through its Visual-Block mode. Using the following as example:
+
+**[visual_mode/chapter-table.txt](../code/visual_mode/chapter-table.txt)**
+<pre lang="text">
+Chapter            Page
+Normal mode          15
+Insert mode          31
+Visual mode          44
+</pre>
+
+Visual-Block mode can be used to perform the following operations on this text:
+1. Reduce the spacing between the two columns.
+2. Separate the two columns of text with a pipe character to make it look more like a table.
+
+The steps to accomplish this are:
+
+| Keystrokes   | Buffer Contents                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| {start}      | Chapter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ins>&nbsp;&nbsp;</ins>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Page<br />Normal mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15<br />Insert mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;31<br />Visual mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;44 |
+| `<C-v>3j`    | Chapter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9617;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Page<br />Normal mode&nbsp;&nbsp;&nbsp;&#9617;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15<br />Insert mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9617;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;31<br />Visual mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ins>&nbsp;&nbsp;</ins>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;44                                  |
+| `x...`       | Chapter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ins>&nbsp;&nbsp;</ins>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Page<br />Normal mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15<br />Insert mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;31<br />Visual mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;44                                                                                                                         |
+| `gv`         | Chapter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9617;&nbsp;&nbsp;&nbsp;&nbsp;Page<br />Normal mode&nbsp;&nbsp;&nbsp;&nbsp;&#9617;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15<br />Insert mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9617;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;31<br />Visual mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ins>&nbsp;&nbsp;</ins>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;44                                                                                                                                                          |
+| `r\|`         | Chapter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ins>&nbsp;\|&nbsp;</ins>&nbsp;&nbsp;&nbsp;Page<br />Normal mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15<br />Insert mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;31<br />Visual mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;44                                                                                                                                                    |
+| `yyp`        | Chapter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;&nbsp;Page<br /><ins>C</ins>hapter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;&nbsp;Page<br />Normal mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15<br />Insert mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;31<br />Visual mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;44              |
+| `Vr-`        | Chapter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;&nbsp;Page<br /><ins>-</ins>--------------------------------<br />Normal mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15<br />Insert mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;31<br />Visual mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;44                                                                                                          |
+
+`<C-v>` is used to engage Visual-Block mode followed by the motion `3j` to move the selection down the column 3 lines. `x` then deletes the selected column and the dot command repeats that operation. This is repeated until the spacing is not so excessive.
+
+Rather than using the dot command, expanding the column selection by moving the cursor two or three characters to the right could have also worked. Operating one column at a time has the advantage of showing each change, however.
+
+The `gv` command is then used to reselect the last visual selection and `r\|` will replace each character of the selection with the pipe character. `yyp` is then used to duplicate the selected line and `Vr-` is used to replace every character in the line with a dash.
 
 [▲ Return to Sections](#sections)
 
