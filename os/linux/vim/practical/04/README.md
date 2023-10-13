@@ -246,6 +246,13 @@ The goal is to append a semicolon to the end of each line. This was accomplished
 
 After engaging Visual-Block mode the selection is extended to the end of each line with `$`. In this context Vim understands the selection needs to extend to the end of each line the selection occupies. This allows breaking free of the rectangular constraint creating a selection that traces the ragged right edges of the text.
 
+#### Vim's Conventions for "i" and "a" Keys
+The `i` and `a` commands are both conventions in Vim for switching between Normal and Insert modes. `i` positions the cursor in front of the current character, and `a` positions the cursor after the current character. The `I` and `A` commands behave similarly - they position the cursor at the start or end of the current line.
+
+Vim follows similar conventions for switching from Visual-Block mode to Insert mode: `I` and `A` will place the cursor at the beginning or end of the current selection.
+
+In Visual and Operator-Pending modes the `i` and `a` keys follow a different convention: they form the first half of a _text object_. These are covered in greater depth in a later chapter.
+
 [▲ Return to Sections](#sections)
 
 | [Previous: 03 - Insert Mode](../03/README.md) | [Table of Contents](../README.md#table-of-contents) |
