@@ -12,6 +12,7 @@ Visual-Block mode allows operations on rectangular columns of text. There are ma
 * [Repeat Line-Wise Visual Commands](#repeat-line-wise-visual-commands)
 * [Prefer Operators to Visual Commands Where Possible](#prefer-operators-to-visual-commands-where-possible)
 * [Edit Tablular Data with Visual-Block Mode](#edit-tablular-data-with-visual-block-mode)
+* [Change Columns of Text](#change-columns-of-text)
 
 ## Grok Visual Mode
 _Visual mode allows the user to select a range of text and then operate upon it. Vim's perspective of selecting text is different than other text editors._
@@ -110,8 +111,7 @@ When the dot command is used to repeat a Visual mode command it acts on the same
 [▲ Return to Sections](#sections)
 
 ## Prefer Operators to Visual Commands Where Possible
-
-Visual mode's weakness is that it doesn't always play well with the dot command. It is a good idea to use Normal mode operators when appropriate.
+_Visual mode's weakness is that it doesn't always play well with the dot command. It is a good idea to use Normal mode operators when appropriate._
 
 Using the following as an example:
 
@@ -195,6 +195,30 @@ The steps to accomplish this are:
 Rather than using the dot command, expanding the column selection by moving the cursor two or three characters to the right could have also worked. Operating one column at a time has the advantage of showing each change, however.
 
 The `gv` command is then used to reselect the last visual selection and `r\|` will replace each character of the selection with the pipe character. `yyp` is then used to duplicate the selected line and `Vr-` is used to replace every character in the line with a dash.
+
+[▲ Return to Sections](#sections)
+
+## Change Columns of Text
+_Visual-Block mode can be used to insert text into several lines simultaneously._
+
+Using the following as example:
+
+**[visual_mode/sprite.css](../code/visual_mode/sprite.css)**
+<pre lang="css">
+li.one   a{ background-image: url('/images/sprite.png'); }
+li.two   a{ background-image: url('/images/sprite.png'); }
+li.three a{ background-image: url('/images/sprite.png'); }
+</pre>
+
+Supposing that the `sprite.png` file is moved from the `/images` directory to a `/components` directory. This operation can be accomplished using Visual-Block mode by selecting the columns of text to change and then entering Insert mode to change the text. While in Insert mode the text updates will only appear in the top-left most area of the selection, but will update all lines upon pressing `<Esc>` and returning to Normal mode:
+
+| Keystrokes                          | Buffer Contents                                                                                                                                                                                       |
+| ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| {start}<br /><br />_Normal mode_    | li.one&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('/<ins>i</ins>mages/sprite.png'); }<br />li.two&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('/images/sprite.png'); }<br />li.three&nbsp;&nbsp;a{ background-image: url('/images/sprite.png'); } |
+| `<C-v>jje`<br /><br />_Visual mode_ | li.one&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('/<b>images</b>/sprite.png'); }<br />li.two&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('/<b>images</b>/sprite.png'); }<br />li.three&nbsp;&nbsp;a{ background-image: url('/<b>image<ins>s</ins></b>/sprite.png'); } |
+| `c`<br /><br />_Insert mode_ | li.one&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('/<ins>/</ins>sprite.png'); }<br />li.two&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('//sprite.png'); }<br />li.three&nbsp;&nbsp;a{ background-image: url('//sprite.png'); } |
+| components<br /><br />_Insert mode_ | li.one&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('/components<ins>/</ins>sprite.png'); }<br />li.two&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('//sprite.png'); }<br />li.three&nbsp;&nbsp;a{ background-image: url('//sprite.png'); } |
+| `<Esc>`<br /><br />_Normal mode_ | li.one&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('/components<ins>/</ins>sprite.png'); }<br />li.two&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('/components/sprite.png'); }<br />li.three&nbsp;&nbsp;a{ background-image: url('/components/sprite.png'); } |
 
 [▲ Return to Sections](#sections)
 
