@@ -13,6 +13,7 @@ Visual-Block mode allows operations on rectangular columns of text. There are ma
 * [Prefer Operators to Visual Commands Where Possible](#prefer-operators-to-visual-commands-where-possible)
 * [Edit Tablular Data with Visual-Block Mode](#edit-tablular-data-with-visual-block-mode)
 * [Change Columns of Text](#change-columns-of-text)
+* [Append After a Ragged Visual Block](#append-after-a-ragged-visual-block)
 
 ## Grok Visual Mode
 _Visual mode allows the user to select a range of text and then operate upon it. Vim's perspective of selecting text is different than other text editors._
@@ -212,13 +213,38 @@ li.three a{ background-image: url('/images/sprite.png'); }
 
 Supposing that the `sprite.png` file is moved from the `/images` directory to a `/components` directory. This operation can be accomplished using Visual-Block mode by selecting the columns of text to change and then entering Insert mode to change the text. While in Insert mode the text updates will only appear in the top-left most area of the selection, but will update all lines upon pressing `<Esc>` and returning to Normal mode:
 
-| Keystrokes                          | Buffer Contents                                                                                                                                                                                       |
-| ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {start}<br /><br />_Normal mode_    | li.one&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('/<ins>i</ins>mages/sprite.png'); }<br />li.two&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('/images/sprite.png'); }<br />li.three&nbsp;&nbsp;a{ background-image: url('/images/sprite.png'); } |
+| Keystrokes                          | Buffer Contents                                                                                                                                                                                                                                                                             |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| {start}<br /><br />_Normal mode_    | li.one&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('/<ins>i</ins>mages/sprite.png'); }<br />li.two&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('/images/sprite.png'); }<br />li.three&nbsp;&nbsp;a{ background-image: url('/images/sprite.png'); }                      |
 | `<C-v>jje`<br /><br />_Visual mode_ | li.one&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('/<b>images</b>/sprite.png'); }<br />li.two&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('/<b>images</b>/sprite.png'); }<br />li.three&nbsp;&nbsp;a{ background-image: url('/<b>image<ins>s</ins></b>/sprite.png'); } |
-| `c`<br /><br />_Insert mode_ | li.one&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('/<ins>/</ins>sprite.png'); }<br />li.two&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('//sprite.png'); }<br />li.three&nbsp;&nbsp;a{ background-image: url('//sprite.png'); } |
-| components<br /><br />_Insert mode_ | li.one&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('/components<ins>/</ins>sprite.png'); }<br />li.two&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('//sprite.png'); }<br />li.three&nbsp;&nbsp;a{ background-image: url('//sprite.png'); } |
-| `<Esc>`<br /><br />_Normal mode_ | li.one&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('/components<ins>/</ins>sprite.png'); }<br />li.two&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('/components/sprite.png'); }<br />li.three&nbsp;&nbsp;a{ background-image: url('/components/sprite.png'); } |
+| `c`<br /><br />_Insert mode_        | li.one&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('/<ins>/</ins>sprite.png'); }<br />li.two&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('//sprite.png'); }<br />li.three&nbsp;&nbsp;a{ background-image: url('//sprite.png'); }                                        |
+| components<br /><br />_Insert mode_ | li.one&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('/components<ins>/</ins>sprite.png'); }<br />li.two&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('//sprite.png'); }<br />li.three&nbsp;&nbsp;a{ background-image: url('//sprite.png'); }                              |
+| `<Esc>`<br /><br />_Normal mode_    | li.one&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('/components<ins>/</ins>sprite.png'); }<br />li.two&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{ background-image: url('/components/sprite.png'); }<br />li.three&nbsp;&nbsp;a{ background-image: url('/components/sprite.png'); }          |
+
+[▲ Return to Sections](#sections)
+
+## Append After a Ragged Visual Block
+_Visual-Block mode is great for operating on rectangular blocks of text such as lines and columns, but it is not confined to rectangular regions of text._
+
+Using the following snippet of JavaScript as example:
+
+**[the_vim_way/2_foo_bar.js](../code/the_vim_way/2_foo_bar.js)**
+```js
+var foo = 1
+var bar = 'a'
+var foobar = foo + bar
+```
+
+The goal is to append a semicolon to the end of each line. This was accomplished in [The Vim Way: Don't Repeat Yourself](../01/README.md#dont-repeat-yourself) using the dot command. The same task can also be accomplished with Visual-Block mode:
+
+| Keystrokes                           | Buffer Contents                                                                                       |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| {start}<br /><br />_Normal mode_     | var foo = <ins>1</ins><br/>var bar = 'a'<br />var foobar = foo + bar                                  |
+| `<C-v>jj$`<br /><br />_Visual-Block_ | var foo = <b>1</b><br/>var bar = <b>'a'</b><br />var foobar<b> = foo + bar</b><ins>&nbsp;&nbsp;</ins> |
+| `A`;<br /><br />_Insert mode_        | var foo = 1;<ins>&nbsp;&nbsp;</ins><br/>var bar = 'a'<br />var foobar = foo + bar                     |
+| `<Esc>`<br /><br />_Normal mode_     | var foo = <ins>1</ins>;<br/>var bar = 'a';<br />var foobar = foo + bar;                               |
+
+After engaging Visual-Block mode the selection is extended to the end of each line with `$`. In this context Vim understands the selection needs to extend to the end of each line the selection occupies. This allows breaking free of the rectangular constraint creating a selection that traces the ragged right edges of the text.
 
 [▲ Return to Sections](#sections)
 
