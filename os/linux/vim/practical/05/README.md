@@ -41,6 +41,9 @@ In Command-Line mode most button presses simply enter a character. Control key c
 
 Some commands are shared with Insert mode: `<C-w>` and `<C-u>` delete backward to the start of the previous word or start of the line. `<C-v>` or `<C-k>` are used to insert characters not found on the keyboard. `<C-r>{register}` is used to insert the contents of any register at the command line.
 
+#### Ex-Commands Strike Far and Wide
+There are situations where the same changes can be made faster with Ex commands than with Normal mode. Normal mode commands tend to act on the current character or current line whereas Ex commands can be executed anywhere without moving the cursor. Ex commands can also be executed across many lines at the same time.
+
 [▲ Return to Sections](#sections)
 
 | [Previous: 04 - Visual Mode](../04/README.md) | [Table of Contents](../README.md#table-of-contents) |
