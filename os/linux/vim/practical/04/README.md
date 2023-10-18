@@ -255,4 +255,4 @@ In Visual and Operator-Pending modes the `i` and `a` keys follow a different con
 
 [▲ Return to Sections](#sections)
 
-| [Previous: 03 - Insert Mode](../03/README.md) | [Table of Contents](../README.md#table-of-contents) |
+| [Previous: 03 - Insert Mode](../03/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: 05 - Command-Line Mode](../05/README.md) |
