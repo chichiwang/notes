@@ -36,6 +36,11 @@ ed went through several generations of improvements including em ("editor for mo
 
 Vim stands for _vi improved_. `:h vi-differences` lists the Vim features that are unavailable in vi.
 
+#### Special Keys in Vim's Command-Line Mode
+In Command-Line mode most button presses simply enter a character. Control key chords can be used to trigger commands.
+
+Some commands are shared with Insert mode: `<C-w>` and `<C-u>` delete backward to the start of the previous word or start of the line. `<C-v>` or `<C-k>` are used to insert characters not found on the keyboard. `<C-r>{register}` is used to insert the contents of any register at the command line.
+
 [▲ Return to Sections](#sections)
 
 | [Previous: 04 - Visual Mode](../04/README.md) | [Table of Contents](../README.md#table-of-contents) |
