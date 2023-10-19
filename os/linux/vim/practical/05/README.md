@@ -126,6 +126,31 @@ The `%` symbol represents all of the lines in the current file:
 
 This is the equivalent of `:1,$p`. Using the `:%` shorthand with the `:substitute` command is common :`:%s/Practical/Pragmatic/`. That command would replace the first occurence of "Practical" with "Pragmatic" on every line of the file.
 
+#### Specify a Range of Lines by Visual Selection
+Instead of addressing a range of lines by number a visual selection could be used instead. Using the command `2G` followed by `VG` would make the following visual selection:
+
+<pre lang="text">
+&lt;!DOCTYPE html&gt;
+<b>&lt;html&gt;
+  &lt;head&gt;&lt;title&gt;Practical Vim&lt;/title&gt;&lt;/head&gt;
+  &lt;body&gt;&lt;h1&gt;Practical Vim&lt;/h1&gt;&lt;/body&gt;
+&lt;/html&gt;</b>
+</pre>
+
+Pressing the `:` key after making the selection will prepopulate the command-line prompt with the range `'<,'>`. This is a range standing for the visual selection. Specifying the Ex command using this range will execute it on every selected line:
+
+```
+=> :'<,'>p
+<= 2 <html>
+   3   <head><title>Practical Vim</title></head>
+   4   <body><h1>Practical Vim</h1></body>
+   5 </html>
+```
+
+This method of selecting a range can be useful if the `:substitute` command needs to be run on a subset of the current file.
+
+`'<` and `'>` are marks that stand for the first and last lines of a visual selection. These marks persist even after leaving Visual mode. Running `:'<,'>p` from Normal mode will always act on the lines that most recently formed a Visual mode selection.
+
 [▲ Return to Sections](#sections)
 
 | [Previous: 04 - Visual Mode](../04/README.md) | [Table of Contents](../README.md#table-of-contents) |
