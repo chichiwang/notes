@@ -89,6 +89,43 @@ In the above example `:p` is the abbreviated form or `:print`. Instead of splitt
 
 The above command moves the cursor to line 3 and then echoes the contents of that line. To move the cursor to line 3 and delete the entire line use `:3d` instead. To achieve the same result in Normal mode two distinct commands would need to be used: `3G` followed by `dd`.
 
+#### Specify a Range of Lines by Address
+The above section shows how to specify an address as a single line number, but a range of lines can also be specified:
+
+```
+=> 2,5p
+<= 2 <html>
+   3   <head><title>Practical Vim</title></head>
+   4   <body><h1>Practical Vim</h1></body>
+   5 </html>
+```
+
+This prints each line from 2 to 5, inclusive. After running this command the cursor will be placed on line 5. In general a range takes the form `:{start},{end}`. Both `{start}` and `{end}` are addresses. So far the examples have used line numbers for addresses, but a pattern or a mark could also be used.
+
+The `.` symbol is used as an address representing the current line. It is easy to compose a range representing everything from the current line to the end of the file:
+
+```
+=> :2
+=> :.,$p
+<= 2 <html>
+   3   <head><title>Practical Vim</title></head>
+   4   <body><h1>Practical Vim</h1></body>
+   5 </html>
+```
+
+The `%` symbol represents all of the lines in the current file:
+
+```
+=> :%p
+<= 1 <DOCTYPE html>
+   2 <html>
+   3   <head><title>Practical Vim</title></head>
+   4   <body><h1>Practical Vim</h1></body>
+   5 </html>
+```
+
+This is the equivalent of `:1,$p`. Using the `:%` shorthand with the `:substitute` command is common :`:%s/Practical/Pragmatic/`. That command would replace the first occurence of "Practical" with "Pragmatic" on every line of the file.
+
 [▲ Return to Sections](#sections)
 
 | [Previous: 04 - Visual Mode](../04/README.md) | [Table of Contents](../README.md#table-of-contents) |
