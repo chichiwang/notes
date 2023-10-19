@@ -5,6 +5,7 @@ Command-Line mode exposes to users the vestiges of ex.
 
 ## Sections
 * [Meet Vim's Command Line](#meet-vims-command-line)
+* [Execute a Command on One or More Consecutive Lines](#execute-a-command-on-one-or-more-consecutive-lines)
 
 ## Meet Vim's Command-Line
 Command-Line mode prompts the user to enter an Ex command, a search pattern, or an expression. For historical reasons the commands executed in Command-Line mode are called _Ex commands_.
@@ -43,6 +44,50 @@ Some commands are shared with Insert mode: `<C-w>` and `<C-u>` delete backward t
 
 #### Ex-Commands Strike Far and Wide
 There are situations where the same changes can be made faster with Ex commands than with Normal mode. Normal mode commands tend to act on the current character or current line whereas Ex commands can be executed anywhere without moving the cursor. Ex commands can also be executed across many lines at the same time.
+
+[▲ Return to Sections](#sections)
+
+## Execute a Command on One or More Consecutive Lines
+_Many Ex commands can be given a [range] of lines to act upon. The start and end of a range can be speficied with a line number, a mark, or a pattern._
+
+Using the following as example:
+
+**[cmdline_mode/practical-vim.html](../code/cmdline_mode/practical-vim.html)**
+```html
+<!DOCTYPE html>
+<html>
+  <head><title>Practical Vim</title></head>
+  <body><h1>Practical Vim</h1></body>
+</html>
+```
+
+The following sections will demonstrate the syntax to operate on a range of lines using the `:print` command. Replace the `:print` command in these examples with `:delete`, `:join`, `:substitute`, or `:normal` to get a feel for how useful Ex commands can be.
+
+#### Use Line Numbers as an Address
+An Ex command consisting of only a number is interpreted as an address and Vim will move the cursor to the specified line. Jump to the top of the file with the following command:
+
+```
+=> :1
+=> :print
+<= 1 <!DOCTYPE html>
+```
+
+The sample file only contains 5 lines. To move the cursor to the last line use `:5` or the special symbol `:$` instead:
+
+```
+=> :$
+=> :p
+<= 5 </html>
+```
+
+In the above example `:p` is the abbreviated form or `:print`. Instead of splitting up the two commands they can be rolled into a single command:
+
+```
+=> :3p
+<= 3 <head><title>Practical Vim</title></head>
+```
+
+The above command moves the cursor to line 3 and then echoes the contents of that line. To move the cursor to line 3 and delete the entire line use `:3d` instead. To achieve the same result in Normal mode two distinct commands would need to be used: `3G` followed by `dd`.
 
 [▲ Return to Sections](#sections)
 
