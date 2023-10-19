@@ -151,6 +151,19 @@ This method of selecting a range can be useful if the `:substitute` command need
 
 `'<` and `'>` are marks that stand for the first and last lines of a visual selection. These marks persist even after leaving Visual mode. Running `:'<,'>p` from Normal mode will always act on the lines that most recently formed a Visual mode selection.
 
+#### Specify a Range of Lines by Patterns
+Vim also accepts a pattern as an address for an Ex command:
+
+```
+=> :/<html>/,/<\/html>/p
+<= 2 <html>
+   3   <head><title>Practical Vim</title></head>
+   4   <body><h1>Practical Vim</h1></body>
+   5 </html>
+```
+
+The `{start}` address is the line containing the text that matches the pattern `/<html>/` and the `{end}` address is the line containing the text that matches the pattern `/<\/html>/`. The same result could be achieved with `:2,5p` but the pattern approach is a bit less brittle: it does not rely on specifying the exact line numbers.
+
 [▲ Return to Sections](#sections)
 
 | [Previous: 04 - Visual Mode](../04/README.md) | [Table of Contents](../README.md#table-of-contents) |
