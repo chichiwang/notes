@@ -164,6 +164,26 @@ Vim also accepts a pattern as an address for an Ex command:
 
 The `{start}` address is the line containing the text that matches the pattern `/<html>/` and the `{end}` address is the line containing the text that matches the pattern `/<\/html>/`. The same result could be achieved with `:2,5p` but the pattern approach is a bit less brittle: it does not rely on specifying the exact line numbers.
 
+#### Modify an Address Using an Offset
+In order to run the Ex command on every line inside the html block instead:
+
+```
+=> :/<html>/+1,/<\/html>/-1p
+<= 3   <head><title>Practical Vim</title></head>
+   4   <body><h1>Practical Vim</h1></body>
+```
+
+The general form for an offset is `:{address}+n`. If `n` is omitted it defaults to 1. `{address}` can be a number, mark, or pattern.
+
+To execute a command on a particular number of lines starting with the current line:
+
+```
+=> :2
+=> :.,.+3p
+```
+
+Since `.` stands for the current line `:.,.+3` is equivalent to `:2,5` in this example.
+
 [▲ Return to Sections](#sections)
 
 | [Previous: 04 - Visual Mode](../04/README.md) | [Table of Contents](../README.md#table-of-contents) |
