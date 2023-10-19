@@ -184,6 +184,24 @@ To execute a command on a particular number of lines starting with the current l
 
 Since `.` stands for the current line `:.,.+3` is equivalent to `:2,5` in this example.
 
+#### Discussion
+The syntax for defining a range is very flexible: numbers, marks, and patterns can be mixed and matched. The following table summarizes a few of the symbols that can be used to create addresses and ranges for Ex commands:
+
+| Symbol | Address                                   |
+| ------ | ----------------------------------------- |
+| 1      | First line of the file                    |
+| $      | Last line of the file                     |
+| 0      | Virtual line above first line of the file |
+| .      | Line where the cursor is placed           |
+| 'm     | Line containing mark _m_                  |
+| '&lt;  | Start of visual selection                 |
+| '&gt;  | End of visual selection                   |
+| %      | The entire file (shorthand for `:1,$`)    |
+
+Line 0 doesn't really exist but it can be useful as an address in certain contexts. For example it can be used as the final argument in the `:copy {address}` and `:move {address}` commands when copying or moving a range of lines to the top of a file.
+
+A specified `[range]` always represents a set of contiguous lines. It is also possible to execute an Ex command on a set of noncontiguous lines using the `:global` command (covered in Chapter 15).
+
 [▲ Return to Sections](#sections)
 
 | [Previous: 04 - Visual Mode](../04/README.md) | [Table of Contents](../README.md#table-of-contents) |
