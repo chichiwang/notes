@@ -29,12 +29,17 @@ Notes on courses and investigations.
 
 ## In Progress
 Notes currently in progress:
+* [Practical Vim, Second Edition](./os/linux/vim/practical/README.md)
+* [You Don't Know JS](./languages/javascript/you-dont-know-js/README.md)
+
+## On Hold
+Notes currently paused:
 * [Unit Testing With Python](./languages/python/unit_testing/README.md)
 * [Structure and Interpretation of Computer Programs](./computing/sicp/README.md)
 * [The Elements of Programming Style](./computing/elements_programming_style/README.md)
 * [Practical Common Lisp](./languages/lisp/practical_common_lisp/README.md)
 * [Practical Module Federation](./languages/javascript/module-federatin/practical-module-federation/README.md)
-* [Practical Vim, Second Edition](./os/linux/vim/practical/README.md)
+
 
 ## Topics of Interest
 * [Decision Fatigue](https://en.wikipedia.org/wiki/Decision_fatigue)
