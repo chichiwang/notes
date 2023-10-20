@@ -2,7 +2,7 @@
 
 ## Table of Contents
 * **Techniques/Concepts**
-  * [Module Federation](./module-federation/README.md)
+  * [Module Federation](./module-federation/README.md) - WIP
     * **Level**: *Intermediate*
 
 ## TODO
