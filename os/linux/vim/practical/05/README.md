@@ -6,6 +6,7 @@ Command-Line mode exposes to users the vestiges of ex.
 ## Sections
 * [Meet Vim's Command Line](#meet-vims-command-line)
 * [Execute a Command on One or More Consecutive Lines](#execute-a-command-on-one-or-more-consecutive-lines)
+* [Duplicate or Move Lines](#duplicate-or-move-lines)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -203,6 +204,48 @@ The syntax for defining a range is very flexible: numbers, marks, and patterns c
 Line 0 doesn't really exist but it can be useful as an address in certain contexts. For example it can be used as the final argument in the `:copy {address}` and `:move {address}` commands when copying or moving a range of lines to the top of a file.
 
 A specified `[range]` always represents a set of contiguous lines. It is also possible to execute an Ex command on a set of noncontiguous lines using the `:global` command (covered in Chapter 15).
+
+[▲ Return to Sections](#sections)
+
+## Duplicate or Move Lines
+The Ex command `:copy` (and its shorthand `:t`) duplicate one or more lines from one part of the document to another. The `:move` command will move one or more lines from one part of the document to another.
+
+Using the following as example:
+
+**[cmdline_mode/shopping-list.todo](../code/cmdline_mode/shopping-list.todo)**
+```
+Shopping list
+    Hardware Store
+        Buy new hammer
+    Beauty Parlor
+        Buy nail polish remover
+        Buy nails
+```
+
+#### Duplicate Lines with the `:t` Command
+
+To copy the line "Buy nails" and place it under the "Hardware Store" portion of the list:
+
+| Keystrokes | Buffer Contents                                                                                                                                                                                                                                                                                                                                                                                |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| {start}    | Shopping list<br />&nbsp;&nbsp;&nbsp;&nbsp;<ins>H</ins>ardware Store<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buy new hammer<br />&nbsp;&nbsp;&nbsp;&nbsp;Beauty Parlor<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buy nail polish remover<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buy nails                                                                |
+| `:6copy.`  | Shopping list<br />&nbsp;&nbsp;&nbsp;&nbsp;Hardware Store<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ins>B</ins>uy nails<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buy new hammer<br />&nbsp;&nbsp;&nbsp;&nbsp;Beauty Parlor<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buy nail polish remover<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buy nails |
+
+The format for the copy command (see `:h :copy`) is `:[range]copy {address}`. In the above example the `[range]` is line 6 and the `{address}` is `.` (shorthand for the current line). The `:6copy.` command copies line 6 and places it below the current line.
+
+The shortened versions of the `:copy` command are `:co` and `:t` (think of it as _copy TO_). A few examples of the `:t` command in action:
+
+| Command    | Effect                                                       |
+| ---------- | ------------------------------------------------------------ |
+| `:6t.`     | Copy line 6 to below the current line                        |
+| `:t6`      | Copy the current line to below line 6                        |
+| `:t.`      | Duplicate the current line (similar to `yyp` in Normal mode) |
+| `:t$`      | Copy the current line to the end of the file                 |
+| `:'<,'>t0` | Copy the visually selected lines to the start of the file    |
+
+`:t.` duplicates the current line much like `yyp` in Normal mode. The difference is that `:t.` doesn't use a register, so it is preferable to `yyp` when copied content in the register needs to be preserved.
+
+When duplicating distant lines (lines further from the cursor) `:t` is preferable to `yy`.
 
 [▲ Return to Sections](#sections)
 
