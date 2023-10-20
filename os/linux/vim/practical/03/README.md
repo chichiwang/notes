@@ -13,6 +13,8 @@ Replace mode is a special case for Insert mode which overwrites existing charact
 * [Insert Unusual Characters by Digraph](#insert-unusual-characters-by-digraph)
 * [Overwrite Existing Text with Replace Mode](#overwrite-existing-text-with-replace-mode)
 
+[◂ Return to Table of Contents](../README.md)
+
 ## Make Corrections Instantly from Normal Mode
 _Besides using the backspace key there are a couple of Insert mode commands to make corrections immediately without exiting Insert mode._
 

@@ -11,6 +11,7 @@ Programmers spend just a fraction of their time composing code. More of their ti
 * [Combine and Conquer](#combine-and-conquer)
 * [Meet Operator-Pending Mode](#meet-operator-pending-mode)
 
+[◂ Return to Table of Contents](../README.md)
 
 ## Chunking Undos
 In other text editors invoking the undo command after typing a few words may revert the last typed word or character. In Vim the granularity of the undo command can be controlled.

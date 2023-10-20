@@ -7,6 +7,8 @@ Command-Line mode exposes to users the vestiges of ex.
 * [Meet Vim's Command Line](#meet-vims-command-line)
 * [Execute a Command on One or More Consecutive Lines](#execute-a-command-on-one-or-more-consecutive-lines)
 
+[◂ Return to Table of Contents](../README.md)
+
 ## Meet Vim's Command-Line
 Command-Line mode prompts the user to enter an Ex command, a search pattern, or an expression. For historical reasons the commands executed in Command-Line mode are called _Ex commands_.
 

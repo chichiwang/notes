@@ -15,6 +15,8 @@ Visual-Block mode allows operations on rectangular columns of text. There are ma
 * [Change Columns of Text](#change-columns-of-text)
 * [Append After a Ragged Visual Block](#append-after-a-ragged-visual-block)
 
+[◂ Return to Table of Contents](../README.md)
+
 ## Grok Visual Mode
 _Visual mode allows the user to select a range of text and then operate upon it. Vim's perspective of selecting text is different than other text editors._
 
