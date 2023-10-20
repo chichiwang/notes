@@ -247,6 +247,21 @@ The shortened versions of the `:copy` command are `:co` and `:t` (think of it as
 
 When duplicating distant lines (lines further from the cursor) `:t` is preferable to `yy`.
 
+#### Move Lines with the `:m` Command
+The `:move` command (see `:h :move`) has similar syntax to the `:copy` command: `:[range]move {address}`. The shortened version of the `:move command` is `:m`.
+
+Using the example, to move the "Hardware Store" section of the "Shopping list" to the end:
+
+| Keystrokes | Buffer Contents                                                                                                                                                                                                                                                                                                                                                                                       |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| {start}    | Shopping list<br />&nbsp;&nbsp;&nbsp;&nbsp;<ins>H</ins>ardware Store<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buy nails<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buy new hammer<br />&nbsp;&nbsp;&nbsp;&nbsp;Beauty Parlor<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buy nail polish remover<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buy nails        |
+| `Vjj`      | Shopping list<br />&nbsp;&nbsp;&nbsp;&nbsp;<b>Hardware Store<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buy nails<br />&nbsp;&nbsp;&nbsp;&nbsp;<ins>&nbsp;&nbsp;</ins>&nbsp;&nbsp;Buy new hammer</b><br />&nbsp;&nbsp;&nbsp;&nbsp;Beauty Parlor<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buy nail polish remover<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buy nails |
+| `:'<,'>m$` | Shopping list<br />&nbsp;&nbsp;&nbsp;&nbsp;Beauty Parlor<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buy nail polish remover<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buy nails<br />&nbsp;&nbsp;&nbsp;&nbsp;Hardware Store<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buy nails<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ins>B</ins>uy new hammer        |
+
+After making the visual selection the command `:'<,'>m$` moves the selection to the end of the file. Aternatively `dGp` could be used in Normal mode: `d` will cut the visual selection, `G` to move the cursor to the last line in the file, and `p` to paste the contents of the register to the next line.
+
+After running the above commands, another visual selection could be made and then repeating the `:'<,'>m$` command would move the new selection to the end of the file. Repeating the last Ex command can be done by pressing `@:`. This method is more easily reproducible than using Normal mode commands.
+
 [▲ Return to Sections](#sections)
 
 | [Previous: 04 - Visual Mode](../04/README.md) | [Table of Contents](../README.md#table-of-contents) |
