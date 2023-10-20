@@ -5,4 +5,5 @@ Notes from the book [You Don't Know JS: Get Started - 2nd Edition](https://githu
 
 Date: WIP
 
-## Chapters
+## Table of Contents
+* [Chapter 1: What is JavaScript?](./01/README.md)
