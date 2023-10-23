@@ -8,6 +8,7 @@ Command-Line mode exposes to users the vestiges of ex.
 * [Execute a Command on One or More Consecutive Lines](#execute-a-command-on-one-or-more-consecutive-lines)
 * [Duplicate or Move Lines](#duplicate-or-move-lines)
 * [Run Normal Mode Commands Across a Range](#run-normal-mode-commands-across-a-range)
+* [Repeat the Last Ex Command](#repeat-the-last-ex-command)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -300,6 +301,15 @@ The `:'<,'>normal .` command executes the Normal mode command `.` across every l
 Appending a semicolon to the end of every line in a file can be achieved with `:%normal A;`. Making this change involves switching to Insert mode but Vim automatically reverts to Normal mode afterwards. Before executing the specified command on each line Vim moves the cursor to the beginning of the line so `:%normal i//` could be used to comment out an entire JavaScript file.
 
 It is possibe to use `:normal` with any normal command but it is most powerful when used in combination with one of Vim's repeat commands: `:normal .` for simple tasks or `:normal @q` for complex tasks. The `:normal` command combines the expressive nature of Vim's Normal mode with the range of Ex commands.
+
+[▲ Return to Sections](#sections)
+
+## Repeat the Last Ex Command
+While the `.` command can be used to repeat the most recent Normal mode command, `@:` (see `:h @:`) is used to repeat the last Ex command.
+
+This command can be useful when iterating through items in the buffer list. `:bn[ext]` is used to step forward through the list and `:bp[revious]` will step backward through the list. Supposing there were many items in the buffer list `:bn` could executed once and then `@:` to repeat the command. The : register always holds the most recently executed command line (see `:h quote_:`). After running `@:` for the first time it can subsequently repeated with the `@@` command.
+
+`@:` can always be used to repeat the last Ex command. Ex commands that operate on text in a buffer can be undone with `u`.
 
 [▲ Return to Sections](#sections)
 
