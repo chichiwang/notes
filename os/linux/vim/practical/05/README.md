@@ -7,6 +7,7 @@ Command-Line mode exposes to users the vestiges of ex.
 * [Meet Vim's Command Line](#meet-vims-command-line)
 * [Execute a Command on One or More Consecutive Lines](#execute-a-command-on-one-or-more-consecutive-lines)
 * [Duplicate or Move Lines](#duplicate-or-move-lines)
+* [Run Normal Mode Commands Across a Range](#run-normal-mode-commands-across-a-range)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -261,6 +262,44 @@ Using the example, to move the "Hardware Store" section of the "Shopping list" t
 After making the visual selection the command `:'<,'>m$` moves the selection to the end of the file. Aternatively `dGp` could be used in Normal mode: `d` will cut the visual selection, `G` to move the cursor to the last line in the file, and `p` to paste the contents of the register to the next line.
 
 After running the above commands, another visual selection could be made and then repeating the `:'<,'>m$` command would move the new selection to the end of the file. Repeating the last Ex command can be done by pressing `@:`. This method is more easily reproducible than using Normal mode commands.
+
+[▲ Return to Sections](#sections)
+
+## Run Normal Mode Commands Across a Range
+The `:normal` command can be used to run a Normal mode codmmand on a series of consecutive lines. Used in combination with the dot command or a macro repetitive commands can be performed with very little effort.
+
+In a [previous example](../01/README.md#dont-repeat-yourself) the dot command was used to append a semicolon to the end of every line easily. The example was only across 3 consecutive lines. Supposing it was 50 lines instead `j` would have to be pressed 50 times to complete the task. There is a better way.
+
+Using the following as example:
+
+**[cmdline_mode/foobar.js](../code/cmdline_mode/foobar.js)**
+```javascript
+var foo = 1
+var bar = 'a'
+var baz = 'z'
+var foobar = foo + bar
+var foobarbaz = foo + bar + baz
+```
+
+Start by changing the first line:
+
+| Keystrokes | Buffer Contents                                                                                                                |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| {start}    | <ins>v</ins>ar foo = 1<br />var bar = 'a'<br />var baz = 'z'<br />var foobar = foo + bar<br />var foobarbaz = foo + bar + baz  |
+| `A;<Esc>`  | var foo = 1<ins>;</ins><br />var bar = 'a'<br />var baz = 'z'<br />var foobar = foo + bar<br />var foobarbaz = foo + bar + baz |
+
+Instead of executing `.` on each following line one by one use the `:normal` Ex command to execute the dot command across a range of lines:
+
+| Keystrokes       | Buffer Contents                                                                                                                       |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `jVG`            | var foo = 1;<br /><b>var bar = 'a'<br />var baz = 'z'<br />var foobar = foo + bar<br /><ins>var</ins> foobarbaz = foo + bar + baz</b> |
+| `:'<,'>normal .` | var foo = 1;<br />var bar = 'a';<br />var baz = 'z';<br />var foobar = foo + bar;<br />var foobarbaz = foo + bar + baz<ins>;</ins>    |
+
+The `:'<,'>normal .` command executes the Normal mode command `.` across every line in the visual selection. This technique works just as well for five lines or fifty lines - the lines just need to be selected in Visual mode. Any Normal mode command can be executed this way.
+
+Appending a semicolon to the end of every line in a file can be achieved with `:%normal A;`. Making this change involves switching to Insert mode but Vim automatically reverts to Normal mode afterwards. Before executing the specified command on each line Vim moves the cursor to the beginning of the line so `:%normal i//` could be used to comment out an entire JavaScript file.
+
+It is possibe to use `:normal` with any normal command but it is most powerful when used in combination with one of Vim's repeat commands: `:normal .` for simple tasks or `:normal @q` for complex tasks. The `:normal` command combines the expressive nature of Vim's Normal mode with the range of Ex commands.
 
 [▲ Return to Sections](#sections)
 
