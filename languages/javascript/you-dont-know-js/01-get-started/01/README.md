@@ -4,6 +4,7 @@
 * [What's With That Name?](#whats-with-that-name)
 * [Language Specification](#language-specification)
 * [The Web Rules Everything (JS)](#the-web-rules-everything-js)
+* [Not All (Web) JS](#not-all-web-js)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -52,6 +53,36 @@ For the most part the JS specification and implmentation in browser-based engine
     * Section B.3 covers some conflicts where code may run with different behaviors in web and non-web JS engines. Most of the listed changes involve situations that are labeled as early errors when the code is running in strict mode.
 
 Wherever possible adhere to the JS specifications and don't rely on behaviors that are only applicable in certain JS environments.
+
+[▲ Return to Sections](#sections)
+
+## Not All (Web) JS
+Various JS environments (browser, Node.js) add APIs to the global scope that provide environment-specific capabilities:
+
+```javascript
+alert("Hello, JS!");
+```
+
+The above code may or may not be a JS program depending on perspectve. The `alert(..)` function is not included in the JS specification but it _is_ implemented in all web JS environments. However it is not listed in Appendix B. A wide range of APIs (`fetch(..)`, `getCurrentLocation(..)`, `getUserMedia(..)`, etc) are all web APIs that look like JS. Node.js contains hundreds of API methods from built-in modules like `fs.write(..)`.
+
+Another example is `console.log(..)` and all other `console.*` methods. These are not specified in JS but because of their universal utility are defined by pretty much every JS environment according to a roughly agreed-upon consensus.
+
+These environment-defined APIs are functions and object methods that obey JS syntax rules. While they are JS they are not part of the language specification. These APIs are a common source of complaint of JavaScript's inconsistency, but they are not part of the actual language.
+
+[▲ Return to Sections](#sections)
+
+## It's Not Always JS
+The console/REPL (Read-Eval-Print-Loop) in the browser's Developer Tools or Node feels like a pretty straightforward JS environment at first glance but it isn't. Developer Tools prioritize DX (Developer Experience) and it is not their goal to purely reflect the nuances of strict-spec JS behavior. These tools vary in behavior from browser to browser and change quite frequently. Quirks and inconsistencies with certain behaviors may be experienced around:
+* Whether a `var` or `function` declaration in the top-level global scope of the console actually creates a global variable (mirrored in the `window` property and vice-versa)
+* What happens with multiple `let` and `const` declarations in the top-level global scope
+* Whether `"use strict";` on one-line entry enables strict mode for the duration of the console session the same way it would on the first line of a .js file
+* Whether `"use strict";` can be used beyond the "first line" and still enable strict mode for the session
+* How non-strict mode `this` default-binding works for function calls
+* Whether the "global object" used will contain expected global variables
+* How hoisting works across multiple line entries
+* ...and more.
+
+The developer console is not mimicking a JS compiler that will handle code exactly as the JS engine would handle a .js file - it is trying to allow a developer to quickly enter a few lines of code and see the results immediately. Do not trust the behavior of the developer console as representing exact to-the-letter JS semantics (for that read the specification).
 
 [▲ Return to Sections](#sections)
 
