@@ -3,8 +3,9 @@
 ## Sections
 * [What's With That Name?](#whats-with-that-name)
 * [Language Specification](#language-specification)
-* [The Web Rules Everything (JS)](#the-web-rules-everything-js)
-* [Not All (Web) JS](#not-all-web-js)
+  * [The Web Rules Everything (JS)](#the-web-rules-everything-js)
+  * [Not All (Web) JS](#not-all-web-js)
+  * [It's Not Always JS](#its-not-always-js)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -36,9 +37,7 @@ Anyone can participate in the public discussions and processes for working on th
 
 All major browser and device makers have committed to keeping their JS implementations compliant with this central specification maintained by TC39 and ECMA. Different engines may implement new features at different times but they should never implement a specified feature differently or incompatibly from the standard.
 
-[▲ Return to Sections](#sections)
-
-## The Web Rules Everything (JS)
+#### The Web Rules Everything (JS)
 While the array of environments running JS is constantly expanding (browsers, servers, robots, refridgerators, etc) the one environment that rules JS is the web: the only implementation of JS that really matters is in web browsers.
 
 For the most part the JS specification and implmentation in browser-based engines is the same. There are some differences that must be considered:
@@ -54,9 +53,7 @@ For the most part the JS specification and implmentation in browser-based engine
 
 Wherever possible adhere to the JS specifications and don't rely on behaviors that are only applicable in certain JS environments.
 
-[▲ Return to Sections](#sections)
-
-## Not All (Web) JS
+#### Not All (Web) JS
 Various JS environments (browser, Node.js) add APIs to the global scope that provide environment-specific capabilities:
 
 ```javascript
@@ -69,9 +66,7 @@ Another example is `console.log(..)` and all other `console.*` methods. These ar
 
 These environment-defined APIs are functions and object methods that obey JS syntax rules. While they are JS they are not part of the language specification. These APIs are a common source of complaint of JavaScript's inconsistency, but they are not part of the actual language.
 
-[▲ Return to Sections](#sections)
-
-## It's Not Always JS
+#### It's Not Always JS
 The console/REPL (Read-Eval-Print-Loop) in the browser's Developer Tools or Node feels like a pretty straightforward JS environment at first glance but it isn't. Developer Tools prioritize DX (Developer Experience) and it is not their goal to purely reflect the nuances of strict-spec JS behavior. These tools vary in behavior from browser to browser and change quite frequently. Quirks and inconsistencies with certain behaviors may be experienced around:
 * Whether a `var` or `function` declaration in the top-level global scope of the console actually creates a global variable (mirrored in the `window` property and vice-versa)
 * What happens with multiple `let` and `const` declarations in the top-level global scope
