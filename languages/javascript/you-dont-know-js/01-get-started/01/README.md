@@ -3,6 +3,7 @@
 ## Sections
 * [What's With That Name?](#whats-with-that-name)
 * [Language Specification](#language-specification)
+* [The Web Rules Everything (JS)](#the-web-rules-everything-js)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -33,6 +34,24 @@ All TC39 proposals process through a [five-stage process](https://tc39.es/proces
 Anyone can participate in the public discussions and processes for working on the proposals but only TC39 members can attend meetings and vote on the proposals and changes.
 
 All major browser and device makers have committed to keeping their JS implementations compliant with this central specification maintained by TC39 and ECMA. Different engines may implement new features at different times but they should never implement a specified feature differently or incompatibly from the standard.
+
+[▲ Return to Sections](#sections)
+
+## The Web Rules Everything (JS)
+While the array of environments running JS is constantly expanding (browsers, servers, robots, refridgerators, etc) the one environment that rules JS is the web: the only implementation of JS that really matters is in web browsers.
+
+For the most part the JS specification and implmentation in browser-based engines is the same. There are some differences that must be considered:
+* JS engines refuse to conform to specification-dictated changes that would break pre-existing web content
+  * In these cases TC39 may backtrack and conform the specification to the reality of the web
+    * Example: TC39 planned to add a `contains(..)` method for Arrays but this name conflicted with old JS frameworks still in use on some sites so they changed it to a non-conflicting `includes(...)`
+    * Example: A planned `flatten(..)` method was eventually renamed `flat(..)`
+  * Occasionally TC39 will decide the specification should remain even if web-based engines are unlikely to conform to it
+    * [Appendix B: "Additional ECMAScript Features for Web Browsers"](https://262.ecma-international.org/10.0/#sec-additional-ecmascript-features-for-web-browsers) is included in the specification to detail any known mismatches between the official JS specification and the reality of JS on the web. In other words these exceptions are allowed _only_ for web-based JS; other JS environments must conform to the standard.
+    * Section B.1 and B.2 cover _additions_ to JS (syntax and APIs) that web JS includes for historical reasons, but that TC39 does not plan to formally specify to the core of JS.
+      * Examples: `0`-prefixed octal literals, the global `escape(..)`/`unescape(..)` utilities, String helpers like `anchor(..)` and `blink()`, and the RegExp `compile(..)` method
+    * Section B.3 covers some conflicts where code may run with different behaviors in web and non-web JS engines. Most of the listed changes involve situations that are labeled as early errors when the code is running in strict mode.
+
+Wherever possible adhere to the JS specifications and don't rely on behaviors that are only applicable in certain JS environments.
 
 [▲ Return to Sections](#sections)
 
