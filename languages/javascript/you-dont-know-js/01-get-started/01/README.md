@@ -7,6 +7,7 @@
   * [Not All (Web) JS](#not-all-web-js)
   * [It's Not Always JS](#its-not-always-js)
 * [Many Faces](#many-faces)
+* [Backwards and Forwards](#backwards-and-forwards)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -91,6 +92,19 @@ The term "paradigm" in the context of programming languages refers to a broad mi
 Some languages are heavily slanted toward one paradigm or another: C is procedural, Java/C++ are almost entire class oriented, and Haskell is Functional.
 
 Many languages support code patterns that can come from different paradigms. These "multi-paradigm" languages can even allow two or more expressions of different paradigms to sit side-by-side. JavaScript is one of these multi-paradigm languages that allows for proceduarl, object-oriented, or functional style code.
+
+[▲ Return to Sections](#sections)
+
+## Backwards and Forwards
+One of the most foundational principles that guides JavaScript is the preservation of _backwards compatibility_. Many confuse this concept with a related, but different, term: _forwards compatibility_.
+
+_Backwards compatibility_ means that once something is accepted as valid JS there will never be a change to the language that causes that code to become invalid. Code written in 1995 should still work today. The idea is that JS developers can write code with the confidence that their code will not stop working because a browser update is released.
+
+The cost of sticking to this principle creates a very high bar to changing or extending the language: any decision becomes effectively permanent, mistakes included. There are some small exceptions to this rule: when some backwards-incompatible changes have been introduced TC39 studied existing code on the web (via browser data gathering) to estimate the impact of these changes, and browsers voted on whether they were willing to break the behavior of code for the benefits of fixing or improving some aspect of the language. These kinds of changes are rare and almost always in corner cases of usage that are unlikely to result in observably breaking many sites.
+
+_Forwards compatibility_, on the other hand, means any new additions of the language will continue to work on an older JS engine. **JS is not fowards-compatible**.
+
+HTML and CSS, by contrast, are forwards-compatible but not backwards-compatible. If a new feature is loaded onto an old browser, the page is not broken. The unrecognized HTML/CSS is skipped over while the rest of the HTML/CSS is processed. However, older features may not work (or work the same) in newer browsers.
 
 [▲ Return to Sections](#sections)
 
