@@ -6,6 +6,7 @@
   * [The Web Rules Everything (JS)](#the-web-rules-everything-js)
   * [Not All (Web) JS](#not-all-web-js)
   * [It's Not Always JS](#its-not-always-js)
+* [Many Faces](#many-faces)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -78,6 +79,18 @@ The console/REPL (Read-Eval-Print-Loop) in the browser's Developer Tools or Node
 * ...and more.
 
 The developer console is not mimicking a JS compiler that will handle code exactly as the JS engine would handle a .js file - it is trying to allow a developer to quickly enter a few lines of code and see the results immediately. Do not trust the behavior of the developer console as representing exact to-the-letter JS semantics (for that read the specification).
+
+[▲ Return to Sections](#sections)
+
+## Many Faces
+The term "paradigm" in the context of programming languages refers to a broad mindset and approach in structuring code. Typical paradigm-level code categories include:
+* Procedural: organizes code in a top-down, linear progression through a pre-determined set of operations, usually collected together in related units called procedures.
+* Object-Oriented: organizes code by collecting logic and data together into units called classes.
+* Functional Programming: organizes code into functions (pure computations as opposed to procedures), and the adaptations of those functions as values.
+
+Some languages are heavily slanted toward one paradigm or another: C is procedural, Java/C++ are almost entire class oriented, and Haskell is Functional.
+
+Many languages support code patterns that can come from different paradigms. These "multi-paradigm" languages can even allow two or more expressions of different paradigms to sit side-by-side. JavaScript is one of these multi-paradigm languages that allows for proceduarl, object-oriented, or functional style code.
 
 [▲ Return to Sections](#sections)
 
