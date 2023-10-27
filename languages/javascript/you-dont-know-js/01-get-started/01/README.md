@@ -9,6 +9,7 @@
 * [Many Faces](#many-faces)
 * [Backwards and Forwards](#backwards-and-forwards)
   * [Jumping the Gaps](#jumping-the-gaps)
+  * [Filling the Gaps](#filling-the-gaps)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -144,6 +145,56 @@ The first snippet relied on `let` to create block-scoped `x` variables in both t
 The `let` declaration was introduced in ES6 (in 2015). This example only applies if the application needs to support any engines released prior to ES6. The "target" oldest version engine for transpilation is a sliding window that shifts upwards as decisions are made for a site/application to stop supporting some older browsers/engines.
 
 Why bother converting newer syntax into older syntax at all? Why not just create applications in the older syntax? It is strongly recommneded for developers to use the latest version of JS so that their code is clean, communicates ideas effectively, and make future maintenance easier as time goes on.
+
+#### Filling the Gaps
+If the forwards-compatibility issue is an API not present in older engines then the solution is to provide a definition for that missing API method that provides the same API and behavior. This pattern is called a polyfill or a shim.
+
+Using the following snippet as example:
+
+```javascript
+// getSomeRecords() returns us a promise for some
+// data it will fetch
+var pr = getSomeRecords();
+
+// show the UI spinner while we get the data
+startSpinner();
+
+pr
+.then(renderRecords)   // render if successful
+.catch(showError)      // show an error if not
+.finally(hideSpinner)  // always hide the spinner
+```
+
+The above code uses the ES2019 feature `finally(..)` method on the promise prototype. If this code is run in a pre-ES2019 engine an error would occur.
+
+A polyfill for `finally(..)` would look something like this:
+
+```javascript
+if (!Promise.prototype.finally) {
+  Promise.prototype.finally = function f(fn){
+    return this.then(
+      function t(v){
+        return Promise.resolve( fn() )
+          .then(function t(){
+            return v;
+          });
+      },
+      function c(e){
+        return Promise.resolve( fn() )
+          .then(function t(){
+            throw e;
+          });
+      }
+    );
+  };
+}
+```
+
+**Note**: This is a simple illustration of a basic, non-spec-compliant implementation of a `finally(..)` polyfill. Do not use this polyfill. Instead always use a robust, official polyfill wherever possible.
+
+The polyfill will only define the method if the environment it is running in has not already defined it. Transpilers like Babel typically detect which polyfills a codebase needs and automatically provides them. Occasionally a polyfill may need to be included explicitly.
+
+Always write code using the most appropriate features to communicate ideas and intent effectively. In general this means using the most recent, stable version of JS. Avoid negatively impacting the readability of code by manually adjusting for syntax/API gaps - this is what tools are for.
 
 [▲ Return to Sections](#sections)
 
