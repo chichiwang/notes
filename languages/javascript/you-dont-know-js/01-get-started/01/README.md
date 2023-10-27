@@ -10,6 +10,7 @@
 * [Backwards and Forwards](#backwards-and-forwards)
   * [Jumping the Gaps](#jumping-the-gaps)
   * [Filling the Gaps](#filling-the-gaps)
+* [What's in an Interpretation?](#whats-in-an-interpretation)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -195,6 +196,39 @@ if (!Promise.prototype.finally) {
 The polyfill will only define the method if the environment it is running in has not already defined it. Transpilers like Babel typically detect which polyfills a codebase needs and automatically provides them. Occasionally a polyfill may need to be included explicitly.
 
 Always write code using the most appropriate features to communicate ideas and intent effectively. In general this means using the most recent, stable version of JS. Avoid negatively impacting the readability of code by manually adjusting for syntax/API gaps - this is what tools are for.
+
+[▲ Return to Sections](#sections)
+
+## What's in an Interpretation?
+Whether JavaScript is an interpreted script or a compiled program is a long-debated topic. The majority opinion seems to be that it is an interpreted (scripting) language. The truth is more complicated.
+
+For much of the history of programming languages "interpreted" and "scripting" languages have been looked down on as inferior to their compiled counterparts. The reasons are numerous including the perception that there is a lack of performance optimization, and a dislike of certain language characteristics such as scripting languages generally using dynamic typing instead of the "more mature" statically typed languages.
+
+Languages regarded as "compiled" usually produced a portable, binary executable. The distribution model for a program's "executable" form has become drastically more varied and less relevant over the last few decades: it doesn't matter so much anymore what form of a program is distributed.
+
+The real reason it matters whether JS is interpreted or compiled relates to error handling: historically, scripted or interpreted languages were executed in a top-down, line-by-line fashion. There typically was not an initial pass through the program to process it before execution.
+
+In scripted/interpreted languages an error on line 5 won't throw an exception until lines 1-4 have already executed. The error on line 5 may be a runtime error or it may be a malformed statement/command on that line. Depending on what the error is, deferring error handling until execution may be a desirable or undesirable effect.
+
+This model differs from languages that go through a processing step (called parsing) before any execution occurs. In the processing model an invalid command (such as broken syntax) on line 5 would be caught during the parsing phase before any execution has begun. For syntax (or otherwise static) errors it is generally preferred to know about them before any doomed, partial execution.
+
+All compiled languages are parsed. In classic compilation theory the last step after parsing code is code generation: producing an executable form.
+
+Once any source code has been fully parsed it's common that the subsequent execution will include a translation from the parsed form of the program (usually called an Abstract Syntax Tree, _AST_) to the executable form. Parsed languages usually also perform code generation before execution so in spirit they're compiled languages.
+
+JS source code is parsed prior to execution. The specification requires this - it calls for "early errors" (statically determined errors in code such as a duplicate parameter name) to be reported before code execution begins. These errors cannot be recognized without the code having been parsed.
+
+**JS is a parsed language** but is it compiled? The answer is closer to yes than no. The parsed JS is converted to an optimized (binary) form which is subsequently executed. The engine does not switch back to line-by-line execution after parsing - that would be highly inefficient. To be specific this "compilation" produces a binary byte code of sorts which is then handed to the "JS virutal machine" to execute. Some like to say that the VM is "interpreting" the byte code, but that means Java, and a dozen other JVM-driven languages, are interpreted rather than compiled. That contradicts the typical assertion that Java/JVM-languages are compiled languages.
+
+Additionally the JS engine can employ multiple passes of JIT (just-in-time) processing/optimization on the generated code post-parsing. This could reasonably be labeled either "compilation" or "interpretation" depending on perspective.
+
+Consider the flow of a JS source program:
+1. After the source code is done being worked on it undergoes a number of build processes (transpilation by Babel, bundling by Webpack, etc) and gets delivered in a very different form to a JS engine.
+2. The JS engine parses the code to an AST.
+3. The engine converts the AST to a kind-of byte code, a binary intermediate representation (IR), which is then refined/converted even further by the optimizing JIT compiler.
+4. The JS VM executes the program.
+
+If not in practice, then in spirit **JS is a compiled language**. The reason this matters is that as a compiled language JS throws static errors (syntax, etc) before any code is executed.
 
 [▲ Return to Sections](#sections)
 
