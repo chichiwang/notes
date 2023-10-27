@@ -8,6 +8,7 @@
   * [It's Not Always JS](#its-not-always-js)
 * [Many Faces](#many-faces)
 * [Backwards and Forwards](#backwards-and-forwards)
+  * [Jumping the Gaps](#jumping-the-gaps)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -105,6 +106,44 @@ The cost of sticking to this principle creates a very high bar to changing or ex
 _Forwards compatibility_, on the other hand, means any new additions of the language will continue to work on an older JS engine. **JS is not fowards-compatible**.
 
 HTML and CSS, by contrast, are forwards-compatible but not backwards-compatible. If a new feature is loaded onto an old browser, the page is not broken. The unrecognized HTML/CSS is skipped over while the rest of the HTML/CSS is processed. However, older features may not work (or work the same) in newer browsers.
+
+#### Jumping the Gaps
+Since JS is not forwards-compatible there could be a gap between JS being written and the oldest engine the site or application needs to support.
+
+If a newer syntax is used in an older engine the program will likely fail to run at all throwing a syntax error. If a newer API is utilized in an older engine the program will likely run up to a point but may throw a runtime exception when the unknown API is encountered. JS developers need to take special care to address this gap.
+
+To address incompatible syntax the solution is the use of a transpiler. Transpiling is a contrived and community-invented term to describe converting source code from a program from one form to another form of source code. Usually forwards-compatibility issues are solved by using a transpiler (most commonly [Babel](https://babeljs.io/)) to convert newer JS syntax to an equivalent older syntax.
+
+For example a snippet of code like the following:
+
+```javascript
+if (something) {
+  let x = 3;
+  console.log(x);
+} else {
+  let x = 4;
+  console.log(x);
+}
+```
+
+Babel might transpile to something like:
+
+```javascript
+var x$0, x$1;
+if (something) {
+  x$0 = 3;
+  console.log(x$0);
+} else {
+  x$1 = 4;
+  console.log($x$1);
+}
+```
+
+The first snippet relied on `let` to create block-scoped `x` variables in both the `if` and `else` clauses. An equivalent solution that doesn't use the `let` declaration just chooses two different variable names in the function or global scope.
+
+The `let` declaration was introduced in ES6 (in 2015). This example only applies if the application needs to support any engines released prior to ES6. The "target" oldest version engine for transpilation is a sliding window that shifts upwards as decisions are made for a site/application to stop supporting some older browsers/engines.
+
+Why bother converting newer syntax into older syntax at all? Why not just create applications in the older syntax? It is strongly recommneded for developers to use the latest version of JS so that their code is clean, communicates ideas effectively, and make future maintenance easier as time goes on.
 
 [▲ Return to Sections](#sections)
 
