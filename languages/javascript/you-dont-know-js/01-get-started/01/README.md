@@ -11,6 +11,7 @@
   * [Jumping the Gaps](#jumping-the-gaps)
   * [Filling the Gaps](#filling-the-gaps)
 * [What's in an Interpretation?](#whats-in-an-interpretation)
+  * [Web Assembly (WASM)](#web-assembly-wasm)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -229,6 +230,19 @@ Consider the flow of a JS source program:
 4. The JS VM executes the program.
 
 If not in practice, then in spirit **JS is a compiled language**. The reason this matters is that as a compiled language JS throws static errors (syntax, etc) before any code is executed.
+
+#### Web Assembly (WASM)
+One dominating concern that has driven a significant amount of JavaScript's evolution is performance: both the speed of parsing/compilation and the speed of execution.
+
+In 2013, engineers from Mozilla Firefox demonstrated a port of the Unreal 3 game engine from C to JS (also see: [QuakeJS](http://www.quakejs.com/)). This code is able to in a browser JS engine at full 60fps performance due to utilizing a subset of the JS language named ASM.js. This subset is valid JS, written in ways uncommon in normal coding, signal important typing information to the engine that allow it to make key optimizations. ASM.js was introduced as a way of addressing the pressures on the runtime performance of JS. ASM.js was never intended to code authored by developers, but rather a representation of a program transpiled from another language (such as C), where these typing "annotations" were inserted automatically by the tooling.
+
+Several years later another group of engineers (also, initially, from Mozilla) released Web Assembly (WASM). WASM is similar to ASM.js in that its original intent was to provide a way for non-JS programs (C, etc.) to be converted to run in the JS engine. Unlike ASM.js, WASM additionally got around some of the inherent delays in JS parsing/compilation before a program can execute. WASM is a representation format more akin to Assembly that can be processed by the JS engine by skipping the parsing/compilation that the JS engine normally does. The parsing/compilation of a WASM program happens ahead-of-time (AOT): the distributable is a binary-packed program ready for the JS engine to execute with minimal processing.
+
+Another goal of WASM is to bring parity for non-JS languages to the web platform. For example: if a language like Go supports threaded programming, WASM offers the potential for a Go program to be converted to JS without needing threading features in the JS language itself. WASM relieves the pressure to add features to JS that are intended to be used by transpiled programs from other languages. This allows JS feature development to be judged by TC39 without being skewed by interests or demands in other language ecosystems while allowing those languages a viable path to the web.
+
+WASM is also evolving to become a cross-platform virtual machine (VM) of sorts, where a program can be compiled once and run in a variety of different system environments. WASM isn't only for the web and it also isn't JS. Even though WASM runs in the JS engine JavaScript is one of the least suitable languages to source WASM programs with because WASM relies havily on static typing information. Even TypeScript (TS) is not quite suitable to transpile to WASM although language variants like AssemblyScript are attempting to bridge the gap between JS/TS and WASM.
+
+Some have suggested WASM points to a future where JS is no longer the dominant language of the web. This largely comes from a place of disliking JavaScript and wanting it replaced. WASM will not replace JS. WASM augments what the web can accomplish and that is orthogonal to whether some will use it as a way to avoid writing JS.
 
 [▲ Return to Sections](#sections)
 
