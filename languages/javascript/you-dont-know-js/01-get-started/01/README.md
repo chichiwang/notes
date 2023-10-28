@@ -13,6 +13,7 @@
 * [What's in an Interpretation?](#whats-in-an-interpretation)
   * [Web Assembly (WASM)](#web-assembly-wasm)
 * [Strictly Speaking](#strictly-speaking)
+* [Defined](#defined)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -273,6 +274,15 @@ function someOperations() {
 If a file has strict mode turned on, the function-level strict mode pragmas are not allowed. The only valid reason to use per-function strict mode is when converting a non-strict mode file over to strict mode a little at a time.
 
 Virtually all transpiled code ends up in strict mode. ES6 modules also assume strict mode, so all code in modules are automatically defaulted to strict mode. While strict mode is opt-in, it is largely de facto default.
+
+[▲ Return to Sections](#sections)
+
+## Defined
+JavaScript is an implementation of the ECMAScript standard which is guided by the TC39 committee and hosted by ECMA. It runs in browsers and other JS environments like Node.js.
+
+JS is a multi-paradigm language with syntax and capabilities that allow developers to mix and match concepts from various paradigms: procedural, object-oriented, functional.
+
+JS is a compiled language. The tools (including the JS engine) process and verify a program before it executes.
 
 [▲ Return to Sections](#sections)
 
