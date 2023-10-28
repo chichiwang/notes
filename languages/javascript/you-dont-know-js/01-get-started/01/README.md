@@ -12,6 +12,7 @@
   * [Filling the Gaps](#filling-the-gaps)
 * [What's in an Interpretation?](#whats-in-an-interpretation)
   * [Web Assembly (WASM)](#web-assembly-wasm)
+* [Strictly Speaking](#strictly-speaking)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -243,6 +244,35 @@ Another goal of WASM is to bring parity for non-JS languages to the web platform
 WASM is also evolving to become a cross-platform virtual machine (VM) of sorts, where a program can be compiled once and run in a variety of different system environments. WASM isn't only for the web and it also isn't JS. Even though WASM runs in the JS engine JavaScript is one of the least suitable languages to source WASM programs with because WASM relies havily on static typing information. Even TypeScript (TS) is not quite suitable to transpile to WASM although language variants like AssemblyScript are attempting to bridge the gap between JS/TS and WASM.
 
 Some have suggested WASM points to a future where JS is no longer the dominant language of the web. This largely comes from a place of disliking JavaScript and wanting it replaced. WASM will not replace JS. WASM augments what the web can accomplish and that is orthogonal to whether some will use it as a way to avoid writing JS.
+
+[▲ Return to Sections](#sections)
+
+## Strictly Speaking
+In 2009, with the release of ES5, JS added _strict mode_ as an opt-in mechanism. The goal of strict mode is to guide better programming practices in a direction where the JS engine has the best chance of optimizing and efficiently running the code.
+
+Most strict mode controls are in the form of _early errors_: errors that aren't strictly syntax errors but are still thrown at compile-time, before the code is run. For example: strict mode disallows naming two function parameters the same, resulting in an early error. Some strict mode errors occur at runtime (such as how `this` defaults to `undefined` rather than the global object).
+
+Strict mode is switched on per file with a special pragma, with nothing allowed before it except comments and whitespace:
+```javascript
+// only whitespace and comments are allowed
+// before the use-strict pragma
+"use strict";
+// the rest of the file runs in strict mode
+```
+
+Strict mode can be turned on per-function scope:
+```javascript
+function someOperations() {
+  // whitespace and comments are fine here
+  "use strict";
+
+  // all this code will run in strict mode
+}
+```
+
+If a file has strict mode turned on, the function-level strict mode pragmas are not allowed. The only valid reason to use per-function strict mode is when converting a non-strict mode file over to strict mode a little at a time.
+
+Virtually all transpiled code ends up in strict mode. ES6 modules also assume strict mode, so all code in modules are automatically defaulted to strict mode. While strict mode is opt-in, it is largely de facto default.
 
 [▲ Return to Sections](#sections)
 
