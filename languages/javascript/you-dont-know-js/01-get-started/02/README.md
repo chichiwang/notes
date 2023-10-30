@@ -4,6 +4,7 @@ The best way to learn JS is to start writing JS.
 ## Sections
 * [Each File is a Program](#each-file-is-a-program)
 * [Values](#values)
+* [Arrays and Objects](#arrays-and-objects)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -73,6 +74,43 @@ hitchhikersGuide[ Symbol("meaning of life") ];
 ```
 
 Direct usage of symbols are uncommon in typical JS programs - they are most widely used in low-level code such as libraries and frameworks.
+
+[▲ Return to Sections](#sections)
+
+## Arrays and Objects
+Objects are the other value type used in JS besides primitives.
+
+Arrays are a special type of object that is comprised of an ordered, numerically-indexed list of data:
+
+```javascript
+var names = [ "Frank", "Kyle", "Peter", "Susan" ];
+
+names.length;
+// 4
+
+names[0];
+// Frank
+
+names[1];
+// Kyle
+```
+
+Arrays can hold any value type, either primitive or object (including other arrays). Even functions are values that can be held in arrays or objects. Functions are a special sub-type of object, like arrays.
+
+Objects are more general: unordered, keyed-collections of any various values. Elements of an object are accessed by a string location name (aka: key or property) rather than by numeric position:
+
+```javascript
+var me = {
+  first: "Kyle",
+  last: "Simpson",
+  age: 39,
+  specialties: [ "JS", "Table Tennis" ]
+};
+
+console.log(`My name is ${ me.first }.`);
+```
+
+`me` is assigned an object, `first` represents the name of a location of information in that object. `me.first` is a syntax used to access the value stored at `first` in the object referenced by `me`. Another syntax to access this information is by using square brackets `[]` (`me["first"]`).
 
 [▲ Return to Sections](#sections)
 
