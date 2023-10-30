@@ -8,6 +8,7 @@ The best way to learn JS is to start writing JS.
 * [Value Type Determination](#value-type-determination)
 * [Declaring and Using Variables](#delaring-and-using-variables)
 * [Functions](#functions)
+* [Comparisons](#comparisons)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -308,6 +309,11 @@ whatToSay.greeting();
 ```
 
 The object definition `whatToSay` defines three functions `greeting()`, `question()`, and `answer()`. Each function is called by accessing the property to retrieve the function reference value.
+
+[▲ Return to Sections](#sections)
+
+## Comparisons
+Creating branching conditional logic in programs requires comparing values to determine their identity and relationship with each other. JavaScript has several mechanisms to enable value comparison.
 
 [▲ Return to Sections](#sections)
 
