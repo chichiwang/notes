@@ -7,6 +7,7 @@ The best way to learn JS is to start writing JS.
 * [Arrays and Objects](#arrays-and-objects)
 * [Value Type Determination](#value-type-determination)
 * [Declaring and Using Variables](#delaring-and-using-variables)
+* [Functions](#functions)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -231,6 +232,82 @@ catch (err) {
 ```
 
 `err` is a block-scoped variable only accessible inside the `catch` block. It behaves as if it had been declared with `let`.
+
+[▲ Return to Sections](#sections)
+
+## Functions
+In the world of Functional Programming "function" has a precise mathematical definition and implies a strict set of rules to abide by. In JavaScript "function" should be taken to take a broader meaning of a related term: "procedure." A procedure is a collection of statements that can be invoked one or more times, may be provided some inputs, and may give back one or more outputs.
+
+A _function definition_ looks like:
+
+```javascript
+function awesomeFunction(coolThings) {
+  // ..
+  return amazingStuff;
+}
+```
+
+It is called a function definition because it appears as a statement by itself and not an expression in another statement. The association between the identifier `awesomeFunction` and the function value is made during the compile phase of the code before the code is executed.
+
+A function defined in an expression looks like:
+
+```javascript
+// let awesomeFunction = ..
+// const awesomeFunction = ..
+var awesomeFunction = function(coolThings) {
+  // ..
+  return amazingStuff;
+};
+```
+
+Unlike a function definition, this _function expression_ is not associated with its identifier until the statement is executed at runtime. In JavaScript functions are values that can be assigned and passed around as values. Functions are a special object value type. Not all languages treat functions as values, but it is important for languages that support the functional programming pattern to.
+
+JavaScript functions can receive parameter input:
+
+```javascript
+function greeting(myName) {
+  console.log(`Hello, ${ myName }!`);
+}
+
+greeting("Kyle");   // Hello, Kyle!
+```
+
+In the above example `myName` is a parameter and acts like a local variable within the function. Functions can be defined to receive any number of parameters (0+). At runtime each parameter is assigned the value passed to it, in the function call, in the corresponding position (in this case `"Kyle"`).
+
+Functions can return values using the `return` keyword:
+
+```javascript
+function greeting(myName) {
+  return `Hello, ${ myName }!`;
+}
+
+var msg = greeting("Kyle");
+
+console.log(msg);   // Hello, Kyle!
+```
+
+Only a single value can be returned, but that value can be a single object/array containing multiple values.
+
+Since functions are are values they can be assigned as properties on objects:
+
+```javascript
+var whatToSay = {
+  greeting() {
+    console.log("Hello!");
+  },
+  question() {
+    console.log("What's your name?");
+  },
+  answer() {
+    console.log("My name is Kyle.");
+  }
+};
+
+whatToSay.greeting();
+// Hello!
+```
+
+The object definition `whatToSay` defines three functions `greeting()`, `question()`, and `answer()`. Each function is called by accessing the property to retrieve the function reference value.
 
 [▲ Return to Sections](#sections)
 
