@@ -286,4 +286,4 @@ JS is a compiled language. The tools (including the JS engine) process and verif
 
 [▲ Return to Sections](#sections)
 
-| [Table of Contents](../README.md#table-of-contents) |
+| [Table of Contents](../README.md#table-of-contents) | [Next: Chapter 2 - Surveying JS](../02/README.md) |

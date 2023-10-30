@@ -7,3 +7,4 @@ Date: WIP
 
 ## Table of Contents
 * [Chapter 1: What is JavaScript?](./01/README.md)
+* [Chapter 2: Surveying JS](./02/README.md)
