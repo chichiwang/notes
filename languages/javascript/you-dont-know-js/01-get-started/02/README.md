@@ -5,6 +5,7 @@ The best way to learn JS is to start writing JS.
 * [Each File is a Program](#each-file-is-a-program)
 * [Values](#values)
 * [Arrays and Objects](#arrays-and-objects)
+* [Value Type Determination](#value-type-determination)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -111,6 +112,26 @@ console.log(`My name is ${ me.first }.`);
 ```
 
 `me` is assigned an object, `first` represents the name of a location of information in that object. `me.first` is a syntax used to access the value stored at `first` in the object referenced by `me`. Another syntax to access this information is by using square brackets `[]` (`me["first"]`).
+
+[▲ Return to Sections](#sections)
+
+## Value Type Determination
+The `typeof` operator is used to determine a value's built-in types:
+
+```javascript
+typeof 42;                  // "number"
+typeof "abc";               // "string"
+typeof true;                // "boolean"
+typeof undefined;           // "undefined"
+typeof null;                // "object" -- oops, bug!
+typeof { "a": 1 };          // "object"
+typeof [1,2,3];             // "object"
+typeof function hello(){};  // "function"
+```
+
+`typeof null;` returns `"object"` instead of `"null"`. Similarly `typeof` does not return `"array"` for an array.
+
+Converting from one value type to another (ex: string to number) in JavaScript is referred to as **coercion**. Primitive values and object values behave differently when they're assigned or passed around.
 
 [▲ Return to Sections](#sections)
 
