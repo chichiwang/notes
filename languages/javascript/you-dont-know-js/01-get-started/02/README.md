@@ -6,6 +6,7 @@ The best way to learn JS is to start writing JS.
 * [Values](#values)
 * [Arrays and Objects](#arrays-and-objects)
 * [Value Type Determination](#value-type-determination)
+* [Declaring and Using Variables](#delaring-and-using-variables)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -132,6 +133,104 @@ typeof function hello(){};  // "function"
 `typeof null;` returns `"object"` instead of `"null"`. Similarly `typeof` does not return `"array"` for an array.
 
 Converting from one value type to another (ex: string to number) in JavaScript is referred to as **coercion**. Primitive values and object values behave differently when they're assigned or passed around.
+
+[▲ Return to Sections](#sections)
+
+## Declaring and Using Variables
+In JavaScript programs values can either appear as literal values or they can be held in variables. Variables can be thought of as containers for values.
+
+Variables have to be declared (created) to be used. There are various syntax forms that declare variables - each form has different implied behaviors.
+
+Consider the `var` statement:
+
+```javascript
+var myName = "Kyle";
+var age;
+```
+
+`var` declares a variable to be used in that part of the program, and optionally allows an initial assignment of value.
+
+Another similar keyword is `let`:
+
+```javascript
+let myName = "Kyle";
+let age;
+```
+
+`let` has some differences to `var`, the most obvious being that `let` allows a more limited access to the variable than `var` (_block scoping_ as opposed to regular or function scoping):
+
+```javascript
+var adult = true;
+
+if (adult) {
+  var myName = "Kyle";
+  let age = 39;
+  console.log("Shhh, this is a secret!");
+}
+
+console.log(myName);
+// Kyle
+
+console.log(age);
+// Error!
+```
+
+The attempt to access `age` outside of the `if` block results in an error because `age` was block-scoped whereas `myName` wasn't. Block-scoping is useful for preventing accidental overlap of variable names. `var` is more useful when the variable will be used by a wider scope within the function.
+
+**Note**: It's a common suggestion that `var` should be avoided in favor of `let` and `const` because of the perceived confusion of how the scoping behavior of `var` has worked. This is overly restrictive and unhelpful advice. It assumes the inability to learn a feature properly in combination with other features. Instead learn any features available and use them where appropriate.
+
+A third declaration form `const` is similar to `let` in scoping, but it contains an additional limitation that it must be given a value the moment it is declared and cannot be reassigned to another value.
+
+```javascript
+const myBirthday = true;
+let age = 39;
+
+if (myBirthday) {
+  age = age + 1;    // OK!
+  myBirthday = false;  // Error!
+}
+```
+
+Attempting to reassign the `myBirthday` constant results in an exception.
+
+`const` declared variables are not "unchangeable", they just cannot be reassigned. Avoid using `const` with object values because the contents of these values can be changed which can lead to confusion:
+
+```javascript
+const actors = [
+  "Morgan Freeman", "Jennifer Aniston"
+];
+
+actors[2] = "Tom Cruise";   // OK :(
+actors = [];                // Error!
+```
+
+Using `const` only to assign primitive values to variables avoids the confusion of re-assigment (not allowed) with mutation (allowed).
+
+Function declarations provide another syntactic form of declaring identifiers (variables) in various scopes:
+
+```javascript
+function hello(myName) {
+  console.log(`Hello, ${ myName }.`);
+}
+
+hello("Kyle");
+// Hello, Kyle.
+```
+
+The variable `hello` is created in the outer scope and automatically assigned the function. The named parameter `myName` is created inside the function and only accessible in the function's scope. Both `hello` and `myName` generally behave as `var`-declared.
+
+Another syntax that declares a variable is a `catch`-clause:
+
+```javascript
+try {
+  someError();
+}
+catch (err) {
+  console.log(err);
+}
+```
+
+`err` is a block-scoped variable only accessible inside the `catch` block. It behaves as if it had been declared with `let`.
 
 [▲ Return to Sections](#sections)
 
