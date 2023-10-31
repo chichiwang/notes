@@ -16,6 +16,7 @@ The best way to learn JS is to start writing JS.
   * [Class Inheritance](#class-inheritance)
   * [Modules](#modules)
   * [Classic Modules](#classic-modules)
+  * [ES Modules](#es-modules)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -674,6 +675,83 @@ forAgainstLet.print();
 ```
 
 The only observable difference between these instantiations and the ones used for the classes is the lack of the `new` keyword. Instead the module factories are invoked as regular functions.
+
+#### ES Modules
+ES Modules were introduced to JavaScript with ES6. They were meant to serve the same spirit and purpose as the _classic modules_, taking into account important variations and use cases from AMD, UMD, and CommonJS. The implementation, however, differs significantly with classic modules.
+
+First the wrapping context for an ES module is a file. ESMs are file-based: one file, one module. Secondly ES module APIs are not interacted with explicitly - the `export` keyword is used to add a variable or method to a module's public API. If something is defined in a module but not `export`ed, then it remains private to the module. Third: ES modules are not "instantiated", they are `import`ed to use their single instance. ES modules are, in effect, "singletons" - only one instance is ever created at the point of first `import` in the program runtime. Subsequent `import` statements simply receive a reference to that same single instance. If multiple instantiations are necessary a classic module factory function inside an ESM needs to be provided.
+
+The following snippets mix both ESM and classic modules, since multiple instantiation is necessary:
+
+```javascript
+// file: publication.js
+
+function printDetails(title,author,pubDate) {
+  console.log(`
+    Title: ${ title }
+    By: ${ author }
+    ${ pubDate }
+  `);
+}
+
+export function create(title,author,pubDate) {
+  var publicAPI = {
+    print() {
+      printDetails(title,author,pubDate);
+    }
+  };
+
+  return publicAPI;
+}
+```
+
+To import and use the above module from a different module:
+
+```javascript
+// file: blogpost.js
+import { create as createPub } from "publication.js";
+
+function printDetails(pub,URL) {
+  pub.print();
+  console.log(URL);
+}
+
+export function create(title,author,pubDate,URL) {
+  var pub = createPub(title,author,pubDate);
+
+  var publicAPI = {
+    print() {
+      printDetails(pub,URL);
+    }
+  };
+
+  return publicAPI;
+}
+```
+
+To use the above module `blogpost.js`, import it into another module like `main.js`:
+
+```javascript
+// file: main.js
+import { create as newBlogPost } from "blogpost.js";
+
+var forAgainstLet = newBlogPost(
+  "For and against let",
+  "Kyle Simpson",
+  "October 27, 2014",
+  "https://davidwalsh.name/for-and-against-let"
+);
+
+forAgainstLet.print();
+// Title: For and against let
+// By: Kyle Simpson
+// October 27, 2014
+// https://davidwalsh.name/for-and-against-let
+```
+
+**Note**: `as newBlogPost` clause in the `import` statement is optional. If omitted the function will just be named `create` in this scope. Renaming a generic method like like `create` to contain more context as to its function can greatly improve readability.
+
+ES modules can use classic modules internally if they need to support multiple-instantiation. Alternatively a `class` defintion could have been exposed instead. If a module only needs a single instance, its methods/properties can be `export`ed directly instead.
 
 [▲ Return to Sections](#sections)
 
