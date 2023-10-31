@@ -11,6 +11,7 @@ The best way to learn JS is to start writing JS.
 * [Comparisons](#comparisons)
   * [Equal...ish](#equalish)
   * [Coercive Comparisons](#coercive-comparisons)
+* [How We Organize in JS](#how-we-organize-in-js)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -411,6 +412,13 @@ x < y;      // true, watch out!
 ```
 
 There is no way to get relational operators to avoid coercion besides never using mismatched types in comparisons. It is still very likely these cases will happen. Rather than avoiding coercive comparisons it is better to embrace them and learn the nuances of their behaviors. Coercive comparisons will show up in other operations in JavaScript (such as conditionals like `if`).
+
+[▲ Return to Sections](#sections)
+
+## How We Organize in JS
+Two major patterns of organizing code (data and behavior) are used broadly across JS: classes and modules. These patterns are not mutually exclusive - programs can use one, both, or neither.
+
+In some respects these patterns are very different but in other ways they are just different sides of the same coin. Being proficient in JavaScript requires understanding both patterns and where to use each.
 
 [▲ Return to Sections](#sections)
 
