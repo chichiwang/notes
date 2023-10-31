@@ -15,6 +15,7 @@ The best way to learn JS is to start writing JS.
   * [Classes](#classes)
   * [Class Inheritance](#class-inheritance)
   * [Modules](#modules)
+  * [Classic Modules](#classic-modules)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -575,6 +576,104 @@ Inheritance is a powerful pattern for organizing data/behavior into separate log
 The module pattern has essentially the same goal as the class pattern: group data and behavior together into logical units. Like classes, modules can "include" and "access" the data and behaviors of other modules.
 
 Modules do have some differences from classes, most notably syntax.
+
+#### Classic Modules
+ES6 added a native module syntax to JavaScript, but from the early days of JavaScript modules have been an important and common pattern leveraged across countless programs, even without a dedicated syntax.
+
+The key hallmarks of a _classic module_ are an outer function that returns an "instance" of the module with one or more functions that can operate on the module instance's internal (hidden) data. Because a _classic module_ is just a function and calling it produces an "instance" of the module another term used to describe these functions is _module factories_.
+
+The classic module form of the earlier class examples of `Publication`, `Book`, and `BlogPost`:
+
+```javascript
+function Publication(title,author,pubDate) {
+  var publicAPI = {
+    print() {
+      console.log(`
+        Title: ${ title }
+        By: ${ author }
+        ${ pubDate }
+      `);
+    }
+  };
+
+  return publicAPI;
+}
+
+function Book(bookDetails) {
+  var pub = Publication(
+    bookDetails.title,
+    bookDetails.author,
+    bookDetails.publishedOn
+  );
+
+  var publicAPI = {
+    print() {
+      pub.print();
+      console.log(`
+        Publisher: ${ bookDetails.publisher }
+        ISBN: ${ bookDetails.ISBN }
+      `);
+    }
+  };
+
+  return publicAPI;
+}
+
+function BlogPost(title,author,pubDate,URL) {
+  var pub = Publication(title,author,pubDate);
+
+  var publicAPI = {
+    print() {
+      pub.print();
+      console.log(URL);
+    }
+  };
+
+  return publicAPI;
+}
+```
+
+These modules share more similarities with their class counterparts than differences.
+
+The class forms store methods and data on an object instance which are accessed using through the `this` keyword. With modules the data and methods are accessed as identifier variables in scope without the `this.` prefix.
+
+With a class the API of an instance is implicit in the class definition (all of the data and methods are public). With a module factory function an object with publicly exposed data/methods is explicitly returned from the function, while any data or unreferenced methods remain private.
+
+There are variations to this factory function pattern across JavaScript: AMD (Asynchronous Module Definition), UMD (Universal Module Definition), and CommonJS (classic Node.js-style modules) among them. All of these variations rely on the same basic principles.
+
+Consider the usage ("instantiation") of the above module factory functions:
+
+```javascript
+var YDKJS = Book({
+  title: "You Don't Know JS",
+  author: "Kyle Simpson",
+  publishedOn: "June 2014",
+  publisher: "O'Reilly",
+  ISBN: "123456-789"
+});
+
+YDKJS.print();
+// Title: You Don't Know JS
+// By: Kyle Simpson
+// June 2014
+// Publisher: O'Reilly
+// ISBN: 123456-789
+
+var forAgainstLet = BlogPost(
+  "For and against let",
+  "Kyle Simpson",
+  "October 27, 2014",
+  "https://davidwalsh.name/for-and-against-let"
+);
+
+forAgainstLet.print();
+// Title: For and against let
+// By: Kyle Simpson
+// October 27, 2014
+// https://davidwalsh.name/for-and-against-let
+```
+
+The only observable difference between these instantiations and the ones used for the classes is the lack of the `new` keyword. Instead the module factories are invoked as regular functions.
 
 [▲ Return to Sections](#sections)
 
