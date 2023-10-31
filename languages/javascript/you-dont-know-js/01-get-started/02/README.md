@@ -13,6 +13,7 @@ The best way to learn JS is to start writing JS.
   * [Coercive Comparisons](#coercive-comparisons)
 * [How We Organize in JS](#how-we-organize-in-js)
   * [Classes](#classes)
+  * [Class Inheritance](#class-inheritance)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -469,6 +470,105 @@ The statement `mathNotes = new Notebook()` creates a new instance of the `Notebo
 Methods of a class can only be called on through instances of the class, and not the classes themselves: `mathNotes.addPage(..)`, `page.print()`.
 
 The `class` mechanism allows for data to be organized together with behaviors associated with that data. This same program could have been built without any `class` definitions but it would likely have been less organized and more difficult to reason about.
+
+#### Class Inheritance
+An aspect of traditional "class-oriented" design less commonly used in JavaScript is [inheritance](https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming) (and [polymorphism](https://en.wikipedia.org/wiki/Polymorphism_(computer_science)).
+
+Considering the following class:
+
+```javascript
+class Publication {
+  constructor(title,author,pubDate) {
+    this.title = title;
+    this.author = author;
+    this.pubDate = pubDate;
+  }
+
+  print() {
+    console.log(`
+      Title: ${ this.title }
+      By: ${ this.author }
+      ${ this.pubDate }
+    `);
+  }
+}
+```
+
+The above `Publication` class defines a set of common behavior that any publication might need.
+
+Now consider more specific types of publications, such as `Book` or `BlogPost`:
+
+```javascript
+class Book extends Publication {
+  constructor(bookDetails) {
+    super(
+      bookDetails.title,
+      bookDetails.author,
+      bookDetails.publishedOn
+    );
+    this.publisher = bookDetails.publisher;
+    this.ISBN = bookDetails.ISBN;
+  }
+
+  print() {
+    super.print();
+    console.log(`
+      Publisher: ${ this.publisher }
+      ISBN: ${ this.ISBN }
+    `);
+  }
+}
+
+class BlogPost extends Publication {
+  constructor(title,author,pubDate,URL) {
+    super(title,author,pubDate);
+    this.URL = URL;
+  }
+
+  print() {
+    super.print();
+    console.log(this.URL);
+  }
+}
+```
+
+Both the `Book` and `BlogPost` classes use the `extends` clause to extend the general definition of `Publication` to include additional behavior. The `super(..)` call in each constructor delegates to the parent `Publication` class's constructor for initialization before doing more initialization specific to their own sub-class/child class.
+
+To use these child classes:
+
+```javascript
+var YDKJS = new Book({
+  title: "You Don't Know JS",
+  author: "Kyle Simpson",
+  publishedOn: "June 2014",
+  publisher: "O'Reilly",
+  ISBN: "123456-789"
+});
+
+YDKJS.print();
+// Title: You Don't Know JS
+// By: Kyle Simpson
+// June 2014
+// Publisher: O'Reilly
+// ISBN: 123456-789
+
+var forAgainstLet = new BlogPost(
+  "For and against let",
+  "Kyle Simpson",
+  "October 27, 2014",
+  "https://davidwalsh.name/for-and-against-let"
+);
+
+forAgainstLet.print();
+// Title: For and against let
+// By: Kyle Simpson
+// October 27, 2014
+// https://davidwalsh.name/for-and-against-let
+```
+
+Both of the child classes have a `print()` method which is an override of the inherited `print()` method from the parent `Publication` class. Each of these `print()` methods call `super.print()` to invoke the inherited version of the `print()` method. That both the inherited and overriden methods can have the same name is called _polymorphism_.
+
+Inheritance is a powerful pattern for organizing data/behavior into separate logical units (classes) while allowing child classes to utilize the parent class by accessing/using its behavior/data.
 
 [▲ Return to Sections](#sections)
 
