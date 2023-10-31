@@ -10,6 +10,7 @@ The best way to learn JS is to start writing JS.
 * [Functions](#functions)
 * [Comparisons](#comparisons)
   * [Equal...ish](#equalish)
+  * [Coercive Comparisons](#coercive-comparisons)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -374,6 +375,42 @@ x === [ 1, 2, 3 ];    // false
 In this example `y === x` returns `true` because both variables hold reference to the same initial array. Both `=== [1, 2, 3]` comparisons return `false` because `y` and `x` are being compared to a newly created array `[1, 2, 3]`. The array structure and contents do not matter for comparison, only the **reference identity** does.
 
 JavaScript does not provide a mechanism for structural equality comparison of object values. Structural equivalency is a difficult problem (for example: how can it be determined that two functions are structurally equivalent?). It is too difficult to account for all possible corner cases.
+
+#### Coercive Comparisons
+Coercion is when a value of one type is coverted to its respective representation in another type to whatever extent possible.
+
+Few JS features draw more ire from the JS community than the `==` operator, referred to as the "loose eqaulity" operator. Most writing and discourse condemns this operator as poorly designed, dangerous, and bug-ridden. Even the creator of JS, Brendan Eich, has lamented how it was designed as a big mistake.
+
+Most of this frustration comes from a short list of corner cases and a widespread misconception that it performs comparisons without considering the types of its compared values. In fact `==` and `===` boh consider the type of the values being compared, and when the comparison is between values of the same type both operators do **do exactly the same thing**. If the values are of different types, `==` differs from `===` in that it coerces the values to be the same type before performing the comparison. Instead of "loose equality" the `==` operator should be described as the "coercive equality" operator.
+
+```javascript
+42 == "42";             // true
+1 == true;              // true
+```
+
+In both of the above comparisons the value types are different so `==` causes non-number values (`"42"` and `true`) to be converted to numbers (`42` and `1` respectively) before the comparison is made. `==` prefers numeric comparisons.
+
+Similarly, the relational comparison operators like `<`, `>`, `<=`, and `>=` will allow coercion (generally, to numbers) if the types of values being compared differ.
+
+```javascript
+var arr = [ "1", "10", "100", "1000" ];
+for (let i = 0; i < arr.length && arr[i] < 500; i++) {
+  // will run 3 times
+}
+```
+
+`i < arr.length` will not deal with coercion because both values will always be numbers. `arr[i] < 500` will invoke coercion, however, because all of the elements of `arr` are string values.
+
+Relational comparisons typically use numeric comparisons except in cases where both values in the comparison are already strings - in this case they use alphabetical (dictionary-like) comparison of strings:
+
+```javascript
+var x = "10";
+var y = "9";
+
+x < y;      // true, watch out!
+```
+
+There is no way to get relational operators to avoid coercion besides never using mismatched types in comparisons. It is still very likely these cases will happen. Rather than avoiding coercive comparisons it is better to embrace them and learn the nuances of their behaviors. Coercive comparisons will show up in other operations in JavaScript (such as conditionals like `if`).
 
 [▲ Return to Sections](#sections)
 
