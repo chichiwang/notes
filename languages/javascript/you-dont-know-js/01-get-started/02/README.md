@@ -755,4 +755,4 @@ ES modules can use classic modules internally if they need to support multiple-i
 
 [▲ Return to Sections](#sections)
 
-| [Previous: Chapter 1 - What is JavaScript?](../01/README.md) | [Table of Contents](../README.md#table-of-contents) |
+| [Previous: Chapter 1 - What is JavaScript?](../01/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Chapter 3 - Digging to the Roots of JS](../03/README.md) |
