@@ -9,6 +9,7 @@ The best way to learn JS is to start writing JS.
 * [Declaring and Using Variables](#delaring-and-using-variables)
 * [Functions](#functions)
 * [Comparisons](#comparisons)
+  * [Equal...ish](#equalish)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -314,6 +315,65 @@ The object definition `whatToSay` defines three functions `greeting()`, `questio
 
 ## Comparisons
 Creating branching conditional logic in programs requires comparing values to determine their identity and relationship with each other. JavaScript has several mechanisms to enable value comparison.
+
+#### Equal...ish
+Sometimes an equality comparison intends _exact_ matching but other times the desired comparison is _closely similar_ or _interchangeable_ matching. It is important to be aware of the difference between an **equality** comparison and an **equivalence** comparison.
+
+In JavaScript the triple-equals `===` operator is described as the "strict equality" operator. Most values compared with an `===` equality comparison will behave as expected to determine if the values are exactly the same:
+
+```javascript
+3 === 3.0;              // true
+"yes" === "yes";        // true
+null === null;          // true
+false === false;        // true
+
+42 === "42";            // false
+"hello" === "Hello";    // false
+true === 1;             // false
+0 === null;             // false
+"" === null;            // false
+null === undefined;     // false
+```
+
+`===` is often described as comparing both the value and type. In several of the examples above, such ash `42 === "42"` the _type_ of the values (number and string) does seem to be the distinguishing factor. However, in JavaScript **all** comparisons take into account both the type and values being compared. `===` specifically disallows any sort of type conversion (coercion) in its comparison while other JS comparisons do allow coercion.
+
+There are two instances where the `===` operator is designed to lie:
+
+```javascript
+NaN === NaN;            // false
+0 === -0;               // true
+```
+
+For `-0` and `NaN` it is best to avoid using `===` to check for equality. Instead `Number.isNaN(..)` can be used to check for `NaN` and `Object.is(..)` can be used for anything including `-0`. `Object.is(..)` is the strictest tool for comparison in JavaScript.
+
+`===` also gets tricky when comparing non-primitive values (objects):
+
+```javascript
+[ 1, 2, 3 ] === [ 1, 2, 3 ];    // false
+{ a: 42 } === { a: 42 }         // false
+(x => x * 2) === (x => x * 2)   // false
+```
+
+What is happening in these examples is that JavaScript does not check for _structural equality_ of objects using the `===` operator. It instead checks for _identity equality_ on objects.
+
+In JavaScript all object values are held by reference, are assigned and passed by reference-copy, and are compared by reference (identity) equality:
+
+```javascript
+var x = [ 1, 2, 3 ];
+
+// assignment is by reference-copy, so
+// y references the *same* array as x,
+// not another copy of it.
+var y = x;
+
+y === x;              // true
+y === [ 1, 2, 3 ];    // false
+x === [ 1, 2, 3 ];    // false
+```
+
+In this example `y === x` returns `true` because both variables hold reference to the same initial array. Both `=== [1, 2, 3]` comparisons return `false` because `y` and `x` are being compared to a newly created array `[1, 2, 3]`. The array structure and contents do not matter for comparison, only the **reference identity** does.
+
+JavaScript does not provide a mechanism for structural equality comparison of object values. Structural equivalency is a difficult problem (for example: how can it be determined that two functions are structurally equivalent?). It is too difficult to account for all possible corner cases.
 
 [▲ Return to Sections](#sections)
 
