@@ -14,6 +14,7 @@ The best way to learn JS is to start writing JS.
 * [How We Organize in JS](#how-we-organize-in-js)
   * [Classes](#classes)
   * [Class Inheritance](#class-inheritance)
+  * [Modules](#modules)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -569,6 +570,11 @@ forAgainstLet.print();
 Both of the child classes have a `print()` method which is an override of the inherited `print()` method from the parent `Publication` class. Each of these `print()` methods call `super.print()` to invoke the inherited version of the `print()` method. That both the inherited and overriden methods can have the same name is called _polymorphism_.
 
 Inheritance is a powerful pattern for organizing data/behavior into separate logical units (classes) while allowing child classes to utilize the parent class by accessing/using its behavior/data.
+
+#### Modules
+The module pattern has essentially the same goal as the class pattern: group data and behavior together into logical units. Like classes, modules can "include" and "access" the data and behaviors of other modules.
+
+Modules do have some differences from classes, most notably syntax.
 
 [▲ Return to Sections](#sections)
 
