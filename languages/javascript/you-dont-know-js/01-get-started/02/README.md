@@ -12,6 +12,7 @@ The best way to learn JS is to start writing JS.
   * [Equal...ish](#equalish)
   * [Coercive Comparisons](#coercive-comparisons)
 * [How We Organize in JS](#how-we-organize-in-js)
+  * [Classes](#classes)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -419,6 +420,55 @@ There is no way to get relational operators to avoid coercion besides never usin
 Two major patterns of organizing code (data and behavior) are used broadly across JS: classes and modules. These patterns are not mutually exclusive - programs can use one, both, or neither.
 
 In some respects these patterns are very different but in other ways they are just different sides of the same coin. Being proficient in JavaScript requires understanding both patterns and where to use each.
+
+#### Classes
+The terms "object-oriented", "class-oriented", and "classes" are full of nuance - they are not universal in definition. This discussion will use a somewhat traditional definition: the one familiar to those to those with backgrounds in "object-oriented" languages like C++ and Java.
+
+A class is a definition of a "type" of custom data structure that includes both data and the behaviors that operate on the data. Classes define how this data structure works but the classes are not themselves concrete values. To get a concrete value that can be used in a program a class must be _instantiated_ with the `new` keyword.
+
+```javascript
+class Page {
+  constructor(text) {
+    this.text = text;
+  }
+
+  print() {
+    console.log(this.text);
+  }
+}
+
+class Notebook {
+  constructor() {
+    this.pages = [];
+  }
+
+  addPage(text) {
+    var page = new Page(text);
+    this.pages.push(page);
+  }
+
+  print() {
+    for (let page of this.pages) {
+      page.print();
+    }
+  }
+}
+
+var mathNotes = new Notebook();
+mathNotes.addPage("Arithmetic: + - * / ...");
+mathNotes.addPage("Trigonometry: sin cos tan ...");
+
+mathNotes.print();
+// ..
+```
+
+The `this.text` member property of the `Page` class is where the string data is stored. The behavior is the class method `Page.print()` that dumps the string data to the console. The data in the `Notebook` class is an array of `Page` instances. The `Notebook.addPage(..)` method instantiates a new `Page` instance and adds it to the list. The `Notebook.print()` methods logs all of the pages of the Notebook instance to the console.
+
+The statement `mathNotes = new Notebook()` creates a new instance of the `Notebook` class and `page = new Page(text)` is where instances of the `Page` class are created.
+
+Methods of a class can only be called on through instances of the class, and not the classes themselves: `mathNotes.addPage(..)`, `page.print()`.
+
+The `class` mechanism allows for data to be organized together with behaviors associated with that data. This same program could have been built without any `class` definitions but it would likely have been less organized and more difficult to reason about.
 
 [▲ Return to Sections](#sections)
 
