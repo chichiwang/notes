@@ -6,6 +6,7 @@ This chapter covers some of the lower-level root characteristics of the JavaScri
   * [Consuming Iterators](#consuming-iterators)
   * [Iterables](#iterables)
 * [Closures](#closures)
+* [this Keyword](#this-keyword)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -131,7 +132,7 @@ for (let [idx,val] of arr.entries()) {
 // [2]: 30
 ```
 
-For the most part all built-in iterables in JavaScript have three iterator forms avaiable:
+For the most part all built-in iterables in JavaScript have three iterator forms available:
 * `keys()`: keys only
 * `values()`: values only
 * `entries()`: entries in the form of a tuple
@@ -232,6 +233,69 @@ for (let [idx,btn] of buttons.entries()) {
 Because the `for` loop is using `let` declarations, each iteration gets new block-scoped `idx` and `btn` variables, as well as an new `onClick()` function. The inner `onClick()` function in each iteration closes over `idx`.
 
 It is important to remember that the inner functions close over the variables and not the values they contain.
+
+[▲ Return to Sections](#sections)
+
+## `this` Keyword
+One of JavaScript's most powerful mechanisms is also its most misunderstood: the `this` keyword.
+
+> Scope is the set of rules that controls how references to variables are resolved.
+
+Functions have another characteristic besides scope that influences what they can access: the _execution context_, which is exposed to the function via the `this` keyword.
+
+Scope is static and contains a fixed set of variables available at the moment and location where a function is defined. A function's _execution context_ is dynamic and depedent on how it is called. `this` is a dynamic characteristic determined each time a function is called.
+
+One way to think about execution context is that it is a tangible object whose properties are made available to a function while it executes. Scope can also be thought about as an object, but it is hidden within the JS engine, whose properties are identifier variables available inside the function.
+
+```javascript
+function classroom(teacher) {
+  return function study() {
+    console.log(
+      `${ teacher } says to study ${ this.topic }`
+    );
+  };
+}
+
+var assignment = classroom("Kyle");
+```
+
+The inner function `study()` refers to a `this` keyword which makes it a `this`-aware function, or a function dependent on its execution context. If `assignment()` is called normally:
+
+```javascript
+assignment();
+// Kyle says to study undefined  -- Oops :(
+```
+
+Because the program is not running in [strict mode](../01/README.md#strictly-speaking), context-aware functions called without a context specified default the context to the global object (`window` in the browser). Given there is no global variable `topic`, `this.topic` resolves to `undefined`.
+
+To provide a context, a function can be assigned as a property of an object:
+
+```javascript
+var homework = {
+  topic: "JS",
+  assignment: assignment
+};
+
+homework.assignment();
+// Kyle says to study JS
+```
+
+This time `assignment()` is assigned as a property of the `homework` object and invoked as `homework.assignment()` - `this` in the function execution now references the `homework` object and `this.topic` resolves as `"JS"`.
+
+A context-aware function can also be provided a context explicitly in its invocation:
+
+```javascript
+var otherHomework = {
+  topic: "Math"
+};
+
+assignment.call(otherHomework);
+// Kyle says to study Math
+```
+
+This time the function `assignment()` was invoked with its `call(..)` method, which takes a context object as argument. In this example the context object is `otherHomework` and `this.topic` resolves to `"Math"`.
+
+The benefit of context-aware functions is the ability to more flexibly re-use a single function with data from different objects. A function that closes over a scope can never reference a different scope, but a function with dynamic `this` context awareness can be useful in certain situations.
 
 [▲ Return to Sections](#sections)
 
