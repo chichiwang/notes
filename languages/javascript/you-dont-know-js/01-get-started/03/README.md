@@ -62,7 +62,7 @@ ES6 defined the basic data structure/collection types in JS as iterables, includ
 
 Taking an array as an example of an iterable:
 
-```javscript
+```javascript
 // an array is an iterable
 var arr = [ 10, 20, 30 ];
 
