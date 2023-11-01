@@ -5,6 +5,7 @@ This chapter covers some of the lower-level root characteristics of the JavaScri
 * [Iteration](#iteration)
   * [Consuming Iterators](#consuming-iterators)
   * [Iterables](#iterables)
+* [Closures](#closures)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -138,6 +139,99 @@ For the most part all built-in iterables in JavaScript have three iterator forms
 Custom data structures can also be made in a way they adhere to the iteration protocol: this allows them to used by iterator consumers (such as `for .. of` and `...`).
 
 **Note**: A nuance of _iterators_ is that they are in and of themselves _iterables_. The iterable-consumption protocol expects an _iterable_ but an _iterator_ is just an iterable of itself. When creating an iterator instance from an iterator, the iterator itself is returned.
+
+[▲ Return to Sections](#sections)
+
+## Closures
+_Closure_ is one of the most pervasive programming functionalities across a majority of programming languages. It is a concept as fundamental as variables or loops.
+
+A formal definition:
+> Closure is when a function remembers and continues to access variables outside of its scope, even when the function is executed in a different scope.
+
+Two characteristics found in this definition:
+1. Closure is part of the nature of a function. Objects do not get closures, functions do.
+2. To observe a closure you must execute a function in a different scope than where that function was originally defined.
+
+Taking the following as example:
+
+```javascript
+function greeting(msg) {
+  return function who(name) {
+    console.log(`${ msg }, ${ name }!`);
+  };
+}
+
+var hello = greeting("Hello");
+var howdy = greeting("Howdy");
+
+hello("Kyle");
+// Hello, Kyle!
+
+hello("Sarah");
+// Hello, Sarah!
+
+howdy("Grant");
+// Howdy, Grant!
+```
+
+When the outer function `greeting(..)` is executed it returns an instance of the inner function `who(..)`. The instance of `who(..)` returned closes over the variable `msg`, the parameter from the outer function.
+
+When `greeting(..)` is finished running, normally all of its variables would be garbage collected (removed from memory). However, `msg` persists due to closure, and will remain in memory until the instance of `who(..)` hanging onto that closure (`hello(..)` or `howdy(..)`) are no longer in memory.
+
+Closures are not a snapshot of values, they are a direct link and preservation of the varibles themselves. This means closures can actually observe and make changes to the variables over time:
+
+```javascript
+function counter(step = 1) {
+  var count = 0;
+  return function increaseCount(){
+    count = count + step;
+    return count;
+  };
+}
+
+var incBy1 = counter(1);
+var incBy3 = counter(3);
+
+incBy1();       // 1
+incBy1();       // 2
+
+incBy3();       // 3
+incBy3();       // 6
+incBy3();       // 9
+```
+
+Each instance of `increaseCount()` is closed over both the `step` and `count` variables from the outer function's scope. `count` is updated on each invocation of that returned function.
+
+Closure is most common when working with asynchronous code:
+
+```javascript
+function getSomeData(url) {
+  ajax(url,function onResponse(resp){
+    console.log(
+      `Response (from ${ url }): ${ resp }`
+    );
+  });
+}
+
+getSomeData("https://some.url/wherever");
+// Response (from https://some.url/wherever): ...
+```
+
+The inner function `onResponse(..)` is closed over `url` and preserves that variable until the Ajax call returns and executes the callback.
+
+It isn't necessary for the outer scope to be a function, just that there be one variable in an outer scope is accessed from an inner function:
+
+```javascript
+for (let [idx,btn] of buttons.entries()) {
+  btn.addEventListener("click",function onClick(){
+    console.log(`Clicked on button (${ idx })!`);
+  });
+}
+```
+
+Because the `for` loop is using `let` declarations, each iteration gets new block-scoped `idx` and `btn` variables, as well as an new `onClick()` function. The inner `onClick()` function in each iteration closes over `idx`.
+
+It is important to remember that the inner functions close over the variables and not the values they contain.
 
 [▲ Return to Sections](#sections)
 
