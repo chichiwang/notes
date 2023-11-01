@@ -4,6 +4,7 @@ This chapter covers some of the lower-level root characteristics of the JavaScri
 ## Sections
 * [Iteration](#iteration)
   * [Consuming Iterators](#consuming-iterators)
+  * [Iterables](#iterables)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -51,6 +52,92 @@ doSomethingUseful( ...it );
 ```
 
 In both of these cases the iterator-spread form of `...` follows the iterator-consumption protocol (the same as the `for .. of` loop) to retrieve all available values from and iterator and place them into the receiving context.
+
+#### Iterables
+The iterator-consumption protocol is defined for consuming _iterables_: values that can be iterated over. The protocol automatically creates an instance from an iterable and consumes just that _iterator instance_ to completion. A single iterable can be consumed more than once - a new iterator instance is created from it each time.
+
+ES6 defined the basic data structure/collection types in JS as iterables, including strings, arrays, maps, sets, and others.
+
+Taking an array as an example of an iterable:
+
+```javscript
+// an array is an iterable
+var arr = [ 10, 20, 30 ];
+
+for (let val of arr) {
+  console.log(`Array value: ${ val }`);
+}
+// Array value: 10
+// Array value: 20
+// Array value: 30
+```
+
+Since arrays are iterables, they can be shallow-copied with the spread operator:
+
+```javascript
+var arrCopy = [ ...arr ];
+```
+
+The characters of a string can also be iterated over:
+
+```javascript
+var greeting = "Hello world!";
+var chars = [ ...greeting ];
+
+chars;
+// [ "H", "e", "l", "l", "o", " ",
+//   "w", "o", "r", "l", "d", "!" ]
+```
+
+A [map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) data structure uses objects as keys, associating a value of any type with that key. Maps have a different default iteration: the iteration runs over the map's _entries_ in the form of a tuple (2-element array) containing both the key and value.
+
+```javascript
+// given two DOM elements, `btn1` and `btn2`
+
+var buttonNames = new Map();
+buttonNames.set(btn1,"Button 1");
+buttonNames.set(btn2,"Button 2");
+
+for (let [btn,btnName] of buttonNames) {
+  btn.addEventListener("click",function onClick(){
+    console.log(`Clicked ${ btnName }`);
+  });
+}
+```
+
+In the `for .. of` loop over `buttonNames`, `let [btn, btnName]` is used to assign the entry values to `btn` and `btnName` (called _array destructuring_).
+
+Each built-in iterable in JavaScript exposes a default iteration. A more specific iteration can be chosen if necessary. For example, to consume only the values of a map, the `.values()` method can be called on it:
+
+```javascript
+for (let btnName of buttonNames.values()) {
+  console.log(btnName);
+}
+// Button 1
+// Button 2
+```
+
+To consume both the index and value of array entries, the `.entries()` method can be called:
+
+```javascript
+var arr = [ 10, 20, 30 ];
+
+for (let [idx,val] of arr.entries()) {
+  console.log(`[${ idx }]: ${ val }`);
+}
+// [0]: 10
+// [1]: 20
+// [2]: 30
+```
+
+For the most part all built-in iterables in JavaScript have three iterator forms avaiable:
+* `keys()`: keys only
+* `values()`: values only
+* `entries()`: entries in the form of a tuple
+
+Custom data structures can also be made in a way they adhere to the iteration protocol: this allows them to used by iterator consumers (such as `for .. of` and `...`).
+
+**Note**: A nuance of _iterators_ is that they are in and of themselves _iterables_. The iterable-consumption protocol expects an _iterable_ but an _iterator_ is just an iterable of itself. When creating an iterator instance from an iterator, the iterator itself is returned.
 
 [▲ Return to Sections](#sections)
 
