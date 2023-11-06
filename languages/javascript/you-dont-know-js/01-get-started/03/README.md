@@ -9,6 +9,7 @@ This chapter covers some of the lower-level root characteristics of the JavaScri
 * [this Keyword](#this-keyword)
 * [Prototypes](#prototypes)
   * [Object Linkage](#object-linkage)
+  * [this Revisited](#this-revisited)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -320,7 +321,7 @@ While `homework` is only defined with a single property `topic`, the default pro
 homework.toString();    // [object Object]
 ```
 
-`homework.toString()` is a valid property access even though the `homework` object does not have a defined `toString()` method, the access delegates invokation to `Object.prototype.toString()` instead.
+`homework.toString()` is a valid property access even though the `homework` object does not have a defined `toString()` method, the access delegates invocation to `Object.prototype.toString()` instead.
 
 #### Object Linkage
 
@@ -356,6 +357,31 @@ homework.topic;
 ```
 
 `otherHomework.topic = "Math"` assigns the value `"Math"` to a new property `topic` directly on the `otherHomework` object, not to any objects further up in the chain. `homework.topic` remains unaffected by the assignment. The `topic` property on `otherHomework` is _shadowing_ the property of the same name on `homework` in the prototype chain.
+
+#### `this` Revisited
+The true importance of the `this` keyword is seen in how it powers prototype-delegated function calls. One of the main reasons `this` supports dynamic context is so that method calls on objects which delegate methods maintain the expected context for method execution.
+
+```javascript
+var homework = {
+  study() {
+    console.log(`Please study ${ this.topic }`);
+  }
+};
+
+var jsHomework = Object.create(homework);
+jsHomework.topic = "JS";
+jsHomework.study();
+// Please study JS
+
+var mathHomework = Object.create(homework);
+mathHomework.topic = "Math";
+mathHomework.study();
+// Please study Math
+```
+
+Both objects `jsHomework` and `mathHomework` delegate the `study()` property to the `homework` object. Both objects `jsHomework` and `mathHomework` have their own `topic` property - when they delegate the invocation of the `study()` method, it is invoked with the context of the object it was called from.
+
+JavaScript's dynamic `this` is a critical component of the functioning of prototype delegation and of `class`.
 
 [▲ Return to Sections](#sections)
 
