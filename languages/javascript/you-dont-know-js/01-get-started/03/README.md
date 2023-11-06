@@ -8,6 +8,7 @@ This chapter covers some of the lower-level root characteristics of the JavaScri
 * [Closures](#closures)
 * [this Keyword](#this-keyword)
 * [Prototypes](#prototypes)
+  * [Object Linkage](#object-linkage)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -320,6 +321,41 @@ homework.toString();    // [object Object]
 ```
 
 `homework.toString()` is a valid property access even though the `homework` object does not have a defined `toString()` method, the access delegates invokation to `Object.prototype.toString()` instead.
+
+#### Object Linkage
+
+To explicitly define an object prototype linkage an object can be created using the `Object.create(..)` utility:
+
+```javascript
+var homework = {
+  topic: "JS"
+};
+
+var otherHomework = Object.create(homework);
+
+otherHomework.topic;   // "JS"
+```
+
+`Object.create(..)` takes as argument an object to link to and returns an object linked to the specified object. Passing in `null` creates a standalone object with no prototype link.
+
+Delegation through the prototype chain only applies for accesses to look up the value of a property - it does not delegate property assignments:
+
+```javascript
+homework.topic;
+// "JS"
+
+otherHomework.topic;
+// "JS"
+
+otherHomework.topic = "Math";
+otherHomework.topic;
+// "Math"
+
+homework.topic;
+// "JS" -- not "Math"
+```
+
+`otherHomework.topic = "Math"` assigns the value `"Math"` to a new property `topic` directly on the `otherHomework` object, not to any objects further up in the chain. `homework.topic` remains unaffected by the assignment. The `topic` property on `otherHomework` is _shadowing_ the property of the same name on `homework` in the prototype chain.
 
 [▲ Return to Sections](#sections)
 
