@@ -7,6 +7,7 @@ This chapter covers some of the lower-level root characteristics of the JavaScri
   * [Iterables](#iterables)
 * [Closures](#closures)
 * [this Keyword](#this-keyword)
+* [Prototypes](#prototypes)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -296,6 +297,29 @@ assignment.call(otherHomework);
 This time the function `assignment()` was invoked with its `call(..)` method, which takes a context object as argument. In this example the context object is `otherHomework` and `this.topic` resolves to `"Math"`.
 
 The benefit of context-aware functions is the ability to more flexibly re-use a single function with data from different objects. A function that closes over a scope can never reference a different scope, but a function with dynamic `this` context awareness can be useful in certain situations.
+
+[▲ Return to Sections](#sections)
+
+## Prototypes
+The same way that the `this` keyword is a characteristic of function execution, a prototype is a characteristic of an object (specifically: resolution of property access).
+
+A prototype can be thought of as a linkage between two objects. This linkage is created when an object is created and links the new object to another object that already exists. A series of objects linked together via prototypes is known as a "prototype chain".
+
+The purpose of this prototype chain is to delegate access of properties and methods that an object does not have up the chain. Consider this object literal definition:
+
+```javascript
+var homework = {
+  topic: "JS",
+};
+```
+
+While `homework` is only defined with a single property `topic`, the default prototype linkage connects it to the `Object.prototype` object which contains common built-in methods like `toString()`, `valueOf()`, etc. This prototype delegation can be observed by accessing a property from an object's prototype:
+
+```javascript
+homework.toString();    // [object Object]
+```
+
+`homework.toString()` is a valid property access even though the `homework` object does not have a defined `toString()` method, the access delegates invokation to `Object.prototype.toString()` instead.
 
 [▲ Return to Sections](#sections)
 
