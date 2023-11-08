@@ -385,4 +385,4 @@ JavaScript's dynamic `this` is a critical component of the functioning of protot
 
 [▲ Return to Sections](#sections)
 
-| [Previous: Chapter 2 - Surveying JS](../02/README.md) | [Table of Contents](../README.md#table-of-contents) |
+| [Previous: Chapter 2 - Surveying JS](../02/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Chapter 4 - The Bigger Picture](../04/README.md) |
