@@ -4,6 +4,7 @@ This chapter divides the organization of the JavaScript language into three main
 ## Sections
 * [Pillar 1: Scope and Closure](#pillar-1-scope-and-closure)
 * [Pillar 2: Prototypes](#pillar-2-prototypes)
+* [Pillar 3: Types and Coercion](#pillar-3-types-and-coercion)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -26,6 +27,15 @@ JavaScript is one of the very few languages that provides the option of creating
 However, this object-oriented focus may obscure the beauty and power of the prototype system through sharing a `this` context. Classes are one pattern you can build on top of this power, but another approach is to embrace objects as objects, eschewing classes, and leveraging _behavior delegation_.
 
 Object delegation is arguably more _with the grain_ of JavaScript than classes.
+
+[▲ Return to Sections](#sections)
+
+## Pillar 3: Types and Coercion
+The third pillar of JavaScript is the most overlooked part of JavaScript's nature. A majority of developers have strong misconceptions about how _types_ work in programming languages, especially in JavaScript. The broader JavaScript community has begun to shift towards "static typing" using type-aware tooling like [TypeScript](https://www.typescriptlang.org/) or [Flow](https://flow.org/).
+
+Developers should learn more about types and how the JavaScript language handles type conversions. Type-aware tooling can aid developers but they should first understand typing. It is a mistaken conclusion that JavaScript's type system is bad and needs to be corrected with tools outside of the language.
+
+Even those who love tools like TypeScript and Flow will not get the most out of them if they are not deeply familiar with how the language manages value types.
 
 [▲ Return to Sections](#sections)
 
