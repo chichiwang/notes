@@ -5,6 +5,7 @@ This chapter divides the organization of the JavaScript language into three main
 * [Pillar 1: Scope and Closure](#pillar-1-scope-and-closure)
 * [Pillar 2: Prototypes](#pillar-2-prototypes)
 * [Pillar 3: Types and Coercion](#pillar-3-types-and-coercion)
+* [With the Grain](#with-the-grain)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -36,6 +37,13 @@ The third pillar of JavaScript is the most overlooked part of JavaScript's natur
 Developers should learn more about types and how the JavaScript language handles type conversions. Type-aware tooling can aid developers but they should first understand typing. It is a mistaken conclusion that JavaScript's type system is bad and needs to be corrected with tools outside of the language.
 
 Even those who love tools like TypeScript and Flow will not get the most out of them if they are not deeply familiar with how the language manages value types.
+
+[▲ Return to Sections](#sections)
+
+## With the Grain
+Advice for learning JavaScript: be aware of the _grain_ of the language. Opinions are arguable but facts are not. When in doubt always check the ECMAScript specification.
+
+There are approaches that work well and fit naturally with the design of JavaScript, and there are approaches that should not be taken. A JavaScript can be made to take on patterns that look like other languages (Java, C#, Perl, Python, Ruby, PHP), but it is better to embrace the JavaScript patterns and approaches.
 
 [▲ Return to Sections](#sections)
 
