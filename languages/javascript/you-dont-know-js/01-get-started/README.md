@@ -10,3 +10,4 @@ Date: WIP
 * [Chapter 2: Surveying JS](./02/README.md)
 * [Chapter 3: Digging to the Roots of JS](./03/README.md)
 * [Chapter 4: The Bigger Picture](./04/README.md)
+* [Appendix A: Exploring Further](./appendixA/README.md)

@@ -47,4 +47,4 @@ There are approaches that work well and fit naturally with the design of JavaScr
 
 [▲ Return to Sections](#sections)
 
-| [Previous: Chapter 3 - Digging to the Roots of JS](../03/README.md) | [Table of Contents](../README.md#table-of-contents) |
+| [Previous: Chapter 3 - Digging to the Roots of JS](../03/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Appendix A - Exploring Further](../appendixA/README.md) |
