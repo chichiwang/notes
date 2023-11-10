@@ -5,6 +5,7 @@ This appendix will explore some of the topics from the main chapter text in grea
 * [Values vs. References](#values-vs-references)
 * [So Many Function Forms](#so-many-function-forms)
 * [Coercive Conditional Comparison](#coercive-conditional-comparison)
+* [Prototypal "Classes"](#prototypal-classes)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -238,6 +239,72 @@ if (Boolean(x) === true) {
 Since the `Boolean(..)` function always returns a boolean, both the `==` and `===` comparisons do the same thing. It is important to note that before any comparison `x` is coerced to a boolean.
 
 More detailed rules on how the equality operator `==` operates [can be found on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Equality).
+
+[▲ Return to Sections](#sections)
+
+## Prototypal "Classes"
+Chapter 3 introduces prototypes and shows how [objects can be linked through a prototype chain](../03/README.md#object-linkage).
+
+The predecessor of the more syntactically elegant ES6 `class` system ([seen in Chapter 2](../02/README.md#classes)), _prototypal classes_. This style of code is more uncommon in JavaScript nowadays.
+
+As contrast, recall the `Object.create(..)` style of coding:
+
+```javascript
+var Classroom = {
+  welcome() {
+    console.log("Welcome, students!");
+  }
+};
+
+var mathClass = Object.create(Classroom);
+
+mathClass.welcome();
+// Welcome, students!
+```
+
+In the example above, `mathClass` is linked via its prototype to the `Classroom` object and the function call `mathClass.welcome()` is delegated to the method `welcome()` defined on `Classroom`.
+
+The prototypal class pattern labels this delegation behavior "inheritance" and defines this same behavior in a slightly different way:
+
+```javascript
+function Classroom() {
+  // ..
+}
+
+Classroom.prototype.welcome = function hello() {
+  console.log("Welcome, students!");
+};
+
+var mathClass = new Classroom();
+
+mathClass.welcome();
+// Welcome, students!
+```
+
+All functions by default reference an empty object at a property named `prototype`. Despite the name, this is **not** the object's _prototype_ - it is a prototype link to when other objects are created by calling the function with the `new` keyword ([see more about the new keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new)).
+
+A `welcome` property is added to the empty `Classroom.prototype` object and assigned the `hello()` function. `mathClass` is assigned a `new Classroom()` and prototype links it to the existing `Classroom.prototype` object. Calls to `mathClass.welcome()` delegate to `Classroom.prototype.welcome()`.
+
+The prototypal class pattern is now discouraged in favor of using ES6's `class` mechanism:
+
+```javascript
+class Classroom {
+  constructor() {
+    // ..
+  }
+
+  welcome() {
+    console.log("Welcome, students!");
+  }
+}
+
+var mathClass = new Classroom();
+
+mathClass.welcome();
+// Welcome, students!
+```
+
+Under the hood the same prototypal linkage occurs but the `class` syntax fits class-oriented design patterns more cleanly than the prototypal class syntax.
 
 [▲ Return to Sections](#sections)
 
