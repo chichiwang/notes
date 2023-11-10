@@ -308,4 +308,4 @@ Under the hood the same prototypal linkage occurs but the `class` syntax fits cl
 
 [▲ Return to Sections](#sections)
 
-| [Previous: Chapter 4 - The Bigger Picture](../04/README.md) | [Table of Contents](../README.md#table-of-contents) |
+| [Previous: Chapter 4 - The Bigger Picture](../04/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Appendix B - Practice, Practice, Practice!](../appendixB/README.md) |

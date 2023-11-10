@@ -11,3 +11,4 @@ Date: WIP
 * [Chapter 3: Digging to the Roots of JS](./03/README.md)
 * [Chapter 4: The Bigger Picture](./04/README.md)
 * [Appendix A: Exploring Further](./appendixA/README.md)
+* [Appendix B: Practice, Practice, Practice!](./appendixB/README.md)
