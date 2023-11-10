@@ -4,6 +4,7 @@ This appendix will explore some of the topics from the main chapter text in grea
 ## Sections
 * [Values vs. References](#values-vs-references)
 * [So Many Function Forms](#so-many-function-forms)
+* [Coercive Conditional Comparison](#coercive-conditional-comparison)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -168,6 +169,75 @@ var EntirelyDifferent = {
 ```
 
 Build familiarity with all function forms to recognize them in existing code and to use them appropriately as context demands.
+
+[▲ Return to Sections](#sections)
+
+## Coercive Conditional Comparison
+Conditional expressions perform coercion-oriented comparisons to make their decisions.
+
+`if` and `? :` ternary statements, and `while` and `for` loops, perform implicit (strict and coercive) value comparisons:
+
+```javascript
+var x = 1;
+
+if (x) {
+  // will run!
+}
+
+while (x) {
+  // will run, once!
+  x = false;
+}
+```
+
+It may seem that the `(x)` evaluation works like this:
+
+```javascript
+var x = 1;
+
+if (x == true) {
+  // will run!
+}
+
+while (x == true) {
+  // will run, once!
+  x = false;
+}
+```
+
+This mental model works in the above example where `x` is `1`. However, consider the following case:
+
+```javascript
+var x = "hello";
+
+if (x) {
+  // will run!
+}
+
+if (x == true) {
+  // won't run :(
+}
+```
+
+A more accurate mental model of the conditional expression `(x)` would be:
+
+```javascript
+var x = "hello";
+
+if (Boolean(x) == true) {
+  // will run
+}
+
+// which is the same as:
+
+if (Boolean(x) === true) {
+  // will run
+}
+```
+
+Since the `Boolean(..)` function always returns a boolean, both the `==` and `===` comparisons do the same thing. It is important to note that before any comparison `x` is coerced to a boolean.
+
+More detailed rules on how the equality operator `==` operates [can be found on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Equality).
 
 [▲ Return to Sections](#sections)
 
