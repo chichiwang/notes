@@ -135,7 +135,7 @@ Hints:
 * Use `Object.create(..)` to create an object and prototype-link it to another object. Once linked delegation allows the objects to share methods while perserving their individual `this` contexts.
 * Instead of using the `reel` object to directly show each of the three positions, another temporary object can be used to delegate from.
 
-My _over-engineered_ solution for this exercise: [comparions.mjs](./prototypes.mjs);
+My _over-engineered_ solution for this exercise: [prototypes.mjs](./prototypes.mjs);
 
 [▲ Return to Sections](#sections)
 
