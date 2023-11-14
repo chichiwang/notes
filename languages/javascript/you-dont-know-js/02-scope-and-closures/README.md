@@ -6,3 +6,6 @@ Notes from the book [You Don't Know JS Yet: Scope & Closures - 2nd Edition](http
 Date: WIP
 
 ## Table of Contents
+* [Chapter 1: What's the Scope?](./01/README.md)
+
+[◂ Return to Books](../README.md)
