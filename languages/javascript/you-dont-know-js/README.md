@@ -7,3 +7,4 @@ Date: WIP
 
 ## Books
 * 01 - [Get Started](./01-get-started)
+* 02 - [Scope & Closures](./02-scope-and-closures) - WIP
