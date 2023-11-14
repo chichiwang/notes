@@ -5,6 +5,7 @@ My own solutions will be stored as JS files in this directory.
 
 ## Sections
 * [Practicing Comparisons](#practicing-comparisons)
+* [Practicing Prototypes](#practicing-prototypes)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -31,6 +32,81 @@ scheduleMeeting("18:00",15);    // false
 ```
 
 My _over-engineered_ solution for this exercise: [comparions.mjs](./comparisons.mjs);
+
+[▲ Return to Sections](#sections)
+
+## Practicing Prototypes
+Practice working with the `this` keyword and objects linked via prototype as described in [Chapter 4, Pillar 2](#pillar-2-prototypes).
+
+Define a slot machine with three reels that can `spin()` and then `display()` the current contents of all the reels.
+
+The behavior of a single reel is defined in the `reel` object. The slot machine needs to have individual reels which each have a `position` property.
+
+A reel only knows how to `display()` its current slot symbol. A slot machine typically shows three symbols per reel: current slot `position`, one slot above (`position`-1) and one slot below (`position`+1). Displaying the slot machine should display a 3x3 grid of symbols.
+
+```javascript
+function randMax(max) {
+  return Math.trunc(1E9 * Math.random()) % max;
+}
+
+var reel = {
+  symbols: [
+    "♠", "♥", "♦", "♣", "☺", "★", "☾", "☀"
+  ],
+  spin() {
+    if (this.position == null) {
+      this.position = randMax(
+        this.symbols.length - 1
+      );
+    }
+    this.position = (
+      this.position + 100 + randMax(100)
+    ) % this.symbols.length;
+  },
+  display() {
+    if (this.position == null) {
+      this.position = randMax(
+        this.symbols.length - 1
+      );
+    }
+    return this.symbols[this.position];
+  }
+};
+
+var slotMachine = {
+  reels: [
+    // this slot machine needs 3 separate reels
+    // hint: Object.create(..)
+  ],
+  spin() {
+    this.reels.forEach(function spinReel(reel){
+      reel.spin();
+    });
+  },
+  display() {
+    // TODO
+  }
+};
+
+slotMachine.spin();
+slotMachine.display();
+// ☾ | ☀ | ★
+// ☀ | ♠ | ☾
+// ♠ | ♥ | ☀
+
+slotMachine.spin();
+slotMachine.display();
+// ♦ | ♠ | ♣
+// ♣ | ♥ | ☺
+// ☺ | ♦ | ★
+```
+
+Hints:
+* Use the `%` modulo operator for wrapping `position` to access symbols circularly around a reel.
+* Use `Object.create(..)` to create an object and prototype-link it to another object. Once linked delegation allows the objects to share methods while perserving their individual `this` contexts.
+* Instead of using the `reel` object to directly show each of the three positions, another temporary object can be used to delegate from.
+
+My _over-engineered_ solution for this exercise: [comparions.mjs](./prototypes.mjs);
 
 [▲ Return to Sections](#sections)
 
