@@ -5,6 +5,7 @@ My own solutions will be stored as JS files in this directory.
 
 ## Sections
 * [Practicing Comparisons](#practicing-comparisons)
+* [Practicing Closure](#practicing-closure)
 * [Practicing Prototypes](#practicing-prototypes)
 
 [◂ Return to Table of Contents](../README.md)
@@ -32,6 +33,34 @@ scheduleMeeting("18:00",15);    // false
 ```
 
 My _over-engineered_ solution for this exercise: [comparions.mjs](./comparisons.mjs);
+
+[▲ Return to Sections](#sections)
+
+## Practicing Closure
+Practice working with closure as described in [Chapter 4, Pillar 1](#pillar-1-scope-and-closure).
+
+The `range(..)` function takes a number as its first argument representing the first number in a desired range of numbers. The second number represents the end of the desired range (inclusive). If the second argument is omitted then a function is returned to accept that argument:
+
+```javascript
+function range(start,end) {
+  // ..TODO..
+}
+
+range(3,3);    // [3]
+range(3,8);    // [3,4,5,6,7,8]
+range(3,0);    // []
+
+var start3 = range(3);
+var start4 = range(4);
+
+start3(3);     // [3]
+start3(8);     // [3,4,5,6,7,8]
+start3(0);     // []
+
+start4(6);     // [4,5,6]
+```
+
+My solution for this exercise: [closure.js](./closure.js);
 
 [▲ Return to Sections](#sections)
 
