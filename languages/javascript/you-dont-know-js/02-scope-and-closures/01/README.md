@@ -10,6 +10,7 @@ Creating and working with variables is one of the most foundational actions prog
   * [Targets](#targets)
   * [Sources](#sources)
 * [Cheating: Runtime Scope Modifications](#cheating-runtime-scope-modifications)
+* [Lexical Scope](#lexical-scope)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -238,6 +239,17 @@ with (badIdea) {
 `badIdea` is turned into a scope at runtime rather than compile-time, and the property `oops` becomes a variable in that scope. This is a bad idea for performance and readability reasons.
 
 Avoid `eval(..)` (at least creating declarations within `eval(..)`) and `with`. Neither of these are avaialable in strict-mode.
+
+[▲ Return to Sections](#sections)
+
+## Lexical Scope
+The term _lexical scope_ describes scope that is determined at compile time, as is done in JavaScript. "Lexical" refers to the "lexing" stage of compilation.
+
+The key idea of _lexical scope_ is that its controlled by the placement of functions, blocks, and variable declarations in relation to one another. The compiler handles a variable declared within a function as it's parsing the function and associates said variable with the function's scope. A variable that is block-scoped delcared with `let` or `const` is associated with the nearest enclosing `{..}` block rather than with the enclosing function.
+
+A reference for a variable must be resolved as coming from a scope that is lexically available to it, otherwise the variable is considered _undecleared_ which usually results in an error. If a variable referenced is not declared in the current scope, the outer scope is consulted, and so forth.
+
+Compilation does not actually reserve any memory for scopes and variables - no program execution has begun at this point. Compilation, instead, creates a map of all the lexical scopes that the program uses at runtime - defining all of the scopes ("lexical environments") and registers all of the identifiers (variables) for each scope. While scopes are identified at compile-time, they are not created until runtime, each time a scope needs to be run.
 
 [▲ Return to Sections](#sections)
 
