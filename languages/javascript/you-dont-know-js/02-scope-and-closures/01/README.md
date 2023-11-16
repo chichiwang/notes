@@ -6,6 +6,7 @@ Creating and working with variables is one of the most foundational actions prog
 * [Compiled vs. Interpreted](#compiled-vs-interpreted)
 * [Compiling Code](#compiling-code)
   * [Required: Two Phases](#required-two-phases)
+* [Compiler Speak](#compiler-speak)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -133,6 +134,40 @@ A JavaScript program could parse a program, then execute it by _interpreting_ op
 There may be nuances and technicalities brought up in debate of this topic, but **the processing of JavaScript languages has more alike with compilation than not**.
 
 The purpose of classifying JavaScript as a compiled language is creating a clear mental model about the phase where JavaScript code is processed and analyzed (before code execution). It is less about concerns of the distribution model (binary/byte-code executable representations). A clear mental model of how the JavaScript engine treats code is important to understanding JavaScript and scope effectively.
+
+[▲ Return to Sections](#sections)
+
+## Compiler Speak
+
+Take the following as example:
+
+```javascript
+var students = [
+  { id: 14, name: "Kyle" },
+  { id: 73, name: "Suzy" },
+  { id: 112, name: "Frank" },
+  { id: 6, name: "Sarah" }
+];
+
+function getStudentName(studentID) {
+  for (let student of students) {
+    if (student.id == studentID) {
+      return student.name;
+    }
+  }
+}
+
+var nextStudent = getStudentName(73);
+
+console.log(nextStudent);
+// Suzy
+```
+
+Other than declarations, all occurrences of variables/identifiers in a program serve in one of two roles:
+1. The _target_ of an assigment
+2. The _source_ of a value
+
+If a variable has a value that is being assigned to it - it is a _target_. Otherwise it is a _source_. The JavaScript engine must label each occurrence of a variable as either a target or source in order to properly handle a program's variables.
 
 [▲ Return to Sections](#sections)
 
