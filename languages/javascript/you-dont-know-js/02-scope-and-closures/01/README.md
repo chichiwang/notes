@@ -5,6 +5,7 @@ Creating and working with variables is one of the most foundational actions prog
 * [About This Book](#about-this-book)
 * [Compiled vs. Interpreted](#compiled-vs-interpreted)
 * [Compiling Code](#compiling-code)
+  * [Required: Two Phases](#required-two-phases)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -58,6 +59,80 @@ In classic compiler theory, a program is processed by a compiler in three basic 
 The JavaScript engine is more complex than just the above three stages: in the process of parsing and code generation there are steps to optimize execution performance (ie: collapsing redudant elements). Code can even be re-compiled and re-optimized during the progression of execution.
 
 JavaScript engines do not have the luxury of time to perform work and optimizations because there is no build step ahead of time. It only has microseconds (or less) before the code is executed. To ensure the fastest performance under these constraints the JavaScript engine uses all kinds of tricks (such as JITs which lazy-compile and hot re-compile).
+
+#### Required: Two Phases
+The processing of JavaScript programs occurs in (at least) two phases:
+1. Parsing/compilation
+2. Execution
+
+The separation of a parsing/compilation phase from the subsequent execution phase is observable fact. While the JavaScript specification does not specifically require "compilation", it does require behavior that is only practical with a compile-then-execute approach. There are three observable program characteristics that can prove this: syntax errors, early errors, and hoisting.
+
+**Syntax Errors From The Start**
+
+Taking this example:
+
+```javascript
+var greeting = "Hello";
+
+console.log(greeting);
+
+greeting = ."Hi";
+// SyntaxError: unexpected token .
+```
+
+The above program produces no output: `"Hello"` is never printed. Instead it throws a `SyntaxError` due to the unexpected `.` token before the `"Hi"` string. If JavaScript was executing top-down line-by-line one would expect the syntax error to occur after the `console.log(..)`. The only way the JavaScript engine could throw a syntax error before printing the `console.log(..)` the engine would have had to parse the program prior to execution.
+
+**Early Errors**
+
+Taking this example:
+
+```javascript
+console.log("Howdy");
+
+saySomething("Hello","Hi");
+// Uncaught SyntaxError: Duplicate parameter name not
+// allowed in this context
+
+function saySomething(greeting,greeting) {
+  "use strict";
+  console.log(greeting);
+}
+```
+
+Much like the previous example, here `"Howdy"` is never printed - the `SyntaxError` is thrown before program execution. This happens because strict-mode, opted into in the function `saySomething(..)`, forbids functions having duplicate parameter names (which is allowed in non-strict mode). The specification requires that safe-mode throws this error before any execution begins.
+
+The JavaScript engine must parse the code prior to any execution to know that the duplicate parameters exist, or that the function is even in strict-mode.
+
+**Hoisting**
+
+Taking this example:
+
+```javascript
+function saySomething() {
+  var greeting = "Hello";
+  {
+    greeting = "Howdy";  // error comes from here
+    let greeting = "Hi";
+    console.log(greeting);
+  }
+}
+
+saySomething();
+// ReferenceError: Cannot access 'greeting' before
+// initialization
+```
+
+The `ReferenceError` occurs on the statement `greeting = "Howdy";`. The `greeting` variable for the statement is the block-scoped `let greeting="Hi";`, not the `var greeting="Hello";` from the outer scope. The JavaScript engine knows the next statement declares a block-scoped variable with the name `greeting` because it has already processed all of the code in an earlier pass and set up all of the scopes and their variable associations. The processing of scopes and declarations can only be accurately accomplished by parsing the program before execution.
+
+The `ReferenceError` technically comes from `greeting = "Howdy";` accessing the `greeting` variable before declaration - a conflict referred to as the Temporal Dead Zone (TDZ).
+
+These examples prove JavaScript is parsed before execution, but how does that show that compilation occurs?
+
+A JavaScript program could parse a program, then execute it by _interpreting_ operations represented in the AST without any compilation - but it is unlikely since this would be highly inefficient. It is difficult to imagine a JavaScript engine would parse a program into AST and not converting that AST into the most efficient (binary) representation for the engine to execute.
+
+There may be nuances and technicalities brought up in debate of this topic, but **the processing of JavaScript languages has more alike with compilation than not**.
+
+The purpose of classifying JavaScript as a compiled language is creating a clear mental model about the phase where JavaScript code is processed and analyzed (before code execution). It is less about concerns of the distribution model (binary/byte-code executable representations). A clear mental model of how the JavaScript engine treats code is important to understanding JavaScript and scope effectively.
 
 [▲ Return to Sections](#sections)
 
