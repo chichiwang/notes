@@ -253,4 +253,4 @@ Compilation does not actually reserve any memory for scopes and variables - no p
 
 [▲ Return to Sections](#sections)
 
-| [Table of Contents](../README.md#table-of-contents) |
+| [Table of Contents](../README.md#table-of-contents) | [Next: Chapter 2 - Illustrating Lexical Scope](../02/README.md) |
