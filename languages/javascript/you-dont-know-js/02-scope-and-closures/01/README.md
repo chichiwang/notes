@@ -8,6 +8,7 @@ Creating and working with variables is one of the most foundational actions prog
   * [Required: Two Phases](#required-two-phases)
 * [Compiler Speak](#compiler-speak)
   * [Targets](#targets)
+  * [Sources](#sources)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -139,7 +140,6 @@ The purpose of classifying JavaScript as a compiled language is creating a clear
 [▲ Return to Sections](#sections)
 
 ## Compiler Speak
-
 Take the following as example:
 
 ```javascript
@@ -171,7 +171,6 @@ Other than declarations, all occurrences of variables/identifiers in a program s
 If a variable has a value that is being assigned to it - it is a _target_. Otherwise it is a _source_. The JavaScript engine must label each occurrence of a variable as either a target or source in order to properly handle a program's variables.
 
 #### Targets
-
 The statement `students = [..];` from the above example is clearly an assignment operation. The `var students` expression is handled as a declaration at compile time and is irrelevant during execution. The same goes for the statement `nextStudent = getStudentName(72)`.
 
 There are three other _target_ assignment operations in the above program that are less obvious:
@@ -193,6 +192,19 @@ function getStudentName(studentID) {
 ```
 
 A `function` declaration is a special case of _target_ reference. The identifier `getStudentName` is declared (at compile time) and the association made to the function value (the definition) is also made at compile time. The association between `getStudentName` and the function is automatically set up at the beginning of the scope rather than when the execution reaches the lines of code. This automatic association is known as _function hoisting_.
+
+#### Sources
+All variable references in the above example program besides the ones identified in the [last section](#targets) as _targets_ must be _source_ references.
+
+In the statement `for (let student of students)` the variable `student` was identified as a _target_ reference. The variable `students` is a _source_ reference in this case.
+
+In the statement `if (student.id === studentID)` both `student` and `studentID` are _source_ references.
+
+In `getStudentName(73)`, `getStudentName` is a _source_ reference. In `console.log(nextStudent)` both `console` and `nextStudent` are both source references.
+
+**Note**: `id`, `name`, and `log` are all properties, not variable references.
+
+[Chapter 2](../02/README.md) will cover how a variable's role impacts its lookup.
 
 [▲ Return to Sections](#sections)
 
