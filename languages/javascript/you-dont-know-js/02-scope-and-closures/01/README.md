@@ -9,6 +9,7 @@ Creating and working with variables is one of the most foundational actions prog
 * [Compiler Speak](#compiler-speak)
   * [Targets](#targets)
   * [Sources](#sources)
+* [Cheating: Runtime Scope Modifications](#cheating-runtime-scope-modifications)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -205,6 +206,38 @@ In `getStudentName(73)`, `getStudentName` is a _source_ reference. In `console.l
 **Note**: `id`, `name`, and `log` are all properties, not variable references.
 
 [Chapter 2](../02/README.md) will cover how a variable's role impacts its lookup.
+
+[▲ Return to Sections](#sections)
+
+## Cheating: Runtime Scope Modifications
+It should now be clear that scope is determined at compilation-time and generally not affected by runtime conditions. However, in non-strict-mode, there are two ways to cheat this rule and modify a program's scope during runtime.
+
+While it is important to be aware of these two scenarios, it is never advisable to use them. Code written today should be run in strict-mode where these techniques are disallowed.
+
+The `eval(..)` function receives a string of code to compile and execute during the program's runtime. If the string being evaluated contains a `var` or `function` declaration, these declarations will modify the scope that `eval(..)` is executed in:
+
+```javascript
+function badIdea() {
+  eval("var oops = 'Ugh!';");
+  console.log(oops);
+}
+badIdea();   // Ugh!
+```
+
+If `eval(..)` had not been present, the `oops` variable would not exist and the statement `console.log(oops);` would throw a `ReferenceError`. `eval(..)` modifies the scope of the `badIdea()` function at runtime. This is bad for many reasons, including the performance hit of modifying the already-compiled and optimized scope every time `badIdea()` is invoked.
+
+The second cheat is the `with` keyword, which dynamically turns an object into a local scope at runtime (its properties are treated as identifiers in that new scope's block):
+
+```javascript
+var badIdea = { oops: "Ugh!" };
+
+with (badIdea) {
+  console.log(oops);   // Ugh!
+}
+```
+`badIdea` is turned into a scope at runtime rather than compile-time, and the property `oops` becomes a variable in that scope. This is a bad idea for performance and readability reasons.
+
+Avoid `eval(..)` (at least creating declarations within `eval(..)`) and `with`. Neither of these are avaialable in strict-mode.
 
 [▲ Return to Sections](#sections)
 
