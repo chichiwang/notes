@@ -7,6 +7,7 @@ Creating and working with variables is one of the most foundational actions prog
 * [Compiling Code](#compiling-code)
   * [Required: Two Phases](#required-two-phases)
 * [Compiler Speak](#compiler-speak)
+  * [Targets](#targets)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -168,6 +169,30 @@ Other than declarations, all occurrences of variables/identifiers in a program s
 2. The _source_ of a value
 
 If a variable has a value that is being assigned to it - it is a _target_. Otherwise it is a _source_. The JavaScript engine must label each occurrence of a variable as either a target or source in order to properly handle a program's variables.
+
+#### Targets
+
+The statement `students = [..];` from the above example is clearly an assignment operation. The `var students` expression is handled as a declaration at compile time and is irrelevant during execution. The same goes for the statement `nextStudent = getStudentName(72)`.
+
+There are three other _target_ assignment operations in the above program that are less obvious:
+
+```javascript
+for (let student of students) {
+```
+
+This statement assigns a value to `student` for each iteration of the loop.
+
+```javascript
+getStudentName(73)
+```
+
+The value `73` is assigned to the parameter `studentID`.
+
+```javascript
+function getStudentName(studentID) {
+```
+
+A `function` declaration is a special case of _target_ reference. The identifier `getStudentName` is declared (at compile time) and the association made to the function value (the definition) is also made at compile time. The association between `getStudentName` and the function is automatically set up at the beginning of the scope rather than when the execution reaches the lines of code. This automatic association is known as _function hoisting_.
 
 [▲ Return to Sections](#sections)
 
