@@ -215,4 +215,4 @@ Assigning a never-declared variable _is_ an error. Using variables not explicitl
 
 [▲ Return to Sections](#sections)
 
-| [Previous: Chapter 1 - What's The Scope?](../01/README.md) | [Table of Contents](../README.md#table-of-contents) |
+| [Previous: Chapter 1 - What's The Scope?](../01/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Chapter 3 - The Scope Chain](../03/README.md) |
