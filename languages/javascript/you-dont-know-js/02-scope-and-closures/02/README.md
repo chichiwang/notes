@@ -5,6 +5,7 @@ JavaScript scope is determined during code compilation, a model called _lexical 
 * [Marbles, and Buckets, and Bubbles... Oh My!](#marbles-and-buckets-and-bubbles-oh-my)
 * [A Conversation Among Friends](#a-conversation-among-friends)
 * [Nested Scope](#nested-scope)
+  * [Lookup Failures](#lookup-failures)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -173,6 +174,44 @@ Scopes can be lexically nested to any arbitrary depth as the program defines. Ea
 Upon a new scope being initialized, all identifiers coming from a `function` declaration are immediately initialized to its associated function reference. Any identifier coming from a `var` declaration is automatically initialized to `undefined`. Other variables declarations (`let`/`const`) remain uninitialized (in its _TDZ_, detailed in Chapter 5), and cannot be used until its delcaration-and-initialization are executed.
 
 References to identifiers that are not found in the current scope manager will be checked for in the nearest outer scope manager and so forth until either the identifier is found or there are no more scopes to consult. This is a key aspect of lexical scope.
+
+#### Lookup Failures
+When the _Engine_ exhausts all _lexically_ available scopes (moving outward) attempting to resolve an indentifier lookup, an error condition then exists. This error condition is handled differently depending on the mode of the program (strict-mode vs. non-strict-mode) and the role of the variable (_target_ vs _source_).
+
+**Undefined Mess**
+
+A `ReferenceError` is thrown if the identifier being looked up:
+* is a _source_.
+* is a _target_ and the code is running in strict-mode.
+
+The error message for an undeclared variable reference in most JavaScript environemts reads `Reference Error: XYZ is not defined.`. The phrase "not defined" is not the same as `undefined`, it instead means "undeclared": the identifier has no formal declaration in any _lexically available_ scope.
+
+Confusingly, JavaScript's `typeof` operator returns the string `"undefined"` for variable references to undclared AND undefined identifiers:
+
+```javascript
+var studentName;
+typeof studentName;     // "undefined"
+
+typeof doesntExist;     // "undefined"
+```
+
+**Global... What!?**
+
+In non-strict-mode, a variable that is a _target_ with no explicit declaration in its lexical scope, the global _Scope Manager_ will just create that variable to fulfill the target assignment:
+
+```javascript
+function getStudentName() {
+  // assignment to an undeclared variable :(
+  nextStudent = "Suzy";
+}
+
+getStudentName();
+
+console.log(nextStudent);
+// "Suzy" -- oops, an accidental-global variable!
+```
+
+Assigning a never-declared variable _is_ an error. Using variables not explicitly declared can lead to confusing program behaviors and bugs. This behavior illustrates one reason why code should always be run in strict-mode.
 
 [▲ Return to Sections](#sections)
 
