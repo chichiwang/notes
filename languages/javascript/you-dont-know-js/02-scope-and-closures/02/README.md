@@ -4,6 +4,7 @@ JavaScript scope is determined during code compilation, a model called _lexical 
 ## Sections
 * [Marbles, and Buckets, and Bubbles... Oh My!](#marbles-and-buckets-and-bubbles-oh-my)
 * [A Conversation Among Friends](#a-conversation-among-friends)
+* [Nested Scope](#nested-scope)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -163,6 +164,15 @@ During execution, the conversation is between the _Engine_ and the _Scope Manage
 To summarize how the statement `var students = [ .. ]` is processed:
 1. _Compiler_ sets up the declaration of the scope variable (it wasn't previously declared in the current scope).
 2. During execution, _Engine_ asks _Scope Manager_ to look up the variable, initializes it to `undefined`, then assigns the array value to it.
+
+[▲ Return to Sections](#sections)
+
+## Nested Scope
+Scopes can be lexically nested to any arbitrary depth as the program defines. Each scope gets its own _Scope Manager_ instance each time that scope is executed. Each scope automatically has all its identifiers registered at the start of the scope being executed (called _hoisting_).
+
+Upon a new scope being initialized, all identifiers coming from a `function` declaration are immediately initialized to its associated function reference. Any identifier coming from a `var` declaration is automatically initialized to `undefined`. Other variables declarations (`let`/`const`) remain uninitialized (in its _TDZ_, detailed in Chapter 5), and cannot be used until its delcaration-and-initialization are executed.
+
+References to identifiers that are not found in the current scope manager will be checked for in the nearest outer scope manager and so forth until either the identifier is found or there are no more scopes to consult. This is a key aspect of lexical scope.
 
 [▲ Return to Sections](#sections)
 
