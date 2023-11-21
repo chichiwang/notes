@@ -7,6 +7,7 @@ The connections between scopes that are nested within other scopes is called the
   * [Global Unshadowing Trick](#global-unshadowing-trick)
   * [Copying Is Not Accessing](#copying-is-not-accessing)
   * [Illegal Shadowing](#illegal-shadowing)
+* [Function Name Scope](#function-name-scope)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -201,6 +202,73 @@ function another() {
 Summary:
 * Within an inner scope `let` can always shadow an outer scope's `var`.
 * Within an inner scope `var` can only shadow an outer scope's `let` if there is a function boundary in between.
+
+[▲ Return to Sections](#sections)
+
+## Function Name Scope
+```javascript
+function askQuestion() {
+  // ..
+}
+```
+
+A `function` declaration like this will create an identifier (`askQuestion`) in the enclosing scope (in this case, the global scope).
+
+```javascript
+var askQuestion = function(){
+  // ..
+};
+```
+
+This `var` declared variable `askQuestion` will also create a global-scoped identifier. However, since this is a `function` expression (and not a declaration) the function itself will not _hoist_.
+
+```javascript
+var askQuestion = function ofTheTeacher(){
+  // ..
+};
+```
+
+One major difference between `function` declarations and `function` expressions is the behavior of the name identifier of the function. In the above _named_ `function` expression the `askQuestion` variable belongs to the global scope. However, the variable `ofTheTeacher` is declared as an identifier within the function itself:
+
+```javascript
+var askQuestion = function ofTheTeacher() {
+  console.log(ofTheTeacher);
+};
+
+askQuestion();
+// function ofTheTeacher()...
+
+console.log(ofTheTeacher);
+// ReferenceError: ofTheTeacher is not defined
+```
+
+**NOTE**: `ofTheTeacher` does not exactly belong to the function scope. [Appendix A: Implied Scopes](../appendixA/README.md#implied-scopes) goes into greater detail.
+
+`ofTheTeacher` is not only declared within the function, rather than outside, it is also defined as read-only:
+
+```javascript
+var askQuestion = function ofTheTeacher() {
+  "use strict";
+  ofTheTeacher = 42;   // TypeError
+
+  //..
+};
+
+askQuestion();
+// TypeError
+```
+
+In strict-mode the assignment of `ofTheTeacher` fails as a `TypeError`, in non-strict-mode the assignment fails silently.
+
+In the case of an _anonymous_ function expression:
+
+```javascript
+var askQuestion = function(){
+  // ..
+};
+```
+
+Anonymous function expressions have no named identifier that affects either scope.
 
 [▲ Return to Sections](#sections)
 
