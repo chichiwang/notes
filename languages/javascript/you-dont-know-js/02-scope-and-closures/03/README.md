@@ -8,6 +8,7 @@ The connections between scopes that are nested within other scopes is called the
   * [Copying Is Not Accessing](#copying-is-not-accessing)
   * [Illegal Shadowing](#illegal-shadowing)
 * [Function Name Scope](#function-name-scope)
+* [Arrow Functions](#arrow-functions)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -269,6 +270,45 @@ var askQuestion = function(){
 ```
 
 Anonymous function expressions have no named identifier that affects either scope.
+
+[▲ Return to Sections](#sections)
+
+## Arrow Functions
+ES6 introduced an additional `function` expression form to JavaScript, _arrow functions_:
+
+```javascript
+var askQuestion = () => {
+  // ..
+};
+```
+
+The `=>` arrow function does not require the keyword `function` to define. The `(..)` around the parameter list is optional (in the case of one defined parameter) and the `{ .. }` around the function body is optional (in the case of a single statement body). If the `{ .. }` are omitted, a return value is sent without using the `return` keyword.
+
+Arrow functions are lexically anonymous: they have no directly related identifier that references the function. The assignment to the variable `askQuestion` creates an inferred name "askQuestion" - this is **not the same as being non-anonymous**.
+
+```javascript
+var askQuestion = () => {
+  // ..
+};
+
+askQuestion.name;   // askQuestion
+```
+
+Arrow functions achieve syntactic brevity at the expense of having to remember variations for different forms/conditions:
+
+```javascript
+() => 42;
+
+id => id.toUpperCase();
+
+(id,name) => ({ id, name });
+
+(...args) => {
+  return args[args.length - 1];
+};
+```
+
+There is an incorrect claim that arrow functions somehow behave differently in regards to lexical scope from the standard `function`-declared functions. Other than being anonymous and having no declarative form, arrow functions have the same lexical scope rules as `function`-declared functions. Arrow functions still create a inner-nested bucket of scope and variable declarations inside of this inner-nested scope bucket behave the same as standard function scope.
 
 [▲ Return to Sections](#sections)
 
