@@ -6,6 +6,7 @@ The connections between scopes that are nested within other scopes is called the
 * [Shadowing](#shadowing)
   * [Global Unshadowing Trick](#global-unshadowing-trick)
   * [Copying Is Not Accessing](#copying-is-not-accessing)
+  * [Illegal Shadowing](#illegal-shadowing)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -144,6 +145,62 @@ lookingFor(112358132134);
 ```
 
 Although `another.special` seems to be a workaround to allow access to a nested shadowed variable, it does not actually bypass the rule. `another.special` is now a copy of the parameter `special` defined by the function `lookingFor(..)`. The value stored in the parameter `special` scoped to `lookingFor(..)` cannot be reassigned from within `keepLooking(..)` through the `another.special` copy.
+
+#### Illegal Shadowing
+
+Not all combinations of shadowing are allowed: `let` can shadow `var`, but `var` cannot shadow `let`:
+
+```javascript
+function something() {
+  var special = "JavaScript";
+
+  {
+    let special = 42;   // totally fine shadowing
+
+    // ..
+  }
+}
+
+function another() {
+  // ..
+
+  {
+    let special = "JavaScript";
+
+    {
+      var special = "JavaScript";
+      // ^^^ Syntax Error
+
+      // ..
+    }
+  }
+}
+```
+
+The syntax error thrown in `another()` indicates that `special` has already been defined. The reason this is raised as a `SyntaxError` is because `var` is attempting to "cross the boundary":  create a function scoped variable `special` over-top the `let` declared variable of the same name.
+
+This boundary-crossing prohibition stops at each function boundary, so this example raises no exception:
+
+```javascript
+function another() {
+  // ..
+
+  {
+    let special = "JavaScript";
+
+    ajax("https://some.url",function callback(){
+      // totally fine shadowing
+      var special = "JavaScript";
+
+      // ..
+    });
+  }
+}
+```
+
+Summary:
+* Within an inner scope `let` can always shadow an outer scope's `var`.
+* Within an inner scope `var` can only shadow an outer scope's `let` if there is a function boundary in between.
 
 [▲ Return to Sections](#sections)
 
