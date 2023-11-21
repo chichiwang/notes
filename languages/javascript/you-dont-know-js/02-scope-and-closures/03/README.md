@@ -5,6 +5,7 @@ The connections between scopes that are nested within other scopes is called the
 * ["Lookup" Is (Mostly) Conceptual](#lookup-is-mostly-conceptual)
 * [Shadowing](#shadowing)
   * [Global Unshadowing Trick](#global-unshadowing-trick)
+  * [Copying Is Not Accessing](#copying-is-not-accessing)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -113,6 +114,36 @@ lookingFor(112358132134);
 // 3.141592
 // 42
 ```
+
+#### Copying Is Not Accessing
+
+Consider:
+
+```javascript
+var special = 42;
+
+function lookingFor(special) {
+  var another = {
+    special: special
+  };
+
+  function keepLooking() {
+    var special = 3.141592;
+    console.log(special);
+    console.log(another.special);  // Ooo, tricky!
+    console.log(window.special);
+  }
+
+  keepLooking();
+}
+
+lookingFor(112358132134);
+// 3.141592
+// 112358132134
+// 42
+```
+
+Although `another.special` seems to be a workaround to allow access to a nested shadowed variable, it does not actually bypass the rule. `another.special` is now a copy of the parameter `special` defined by the function `lookingFor(..)`. The value stored in the parameter `special` scoped to `lookingFor(..)` cannot be reassigned from within `keepLooking(..)` through the `another.special` copy.
 
 [▲ Return to Sections](#sections)
 
