@@ -9,5 +9,6 @@ Date: WIP
 * [Chapter 1: What's the Scope?](./01/README.md)
 * [Chapter 2: Illustrating Lexical Scope](./02/README.md)
 * [Chapter 3: The Scope Chain](./03/README.md)
+* [Chapter 4: Around The Global Scope](./04/README.md)
 
 [◂ Return to Books](../README.md)

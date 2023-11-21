@@ -312,4 +312,4 @@ There is an incorrect claim that arrow functions somehow behave differently in r
 
 [▲ Return to Sections](#sections)
 
-| [Previous: Chapter 2 - Illustrating Lexical Scope](../02/README.md) | [Table of Contents](../README.md#table-of-contents) |
+| [Previous: Chapter 2 - Illustrating Lexical Scope](../02/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Chapter 4 - Around The Global Scope](../04/README.md) |
