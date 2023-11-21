@@ -4,6 +4,7 @@ The connections between scopes that are nested within other scopes is called the
 ## Sections
 * ["Lookup" Is (Mostly) Conceptual](#lookup-is-mostly-conceptual)
 * [Shadowing](#shadowing)
+  * [Global Unshadowing Trick](#global-unshadowing-trick)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -48,6 +49,70 @@ The references to `studentName` on lines 4 and 5, within the `printStudent(..)` 
 This is a key aspect of lexical scope behavior known as _shadowing_. The `printStudent(..)`-scoped `studentName` variable _shadows_ the global-scoped `stuentName` defined on line 1. The parameter `studentName` is _shadowing_ the (_shadowed_) global variable `studentName`.
 
 One side-effect of shadowing a variable from an outer scope is that it becomes lexically impossible to reference that shadowed variable from the outer scope.
+
+#### Global Unshadowing Trick
+It is possible to access a global variable from a scope where that variable has been shadowed. In the global scope `var` and `function` declared variables also expose themselves as properties on the _global object_ (an object representation of the global scope). In the browser, developers recognize the global object as `window` (this is not _entirely_ accurate but good enough for this discussion).
+
+Consider this program, executed as a standalone `.js` file in a browser environment:
+
+```javascript
+var studentName = "Suzy";
+
+function printStudent(studentName) {
+  console.log(studentName);
+  console.log(window.studentName);
+}
+
+printStudent("Frank");
+// "Frank"
+// "Suzy"
+```
+
+The expression `window.studentName` is accessing the global variable `studentName` as a property on the `window` object (for the purposes of this discussion: synonymous with the global object). This is the only way to access a shadowed variable from inside a scope where the shadowing variable is present.
+
+`window.studentName` is a mirror of the global variable `studentName` - changes to one will be reflected in the other. `window.studentName` can be thought of as a setter/getter for the actual `studentName` variable.
+
+A variable can be added to the global scope by setting/creating a property on the global object.
+
+**NOTE**: As a matter of good practice do not: shadow a variable from an outer-scope if access is required, access a global variable that has been shadowed, nor create variables as `window` properties instead of with formal declarations.
+
+This trick only works for accessing the global variable scope (not a shadowed variable from a nested scope), and only for variables declared with `var` or `function`. Other declarations do not create mirrored global object properties:
+
+```javascript
+var one = 1;
+let notOne = 2;
+const notTwo = 3;
+class notThree {}
+
+console.log(window.one);       // 1
+console.log(window.notOne);    // undefined
+console.log(window.notTwo);    // undefined
+console.log(window.notThree);  // undefined
+```
+
+Variables that exist in any scope other than the global scope are completely inaccessible from a scope where they have been shadowed:
+
+```javascript
+var special = 42;
+
+function lookingFor(special) {
+  // The identifier `special` (parameter) in this
+  // scope is shadowed inside keepLooking(), and
+  // is thus inaccessible from that scope.
+
+  function keepLooking() {
+    var special = 3.141592;
+    console.log(special);
+    console.log(window.special);
+  }
+
+  keepLooking();
+}
+
+lookingFor(112358132134);
+// 3.141592
+// 42
+```
 
 [▲ Return to Sections](#sections)
 
