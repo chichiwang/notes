@@ -5,6 +5,7 @@ Fully understanding the global scope is critical to mastery of using lexical sco
 
 ## Sections
 * [Global Scope](#global-scope)
+* [Where Exactly is this Global Scope?](#where-exactly-is-this-global-scope)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -97,6 +98,11 @@ The JavaScript global scope is where:
 **NOTE**: Node.js also exposes several elementals "globally", but they're technically not in the `global` scope: `require()`, `__dirname`, `module`, `URL`, etc.
 
 Most developers agree the global scope should not be a dumping ground for every variable in an application: that's a lot of bugs waiting to happen (name conflicts, etc). The global scope is an important _glue_ for practically every JavaScript application.
+
+[▲ Return to Sections](#sections)
+
+## Where Exactly is this Global Scope?
+Different JavaScript environments handle the scope of programs, especially the global scope, differently. It is common for JavaScript developers to harbor misconceptions without realizing it.
 
 [▲ Return to Sections](#sections)
 
