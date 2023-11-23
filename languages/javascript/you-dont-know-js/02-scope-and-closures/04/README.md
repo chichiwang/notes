@@ -12,6 +12,7 @@ Fully understanding the global scope is critical to mastery of using lexical sco
   * [What's in a (Window) Name?](#whats-in-a-window-name)
   * [Web Workers](#web-workers)
   * [Developer Tools Console/REPL](#developer-tools-consolerepl)
+  * [ES Modules (ESM)](#es-modules-esm)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -241,6 +242,32 @@ In regards to scope, observable differences may include:
 Statements entered into the outer-most scope in a console/REPL may seem to be processed in the actual global scope but this is not entirely true. These tools typically emulate the global scope position to an extent, without strict adherence. Given that these tools prioritize developer experience, at times observed behavior may deviate from the JavaScript specification.
 
 Developer tools are not suitable environments to determine/verify explicit and nuanced behaviors of an actual JavaScript program context.
+
+[▲ Return to Sections](#sections)
+
+#### ES Modules (ESM)
+One of the more obvious impacts of the ESM pattern is how it changes the behavior of the top-level scope in a file.
+
+Using this code as example:
+
+```javascript
+var studentName = "Kyle";
+
+function hello() {
+  console.log(`Hello, ${ studentName }!`);
+}
+
+hello();
+// Hello, Kyle!
+
+export hello;
+```
+
+If the above code loaded as an ES Module it will run the same but the observable effects from the application perspective will be different. Despite being declared in the file's outer-most scope, `studentName` and `hello` are not global variables. They belong to the module's top-most scope bucket, or "module-global".
+
+In a module there's no implicit "module-wide scope object" for top-level declarations to be added to as properties. Within ES Modules global variables are not created by declaring variables in the top-level scope of a module. A module's scope is descended from the global scope (as if the entire contents of a module are wrapped in a function) so all variables that exist in the global scope are available as lexical identifiers within a module.
+
+ESM encourages minimization of reliance on a global scope, instead encouraging explicit importing whatever is needed from other modules.
 
 [▲ Return to Sections](#sections)
 
