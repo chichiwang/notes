@@ -10,6 +10,7 @@ Fully understanding the global scope is critical to mastery of using lexical sco
   * [Globals Shadowing Globals](#globals-shadowing-globals)
   * [DOM Globals](#dom-globals)
   * [What's in a (Window) Name?](#whats-in-a-window-name)
+  * [Web Workers](#web-workers)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -203,6 +204,30 @@ console.log(name, typeof name);
 The `var` declaration in the snippet above **does not shadow** the pre-defined `name` global property - the `var` declaration is effectively ignored. However, retrieving the value of `name` after assigning the number `42` to it reveals it to be the string `"42"`. This strange behavior is because `name` is actually pre-defined as a setter/getter on the `window` object that enforces that the value is a string.
 
 With a few exceptions like DOM element IDs and `window.name`, a JavaScript file running standalone in a browser environment is about as _pure_ as global scope behavior gets.
+
+#### Web Workers
+Web Workers are a web platform extension which allows a JavaScript file to run in a completely separate OS thread than the one that's running the main JavaScript program.
+
+Since Web Worker programs run on a separate thread they're restricted in their communications with the main application thread to avoid/limit race conditions and other complications. The DOM and the global `window` object are inaccessible to a Web Worker, but some web APIs (such as `navigator`) are accessible.
+
+A Web Worker is treated as a wholly separate program so it does not share the global scope with the main application. In a Web Worker the global object reference is typically made using `self`:
+
+```javascript
+var studentName = "Kyle";
+let studentID = 42;
+
+function hello() {
+  console.log(`Hello, ${ self.studentName }!`);
+}
+
+self.hello();
+// Hello, Kyle!
+
+self.studentID;
+// undefined
+```
+
+Just as with the main JavaScript program: `var` and `function` declared variables at the top-most scope create mirrored properties on the global object (`self`) where block-scoped declarations (`let`, `const`) do not.
 
 [▲ Return to Sections](#sections)
 
