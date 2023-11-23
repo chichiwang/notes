@@ -9,6 +9,7 @@ Fully understanding the global scope is critical to mastery of using lexical sco
   * [Browser "Window"](#browser-window)
   * [Globals Shadowing Globals](#globals-shadowing-globals)
   * [DOM Globals](#dom-globals)
+  * [What's in a (Window) Name?](#whats-in-a-window-name)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -186,6 +187,22 @@ window["my-todo-list"];
 If the `id` attribute is a valid lexical name like `first` then a lexical variable is created. Otherwise it can only be accessed through the global object (`window[..]`).
 
 This auto-registration of `id`-bearing DOM elements as global variables is an old legacy browser behavior. It is advised to never use these global variables, even though they will always be silently created.
+
+#### What's in a (Window) Name?
+Another browser-based oddity in browser-based JavaScript:
+
+```javascript
+var name = 42;
+
+console.log(name, typeof name);
+// "42" string
+```
+
+`window.name` is a pre-defined "global" property in a browser context. It seems like a normal global variable but it isn't.
+
+The `var` declaration in the snippet above **does not shadow** the pre-defined `name` global property - the `var` declaration is effectively ignored. However, retrieving the value of `name` after assigning the number `42` to it reveals it to be the string `"42"`. This strange behavior is because `name` is actually pre-defined as a setter/getter on the `window` object that enforces that the value is a string.
+
+With a few exceptions like DOM element IDs and `window.name`, a JavaScript file running standalone in a browser environment is about as _pure_ as global scope behavior gets.
 
 [▲ Return to Sections](#sections)
 
