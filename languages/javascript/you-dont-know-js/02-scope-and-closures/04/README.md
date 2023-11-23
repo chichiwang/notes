@@ -14,6 +14,7 @@ Fully understanding the global scope is critical to mastery of using lexical sco
   * [Developer Tools Console/REPL](#developer-tools-consolerepl)
   * [ES Modules (ESM)](#es-modules-esm)
   * [Node](#node)
+* [Global This](#global-this)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -310,6 +311,38 @@ function Module(module,require,__dirname,...) {
 Node defines a number of "globals" like `require()` but they're not actually identifiers in the global scope (nor properties on the global object). They are injected into the top-level scope of each module (a bit like parameters in the `Module(..)` function in the above example).
 
 The only way to create global variables in a Node program is to define properties on an automatically provided global object called `global` - a reference to the real global scope object (similar to `window` in a browser).
+
+[▲ Return to Sections](#sections)
+
+## Global This
+Reviewing the JavaScript environments covered so far, a program may or may not:
+* Declare a global variable in the top-level scope with `var` or `function` declarations - or `let`, `const`, or `class`.
+* Automatically adds global variables declarations (using `var` and `function`) as properties of the global scope object
+* Expose the global scope object as `window`, `self`, or `global`.
+
+Another trick for obtaining a reference to the global scope object is the following:
+
+```javascript
+const theGlobalScopeObject =
+  (new Function("return this"))();
+```
+
+**NOTE**: A function dynamically constructed from code stored in a string with the `Function()` constructor will automatically be run in non-strict-mode (for legacy reasons), when invoked normally its `this` will point at the global object.
+
+As of ES2020 JavaScript defined a standardized reference to the global object called `globalThis`. `globalThis` can be used in place of all other approaches if the runtime enviroment is sure to be recent enough to support it.
+
+A polyfill, like the one below, could be used to ensure a reference to the global object:
+
+```javascript
+const theGlobalScopeObject =
+  (typeof globalThis != "undefined") ? globalThis :
+  (typeof global != "undefined") ? global :
+  (typeof window != "undefined") ? window :
+  (typeof self != "undefined") ? self :
+  (new Function("return this"))();
+```
+
+It is advised, in order to reduce confusion, that if a reference to the global object is required, to rename `globalThis` to something with clearer semantic meaning (such as `theGlobalScopeObject` as in the example above). `globalThis` could easily be misunderstood to be a reference to some sort of global/default `this` binding.
 
 [▲ Return to Sections](#sections)
 
