@@ -11,6 +11,7 @@ Fully understanding the global scope is critical to mastery of using lexical sco
   * [DOM Globals](#dom-globals)
   * [What's in a (Window) Name?](#whats-in-a-window-name)
   * [Web Workers](#web-workers)
+  * [Developer Tools Console/REPL](#developer-tools-consolerepl)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -228,6 +229,18 @@ self.studentID;
 ```
 
 Just as with the main JavaScript program: `var` and `function` declared variables at the top-most scope create mirrored properties on the global object (`self`) where block-scoped declarations (`let`, `const`) do not.
+
+#### Developer Tools Console/REPL
+Developer tools process JavaScript code but are not a completely specification-adherent JavaScript environment - they will lean in favor of being developer friendly (developer experience, DX). There are observable differences in code behavior between running a snippet in a developer environment versus processing a full JavaScript program (ex: error conditions may be relaxed and not displayed in a developer tool).
+
+In regards to scope, observable differences may include:
+* The behavior of the global scope.
+* Hoising
+* Block-scoping declarators (`let`/`const`) when used in the outer-most scope.
+
+Statements entered into the outer-most scope in a console/REPL may seem to be processed in the actual global scope but this is not entirely true. These tools typically emulate the global scope position to an extent, without strict adherence. Given that these tools prioritize developer experience, at times observed behavior may deviate from the JavaScript specification.
+
+Developer tools are not suitable environments to determine/verify explicit and nuanced behaviors of an actual JavaScript program context.
 
 [▲ Return to Sections](#sections)
 
