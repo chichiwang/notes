@@ -7,6 +7,7 @@ Fully understanding the global scope is critical to mastery of using lexical sco
 * [Global Scope](#global-scope)
 * [Where Exactly is this Global Scope?](#where-exactly-is-this-global-scope)
   * [Browser "Window"](#browser-window)
+  * [Globals Shadowing Globals](#globals-shadowing-globals)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -139,6 +140,25 @@ window.hello();
 This is the default behavior expected based on a reading of the JavaScript specification: the outer scope _is_ the global scope and `studentName` is legitimately created as a global variable.
 
 This behavior is not always true for every JavaScript environment - that is often surprising to JavaScript developers.
+
+#### Globals Shadowing Globals
+Within the global scope a global object property can be shadowed by a global variable:
+
+```javascript
+window.something = 42;
+
+let something = "Kyle";
+
+console.log(something);
+// Kyle
+
+console.log(window.something);
+// 42
+```
+
+The `let` declaration assigns a global variable `something` that is not mirrored by a global object property. This creates a lexical identifier `something` that shadows the `something` global object property.
+
+It is a bad idea to create a divergence between the global object and the global scope: this will invariably lead to confusion and unexpected behaviors. One way to avoid this is to always use `var` for globals and reserve `let` and `const` for block scopes.
 
 [▲ Return to Sections](#sections)
 
