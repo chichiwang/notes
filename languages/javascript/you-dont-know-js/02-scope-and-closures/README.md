@@ -10,5 +10,6 @@ Date: WIP
 * [Chapter 2: Illustrating Lexical Scope](./02/README.md)
 * [Chapter 3: The Scope Chain](./03/README.md)
 * [Chapter 4: Around The Global Scope](./04/README.md)
+* [Chapter 5: The (Not So) Secret Lifecycle of Variables](./05/README.md)
 
 [◂ Return to Books](../README.md)

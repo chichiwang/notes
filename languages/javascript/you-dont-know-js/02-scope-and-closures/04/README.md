@@ -351,4 +351,4 @@ The global scope is present and relevant in every JavaScript program, though mod
 
 [▲ Return to Sections](#sections)
 
-| [Previous: Chapter 3 - The Scope Chain](../03/README.md) | [Table of Contents](../README.md#table-of-contents) |
+| [Previous: Chapter 3 - The Scope Chain](../03/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Chapter 5 - The (Not So) Secret Lifecycle of Variables](../05/README.md) |
