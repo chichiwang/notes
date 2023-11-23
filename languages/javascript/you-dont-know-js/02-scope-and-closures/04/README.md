@@ -8,6 +8,7 @@ Fully understanding the global scope is critical to mastery of using lexical sco
 * [Where Exactly is this Global Scope?](#where-exactly-is-this-global-scope)
   * [Browser "Window"](#browser-window)
   * [Globals Shadowing Globals](#globals-shadowing-globals)
+  * [DOM Globals](#dom-globals)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -159,6 +160,32 @@ console.log(window.something);
 The `let` declaration assigns a global variable `something` that is not mirrored by a global object property. This creates a lexical identifier `something` that shadows the `something` global object property.
 
 It is a bad idea to create a divergence between the global object and the global scope: this will invariably lead to confusion and unexpected behaviors. One way to avoid this is to always use `var` for globals and reserve `let` and `const` for block scopes.
+
+#### DOM Globals
+Although the browser-hosted JavaScript environment has the most _pure_ global scope behavior, it is not entirely _pure_.
+
+One surprising behavior of the global scope in browser-based JavaScript applications is that a DOM element created with an `id` attribute automatically has a global variable created to reference it:
+
+```html
+<ul id="my-todo-list">
+  <li id="first">Write a book</li>
+  ..
+</ul>
+```
+
+These elements with `id`s can be referenced from JavaScript:
+
+```javascript
+first;
+// <li id="first">..</li>
+
+window["my-todo-list"];
+// <ul id="my-todo-list">..</ul>
+```
+
+If the `id` attribute is a valid lexical name like `first` then a lexical variable is created. Otherwise it can only be accessed through the global object (`window[..]`).
+
+This auto-registration of `id`-bearing DOM elements as global variables is an old legacy browser behavior. It is advised to never use these global variables, even though they will always be silently created.
 
 [▲ Return to Sections](#sections)
 
