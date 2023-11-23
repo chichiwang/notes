@@ -346,4 +346,9 @@ It is advised, in order to reduce confusion, that if a reference to the global o
 
 [▲ Return to Sections](#sections)
 
+## Globally Aware
+The global scope is present and relevant in every JavaScript program, though modern patterns for organizing code into modules de-emphasizes relying on stored identifiers in that namespace. Still it is impportant to have a solid grasp on the differences in how the global scope/global scope object behave across different JavaScript environments.
+
+[▲ Return to Sections](#sections)
+
 | [Previous: Chapter 3 - The Scope Chain](../03/README.md) | [Table of Contents](../README.md#table-of-contents) |
