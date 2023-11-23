@@ -6,6 +6,7 @@ Fully understanding the global scope is critical to mastery of using lexical sco
 ## Sections
 * [Global Scope](#global-scope)
 * [Where Exactly is this Global Scope?](#where-exactly-is-this-global-scope)
+  * [Browser "Window"](#browser-window)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -103,6 +104,41 @@ Most developers agree the global scope should not be a dumping ground for every 
 
 ## Where Exactly is this Global Scope?
 Different JavaScript environments handle the scope of programs, especially the global scope, differently. It is common for JavaScript developers to harbor misconceptions without realizing it.
+
+#### Browser "Window"
+A standalone `.js` file loaded in a browser is the most _pure_ environment JavaScript code can be run in with respect to the treatment of the global scope. "Pure" does not mean that nothing is automatically added (a lot may be added), it means there is minimal instrusion of the code or interference with its expected global scope behavior.
+
+Using the following code as example:
+
+```javascript
+var studentName = "Kyle";
+
+function hello() {
+  console.log(`Hello, ${ studentName }!`);
+}
+
+hello();
+// Hello, Kyle!
+```
+
+Whether the code is loaded into the browser via an inline `<script>` tag, a `<script source=..>` tag, or a dynamically injected `<script>` tag: the `studentName` and `hello` identifiers are declared in the global scope.
+
+This means that the global object (commonly `window` in the browser) will contain properties with the same names:
+
+```javascript
+var studentName = "Kyle";
+
+function hello() {
+  console.log(`Hello, ${ window.studentName }!`);
+}
+
+window.hello();
+// Hello, Kyle!
+```
+
+This is the default behavior expected based on a reading of the JavaScript specification: the outer scope _is_ the global scope and `studentName` is legitimately created as a global variable.
+
+This behavior is not always true for every JavaScript environment - that is often surprising to JavaScript developers.
 
 [▲ Return to Sections](#sections)
 
