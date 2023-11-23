@@ -13,6 +13,7 @@ Fully understanding the global scope is critical to mastery of using lexical sco
   * [Web Workers](#web-workers)
   * [Developer Tools Console/REPL](#developer-tools-consolerepl)
   * [ES Modules (ESM)](#es-modules-esm)
+  * [Node](#node)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -268,6 +269,47 @@ If the above code loaded as an ES Module it will run the same but the observable
 In a module there's no implicit "module-wide scope object" for top-level declarations to be added to as properties. Within ES Modules global variables are not created by declaring variables in the top-level scope of a module. A module's scope is descended from the global scope (as if the entire contents of a module are wrapped in a function) so all variables that exist in the global scope are available as lexical identifiers within a module.
 
 ESM encourages minimization of reliance on a global scope, instead encouraging explicit importing whatever is needed from other modules.
+
+#### Node
+One aspect of Node that often catches JavaScript developers off guard is that every `.js` file it loads (including the one used to start the Node process with) is treated as a module (ES Module or CommonJS module). The top level of any Node program is never actually the global scope.
+
+Node has added support for ES Modules, but has supported a module format called "CommonJS" since its inception. CommonJS looks like the following snippet:
+
+```javascript
+var studentName = "Kyle";
+
+function hello() {
+  console.log(`Hello, ${ studentName }!`);
+}
+
+hello();
+// Hello, Kyle!
+
+module.exports.hello = hello;
+```
+
+Before processing, Node effectively wraps the file contents in a function to give it its own isolated scope.
+
+The code above can be visualized as being seen by Node like the following (illustrative, not actual):
+
+```javascript
+function Module(module,require,__dirname,...) {
+  var studentName = "Kyle";
+
+  function hello() {
+    console.log(`Hello, ${ studentName }!`);
+  }
+
+  hello();
+  // Hello, Kyle!
+
+  module.exports.hello = hello;
+}
+```
+
+Node defines a number of "globals" like `require()` but they're not actually identifiers in the global scope (nor properties on the global object). They are injected into the top-level scope of each module (a bit like parameters in the `Module(..)` function in the above example).
+
+The only way to create global variables in a Node program is to define properties on an automatically provided global object called `global` - a reference to the real global scope object (similar to `window` in a browser).
 
 [▲ Return to Sections](#sections)
 
