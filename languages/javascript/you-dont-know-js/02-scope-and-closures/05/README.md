@@ -4,6 +4,7 @@ JavaScript's particular flavor of lexical scope is rich in nuance in how and whe
 ## Sections
 * [When Can I Use a Variable?](#when-can-i-use-a-variable)
   * [Hoisting: Declaration vs. Expression](#hoisting-declaration-vs-expression)
+  * [Variable Hoisting](#variable-hoisting)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -48,6 +49,23 @@ The error is not a `ReferenceError` - the identifier `greeting` was found but at
 A `function` declaration is hoisted and initialized to its function reference.
 
 A `var` declaration is hoisted and initialized to `undefined`.
+
+#### Variable Hoisting
+Consider the following:
+
+```javascript
+greeting = "Hello!";
+console.log(greeting);
+// Hello!
+
+var greeting = "Howdy!";
+```
+
+`greeting` is available for assignment on line 1 even though it is not formally declared until line 5:
+* The identifier `greeting` is hoisted to the top of scope
+* `greeting` is automatically initialized to the value `undefined` at the top of the scope
+
+**NOTE**: Using _variable hoisting_ in this way feels unnatural and many developers would be right to avoid relying on this sort of usage in their programs.
 
 [▲ Return to Sections](#sections)
 
