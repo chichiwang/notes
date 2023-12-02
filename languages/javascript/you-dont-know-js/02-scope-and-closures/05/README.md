@@ -5,6 +5,7 @@ JavaScript's particular flavor of lexical scope is rich in nuance in how and whe
 * [When Can I Use a Variable?](#when-can-i-use-a-variable)
   * [Hoisting: Declaration vs. Expression](#hoisting-declaration-vs-expression)
   * [Variable Hoisting](#variable-hoisting)
+* [Hoisting: Yet Another Metaphor](#hoisting-yet-another-metaphor)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -66,6 +67,64 @@ var greeting = "Howdy!";
 * `greeting` is automatically initialized to the value `undefined` at the top of the scope
 
 **NOTE**: Using _variable hoisting_ in this way feels unnatural and many developers would be right to avoid relying on this sort of usage in their programs.
+
+[▲ Return to Sections](#sections)
+
+## Hoisting: Yet Another Metaphor
+It is useful to think of hoisting as a set of actions JavaScript takes before execution. The explanation often asserted for how hoisting works is that the JavaScript engine will actually rewrite the program to move the declarations to the top of scope.
+
+Taking the above example:
+
+```javascript
+greeting = "Hello!";
+console.log(greeting);
+// Hello!
+
+var greeting = "Howdy!";
+```
+
+One could imagine that the JavaScript engine rewrites it to look like the following prior to execution:
+
+```javascript
+var greeting;           // hoisted declaration
+greeting = "Hello!";    // the original line 1
+console.log(greeting);  // Hello!
+greeting = "Howdy!";    // `var` is gone!
+```
+
+The metaphor also asserts that `function` declarations are, in their entirety, moved to top of their scope so that:
+
+```javascript
+studentName = "Suzy";
+greeting();
+// Hello Suzy!
+
+function greeting() {
+  console.log(`Hello ${ studentName }!`);
+}
+var studentName;
+```
+
+Becomes (prior to program execution):
+
+```javascript
+function greeting() {
+  console.log(`Hello ${ studentName }!`);
+}
+var studentName;
+
+studentName = "Suzy";
+greeting();
+// Hello Suzy!
+```
+
+This hoisting metaphor is convenient, thinking about a program as if the JavaScript engine executes it in a single pass, top-down. This simplification of re-ordering the code is attractive and easy to understand, but it is not accurate. The JavaScript engine does not actually re-arrange the code nor does it look ahead to find declarations, it instead parses the code ahead of execution.
+
+Parsing is the first phase of the two-phase processing.
+
+**WARNING**: Incorrect or incomplete mental models often seem sufficient because they can occasionally lead to accidental correct answers, but in the long run it is harder to accurately analyze and predict outcomes without aligning mental models with how the JavaScript engine actually works.
+
+Hoising _should_ be used to refer to the **compile-time operation** of generating runtime instructions for the automatic registration of a variable at the beginning of its scope, each time that scope is entered. This is an important distinction: hoisting as a compile-time task rather than a runtime behavior.
 
 [▲ Return to Sections](#sections)
 
