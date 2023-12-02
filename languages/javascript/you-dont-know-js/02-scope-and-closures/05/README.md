@@ -6,6 +6,7 @@ JavaScript's particular flavor of lexical scope is rich in nuance in how and whe
   * [Hoisting: Declaration vs. Expression](#hoisting-declaration-vs-expression)
   * [Variable Hoisting](#variable-hoisting)
 * [Hoisting: Yet Another Metaphor](#hoisting-yet-another-metaphor)
+* [Re-declaration?](#re-declaration)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -125,6 +126,111 @@ Parsing is the first phase of the two-phase processing.
 **WARNING**: Incorrect or incomplete mental models often seem sufficient because they can occasionally lead to accidental correct answers, but in the long run it is harder to accurately analyze and predict outcomes without aligning mental models with how the JavaScript engine actually works.
 
 Hoising _should_ be used to refer to the **compile-time operation** of generating runtime instructions for the automatic registration of a variable at the beginning of its scope, each time that scope is entered. This is an important distinction: hoisting as a compile-time task rather than a runtime behavior.
+
+[▲ Return to Sections](#sections)
+
+## Re-declaration?
+Consider the following:
+
+```javascript
+var studentName = "Frank";
+console.log(studentName);
+// Frank
+
+var studentName;
+console.log(studentName);   // ???
+```
+
+Many would consider that `studentName` has been re-declared and thus expect the second console log to print `undefined`. However, there is no such thing as re-declaring a variable.
+
+Applying the hoising metaphor to this example, the code would be re-arranged like this for execution:
+
+```javascript
+var studentName;
+var studentName;    // clearly a pointless no-op!
+
+studentName = "Frank";
+console.log(studentName);
+// Frank
+
+console.log(studentName);
+// Frank
+```
+
+Since hoisting is about registering a variable to a scope, the second `var studentName` statement is a no-op. It is important to note that `var studentName;` does not equate to `var studentName = undefined;` as some may assume.
+
+Looking at another example:
+
+```javascript
+var studentName = "Frank";
+console.log(studentName);   // Frank
+
+var studentName;
+console.log(studentName);   // Frank <--- still!
+
+// let's add the initialization explicitly
+var studentName = undefined;
+console.log(studentName);   // undefined <--- see!?
+```
+
+The explicit `= undefined` initializations produces a different result than when it is omitted.
+
+A repeated `var` declaration of the same identifier name in a scope is effectively a no-op. Here's another illustration using a function declaration:
+
+```javascript
+var greeting;
+
+function greeting() {
+  console.log("Hello!");
+}
+
+// basically, a no-op
+var greeting;
+
+typeof greeting;        // "function"
+
+var greeting = "Hello!";
+
+typeof greeting;        // "string"
+```
+
+The first `greeting` declaration registers the identifier to the scope and auto-initializes it to `undefined`. The `function` declaration does not re-register the identifier, but _function hoisting_ overrides the auto-initialization to use the function reference. The second `var greeting;` statement doesn't do anything since `greeting` is already an identifier and _function hoisting_ took precedence for auto-initialization.
+
+Assinging `"Hello!"` to `greeting` changes its value to a string, the `var` keyword is a no-op in that statement.
+
+`let` and `const` behave differently:
+
+```javascript
+let studentName = "Frank";
+
+console.log(studentName);
+
+let studentName = "Suzy";
+```
+
+The above program will not execute and will instead immediately throw a `SyntaxError`. The error message will indicate something like `studentName has already been declared.` `let` and `const` explicitly disallow re-declaration.
+
+If any of a repeated declaration of an identifier uses `let` or `const`, the same error will occur:
+
+```javascript
+var studentName = "Frank";
+
+let studentName = "Suzy";
+```
+
+and
+
+```javascript
+let studentName = "Frank";
+
+var studentName = "Suzy";
+```
+
+Both of these programs will throw a `SyntaxError` on the second declaration.
+
+This is because re-declaration of variables is seen by some, including many on the TC39 body, as a bad habit that can lead to program bugs. When ES6 introduced `let` they decided to ban re-declaration with an error. It is allowed with `var` and `function` for forwards compatibility reasons.
+
+**NOTE**: This is a stylistic opinion and not a technical argument. A reasonable case could be made that maintaining consistency with `var`'s precedent would have been prudent.
 
 [▲ Return to Sections](#sections)
 
