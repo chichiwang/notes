@@ -7,6 +7,7 @@ JavaScript's particular flavor of lexical scope is rich in nuance in how and whe
   * [Variable Hoisting](#variable-hoisting)
 * [Hoisting: Yet Another Metaphor](#hoisting-yet-another-metaphor)
 * [Re-declaration?](#re-declaration)
+  * [Constants?](#constants)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -208,9 +209,9 @@ console.log(studentName);
 let studentName = "Suzy";
 ```
 
-The above program will not execute and will instead immediately throw a `SyntaxError`. The error message will indicate something like `studentName has already been declared.` `let` and `const` explicitly disallow re-declaration.
+The above program will not execute and will instead immediately throw a `SyntaxError`. The error message will indicate something like `studentName has already been declared.` `let` explicitly disallows re-declaration.
 
-If any of a repeated declaration of an identifier uses `let` or `const`, the same error will occur:
+If any of a repeated declaration of an identifier uses `let`, the same error will occur:
 
 ```javascript
 var studentName = "Frank";
@@ -231,6 +232,33 @@ Both of these programs will throw a `SyntaxError` on the second declaration.
 This is because re-declaration of variables is seen by some, including many on the TC39 body, as a bad habit that can lead to program bugs. When ES6 introduced `let` they decided to ban re-declaration with an error. It is allowed with `var` and `function` for forwards compatibility reasons.
 
 **NOTE**: This is a stylistic opinion and not a technical argument. A reasonable case could be made that maintaining consistency with `var`'s precedent would have been prudent.
+
+#### Constants?
+The `const` keyword is even more constrained than `let`. `const` disallows re-declaration of a repeated identifier within the same scope, like `let`, but there is an overriding technical reason for doing so (unlike `let`).
+
+The `const` keyword requires a variable to be initialized so using `const` without assignment results in a `SyntaxError`:
+
+```javascript
+const empty;   // SyntaxError
+```
+
+`const`-declared variables cannot be re-assigned:
+
+```javascript
+const studentName = "Frank";
+console.log(studentName);
+// Frank
+
+studentName = "Suzy";   // TypeError
+```
+
+**WARNING**: The error thrown when attempting to reassign `studentName` is a `TypeError` and not a `SyntaxError`. This is an important distinction: Syntax errors represent faults in the program that stop it from starting execution. A `TypeError`, by contrast, occurs during runtime. In the above example the console will print out `"Frank"` before processing the re-assignment of `studentName` and throwing an error.
+
+The clear technical reason the `const` keyword must disallow re-assignment:
+* `const` declarations cannot be re-assigned.
+* `const` declarations always require an assignment.
+
+Since `const` disallows re-assignment on these technical grounds, TC39 felt that `let` must similarly disallow re-assignment for consistency. It is debatable if this was the right decision.
 
 [▲ Return to Sections](#sections)
 
