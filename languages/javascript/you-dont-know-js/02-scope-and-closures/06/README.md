@@ -5,6 +5,7 @@ This chapter looks at how and why different levels of scope (functions and block
 * [Least Exposure](#least-exposure)
 * [Hiding in Plain (Function) Scope](#hiding-in-plain-function-scope)
   * [Invoking Function Expressions Immediately](#invoking-function-expressions-immediately)
+  * [Function Boundaries](#function-boundaries)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -159,6 +160,13 @@ Here is an example of a standalone IIFE:
 ```
 
 Unlike the earlier `hideTheCache()` example, the wrapping `( .. )` are not optional for a standalone IIFE - they are required (technically there are other syntactic methods to ensure that an IIFE is treated as a function expression by the JavaScript parser).
+
+#### Function Boundaries
+Using an IIFE to define scope can have unintended consequences, depending on the code around it. An IIFE's function boundary alters the behavior of certain statements/constructs.
+
+A `return` statement would change its meaning if an IIFE was wrapped around it. Non-arrow function IIFEs also change the binding of a `this` keyword. Statements like `break` and `continue` won't operate across an IIFE's boundary to control an outer loop or block.
+
+If scope needs to be wrapped around code that contains `return`, `this`, `break`, or `continue` an IIFE is not the best approach - in these cases it may be better to create scope with a block rather than a function.
 
 [▲ Return to Sections](#sections)
 
