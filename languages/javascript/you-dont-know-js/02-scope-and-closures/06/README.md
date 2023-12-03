@@ -9,6 +9,7 @@ This chapter looks at how and why different levels of scope (functions and block
 * [Scoping With Blocks](#scoping-with-blocks)
   * [`var` and `let`](#var-and-let)
   * [Where to `let`?](#where-to-let)
+  * [What's the Catch?](#whats-the-catch)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -376,6 +377,44 @@ for (let i = 0; i < 5; i++) {
 
 if (lastI < 5) {
   console.log("The loop stopped early!");
+}
+```
+
+#### What's the Catch?
+Since the introduction of `try..catch` in ES3 (in 1999), the `catch` clause has used an additional (little known) block-scoping declaration capability:
+
+```javascript
+try {
+  doesntExist();
+}
+catch (err) {
+  console.log(err);
+  // ReferenceError: 'doesntExist' is not defined
+  // ^^^^ message printed from the caught exception
+
+  let onlyHere = true;
+  var outerVariable = true;
+}
+
+console.log(outerVariable);     // true
+
+console.log(err);
+// ReferenceError: 'err' is not defined
+// ^^^^ this is another thrown (uncaught) exception
+```
+
+The `err` variable declared by the `catch` clause is block-scoped to that block. Other block-scoped variables can be declared within the block using `let` but a `var` declaration within the block attaches to the outer function/global scope.
+
+ES2019 changed the `catch` clause so that the error value declaration is optional. If omitted the `catch` block is no longer (by default) a scope - however, it is still a block.
+
+If the error object is unnecessary, it can be omitted both to simplify the syntax and to remove an unnecessary scope:
+
+```javascript
+try {
+  doOptionOne();
+}
+catch {   // catch-declaration omitted
+  doOptionTwoInstead();
 }
 ```
 
