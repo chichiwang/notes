@@ -9,6 +9,7 @@ JavaScript's particular flavor of lexical scope is rich in nuance in how and whe
 * [Re-declaration?](#re-declaration)
   * [Constants?](#constants)
   * [Loops](#loops)
+* [Unitialized Variables (aka, TDZ)](#unitialized-variables-aka-tdz)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -368,6 +369,102 @@ for (const i = 0; keepGoing; /* nothing here */ ) {
 ```
 
 While the above example works it is pointless - the purpose of declaring the index `i` is to use it to count iterations. Declaring it with a `const` does not make sense - it is better to declare it with `let` or to just use a `while`-loop.
+
+[▲ Return to Sections](#sections)
+
+## Unitialized Variables (aka, TDZ)
+Variables declared with `var` are hoisted to the top of their function-scope and initialized with `undefined`. `let` and `const` declared variables do not behave quite the same.
+
+Consider the following code:
+
+```javascript
+console.log(studentName);
+// ReferenceError
+
+let studentName = "Suzy";
+```
+
+A `ReferenceError` is thrown on line 1 at runtime. The error message may say something like `Cannot access studentName before initialization`. `studentName` exists on line 1 but has not been initialized and therefore cannot be accessed.
+
+```javascript
+studentName = "Suzy";   // let's try to initialize it!
+// ReferenceError
+
+console.log(studentName);
+
+let studentName;
+```
+
+`studentName` is unavailabe for both _read_ and _write_ prior to initialization. The only way for `let`/`const`-declared variables to be initialized is by use of a declaration statement:
+
+```javascript
+let studentName = "Suzy";
+console.log(studentName);   // Suzy
+```
+
+The `let`-declaration statement in the above example initializes `studentName` to the string `"Suzy"`. Alternatively:
+
+```javascript
+// ..
+
+let studentName;
+// or:
+// let studentName = undefined;
+
+// ..
+
+studentName = "Suzy";
+
+console.log(studentName);
+// Suzy
+```
+
+**NOTE**: It was previously noted that `var studentName;` is equivalent to `var studentName = undefined` - but rather that `studentName` is auto-initialized to `undefined` at the top of the scope. In the above example it appears `let studentName;` is equivalent to `let studentName = undefined;`. The distinction here is that while `var`-declared variables to auto-initialized to `undefined` at the top of the scope, `let`-declared variables do not initialize until execution of the declaration statement.
+
+While the compiler registers identifiers at the top of the scope they are declared in, `let` and `const`-declared variables are not initialized until the point in the program where they are declared. Prior to this point, these identfiers cannot be accessed.
+
+The term coined by TC39 to refer to the _period of time_ from entering the scope until where the initialization of the variable occurs is _Temporal Dead Zone_ (_TDZ_). Only after a variable is initialized can it be accessed.
+
+Only `let` and `const`-declared variables have an observable TDZ.
+
+Temporal Dead Zone refers to _time_ and not _position in the code_:
+
+```javascript
+askQuestion();
+// ReferenceError
+
+let studentName = "Suzy";
+
+function askQuestion() {
+  console.log(`${ studentName }, do you know?`);
+}
+```
+
+Although the `console.log` statement that references `studentName` comes after the `let`-delcaration, `askQuestion` is invoked before the `let`-statment is encountered and while `studentName` is still in the TDZ.
+
+A common misconception is that because the TDZ exists, `let` and `const` variables do not hoist. They do. However, they do not automatically initialize at the top of the scope the way `var`-declared variables do. Auto-initialization and hoisting are two distinct operations that should not be lumped together under the term "hoisting".
+
+[Shadowing](../03/README.md#shadowing) can be used to prove that `let`/`const`-declared variables hoist:
+
+```javascript
+var studentName = "Kyle";
+
+{
+  console.log(studentName);
+  // ???
+
+  // ..
+
+  let studentName = "Suzy";
+
+  console.log(studentName);
+  // Suzy
+}
+```
+
+If the `let`-declared `studentName` variable did not hoist, the first `console.log(..)` statement should print `"Kyle"`. However, running this program will result in a runtime TDZ error at the first `console.log(..)` statement because the inner-scope `studentName` was hoisted to the top of that block-scope. Initialzation of the `let`-declared `studentName` variable does not occur until after the `console.log(..)` statement.
+
+It is a good idea to place all `let`/`const` declarations at the top of any scope to avoid TDZ errors.
 
 [▲ Return to Sections](#sections)
 
