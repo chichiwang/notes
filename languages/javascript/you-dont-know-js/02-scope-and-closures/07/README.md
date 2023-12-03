@@ -6,6 +6,7 @@ Closure is one of the most important language characteristics ever invented in p
 ## Sections
 * [See the Closure](#see-the-closure)
   * [Pointed Closure](#pointed-closure)
+  * [Adding Up Closures](#adding-up-closures)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -74,6 +75,29 @@ var student = students.find(
 ```
 
 The BLUE(2) `studentID` reference is actually held by the ORANGE(4) scope rather than the `greetStudent(..)` GREEN(3) scope. It is actually the arrow function passed to the array's `find(..)` method that holds closure over `studentID`, not `greetStudent(..)`.
+
+#### Adding Up Closures
+The following is a canonical example often cited for closure:
+
+```javascript
+function adder(num1) {
+  return function addTo(num2){
+    return num1 + num2;
+  };
+}
+
+var add10To = adder(10);
+var add42To = adder(42);
+
+add10To(15);    // 25
+add42To(9);     // 51
+```
+
+Each instance of the inner `addTo(..)` function is closing over its own `num1` variable.
+
+Closure is associated with an instance of a function rather than its single lexical definition. Every time the `adder(..)` function runs, a _new_ inner `addTo(..)` function is created, and for each new instance a new closure. Each inner function instance (`add10To(..)` and `add42To(..)`) has its own closure over its own instance of the scope environment from that execution of `adder(..)`.
+
+Even though closure is based on lexical scope (which is handled at compile time), closure is observed as a runtime characteristic of function instances.
 
 [▲ Return to Sections](#sections)
 
