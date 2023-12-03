@@ -3,6 +3,7 @@ This chapter looks at how and why different levels of scope (functions and block
 
 ## Sections
 * [Least Exposure](#least-exposure)
+* [Hiding in Plain (Function) Scope](#hiding-in-plain-function-scope)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -38,6 +39,104 @@ diff(7,5);      // 2
 ```
 
 In this simple example it doesn't seem to matter whether `tmp` belongs to the function-scope. It definitely should not be a global variable. Following the PoLE principle `tmp` should be as hidden in scope as possible so it is block-scoped to the `if`-block using a `let` declaration.
+
+[▲ Return to Sections](#sections)
+
+## Hiding in Plain (Function) Scope
+It can be useful to hide `var`/`function`-declared variables within function scopes.
+
+Consider a program that calculates factorials, maintaining a cache of previously calculated factorials (trading memory for speed):
+
+```javascript
+var cache = {};
+
+function factorial(x) {
+  if (x < 2) return 1;
+  if (!(x in cache)) {
+    cache[x] = x * factorial(x - 1);
+  }
+  return cache[x];
+}
+
+factorial(6);
+// 720
+
+cache;
+// {
+//     "2": 2,
+//     "3": 6,
+//     "4": 24,
+//     "5": 120,
+//     "6": 720
+// }
+
+factorial(7);
+// 5040
+```
+
+In this example, the `cache` variable should be _private_  to `factorial(..)` since it is a mechanism for how the function works. It should not be exposed to the outer/global-scope.
+
+In this case, a middle-scope between the global scope and `factorial(..)`'s function-scope can be defined to hide `cache`:
+
+```javascript
+// outer/global scope
+
+function hideTheCache() {
+  // "middle scope", where we hide `cache`
+  var cache = {};
+
+  return factorial;
+
+  // **********************
+
+  function factorial(x) {
+    // inner scope
+    if (x < 2) return 1;
+    if (!(x in cache)) {
+      cache[x] = x * factorial(x - 1);
+    }
+    return cache[x];
+  }
+}
+
+var factorial = hideTheCache();
+
+factorial(6);
+// 720
+
+factorial(7);
+// 5040
+```
+
+The only purpose of `hideTheCache()` is to create a scope for `cache` to persist in across multiple calls to `factorial(..)`. For `factorial(..)` to have access to `cache` it must be defined within the same scope.
+
+**NOTE**: Caching a function's computed output to optimize performance when repeated calls of the same input are expected is quite common in the Functional Programming world. Canonically referred to as _memoization_, this caching relies on closure. There are memory-usage concerns associated with this strategy and FP libraries will usually provide an optimized/vetted utility for the memoization of functions.
+
+It will become tedious to define and name a `hideTheCache()` function scope everywhere a factorial needs to be calculated. A better approach may be to use a function expression:
+
+```javascript
+var factorial = (function hideTheCache() {
+  var cache = {};
+
+  function factorial(x) {
+    if (x < 2) return 1;
+    if (!(x in cache)) {
+      cache[x] = x * factorial(x - 1);
+    }
+    return cache[x];
+  }
+
+  return factorial;
+})();
+
+factorial(6);
+// 720
+
+factorial(7);
+// 5040
+```
+
+[Recall](../03/README.md#function-name-scope) that a function expression's identifier exists in it's own scope. The approach illustrated in the above example ensures that each function expression used wrap variables within its scope can be semantically named without polluting the scope it is defined in.
 
 [▲ Return to Sections](#sections)
 
