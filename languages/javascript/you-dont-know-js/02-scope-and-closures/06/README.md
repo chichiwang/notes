@@ -6,6 +6,7 @@ This chapter looks at how and why different levels of scope (functions and block
 * [Hiding in Plain (Function) Scope](#hiding-in-plain-function-scope)
   * [Invoking Function Expressions Immediately](#invoking-function-expressions-immediately)
   * [Function Boundaries](#function-boundaries)
+* [Scoping With Blocks](#scoping-with-blocks)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -167,6 +168,145 @@ Using an IIFE to define scope can have unintended consequences, depending on the
 A `return` statement would change its meaning if an IIFE was wrapped around it. Non-arrow function IIFEs also change the binding of a `this` keyword. Statements like `break` and `continue` won't operate across an IIFE's boundary to control an outer loop or block.
 
 If scope needs to be wrapped around code that contains `return`, `this`, `break`, or `continue` an IIFE is not the best approach - in these cases it may be better to create scope with a block rather than a function.
+
+[▲ Return to Sections](#sections)
+
+## Scoping With Blocks
+In general, any curly brace pair `{ .. }` which is a statement will act as a block, but **not necessarily** as a scope.
+
+A block only becomes a scope if necessary to contain its block-scoped declarations (`let`/`const`):
+
+```javascript
+{
+  // not necessarily a scope (yet)
+
+  // ..
+
+  // now we know the block needs to be a scope
+  let thisIsNowAScope = true;
+
+  for (let i = 0; i < 5; i++) {
+    // this is also a scope, activated each
+    // iteration
+    if (i % 2 == 0) {
+      // this is just a block, not a scope
+      console.log(i);
+    }
+  }
+}
+// 0 2 4
+```
+
+Not all `{ .. }` create blocks (and thus are eligible to create scopes):
+* Object literals use curly-brace pairs to delimit their key-value lists, but these object values are not blocks.
+* `class` uses curly-brace pairs around its body definition, but this is not a block or a scope.
+* A `function` uses curly-brace pairs around its body definition, but this technically isn't a block - it's a single statement for the function body. It _is_, however, a (function) scope.
+* A `switch` statement uses curly-brace pairs around its set of `case` clauses, but this does not definie a block or a scope.
+
+A curly brace pair can define a block attached to a statement (`if`, `for`, etc) or stand alone. An explicit block like this is not actually a scope if it contains no declarations, and serves no operational purpose.
+
+In most languages that support block-scoping, an explicit block scope is a common pattern for creating a narrow slice of scope for one or more variables.
+
+An explicit block scope can be useful even inside of another block:
+
+```javascript
+if (somethingHappened) {
+  // this is a block, but not a scope
+
+  {
+    // this is both a block and an
+    // explicit scope
+    let msg = somethingHappened.message();
+    notifyOthers(msg);
+  }
+
+  // ..
+
+  recoverFromSomething();
+}
+```
+
+The curly-brace pair inside the `if` statement is an even smaller explicit block scope for `msg`, since that variable is not needed for the entire `if`-block.
+
+If following PoLE, always define the smallest block for each variable within reason. It is recommended to use the extra explicit block demonstrated in the above example.
+
+Another example using an explicit block scope:
+
+```javascript
+function getNextMonthStart(dateStr) {
+  var nextMonth, year;
+
+  {
+    let curMonth;
+    [ , year, curMonth ] = dateStr.match(
+      /(\d{4})-(\d{2})-\d{2}/
+    ) || [];
+    nextMonth = (Number(curMonth) % 12) + 1;
+  }
+
+  if (nextMonth == 1) {
+    year++;
+  }
+
+  return `${ year }-${
+    String(nextMonth).padStart(2,"0")
+    }-01`;
+}
+getNextMonthStart("2019-12-25");   // 2020-01-01
+```
+
+The reason to place `curMonth` in an explicit block scope instead of at the function scope level alongside `nextMonth` and `year` is that `curMonth` is only needed for the first two statements - at the function level it's over-exposed. This example is small, so the hazards of over-exposing `curMonth` are limited.
+
+A more substantial example:
+
+```javascript
+function sortNamesByLength(names) {
+  var buckets = [];
+
+  for (let firstName of names) {
+    if (buckets[firstName.length] == null) {
+      buckets[firstName.length] = [];
+    }
+    buckets[firstName.length].push(firstName);
+  }
+
+  // a block to narrow the scope
+  {
+  let sortedNames = [];
+
+  for (let bucket of buckets) {
+    if (bucket) {
+      // sort each bucket alphanumerically
+      bucket.sort();
+
+      // append the sorted names to our
+      // running list
+      sortedNames = [
+        ...sortedNames,
+        ...bucket
+      ];
+    }
+  }
+
+  return sortedNames;
+  }
+}
+
+sortNamesByLength([
+  "Sally",
+  "Suzy",
+  "Frank",
+  "John",
+  "Jennifer",
+  "Scott"
+]);
+// [ "John", "Suzy", "Frank", "Sally",
+//   "Scott", "Jennifer" ]
+```
+
+This example contains six identifiers across five different scopes. Each variable is defined at the innermost scope possible for the program to operate as desired.
+
+`sortedNames` could have been defined in the top-level function scope, but it is only required in the second half of this function. Following PoLE, in an effort to avoid over-exposing `sortedNames`, it is block-scoped in the inner explict block scope.
 
 [▲ Return to Sections](#sections)
 
