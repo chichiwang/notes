@@ -10,6 +10,7 @@ This chapter looks at how and why different levels of scope (functions and block
   * [`var` and `let`](#var-and-let)
   * [Where to `let`?](#where-to-let)
   * [What's the Catch?](#whats-the-catch)
+* [Function Declarations in Blocks (FiB)](#function-declarations-in-blocks-fib)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -415,6 +416,95 @@ try {
 }
 catch {   // catch-declaration omitted
   doOptionTwoInstead();
+}
+```
+
+[▲ Return to Sections](#sections)
+
+## Function Declarations in Blocks (FiB)
+Are `function` declarations function-scoped like `var` declarations? Yes and no. Consider the following example:
+
+```javascript
+if (false) {
+  function ask() {
+    console.log("Does this run?");
+  }
+}
+ask();
+```
+
+There are three reasonable outcomes to what might happen running this code:
+1. The `ask()` call could fail with a `ReferenceError` exception because the `ask` identifier is block-scoped to the `if`-block and is therefore not available to the outer/global scope.
+2. The `ask()` call could fail with a `TypeError` exception because the `ask` identifier exists but is `undefined` (since the `if` statement does not run).
+3. The `ask()` call could run correctly, printing out the message.
+
+Depending on what JavaScript environment this code runs in, the results could be different. This is an area where existing legacy behavior betrays a predictable outcome.
+
+The JavaScript specification states that `function` declarations made inside of blocks are block-scoped, so the correct standards-specified behavior should be (1). However, most browser-based JavaScript engines (including V8, used in Chrome, Edge, Node, etc.) will behave as (2) - the identifier is scoped outside of the `if`-block but the function value is not auto-initialized.
+
+The reason these engines contradict the standard is because they already had these behaviors around FiB defined prior to ES6's introduction of block scoping. There was concern that changing their behaviors to adhere to the specification might break existing website code.
+
+One of the most common use cases for declaring a `function` within a block is to provide a conditional function declaration:
+
+```javascript
+if (typeof Array.isArray != "undefined") {
+  function isArray(a) {
+    return Array.isArray(a);
+  }
+}
+else {
+  function isArray(a) {
+    return Object.prototype.toString.call(a)
+    == "[object Array]";
+  }
+}
+```
+
+**WARNING**: In addition to risk of inconsistent FiB behavior across runtime environments, another problem with conditional function definitions is it makes a program harder to debug. Defining multiple versions of a function always causes a program to be harder to reason about and maintain.
+
+There are several FiB corner cases whose behavior will likely vary across runtime environments:
+
+```javascript
+if (true) {
+  function ask() {
+    console.log("Am I called?");
+  }
+}
+
+if (true) {
+  function ask() {
+    console.log("Or what about me?");
+  }
+}
+
+for (let i = 0; i < 5; i++) {
+  function ask() {
+    console.log("Or is it one of these?");
+  }
+}
+
+ask();
+
+function ask() {
+  console.log("Wait, maybe, it's this one?");
+}
+```
+
+The only practical advice for avoiding the vagaries of FiB is to avoid FiB entirely. Never place a `function` declaration within any block - always place them within the top-level of a function or in the global scope.
+
+While it is advised to never place function **declarations** inside of a block, it is perfectly fine to place function **expressions** inside of blocks:
+
+```javascript
+var isArray = function isArray(a) {
+  return Array.isArray(a);
+};
+
+// override the definition, if you must
+if (typeof Array.isArray == "undefined") {
+  isArray = function isArray(a) {
+    return Object.prototype.toString.call(a)
+    == "[object Array]";
+  };
 }
 ```
 
