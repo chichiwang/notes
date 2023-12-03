@@ -8,6 +8,7 @@ JavaScript's particular flavor of lexical scope is rich in nuance in how and whe
 * [Hoisting: Yet Another Metaphor](#hoisting-yet-another-metaphor)
 * [Re-declaration?](#re-declaration)
   * [Constants?](#constants)
+  * [Loops](#loops)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -259,6 +260,114 @@ The clear technical reason the `const` keyword must disallow re-assignment:
 * `const` declarations always require an assignment.
 
 Since `const` disallows re-assignment on these technical grounds, TC39 felt that `let` must similarly disallow re-assignment for consistency. It is debatable if this was the right decision.
+
+#### Loops
+Consider the following:
+
+```javascript
+var keepGoing = true;
+while (keepGoing) {
+  let value = Math.random();
+  if (value > 0.5) {
+    keepGoing = false;
+  }
+}
+```
+
+All the rules of scope, including re-declaration of `let`-created variables, are applied _per scope instance_. Each time a scope is entered during execution, everything resets.
+
+In the above example, each loop iteration is its own scope instance. Within each scope instance, `value` is only being declared once.
+
+If `value` were declared using `var` instead of `let`:
+
+```javascript
+var keepGoing = true;
+while (keepGoing) {
+  var value = Math.random();
+  if (value > 0.5) {
+    keepGoing = false;
+  }
+}
+```
+
+The `var`-declared `value` identifier is not block-scoped, and lives at the same scope as the variable `keepGoing`. In this instance there is only one variable `value` that is being re-assigned. There is no re-declaration because each subsequent `var` declaration is a no-op and ignored (only the assignment is excuted).
+
+`var`, `let`, and `const` keywords are effectively removed from the code by the time execution begins - they are all handled by the compiler.
+
+In the case of loop forms like the `for`-loop:
+
+```javascript
+for (let i = 0; i < 3; i++) {
+  let value = i * 10;
+  console.log(`${ i }: ${ value }`);
+}
+// 0: 0
+// 1: 10
+// 2: 20
+```
+
+The `i` declaration occurs in the `for`-loop body, in the same scope as `value`. `i` and `value` are both declared exactly once **per scope instance**.
+
+The same is true of `for..in` and `for..of` loop forms:
+
+```javascript
+for (let index in students) {
+  // this is fine
+}
+
+for (let student of students) {
+  // so is this
+}
+```
+
+Looking at how `const` impacts looping constructs, consider:
+
+```javascript
+var keepGoing = true;
+while (keepGoing) {
+  // ooo, a shiny constant!
+  const value = Math.random();
+  if (value > 0.5) {
+    keepGoing = false;
+  }
+}
+```
+
+As with the `let` example, the `const`-declaration is occurring once per scope instance so no error will occur.
+
+`for..in` and `for..of` loops also behave fine with `const`-declarations for the same reason:
+
+```javascript
+for (const index in students) {
+  // this is fine
+}
+
+for (const student of students) {
+  // this is also fine
+}
+```
+
+But the general `for`-loop can fail:
+
+```javascript
+for (const i = 0; i < 3; i++) {
+  // oops, this is going to fail with
+  // a Type Error after the first iteration
+}
+```
+
+The reason is the iteration command `i++` is attempting to re-assign the value of `i`. Absent attempts at re-assignment, the usage of `const` within a general `for`-loop is fine:
+
+```javascript
+var keepGoing = true;
+
+for (const i = 0; keepGoing; /* nothing here */ ) {
+  keepGoing = (Math.random() > 0.5);
+  // ..
+}
+```
+
+While the above example works it is pointless - the purpose of declaring the index `i` is to use it to count iterations. Declaring it with a `const` does not make sense - it is better to declare it with `let` or to just use a `while`-loop.
 
 [▲ Return to Sections](#sections)
 
