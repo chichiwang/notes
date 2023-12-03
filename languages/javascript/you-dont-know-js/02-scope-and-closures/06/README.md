@@ -7,6 +7,7 @@ This chapter looks at how and why different levels of scope (functions and block
   * [Invoking Function Expressions Immediately](#invoking-function-expressions-immediately)
   * [Function Boundaries](#function-boundaries)
 * [Scoping With Blocks](#scoping-with-blocks)
+  * [`var` and `let`](#var-and-let)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -307,6 +308,33 @@ sortNamesByLength([
 This example contains six identifiers across five different scopes. Each variable is defined at the innermost scope possible for the program to operate as desired.
 
 `sortedNames` could have been defined in the top-level function scope, but it is only required in the second half of this function. Following PoLE, in an effort to avoid over-exposing `sortedNames`, it is block-scoped in the inner explict block scope.
+
+#### `var` and `let`
+In the above example, the variable `buckets` is declared with the `var` keyword because it is used across the entire function (except in the final `return` statement). Any variable that is needed across all (or most) of a function should be declared so that such usage is obvious.
+
+**NOTE**: The parameter `names` isn't used across the entire function, but there is no way to limit the scope of a parameter.
+
+There is both a semantic and technical reason to use `var` to declar `buckets`.
+
+Stylistically `var` has always signaled a variable that belongs to the entire function. `var`-declared variables [attach themselves to the nearest enclosing function scope](../01/README.md#lexical-scope) no matter where they are placed. This is true even if the declaration occurs within a block:
+
+```javascript
+function diff(x,y) {
+  if (x > y) {
+    var tmp = x;    // `tmp` is function-scoped
+    x = y;
+    y = tmp;
+  }
+
+  return y - x;
+}
+```
+
+While a `var` variable can be declared inside a block and still belong to the function-scope, with the exception of a few specific cases this is advised against. Generally `var` declarations should be reserved for use in the top-level scope of a function.
+
+As a stylistic convention it is better to allow `var` to communicate function-scoped variables, and `let` to indicate block-scoped variables. As long as a program needs both function-scoped and block-scoped variables, the most readable approach is to use both `var` and `let`, each for their own best purpose.
+
+**WARNING**: The recommendation to use both `var` and `let` is controversial and contradicts the majority. It is far more common to hear assertions that `var` is broken and to just use `let`. These opinions are valid, as is the one promoted by this book. `var` is neither broken nor deprecated.
 
 [▲ Return to Sections](#sections)
 
