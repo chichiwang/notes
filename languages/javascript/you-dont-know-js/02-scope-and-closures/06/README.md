@@ -4,6 +4,7 @@ This chapter looks at how and why different levels of scope (functions and block
 ## Sections
 * [Least Exposure](#least-exposure)
 * [Hiding in Plain (Function) Scope](#hiding-in-plain-function-scope)
+  * [Invoking Function Expressions Immediately](#invoking-function-expressions-immediately)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -137,6 +138,27 @@ factorial(7);
 ```
 
 [Recall](../03/README.md#function-name-scope) that a function expression's identifier exists in it's own scope. The approach illustrated in the above example ensures that each function expression used wrap variables within its scope can be semantically named without polluting the scope it is defined in.
+
+#### Invoking Function Expressions Immediately
+In the example at the end of the previous section the entire function expression was wrapped in `( .. )();`. The wrapping parentheses `( .. )` is not strictly necessary but improves readability.
+
+The second set of parentheses is actually calling the function expression preceding it. This common pattern is called an _Immediately Invoked Function Expression_ (IIFE).
+
+An IIFE is useful for creating scope to hide variables/functions. Being an expression it can be used **any** place in a program JavaScript allows expressions. An IIFE can be named or anonymous. It can be a standalone statement or part of another statement.
+
+Here is an example of a standalone IIFE:
+
+```javascript
+// outer scope
+
+(function(){
+  // inner hidden scope
+})();
+
+// more outer scope
+```
+
+Unlike the earlier `hideTheCache()` example, the wrapping `( .. )` are not optional for a standalone IIFE - they are required (technically there are other syntactic methods to ensure that an IIFE is treated as a function expression by the JavaScript parser).
 
 [▲ Return to Sections](#sections)
 
