@@ -5,6 +5,7 @@ Closure is one of the most important language characteristics ever invented in p
 
 ## Sections
 * [See the Closure](#see-the-closure)
+  * [Pointed Closure](#pointed-closure)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -58,6 +59,21 @@ The `lookupStudent(..)` outer function creates and returns an inner function `gr
 In academic terms, each instance of `greetStudent(..)` _closes_ over the variables in its outer scope: `students` and `studentID`. The references in `greetStudent(..)` to these variables from its outer scope is called a _closure_.
 
 Closure allows `greetStudent(..)` to continue to access these outer variables even after the outer scope is finished (when each call to `lookupStudent(..)` completes). The variables `students` and `studentID` do not get garbage collected (GC'd) so long as a reference continues to exist to the inner function that references them.
+
+#### Pointed Closure
+The `student => student.id == studentID` arrow function creates another function scoep inside of the `greetStudent(..)` function scope.
+
+An accurate color-diagram for this code would include a fourth scope bucket inside the arrow function:
+
+```javascript
+var student = students.find(
+  student =>
+    // function scope: ORANGE(4)
+    student.id == studentID
+);
+```
+
+The BLUE(2) `studentID` reference is actually held by the ORANGE(4) scope rather than the `greetStudent(..)` GREEN(3) scope. It is actually the arrow function passed to the array's `find(..)` method that holds closure over `studentID`, not `greetStudent(..)`.
 
 [▲ Return to Sections](#sections)
 
