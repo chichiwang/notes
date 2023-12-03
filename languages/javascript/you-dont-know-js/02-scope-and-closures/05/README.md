@@ -478,4 +478,4 @@ Declaration and re-declaration of variables tend to cause confusion when thought
 
 [▲ Return to Sections](#sections)
 
-| [Previous: Chapter 4 - Around The Global Scope](../04/README.md) | [Table of Contents](../README.md#table-of-contents) |
+| [Previous: Chapter 4 - Around The Global Scope](../04/README.md) | [Table of Contents](../README.md#table-of-contents) | [Chapter 6 - Limiting Scope Exposure](../06/README.md) |
