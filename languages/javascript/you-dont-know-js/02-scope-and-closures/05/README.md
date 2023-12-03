@@ -10,6 +10,7 @@ JavaScript's particular flavor of lexical scope is rich in nuance in how and whe
   * [Constants?](#constants)
   * [Loops](#loops)
 * [Unitialized Variables (aka, TDZ)](#unitialized-variables-aka-tdz)
+* [Finally Initialized](#finally-initialized)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -465,6 +466,15 @@ var studentName = "Kyle";
 If the `let`-declared `studentName` variable did not hoist, the first `console.log(..)` statement should print `"Kyle"`. However, running this program will result in a runtime TDZ error at the first `console.log(..)` statement because the inner-scope `studentName` was hoisted to the top of that block-scope. Initialzation of the `let`-declared `studentName` variable does not occur until after the `console.log(..)` statement.
 
 It is a good idea to place all `let`/`const` declarations at the top of any scope to avoid TDZ errors.
+
+[▲ Return to Sections](#sections)
+
+## Finally Initialized
+_Hoisitng_, _(re)declaration_, and the _Temporal Dead Zone_ are common sources of confusion for developers (especially those who have worked in other languages prior to JavaScript).
+
+_Hoisting_ is generally cited as an explicit mechanism of the JavaScript engine, but it's really more of a metaphor to describe the various ways JavaScript handles variable declarations during compilation.
+
+Declaration and re-declaration of variables tend to cause confusion when thought of as runtime operations, but shifting to compile-time thinking on these topics clears up the behaviors.
 
 [▲ Return to Sections](#sections)
 
