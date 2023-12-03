@@ -510,4 +510,4 @@ if (typeof Array.isArray == "undefined") {
 
 [▲ Return to Sections](#sections)
 
-| [Previous: Chapter 5 - The (Not So) Secret Lifecycle of Variables](../05/README.md) | [Table of Contents](../README.md#table-of-contents) |
+| [Previous: Chapter 5 - The (Not So) Secret Lifecycle of Variables](../05/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Chapter 7 - Using Closures](../07/README.md) |

@@ -12,5 +12,6 @@ Date: WIP
 * [Chapter 4: Around The Global Scope](./04/README.md)
 * [Chapter 5: The (Not So) Secret Lifecycle of Variables](./05/README.md)
 * [Chapter 6: Limiting Scope Exposure](./06/README.md)
+* [Chapter 7: Using Closures](./07/README.md)
 
 [◂ Return to Books](../README.md)
