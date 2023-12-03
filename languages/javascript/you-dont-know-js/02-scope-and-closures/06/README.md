@@ -8,6 +8,7 @@ This chapter looks at how and why different levels of scope (functions and block
   * [Function Boundaries](#function-boundaries)
 * [Scoping With Blocks](#scoping-with-blocks)
   * [`var` and `let`](#var-and-let)
+  * [Where to `let`?](#where-to-let)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -335,6 +336,48 @@ While a `var` variable can be declared inside a block and still belong to the fu
 As a stylistic convention it is better to allow `var` to communicate function-scoped variables, and `let` to indicate block-scoped variables. As long as a program needs both function-scoped and block-scoped variables, the most readable approach is to use both `var` and `let`, each for their own best purpose.
 
 **WARNING**: The recommendation to use both `var` and `let` is controversial and contradicts the majority. It is far more common to hear assertions that `var` is broken and to just use `let`. These opinions are valid, as is the one promoted by this book. `var` is neither broken nor deprecated.
+
+#### Where to `let`?
+The way to determine where each declaration in a program belongs is to determine what the minimal scope exposure that is sufficient for a given variable is. If a declaration belongs in a block scope, use `let`. If it belongs in the function scope, use `var`.
+
+In `for`-loops the iterator is only ever used inside the loop and therefore should always be declared using `let`:
+
+```javascript
+for (let i = 0; i < 5; i++) {
+  // do something
+}
+```
+
+Virtually the only case where an iterator in a `for`-loop should be declared with `var` is if the iterator needs to be accessed outside of the loop:
+
+```javascript
+for (var i = 0; i < 5; i++) {
+  if (checkValue(i)) {
+    break;
+  }
+}
+
+if (i < 5) {
+  console.log("The loop stopped early!");
+}
+```
+
+The above approach, however, smells of poor code structure and a preferable approach is to use another outer-scoped variable for that purpose:
+
+```javascript
+var lastI;
+
+for (let i = 0; i < 5; i++) {
+  lastI = i;
+  if (checkValue(i)) {
+    break;
+  }
+}
+
+if (lastI < 5) {
+  console.log("The loop stopped early!");
+}
+```
 
 [▲ Return to Sections](#sections)
 
