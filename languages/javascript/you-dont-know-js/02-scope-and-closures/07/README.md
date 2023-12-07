@@ -8,6 +8,7 @@ Closure is one of the most important language characteristics ever invented in p
   * [Pointed Closure](#pointed-closure)
   * [Adding Up Closures](#adding-up-closures)
   * [Live Link, Not a Snapshot](#live-link-not-a-snapshot)
+  * [Common Closures: Ajax and Events](#common-closures-ajax-and-events)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -236,6 +237,45 @@ keeps[2]();   // 2
 ```
 
 Using `let` to declare the iterator `i`, a new `i` is created for each iteration of the loop, so each closure works as expected.
+
+#### Common Closures: Ajax and Events
+Closure is most commonly encountered in callbacks:
+
+```javascript
+function lookupStudentRecord(studentID) {
+  ajax(
+    `https://some.api/student/${ studentID }`,
+    function onRecord(record) {
+      console.log(
+        `${ record.name } (${ studentID })`
+      );
+    }
+  );
+}
+
+lookupStudentRecord(114);
+// Frank (114)
+```
+
+`onRecord(..)` is invoked after the response from the Ajax call returns, from within the internals of the `ajax(..)` function, long after `lookupStudentRecord(..)` has completed running. Closure is why `studentID` is still accessible whenever the `onRecord(..)` callback is invoked.
+
+Event handlers are another common place where closure is found:
+
+```javascript
+function listenForClicks(btn,label) {
+  btn.addEventListener("click",function onClick(){
+    console.log(
+      `The ${ label } button was clicked!`
+    );
+  });
+}
+
+var submitBtn = document.getElementById("submit-btn");
+
+listenForClicks(submitBtn,"Checkout");
+```
+
+The `onClick(..)` callback closes over the `label` parameter ensuring it is still available whenever the button is clicked.
 
 [▲ Return to Sections](#sections)
 
