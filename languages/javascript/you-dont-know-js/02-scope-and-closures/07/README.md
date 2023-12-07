@@ -12,6 +12,7 @@ Closure is one of the most important language characteristics ever invented in p
   * [What If I Can't See It?](#what-if-i-cant-see-it)
   * [Observable Definition](#observable-definition)
 * [The Closure Lifecycle and Garbage Collection (GC)](#the-closure-lifecycle-and-garbage-collection-gc)
+  * [Per Variable or Per Scope?](#per-variable-or-per-scope)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -430,6 +431,105 @@ onSubmit();
 The inner `onClick(..)` function holds a closure over `cb` - `checkout(..)`and `trackAction(..)` cannot be GC'd as long as these event handlers are subscribed. It isn't until `onSubmit()` is called that the `clickHandlers` array is emptied discarding references to `checkout(..)` and `trackAction(..)`, thus allowing the closured `cb` references to be GC'd along with them.
 
 Unsubscribing an event handler can be more important than the original subscription when considering the health and efficiency of a program.
+
+#### Per Variable or Per Scope?
+Conceptually closures occur **per variable** rather than per scope: inner functions are typically assumed to close over only what they explicitly reference from the outer scope.
+
+But the reality is more complicated:
+
+```javascript
+function manageStudentGrades(studentRecords) {
+  var grades = studentRecords.map(getGrade);
+
+  return addGrade;
+
+  // ************************
+
+  function getGrade(record){
+    return record.grade;
+  }
+
+  function sortAndTrimGradesList() {
+    // sort by grades, descending
+    grades.sort(function desc(g1,g2){
+      return g2 - g1;
+    });
+
+    // only keep the top 10 grades
+    grades = grades.slice(0,10);
+  }
+
+  function addGrade(newGrade) {
+    grades.push(newGrade);
+    sortAndTrimGradesList();
+    return grades;
+  }
+}
+
+var addNextGrade = manageStudentGrades([
+  { id: 14, name: "Kyle", grade: 86 },
+  { id: 73, name: "Suzy", grade: 87 },
+  { id: 112, name: "Frank", grade: 75 },
+  // ..many more records..
+  { id: 6, name: "Sarah", grade: 91 }
+]);
+
+// later
+
+addNextGrade(81);
+addNextGrade(68);
+// [ .., .., ... ]
+```
+
+The returned inner function `addGrade(..)` closes over the `grades` variable from the outer scope. It also closes over the `sortAndTrimGradesList()` function from its outer scope.
+
+Since `getGrade()` and `studentRecords` are not referenced by either `addGrade(..)` or `sortandTrimGradesList()`, they are garbage collected (verified by debugging in a JavaScript engine like V8 Chrome - the inspector does not list the `studentRecords` variable after exiting the `manageStudentGrades(..)` outer function).
+
+Consider the following program:
+
+```javascript
+function storeStudentInfo(id,name,grade) {
+  return function getInfo(whichValue){
+    // warning:
+    //   using `eval(..)` is a bad idea!
+    var val = eval(whichValue);
+    return val;
+  };
+}
+
+var info = storeStudentInfo(73,"Suzy",87);
+
+info("name");
+// Suzy
+
+info("grade");
+// 87
+```
+
+Although the inner function `getInfo(..)` does not explicitly reference any variable from its outer scope (`id`, `name`, `grade`), calls to it seem to still have access to those variables through the use of `eval(..)`.
+
+Many modern JavaScript engines apply an _optimization_ that removes variables from a closure scope that aren't explicitly referenced, however, there are situations where that optimization cannot be applied (as is the case with the use of `eval(..)`) and the closure scope will continue to contain all of the outer scopes' original variables. This means that closure must be _per scope_ in implementation, then an optional optimization may trim down the scope to explicitly referenced variables.
+
+As recently as a few years ago, many JavaScript engines did not apply this optimization. The fact that this optimization is optional rather than required by the specification means that it is safer to manually discard variables holding onto large values rather than relying on closure optimization/GC.
+
+Taking the earlier `manageStudentGrades(..)` example, `studentRecords` can be manually disposed of to ensure that a potentially large array is not held in memory unnecessarily:
+
+```javascript
+function manageStudentGrades(studentRecords) {
+  var grades = studentRecords.map(getGrade);
+
+  // unset `studentRecords` to prevent unwanted
+  // memory retention in the closure
+  studentRecords = null;
+
+  return addGrade;
+  // ..
+}
+```
+
+Assigning `studentRecords` to `null` ensures that even if `studentRecords` remains held in the closure scope, it is no longer referencing a potentially large array of data that is no longer used. It is a good habit to be careful and explicitly ensure that device memory is not tied up longer than necessary.
+
+It is important to know where closures appear in a program and what variables are included. Closures should be managed carefully to ensure memory is not being wasted unnecessarily.
 
 [▲ Return to Sections](#sections)
 
