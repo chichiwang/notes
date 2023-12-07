@@ -14,6 +14,7 @@ Closure is one of the most important language characteristics ever invented in p
 * [The Closure Lifecycle and Garbage Collection (GC)](#the-closure-lifecycle-and-garbage-collection-gc)
   * [Per Variable or Per Scope?](#per-variable-or-per-scope)
 * [An Alternate Perspective](#an-alternate-perspective)
+* [Why Closure?](#why-closure)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -580,6 +581,125 @@ In this model, closure refers to keeping a function instance alive, along with i
 Figure 4 represents a more academic perspective on closure while Figure 5 represents a more implementation-focused perspective (how JavaScript actually works). Both perspectives are useful in understanding closure, and regardless of the mental model the observable outcome is the same.
 
 **NOTE**: This alternative model of closure (Figure 5) affects whether synchronous callbacks are classified as examples of closure. More on this nuance in [Appendix A](../appendixA/README.md).
+
+[▲ Return to Sections](#sections)
+
+## Why Closure?
+Exploring some ways closure can improve code structure and organization within an example program: supposing there is a button on a page that, when clicked, should retrieve and send some data via an Ajax request.
+
+Without using closure:
+
+```javascript
+var APIendpoints = {
+  studentIDs:
+  "https://some.api/register-students",
+  // ..
+};
+
+var data = {
+  studentIDs: [ 14, 73, 112, 6 ],
+  // ..
+};
+
+function makeRequest(evt) {
+  var btn = evt.target;
+  var recordKind = btn.dataset.kind;
+  ajax(
+    APIendpoints[recordKind],
+    data[recordKind]
+  );
+}
+
+// <button data-kind="studentIDs">
+//    Register Students
+// </button>
+btn.addEventListener("click",makeRequest);
+```
+
+The `makeRequest(..)` event handler has to look up both the URL for the API endpoint as well as the Ajax request payload using the `data-kind` attribute of the target button element.
+
+This works, but it is inefficient and confusing code, and the event handler needs to read from the DOM each time it fires.
+
+Closure can be used to improve this code so that the DOM read only occurs once for each button bound to this event handler:
+
+```javascript
+var APIendpoints = {
+  studentIDs:
+  "https://some.api/register-students",
+  // ..
+};
+
+var data = {
+  studentIDs: [ 14, 73, 112, 6 ],
+  // ..
+};
+
+function setupButtonHandler(btn) {
+  var recordKind = btn.dataset.kind;
+
+  btn.addEventListener(
+    "click",
+    function makeRequest(evt){
+      ajax(
+        APIendpoints[recordKind],
+        data[recordKind]
+      );
+    }
+  );
+}
+
+// <button data-kind="studentIDs">
+//    Register Students
+// </button>
+
+setupButtonHandler(btn);
+```
+
+With this change, the `data-kind` attribute is read once and stored in closure on the initial event binding. The DOM is no longer accessed on every click event.
+
+Futher refining the program, both the URL and payload can be stored on setup, rather than retrieved on click:
+
+```javascript
+function setupButtonHandler(btn) {
+  var recordKind = btn.dataset.kind;
+  var requestURL = APIendpoints[recordKind];
+  var requestData = data[recordKind];
+
+  btn.addEventListener(
+    "click",
+    function makeRequest(evt){
+      ajax(requestURL,requestData);
+    }
+  );
+}
+```
+
+`makeRequest(..)` now closes over `requestURL` and `requestData` improving readability and performance.
+
+Two techniques from the Functional Programming paradigm that rely on closure are _currying_ and _partial application_. These techniques alter the shape of functions that require multiple inputs so that some inputs can be provided up front, while the others are provided later - only when all necessary inputs have been provided is the target action performed. This can make the code cleaner and provides the opportunity to label partially applied functions with better semantic names.
+
+Using partial application to improve the above code:
+
+```javascript
+function defineHandler(requestURL,requestData) {
+  return function makeRequest(evt){
+    ajax(requestURL,requestData);
+  };
+}
+
+function setupButtonHandler(btn) {
+  var recordKind = btn.dataset.kind;
+  var handler = defineHandler(
+    APIendpoints[recordKind],
+    data[recordKind]
+  );
+  btn.addEventListener("click",handler);
+}
+```
+
+`makeRequest(..)` now closes over `requestURL` and `requestData` in a scope provided by `defineHandler(..)`. This is utilized in `setupButtonHandler(..)` to store these values for binding the click event to each button.
+
+This program is similar to the previous one in behavior, utilizing the same values in closure. However, by isolating the creation of `makeRequest(..)` within a separate utility (`defineHandler(..)`) it is now reusable across the entire program. The closure scope is also limited to only the two variables necessary for the operation.
 
 [▲ Return to Sections](#sections)
 
