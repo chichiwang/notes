@@ -715,4 +715,4 @@ Summarizing the benefits of leveraging closures in code:
 
 [▲ Return to Sections](#sections)
 
-| [Previous: Chapter 6 - Limiting Scope Exposure](../06/README.md) | [Table of Contents](../README.md#table-of-contents) |
+| [Previous: Chapter 6 - Limiting Scope Exposure](../06/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Chapter 8 - The Module Pattern](../08/README.md) |

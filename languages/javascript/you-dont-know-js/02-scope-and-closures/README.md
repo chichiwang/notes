@@ -13,5 +13,6 @@ Date: WIP
 * [Chapter 5: The (Not So) Secret Lifecycle of Variables](./05/README.md)
 * [Chapter 6: Limiting Scope Exposure](./06/README.md)
 * [Chapter 7: Using Closures](./07/README.md)
+* [Chapter 8: The Module Pattern](./08/README.md)
 
 [◂ Return to Books](../README.md)
