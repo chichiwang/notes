@@ -9,6 +9,7 @@ Closure is one of the most important language characteristics ever invented in p
   * [Adding Up Closures](#adding-up-closures)
   * [Live Link, Not a Snapshot](#live-link-not-a-snapshot)
   * [Common Closures: Ajax and Events](#common-closures-ajax-and-events)
+  * [What If I Can't See It?](#what-if-i-cant-see-it)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -276,6 +277,89 @@ listenForClicks(submitBtn,"Checkout");
 ```
 
 The `onClick(..)` callback closes over the `label` parameter ensuring it is still available whenever the button is clicked.
+
+#### What If I Can't See It?
+The emphasis in the definition of closure is observability: if closure exists (technically, by implementation, or academically) but it cannot be observed in the program it is not considered closure.
+
+For example:
+
+```javascript
+function say(myName) {
+  var greeting = "Hello";
+  output();
+
+  function output() {
+    console.log(
+      `${ greeting }, ${ myName }!`
+    );
+  }
+}
+
+say("Kyle");
+// Hello, Kyle!
+```
+
+Although `output()` accesses `myName` and `greeting` from the enclosing scope, its invocation occurs within the same scope where those variables are available: this is just lexical scope behavior, not closure.
+
+Globally scoped variables cannot be (observably) closed over because they are available everywhere. No function can ever be invoked in any part of the scope chain that is not a descendant of the global scope:
+
+```javascript
+var students = [
+  { id: 14, name: "Kyle" },
+  { id: 73, name: "Suzy" },
+  { id: 112, name: "Frank" },
+  { id: 6, name: "Sarah" }
+];
+
+function getFirstStudent() {
+  return function firstStudent(){
+    return students[0].name;
+  };
+}
+
+var student = getFirstStudent();
+
+student();
+// Kyle
+```
+
+No matter where `firstStudent` is invoked from, it has access to `students` through the normal lexical scope.
+
+Variables that are present in an outer scope, but never referenced from an inner scope do not result in closure:
+
+```javascript
+function lookupStudent(studentID) {
+  return function nobody(){
+    var msg = "Nobody's here yet.";
+    console.log(msg);
+  };
+}
+
+var student = lookupStudent(112);
+
+student();
+// Nobody's here yet.
+```
+
+The JavaScript engine does not need to keep `studentID` around after `lookupStudent(..)` has run since `nobody()` never references `studentID`. Without a reference from the inner function, `studentID` will be garbage collected and no closure is observed.
+
+If a returned inner function that closes over a variable is never invoked, closure cannot be observed:
+
+```javascript
+function greetStudent(studentName) {
+  return function greeting(){
+    console.log(
+      `Hello, ${ studentName }!`
+    );
+  };
+}
+
+greetStudent("Kyle");
+
+// nothing else happens
+```
+
+Since a reference to the inner `greeting()` function is never stored, the JavaScript engine may create a closure for `studentName` briefly, but it is immediately thrown away and the closure is not observed in any meaningful way within the program.
 
 [▲ Return to Sections](#sections)
 
