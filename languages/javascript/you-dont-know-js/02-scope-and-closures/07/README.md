@@ -11,6 +11,7 @@ Closure is one of the most important language characteristics ever invented in p
   * [Common Closures: Ajax and Events](#common-closures-ajax-and-events)
   * [What If I Can't See It?](#what-if-i-cant-see-it)
   * [Observable Definition](#observable-definition)
+* [The Closure Lifecycle and Garbage Collection (GC)](#the-closure-lifecycle-and-garbage-collection-gc)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -371,6 +372,64 @@ The key components of this definition:
 * A function must be involved.
 * The function must reference at least one variable from the outer scope.
 * The function must be invoked from a different branch of the scope chain from the variable(s).
+
+[▲ Return to Sections](#sections)
+
+## The Closure Lifecycle and Garbage Collection (GC)
+A function instance's closure over a variable lasts as long as there still exists a reference to that function. Once the final reference to a function which closes over a variable is discarded, the closure to that variable is gone and the variable itself is GC'd.
+
+This has an important impact on the efficiency and performance of a program: closure can prevent the GC of a variable that is otherwise done with and lead to memory leaks. It is important to discard function references (and by extension their closures) when they're no longer needed:
+
+```javascript
+function manageBtnClickEvents(btn) {
+  var clickHandlers = [];
+
+  return function listener(cb){
+    if (cb) {
+      let clickHandler =
+      function onClick(evt){
+        console.log("clicked!");
+        cb(evt);
+      };
+      clickHandlers.push(clickHandler);
+      btn.addEventListener(
+        "click",
+        clickHandler
+      );
+    }
+    else {
+      // passing no callback unsubscribes
+      // all click handlers
+      for (let handler of clickHandlers) {
+        btn.removeEventListener(
+          "click",
+          handler
+        );
+      }
+
+      clickHandlers = [];
+    }
+  };
+}
+
+// var mySubmitBtn = ..
+var onSubmit = manageBtnClickEvents(mySubmitBtn);
+
+onSubmit(function checkout(evt){
+  // handle checkout
+});
+
+onSubmit(function trackAction(evt){
+  // log action to analytics
+});
+
+// later, unsubscribe all handlers:
+onSubmit();
+```
+
+The inner `onClick(..)` function holds a closure over `cb` - `checkout(..)`and `trackAction(..)` cannot be GC'd as long as these event handlers are subscribed. It isn't until `onSubmit()` is called that the `clickHandlers` array is emptied discarding references to `checkout(..)` and `trackAction(..)`, thus allowing the closured `cb` references to be GC'd along with them.
+
+Unsubscribing an event handler can be more important than the original subscription when considering the health and efficiency of a program.
 
 [▲ Return to Sections](#sections)
 
