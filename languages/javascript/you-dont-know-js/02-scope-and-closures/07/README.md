@@ -15,6 +15,7 @@ Closure is one of the most important language characteristics ever invented in p
   * [Per Variable or Per Scope?](#per-variable-or-per-scope)
 * [An Alternate Perspective](#an-alternate-perspective)
 * [Why Closure?](#why-closure)
+* [Closer to Closure](#closer-to-closure)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -700,6 +701,17 @@ function setupButtonHandler(btn) {
 `makeRequest(..)` now closes over `requestURL` and `requestData` in a scope provided by `defineHandler(..)`. This is utilized in `setupButtonHandler(..)` to store these values for binding the click event to each button.
 
 This program is similar to the previous one in behavior, utilizing the same values in closure. However, by isolating the creation of `makeRequest(..)` within a separate utility (`defineHandler(..)`) it is now reusable across the entire program. The closure scope is also limited to only the two variables necessary for the operation.
+
+[▲ Return to Sections](#sections)
+
+## Closer to Closure
+Summarizing the two mental models of closure:
+* **Observational**: Closure is a function instance remembering its outer variables even as that function is passed to and **invoked in** other scopes.
+* **Implementational**: Closure is a function instance and its scope environment preserved in-place as references to it are passed around and **invoked from** other scopes.
+
+Summarizing the benefits of leveraging closures in code:
+* Closure can improve efficiency by allowing a function instance to remember previously determined data instead of having to compute it each time it is run.
+* Closure can improve code readability, bounding scope-exposure by encapsulating variable(s) inside function instances, while ensuring the values in those variables are accessible for future use. The resulting specialized function instances are cleaner to interact with, since the preserved information doesn't need to be passed in on every invocation.
 
 [▲ Return to Sections](#sections)
 
