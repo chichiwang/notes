@@ -10,6 +10,7 @@ Closure is one of the most important language characteristics ever invented in p
   * [Live Link, Not a Snapshot](#live-link-not-a-snapshot)
   * [Common Closures: Ajax and Events](#common-closures-ajax-and-events)
   * [What If I Can't See It?](#what-if-i-cant-see-it)
+  * [Observable Definition](#observable-definition)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -360,6 +361,16 @@ greetStudent("Kyle");
 ```
 
 Since a reference to the inner `greeting()` function is never stored, the JavaScript engine may create a closure for `studentName` briefly, but it is immediately thrown away and the closure is not observed in any meaningful way within the program.
+
+#### Observable Definition
+Formal definition of closure:
+
+> Closure is observed when a function uses variable(s) from outer scope(s) even while running in a scope where those variable(s) wouldn't be accessible.
+
+The key components of this definition:
+* A function must be involved.
+* The function must reference at least one variable from the outer scope.
+* The function must be invoked from a different branch of the scope chain from the variable(s).
 
 [▲ Return to Sections](#sections)
 
