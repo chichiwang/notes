@@ -13,6 +13,7 @@ Closure is one of the most important language characteristics ever invented in p
   * [Observable Definition](#observable-definition)
 * [The Closure Lifecycle and Garbage Collection (GC)](#the-closure-lifecycle-and-garbage-collection-gc)
   * [Per Variable or Per Scope?](#per-variable-or-per-scope)
+* [An Alternate Perspective](#an-alternate-perspective)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -530,6 +531,55 @@ function manageStudentGrades(studentRecords) {
 Assigning `studentRecords` to `null` ensures that even if `studentRecords` remains held in the closure scope, it is no longer referencing a potentially large array of data that is no longer used. It is a good habit to be careful and explicitly ensure that device memory is not tied up longer than necessary.
 
 It is important to know where closures appear in a program and what variables are included. Closures should be managed carefully to ensure memory is not being wasted unnecessarily.
+
+[▲ Return to Sections](#sections)
+
+## An Alternate Perspective
+Using a code example from [earlier in this chapter](#adding-up-closures), with relevant bubble colors annotated:
+
+```javascript
+// outer/global scope: RED(1)
+
+function adder(num1) {
+  // function scope: BLUE(2)
+
+  return function addTo(num2){
+    // function scope: GREEN(3)
+
+    return num1 + num2;
+  };
+}
+
+var add10To = adder(10);
+var add42To = adder(42);
+
+add10To(15);    // 25
+add42To(9);     // 51
+```
+
+The current definition used to describe closure asserts that functions are "first-class values" that can be passed around a program. Closure is the link-association that connects that function to the scope/variables in its outer scopes, no matter where that function is invoked from.
+
+This perspective suggests that closure provides a hidden link back to the original scope to facilitate access to the closed-over variables.
+
+![Fig. 4: Visualizing Closures](./fig4.png)
+_Fig. 4: Visualizing Closures_
+
+There is another way to think about closures and the nature of functions being _passed around_ that may help to deepen mental models.
+
+The alternative model de-emphasizes "functions as first-class values" and instead embraces how functions (like all non-primitive values) are held by reference and assigned/passed by reference-copy in JavaScript.
+
+Instead of thinking of the inner function `addTo(..)` being passed to the RED(1) outer scope via `return` and assignment, envision instead that function instances stay in their own scope environment, with their scope-chain intact. What gets sent to the RED(1) outer scope instead is a _reference_ to the function instance.
+
+![Fig. 5: Visualizing Closures (Alternative)](./fig5.png)
+_Fig. 5: Visualizing Closures (Alternative)_
+
+Figure 5 differs from Figure 4 in that the GREEN(3) remain in place, nested within the outer BLUE(2) scope instances. The `addTo10` and `addTo42` _references_ are what move to the RED(1) outer scope, not the function instances themselves. When these references are called, it is the function instance (still within the BLUE(2) scope) that is invoked with its access to its scope chain - nothing special is happening beyond lexical scope.
+
+In this model, closure refers to keeping a function instance alive, along with its entire scope environment and chain, as long as there is at least one reference to that function reference still active in the program.
+
+Figure 4 represents a more academic perspective on closure while Figure 5 represents a more implementation-focused perspective (how JavaScript actually works). Both perspectives are useful in understanding closure, and regardless of the mental model the observable outcome is the same.
+
+**NOTE**: This alternative model of closure (Figure 5) affects whether synchronous callbacks are classified as examples of closure. More on this nuance in [Appendix A](../appendixA/README.md).
 
 [▲ Return to Sections](#sections)
 
