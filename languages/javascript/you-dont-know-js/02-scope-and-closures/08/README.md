@@ -6,6 +6,7 @@ This chapter will explore one of the most important code organization patterns i
 * [What Is a Module?](#what-is-a-module)
   * [Namespaces (Stateless Grouping)](#namespaces-stateless-grouping)
   * [Data Structures (Stateful Grouping)](#data-structures-stateful-grouping)
+  * [Modules (Stateful Access Control)](#modules-stateful-access-control)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -78,6 +79,47 @@ Student.getName(73);
 ```
 
 `Student` isn't really a module since `records` is publicly accessible data. Without limiting access to any of the data/functionality contained within `Student`, it is just a data structure.
+
+#### Modules (Stateful Access Control)
+To embody the full spirit of the module pattern: grouping, state, and access control must be present.
+
+Converting the example from the [previous section](#data-structures-stateful-grouping) from a simple data structure into a _classic module_ or _revealing module_ (a pattern that first emerged in the early 2000s):
+
+```javascript
+var Student = (function defineStudent(){
+  var records = [
+    { id: 14, name: "Kyle", grade: 86 },
+    { id: 73, name: "Suzy", grade: 87 },
+    { id: 112, name: "Frank", grade: 75 },
+    { id: 6, name: "Sarah", grade: 91 }
+  ];
+
+  var publicAPI = {
+    getName
+  };
+
+  return publicAPI;
+
+  // ************************
+
+  function getName(studentID) {
+    var student = records.find(
+      student => student.id == studentID
+    );
+    return student.name;
+  }
+})();
+
+Student.getName(73);   // Suzy
+```
+
+`Student` is now an instance of module with a public API that contains a single method: `getName(..)`. `Student.getName(..)` is able to access the private `records` data.
+
+`Student` is assigned the return value of the IIFE `defineStudent()`, which is the `publicAPI` object. This object contains a property referencing the inner `getName(..)` function. `getName(..)` maintains access to the inner `records` variable via closure.
+
+By virtue of how lexical scope works, variables and functions defined within the outer module definition function are private by default. Only references returned by this outer function are accessible from outside of it.
+
+The use of an IIFE implies the program only ever needs a single instance of the module (referred to as a _singleton_).
 
 [▲ Return to Sections](#sections)
 
