@@ -4,6 +4,7 @@ This chapter will explore one of the most important code organization patterns i
 ## Sections
 * [Encapsulation and Least Exposure (PoLE)](#encapsulation-and-least-exposure-pole)
 * [What Is a Module?](#what-is-a-module)
+  * [Namespaces (Stateless Grouping)](#namespaces-stateless-grouping)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -26,6 +27,30 @@ A module is stateful, maintaining some information over time, along with functio
 **NOTE**: A broader concern of the module pattern is fully embracing systel-level modularization through loose-coupling and other program architecture techniques. That topic is beyond this discussion, but worth further study.
 
 Let's compare some module charateristics to useful code patterns that are not quite modules.
+
+#### Namespaces (Stateless Grouping)
+A grouping of related, _stateless_ functions (without data) would be better described as a _namespace_, rather than a module:
+
+```javascript
+// namespace, not module
+var Utils = {
+  cancelEvt(evt) {
+    evt.preventDefault();
+    evt.stopPropagation();
+    evt.stopImmediatePropagation();
+  },
+  wait(ms) {
+    return new Promise(function c(res){
+      setTimeout(res,ms);
+    });
+  },
+  isValidEmail(email) {
+    return /[^@]+@[^@.]+\.[^@.]+/.test(email);
+  }
+};
+```
+
+`Utils` is a useful collection of utilities, but they are all state-independent functions. Gathering functionality together is a good practice, but that does not make it a module. Instead, a `Utils` namespace has been defined, and functions have been organized under it.
 
 [▲ Return to Sections](#sections)
 
