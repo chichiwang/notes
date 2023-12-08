@@ -5,6 +5,7 @@ This chapter will explore one of the most important code organization patterns i
 * [Encapsulation and Least Exposure (PoLE)](#encapsulation-and-least-exposure-pole)
 * [What Is a Module?](#what-is-a-module)
   * [Namespaces (Stateless Grouping)](#namespaces-stateless-grouping)
+  * [Data Structures (Stateful Grouping)](#data-structures-stateful-grouping)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -51,6 +52,32 @@ var Utils = {
 ```
 
 `Utils` is a useful collection of utilities, but they are all state-independent functions. Gathering functionality together is a good practice, but that does not make it a module. Instead, a `Utils` namespace has been defined, and functions have been organized under it.
+
+#### Data Structures (Stateful Grouping)
+When data and stateful functions are bound together without limiting access to any of it, it stops short of the PoLE aspect of encapsulation, and is therefore it is not helpful to label it a module:
+
+```javascript
+// data structure, not module
+var Student = {
+  records: [
+    { id: 14, name: "Kyle", grade: 86 },
+    { id: 73, name: "Suzy", grade: 87 },
+    { id: 112, name: "Frank", grade: 75 },
+    { id: 6, name: "Sarah", grade: 91 }
+  ],
+  getName(studentID) {
+    var student = this.records.find(
+      student => student.id == studentID
+    );
+    return student.name;
+  }
+};
+
+Student.getName(73);
+// Suzy
+```
+
+`Student` isn't really a module since `records` is publicly accessible data. Without limiting access to any of the data/functionality contained within `Student`, it is just a data structure.
 
 [▲ Return to Sections](#sections)
 
