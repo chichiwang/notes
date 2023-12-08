@@ -3,6 +3,7 @@ This chapter will explore one of the most important code organization patterns i
 
 ## Sections
 * [Encapsulation and Least Exposure (PoLE)](#encapsulation-and-least-exposure-pole)
+* [What Is a Module?](#what-is-a-module)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -14,6 +15,17 @@ The recent trend in front-end programming to organize programs around Component 
 Another key goal of encapsulation is control over access to aspects of the encapsulated data and functionality. [PoLE](../06/README.md#least-exposure) seeks to defend against the various dangers of scope over-exposure. In JavaScript, this access control is implemented through the mechanics of lexical scope. The idea is to only allow access to the data/functionalities considered _public_ and programatically limit access to those deemed _private_.
 
 The intended result of this effort is better code organization. It is easier to build and maintain software when data/functionality exists where expected, with clear and obvious boundaries and access points. It is easier to maintain quality when the pitfalls of over-exposed data and functionality are avoided.
+
+[▲ Return to Sections](#sections)
+
+## What Is a Module?
+A module is a collection of related data and functions, characterized by a division between hidden _private_ details and _public_ accessible details (called a _public API_).
+
+A module is stateful, maintaining some information over time, along with functionality to access and update that information.
+
+**NOTE**: A broader concern of the module pattern is fully embracing systel-level modularization through loose-coupling and other program architecture techniques. That topic is beyond this discussion, but worth further study.
+
+Let's compare some module charateristics to useful code patterns that are not quite modules.
 
 [▲ Return to Sections](#sections)
 
