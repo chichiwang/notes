@@ -9,6 +9,7 @@ This chapter will explore one of the most important code organization patterns i
   * [Modules (Stateful Access Control)](#modules-stateful-access-control)
     * [Module Factory (Multiple Instances)](#module-factory-multiple-instances)
     * [Classic Module Definition](#classic-module-definition)
+* [Node CommonJS Modules](#node-commonjs-modules)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -163,6 +164,83 @@ What makes something a module?
 * There must be an outer scope, typically from a module factory function running at least once.
 * The module's inner scope must contain at least one piece of hidden information that represents state for the module.
 * The module must return at least one function that has closure over the hidden module state.
+
+[▲ Return to Sections](#sections)
+
+## Node CommonJS Modules
+CommonJS modules are file-based, with a single module per file:
+
+```javascript
+module.exports.getName = getName;
+
+// ************************
+
+var records = [
+  { id: 14, name: "Kyle", grade: 86 },
+  { id: 73, name: "Suzy", grade: 87 },
+  { id: 112, name: "Frank", grade: 75 },
+  { id: 6, name: "Sarah", grade: 91 }
+];
+
+function getName(studentID) {
+  var student = records.find(
+    student => student.id == studentID
+  );
+  return student.name;
+}
+```
+
+The `records` and `getName` identifiers exist in the top-level scope of this module, but this is not the global scope. Everything in this file is private to the module by default.
+
+In order to expose something to the module's public API, a property must be added to the provided empty object `module.exports`. In older, legacy code, there may be references to a bare `exports`, but for clarity this should always be prefixed with `module.`.
+
+For style purposes place all exports at the top or bottom of the file.
+
+Some developers may replace the default export object like so:
+
+```javascript
+// defining a new object for the API
+module.exports = {
+  // ..exports..
+};
+```
+
+This is not recommended as there are quirks with this approach, including unexpected behavior if multiple such modules circularly depend on each other. Instead, to export multiple objects at once using the object literal notation, do this instead:
+
+```javascript
+Object.assign(module.exports,{
+  // .. exports ..
+});
+```
+
+The `Object.assign(..)` will perform a shallow copy of all of the properties of the object literal `{ .. }` onto the existing `module.exports` object. This is safer module behavior.
+
+To import another module's API into the current module, use Node's `require(..)` method, providing the path to the module file being imported from:
+
+```javascript
+var Student = require("/path/to/student.js");
+
+Student.getName(73);
+// Suzy
+```
+
+The `Student` variable is now assigned the public API of the `/path/to/student.js` module file.
+
+CommonJS modules behave as singleton instances. No matter how many times the public API of a module file is imported, all imports reference the same single shared module instance.
+
+`require(..)` will return the entire public API of a target module. To access only part of the API, the typical approach is:
+
+```javascript
+var getName = require("/path/to/student.js").getName;
+
+// or alternately:
+
+var { getName } = require("/path/to/student.js");
+```
+
+Similar to the [classic module format](#modules-stateful-access-control), methods and variables on a module's public API hold closures over the internal module details.
+
+**NOTE**: In Node, non-absolute paths provided to `require(..)` (such as `require("student")`) assume a `.js` file extension and search the _/node_modules_ directory to resolve the import.
 
 [▲ Return to Sections](#sections)
 
