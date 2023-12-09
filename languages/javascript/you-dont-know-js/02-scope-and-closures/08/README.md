@@ -8,6 +8,7 @@ This chapter will explore one of the most important code organization patterns i
   * [Data Structures (Stateful Grouping)](#data-structures-stateful-grouping)
   * [Modules (Stateful Access Control)](#modules-stateful-access-control)
     * [Module Factory (Multiple Instances)](#module-factory-multiple-instances)
+    * [Classic Module Definition](#classic-module-definition)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -156,6 +157,12 @@ fullTime.getName(73);            // Suzy
 ```
 
 Rather than using `defineStudent()` in an IIFE, define it as a normal standalone function. In this context, the function is commonly referred to as a _module factory_. Calling the module factory returns an instance of the module.
+
+##### Classic Module Definition
+What makes something a module?
+* There must be an outer scope, typically from a module factory function running at least once.
+* The module's inner scope must contain at least one piece of hidden information that represents state for the module.
+* The module must return at least one function that has closure over the hidden module state.
 
 [▲ Return to Sections](#sections)
 
