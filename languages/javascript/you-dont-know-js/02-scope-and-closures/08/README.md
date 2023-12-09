@@ -7,6 +7,7 @@ This chapter will explore one of the most important code organization patterns i
   * [Namespaces (Stateless Grouping)](#namespaces-stateless-grouping)
   * [Data Structures (Stateful Grouping)](#data-structures-stateful-grouping)
   * [Modules (Stateful Access Control)](#modules-stateful-access-control)
+    * [Module Factory (Multiple Instances)](#module-factory-multiple-instances)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -120,6 +121,41 @@ Student.getName(73);   // Suzy
 By virtue of how lexical scope works, variables and functions defined within the outer module definition function are private by default. Only references returned by this outer function are accessible from outside of it.
 
 The use of an IIFE implies the program only ever needs a single instance of the module (referred to as a _singleton_).
+
+##### Module Factory (Multiple Instances)
+To define a module that supports multiple instances, the code from the above example can be modified thusly:
+
+```javascript
+// factory function, not singleton IIFE
+function defineStudent() {
+  var records = [
+    { id: 14, name: "Kyle", grade: 86 },
+    { id: 73, name: "Suzy", grade: 87 },
+    { id: 112, name: "Frank", grade: 75 },
+    { id: 6, name: "Sarah", grade: 91 }
+  ];
+
+  var publicAPI = {
+    getName
+  };
+
+  return publicAPI;
+
+  // ************************
+
+  function getName(studentID) {
+    var student = records.find(
+      student => student.id == studentID
+    );
+    return student.name;
+  }
+}
+
+var fullTime = defineStudent();
+fullTime.getName(73);            // Suzy
+```
+
+Rather than using `defineStudent()` in an IIFE, define it as a normal standalone function. In this context, the function is commonly referred to as a _module factory_. Calling the module factory returns an instance of the module.
 
 [▲ Return to Sections](#sections)
 
