@@ -10,6 +10,7 @@ This chapter will explore one of the most important code organization patterns i
     * [Module Factory (Multiple Instances)](#module-factory-multiple-instances)
     * [Classic Module Definition](#classic-module-definition)
 * [Node CommonJS Modules](#node-commonjs-modules)
+* [Modern ES Modules (ESM)](#modern-es-modules-esm)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -241,6 +242,104 @@ var { getName } = require("/path/to/student.js");
 Similar to the [classic module format](#modules-stateful-access-control), methods and variables on a module's public API hold closures over the internal module details.
 
 **NOTE**: In Node, non-absolute paths provided to `require(..)` (such as `require("student")`) assume a `.js` file extension and search the _/node_modules_ directory to resolve the import.
+
+[▲ Return to Sections](#sections)
+
+## Modern ES Modules (ESM)
+Like CommonJS, the ESM format is file-based, module instances are singletons, and everything is private by default. Unlike CommonJS, ESM files are always run in strict-mode without needing the `"use strict"` pragma.
+
+ESM uses an `export` keyword (instead of the CommonJS `module.exports`) and an `import` keyword (instead of the CommonJS `require(..)`):
+
+```javascript
+export { getName };
+
+// ************************
+
+var records = [
+  { id: 14, name: "Kyle", grade: 86 },
+  { id: 73, name: "Suzy", grade: 87 },
+  { id: 112, name: "Frank", grade: 75 },
+  { id: 6, name: "Sarah", grade: 91 }
+];
+
+function getName(studentID) {
+  var student = records.find(
+    student => student.id == studentID
+  );
+  return student.name;
+}
+```
+
+`export` must be used at the top-level scope, it cannot be inside of any function or block.
+
+`export` allows some variations in its usage:
+
+```javascript
+export function getName(studentID) {
+  // ..
+}
+```
+
+The above is a standard function declaration that happens to be exported.
+
+A _default export_ is available with different semantics from other exports - it provides a shorthand for consumers of the module when being imported, allowing a terser syntax when they only need a default API member:
+
+```javascript
+export default function getName(studentID) {
+  // ..
+}
+```
+
+Non-default exports are referred to as _named exports_.
+
+The `import` keyword must also be used at the top-level scope of a module, and allows some variations in its usage. Below is an example of a _named import_:
+
+```javascript
+import { getName } from "/path/to/students.js";
+
+getName(73);   // Suzy
+```
+
+This form imports only the specifically-named public API members from a module (skipping over anything not named explicitly). It adds these identifiers to the top-level scope of the current module.
+
+A named import can also be renamed within the consuming module using the `as` keyword:
+
+```javascript
+import { getName as getStudentName }
+  from "/path/to/students.js";
+
+getStudentName(73);
+// Suzy
+```
+
+To import a default export:
+
+```javascript
+import getName from "/path/to/students.js";
+
+getName(73);   // Suzy
+```
+
+To import both the default export as well as named exports from a module:
+
+```javascript
+import { default as getName, /* .. others .. */ }
+  from "/path/to/students.js";
+
+getName(73);   // Suzy
+```
+
+Another variation on `import` is the _namespace import_:
+
+```javascript
+import * as Student from "/path/to/students.js";
+
+Student.getName(73);   // Suzy
+```
+
+The `*` imports everything exported from the target module, both default and named, and stores it under the specified namespace identifier.
+
+**NOTE**: At the time of this publication, browsers have supported ESM for some time. Node's support of ESM is relatively stable, but has been evolving for some time. The introduction of ESM to JS in ES6 created challenging compatibility concerns for Node's interop with CommonJS modules. Consult [Node's documentation](https://nodejs.org/api/esm.html) for the latest details.
 
 [▲ Return to Sections](#sections)
 
