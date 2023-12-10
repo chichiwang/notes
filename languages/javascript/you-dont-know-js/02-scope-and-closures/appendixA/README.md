@@ -6,6 +6,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
 ## Sections
 * [Implied Scopes](#implied-scopes)
   * [Parameter Scope](#parameter-scope)
+  * [Function Name Scope](#function-name-scope)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -126,6 +127,30 @@ In this corner case, JavaScript does not auto-initialize `id` to `undefined`, bu
 The author's advice, in order to avoid these strange behaviors:
 * Never shadow parameters with local variables.
 * Avoid using a default parameter that closes over any of the parameters.
+
+#### Function Name Scope
+[Chapter 3](../03/README.md#function-name-scope) asserts that a function's name is added to the function's own scope:
+
+```javascript
+var askQuestion = function ofTheTeacher(){
+  // ..
+};
+```
+
+While `ofTheTeacher` is not added to the enclosing scope, it is also not technically added to the scope of the function. It is, instead, added to an implied scope between the outer scope and the main inner function scope.
+
+If `ofTheTeacher` was in the function's scope, this would result in an error:
+
+```javascript
+var askQuestion = function ofTheTeacher(){
+  // why is this not a duplicate declaration error?
+  let ofTheTeacher = "Confused, yet?";
+};
+```
+
+The `let` declaration form [does not allow re-declaration](../05/README.md#re-declaration), however, the above example is legal shadowing (and not re-declaration) because the two `ofTheTeacher` identifiers are in different scopes.
+
+There are hardly any cases where the scope of a function's name identifier matters, but it is good to know how these mechanisms work. To avoid issues, never shadow function name identifiers.
 
 [▲ Return to Sections](#sections)
 
