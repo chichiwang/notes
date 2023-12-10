@@ -343,4 +343,4 @@ The `*` imports everything exported from the target module, both default and nam
 
 [▲ Return to Sections](#sections)
 
-| [Previous: Chapter 7 - Using Closures](../07/README.md) | [Table of Contents](../README.md#table-of-contents) |
+| [Previous: Chapter 7 - Using Closures](../07/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Appendix A - Exploring Furhter](../appendixA/README.md) |

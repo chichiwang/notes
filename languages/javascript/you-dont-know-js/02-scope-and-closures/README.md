@@ -14,5 +14,6 @@ Date: WIP
 * [Chapter 6: Limiting Scope Exposure](./06/README.md)
 * [Chapter 7: Using Closures](./07/README.md)
 * [Chapter 8: The Module Pattern](./08/README.md)
+* [Appendix A: Exploring Further](./appendixA/README.md)
 
 [◂ Return to Books](../README.md)
