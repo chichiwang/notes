@@ -10,6 +10,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
 * [Anonymous vs. Named Functions](#anonymous-vs-named-functions)
   * [Explicit or Inferred Names?](#explicit-or-inferred-names)
   * [Missing Names?](#missing-names)
+  * [Who Am I?](#who-am-i)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -291,6 +292,23 @@ noName.name
 Any assinment of a function expression beyond a simple assignment will also fail to name inference. Unless deliberate about it, almost all _function expressions_ in a program will not be named.
 
 Even if a function expression does receive an inferred name, it still does not count as a full _named function_.
+
+#### Who Am I?
+Without a lexical name identifier, a function does not have the ability to self-reference. Self-reference is important for strategies like recursion or event handling:
+
+```javascript
+// broken
+runOperation(function(num){
+  if (num <= 1) return 1;
+  return num * oopsNoNameToCall(num - 1);
+});
+
+// also broken
+btn.addEventListener("click",function(){
+  console.log("should only respond to one click!");
+  btn.removeEventListener("click",oopsNoNameHere);
+});
+```
 
 [▲ Return to Sections](#sections)
 
