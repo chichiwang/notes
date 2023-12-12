@@ -8,6 +8,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
   * [Parameter Scope](#parameter-scope)
   * [Function Name Scope](#function-name-scope)
 * [Anonymous vs. Named Functions](#anonymous-vs-named-functions)
+  * [Explicit or Inferred Names?](#explicit-or-inferred-names)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -162,6 +163,96 @@ Functions can be expressed in named or anonymous form. When contemplating naming
 * Names are useful descriptions
 * Arrow functions have no lexical names
 * IIFEs also need names
+
+#### Explicit or Inferred Names?
+Every function in a program should have a purpose, and if it has a purpose there is a name for that purpose.
+
+The author of this text believes every function in the code of a program should be named.
+
+It is unhelpful in debugging when "anonymous" shows up in a stack trace:
+
+```javascript
+btn.addEventListener("click",function(){
+  setTimeout(function(){
+    ["a",42].map(function(v){
+      console.log(v.toUpperCase());
+    });
+  },100);
+});
+
+// Uncaught TypeError: v.toUpperCase is not a function
+//     at myProgram.js:4
+//     at Array.map (<anonymous>)
+//     at myProgram.js:3
+```
+
+When the functions are named, the stack trace is easier to grok:
+
+```javascript
+btn.addEventListener("click",function onClick(){
+  setTimeout(function waitAMoment(){
+    ["a",42].map(function allUpper(v){
+      console.log(v.toUpperCase());
+    });
+  },100);
+});
+
+// Uncaught TypeError: v.toUpperCase is not a function
+//     at allUpper (myProgram.js:4)
+//     at Array.map (<anonymous>)
+//     at waitAMoment (myProgram.js:3)
+```
+
+With function names, `allUpper` and `waitAMoment` appear in the stack trace providing useful context when debugging this error. Function names make a program more debuggable.
+
+**NOTE**: The `<anonymous>` that still appears in the stack trace refers to the fact that the implementation of `Array.map(..)` is not present in the code, but is instead built into the JavaScript engine.
+
+To be clear about which function declaration/assignment syntaxes result in a _named function_:
+
+```javascript
+function thisIsNamed() {
+  // ..
+}
+
+ajax("some.url",function thisIsAlsoNamed(){
+  // ..
+});
+
+var notNamed = function(){
+  // ..
+};
+
+makeRequest({
+  data: 42,
+  cb /* also not a name */: function(){
+    // ..
+  }
+});
+
+var stillNotNamed = function butThisIs(){
+  // ..
+};
+```
+
+The following syntaxes from the above list result in functions with  _inferred names_, and may still cause issues:
+
+```javascript
+var notNamed = function(){
+  // ..
+};
+
+var config = {
+  cb: function(){
+    // ..
+  }
+};
+
+notNamed.name;
+// notNamed
+
+config.cb.name;
+// cb
+```
 
 [▲ Return to Sections](#sections)
 
