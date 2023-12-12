@@ -12,6 +12,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
   * [Missing Names?](#missing-names)
   * [Who Am I?](#who-am-i)
   * [Names are Descriptors](#names-are-descriptors)
+  * [Arrow Functions](#arrow-functions)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -345,6 +346,17 @@ The name `extractSalesRecords` tells the reader very quickly and clearly what th
 The only excuses for not naming a function are laziness or the lack of clarity of intent for the function. If it is difficult to determine a good name for a function it is likely that the function is poorly designed, does too many things, and should be refactored/re-designed. What to name a well-designed, single-purpose function should be evident.
 
 All functions need names. Every single one. Any unnamed function makes a program more difficult to read, debug, extend, and maintain.
+
+#### Arrow Functions
+Arrow functions are **always anonymous**, even if they're assigned in a way that gives them an inferred name, and it is the author of this text's opinion that they should never be used.
+
+Do not use arrow functions as a general replacement for regular functions. While they may be more concise, that brevity comes at the cost of readability.
+
+Arrow functions have a purpose, but that purpose is not the more concise syntax. The purpose of arrow functions is that they force a _lexical this_ behavior on the function. Arrow functions treat `this` like any other lexical variable: an arrow function does not define its own `this` variable, but instead the scope chain is consulted to find the function scope where the arrow function is defined and it uses the `this` from that scope.
+
+Arrow functions are designed to avoid hacks such as `self = this` or calling `.bind(this)` on inner function expressions to force them to inherit a `this` from the outer function.
+
+Using arrow functions means accepting the downsides of an anonymous function and accepting strange un-function-like behaviors (the inability to later invoke the function with an explicitly provided `this` via `.bind(..)`, `.call(..)`, `.apply(..)`, etc.
 
 [▲ Return to Sections](#sections)
 
