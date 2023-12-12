@@ -11,6 +11,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
   * [Explicit or Inferred Names?](#explicit-or-inferred-names)
   * [Missing Names?](#missing-names)
   * [Who Am I?](#who-am-i)
+  * [Names are Descriptors](#names-are-descriptors)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -309,6 +310,41 @@ btn.addEventListener("click",function(){
   btn.removeEventListener("click",oopsNoNameHere);
 });
 ```
+
+#### Names are Descriptors
+Not naming a function makes the overall program more difficult for a developer to read. It will often be unclear the intended purpose of a function at a glance, having to read the code around and within the function to figure it out:
+
+```javascript
+[ 1, 2, 3, 4, 5 ].filter(function(v){
+  return v % 2 == 1;
+});
+// [ 1, 3, 5 ]
+
+[ 1, 2, 3, 4, 5 ].filter(function keepOnlyOdds(v){
+  return v % 2 == 1;
+});
+// [ 1, 3, 5 ]
+```
+
+There is no reasonable argument to be made for omitting the name `keepOnlyOdds` from the `Array.filter(..)` callback. 13 chraacters are saved and readability is lost. The name `keepOnlyOdds` tells the reader very clearly what the intent of the function is.
+
+A developer can figure out what `v % 2 == 1` is doing, but this takes mental processing time. And if there is a bug in the code, figuring out the intent becomes even more difficult. A _good_ descriptive name greatly improves the development process.
+
+No matter the length or complexity of the function, the function's author should figure out a good descriptive name and add it to the code. Even one-liner functions should be named:
+
+```javascript
+lookupTheRecords(someData)
+.then(function extractSalesRecords(resp){
+  return resp.allSales;
+})
+.then(storeRecords);
+```
+
+The name `extractSalesRecords` tells the reader very quickly and clearly what the intent is, where `return resp.allSales` may take a bit more mental processing time.
+
+The only excuses for not naming a function are laziness or the lack of clarity of intent for the function. If it is difficult to determine a good name for a function it is likely that the function is poorly designed, does too many things, and should be refactored/re-designed. What to name a well-designed, single-purpose function should be evident.
+
+All functions need names. Every single one. Any unnamed function makes a program more difficult to read, debug, extend, and maintain.
 
 [▲ Return to Sections](#sections)
 
