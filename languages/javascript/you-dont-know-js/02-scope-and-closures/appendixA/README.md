@@ -14,6 +14,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
   * [Names are Descriptors](#names-are-descriptors)
   * [Arrow Functions](#arrow-functions)
   * [IIFE Variations](#iife-variations)
+* [Hoisting: Functions and Variables](#hoisting-functions-and-variables)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -413,6 +414,13 @@ void function yepItsAnIIFE() {
 ```
 
 `void` clearly communicates that the IIFE will not be returning any value.
+
+[▲ Return to Sections](#sections)
+
+## Hoisting: Functions and Variables
+Chapter 5 articulates both _[function hoisting](../05/README.md#hoisting-declaration-vs-expression)_ and _[variable hoisting](../05/README.md#variable-hoisting)_. Since hoisting is often cited as a mistake in the design of JavaScript, this section articulates why both forms of hoisting can be beneficial and should be considered:
+* Executable code first, function declarations last
+* Semantic placement of variable declarations
 
 [▲ Return to Sections](#sections)
 
