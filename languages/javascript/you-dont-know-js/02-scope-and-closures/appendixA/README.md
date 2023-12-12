@@ -7,6 +7,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
 * [Implied Scopes](#implied-scopes)
   * [Parameter Scope](#parameter-scope)
   * [Function Name Scope](#function-name-scope)
+* [Anonymous vs. Named Functions](#anonymous-vs-named-functions)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -151,6 +152,16 @@ var askQuestion = function ofTheTeacher(){
 The `let` declaration form [does not allow re-declaration](../05/README.md#re-declaration), however, the above example is legal shadowing (and not re-declaration) because the two `ofTheTeacher` identifiers are in different scopes.
 
 There are hardly any cases where the scope of a function's name identifier matters, but it is good to know how these mechanisms work. To avoid issues, never shadow function name identifiers.
+
+[▲ Return to Sections](#sections)
+
+## Anonymous vs. Named Functions
+Functions can be expressed in named or anonymous form. When contemplating naming functions, consider:
+* Name inference is incomplete
+* Lexical names allow self-reference
+* Names are useful descriptions
+* Arrow functions have no lexical names
+* IIFEs also need names
 
 [▲ Return to Sections](#sections)
 
