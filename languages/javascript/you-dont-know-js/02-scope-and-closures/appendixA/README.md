@@ -13,6 +13,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
   * [Who Am I?](#who-am-i)
   * [Names are Descriptors](#names-are-descriptors)
   * [Arrow Functions](#arrow-functions)
+  * [IIFE Variations](#iife-variations)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -357,6 +358,61 @@ Arrow functions have a purpose, but that purpose is not the more concise syntax.
 Arrow functions are designed to avoid hacks such as `self = this` or calling `.bind(this)` on inner function expressions to force them to inherit a `this` from the outer function.
 
 Using arrow functions means accepting the downsides of an anonymous function and accepting strange un-function-like behaviors (the inability to later invoke the function with an explicitly provided `this` via `.bind(..)`, `.call(..)`, `.apply(..)`, etc.
+
+#### IIFE Variations
+IIFEs should also have names:
+
+```javascript
+(function(){
+  // don't do this!
+})();
+
+(function doThisInstead(){
+  // ..
+})();
+```
+
+To determine the name to provide an IIFE, identify the purpose of using an IIFE: why is a scope necessary?
+
+```javascript
+var getStudents = (function StoreStudentRecords(){
+  var studentRecords = [];
+
+  return function getStudents() {
+  // ..
+  }
+})();
+```
+
+In the above example the IIFE is named `StoreStudentRecords` because that is what it is doing: creating a scope around a private variable `studentRecords`.
+
+Wrapping a function declaration in parentheses `( .. )` is so that the `function` keyword is not in a position to qualify as a function declaration to the JavaScript engine. There are other ways to avoid a `function` keyword being parsed as a declaration:
+
+```javascript
+!function thisIsAnIIFE(){
+  // ..
+}();
+
++function soIsThisOne(){
+  // ..
+}();
+
+~function andThisOneToo(){
+  // ..
+}();
+```
+
+`!`, `+`, `~`, and several other _unary operators_ (operators with a single operand) can be placed in front of the `function` keyword to turn it into an expression. This makes the final `()` function call valid, which is what makes it an IIFE.
+
+Using `void` unary operator in front of the `function` keyword is a great way to denote a standalone IIFE:
+
+```javascript
+void function yepItsAnIIFE() {
+  // ..
+}();
+```
+
+`void` clearly communicates that the IIFE will not be returning any value.
 
 [▲ Return to Sections](#sections)
 
