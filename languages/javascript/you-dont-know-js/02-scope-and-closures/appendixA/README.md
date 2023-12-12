@@ -9,6 +9,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
   * [Function Name Scope](#function-name-scope)
 * [Anonymous vs. Named Functions](#anonymous-vs-named-functions)
   * [Explicit or Inferred Names?](#explicit-or-inferred-names)
+  * [Missing Names?](#missing-names)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -253,6 +254,43 @@ notNamed.name;
 config.cb.name;
 // cb
 ```
+
+#### Missing Names?
+Inferred names might show up in stack traces, which is better than getting "anonymous" in a stack trace, however:
+
+```javascript
+function ajax(url,cb) {
+  console.log(cb.name);
+}
+
+ajax("some.url",function(){
+  // ..
+});
+// ""
+```
+
+Anonymous function expressions passed as callbacks are incapable of receiving an inferred name (`cb.name` holds an empty string `""`). The vast majority of anonymous function expressions in a program are used as callback arguments, therefore relying on name inference is incomplete.
+
+Inference also fails in the following cases:
+
+```javascript
+var config = {};
+
+config.cb = function(){
+  // ..
+};
+
+config.cb.name;
+// ""
+
+var [ noName ] = [ function(){} ];
+noName.name
+// ""
+```
+
+Any assinment of a function expression beyond a simple assignment will also fail to name inference. Unless deliberate about it, almost all _function expressions_ in a program will not be named.
+
+Even if a function expression does receive an inferred name, it still does not count as a full _named function_.
 
 [▲ Return to Sections](#sections)
 
