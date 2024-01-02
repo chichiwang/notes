@@ -18,6 +18,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
   * [Function Hoisting](#function-hoisting)
   * [Variable Hoisting](#variable-hoisting)
 * [The Case for `var`](#the-case-for-var)
+  * [Don't Throw Out `var`](#dont-throw-out-var)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -547,6 +548,13 @@ Many developers blame declarations using the `var` keyword for many woes of deve
 * `let` is useful
 * `const` has limited utility
 * The best of both worlds: `var` _and_ `let`
+
+#### Don't Throw Out `var`
+Claims that `var` is broken, deprecated, outdated, dangerous, or ill-designed are incorrect.
+
+While `var` is not always the correct declarator to use for every declaration in a program, it has its uses.
+
+`let` is great for block-scoped declarations (it is the author's opinion that implementing a TDZ was a mistake), and should be used often.
 
 [▲ Return to Sections](#sections)
 
