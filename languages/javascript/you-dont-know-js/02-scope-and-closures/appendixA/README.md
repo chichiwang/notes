@@ -15,6 +15,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
   * [Arrow Functions](#arrow-functions)
   * [IIFE Variations](#iife-variations)
 * [Hoisting: Functions and Variables](#hoisting-functions-and-variables)
+  * [Function Hoisting](#function-hoisting)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -421,6 +422,44 @@ void function yepItsAnIIFE() {
 Chapter 5 articulates both _[function hoisting](../05/README.md#hoisting-declaration-vs-expression)_ and _[variable hoisting](../05/README.md#variable-hoisting)_. Since hoisting is often cited as a mistake in the design of JavaScript, this section articulates why both forms of hoisting can be beneficial and should be considered:
 * Executable code first, function declarations last
 * Semantic placement of variable declarations
+
+#### Function Hoisting
+
+```javascript
+getStudents();
+
+// ..
+
+function getStudents() {
+  // ..
+}
+```
+
+The `function` declaration is hoisted during compilation making the identifier `getStudents` available to the entire scope. Then `getStudents` is auto-initialized with the function reference at the beginning of the scope.
+
+This makes it possible to place code execution at the top of any given scope, with definitions placed at the bottom. It is the author's opinion this is preferable since it is easier to locate the start of code execution in any given scope, at all levels of scope:
+
+```javascript
+getStudents();
+
+// *************
+
+function getStudents() {
+  var whatever = doSomething();
+
+  // other stuff
+
+  return whatever;
+
+  // *************
+
+  function doSomething() {
+    // ..
+  }
+}
+```
+
+The author prefers this organization of code, finding it to be more readable.
 
 [▲ Return to Sections](#sections)
 
