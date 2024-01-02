@@ -20,6 +20,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
 * [The Case for `var`](#the-case-for-var)
   * [Don't Throw Out `var`](#dont-throw-out-var)
   * [`const`-antly Confused](#const-antly-confused)
+  * [`var` and `let`](#var-and-let)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -571,6 +572,79 @@ studentIDs.push(6);   // whoa, wait... what!?
 The author only ever uses `const` to assign values that are already immutable (numbers, strings, etc). It is his opinion that variable re-assignment is not a major source of bugs or confusion in code, making the usage of `const` less important - especially since `const` is block-scoped and the fact that blocks are meant to be short.
 
 It is the author's opinion that `const` is rarely useful.
+
+#### `var` and `let`
+The author asserts that `var` and `let` are both useful in different contexts and both declarators should be used.
+
+Kyle Simpson uses `var` in the top-level scope of any function, as well as in the global scope, when a variable is used in nested scopes. He reserves `let` for any varaible used only within a single scope. It is his assertion that this convention makes it clearer to a reader which variables are used across scope levels and which are used only within a single scope level:
+
+```javascript
+function getStudents(data) {
+  var studentRecords = [];
+
+  for (let record of data.records) {
+    let id = `student-${ record.id }`;
+    studentRecords.push({
+      id,
+      record.name
+    });
+  }
+
+  return studentRecords;
+}
+```
+
+`studentRecords` is declared with `var` since it is used in a lower-level scope, but `record` and `id` are only used within the narrower block-scope of the `for`-loop and therefore declared with `let` instead.
+
+There are also a limited few circumstances where `var` will work and `let` will not. One circumstance is a loop whose conditional clause cannot see block-scoped declarations inside the iteration:
+
+```javascript
+function commitAction() {
+  do {
+    let result = commit();
+    var done = result && result.code == 1;
+  } while (!done);
+}
+```
+
+`result` is only used inside the iteration block, and therefore declared with `let`. However, the `while` clause cannot access block-scoped variables from within the iteration block, so `done` is declared with `var` to function-scope it instead.
+
+`var` declarations are also useful within unintednded blocks: where syntax requires a block, but the developer does not actually intend to create a localized scope. An example of an unintended scope is within a `try..catch` statement:
+
+```javascript
+function getStudents() {
+  try {
+    // not really a block scope
+    var records = fromCache("students");
+  }
+  catch (err) {
+    // oops, fall back to a default
+    var records = [];
+  }
+  // ..
+}
+```
+
+Kyle prefers that the assignment of a variable be on the same line as the declaration, so does not want to declare `records` in the parent function-scope. He uses `var` in both the `try` and the `catch` blocks despite hoisting ensuring the identifier already exists in the scope if only declared in one block: he uses this to signal to readers that `records` is always declared regardless of which path of execution the code takes. This is possible because `var` can be used on the same identifier multiple times within a single scope (to no effect), unlike `let`.
+
+Kyle finds this ability to repeat `var` declarations to no effect useful:
+
+```javascript
+function getStudents() {
+  var data = [];
+
+  // do something with data
+  // .. 50 more lines of code ..
+
+  // purely an annotation to remind us
+  var data;
+
+  // use data again
+  // ..
+}
+```
+
+While the second `var data;` statement does not functionally do anything, Kyle uses it to remind readers that `data` is a function-wide declaration - saving the reader from jumping around the long `getStudents` function to find the declaration. This is something that cannot be done with `let`.
 
 [▲ Return to Sections](#sections)
 
