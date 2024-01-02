@@ -19,6 +19,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
   * [Variable Hoisting](#variable-hoisting)
 * [The Case for `var`](#the-case-for-var)
   * [Don't Throw Out `var`](#dont-throw-out-var)
+  * [`const`-antly Confused](#const-antly-confused)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -555,6 +556,21 @@ Claims that `var` is broken, deprecated, outdated, dangerous, or ill-designed ar
 While `var` is not always the correct declarator to use for every declaration in a program, it has its uses.
 
 `let` is great for block-scoped declarations (it is the author's opinion that implementing a TDZ was a mistake), and should be used often.
+
+#### `const`-antly Confused
+The author believes that the historical confusion around `const` outweighs the benefit that the `const` declarator provides. _Assignment_ immutability is often confused for _value_ immutability:
+
+```javascript
+const studentIDs = [ 14, 73, 112 ];
+
+// later
+
+studentIDs.push(6);   // whoa, wait... what!?
+```
+
+The author only ever uses `const` to assign values that are already immutable (numbers, strings, etc). It is his opinion that variable re-assignment is not a major source of bugs or confusion in code, making the usage of `const` less important - especially since `const` is block-scoped and the fact that blocks are meant to be short.
+
+It is the author's opinion that `const` is rarely useful.
 
 [▲ Return to Sections](#sections)
 
