@@ -16,6 +16,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
   * [IIFE Variations](#iife-variations)
 * [Hoisting: Functions and Variables](#hoisting-functions-and-variables)
   * [Function Hoisting](#function-hoisting)
+  * [Variable Hoisting](#variable-hoisting)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -460,6 +461,82 @@ function getStudents() {
 ```
 
 The author prefers this organization of code, finding it to be more readable.
+
+#### Variable Hoisting
+Although `let` and `const` declared variables are hoisted, [they cannot be accessed prior to declaration](../05/README.md#unitialized-variables-aka-tdz). For this reason this section will focus on `var` declared variables.
+
+The author believes that, in almost all cases, leveraging variable hoisting is a bad idea:
+
+```javascript
+pleaseDontDoThis = "bad idea";
+
+// much later
+var pleaseDontDoThis;
+```
+
+The author believes this code is more difficult to reason about. However, for CommonJS modules, he does make a small exception.
+
+Typically, The author will structure his module definitions in Node like the following:
+
+```javascript
+// dependencies
+var aModuleINeed = require("very-helpful");
+var anotherModule = require("kinda-helpful");
+
+// public API
+var publicAPI = Object.assign(module.exports,{
+  getStudents,
+  addStudents,
+  // ..
+});
+
+// ********************************
+// private implementation
+
+var cache = { };
+var otherData = [ ];
+
+function getStudents() {
+  // ..
+}
+
+function addStudents() {
+  // ..
+}
+```
+
+In the above example: external module imports are placed at the top of file, followed by the module export. Module-global-scoped variables like `cache` and `otherData` sit below that with the rest of the module's private definitions.
+
+However, in cases where the private variables need to be used in the module exports assignment, such as:
+
+```javascript
+// public API
+var publicAPI = Object.assign(module.exports,{
+  getStudents,
+  addStudents,
+  refreshData: refreshData.bind(null,cache)
+});
+```
+
+The author will make an exception in cases like this, assigning the variable (`cache`) above the export assignment and declaring it below:
+
+```javascript
+cache = {};   // used here, but declared below
+
+// public API
+var publicAPI = Object.assign(module.exports,{
+  getStudents,
+  addStudents,
+  refreshData: refreshData.bind(null,cache)
+});
+
+// ********************************
+// private implementation
+
+var cache /* = {}*/;
+```
+
+This is the only case the author has found for leveraging variable hoisting to assign a variable earlier in its scope than its declaration.
 
 [▲ Return to Sections](#sections)
 
