@@ -17,6 +17,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
 * [Hoisting: Functions and Variables](#hoisting-functions-and-variables)
   * [Function Hoisting](#function-hoisting)
   * [Variable Hoisting](#variable-hoisting)
+* [The Case for `var`](#the-case-for-var)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -537,6 +538,15 @@ var cache /* = {}*/;
 ```
 
 This is the only case the author has found for leveraging variable hoisting to assign a variable earlier in its scope than its declaration.
+
+[▲ Return to Sections](#sections)
+
+## The Case for `var`
+Many developers blame declarations using the `var` keyword for many woes of development. A few points:
+* `var` was never broken
+* `let` is useful
+* `const` has limited utility
+* The best of both worlds: `var` _and_ `let`
 
 [▲ Return to Sections](#sections)
 
