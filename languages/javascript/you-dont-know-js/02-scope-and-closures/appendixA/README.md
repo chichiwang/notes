@@ -25,6 +25,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
   * [Where It All Started](#where-it-all-started)
   * [Who `let` the TDZ Out?](#who-let-the-tdz-out)
 * [Are Synchronous Callbacks Still Closures?](#are-synchronous-callbacks-still-closures)
+  * [What is a Callback?](#what-is-a-callback)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -709,6 +710,23 @@ Chapter 7 presents [two different models](../07/README.md#an-alternate-perspecti
 * Closure is a function instance and its scope environment being preserved in-place while any references to it are passed around and **invoked from** other scopes.
 
 The different perspectives presented by these two models will change what gets identified as a closure.
+
+#### What is a Callback?
+It is generally accepted that "callback" is synonymous with both _asynchronous callbacks_ and _synchrnous callbacks_. The author believes this to be a bad idea.
+
+An _asynchrnous callback_ is a function reference that will be invoked at some future, later point. This means that the current code has finished or paused, suspending execution. When the function is later invoked, execution resumes in this suspended program. The point of re-entry is the code within this function reference:
+
+```javascript
+setTimeout(function waitForASecond(){
+  // this is where JS should call back into
+  // the program when the timer has elapsed
+},1000);
+
+// this is where the current program finishes
+// or suspends
+```
+
+The term _callback_ makes sense to Kyle here, as the JavaScript engine is resuming the suspended program by _calling back in_ at a specific location. He concludes that a _callback_ is asynchronous.
 
 [▲ Return to Sections](#sections)
 
