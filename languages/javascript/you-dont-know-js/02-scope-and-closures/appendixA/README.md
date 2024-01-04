@@ -22,6 +22,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
   * [`const`-antly Confused](#const-antly-confused)
   * [`var` and `let`](#var-and-let)
 * [What's the Deal with TDZ?](#whats-the-deal-with-tdz)
+  * [Where It All Started](#where-it-all-started)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -654,6 +655,44 @@ Some motivations of TDZ and hints to its origin:
 * `const` should never change
 * It's all about time
 * Should `let` behave more like `const` or `var`?
+
+#### Where It All Started
+TDZ comes from the `const` declarator. During the development of ES6, TC39 had to decide if `const` (and `let`) would hoist to the top of their blocks. They ultimately decided these declarations would hoist, avoiding issues such as confusion of mid-block shadowing:
+
+```javascript
+let greeting = "Hi!";
+
+{
+  // what should print here?
+  console.log(greeting);
+
+  // .. a bunch of lines of code ..
+
+  // now shadowing the `greeting` variable
+  let greeting = "Hello, friends!";
+
+  // ..
+}
+```
+
+It would be unintuitive if the `console.log(..)` statement above printed `"Hi!"`.
+
+As to why variables declared with `const` (and `let`) do not auto-initialize to `undefined` like variables declared with `var` do, it is to avoid situations like the following:
+
+```javascript
+{
+  // what should print here?
+  console.log(studentName);
+
+  // later
+
+  const studentName = "Frank";
+
+  // ..
+}
+```
+
+If auto-initialization of `const` occurred, the `console.log(..)` statement above would print `undefined`. However, it would be strange for a constant to hold two different values (`undefined` and `"Frank"` at different times in the program execution. It was therefore determined that any access to the variable prior to assignment would result in a TDZ error.
 
 [▲ Return to Sections](#sections)
 
