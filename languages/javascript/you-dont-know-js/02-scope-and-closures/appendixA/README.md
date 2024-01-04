@@ -24,6 +24,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
 * [What's the Deal with TDZ?](#whats-the-deal-with-tdz)
   * [Where It All Started](#where-it-all-started)
   * [Who `let` the TDZ Out?](#who-let-the-tdz-out)
+* [Are Synchronous Callbacks Still Closures?](#are-synchronous-callbacks-still-closures)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -699,6 +700,15 @@ If auto-initialization of `const` occurred, the `console.log(..)` statement abov
 Why does TDZ apply to `let` in the same way it applies to `const`? TC39 made the decision in order to maintain consistency with `const` as well as leveraging it as a way to discourage developers from leveraging variable hoisting.
 
 The author of this book disagrees with this decision and argues that `let` is much more like `var` as a declarator and should behave more like `var`. Kyle sees it as more reasonable that `const` be unique in that it is enforced to be defined at the top of a scope.
+
+[▲ Return to Sections](#sections)
+
+## Are Synchronous Callbacks Still Closures?
+Chapter 7 presents [two different models](../07/README.md#an-alternate-perspective) for thinking about closures:
+* Closure is a function instance remembering its outer variables even as that function is passed around and **invoked in** other scopes.
+* Closure is a function instance and its scope environment being preserved in-place while any references to it are passed around and **invoked from** other scopes.
+
+The different perspectives presented by these two models will change what gets identified as a closure.
 
 [▲ Return to Sections](#sections)
 
