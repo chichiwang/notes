@@ -23,6 +23,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
   * [`var` and `let`](#var-and-let)
 * [What's the Deal with TDZ?](#whats-the-deal-with-tdz)
   * [Where It All Started](#where-it-all-started)
+  * [Who `let` the TDZ Out?](#who-let-the-tdz-out)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -693,6 +694,11 @@ As to why variables declared with `const` (and `let`) do not auto-initialize to 
 ```
 
 If auto-initialization of `const` occurred, the `console.log(..)` statement above would print `undefined`. However, it would be strange for a constant to hold two different values (`undefined` and `"Frank"` at different times in the program execution. It was therefore determined that any access to the variable prior to assignment would result in a TDZ error.
+
+#### Who `let` the TDZ Out?
+Why does TDZ apply to `let` in the same way it applies to `const`? TC39 made the decision in order to maintain consistency with `const` as well as leveraging it as a way to discourage developers from leveraging variable hoisting.
+
+The author of this book disagrees with this decision and argues that `let` is much more like `var` as a declarator and should behave more like `var`. Kyle sees it as more reasonable that `const` be unique in that it is enforced to be defined at the top of a scope.
 
 [▲ Return to Sections](#sections)
 
