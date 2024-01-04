@@ -21,6 +21,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
   * [Don't Throw Out `var`](#dont-throw-out-var)
   * [`const`-antly Confused](#const-antly-confused)
   * [`var` and `let`](#var-and-let)
+* [What's the Deal with TDZ?](#whats-the-deal-with-tdz)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -645,6 +646,14 @@ function getStudents() {
 ```
 
 While the second `var data;` statement does not functionally do anything, Kyle uses it to remind readers that `data` is a function-wide declaration - saving the reader from jumping around the long `getStudents` function to find the declaration. This is something that cannot be done with `let`.
+
+[▲ Return to Sections](#sections)
+
+## What's the Deal with TDZ?
+Some motivations of TDZ and hints to its origin:
+* `const` should never change
+* It's all about time
+* Should `let` behave more like `const` or `var`?
 
 [▲ Return to Sections](#sections)
 
