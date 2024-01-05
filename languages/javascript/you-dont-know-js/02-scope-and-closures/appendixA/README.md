@@ -27,6 +27,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
 * [Are Synchronous Callbacks Still Closures?](#are-synchronous-callbacks-still-closures)
   * [What is a Callback?](#what-is-a-callback)
   * [Synchronous Callback?](#synchronous-callback)
+  * [Synchronous Closure?](#synchronous-closure)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -763,6 +764,51 @@ _Inversion of control_ is a similar, related concept: control of what is happeni
 [Martin Fowler](https://martinfowler.com/) [cites Inversion of Control](https://martinfowler.com/bliki/InversionOfControl.html) as the difference between a framework and a library: the developer calls a library's functions, a framework calls the developer's functions.
 
 Kyle asserts that DI or IoC could work as an alternative label to the term "synchronous callback". He suggests, instead, to call them _inter-invoked functions_ (IIF). Whereas an IIFE is invokes itself immediately, an IIF is inovked by another entity.
+
+#### Synchronous Closure?
+Taking the following code as example:
+
+```javascript
+function printLabels(labels) {
+  var list = document.getElementById("labelsList");
+
+  labels.forEach(
+    function renderLabel(label){
+      var li = document.createElement("li");
+      li.innerText = label;
+      list.appendChild(li);
+    }
+  );
+}
+```
+
+`renderLabel(..)` references `list` from its enclosing scope, so it is an IIF that _could_ have closure. Here is where the model of closure matters:
+* If `renderLabel(..)` is a **function that gets passed somewhere else** where it is invoked, then `renderLabel(..)` is indeed exercising closure. Closure is what preserves access to its original scope chain.
+* If `renderLabel(..)` stays in place and a reference is passed to `forEach(..)` then closure is unnecessary to preserve the scope chain of `renderLabel(..)` as it executes synchronously in its original lexical scope.
+
+To better understand the second view of this, consider an alternative implementation of `printLabels(..)`:
+
+```javascript
+function printLabels(labels) {
+  var list = document.getElementById("labelsList");
+
+  for (let label of labels) {
+    // just a normal function call in its own
+    // scope, right? That's not really closure!
+    renderLabel(label);
+  }
+
+  // **************
+
+  function renderLabel(label) {
+    var li = document.createElement("li");
+    li.innerText = label;
+    list.appendChild(li);
+  }
+}
+```
+
+This example, while essentially the same as the previous version, clearly does not utilize closure in any useful/observable sense. It is simply leveraging lexical scope. The prior example also does not leverage closure, it is a normal lexically-scoped function call.
 
 [▲ Return to Sections](#sections)
 
