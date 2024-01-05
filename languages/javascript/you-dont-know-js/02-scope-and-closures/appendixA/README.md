@@ -950,4 +950,4 @@ At the time of this writing, ESM (ES Modules) are rapidly growing in popularity.
 
 [▲ Return to Sections](#sections)
 
-| [Previous: Chapter 8 - The Module Pattern](../08/README.md) | [Table of Contents](../README.md#table-of-contents) |
+| [Previous: Chapter 8 - The Module Pattern](../08/README.md) | [Table of Contents](../README.md#table-of-contents) | [Next: Appendix B - Practice](../appendixB/README.md) |

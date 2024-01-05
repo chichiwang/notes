@@ -15,5 +15,6 @@ Date: WIP
 * [Chapter 7: Using Closures](./07/README.md)
 * [Chapter 8: The Module Pattern](./08/README.md)
 * [Appendix A: Exploring Further](./appendixA/README.md)
+* [Appendix B: Practice](./appendixB/README.md)
 
 [◂ Return to Books](../README.md)
