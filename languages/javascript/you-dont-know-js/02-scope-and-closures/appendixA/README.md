@@ -31,6 +31,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
   * [Defer to Closure](#defer-to-closure)
 * [Classic Module Variations](#classic-module-variations)
   * [Where's My API?](#wheres-my-api)
+  * [Asynchronous Module Definition (AMD)](#asynchronous-module-definition-amd)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -884,6 +885,25 @@ The author prefers to use an explicitly named variable for the following reasons
   * Calling a publicly exposed function from inside the module.
   * Add/remove methods depending on conditions.
   * Update the value of an exposed property.
+
+#### Asynchronous Module Definition (AMD)
+Another variation of the classic module definition is [AMD-style modules](https://en.wikipedia.org/wiki/Asynchronous_module_definition), supported by utilities like [RequireJS](https://requirejs.org/):
+
+```javascript
+define([ "./Student" ],function StudentList(Student){
+  var elems = [];
+
+  return {
+    renderList() {
+      // ..
+    }
+  };
+});
+```
+
+`StudentList(..)` is a classic module factory function. It is invoked within the implementation of `define(..)` (provided by RequireJS) and passed any listed dependencies. The return value of `StudentList(..)` is its public API.
+
+This format is based on the same principles as classic modules.
 
 [▲ Return to Sections](#sections)
 
