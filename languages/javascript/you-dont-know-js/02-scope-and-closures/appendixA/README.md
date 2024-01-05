@@ -26,6 +26,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
   * [Who `let` the TDZ Out?](#who-let-the-tdz-out)
 * [Are Synchronous Callbacks Still Closures?](#are-synchronous-callbacks-still-closures)
   * [What is a Callback?](#what-is-a-callback)
+  * [Synchronous Callback?](#synchronous-callback)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -727,6 +728,41 @@ setTimeout(function waitForASecond(){
 ```
 
 The term _callback_ makes sense to Kyle here, as the JavaScript engine is resuming the suspended program by _calling back in_ at a specific location. He concludes that a _callback_ is asynchronous.
+
+#### Synchronous Callback?
+Using the following as example:
+
+```javascript
+function getLabels(studentIDs) {
+  return studentIDs.map(
+    function formatIDLabel(id){
+      return `Student ID: ${
+        String(id).padStart(6)
+      }`;
+    }
+  );
+}
+
+getLabels([ 14, 73, 112, 6 ]);
+// [
+//    "Student ID: 000014",
+//    "Student ID: 000073",
+//    "Student ID: 000112",
+//    "Student ID: 000006"
+// ]
+```
+
+The author questions if `formatIDLabel` should be referred to as a _callback_. He asserts that because the program has neither paused nor exited, there is nothing for the `map(..)` utility to call back into. A function reference is being passed from one part of the program to another where it is immediately invoked.
+
+Other established terms for passing a function reference to another part of a program so that it can be invoked include _Dependency Injection_ (DI) and _Inversion of Control_ (IoC).
+
+_Dependency injection_ can be summarized as passing in necessary part(s) of functionality to another part of a program so that it can use it/them to do its work.
+
+_Inversion of control_ is a similar, related concept: control of what is happening is handed off from the current area of the program to another part of the program.
+
+[Martin Fowler](https://martinfowler.com/) [cites Inversion of Control](https://martinfowler.com/bliki/InversionOfControl.html) as the difference between a framework and a library: the developer calls a library's functions, a framework calls the developer's functions.
+
+Kyle asserts that DI or IoC could work as an alternative label to the term "synchronous callback". He suggests, instead, to call them _inter-invoked functions_ (IIF). Whereas an IIFE is invokes itself immediately, an IIF is inovked by another entity.
 
 [▲ Return to Sections](#sections)
 
