@@ -32,6 +32,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
 * [Classic Module Variations](#classic-module-variations)
   * [Where's My API?](#wheres-my-api)
   * [Asynchronous Module Definition (AMD)](#asynchronous-module-definition-amd)
+  * [Universal Modules (UMD)](#universal-modules-umd)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -904,6 +905,48 @@ define([ "./Student" ],function StudentList(Student){
 `StudentList(..)` is a classic module factory function. It is invoked within the implementation of `define(..)` (provided by RequireJS) and passed any listed dependencies. The return value of `StudentList(..)` is its public API.
 
 This format is based on the same principles as classic modules.
+
+#### Universal Modules (UMD)
+UMD is more of a collection of very similar formats. It was designed to create better interop (without build-tool conversion) for modules that may be loaded into a browser (via AMD-style loaders) and Node.
+
+The typical structure of a UMD modules looks something like:
+
+```javascript
+(function UMD(name,context,definition){
+  // loaded by an AMD-style loader?
+  if (
+    typeof define === "function" &&
+    define.amd
+  ) {
+    define(definition);
+  }
+  // in Node?
+  else if (
+    typeof module !== "undefined" &&
+    module.exports
+  ) {
+    module.exports = definition(name,context);
+  }
+  // assume standalone browser script
+  else {
+    context[name] = definition(name,context);
+  }
+})("StudentList",this,function DEF(name,context){
+
+  var elems = [];
+
+  return {
+    renderList() {
+      // ..
+    }
+  };
+
+});
+```
+
+UMD is an IIFE that detects which of the three supported environments the module is being loaded in. Depending on the environment, it will load the module in the correct fashion.
+
+At the time of this writing, ESM (ES Modules) are rapidly growing in popularity. However, given the millions of modules written over the last two decades using some pre-ESM variation of classic modules, it is still important to be able to read and understand these varying module formats.
 
 [▲ Return to Sections](#sections)
 
