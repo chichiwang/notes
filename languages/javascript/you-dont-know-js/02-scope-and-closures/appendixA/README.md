@@ -28,6 +28,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
   * [What is a Callback?](#what-is-a-callback)
   * [Synchronous Callback?](#synchronous-callback)
   * [Synchronous Closure?](#synchronous-closure)
+  * [Defer to Closure](#defer-to-closure)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -809,6 +810,31 @@ function printLabels(labels) {
 ```
 
 This example, while essentially the same as the previous version, clearly does not utilize closure in any useful/observable sense. It is simply leveraging lexical scope. The prior example also does not leverage closure, it is a normal lexically-scoped function call.
+
+#### Defer to Closure
+Chapter 7 [briefly mentions currying and partial application](../07/README.md#why-closure) which do rely on closure. Take the following re-factoring of the previous example to use manual currying:
+
+```javascript
+function printLabels(labels) {
+  var list = document.getElementById("labelsList");
+  var renderLabel = renderTo(list);
+
+  // definitely closure this time!
+  labels.forEach( renderLabel );
+
+  // **************
+
+  function renderTo(list) {
+    return function createLabel(label){
+      var li = document.createElement("li");
+      li.innerText = label;
+      list.appendChild(li);
+    };
+  }
+}
+```
+
+`createLabel(..)` closes over `list` and execution of the function is deferred to the `forEach(..)` invocations of `createLabel(..)`. This closure over `list` would be preserved no matter where, or how much time passed when, `createLabel(..)` is ultimately invoked.
 
 [▲ Return to Sections](#sections)
 
