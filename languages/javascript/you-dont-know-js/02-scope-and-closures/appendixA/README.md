@@ -29,6 +29,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
   * [Synchronous Callback?](#synchronous-callback)
   * [Synchronous Closure?](#synchronous-closure)
   * [Defer to Closure](#defer-to-closure)
+* [Classic Module Variations](#classic-module-variations)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -835,6 +836,28 @@ function printLabels(labels) {
 ```
 
 `createLabel(..)` closes over `list` and execution of the function is deferred to the `forEach(..)` invocations of `createLabel(..)`. This closure over `list` would be preserved no matter where, or how much time passed when, `createLabel(..)` is ultimately invoked.
+
+[▲ Return to Sections](#sections)
+
+## Classic Module Variations
+Chapter 8 [explained the classic module pattern](../08/README.md#modules-stateful-access-control), which can look like:
+
+```javascript
+var StudentList = (function defineModule(Student){
+  var elems = [];
+
+  var publicAPI = {
+    renderList() {
+    // ..
+    }
+  };
+
+  return publicAPI;
+
+})(Student);
+```
+
+There are a lot of useful variations on this module form.
 
 [▲ Return to Sections](#sections)
 
