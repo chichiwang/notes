@@ -30,6 +30,7 @@ Disclaimer: The discussions contained within are more heavily influenced by the 
   * [Synchronous Closure?](#synchronous-closure)
   * [Defer to Closure](#defer-to-closure)
 * [Classic Module Variations](#classic-module-variations)
+  * [Where's My API?](#wheres-my-api)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -858,6 +859,31 @@ var StudentList = (function defineModule(Student){
 ```
 
 There are a lot of useful variations on this module form.
+
+#### Where's My API?
+Most classic modules do not explicitly define an `publicAPI`, they typically look more like:
+
+```javascript
+var StudentList = (function defineModule(Student){
+  var elems = [];
+
+  return {
+    renderList() {
+      // ..
+    }
+  };
+
+})(Student);
+```
+
+The difference is that what is returned is an object literal that acts as the public API rather than a variable explicitly named as such.
+
+The author prefers to use an explicitly named variable for the following reasons:
+* `publicAPI` acts as a semantic descriptor that makes it explicit to readers of the code what its purpose is.
+* Storing an inner `publicAPI` variable that references the the same external API object can be useful for referencing/accessing the API during the lifetime of the module.
+  * Calling a publicly exposed function from inside the module.
+  * Add/remove methods depending on conditions.
+  * Update the value of an exposed property.
 
 [▲ Return to Sections](#sections)
 
