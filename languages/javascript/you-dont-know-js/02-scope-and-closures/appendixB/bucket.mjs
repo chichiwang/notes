@@ -28,6 +28,50 @@ import {
 // 7. Convert ascii values back to characters
 // 8. Return the string
 
+/**
+ * Matrix Utilities
+ */
+
+function getMatrixFor(str) {
+  // [Scope 1: YELLOW]
+  const sqrt = Math.sqrt(str.length);
+  let rowCount = Math.floor(sqrt);
+  let colCount = Math.ceil(sqrt);
+
+  if (rowCount * colCount < str.length) {
+    // [Scope 2: MAGENTA]
+    rowCount += 1;
+  }
+
+  return [...new Array(rowCount)]
+    .map(function createEmptyArrayLiteral(_, rowIdx) {
+      // [Scope 2: MAGENTA]
+      return [...new Array(colCount)]
+        .map(function populateCols(_, colIdx) {
+          // [Scope 3: BLACK]
+          return str[(rowIdx * colCount) + colIdx] || ' ';
+        });
+    });
+}
+
+/**
+ * Encrytion/Decryption Utilities
+ */
+
+function encodeMatrix(matrix) {
+  // [Scope 1: YELLOW]
+}
+
+function encodeStr(str) {
+  // [Scope 1: YELLOW]
+  console.log(`Encoding "${str}"...`);
+  console.log(getMatrixFor(str));
+}
+
+function decodeStr(str) {
+  // [Scope 1: YELLOW]
+  console.log(`Decoding "${str}"...`);
+}
 
 /**
  * Prompt Utilities
@@ -48,21 +92,25 @@ function runPrompt() {
       const operationString = shouldEncode ? 'encode' : 'decode';
 
       if (shouldExit) {
+        // [Scope 3: BLACK]
         process.exit();
       }
 
       if (!isResponseValid) {
+        // [Scope 3: BLACK]
         console.log('\nInvalid option!\n');
         return runPrompt();
       }
 
       return promptUser.question(`Text to ${operationString}: `)
-        .then(function operateOnString(providedString) {
+        .then(function operateOnString(str) {
           // [Scope 3: BLACK]
           if (shouldEncode) {
-            console.log(`Encoding "${providedString}"...`);
+            // [Scope 4: GREEN]
+            encodeStr(str);
           } else {
-            console.log(`Decoding "${providedString}"...`);
+            // [Scope 4: GREEN]
+            decodeStr(str);
           }
 
           return runPrompt();
