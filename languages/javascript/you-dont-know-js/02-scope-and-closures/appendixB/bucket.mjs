@@ -59,26 +59,34 @@ function validateMatrix(matrix) {
   }
 }
 
+function createMatrix(rowSize, colSize, matrixValFn) {
+  // [Scope 1: YELLOW]
+  return [...new Array(rowSize)]
+    .map(function populateRows(_, rowIdx) {
+      // [Scope 2: MAGENTA]
+      return [...new Array(colSize)]
+        .map(function populateCols(_, colIdx) {
+          // [Scope 3: BLACK]
+          return matrixValFn(rowIdx, colIdx);
+        });
+    });
+}
+
 function getMatrixFor(str) {
   // [Scope 1: YELLOW]
   const sqrt = Math.sqrt(str.length);
-  let rowCount = Math.floor(sqrt);
-  let colCount = Math.ceil(sqrt);
+  let rowSize = Math.floor(sqrt);
+  let colSize = Math.ceil(sqrt);
 
-  if (rowCount * colCount < str.length) {
+  if (rowSize * colSize < str.length) {
     // [Scope 2: MAGENTA]
-    rowCount += 1;
+    rowSize += 1;
   }
 
-  return [...new Array(rowCount)]
-    .map(function populateRows(_, rowIdx) {
-      // [Scope 2: MAGENTA]
-      return [...new Array(colCount)]
-        .map(function populateCols(_, colIdx) {
-          // [Scope 3: BLACK]
-          return str[(rowIdx * colCount) + colIdx] || ' ';
-        });
-    });
+  return createMatrix(rowSize, colSize, function applyValues(rowIdx, colIdx) {
+    // [Scope 2: MAGENTA]
+    return str[(rowIdx * colSize) + colIdx] || ' ';
+  });
 }
 
 function invertMatrix(matrix) {
@@ -93,15 +101,27 @@ function invertMatrix(matrix) {
   rowSize = matrix.length;
   colSize = matrix[0].length;
 
-  return [...new Array(colSize)]
-    .map(function populateRows(_, rowIdx) {
-      // [Scope 2: MAGENTA]
-      return [...new Array(rowSize)]
-        .map(function populateCols(_, colIdx) {
-          // [Scope 3: BLACK]
-          return matrix[colIdx][rowIdx];
-        });
-    });
+  return createMatrix(colSize, rowSize, function invertValues(rowIdx, colIdx) {
+    // [Scope 2: MAGENTA]
+    return matrix[colIdx][rowIdx];
+  });
+}
+
+function matrixCharToASCII(matrix) {
+  // [Scope 1: YELLOW]
+
+  if (!validateMatrix(matrix)) {
+    // [Scope 2: MAGENTA]
+    throw new Error('Invalid Matrix!');
+  }
+
+  const colSize = matrix[0].length;
+  const rowSize = matrix.length;
+
+  return createMatrix(rowSize, colSize, function applyASCII(rowIdx, colIdx) {
+    // [Scope 2: MAGENTA]
+    return matrix[rowIdx][colIdx].charCodeAt(0);
+  });
 }
 
 /**
@@ -117,6 +137,7 @@ function encodeStr(str) {
   console.log(`Encoding "${str}"...`);
   console.log(getMatrixFor(str));
   console.log(invertMatrix(getMatrixFor(str)));
+  console.log(matrixCharToASCII(getMatrixFor(str)));
 }
 
 function decodeStr(str) {
