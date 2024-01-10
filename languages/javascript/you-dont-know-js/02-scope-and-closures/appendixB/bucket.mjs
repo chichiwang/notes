@@ -118,9 +118,26 @@ function matrixCharToASCII(matrix) {
   const colSize = matrix[0].length;
   const rowSize = matrix.length;
 
-  return createMatrix(rowSize, colSize, function applyASCII(rowIdx, colIdx) {
+  return createMatrix(rowSize, colSize, function charToASCII(rowIdx, colIdx) {
     // [Scope 2: MAGENTA]
     return matrix[rowIdx][colIdx].charCodeAt(0);
+  });
+}
+
+function matrixASCIIToChar(matrix) {
+  // [Scope 1: YELLOW]
+
+  if (!validateMatrix(matrix)) {
+    // [Scope 2: MAGENTA]
+    throw new Error('Invalid Matrix!');
+  }
+
+  const colSize = matrix[0].length;
+  const rowSize = matrix.length;
+
+  return createMatrix(rowSize, colSize, function ASCIIToChar(rowIdx, colIdx) {
+    // [Scope 2: MAGENTA]
+    return String.fromCharCode(matrix[rowIdx][colIdx]);
   });
 }
 
@@ -138,6 +155,7 @@ function encodeStr(str) {
   console.log(getMatrixFor(str));
   console.log(invertMatrix(getMatrixFor(str)));
   console.log(matrixCharToASCII(getMatrixFor(str)));
+  console.log(matrixASCIIToChar(matrixCharToASCII(getMatrixFor(str))));
 }
 
 function decodeStr(str) {
