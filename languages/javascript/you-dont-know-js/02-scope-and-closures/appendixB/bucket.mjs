@@ -32,6 +32,33 @@ import {
  * Matrix Utilities
  */
 
+function validateMatrix(matrix) {
+  // [Scope 1: YELLOW]
+  let colSize; // Shadowed identifier
+
+  if (!Array.isArray(matrix) || !matrix.length) {
+    // [Scope 2: MAGENTA]
+    return false;
+  }
+
+  for (const row of matrix) {
+    // [Scope 2: MAGENTA]
+    if (!Array.isArray(row) || !row.length) {
+      // [Scope 3: BLACK]
+      return false;
+    }
+
+    colSize = colSize || row.length;
+
+    if (row.length !== colSize) {
+      // [Scope 3: BLACK]
+      return false;
+    }
+
+    return true;
+  }
+}
+
 function getMatrixFor(str) {
   // [Scope 1: YELLOW]
   const sqrt = Math.sqrt(str.length);
@@ -44,12 +71,35 @@ function getMatrixFor(str) {
   }
 
   return [...new Array(rowCount)]
-    .map(function createEmptyArrayLiteral(_, rowIdx) {
+    .map(function populateRows(_, rowIdx) {
       // [Scope 2: MAGENTA]
       return [...new Array(colCount)]
         .map(function populateCols(_, colIdx) {
           // [Scope 3: BLACK]
           return str[(rowIdx * colCount) + colIdx] || ' ';
+        });
+    });
+}
+
+function invertMatrix(matrix) {
+  // [Scope 1: YELLOW]
+  let colSize, rowSize;
+
+  if (!validateMatrix(matrix)) {
+    // [Scope 2: MAGENTA]
+    throw new Error('Invalid Matrix!');
+  }
+
+  rowSize = matrix.length;
+  colSize = matrix[0].length;
+
+  return [...new Array(colSize)]
+    .map(function populateRows(_, rowIdx) {
+      // [Scope 2: MAGENTA]
+      return [...new Array(rowSize)]
+        .map(function populateCols(_, colIdx) {
+          // [Scope 3: BLACK]
+          return matrix[colIdx][rowIdx];
         });
     });
 }
@@ -66,6 +116,7 @@ function encodeStr(str) {
   // [Scope 1: YELLOW]
   console.log(`Encoding "${str}"...`);
   console.log(getMatrixFor(str));
+  console.log(invertMatrix(getMatrixFor(str)));
 }
 
 function decodeStr(str) {
