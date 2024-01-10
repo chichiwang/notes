@@ -11,8 +11,8 @@ import {
 // Encode:
 // 1. Calculate a matrix for the length of the string value
 // 2. Convert matrix to ascii values for characters
-// 3. Choose random offset (-8 to 8)
-// 4. Apply offset to ascii values in ascending/descending order starting with positive value
+// 3. Choose random offset (-45 to 45)
+// 4. Apply offset to ascii values in ascending/descending order starting with the random offset
 // 5. Flip columns to rows for matrix
 // 6. Convert ascii values back to characters
 // 7. Convert offset value flag and starting value to characters, prepend to string
@@ -31,6 +31,28 @@ import {
 /**
  * Matrix Utilities
  */
+const ASCIILowerBound = 32;
+const ASCIIUpperBound = 126;
+const ASCIIRangeHalf = (ASCIIUpperBound - ASCIIUpperBound)/2;
+const minOffset = -45;
+const maxOffset = 45;
+
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function offsetASCIICode(code, offset) {
+  let offsetCode = code + offset;
+
+  if (offsetCode < ASCIILowerBound) {
+    offsetCode = ASCIIUpperBound - (ASCIILowerBound - offsetCode);
+  } else if (offsetCode > ASCIIUpperBound) {
+    offsetCode = ASCIILowerBound + (offsetCode - ASCIIUpperBound);
+  }
+
+  return offsetCode;
+}
 
 function validateMatrix(matrix) {
   // [Scope 1: YELLOW]
@@ -72,7 +94,7 @@ function createMatrix(rowSize, colSize, matrixValFn) {
     });
 }
 
-function getMatrixFor(str) {
+function strToMatrix(str) {
   // [Scope 1: YELLOW]
   const sqrt = Math.sqrt(str.length);
   let rowSize = Math.floor(sqrt);
@@ -115,8 +137,8 @@ function matrixCharToASCII(matrix) {
     throw new Error('Invalid Matrix!');
   }
 
-  const colSize = matrix[0].length;
   const rowSize = matrix.length;
+  const colSize = matrix[0].length;
 
   return createMatrix(rowSize, colSize, function charToASCII(rowIdx, colIdx) {
     // [Scope 2: MAGENTA]
@@ -132,8 +154,8 @@ function matrixASCIIToChar(matrix) {
     throw new Error('Invalid Matrix!');
   }
 
-  const colSize = matrix[0].length;
   const rowSize = matrix.length;
+  const colSize = matrix[0].length;
 
   return createMatrix(rowSize, colSize, function ASCIIToChar(rowIdx, colIdx) {
     // [Scope 2: MAGENTA]
@@ -141,21 +163,52 @@ function matrixASCIIToChar(matrix) {
   });
 }
 
+function encodeASCIIMatrix(matrix) {
+  // [Scope 1: YELLOW]
+
+  if (!validateMatrix(matrix)) {
+    // [Scope 2: MAGENTA]
+    throw new Error('Invalid Matrix!');
+  }
+
+  const rowSize = matrix.length;
+  const colSize = matrix[0].length;
+
+  const startOffset = getRandomInt(minOffset, maxOffset);
+  const iterator = getRandomInt(1, 100) > 50 ? 1 : -1;
+
+  const encodedStartOffset = maxOffset + startOffset + ASCIILowerBound;
+  const encodedIterator = iterator < 0 ?
+    getRandomInt(ASCIILowerBound, ASCIIRangeHalf -1) :
+    getRandomInt(ASCIIRangeHalf + 1, ASCIIUpperBound);
+
+  let offset = startOffset;
+
+  const encodedMatrix = createMatrix(rowSize, colSize, function encodeASCIIValues(rowIdx, colIdx) {
+    const offsetCode = offsetASCIICode(matrix[rowIdx][colIdx], offset);
+    offset += iterator;
+    if (offset < minOffset) {
+      offset = maxOffset;
+    } else if (offset > maxOffset) {
+      offset = minOffset;
+    }
+
+    return offsetCode;
+  });
+
+  return [[encodedStartOffset, encodedIterator], encodedMatrix];
+}
+
 /**
  * Encrytion/Decryption Utilities
  */
 
-function encodeMatrix(matrix) {
-  // [Scope 1: YELLOW]
-}
-
 function encodeStr(str) {
   // [Scope 1: YELLOW]
-  console.log(`Encoding "${str}"...`);
-  console.log(getMatrixFor(str));
-  console.log(invertMatrix(getMatrixFor(str)));
-  console.log(matrixCharToASCII(getMatrixFor(str)));
-  console.log(matrixASCIIToChar(matrixCharToASCII(getMatrixFor(str))));
+  const ASCIIMatrix = matrixCharToASCII(strToMatrix(str));
+
+  console.log(ASCIIMatrix);
+  console.log(encodeASCIIMatrix(ASCIIMatrix));
 }
 
 function decodeStr(str) {
