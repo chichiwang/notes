@@ -33,7 +33,7 @@ import {
  */
 const ASCIILowerBound = 32;
 const ASCIIUpperBound = 126;
-const ASCIIRangeHalf = (ASCIIUpperBound - ASCIIUpperBound)/2;
+const ASCIIRangeHalf = ASCIILowerBound + ((ASCIIUpperBound - ASCIIUpperBound)/2);
 const minOffset = -45;
 const maxOffset = 45;
 
@@ -52,6 +52,10 @@ function offsetASCIICode(code, offset) {
   }
 
   return offsetCode;
+}
+
+function validateASCIIValue(val) {
+  return val >= ASCIILowerBound && val <= ASCIIUpperBound;
 }
 
 function validateMatrix(matrix) {
@@ -228,6 +232,33 @@ function decodeASCIIMatrix(matrix, encodedOffset, encodedIterator) {
   return decodedMatrix;
 }
 
+function ASCIIToStr(val) {
+  const isValidASCII = validateASCIIValue(val);
+
+  if (!isValidASCII) {
+    console.log(val);
+    throw new Error('ASCII value out of range!');
+  }
+
+  return String.fromCharCode(val);
+}
+
+function ASCIIMatrixToStr(matrix) {
+  // [Scope 1: YELLOW]
+
+  if (!validateMatrix(matrix)) {
+    // [Scope 2: MAGENTA]
+    throw new Error('Invalid Matrix!');
+  }
+
+  return matrix
+    .map(function rowsToStr(row) {
+      return row.map(function colsToStr(ASCIIVal) {
+        return ASCIIToStr(ASCIIVal);
+      }).join('');
+    }).join('');
+}
+
 /**
  * Encrytion/Decryption Utilities
  */
@@ -235,11 +266,11 @@ function decodeASCIIMatrix(matrix, encodedOffset, encodedIterator) {
 function encodeStr(str) {
   // [Scope 1: YELLOW]
   const ASCIIMatrix = matrixCharToASCII(strToMatrix(str));
-  const [[offset, iterator], encodedASCIIMatrix] = encodeASCIIMatrix(ASCIIMatrix);
+  const [[offsetASCII, iteratorASCII], encodedASCIIMatrix] = encodeASCIIMatrix(ASCIIMatrix);
 
-  console.log(ASCIIMatrix);
-  console.log(encodedASCIIMatrix);
-  console.log(decodeASCIIMatrix(encodedASCIIMatrix, offset, iterator));
+  const encodedStr = `${ASCIIToStr(offsetASCII)}${ASCIIToStr(iteratorASCII)} ${ASCIIMatrixToStr(encodedASCIIMatrix)}`;
+
+  console.log(`\n${encodedStr}\n`);
 }
 
 function decodeStr(str) {
