@@ -215,7 +215,7 @@ function decodeASCIIMatrix(matrix, encodedOffset, encodedIterator) {
   const colSize = matrix[0].length;
 
   let offset = (encodedOffset - maxOffset - ASCIILowerBound) * -1;
-  const iterator = encodedIterator < ASCIILowerBound ? 1 : -1;
+  const iterator = encodedIterator <= ASCIIRangeHalf ? 1 : -1;
 
   const decodedMatrix = createMatrix(rowSize, colSize, function decodeASCIIValues(rowIdx, colIdx) {
     const decodedVal = offsetASCIICode(matrix[rowIdx][colIdx], offset);
@@ -266,16 +266,25 @@ function ASCIIMatrixToStr(matrix) {
 function encodeStr(str) {
   // [Scope 1: YELLOW]
   const ASCIIMatrix = matrixCharToASCII(strToMatrix(str));
-  const [[offsetASCII, iteratorASCII], encodedASCIIMatrix] = encodeASCIIMatrix(ASCIIMatrix);
+  const [[encodedOffsetASCII, encodedIteratorASCII], encodedASCIIMatrix] = encodeASCIIMatrix(ASCIIMatrix);
 
-  const encodedStr = `${ASCIIToStr(offsetASCII)}${ASCIIToStr(iteratorASCII)} ${ASCIIMatrixToStr(encodedASCIIMatrix)}`;
+  const encodedStr = `${ASCIIToStr(encodedOffsetASCII)}${ASCIIToStr(encodedIteratorASCII)} ${ASCIIMatrixToStr(encodedASCIIMatrix)}`;
 
   console.log(`\n${encodedStr}\n`);
 }
 
 function decodeStr(str) {
   // [Scope 1: YELLOW]
-  console.log(`Decoding "${str}"...`);
+  const [encodedOffsetASCII, encodedIteratorASCII] = str
+    .slice(0,2).split('')
+    .map(function charToASCII(char) {
+      return char.charCodeAt(0);
+    });
+  const encodedASCIIMatrix = matrixCharToASCII(strToMatrix(str.slice(3)));
+
+  const decodedStr = ASCIIMatrixToStr(decodeASCIIMatrix(encodedASCIIMatrix, encodedOffsetASCII, encodedIteratorASCII));
+
+  console.log(`\n${decodedStr}\n`);
 }
 
 /**
