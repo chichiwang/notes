@@ -223,7 +223,7 @@ const MatrixCrpyto = (function createMatrixSingleton() {
       });
     const encodedASCIIMatrix = matrixCharToASCII(strToMatrix(str.slice(3)));
 
-    const decodedStr = ASCIIMatrixToStr(decodeASCIIMatrix(encodedASCIIMatrix, encodedOffsetASCII, encodedIteratorASCII));
+    const decodedStr = ASCIIMatrixToStr(decodeASCIIMatrix(encodedASCIIMatrix, encodedOffsetASCII, encodedIteratorASCII)).trim();
 
     console.log(`\n${decodedStr}\n`);
   }
