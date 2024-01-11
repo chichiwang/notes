@@ -36,28 +36,6 @@ const MatrixCrpyto = (function createMatrixSingleton() {
     return ASCIIVal >= ASCIILowerBound && ASCIIVal <= ASCIIUpperBound;
   }
 
-  function validateMatrix(matrix) {
-    let colSize; // Shadowed identifier
-
-    if (!Array.isArray(matrix) || !matrix.length) {
-      return false;
-    }
-
-    for (const row of matrix) {
-      if (!Array.isArray(row) || !row.length) {
-        return false;
-      }
-
-      colSize = colSize || row.length;
-
-      if (row.length !== colSize) {
-        return false;
-      }
-
-      return true;
-    }
-  }
-
   function createMatrix(rowSize, colSize, matrixValFn) {
     return [...new Array(rowSize)]
       .map(function populateRows(_, rowIdx) {
@@ -83,14 +61,8 @@ const MatrixCrpyto = (function createMatrixSingleton() {
   }
 
   function invertMatrix(matrix) {
-    let colSize, rowSize;
-
-    if (!validateMatrix(matrix)) {
-      throw new Error('Invalid Matrix!');
-    }
-
-    rowSize = matrix.length;
-    colSize = matrix[0].length;
+    let rowSize = matrix.length;
+    let colSize = matrix[0].length;
 
     return createMatrix(colSize, rowSize, function invertValues(rowIdx, colIdx) {
       return matrix[colIdx][rowIdx];
@@ -98,10 +70,6 @@ const MatrixCrpyto = (function createMatrixSingleton() {
   }
 
   function matrixCharToASCII(matrix) {
-    if (!validateMatrix(matrix)) {
-      throw new Error('Invalid Matrix!');
-    }
-
     const rowSize = matrix.length;
     const colSize = matrix[0].length;
 
@@ -111,10 +79,6 @@ const MatrixCrpyto = (function createMatrixSingleton() {
   }
 
   function matrixASCIIToChar(matrix) {
-    if (!validateMatrix(matrix)) {
-      throw new Error('Invalid Matrix!');
-    }
-
     const rowSize = matrix.length;
     const colSize = matrix[0].length;
 
@@ -124,10 +88,6 @@ const MatrixCrpyto = (function createMatrixSingleton() {
   }
 
   function encodeASCIIMatrix(matrix) {
-    if (!validateMatrix(matrix)) {
-      throw new Error('Invalid Matrix!');
-    }
-
     const rowSize = matrix.length;
     const colSize = matrix[0].length;
 
@@ -157,10 +117,6 @@ const MatrixCrpyto = (function createMatrixSingleton() {
   }
 
   function decodeASCIIMatrix(matrix, encodedOffset, encodedIterator) {
-    if (!validateMatrix(matrix)) {
-      throw new Error('Invalid Matrix!');
-    }
-
     const rowSize = matrix.length;
     const colSize = matrix[0].length;
 
@@ -194,10 +150,6 @@ const MatrixCrpyto = (function createMatrixSingleton() {
   }
 
   function ASCIIMatrixToStr(matrix) {
-    if (!validateMatrix(matrix)) {
-      throw new Error('Invalid Matrix!');
-    }
-
     return matrix
       .map(function rowsToStr(row) {
         return row.map(function colsToStr(ASCIIVal) {
