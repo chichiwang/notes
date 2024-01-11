@@ -46,9 +46,9 @@ function offsetASCIICode(code, offset) {
   let offsetCode = code + offset;
 
   if (offsetCode < ASCIILowerBound) {
-    offsetCode = ASCIIUpperBound - (ASCIILowerBound - offsetCode);
+    offsetCode = ASCIIUpperBound + 1 - (ASCIILowerBound - offsetCode);
   } else if (offsetCode > ASCIIUpperBound) {
-    offsetCode = ASCIILowerBound + (offsetCode - ASCIIUpperBound);
+    offsetCode = ASCIILowerBound - 1 + (offsetCode - ASCIIUpperBound);
   }
 
   return offsetCode;
@@ -199,6 +199,35 @@ function encodeASCIIMatrix(matrix) {
   return [[encodedStartOffset, encodedIterator], encodedMatrix];
 }
 
+function decodeASCIIMatrix(matrix, encodedOffset, encodedIterator) {
+  // [Scope 1: YELLOW]
+
+  if (!validateMatrix(matrix)) {
+    // [Scope 2: MAGENTA]
+    throw new Error('Invalid Matrix!');
+  }
+
+  const rowSize = matrix.length;
+  const colSize = matrix[0].length;
+
+  let offset = (encodedOffset - maxOffset - ASCIILowerBound) * -1;
+  const iterator = encodedIterator < ASCIILowerBound ? 1 : -1;
+
+  const decodedMatrix = createMatrix(rowSize, colSize, function decodeASCIIValues(rowIdx, colIdx) {
+    const decodedVal = offsetASCIICode(matrix[rowIdx][colIdx], offset);
+    offset += iterator;
+    if (offset < minOffset) {
+      offset = maxOffset;
+    } else if (offset > maxOffset) {
+      offset = minOffset;
+    }
+
+    return decodedVal;
+  });
+
+  return decodedMatrix;
+}
+
 /**
  * Encrytion/Decryption Utilities
  */
@@ -206,9 +235,11 @@ function encodeASCIIMatrix(matrix) {
 function encodeStr(str) {
   // [Scope 1: YELLOW]
   const ASCIIMatrix = matrixCharToASCII(strToMatrix(str));
+  const [[offset, iterator], encodedASCIIMatrix] = encodeASCIIMatrix(ASCIIMatrix);
 
   console.log(ASCIIMatrix);
-  console.log(encodeASCIIMatrix(ASCIIMatrix));
+  console.log(encodedASCIIMatrix);
+  console.log(decodeASCIIMatrix(encodedASCIIMatrix, offset, iterator));
 }
 
 function decodeStr(str) {
