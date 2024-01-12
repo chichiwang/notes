@@ -4,6 +4,7 @@ This appendix aims to provide challenging and interesting exercises to test and 
 ## Sections
 * [Buckets of Marbles](#buckets-of-marbles)
 * [Closure (PART 1)](#closure-part-1)
+  * [A Word About Memory](#a-word-about-memory)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -80,6 +81,13 @@ If `isPrime(4372)` were called multiple times in a program, the above implementa
 * Use closure to implement a cache to remember the the results of `isPrime(..)` so that the primality (`true`/`false`) of a given value is only ever computed once.
 * Use a closure cache over `factorize(..)` as well to reduce wasted computations when calling `factorize(..)` on previously provided numbers.
 * Use separate closures for caching `isPrime(..)` and `factorize(..)` rather than placing them in the same scope.
+
+#### A Word About Memory
+In saving repeated calls the computation speed is improved (in some cases, by a drastic amount). However, this usage of closure is making an explicit trade-off between computational performance and memory usage. This strategy essentially grows the cache (in memory) unboundedly. This can be a good trade-off if a repetition of common inputs is likely.
+
+If, however, the likelihood is that every call will provide unique inputs, then the cache is an inappropriate technique to employ.
+
+A more sophisticated caching strategy is an LRU (last recently used) cache. This cache limits the cache size and drops values that are least recently used. An LRU is non-trivial in its own right - it is a good idea to use a highly optimized implementation of LRU, and be aware of all the trade-offs at play.
 
 [▲ Return to Sections](#sections)
 
