@@ -6,11 +6,33 @@ import {
 } from "node:process";
 
 /**
+ * Basic Memoizer
+ *  Simple memoizer with no memory optimizations or safeguards
+ */
+
+function memoize(fn) {
+  const cache = {};
+
+  return function memoizedFunction() {
+    console.log(`  memoized ${fn.name}: ${[...arguments]}`); // Console statement added to track function calls
+
+    const args = [...arguments];
+
+    if (!cache.hasOwnProperty(args)) {
+      cache[args] = fn(...args);
+    }
+
+    return cache[args];
+  };
+}
+
+/**
  * Provided functions
  */
 
 // Provided implementation of isPrime(..)
 function isPrime(v) {
+  console.log(`  isPrime: ${v}`); // Console statement added to track function calls
   if (v <= 3) {
     return v > 1;
   }
@@ -26,9 +48,12 @@ function isPrime(v) {
   return true;
 }
 
+const isPrimeM = memoize(isPrime);
+
 // Provided implementation of factorize(..)
 function factorize(v) {
-  if (!isPrime(v)) {
+  console.log(`  factorize: ${v}`); // Console statement added to track function calls
+  if (!isPrimeM(v)) { // Replace call to isPrime(..) with call to memoized function, add bugfix
     let i = Math.floor(Math.sqrt(v));
     while (v % i != 0) {
       i--;
@@ -41,6 +66,8 @@ function factorize(v) {
   return [v];
 }
 
+const factorizeM = memoize(factorize);
+
 /**
  * Prompt Utilities
  */
@@ -50,6 +77,16 @@ const promptUser = readline.createInterface({ input, output });
 function runPrompt() {
   promptUser.question('Factorize which number: ')
     .then(function handlePrompt(resp) {
+      const num = Number(resp);
+
+      if (!Number.isInteger(num) || num < 2) {
+        throw new Error('Input must be an integer greater than 1!');
+      }
+
+      const result = factorizeM(num);
+
+      console.log(`\nResult: ${result}\n`);
+
       return runPrompt();
     });
 }
