@@ -18,6 +18,8 @@ Write a program, any program, that satisfies these constraints:
 
 **TIP**: You can write junk foo/bar/baz code for this exercise, but I suggest you try to come up with some sort of non-trivial code that at least does something reasonable.
 
+My _over-engineered_ solution for this exercise: [bucket.mjs](./bucket.mjs);
+
 [▲ Return to Sections](#sections)
 
 | [Previous: Appendix A - Exploring Further](../appendixA/README.md) | [Table of Contents](../README.md#table-of-contents) |
