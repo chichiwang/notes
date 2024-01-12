@@ -82,6 +82,8 @@ If `isPrime(4372)` were called multiple times in a program, the above implementa
 * Use a closure cache over `factorize(..)` as well to reduce wasted computations when calling `factorize(..)` on previously provided numbers.
 * Use separate closures for caching `isPrime(..)` and `factorize(..)` rather than placing them in the same scope.
 
+My solution for this exercise: [closure1.mjs](./closure1.mjs);
+
 #### A Word About Memory
 In saving repeated calls the computation speed is improved (in some cases, by a drastic amount). However, this usage of closure is making an explicit trade-off between computational performance and memory usage. This strategy essentially grows the cache (in memory) unboundedly. This can be a good trade-off if a repetition of common inputs is likely.
 
