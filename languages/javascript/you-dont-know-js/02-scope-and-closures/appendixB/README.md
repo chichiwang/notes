@@ -3,6 +3,7 @@ This appendix aims to provide challenging and interesting exercises to test and 
 
 ## Sections
 * [Buckets of Marbles](#buckets-of-marbles)
+* [Closure (PART 1)](#closure-part-1)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -19,6 +20,66 @@ Write a program, any program, that satisfies these constraints:
 **TIP**: You can write junk foo/bar/baz code for this exercise, but I suggest you try to come up with some sort of non-trivial code that at least does something reasonable.
 
 My _over-engineered_ solution for this exercise: [bucket.mjs](./bucket.mjs);
+
+[▲ Return to Sections](#sections)
+
+## Closure (PART 1)
+A common computer-math operation is determining if a value is a prime number (has no divisors other than 1 and itself), and generating a list of prime factors (divisors):
+
+```javascript
+isPrime(11);        // true
+isPrime(12);        // false
+
+factorize(11);      // [ 11 ]
+factorize(12);      // [ 3, 2, 2 ] --> 3*2*2=12
+```
+
+Below is an implementation of `isPrime(..)` adapted [from the Math.js library](https://github.com/josdejong/mathjs/blob/develop/src/function/utils/isPrime.js):
+
+```javascript
+function isPrime(v) {
+  if (v <= 3) {
+    return v > 1;
+  }
+  if (v % 2 == 0 || v % 3 == 0) {
+    return false;
+  }
+  var vSqrt = Math.sqrt(v);
+  for (let i = 5; i <= vSqrt; i += 6) {
+    if (v % i == 0 || v % (i + 2) == 0) {
+      return false;
+    }
+  }
+  return true;
+}
+```
+
+Below is a somewhat basic implemenation of `factorize(..)`:
+
+```javascript
+function factorize(v) {
+  if (!isPrime(v)) {
+    let i = Math.floor(Math.sqrt(v));
+    while (v % i != 0) {
+      i--;
+    }
+    return [
+      ...factorize(i),
+      ...factorize(v / i)
+    ];
+  }
+  return [v];
+}
+```
+
+**NOTE**: The author calls this implementation _basic_ because it is not performance optimized. It is binary-recursive (which is not tail-call optimizable), and it creates a lot of intermediate array copies. It also does not order the discovered factors in any way.
+
+If `isPrime(4372)` were called multiple times in a program, the above implementation would go through dozens of comparisons/computation steps every time. `factorize(..)` calls `isPrime(..)` many times as it computes the list of factors. There's a good chance most of those calls are repeats.
+
+**Requirements of this exercise**:
+* Use closure to implement a cache to remember the the results of `isPrime(..)` so that the primality (`true`/`false`) of a given value is only ever computed once.
+* Use a closure cache over `factorize(..)` as well to reduce wasted computations when calling `factorize(..)` on previously provided numbers.
+* Use separate closures for caching `isPrime(..)` and `factorize(..)` rather than placing them in the same scope.
 
 [▲ Return to Sections](#sections)
 
