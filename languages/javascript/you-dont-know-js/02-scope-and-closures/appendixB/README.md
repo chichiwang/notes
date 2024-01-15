@@ -123,6 +123,8 @@ speed();      // "slow"
 
 The corner case of passing no values to `toggle(..)` is not important - that toggler instance could always return `undefined`.
 
+My solution for this exercise: [closure2.js](./closure2.js);
+
 [▲ Return to Sections](#sections)
 
 | [Previous: Appendix A - Exploring Further](../appendixA/README.md) | [Table of Contents](../README.md#table-of-contents) |
