@@ -5,6 +5,7 @@ This appendix aims to provide challenging and interesting exercises to test and 
 * [Buckets of Marbles](#buckets-of-marbles)
 * [Closure (PART 1)](#closure-part-1)
   * [A Word About Memory](#a-word-about-memory)
+* [Closure (PART 2)](#closure-part-2)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -90,6 +91,37 @@ In saving repeated calls the computation speed is improved (in some cases, by a 
 If, however, the likelihood is that every call will provide unique inputs, then the cache is an inappropriate technique to employ.
 
 A more sophisticated caching strategy is an LRU (last recently used) cache. This cache limits the cache size and drops values that are least recently used. An LRU is non-trivial in its own right - it is a good idea to use a highly optimized implementation of LRU, and be aware of all the trade-offs at play.
+
+[▲ Return to Sections](#sections)
+
+## Closure (PART 2)
+In this exercise create a `toggle(..)` utility that returns a toggled value.
+
+The toggle function will return another function that will alternate/rotate between the passed-in values when called:
+
+```javascript
+function toggle(/* .. */) {
+  // ..
+}
+
+var hello = toggle("hello");
+var onOff = toggle("on","off");
+var speed = toggle("slow","medium","fast");
+
+hello();      // "hello"
+hello();      // "hello"
+
+onOff();      // "on"
+onOff();      // "off"
+onOff();      // "on"
+
+speed();      // "slow"
+speed();      // "medium"
+speed();      // "fast"
+speed();      // "slow"
+```
+
+The corner case of passing no values to `toggle(..)` is not important - that toggler instance could always return `undefined`.
 
 [▲ Return to Sections](#sections)
 
