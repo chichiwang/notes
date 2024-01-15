@@ -6,6 +6,7 @@ This appendix aims to provide challenging and interesting exercises to test and 
 * [Closure (PART 1)](#closure-part-1)
   * [A Word About Memory](#a-word-about-memory)
 * [Closure (PART 2)](#closure-part-2)
+* [Closure (PART 3)](#closure-part-3)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -124,6 +125,122 @@ speed();      // "slow"
 The corner case of passing no values to `toggle(..)` is not important - that toggler instance could always return `undefined`.
 
 My solution for this exercise: [closure2.js](./closure2.js);
+
+[▲ Return to Sections](#sections)
+
+## Closure (PART 3)
+In this exercise: Implement a `calculator()` function will produce an instance of a calculator function which maintains its own state:
+
+```javascript
+function calculator() {
+  // ..
+}
+
+var calc = calculator();
+```
+
+Each time `calc(..)` is called it should be provided with a single character that represents a keypress of a calculator. Restrict the calculator to supporting digits (`0`-`9`), arithmetic operations (`+`, `-`, `*` , `/`), and `=` to compute the operation. Operations are processed in the order they are entered and there is no `()` grouping or operator precedence.
+
+Do not support decimals, but the `/` operation can result in them. Do not support negative numbers, but the `-` operation can result in them. If an operation results in a decimal or negative value, operations can continue to operate on those values.
+
+The return value of calling `calc(..)` should mimic what would be shown on an actual calculator: reflecting what was just pressed, or computing the total when pressing `=`.
+
+```javascript
+calc("4");     // 4
+calc("+");     // +
+calc("7");     // 7
+calc("3");     // 3
+calc("-");     // -
+calc("2");     // 2
+calc("=");     // 75
+calc("*");     // *
+calc("4");     // 4
+calc("=");     // 300
+calc("5");     // 5
+calc("-");     // -
+calc("5");     // 5
+calc("=");     // 0
+```
+
+The usage above is clunky, so use a `useCalc(..)` helper, that runs the calculator one character at a time from a string, and computes the display each time:
+
+```javascript
+function useCalc(calc, keys) {
+  return [...keys].reduce(
+    function showDisplay(display,key){
+      var ret = String( calc(key) );
+      return (
+        display +
+        (
+          (ret != "" && key == "=") ?
+            "=" :
+            ""
+        ) +
+        ret
+      );
+    },
+    ""
+  );
+}
+
+useCalc(calc,"4+3=");           // 4+3=7
+useCalc(calc,"+9=");            // +9=16
+useCalc(calc,"*8=");            // *5=128
+useCalc(calc,"7*2*3=");         // 7*2*3=42
+useCalc(calc,"1/0=");           // 1/0=ERR
+useCalc(calc,"+3=");            // +3=ERR
+useCalc(calc,"51=");            // 51
+```
+
+The most sensible usage of `useCalc(..)` helper is to always have `=` be the last character entered.
+
+Some of the totals displayed by the calculator requires special handling - use the following `formatTotal(..)` function, which the calculator should use whenever it's going to return a current computed total:
+
+```javascript
+function formatTotal(display) {
+  if (Number.isFinite(display)) {
+    // constrain display to max 11 chars
+    let maxDigits = 11;
+    // reserve space for "e+" notation?
+    if (Math.abs(display) > 99999999999) {
+      maxDigits -= 6;
+    }
+    // reserve space for "-"?
+    if (display < 0) {
+      maxDigits--;
+    }
+
+    // whole number?
+    if (Number.isInteger(display)) {
+      display = display
+        .toPrecision(maxDigits)
+        .replace(/\.0+$/,"");
+    }
+    // decimal
+    else {
+      // reserve space for "."
+      maxDigits--;
+      // reserve space for leading "0"?
+      if (
+        Math.abs(display) >= 0 &&
+        Math.abs(display) < 1
+      ) {
+        maxDigits--;
+      }
+      display = display
+        .toPrecision(maxDigits)
+        .replace(/0+$/,"");
+    }
+  }
+  else {
+    display = "ERR";
+  }
+
+  return display;
+}
+```
+
+`formatTotal(..)` mostly handles limiting the calculator display to 11 characters max, even if negatives, repeating decimals, or even the `e+` exponential notation.
 
 [▲ Return to Sections](#sections)
 
