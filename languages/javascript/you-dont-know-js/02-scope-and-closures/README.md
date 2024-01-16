@@ -1,9 +1,9 @@
-# You Don't Know JS Yet: Scope & Closures - WIP
+# You Don't Know JS Yet: Scope & Closures
 **Author**: [Chi-chi Wang](https://github.com/chichiwang)
 
 Notes from the book [You Don't Know JS Yet: Scope & Closures - 2nd Edition](https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/scope-closures/README.md) written by Kyle Simpson.
 
-Date: WIP
+Date: 2024-01-16
 
 ## Table of Contents
 * [Chapter 1: What's the Scope?](./01/README.md)
