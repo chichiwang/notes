@@ -45,6 +45,52 @@ function formatTotal(display) {
 }
 
 /**
+ * Helper functions
+ */
+const digitRegExpStr = '\\d';
+const mathRegExpStr = '[\\+\\-\\*\\/]';
+const calculateRegExpStr = '=';
+
+function isNumber(char) {
+  const numberRegExp = new RegExp(`^${digitRegExpStr}$`);
+  return numberRegExp.test(char);
+}
+
+function isMathOperator(char) {
+  const mathRegExp = new RegExp(`^${mathRegExpStr}$`);
+  return mathRegExp.test(char);
+}
+
+function isCalculateOperator(char) {
+  const calculateRegExp = new RegExp(`^${calculateRegExpStr}$`);
+  return /^=$/.test(char);
+}
+
+function calculate(num1, num2, operatorStr) {
+  if (operatorStr === '+') {
+    return num1 + num2;
+  } else if (operatorStr === '-') {
+    return num1 - num2;
+  } else if (operatorStr === '*') {
+    return num1 * num2;
+  } else if (operatorStr === '/') {
+    return num1 / num2;
+  }
+
+  return false;
+}
+
+function extractFirstNumber(str) {
+  const endIdx = str.search(/[^\d]/);
+
+  if (endIdx === -1) {
+    return [str, ''];
+  }
+
+  return [str.substring(0, endIdx), str.substring(endIdx)];
+}
+
+/**
  * Supply implemenation for calculator(..)
  *   Use closure to return a calculator function that will provide
  *    calculations according to the requirements:
@@ -53,6 +99,71 @@ function formatTotal(display) {
  *    * Do not respect operational precedence, do not accept negative or decimal values
  */
 function calculator() {
+  const errValue = 'ERR';
+  const defaultVal = '';
+  let lastResult = defaultVal;
+  let operation = defaultVal;
+
+  function errResponse() {
+    lastResult = defaultVal;
+    operation = defaultVal;
+    return formatTotal(errValue);
+  }
+
+  return function calculatorInstance(keyPress) {
+    const isKeyNumber = isNumber(keyPress);
+    const isKeyMath = isMathOperator(keyPress);
+    const isKeyCalculate = isCalculateOperator(keyPress);
+    const isValidInput = isKeyNumber || isKeyMath || isKeyCalculate;
+
+    if (!isValidInput) {
+      return errResponse();
+    } else if (!isKeyCalculate) {
+      operation = operation + keyPress;
+      return keyPress;
+    } else {
+      const chainedOperatorsRegExp = new RegExp(`${mathRegExpStr}{2,}`);
+      const onlyDigitsRegExp = new RegExp(`^${digitRegExpStr}+$`);
+
+      const isFirstOperation = lastResult === defaultVal;
+      const isOperationEmpty = operation === defaultVal;
+      const startsWithCalculateOperator = !isOperationEmpty && isCalculateOperator(operation[0]);
+      const startsWithMathOperator = !isOperationEmpty && isMathOperator(operation[0]);
+      const endsWithMathOperator = !isOperationEmpty && isMathOperator(operation[operation.length -1]);
+      const startsWithNumber = !isOperationEmpty && isNumber(operation[0]);
+
+      const hasChainedOperators = chainedOperatorsRegExp.test(operation);
+      const hasOnlyDigits = onlyDigitsRegExp.test(operation);
+
+      const isInvalidOperation =
+        (isFirstOperation && startsWithCalculateOperator) ||
+        (isFirstOperation && startsWithMathOperator) ||
+        endsWithMathOperator ||
+        hasChainedOperators ||
+        isOperationEmpty;
+
+      if (isInvalidOperation) {
+        return errResponse();
+      } else {
+        if (isFirstOperation || startsWithNumber) {
+          const [newResult, newOperation] = extractFirstNumber(operation);
+          lastResult = Number(newResult);
+          operation = newOperation;
+        }
+
+        while (operation.length > 0) {
+          const operator = operation[0];
+          operation = operation.substring(1);
+          const [nextNumber, newOperation] = extractFirstNumber(operation);
+          operation = newOperation;
+
+          lastResult = calculate(lastResult, Number(nextNumber), operator);
+        }
+      }
+
+      return formatTotal(lastResult);
+    }
+  };
 }
 
 var calc = calculator();
@@ -82,6 +193,7 @@ function useCalc(calc, keys) {
 
 /**
  * Expected results for calls to useCalc(..)
+ *  Provided in the exercise
  */
 console.log(useCalc(calc,'4+3='));           // 4+3=7
 console.log(useCalc(calc,'+9='));            // +9=16

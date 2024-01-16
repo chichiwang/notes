@@ -242,6 +242,8 @@ function formatTotal(display) {
 
 `formatTotal(..)` mostly handles limiting the calculator display to 11 characters max, even if negatives, repeating decimals, or even the `e+` exponential notation.
 
+My _over-engineered_ solution for this exercise: [closure3.js](./closure3.js);
+
 [▲ Return to Sections](#sections)
 
 | [Previous: Appendix A - Exploring Further](../appendixA/README.md) | [Table of Contents](../README.md#table-of-contents) |
