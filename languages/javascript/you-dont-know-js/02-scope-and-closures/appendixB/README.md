@@ -9,6 +9,7 @@ This appendix aims to provide challenging and interesting exercises to test and 
 * [Closure (PART 3)](#closure-part-3)
 * [Modules](#modules)
 * [Suggested Solutions](#suggested-solutions)
+  * [Suggested: Bucket of Marbles](#suggested-bucket-of-marbles)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -330,6 +331,55 @@ My classic module solution for this exercise: [modulesClassic.js](./modulesClass
 Each suggested solution to the above exercises is just one approach to the problem. They are not _the right answer_ - they illustrate a reasonable approach to each exercise.
 
 The most important benefit from reading these suggested solutions is to compare with your own code and analyze why similar/different approaches were chosen. Focus on the main topic rather than small details.
+
+#### Suggested: Bucket of Marbles
+The [Bucket of Marbles](#bucket-of-marbles) exercise can be solved thusly:
+
+```javascript
+// RED(1)
+const howMany = 100;
+
+// Sieve of Eratosthenes
+function findPrimes(howMany) {
+  // BLUE(2)
+  var sieve = Array(howMany).fill(true);
+  var max = Math.sqrt(howMany);
+
+  for (let i = 2; i < max; i++) {
+    // GREEN(3)
+    if (sieve[i]) {
+      // ORANGE(4)
+      let j = Math.pow(i,2);
+      for (let k = j; k < howMany; k += i) {
+        // PURPLE(5)
+        sieve[k] = false;
+      }
+    }
+  }
+
+  return sieve
+  .map(function getPrime(flag,prime){
+    // PINK(6)
+    if (flag) return prime;
+    return flag;
+  })
+  .filter(function onlyPrimes(v){
+    // YELLOW(7)
+    return !!v;
+  })
+  .slice(1);
+}
+
+findPrimes(howMany);
+// [
+//    2, 3, 5, 7, 11, 13, 17,
+//    19, 23, 29, 31, 37, 41,
+//    43, 47, 53, 59, 61, 67,
+//    71, 73, 79, 83, 89, 97
+// ]
+```
+
+**NOTE**: Looking at this solution, I am realizing that, in [my solution](./bucket.mjs), I misunderstood the scope-coloring requirement and colored different scopes at the same scope-level (depth) the same color. This made the exercise more difficult, but I did have fun with it so that is fine.
 
 [▲ Return to Sections](#sections)
 
