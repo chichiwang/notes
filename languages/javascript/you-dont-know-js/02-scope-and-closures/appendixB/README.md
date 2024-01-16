@@ -10,6 +10,7 @@ This appendix aims to provide challenging and interesting exercises to test and 
 * [Modules](#modules)
 * [Suggested Solutions](#suggested-solutions)
   * [Suggested: Bucket of Marbles](#suggested-bucket-of-marbles)
+  * [Suggested: Closure (PART 1)](#suggested-closure-part-1)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -380,6 +381,62 @@ findPrimes(howMany);
 ```
 
 **NOTE**: Looking at this solution, I am realizing that, in [my solution](./bucket.mjs), I misunderstood the scope-coloring requirement and colored different scopes at the same scope-level (depth) the same color. This made the exercise more difficult, but I did have fun with it so that is fine.
+
+#### Suggested: Closure (PART 1)
+[Closure (PART 1)](#closure-part-1) can be solved like this:
+
+```javascript
+var isPrime = (function isPrime(v){
+  var primes = {};
+
+  return function isPrime(v) {
+    if (v in primes) {
+      return primes[v];
+    }
+    if (v <= 3) {
+      return (primes[v] = v > 1);
+    }
+    if (v % 2 == 0 || v % 3 == 0) {
+      return (primes[v] = false);
+    }
+    let vSqrt = Math.sqrt(v);
+    for (let i = 5; i <= vSqrt; i += 6) {
+      if (v % i == 0 || v % (i + 2) == 0) {
+        return (primes[v] = false);
+      }
+    }
+    return (primes[v] = true);
+  };
+})();
+
+var factorize = (function factorize(v){
+  var factors = {};
+
+  return function findFactors(v) {
+    if (v in factors) {
+      return factors[v];
+    }
+    if (!isPrime(v)) {
+      let i = Math.floor(Math.sqrt(v));
+      while (v % i != 0) {
+        i--;
+      }
+      return (factors[v] = [
+        ...findFactors(i),
+        ...findFactors(v / i)
+      ]);
+    }
+    return (factors[v] = [v]);
+  };
+})();
+```
+
+The author's approach to each utility:
+1. Wrap each function in an IIFE to define the scope for the cache variable to reside in.
+2. In the underlying call, first check the cache and, if the result is already known, return the result.
+3. Assign to the cache the result of the operation, then return the results of the assignment operation (for brevity).
+
+**NOTE**: In my [solution to this exercise](./closure1.mjs) I created a utility function called `memoize(..)` that would do essentially the above for any function passed into it, returning a wrapper function that would cache the inputs/results of calling the original function. [Memoization is a common technique](https://www.geeksforgeeks.org/javascript-memoization/) to trade memory usage for computational efficiency.
 
 [▲ Return to Sections](#sections)
 
