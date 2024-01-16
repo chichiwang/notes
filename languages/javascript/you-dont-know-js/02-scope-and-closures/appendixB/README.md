@@ -7,6 +7,7 @@ This appendix aims to provide challenging and interesting exercises to test and 
   * [A Word About Memory](#a-word-about-memory)
 * [Closure (PART 2)](#closure-part-2)
 * [Closure (PART 3)](#closure-part-3)
+* [Modules](#modules)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -243,6 +244,82 @@ function formatTotal(display) {
 `formatTotal(..)` mostly handles limiting the calculator display to 11 characters max, even if negatives, repeating decimals, or even the `e+` exponential notation.
 
 My _over-engineered_ solution for this exercise: [closure3.js](./closure3.js);
+
+[▲ Return to Sections](#sections)
+
+## Modules
+This exercise is to convert the calculator from [Closure (PART 3)](#closure-part-3) into a module.
+
+Instead of calling a single function `calc(..)`, specific methods will be called on the public API of an instance. The output will remain the same.
+
+`calculator()` will be a classic module factory (not IIFE), so that multiple calculators can be created.
+
+The public API will consist of:
+* `number(..)` (the character/number pressed)
+* `plus()`
+* `minus()`
+* `mult()`
+* `div()`
+* `eq()`
+
+Usage will look like:
+
+```javascript
+var calc = calculator();
+
+calc.number("4");     // 4
+calc.plus();          // +
+calc.number("7");     // 7
+calc.number("3");     // 3
+calc.minus();         // -
+calc.number("2");     // 2
+calc.eq();            // 75
+```
+
+`formatTotal(..)` will remain the same from the previous exercise, but `useCalc(..)` will be adjusted to work with the module API:
+
+```javascript
+function useCalc(calc,keys) {
+  var keyMappings = {
+    "+": "plus",
+    "-": "minus",
+    "*": "mult",
+    "/": "div",
+    "=": "eq"
+  };
+
+  return [...keys].reduce(
+    function showDisplay(display,key){
+      var fn = keyMappings[key] || "number";
+      var ret = String( calc[fn](key) );
+      return (
+        display +
+        (
+          (ret != "" && key == "=") ?
+            "=" :
+            ""
+        ) +
+        ret
+      );
+    },
+    ""
+  );
+}
+
+useCalc(calc,"4+3=");           // 4+3=7
+useCalc(calc,"+9=");            // +9=16
+useCalc(calc,"*8=");            // *5=128
+useCalc(calc,"7*2*3=");         // 7*2*3=42
+useCalc(calc,"1/0=");           // 1/0=ERR
+useCalc(calc,"+3=");            // +3=ERR
+useCalc(calc,"51=");            // 51
+```
+
+Consider the pros/cons of representing the calculator as a module as opposed to the closure-function approach from the previous exercise.
+
+Bonus: write out a few sentences about these considerations.
+
+Bonus #2: Convert the module to other module formats: UMD, CommonJS, and ESM (ES Modules)
 
 [▲ Return to Sections](#sections)
 
