@@ -12,6 +12,7 @@ This appendix aims to provide challenging and interesting exercises to test and 
   * [Suggested: Bucket of Marbles](#suggested-bucket-of-marbles)
   * [Suggested: Closure (PART 1)](#suggested-closure-part-1)
   * [Suggested: Closure (PART 2)](#suggested-closure-part-2)
+  * [Suggested: Closure (PART 3)](#suggested-closure-part-3)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -476,6 +477,92 @@ speed();      // "slow"
 ```
 
 **NOTE**: In [my solution to this exercise](./closure2.js) I used a similar strategy, but I opted to track the current index of the value being returned from the original list and update that on each call instead. This was to avoid mutating the passed-in array, a habit from my experience that avoids unnecessary confusion as to the state/value of the parameter at any given time during program execution. The index value at any given time also clearly points to the current toggled value.
+
+#### Suggested: Closure (PART 3)
+The [Closure (PART 3)](#closure-part-3) exercise can be solved in the following manner:
+
+```javascript
+// from earlier:
+//
+// function useCalc(..) { .. }
+// function formatTotal(..) { .. }
+
+function calculator() {
+  var currentTotal = 0;
+  var currentVal = "";
+  var currentOper = "=";
+
+  return pressKey;
+
+  // ********************
+
+  function pressKey(key){
+    // number key?
+    if (/\d/.test(key)) {
+      currentVal += key;
+      return key;
+    }
+    // operator key?
+    else if (/[+*/-]/.test(key)) {
+      // multiple operations in a series?
+      if (
+        currentOper != "=" &&
+        currentVal != ""
+      ) {
+        // implied '=' keypress
+        pressKey("=");
+      }
+      else if (currentVal != "") {
+        currentTotal = Number(currentVal);
+      }
+      currentOper = key;
+      currentVal = "";
+      return key;
+    }
+    // = key?
+    else if (
+      key == "=" &&
+      currentOper != "="
+    ) {
+      currentTotal = op(
+        currentTotal,
+        currentOper,
+        Number(currentVal)
+      );
+      currentOper = "=";
+      currentVal = "";
+      return formatTotal(currentTotal);
+    }
+    return "";
+  };
+
+  function op(val1,oper,val2) {
+    var ops = {
+      // NOTE: using arrow functions
+      // only for brevity in the book
+      "+": (v1,v2) => v1 + v2,
+      "-": (v1,v2) => v1 - v2,
+      "*": (v1,v2) => v1 * v2,
+      "/": (v1,v2) => v1 / v2
+    };
+    return ops[oper](val1,val2);
+  }
+}
+
+var calc = calculator();
+
+useCalc(calc,"4+3=");           // 4+3=7
+useCalc(calc,"+9=");            // +9=16
+useCalc(calc,"*8=");            // *5=128
+useCalc(calc,"7*2*3=");         // 7*2*3=42
+useCalc(calc,"1/0=");           // 1/0=ERR
+useCalc(calc,"+3=");            // +3=ERR
+useCalc(calc,"51=");            // 51
+```
+
+**NOTE**: Remember this exercise is about closure, do not focus too much on the actual mechanics of the calculator, but more on if the calculator state is preserved across function calls.
+
+**NOTE**: In [my over-engineered solution to this exercise](./closure3.js) I definitely focused far more on the mechanics of the calculator than the author did. One major difference between my implementation and his is that I did not take a subsequent operator in a sequence as an implied `=` keypress, and therefore did not keep a running total until an explicit `=` keypress was made. The `useCalc(..)` helper wrapping the `calc(..)` instance masks this and it doesn't appear to matter to the output to the end-user which approach was taken.
 
 [▲ Return to Sections](#sections)
 
