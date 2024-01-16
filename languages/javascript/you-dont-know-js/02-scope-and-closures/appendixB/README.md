@@ -11,6 +11,7 @@ This appendix aims to provide challenging and interesting exercises to test and 
 * [Suggested Solutions](#suggested-solutions)
   * [Suggested: Bucket of Marbles](#suggested-bucket-of-marbles)
   * [Suggested: Closure (PART 1)](#suggested-closure-part-1)
+  * [Suggested: Closure (PART 2)](#suggested-closure-part-2)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -436,7 +437,45 @@ The author's approach to each utility:
 2. In the underlying call, first check the cache and, if the result is already known, return the result.
 3. Assign to the cache the result of the operation, then return the results of the assignment operation (for brevity).
 
-**NOTE**: In my [solution to this exercise](./closure1.mjs) I created a utility function called `memoize(..)` that would do essentially the above for any function passed into it, returning a wrapper function that would cache the inputs/results of calling the original function. [Memoization is a common technique](https://www.geeksforgeeks.org/javascript-memoization/) to trade memory usage for computational efficiency.
+**NOTE**: In [my solution to this exercise](./closure1.mjs) I created a utility function called `memoize(..)` that would do essentially the above for any function passed into it, returning a wrapper function that would cache the inputs/results of calling the original function. [Memoization is a common technique](https://www.geeksforgeeks.org/javascript-memoization/) to trade memory usage for computational efficiency.
+
+#### Suggested: Closure (PART 2)
+The exercise for [Closure (PART 2)](#closure-part-2) can be solved in this way:
+
+```javascript
+function toggle(...vals) {
+  var unset = {};
+  var cur = unset;
+
+  return function next(){
+    // save previous value back at
+    // the end of the list
+    if (cur != unset) {
+      vals.push(cur);
+    }
+    cur = vals.shift();
+    return cur;
+  };
+}
+
+var hello = toggle("hello");
+var onOff = toggle("on","off");
+var speed = toggle("slow","medium","fast");
+
+hello();      // "hello"
+hello();      // "hello"
+
+onOff();      // "on"
+onOff();      // "off"
+onOff();      // "on"
+
+speed();      // "slow"
+speed();      // "medium"
+speed();      // "fast"
+speed();      // "slow"
+```
+
+**NOTE**: In [my solution to this exercise](./closure2.js) I used a similar strategy, but I opted to track the current index of the value being returned from the original list and update that on each call instead. This was to avoid mutating the passed-in array, a habit from my experience that avoids unnecessary confusion as to the state/value of the parameter at any given time during program execution. The index value at any given time also clearly points to the current toggled value.
 
 [▲ Return to Sections](#sections)
 
