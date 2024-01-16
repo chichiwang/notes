@@ -8,6 +8,7 @@ This appendix aims to provide challenging and interesting exercises to test and 
 * [Closure (PART 2)](#closure-part-2)
 * [Closure (PART 3)](#closure-part-3)
 * [Modules](#modules)
+* [Suggested Solutions](#suggested-solutions)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -322,6 +323,13 @@ Bonus: write out a few sentences about these considerations.
 Bonus #2: Convert the module to other module formats: UMD, CommonJS, and ESM (ES Modules)
 
 My classic module solution for this exercise: [modulesClassic.js](./modulesClassic.js);
+
+[▲ Return to Sections](#sections)
+
+## Suggested Solutions
+Each suggested solution to the above exercises is just one approach to the problem. They are not _the right answer_ - they illustrate a reasonable approach to each exercise.
+
+The most important benefit from reading these suggested solutions is to compare with your own code and analyze why similar/different approaches were chosen. Focus on the main topic rather than small details.
 
 [▲ Return to Sections](#sections)
 
