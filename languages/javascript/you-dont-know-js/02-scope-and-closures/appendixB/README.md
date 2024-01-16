@@ -321,6 +321,8 @@ Bonus: write out a few sentences about these considerations.
 
 Bonus #2: Convert the module to other module formats: UMD, CommonJS, and ESM (ES Modules)
 
+My classic module solution for this exercise: [modulesClassic.js](./modulesClassic.js);
+
 [▲ Return to Sections](#sections)
 
 | [Previous: Appendix A - Exploring Further](../appendixA/README.md) | [Table of Contents](../README.md#table-of-contents) |
