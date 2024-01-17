@@ -6,5 +6,6 @@ Notes from the book [You Don't Know JS Yet: Objects & Classes - 2nd Edition](htt
 Date: WIP
 
 ## Table of Contents
+* [Chapter 1: Object Foundations](./01/README.md)
 
 [◂ Return to Books](../README.md)
