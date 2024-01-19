@@ -9,6 +9,7 @@ Objects are the most flexible and powerful container in JavaScript. They are the
 * [About This Book](#about-this-book)
 * [Objects As Containers](#objects-as-containers)
 * [Defining Properties](#defining-properties)
+  * [Looks Like JSON?](#looks-like-json)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -77,6 +78,35 @@ myObj = {
 ```
 
 `favoriteNumber()` is not holding a value, but a function reference. The function reference must be executed to obtain the result.
+
+#### Looks Like JSON?
+JavaScript object literal syntax resembles a related syntax _JSON_ (JavaScript Object Notation):
+
+```json
+{
+  "favoriteNumber": 42,
+  "isDeveloper": true,
+  "firstName": "Kyle"
+}
+```
+
+The biggest differences between JSON and object literal notation is that in JSON objects:
+1. Property names must be wrapped in double quotes (`"`).
+2. Property values must be literals (primitives, objects, or arrays). They cannot be JavaScript expressions, functions, etc.
+3. The syntax is stricter, JSON does not allow:
+  * Comments
+  * Trailing commas in object or array expressions
+
+In a JavaScript program, an object literal does not require quotes around property names, although it is allowed. Some characters are valid in a property name, but only when wrapped in quotation marks (single `'` or double `"` quotes):
+
+```javascript
+myObj = {
+  favoriteNumber: 42,
+  isDeveloper: true,
+  firstName: "Kyle",
+  "2 nicknames": [ "getify", "ydkjs" ]
+};
+```
 
 [▲ Return to Sections](#sections)
 
