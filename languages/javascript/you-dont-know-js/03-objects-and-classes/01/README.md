@@ -7,6 +7,7 @@ Objects are the most flexible and powerful container in JavaScript. They are the
 
 ## Sections
 * [About This Book](#about-this-book)
+* [Objects As Containers](#objects-as-containers)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -18,6 +19,25 @@ A lot has changed in the JavaScript landscape in the 8 years since the publishin
 This book will still talk about how `this` works. `class` actually operates mostly via the prototype chain under the covers. JavaScript developers in 2022 are almost never writing code to explicitly wire up prototypal inheritance anymore. Class design patterns are how the majority of data and behavior organization (data structures) in JavaScript are expressed.
 
 This book reflects JavaScript's current reality: thus the new sub-title, new organization and focus of topics, and complete re-write of the previous edition's text.
+
+[▲ Return to Sections](#sections)
+
+## Objects As Containers
+Objects are collections of key/value pairs. There are sub-types of object in JavaScript with specialized behaviors, such as:
+* Arrays - numerically indexed
+* Functions - callable
+
+**NOTE**: Keys are often referred to as _property names_. A pairing of _property name_ and _value_ is called a _property_.
+
+Regular JavaScript objects are typically declared with literal syntax:
+
+```javascript
+myObj = {
+  // ..
+};
+```
+
+**NOTE**: The above object literal syntax is more common and preferable to using the new object syntax (`myObj = new Object();`).
 
 [▲ Return to Sections](#sections)
 
