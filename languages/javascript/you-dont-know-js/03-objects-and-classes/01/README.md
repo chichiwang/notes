@@ -8,6 +8,7 @@ Objects are the most flexible and powerful container in JavaScript. They are the
 ## Sections
 * [About This Book](#about-this-book)
 * [Objects As Containers](#objects-as-containers)
+* [Defining Properties](#defining-properties)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -38,6 +39,44 @@ myObj = {
 ```
 
 **NOTE**: The above object literal syntax is more common and preferable to using the new object syntax (`myObj = new Object();`).
+
+[▲ Return to Sections](#sections)
+
+## Defining Properties
+Within an object literal's curly braces, define a property (name and value) with `propertyName: propertyValue` pairs:
+
+```javascript
+myObj = {
+  favoriteNumber: 42,
+  isDeveloper: true,
+  firstName: "Kyle"
+};
+```
+
+The values assigned to properties can be literal values or computed properties:
+
+```javascript
+function twenty() { return 20; }
+
+myObj = {
+  favoriteNumber: (twenty() + 1) * 2,
+};
+```
+
+The expression `(twenty() + 1) * 2` is evaluated immediately and the result (`42`) is assigned to the property.
+
+JavaScript does not support [lazy expressions](https://en.wikipedia.org/wiki/Lazy_evaluation), so a lazy expression cannot be assigned as a property value. The only way to achieve this is to wrap an expression in a function for assignment:
+
+```javascript
+function twenty() { return 20; }
+function myNumber() { return (twenty() + 1) * 2; }
+
+myObj = {
+  favoriteNumber: myNumber   // notice, NOT `myNumber()` as a function call
+};
+```
+
+`favoriteNumber()` is not holding a value, but a function reference. The function reference must be executed to obtain the result.
 
 [▲ Return to Sections](#sections)
 
