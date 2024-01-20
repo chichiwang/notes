@@ -10,6 +10,7 @@ Objects are the most flexible and powerful container in JavaScript. They are the
 * [Objects As Containers](#objects-as-containers)
 * [Defining Properties](#defining-properties)
   * [Looks Like JSON?](#looks-like-json)
+  * [Property Names](#property-names)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -107,6 +108,33 @@ myObj = {
   "2 nicknames": [ "getify", "ydkjs" ]
 };
 ```
+
+#### Property Names
+Property names in object literals are almost always treated as or coerced to strings. An exception to this is integer (or "integer looking") property names.
+
+```javascript
+anotherObj = {
+  42:       "<-- this property name will be treated as an integer",
+  "41":     "<-- ...and so will this one",
+
+  true:     "<-- this property name will be treated as a string",
+  [myObj]:  "<-- ...and so will this one"
+};
+```
+
+The property names `42` and `"41"` will be treated as integer property names (index). The `true` value will be coerced to the string `"true"`. The `myObj` identifier reference, _computed_ via the surrounding `[..]`, will coerce the object's value to a string (generally the default `[object Object]`).
+
+**WARNING**: Never rely on computed string coercion for objects used as property names - the resultant string is unlikely to be what is expected, which can lead to bugs. Instead, use a `Map`(added in ES6), where objects used as property names are left as-is, instead of being coerced to string values.
+
+Property names can be computed in object literals by enclosing them in `[..]`:
+
+```javascript
+anotherObj = {
+  ["x" + (21 * 2)]: true
+};
+```
+
+The expression `"x" + (21 * 2)` is computed immediately and the result `"x42"` is used as property name.
 
 [▲ Return to Sections](#sections)
 
