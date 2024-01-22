@@ -12,6 +12,7 @@ Objects are the most flexible and powerful container in JavaScript. They are the
   * [Looks Like JSON?](#looks-like-json)
   * [Property Names](#property-names)
   * [Symbols As Property Names](#symbols-as-property-names)
+  * [Concise Properties](#concise-properties)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -159,6 +160,31 @@ anotherObj = {
 Because symbols are globally unique within the program, there is no chance of accidental collision of the prperty name.
 
 Symbols are also useful to hook into special default behaviors of objects ([covered in the next chapter](../02/README.md).
+
+#### Concise Properties
+When defining an object literal, it is common to use a property name that's the same as an in-scope identifier that holds the value to be assigned:
+
+```javascript
+coolFact = "the first person convicted of speeding was going 8 mph";
+
+anotherObj = {
+  coolFact: coolFact
+};
+```
+
+**NOTE**: The above could have been defined as `"coolFact": coolFact`, but JavaScript developers rarely quote property names unless absolutely necessary. It is idiomatic to avoid quotes unless required.
+
+In the situation that a property name and value expression identifier are the same, the property name can be omitted from the object literal definition as a _concise property_ definition:
+
+```javascript
+coolFact = "the first person convicted of speeding was going 8 mph";
+
+anotherObj = {
+  coolFact   // <-- concise property short-hand
+};
+```
+
+This assigns the property `coolFact` to the object `anotherObj` with the value contained within the variable `coolFact`.
 
 [▲ Return to Sections](#sections)
 
