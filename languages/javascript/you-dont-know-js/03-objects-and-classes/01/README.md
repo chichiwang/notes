@@ -11,6 +11,7 @@ Objects are the most flexible and powerful container in JavaScript. They are the
 * [Defining Properties](#defining-properties)
   * [Looks Like JSON?](#looks-like-json)
   * [Property Names](#property-names)
+  * [Symbols As Property Names](#symbols-as-property-names)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -135,6 +136,29 @@ anotherObj = {
 ```
 
 The expression `"x" + (21 * 2)` is computed immediately and the result `"x42"` is used as property name.
+
+#### Symbols As Property Names
+ES6 introduced a new primitive value type: [symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol). Symbols are frequently used as special property names. Symbols are created via the `Symbol(..)` function, without the `new` keyword, which can be passed an optional description string used for debugging (this string is inaccessible to the JavaScript program, it is only useful for debug output).
+
+```javascript
+myPropSymbol = Symbol("optional, developer-friendly description");
+```
+
+**NOTE**: Symbol values are completely opaque to, and totally unique within, a JavaScript program. While symbols can be created and used, JavaScript obscures the underlying value, and it cannot be operated upon.
+
+To define a property name as a symbol, use a computed property name:
+
+```javascript
+myPropSymbol = Symbol("optional, developer-friendly description");
+
+anotherObj = {
+  [myPropSymbol]: "Hello, symbol!"
+};
+```
+
+Because symbols are globally unique within the program, there is no chance of accidental collision of the prperty name.
+
+Symbols are also useful to hook into special default behaviors of objects ([covered in the next chapter](../02/README.md).
 
 [▲ Return to Sections](#sections)
 
