@@ -14,6 +14,7 @@ Objects are the most flexible and powerful container in JavaScript. They are the
   * [Symbols As Property Names](#symbols-as-property-names)
   * [Concise Properties](#concise-properties)
   * [Consise Methods](#concise-methods)
+  * [Object Spread](#object-spread)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -225,6 +226,39 @@ anotherObj = {
   *[ "ok, greet 6".toUpperCase() ]() { yield "Hello, audience!"; }
 };
 ```
+
+#### Object Spread
+Another way to add properties to an object literal is via the `...` syntax. While not technically an operator, it seems like one. This syntax is referred to as _object spread_.
+
+When `...` is used within an object literal, it will _spread_ out the contents (key/value pairs) of another object into the object being defined:
+
+```javascript
+anotherObj = {
+  favoriteNumber: 12,
+
+  ...myObj,   // object spread, shallow copies `myObj`
+
+  greeting: "Hello!"
+}
+```
+
+The spreading of `myObj`'s properties in the example above is _shallow_: the top level properties of `myObj` are copied over and the values assigned. If any of those values are references to other objects, those references are copied over - the values are not duplicated.
+
+Property definition operations happen in the order they are encountered, top-to-bottom. In the above example, if `myObj` has a `favoriteNumber` property, it will overwrite the earlier assignment `favoriteNumber: 12`. If `myObj` has a `greeting` property, that value will be overwritten by the `greeting: "Hello!"` assignment.
+
+**NOTE**: Object spread only copies _owned_ properties (those directly on the object) that are _enumerable_ (allowed to be enumerated/listed). It does not duplicate the property, it merely performs a simple assignment-style copy.
+
+A common use of `...` object spread is for creating shallow object copies:
+
+```javascript
+myObjShallowCopy = { ...myObj };
+```
+
+The `...` syntax cannot be used to spread an object into an existing object value, it must be used within the brackets `{..}` of an object literal.
+
+To perform a shallow copy with API rather than syntax, refer to the [Object Entries](#object-entries) section of this chapter.
+
+To shallow copy object properties into an existing object refer to the [Assigning Properties](#assigning-properties) section of this chapter.
 
 [▲ Return to Sections](#sections)
 
