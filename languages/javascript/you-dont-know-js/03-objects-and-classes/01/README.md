@@ -13,6 +13,7 @@ Objects are the most flexible and powerful container in JavaScript. They are the
   * [Property Names](#property-names)
   * [Symbols As Property Names](#symbols-as-property-names)
   * [Concise Properties](#concise-properties)
+  * [Consise Methods](#concise-methods)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -185,6 +186,45 @@ anotherObj = {
 ```
 
 This assigns the property `coolFact` to the object `anotherObj` with the value contained within the variable `coolFact`.
+
+#### Concise Methods
+A similar shorthand for defining functions/methods in an object literal:
+
+```javascript
+anotherObj = {
+  // standard function property
+  greet: function() { console.log("Hello!"); },
+
+  // concise function/method property
+  greet2() { console.log("Hello, friend!"); }
+};
+```
+
+Generator functions can also be defined by shorthand:
+
+```javascript
+anotherObj = {
+  // instead of:
+  greet3: function*() { yield "Hello, everyone!"; }
+
+  // concise generator method
+  *greet3() { yield "Hello, everyone!"; }
+};
+```
+
+Although uncommon, concise methods/generators can have quoted or computed names:
+
+```javascript
+anotherObj = {
+  "greet-4"() { console.log("Hello, audience!"); },
+
+  // concise computed name
+  [ "gr" + "eet 5" ]() { console.log("Hello, audience!"); },
+
+  // concise computed generator name
+  *[ "ok, greet 6".toUpperCase() ]() { yield "Hello, audience!"; }
+};
+```
 
 [▲ Return to Sections](#sections)
 
