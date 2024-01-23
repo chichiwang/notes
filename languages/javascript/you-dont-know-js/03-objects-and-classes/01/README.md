@@ -18,6 +18,7 @@ Objects are the most flexible and powerful container in JavaScript. They are the
   * [Deep Object Copy](#deep-object-copy)
 * [Accessing Properties](#accessing-properties)
   * [Object Entries](#object-entries)
+  * [Destructuring](#destructuring)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -354,6 +355,74 @@ myObjShallowCopy = Object.fromEntries( Object.entries(myObj) );
 // alternate approach to the earlier discussed:
 // myObjShallowCopy = { ...myObj };
 ```
+
+#### Destructuring
+_Object destructuring_ (added in ES6) is another approach to accessing properties in an object. Destructuring can be thought of as defining a _pattern_ that describes what the object is supposed to look like structurally, then asking JavaScript to follow that pattern to access the contents of an object value.
+
+The end result of object destructuring is one or more assignments to other targets (variable(s)) of the values from the source object.
+
+The following variable assignments from an object's properties:
+
+```javascript
+myObj = {
+  favoriteNumber: 42,
+  isDeveloper: true,
+  firstName: "Kyle"
+};
+
+const favoriteNumber = (
+  myObj.favoriteNumber !== undefined ? myObj.favoriteNumber : 12
+);
+const isDev = myObj.isDeveloper;
+const firstName = myObj.firstName;
+const lname = (
+  myObj.lastName !== undefined ? myObj.lastName : "--missing--"
+);
+```
+
+Would look like the following, using declarative object destructuring syntax:
+
+```javascript
+myObj = {
+  favoriteNumber: 42,
+  isDeveloper: true,
+  firstName: "Kyle"
+};
+
+const { favoriteNumber = 12 } = myObj;
+const {
+  isDeveloper: isDev,
+  firstName: firstName,
+  lastName: lname = "--missing--"
+} = myObj;
+
+favoriteNumber;   // 42
+isDev;            // true
+firstName;        // "Kyle"
+lname;            // "--missing--"
+```
+
+In the example above, the `{..}` brackets resemble an object literal definition, but appear on the left side of the `=` assignment operator denoting it as a destructuring pattern rather than an object definition.
+
+The `{ favoriteNumber } = myObj` destructuring assigns the value of a property in `myObj` named `favoriteNumber` to an identifier of the same name. The `= 12` provides a default value to the `favoriteNumber` identifier if a corresponding property name is not found in `myObj` (or the `favoriteNumber` property value is `undefined`).
+
+`firstName: firstName` is providing a source and target for the value assignment, but it is redundant and unnecessary: a single `firstName` would have sufficed, and is generally preferred.
+
+`lastName: lname = "--missing--"` combines source-target renaming and providing a default value.
+
+The above examples combine object destructuring and variable declarations (`const` in this case), but object destructuring is not inherently a declaration mechanism. Destructuring is about access and assignment (source to target), so it operates well against existing targets:
+
+```javascript
+let fave;
+
+// surrounding ( ) are required syntax here,
+// when a declarator is not used
+({ favoriteNumber: fave } = myObj);
+
+fave;  // 42
+```
+
+Object destructuring syntax is preferred for its declarative style over the heavily imperative pre-ES6 variants.
 
 [▲ Return to Sections](#sections)
 
