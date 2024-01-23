@@ -15,6 +15,7 @@ Objects are the most flexible and powerful container in JavaScript. They are the
   * [Concise Properties](#concise-properties)
   * [Consise Methods](#concise-methods)
   * [Object Spread](#object-spread)
+  * [Deep Object Copy](#deep-object-copy)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -259,6 +260,31 @@ The `...` syntax cannot be used to spread an object into an existing object valu
 To perform a shallow copy with API rather than syntax, refer to the [Object Entries](#object-entries) section of this chapter.
 
 To shallow copy object properties into an existing object refer to the [Assigning Properties](#assigning-properties) section of this chapter.
+
+#### Deep Object Copy
+Object spread (`...`) is only suitable for shallow copies - it is best suited for duplicating objects that hold simple, primtive values rather than references to other objects.
+
+Deep object duplication is a complex and nuanced operation:
+* What does it mean to duplicate a function?
+  * A special kind of object, also held by reference.
+* What does it mean to duplicate an external (not entirely in JavaScript) object reference?
+  * ex: DOM Element
+* What happens if an object has circular references?
+  * A nested descendant object holds a reference back up to an outer ancestor object.
+
+There are a variety of opinions on how these corner cases should be handled, and no single standard exists for deep object duplication.
+
+The standard approaches have been:
+1. Use a library utility that declares a specific opinion on how the duplication behaviors/nuances should be handled.
+2. Use the `JSON.parse(JSON.stringify(..))` strategy. This only works if the target object contains no circular references, and it contains no objects that cannot be properly serialized with JSON (such as functions).
+
+Recently a third option has emerged: [structuredClone](https://html.spec.whatwg.org/multipage/structured-data.html#structured-cloning). This is not a JavaScript feature, but a companion API provided by environments like web browsers. Objects can be deep copied using this utility:
+
+```javascript
+myObjCopy = structuredClone(myObj);
+```
+
+The underlying implementation of `structuredClone(..)` supports duplicating circular references, and many more types of values than the `JSON` trick. However, it still has limits including no support for cloning functions or DOM elements.
 
 [▲ Return to Sections](#sections)
 
