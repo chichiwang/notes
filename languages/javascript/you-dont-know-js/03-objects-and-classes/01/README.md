@@ -17,6 +17,7 @@ Objects are the most flexible and powerful container in JavaScript. They are the
   * [Object Spread](#object-spread)
   * [Deep Object Copy](#deep-object-copy)
 * [Accessing Properties](#accessing-properties)
+  * [Object Entries](#object-entries)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -328,6 +329,31 @@ myObj[`${ howMany(1) } nicknames`];   // [ "getify", "ydkjs" ]
 ```
 
 In the above example, the result of the expression within the brackets, `"2 nicknames"` is used as the property name access on the object `myObj`.
+
+#### Object Entries
+`Object.entries(..)` can be used to retrieve a list of the properties in an object, as an array of tuples containing the key/value pairs:
+
+```javascript
+myObj = {
+  favoriteNumber: 42,
+  isDeveloper: true,
+  firstName: "Kyle"
+};
+
+Object.entries(myObj);
+// [ ["favoriteNumber",42], ["isDeveloper",true], ["firstName","Kyle"] ]
+```
+
+`Object.entries(..)` (added in ES6) returns the enumerable properties (see the [Property Descriptors](../02/README.md#property-descriptors) section of the next Chapter) of a target object.
+
+It is possible to create a new object from list of entries using `Object.fromEntries(..)` (added in ES2019):
+
+```javascript
+myObjShallowCopy = Object.fromEntries( Object.entries(myObj) );
+
+// alternate approach to the earlier discussed:
+// myObjShallowCopy = { ...myObj };
+```
 
 [▲ Return to Sections](#sections)
 
