@@ -16,6 +16,7 @@ Objects are the most flexible and powerful container in JavaScript. They are the
   * [Consise Methods](#concise-methods)
   * [Object Spread](#object-spread)
   * [Deep Object Copy](#deep-object-copy)
+* [Accessing Properties](#accessing-properties)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -285,6 +286,48 @@ myObjCopy = structuredClone(myObj);
 ```
 
 The underlying implementation of `structuredClone(..)` supports duplicating circular references, and many more types of values than the `JSON` trick. However, it still has limits including no support for cloning functions or DOM elements.
+
+[▲ Return to Sections](#sections)
+
+## Accessing Properties
+Property access of an object is typically done with the `.` operator:
+
+```javascript
+myObj.favoriteNumber;    // 42
+myObj.isDeveloper;       // true
+```
+
+If a property name contains characters that cannot appear in identifiers (leading numbers, whitespace), `[..]` brackets can be used instead of `.`:
+
+```javascript
+myObj["2 nicknames"];    // [ "getify", "ydkjs" ]
+```
+
+Even though numeric property names remain numbers, propery access via `[..]` will coerce a string representation to a number (`"42"` as the numeric `42` equivalent), and then access the associated numeric property name:
+
+```javascript
+anotherObj[42];          // "<-- this property name will..."
+anotherObj["41"];        // "<-- this property name will..."
+```
+
+A computed property name can be accessed with the `[..]` brackets as well:
+
+```javascript
+propName = "41";
+anotherObj[propName];
+```
+
+Any expression placed within the `[..]` brackets will be evaluated first, and the resulting value will be used in the property name lookup on the target object:
+
+```javascript
+function howMany(x) {
+  return x + 1;
+}
+
+myObj[`${ howMany(1) } nicknames`];   // [ "getify", "ydkjs" ]
+```
+
+In the above example, the result of the expression within the brackets, `"2 nicknames"` is used as the property name access on the object `myObj`.
 
 [▲ Return to Sections](#sections)
 
