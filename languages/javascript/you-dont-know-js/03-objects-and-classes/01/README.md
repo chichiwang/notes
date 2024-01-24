@@ -22,6 +22,7 @@ Objects are the most flexible and powerful container in JavaScript. They are the
   * [Conditional Property Access](#conditional-property-access)
   * [Accessing Properties On Non-Objects](#accessing-properties-on-non-objects)
 * [Assigning Properties](#assigning-properties)
+* [Deleting Properties](#deleting-properties)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -519,6 +520,29 @@ Object.assign(
 ```
 
 `Object.assign(..)` takes the first object passed as argument as target, and each subsequent object as sources. Copying is done in the same manner described in the [Object Spread](#object-spread) section.
+ 
+[▲ Return to Sections](#sections)
+
+## Deleting Properties
+The only way to remove a property from an object is with the `delete` operator:
+
+```javascript
+anotherObj = {
+  counter: 123
+};
+
+anotherObj.counter;   // 123
+
+delete anotherObj.counter;
+
+anotherObj.counter;   // undefined
+```
+
+The `delete` operator does not directly perform any deallocation/freeing up of memory through garbage collection. It simply removes a property from an object. If the value in the property was a reference (to another object) and there are no other surviving references to that value after the property is removed, the value is likely eligible for for removal in a future sweep of the GC.
+
+Calling `delete` on anything other than an object property will fail either silently (non-strict mode) or throw an exception (strict mode).
+
+Deleting a property from an object is distinctly different than assigning that property a value of `null` or `undefined`. A property with value `null`/`undefined` is still present in the object and is enumerable.
  
 [▲ Return to Sections](#sections)
 
