@@ -666,4 +666,4 @@ There is a lot more to objects that just static collections of property names an
  
 [▲ Return to Sections](#sections)
 
-| [Table of Contents](../README.md#table-of-contents) |
+| [Table of Contents](../README.md#table-of-contents) | [Next: Chapter 2 - How Objects Work](../02/README.md) |

@@ -7,5 +7,6 @@ Date: WIP
 
 ## Table of Contents
 * [Chapter 1: Object Foundations](./01/README.md)
+* [Chapter 2: How Objects Work](./02/README.md)
 
 [◂ Return to Books](../README.md)
