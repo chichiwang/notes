@@ -21,6 +21,7 @@ Objects are the most flexible and powerful container in JavaScript. They are the
   * [Destructuring](#destructuring)
   * [Conditional Property Access](#conditional-property-access)
   * [Accessing Properties On Non-Objects](#accessing-properties-on-non-objects)
+* [Assigning Properties](#assigning-properties)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -484,6 +485,40 @@ In the above snippet, JavaScript temporarily boxes the value `42` into a `Number
 `null` and `undefined` can be boxed manually by calling `Object(null)`/`Object(undefined)` to allow property access, however JavaScript will not automatically box these values - property access will fail.
 
 **NOTE**: The counter-operation to _boxing_ is _unboxing_. JavaScript will unbox values to perform operations on them, for example `Number(42)` or `Object(42)` would be unwrapped when encountering mathetmatical operations on them (`+`, `*`, etc).
+ 
+[▲ Return to Sections](#sections)
+
+## Assigning Properties
+As with any other variable assignment, object properties are assigned with the `=` operator:
+
+```javascript
+myObj.favoriteNumber = 123;
+```
+
+If `favoriteNumber` is not already defined as a property on `myObj`, the above statement will create the property and assign the value. If `favoriteNumber` already exists as a property on `myObj`, the above statement will re-assign it.
+
+**WARNING** An `=` assignment of a property may fail (either silently or throwing an exception), or it may not directly assign a value but invoke a _setter_ function that may perform other operations.
+
+It is possible to assign one or more properties at once, assuming the source properties (`key`/`value` pairs) are in another object, using the `Object.assign(..)` method:
+
+```javascript
+// shallow copy all (owned and enumerable) properties
+// from `myObj` into `anotherObj`
+Object.assign(anotherObj,myObj);
+
+Object.assign(
+  /*target=*/anotherObj,
+  /*source1=*/{
+    someProp: "some value",
+    anotherProp: 1001,
+  },
+  /*source2=*/{
+    yetAnotherProp: false
+  }
+);
+```
+
+`Object.assign(..)` takes the first object passed as argument as target, and each subsequent object as sources. Copying is done in the same manner described in the [Object Spread](#object-spread) section.
  
 [▲ Return to Sections](#sections)
 
