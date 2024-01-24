@@ -24,6 +24,7 @@ Objects are the most flexible and powerful container in JavaScript. They are the
 * [Assigning Properties](#assigning-properties)
 * [Deleting Properties](#deleting-properties)
 * [Determining Container Contents](#determining-container-contents)
+  * [Better Existence Check](#better-existence-check)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -573,6 +574,28 @@ myObj.hasOwnProperty("nicknames");    // false
 The `in` operator checks the target specified and its `[[PROTOTYPE]]` chain for a specific property. `hasOwnProperty(..)` only checks the target object.
 
 `hasOwnProperty(..)` is defined as a built-in method on `Object.prototype`, which is inherited by all normal objects.
+
+#### Better Existence Check
+ES2022 introduces a new feature: `Object.hasOwn(..)` which does the same thing as `hasOwnProperty(..)` but it is invoked as a static helper external to the object value rather than being accessed through the object's `[[PROTOTYPE]]`. This is safer for consistent usage:
+
+```javascript
+// instead of:
+myObj.hasOwnProperty("favoriteNumber")
+
+// we should now prefer:
+Object.hasOwn(myObj,"favoriteNumber")
+```
+
+A simple polyfill for this feature:
+
+```javascript
+// simple polyfill sketch for `Object.hasOwn(..)`
+if (!Object.hasOwn) {
+  Object.hasOwn = function hasOwn(obj,propName) {
+    return Object.prototype.hasOwnProperty.call(obj,propName);
+  };
+}
+```
  
 [▲ Return to Sections](#sections)
 
