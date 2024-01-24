@@ -26,6 +26,7 @@ Objects are the most flexible and powerful container in JavaScript. They are the
 * [Determining Container Contents](#determining-container-contents)
   * [Better Existence Check](#better-existence-check)
   * [Listing All Container Contents](#listing-all-container-contents)
+* [Temporary Containers](#temporary-containers)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -606,6 +607,49 @@ Using `Object.entries(..)` to retrieve the properties of an object [was discusse
 All of the above methods only return properties (names, values) on an object itself, and will not traverse the prototype chain. The `in` operator will potentially traverse the entire chain to check for the existence of a property, and a `for .. in` loop will traverse the chain and list any enumerable properties.
 
 There is no built-in API to traverse an entire prototype chain and return a list of the combined set of both owned and inherited contents.
+ 
+[▲ Return to Sections](#sections)
+
+## Temporary Containers
+Objects can be used as temporary transport mechanisms, such as when passing multiple values to a function via a single argument, or when a function returns multiple values:
+
+```javascript
+function formatValues({ one, two, three }) {
+  // the actual object passed in as an
+  // argument is not accessible, since
+  // we destructured it into three
+  // separate variables
+
+  one = one.toUpperCase();
+  two = `--${two}--`;
+  three = three.substring(0,5);
+
+  // this object is only to transport
+  // all three values in a single
+  // return statement
+  return { one, two, three };
+}
+
+// destructuring the return value from
+// the function, because that returned
+// object is just a temporary container
+// to transport us multiple values
+const { one, two, three } =
+
+  // this object argument is a temporary
+  // transport for multiple input values
+  formatValues({
+    one: "Kyle",
+    two: "Simpson",
+    three: "getify"
+  });
+
+one;     // "KYLE"
+two;     // "--Simpson--"
+three;   // "getif"
+```
+
+The argument passed to `formatValues(..)` is parameter destructured, so the function only deals with the individual variables `one`, `two`, and `three`. The return value of `formatValues(..)` is also destructured so the calling scope is dealing with individual variables as well.
  
 [▲ Return to Sections](#sections)
 
