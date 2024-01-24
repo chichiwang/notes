@@ -20,6 +20,7 @@ Objects are the most flexible and powerful container in JavaScript. They are the
   * [Object Entries](#object-entries)
   * [Destructuring](#destructuring)
   * [Conditional Property Access](#conditional-property-access)
+  * [Accessing Properties On Non-Objects](#accessing-properties-on-non-objects)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -465,6 +466,24 @@ myObj["2 nicknames"]?.[0];   // "getify"
 **WARNING**: There is a third form of optional chaining, called [optional call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining#optional_chaining_with_function_calls) whose operator looks like `?.(`. This is used to perform a non-null'ish check on a property before executing a function call on it: `myObj.someFunc?.(42)`.
 
 The author recommends avoiding the optional call operator because it does not garuantee that a property is callable, just that it is non-null'ish. It is Kyle Simpson's opinion that this can lead to confusion, with users/readers assuming that the optional call ensures a property is callable when that is not what it does.
+
+#### Accessing Properties On Non-Objects
+Properties/methods can be accessed on values that are not objects:
+
+```javascript
+fave = 42;
+
+fave;              // 42
+fave.toString();   // "42"
+```
+
+If property access is performed on a non-object, non-null'ish value (like the primitive `42` in the above example), JavaScript will temporarily wrapp the value into an object-wrapped representation, allowing property access against the implicitly instantiated object. This process is typically called _boxing_ (putting the value inside a _box_, specifically an object container).
+
+In the above snippet, JavaScript temporarily boxes the value `42` into a `Number` object container so that the method access `fave.toString()` can be performed on it.
+
+`null` and `undefined` can be boxed manually by calling `Object(null)`/`Object(undefined)` to allow property access, however JavaScript will not automatically box these values - property access will fail.
+
+**NOTE**: The counter-operation to _boxing_ is _unboxing_. JavaScript will unbox values to perform operations on them, for example `Number(42)` or `Object(42)` would be unwrapped when encountering mathetmatical operations on them (`+`, `*`, etc).
  
 [▲ Return to Sections](#sections)
 
