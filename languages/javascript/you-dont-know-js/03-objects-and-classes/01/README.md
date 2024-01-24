@@ -25,6 +25,7 @@ Objects are the most flexible and powerful container in JavaScript. They are the
 * [Deleting Properties](#deleting-properties)
 * [Determining Container Contents](#determining-container-contents)
   * [Better Existence Check](#better-existence-check)
+  * [Listing All Container Contents](#listing-all-container-contents)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -596,6 +597,15 @@ if (!Object.hasOwn) {
   };
 }
 ```
+
+#### Listing All Container Contents
+Using `Object.entries(..)` to retrieve the properties of an object [was discussed in another section of this chapter](#object-entries). Similarly, `Object.keys(..)` can be used to retrieve a list of the enumerable property names of an object, and `Object.values(..)` will return a list of the enumerable property values.
+
+`Object.getOwnProperyNames(..)` can be used to retrieve all the keys in an object, enumerable or not. This method will not return any symbol property names, though - symbol property names are treated as special locations on an object. `Object.getOwnPropertySymbols(..)` will return that list of symbol property names.
+
+All of the above methods only return properties (names, values) on an object itself, and will not traverse the prototype chain. The `in` operator will potentially traverse the entire chain to check for the existence of a property, and a `for .. in` loop will traverse the chain and list any enumerable properties.
+
+There is no built-in API to traverse an entire prototype chain and return a list of the combined set of both owned and inherited contents.
  
 [▲ Return to Sections](#sections)
 
