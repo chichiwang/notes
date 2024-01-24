@@ -23,6 +23,7 @@ Objects are the most flexible and powerful container in JavaScript. They are the
   * [Accessing Properties On Non-Objects](#accessing-properties-on-non-objects)
 * [Assigning Properties](#assigning-properties)
 * [Deleting Properties](#deleting-properties)
+* [Determining Container Contents](#determining-container-contents)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -543,6 +544,35 @@ The `delete` operator does not directly perform any deallocation/freeing up of m
 Calling `delete` on anything other than an object property will fail either silently (non-strict mode) or throw an exception (strict mode).
 
 Deleting a property from an object is distinctly different than assigning that property a value of `null` or `undefined`. A property with value `null`/`undefined` is still present in the object and is enumerable.
+ 
+[▲ Return to Sections](#sections)
+
+## Determining Container Contents
+To determine if an object has a specific property:
+
+```javascript
+myObj = {
+  favoriteNumber: 42,
+  coolFact: "the first person convicted of speeding was going 8 mph",
+  beardLength: undefined,
+  nicknames: [ "getify", "ydkjs" ]
+};
+
+"favoriteNumber" in myObj;            // true
+
+myObj.hasOwnProperty("coolFact");     // true
+myObj.hasOwnProperty("beardLength");  // true
+
+myObj.nicknames = undefined;
+myObj.hasOwnProperty("nicknames");    // true
+
+delete myObj.nicknames;
+myObj.hasOwnProperty("nicknames");    // false
+```
+
+The `in` operator checks the target specified and its `[[PROTOTYPE]]` chain for a specific property. `hasOwnProperty(..)` only checks the target object.
+
+`hasOwnProperty(..)` is defined as a built-in method on `Object.prototype`, which is inherited by all normal objects.
  
 [▲ Return to Sections](#sections)
 
