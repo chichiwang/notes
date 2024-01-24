@@ -27,6 +27,7 @@ Objects are the most flexible and powerful container in JavaScript. They are the
   * [Better Existence Check](#better-existence-check)
   * [Listing All Container Contents](#listing-all-container-contents)
 * [Temporary Containers](#temporary-containers)
+* [Containers Are Collections Of Properties](#containers-are-collections-of-properties)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -650,6 +651,18 @@ three;   // "getif"
 ```
 
 The argument passed to `formatValues(..)` is parameter destructured, so the function only deals with the individual variables `one`, `two`, and `three`. The return value of `formatValues(..)` is also destructured so the calling scope is dealing with individual variables as well.
+ 
+[▲ Return to Sections](#sections)
+
+## Containers Are Collections Of Properties
+The most common usage of objects is as containers for multiple values, created and managed by:
+* defining properties (named locations), either at object creation time or later
+* assigning values, either at object creation time or later
+* accessing values later, using location names (property names)
+* deleting properties using `delete`
+* determining container contents with utilities such as `in`, `hasOwnProperty(..)`/`hasOwn(..)`, `Object.entries(..)`, `Object.keys(..)`, etc.
+
+There is a lot more to objects that just static collections of property names and values. The next chapter will explore how they actually work.
  
 [▲ Return to Sections](#sections)
 
