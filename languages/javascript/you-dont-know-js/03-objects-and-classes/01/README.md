@@ -19,6 +19,7 @@ Objects are the most flexible and powerful container in JavaScript. They are the
 * [Accessing Properties](#accessing-properties)
   * [Object Entries](#object-entries)
   * [Destructuring](#destructuring)
+  * [Conditional Property Access](#conditional-property-access)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -424,6 +425,47 @@ fave;  // 42
 
 Object destructuring syntax is preferred for its declarative style over the heavily imperative pre-ES6 variants.
 
+#### Conditional Property Access
+[Optional chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining) was added to JavaScript in ES6. The primary form of optional chaining is a two-character compound operator: `?.`
+
+In the expression `A?.B` the optional chaining operator will check if the left-hand side reference (`A`) is null'ish (`null` or `undefined`), and if so it will short-circuit the property access and return `undefined`. If no left-hand side references are null'ish in the property access chain, it will behave as normal.
+
+```javascript
+myObj?.favoriteNumber
+```
+
+In the above example, if `myObj` is `null` or `undefined`, then `undefined` will be returned, otherwise the result of accessing the `favoriteNumber` property will be returned. The optional chaining operator does not verify that `myObj` is an actual object, nor that the `favoriteNumber` property exists on it. All non-null'ish values in JavaScript can _safely_ be accessed via the `.` operator (no exceptions thrown).
+
+Typically `?.` is used in nested property accesses:
+
+```javascript
+myObj?.address?.city
+```
+
+The equivalent retrieval without using `?.` looks like:
+
+```javascript
+(myObj != null && myObj.address != null) ? myObj.address.city : undefined
+```
+
+The `?.` operator should not be used everywhere properties are being accessed. Use of `?.` should be reserved for accessing properties on objects where the nature of the values accessed are subject to conditions that cannot be predicted/controlled.
+
+In the previous example, it is unlikely that a chain property access would begin with a variable that may not even reference an object. It is more likely that the top level variable may be missing object properties depending on conditions. More likely the property access chain would look more like:
+
+```javascript
+myObj.address?.city
+```
+
+Another form of optional chaining is `?.[`, used when the property being accessed requires `[..]` brackets:
+
+```javascript
+myObj["2 nicknames"]?.[0];   // "getify"
+```
+
+**WARNING**: There is a third form of optional chaining, called [optional call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining#optional_chaining_with_function_calls) whose operator looks like `?.(`. This is used to perform a non-null'ish check on a property before executing a function call on it: `myObj.someFunc?.(42)`.
+
+The author recommends avoiding the optional call operator because it does not garuantee that a property is callable, just that it is non-null'ish. It is Kyle Simpson's opinion that this can lead to confusion, with users/readers assuming that the optional call ensures a property is callable when that is not what it does.
+ 
 [▲ Return to Sections](#sections)
 
 | [Table of Contents](../README.md#table-of-contents) |
