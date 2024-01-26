@@ -7,6 +7,7 @@ The characteristics that define the underlying behavior of objects are collectiv
 * [Property Descriptors](#property-descriptors)
   * [Accessor Properties](#accessor-properties)
   * [Enumerable, Writable, Configurable](#enumerable-writable-configurable)
+* [Object Sub-Types](#object-sub-types)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -112,6 +113,13 @@ The attributes of a property descriptor include:
 * `configurable`
   * Determines if a peroperty's _descriptor_ can be re-defined/overwritten. To lock a property's descriptor, define it with `configurable: false`.
   * As long as a property is still writable, the value can still be re-assigned via `=`.
+
+[▲ Return to Sections](#sections)
+
+## Object Sub-Types
+There are a variety of [specialized sub-types of objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) in JavaScript, but the two most commonly used are arrays and functions.
+
+**NOTE**: The term _sub-type_ used in this book refers to a derived type that has inherited behaviors from a parent type, but has specialized or extended these behaviors. Values of these object sub-types are fully objects, but also _more than just_ objects.
 
 [▲ Return to Sections](#sections)
 
