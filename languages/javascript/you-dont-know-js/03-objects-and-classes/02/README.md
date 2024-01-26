@@ -5,6 +5,7 @@ The characteristics that define the underlying behavior of objects are collectiv
 
 ## Sections
 * [Property Descriptors](#property-descriptors)
+  * [Accessor Properties](#accessor-properties)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -61,6 +62,39 @@ Object.defineProperties(anotherObj,{
     // another property descriptor
   }
 });
+```
+
+#### Accessor Properties
+A _property descriptor_ usually defines a `value` property, but it can also contain _accessor properties_ (getters/setters). A property descriptor containing accessor properties may not contain a `value` property, but may look like:
+
+```javascript
+{
+  get() { .. },    // function to invoke when retrieving the value
+  set(v) { .. },   // function to invoke when assigning the value
+  // .. enumerable, etc
+}
+```
+
+Property access on a property that has a getter defined may be invoked in the normal way (`obj.prop`), but under the hood the property's `get()` method is invoked. Property assignment on a property that has a setter defined may be invoked in the normal way (`obj.prop = value`), but under the hood the property's `set(..)` method is invoked as if `obj.prop.set(value)` had been called.
+
+```javascript
+anotherObj = {};
+
+Object.defineProperty(anotherObj,"fave",{
+  get() { console.log("Getting 'fave' value!"); return 123; },
+  set(v) { console.log(`Ignoring ${v} assignment.`); }
+});
+
+anotherObj.fave;
+// Getting 'fave' value!
+// 123
+
+anotherObj.fave = 42;
+// Ignoring 42 assignment.
+
+anotherObj.fave;
+// Getting 'fave' value!
+// 123
 ```
 
 [▲ Return to Sections](#sections)
