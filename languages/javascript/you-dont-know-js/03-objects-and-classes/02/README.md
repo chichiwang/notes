@@ -6,6 +6,7 @@ The characteristics that define the underlying behavior of objects are collectiv
 ## Sections
 * [Property Descriptors](#property-descriptors)
   * [Accessor Properties](#accessor-properties)
+  * [Enumerable, Writable, Configurable](#enumerable-writable-configurable)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -65,7 +66,7 @@ Object.defineProperties(anotherObj,{
 ```
 
 #### Accessor Properties
-A _property descriptor_ usually defines a `value` property, but it can also contain _accessor properties_ (getters/setters). A property descriptor containing accessor properties may not contain a `value` property, but may look like:
+A _property descriptor_ usually defines a `value` property, but it can also contain _accessor properties_ (getters/setters). A property descriptor containing accessor properties cannot contain a `value` property, but may look like:
 
 ```javascript
 {
@@ -96,6 +97,21 @@ anotherObj.fave;
 // Getting 'fave' value!
 // 123
 ```
+
+#### Enumerable, Writable, Configurable
+The attributes of a property descriptor include:
+* `value` or `get()`/`set(..)`
+  * Described in the [above sections](#accessor-properties)
+* `enumerable`
+  * Determines if the property will appear in enumerations of object properties, such as `Object.keys(..)`, `Object.entries(..)`, `for .. in` loops, ect.
+  * Determines if the property can be copied in operations like object spread via `...`, `Object.assign(..)`, `Object.assign(..)`.
+  * Mark properties that should not be iterated/copied as non-enumerable.
+* `writable`
+  * Determines if value assignment via `=` is permitted. To make a property read-only, define it with `writable: false`.
+  * As long as a property is still configurable, the value can still be changed via `Object.defineProperty(..)`.
+* `configurable`
+  * Determines if a peroperty's _descriptor_ can be re-defined/overwritten. To lock a property's descriptor, define it with `configurable: false`.
+  * As long as a property is still writable, the value can still be re-assigned via `=`.
 
 [▲ Return to Sections](#sections)
 
