@@ -12,6 +12,7 @@ The characteristics that define the underlying behavior of objects are collectiv
     * [Empty Slots](#empty-slots)
   * [Functions](#functions)
     * [Avoid Setting Function-Object Properties](#avoid-setting-function-object-properties)
+* [Object Characteristics](#object-characteristics)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -210,6 +211,14 @@ extraInfo.set(help,"this is some important information");
 // later:
 extraInfo.get(help);   // "this is some important information"
 ```
+
+[▲ Return to Sections](#sections)
+
+## Object Characteristics
+Certain behaviors are configurable across entire objects:
+* Extensible
+* Sealed
+* Frozen
 
 [▲ Return to Sections](#sections)
 
