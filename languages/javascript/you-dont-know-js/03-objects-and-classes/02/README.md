@@ -10,6 +10,7 @@ The characteristics that define the underlying behavior of objects are collectiv
 * [Object Sub-Types](#object-sub-types)
   * [Arrays](#arrays)
     * [Empty Slots](#empty-slots)
+  * [Functions](#functions)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -182,6 +183,20 @@ myList[9];                  // undefined
 ```
 
 There are many APIs in JavaScript, like `Array.map(..)` that will skip over empty slots. Never intentionally create empty slots in arrays, it can lead to un-intuitive behaviors in the program.
+
+#### Functions
+Functions are a sub-object type that can have properties added to or accessed from them. Functions have two pre-defined properties that may be interacted with (for meta-programming purposes):
+
+```javascript
+function help(opt1,opt2,...remainingOpts) {
+  // ..
+}
+
+help.name;          // "help"
+help.length;        // 2
+```
+
+The `length` of a function is the count of its explicitly defined parameters, up to but not including a parameter that either has a default value defined (ex: `param = 42`) or a _rest parameter_ (ex: `...remainingOpts`).
 
 [▲ Return to Sections](#sections)
 
