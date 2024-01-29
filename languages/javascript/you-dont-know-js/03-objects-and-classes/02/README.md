@@ -9,6 +9,7 @@ The characteristics that define the underlying behavior of objects are collectiv
   * [Enumerable, Writable, Configurable](#enumerable-writable-configurable)
 * [Object Sub-Types](#object-sub-types)
   * [Arrays](#arrays)
+    * [Empty Slots](#empty-slots)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -161,6 +162,26 @@ myList.length;   // 4
 ```
 
 **WARNING**: Many JavaScript developers incorrectly believe that an array's `length` property is a _getter_, and that it is computationally _expensive_ to access this property (as if JavaScript computes the length of an array on-the-fly). For at least 10 years now it is more efficient to retrieve length via an array's `length` property rather than to track the length manually.
+
+##### Empty Slots
+A _flaw_ in the design of JavaScript arrays: if an index of an array more than one position beyond the current end of the array is assigned, JavaScript will leave the intervening slots _empty_ rather than populating them with `undefined`, as may be expected:
+
+```javascript
+myList = [ 23, 42, 109 ];
+myList.length;              // 3
+
+myList[14] = "Hello";
+myList.length;              // 15
+
+myList;                     // [ 23, 42, 109, empty x 11, "Hello" ]
+
+// looks like a real slot with a
+// real `undefined` value in it,
+// but beware, it's a trick!
+myList[9];                  // undefined
+```
+
+There are many APIs in JavaScript, like `Array.map(..)` that will skip over empty slots. Never intentionally create empty slots in arrays, it can lead to un-intuitive behaviors in the program.
 
 [▲ Return to Sections](#sections)
 
