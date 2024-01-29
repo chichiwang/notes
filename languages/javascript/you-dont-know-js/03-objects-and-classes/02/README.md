@@ -8,6 +8,7 @@ The characteristics that define the underlying behavior of objects are collectiv
   * [Accessor Properties](#accessor-properties)
   * [Enumerable, Writable, Configurable](#enumerable-writable-configurable)
 * [Object Sub-Types](#object-sub-types)
+  * [Arrays](#arrays)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -120,6 +121,46 @@ The attributes of a property descriptor include:
 There are a variety of [specialized sub-types of objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) in JavaScript, but the two most commonly used are arrays and functions.
 
 **NOTE**: The term _sub-type_ used in this book refers to a derived type that has inherited behaviors from a parent type, but has specialized or extended these behaviors. Values of these object sub-types are fully objects, but also _more than just_ objects.
+
+#### Arrays
+Arrays are specialized objects that are intended to be _numerically indexed_, rather than using string-named property names. Arrays are still strings so a string-named property is legal, but frowned upon (use the appropriate data structures for a given purpose).
+
+Arrays can be defined with a literal syntax using `[ .. ]` square brackets:
+
+```javascript
+myList = [ 23, 42, 109 ];
+```
+
+JavaScript allows for the values in arrays to be any mixture of value types. Arrays are _zero-indexed_: the first element in the array is at index `0`, not `1`:
+
+```javascript
+myList = [ 23, 42, 109 ];
+
+myList[0];      // 23
+myList[1];      // 42
+```
+
+Index access of arrays will be coerced to integers, as JavaScript expects:
+
+```javascript
+// "2" works as an integer index here, but it's not advised
+myList["2"];    // 109
+```
+
+All arrays expose a `length` property, which is automatically kept updated with the number of elements in the array:
+
+```javascript
+myList = [ 23, 42, 109 ];
+
+myList.length;   // 3
+
+// "push" another value onto the end of the list
+myList.push("Hello");
+
+myList.length;   // 4
+```
+
+**WARNING**: Many JavaScript developers incorrectly believe that an array's `length` property is a _getter_, and that it is computationally _expensive_ to access this property (as if JavaScript computes the length of an array on-the-fly). For at least 10 years now it is more efficient to retrieve length via an array's `length` property rather than to track the length manually.
 
 [▲ Return to Sections](#sections)
 
