@@ -11,6 +11,7 @@ The characteristics that define the underlying behavior of objects are collectiv
   * [Arrays](#arrays)
     * [Empty Slots](#empty-slots)
   * [Functions](#functions)
+    * [Avoid Setting Function-Object Properties](#avoid-setting-function-object-properties)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -197,6 +198,18 @@ help.length;        // 2
 ```
 
 The `length` of a function is the count of its explicitly defined parameters, up to but not including a parameter that either has a default value defined (ex: `param = 42`) or a _rest parameter_ (ex: `...remainingOpts`).
+
+##### Avoid Setting Function-Object Properties
+Avoid assigning properties on function objects. If extra information needs to be stored on a function, use a separate `Map(..)` or `WeakMap(..)` with the function object as the key, and the information as the value:
+
+```javascript
+extraInfo = new Map();
+
+extraInfo.set(help,"this is some important information");
+
+// later:
+extraInfo.get(help);   // "this is some important information"
+```
 
 [▲ Return to Sections](#sections)
 
