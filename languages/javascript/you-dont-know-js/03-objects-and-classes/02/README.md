@@ -13,6 +13,7 @@ The characteristics that define the underlying behavior of objects are collectiv
   * [Functions](#functions)
     * [Avoid Setting Function-Object Properties](#avoid-setting-function-object-properties)
 * [Object Characteristics](#object-characteristics)
+  * [Extensible](#extensible)
 
 [◂ Return to Table of Contents](../README.md)
 
@@ -219,6 +220,9 @@ Certain behaviors are configurable across entire objects:
 * Extensible
 * Sealed
 * Frozen
+
+#### Extensible
+_This book is still in draft at the time of these notes, put this on pause and revisit later as Kyle Simpson finishes it up._
 
 [▲ Return to Sections](#sections)
 
